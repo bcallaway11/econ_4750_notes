@@ -1,0 +1,27 @@
+h1:statistical-programming Statistical Programming
+h2:what-is-r What is R?
+h2:downloading-r Downloading R
+h2:rstudio RStudio
+h2:rstudio-development-environment RStudio Development Environment
+h2:installing-r-packages Installing R Packages
+h2:running-code Running code
+h2:r-basics R Basics
+h2:workspace Workspace
+h2:solving-the-quadratic-equation Solving the quadratic equation
+h2:functions-in-r Functions in R
+h2:data-types Data types
+h2:vector-arithmetic Vector arithmetic
+h2:subsetting-with-logicals Subsetting with logicals
+h2:logicals Logicals
+h2:in %in%
+h2:basic-plots Basic Plots
+h2:programming-basics Programming basics
+h2:ifelse if/else
+h2:writing-functions Writing functions
+h2:for-loops for loops
+h2:vectorization Vectorization
+h2:tidyverse Tidyverse
+h2:data-visualization Data Visualization
+h2:reproducible-research Reproducible Research
+h2:technical-writing-tools Technical Writing Tools
+

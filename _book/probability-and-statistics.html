@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 3 Probability and Statistics | Detailed Course Outline for ECON 4750</title>
+  <meta name="description" content="This is an extended course outline for ECON 4750." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 3 Probability and Statistics | Detailed Course Outline for ECON 4750" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an extended course outline for ECON 4750." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 3 Probability and Statistics | Detailed Course Outline for ECON 4750" />
+  
+  <meta name="twitter:description" content="This is an extended course outline for ECON 4750." />
+  
+
+<meta name="author" content="Brantly Callaway" />
+
+
+<meta name="date" content="2021-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="statistical-programming.html"/>
+<link rel="next" href="linear-regression.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Course Outline/Notes for ECON 4750</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1</b> Additional References</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#goals-for-the-course"><i class="fa fa-check"></i><b>1.2</b> Goals for the Course</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#studying-for-the-class"><i class="fa fa-check"></i><b>1.3</b> Studying for the Class</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#first-week-of-class"><i class="fa fa-check"></i><b>1.4</b> First Week of Class</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistical-programming.html"><a href="statistical-programming.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-programming.html"><a href="statistical-programming.html#downloading-r"><i class="fa fa-check"></i><b>2.2</b> Downloading R</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.4</b> RStudio Development Environment</a></li>
+<li class="chapter" data-level="2.5" data-path="statistical-programming.html"><a href="statistical-programming.html#installing-r-packages"><i class="fa fa-check"></i><b>2.5</b> Installing R Packages</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-programming.html"><a href="statistical-programming.html#running-code"><i class="fa fa-check"></i><b>2.6</b> Running code</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-programming.html"><a href="statistical-programming.html#r-basics"><i class="fa fa-check"></i><b>2.7</b> R Basics</a></li>
+<li class="chapter" data-level="2.8" data-path="statistical-programming.html"><a href="statistical-programming.html#workspace"><i class="fa fa-check"></i><b>2.8</b> Workspace</a></li>
+<li class="chapter" data-level="2.9" data-path="statistical-programming.html"><a href="statistical-programming.html#solving-the-quadratic-equation"><i class="fa fa-check"></i><b>2.9</b> Solving the quadratic equation</a></li>
+<li class="chapter" data-level="2.10" data-path="statistical-programming.html"><a href="statistical-programming.html#functions-in-r"><i class="fa fa-check"></i><b>2.10</b> Functions in R</a></li>
+<li class="chapter" data-level="2.11" data-path="statistical-programming.html"><a href="statistical-programming.html#data-types"><i class="fa fa-check"></i><b>2.11</b> Data types</a></li>
+<li class="chapter" data-level="2.12" data-path="statistical-programming.html"><a href="statistical-programming.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.12</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.13" data-path="statistical-programming.html"><a href="statistical-programming.html#subsetting-with-logicals"><i class="fa fa-check"></i><b>2.13</b> Subsetting with logicals</a></li>
+<li class="chapter" data-level="2.14" data-path="statistical-programming.html"><a href="statistical-programming.html#logicals"><i class="fa fa-check"></i><b>2.14</b> Logicals</a></li>
+<li class="chapter" data-level="2.15" data-path="statistical-programming.html"><a href="statistical-programming.html#in"><i class="fa fa-check"></i><b>2.15</b> %in%</a></li>
+<li class="chapter" data-level="2.16" data-path="statistical-programming.html"><a href="statistical-programming.html#basic-plots"><i class="fa fa-check"></i><b>2.16</b> Basic Plots</a></li>
+<li class="chapter" data-level="2.17" data-path="statistical-programming.html"><a href="statistical-programming.html#programming-basics"><i class="fa fa-check"></i><b>2.17</b> Programming basics</a></li>
+<li class="chapter" data-level="2.18" data-path="statistical-programming.html"><a href="statistical-programming.html#ifelse"><i class="fa fa-check"></i><b>2.18</b> if/else</a></li>
+<li class="chapter" data-level="2.19" data-path="statistical-programming.html"><a href="statistical-programming.html#writing-functions"><i class="fa fa-check"></i><b>2.19</b> Writing functions</a></li>
+<li class="chapter" data-level="2.20" data-path="statistical-programming.html"><a href="statistical-programming.html#for-loops"><i class="fa fa-check"></i><b>2.20</b> for loops</a></li>
+<li class="chapter" data-level="2.21" data-path="statistical-programming.html"><a href="statistical-programming.html#vectorization"><i class="fa fa-check"></i><b>2.21</b> Vectorization</a></li>
+<li class="chapter" data-level="2.22" data-path="statistical-programming.html"><a href="statistical-programming.html#tidyverse"><i class="fa fa-check"></i><b>2.22</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.23" data-path="statistical-programming.html"><a href="statistical-programming.html#data-visualization"><i class="fa fa-check"></i><b>2.23</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.24" data-path="statistical-programming.html"><a href="statistical-programming.html#reproducible-research"><i class="fa fa-check"></i><b>2.24</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.25" data-path="statistical-programming.html"><a href="statistical-programming.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.25</b> Technical Writing Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-probability"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#random-variables"><i class="fa fa-check"></i><b>3.1.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.2</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.1.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#summation-operator"><i class="fa fa-check"></i><b>3.1.3</b> Summation operator</a></li>
+<li class="chapter" data-level="3.1.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.4</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.1.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#expected-values"><i class="fa fa-check"></i><b>3.1.5</b> Expected Values</a></li>
+<li class="chapter" data-level="3.1.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance"><i class="fa fa-check"></i><b>3.1.6</b> Variance</a></li>
+<li class="chapter" data-level="3.1.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.7</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.1.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-variance"><i class="fa fa-check"></i><b>3.1.8</b> Properties of Variance</a></li>
+<li class="chapter" data-level="3.1.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#standardized-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Standardized Random Variables</a></li>
+<li class="chapter" data-level="3.1.10" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.11" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.13" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.14" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.15" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-expectations"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="3.1.16" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-statistics"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="3.2.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>3.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="3.2.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="3.2.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="3.2.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="3.2.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#inference"><i class="fa fa-check"></i><b>3.2.9</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#extra-questions"><i class="fa fa-check"></i><b>3.3</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#nonparametric-regression-curse-of-dimensionality"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression.html"><a href="linear-regression.html#partial-effects"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-binary-covariate"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression.html"><a href="linear-regression.html#nonlinear-regression-functions"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
+<li class="chapter" data-level="4.6" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-interaction-terms"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
+<li class="chapter" data-level="4.7" data-path="linear-regression.html"><a href="linear-regression.html#elasticities"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
+<li class="chapter" data-level="4.8" data-path="linear-regression.html"><a href="linear-regression.html#omitted-variable-bias"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.9" data-path="linear-regression.html"><a href="linear-regression.html#how-to-estimate-the-parameters-in-a-regression-model"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
+<li class="chapter" data-level="4.10" data-path="linear-regression.html"><a href="linear-regression.html#inference-1"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
+<li class="chapter" data-level="4.11" data-path="linear-regression.html"><a href="linear-regression.html#extra-questions-1"><i class="fa fa-check"></i><b>4.11</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="prediction.html"><a href="prediction.html#measures-of-regression-fit"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="prediction.html"><a href="prediction.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="5.1.2" data-path="prediction.html"><a href="prediction.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="prediction.html"><a href="prediction.html#model-selection"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="prediction.html"><a href="prediction.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="prediction.html"><a href="prediction.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="prediction.html"><a href="prediction.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="5.2.4" data-path="prediction.html"><a href="prediction.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="prediction.html"><a href="prediction.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="prediction.html"><a href="prediction.html#machine-learning"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="prediction.html"><a href="prediction.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="5.3.2" data-path="prediction.html"><a href="prediction.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prediction.html"><a href="prediction.html#binary-outcome-models"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="prediction.html"><a href="prediction.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prediction.html"><a href="prediction.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="5.4.3" data-path="prediction.html"><a href="prediction.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prediction.html"><a href="prediction.html#computation"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
+<li class="chapter" data-level="5.6" data-path="prediction.html"><a href="prediction.html#extra-questions-2"><i class="fa fa-check"></i><b>5.6</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#potential-outcomes"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#parameters-of-interest"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#experiments"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#unconfoundedness"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a></li>
+<li class="chapter" data-level="6.6" data-path="causal-inference.html"><a href="causal-inference.html#instrumental-variables"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
+<li class="chapter" data-level="6.7" data-path="causal-inference.html"><a href="causal-inference.html#regression-discontinuity"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a></li>
+<li class="chapter" data-level="6.8" data-path="causal-inference.html"><a href="causal-inference.html#extra-questions-3"><i class="fa fa-check"></i><b>6.8</b> Extra Questions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Detailed Course Outline for ECON 4750</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probability-and-statistics" class="section level1" number="3">
+<h1><span class="header-section-number">Topic 3</span> Probability and Statistics</h1>
+<p>This section contains a list of topics, cross references to the textbook, and, in some places, additional discussion. I mostly just follow Chapters 2 &amp; 3 in the book for this part of the course, so this is primarily a list of references to the corresponding places in the textbook.</p>
+<div id="topics-in-probability" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Topics in Probability</h2>
+<div id="random-variables" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Random Variables</h3>
+<p>SW 2.1</p>
+</div>
+<div id="pdfs-pmfs-and-cdfs" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> pdfs, pmfs, and cdfs</h3>
+<p>SW 2.1</p>
+</div>
+<div id="summation-operator" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Summation operator</h3>
+<p>course notes</p>
+</div>
+<div id="continuous-random-variables" class="section level3" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Continuous Random Variables</h3>
+<p>SW 2.1</p>
+</div>
+<div id="expected-values" class="section level3" number="3.1.5">
+<h3><span class="header-section-number">3.1.5</span> Expected Values</h3>
+<p>SW 2.2</p>
+</div>
+<div id="variance" class="section level3" number="3.1.6">
+<h3><span class="header-section-number">3.1.6</span> Variance</h3>
+<p>SW 2.2</p>
+</div>
+<div id="mean-and-variance-of-linear-functions" class="section level3" number="3.1.7">
+<h3><span class="header-section-number">3.1.7</span> Mean and Variance of Linear Functions</h3>
+<p>SW 2.2</p>
+</div>
+<div id="properties-of-variance" class="section level3" number="3.1.8">
+<h3><span class="header-section-number">3.1.8</span> Properties of Variance</h3>
+<p>SW 2.2</p>
+</div>
+<div id="standardized-random-variables" class="section level3" number="3.1.9">
+<h3><span class="header-section-number">3.1.9</span> Standardized Random Variables</h3>
+<p>SW 2.2</p>
+</div>
+<div id="multiple-random-variables" class="section level3" number="3.1.10">
+<h3><span class="header-section-number">3.1.10</span> Multiple Random Variables</h3>
+<p>SW 2.3</p>
+</div>
+<div id="conditional-expectations" class="section level3" number="3.1.11">
+<h3><span class="header-section-number">3.1.11</span> Conditional Expectations</h3>
+<p>SW 2.3</p>
+</div>
+<div id="law-of-iterated-expectations" class="section level3" number="3.1.12">
+<h3><span class="header-section-number">3.1.12</span> Law of Iterated Expectations</h3>
+<p>SW 2.3</p>
+</div>
+<div id="covariance" class="section level3" number="3.1.13">
+<h3><span class="header-section-number">3.1.13</span> Covariance</h3>
+<p>SW 2.3</p>
+</div>
+<div id="correlation" class="section level3" number="3.1.14">
+<h3><span class="header-section-number">3.1.14</span> Correlation</h3>
+<p>SW 2.3</p>
+</div>
+<div id="properties-of-expectations" class="section level3" number="3.1.15">
+<h3><span class="header-section-number">3.1.15</span> Properties of Expectations</h3>
+<p>SW 2.3</p>
+</div>
+<div id="normal-distribution" class="section level3" number="3.1.16">
+<h3><span class="header-section-number">3.1.16</span> Normal Distribution</h3>
+<p>SW 2.4</p>
+</div>
+</div>
+<div id="topics-in-statistics" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Topics in Statistics</h2>
+<div id="simple-random-sample" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Simple Random Sample</h3>
+<p>SW 2.5</p>
+</div>
+<div id="estimating-mathbbey" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></h3>
+<p>SW 2.5, 3.1</p>
+</div>
+<div id="mean-of-bary" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h3>
+<p>SW 2.5, 3.1</p>
+</div>
+<div id="variance-of-bary" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h3>
+<p>SW 2.5, 3.1</p>
+</div>
+<div id="sampling-distribution-of-estimator" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Sampling distribution of estimator</h3>
+<p>SW 2.5, 3.1</p>
+<ul>
+<li><p>Bias</p></li>
+<li><p>Sampling Variance</p></li>
+</ul>
+</div>
+<div id="relative-efficiency" class="section level3" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Relative Efficiency</h3>
+<p>SW 3.1</p>
+</div>
+<div id="mean-squared-error" class="section level3" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> Mean Squared Error</h3>
+<p>Course notes</p>
+</div>
+<div id="large-sample-properties-of-estimators" class="section level3" number="3.2.8">
+<h3><span class="header-section-number">3.2.8</span> Large Sample Properties of Estimators</h3>
+<p>SW 2.6</p>
+<p>Tools:</p>
+<ul>
+<li><p>Law of Large Numbers</p></li>
+<li><p>Central Limit Theorem</p></li>
+</ul>
+<p>Properties:</p>
+<ul>
+<li><p>Consistency</p></li>
+<li><p>Asymptotic Normality</p></li>
+</ul>
+</div>
+<div id="inference" class="section level3" number="3.2.9">
+<h3><span class="header-section-number">3.2.9</span> Inference</h3>
+<p>SW 3.2, 3.3</p>
+<ul>
+<li><p>t-statistics</p></li>
+<li><p>p-values</p></li>
+<li><p>confidence intervals</p></li>
+<li><p>statistical vs. economic significance</p></li>
+</ul>
+</div>
+</div>
+<div id="extra-questions" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Extra Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>Suppose that <span class="math inline">\(\mathbb{E}[X] = 10\)</span> and <span class="math inline">\(\mathrm{var}(X) = 2\)</span>. Also, suppose that <span class="math inline">\(Y=5 + 9 X\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is <span class="math inline">\(\mathbb{E}[Y]\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(\mathrm{var}(Y)\)</span>?</p></li>
+</ol></li>
+<li><p>Suppose you are interested in average height of students at UGA. Let <span class="math inline">\(Y\)</span> denote a student’s height; also let <span class="math inline">\(X\)</span> denote a binary variable that is equal to 1 if a student is female. Suppose that you know that <span class="math inline">\(\mathbb{E}[Y|X=1] = 5\&#39; \ 4\&quot;\)</span> and that <span class="math inline">\(\mathbb{E}[Y|X=0] = 5\&#39; \ 9\&quot;\)</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What is <span class="math inline">\(\mathbb{E}[Y]\)</span>?</p></li>
+<li><p>Explain how the answer to part (a) is related to the Law of Iterated Expectations.</p></li>
+</ol></li>
+<li><p>What is the difference between consistency and unbiasedness?</p></li>
+<li><p>Suppose you have an estimator that is unbiased. Will it necessarily be consistent? If not, provide an example of an unbiased estimator that is not consistent.</p></li>
+<li><p>Suppose you have an estimator that is consistent. Will it necessarily be unbiased? If not, provide an example of a consistent estimator that is not unbiased.</p></li>
+<li><p>The Central Limit Theorem says that, <span class="math inline">\(\sqrt{n}\left(\frac{1}{n} \sum_{i=1}^n (Y_i - \mathbb{E}[Y])\right) \rightarrow N(0,V)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span> where <span class="math inline">\(V = \mathrm{var}(Y)\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What happens to <span class="math inline">\(n \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \mathbb{E}[Y])\right)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>? Explain.</p></li>
+<li><p>What happens to <span class="math inline">\(n^{1/3} \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \mathbb{E}[Y])\right)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>? Explain.</p></li>
+</ol></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="statistical-programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

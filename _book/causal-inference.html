@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 6 Causal Inference | Supplemtary Notes and References for ECON 4750</title>
+  <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 6 Causal Inference | Supplemtary Notes and References for ECON 4750" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 6 Causal Inference | Supplemtary Notes and References for ECON 4750" />
+  
+  <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+<meta name="author" content="Brantly Callaway" />
+
+
+<meta name="date" content="2021-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="prediction.html"/>
+
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Course Outline/Notes for ECON 4750</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-this"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-is-this-not"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-did-i-write-this"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.4</b> Additional References</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#goals-for-the-course"><i class="fa fa-check"></i><b>1.5</b> Goals for the Course</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#studying-for-the-class"><i class="fa fa-check"></i><b>1.6</b> Studying for the Class</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#first-week-of-class"><i class="fa fa-check"></i><b>1.7</b> First Week of Class</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistical-programming.html"><a href="statistical-programming.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-programming.html"><a href="statistical-programming.html#downloading-r"><i class="fa fa-check"></i><b>2.2</b> Downloading R</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.4</b> RStudio Development Environment</a></li>
+<li class="chapter" data-level="2.5" data-path="statistical-programming.html"><a href="statistical-programming.html#installing-r-packages"><i class="fa fa-check"></i><b>2.5</b> Installing R Packages</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-programming.html"><a href="statistical-programming.html#running-code"><i class="fa fa-check"></i><b>2.6</b> Running code</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-programming.html"><a href="statistical-programming.html#r-basics"><i class="fa fa-check"></i><b>2.7</b> R Basics</a></li>
+<li class="chapter" data-level="2.8" data-path="statistical-programming.html"><a href="statistical-programming.html#workspace"><i class="fa fa-check"></i><b>2.8</b> Workspace</a></li>
+<li class="chapter" data-level="2.9" data-path="statistical-programming.html"><a href="statistical-programming.html#solving-the-quadratic-equation"><i class="fa fa-check"></i><b>2.9</b> Solving the quadratic equation</a></li>
+<li class="chapter" data-level="2.10" data-path="statistical-programming.html"><a href="statistical-programming.html#functions-in-r"><i class="fa fa-check"></i><b>2.10</b> Functions in R</a></li>
+<li class="chapter" data-level="2.11" data-path="statistical-programming.html"><a href="statistical-programming.html#data-types"><i class="fa fa-check"></i><b>2.11</b> Data types</a></li>
+<li class="chapter" data-level="2.12" data-path="statistical-programming.html"><a href="statistical-programming.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.12</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.13" data-path="statistical-programming.html"><a href="statistical-programming.html#subsetting-with-logicals"><i class="fa fa-check"></i><b>2.13</b> Subsetting with logicals</a></li>
+<li class="chapter" data-level="2.14" data-path="statistical-programming.html"><a href="statistical-programming.html#logicals"><i class="fa fa-check"></i><b>2.14</b> Logicals</a></li>
+<li class="chapter" data-level="2.15" data-path="statistical-programming.html"><a href="statistical-programming.html#in"><i class="fa fa-check"></i><b>2.15</b> %in%</a></li>
+<li class="chapter" data-level="2.16" data-path="statistical-programming.html"><a href="statistical-programming.html#basic-plots"><i class="fa fa-check"></i><b>2.16</b> Basic Plots</a></li>
+<li class="chapter" data-level="2.17" data-path="statistical-programming.html"><a href="statistical-programming.html#programming-basics"><i class="fa fa-check"></i><b>2.17</b> Programming basics</a></li>
+<li class="chapter" data-level="2.18" data-path="statistical-programming.html"><a href="statistical-programming.html#ifelse"><i class="fa fa-check"></i><b>2.18</b> if/else</a></li>
+<li class="chapter" data-level="2.19" data-path="statistical-programming.html"><a href="statistical-programming.html#writing-functions"><i class="fa fa-check"></i><b>2.19</b> Writing functions</a></li>
+<li class="chapter" data-level="2.20" data-path="statistical-programming.html"><a href="statistical-programming.html#for-loops"><i class="fa fa-check"></i><b>2.20</b> for loops</a></li>
+<li class="chapter" data-level="2.21" data-path="statistical-programming.html"><a href="statistical-programming.html#vectorization"><i class="fa fa-check"></i><b>2.21</b> Vectorization</a></li>
+<li class="chapter" data-level="2.22" data-path="statistical-programming.html"><a href="statistical-programming.html#tidyverse"><i class="fa fa-check"></i><b>2.22</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.23" data-path="statistical-programming.html"><a href="statistical-programming.html#data-visualization"><i class="fa fa-check"></i><b>2.23</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.24" data-path="statistical-programming.html"><a href="statistical-programming.html#reproducible-research"><i class="fa fa-check"></i><b>2.24</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.25" data-path="statistical-programming.html"><a href="statistical-programming.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.25</b> Technical Writing Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-probability"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#random-variables"><i class="fa fa-check"></i><b>3.1.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.2</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.1.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#summation-operator"><i class="fa fa-check"></i><b>3.1.3</b> Summation operator</a></li>
+<li class="chapter" data-level="3.1.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.4</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.1.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#expected-values"><i class="fa fa-check"></i><b>3.1.5</b> Expected Values</a></li>
+<li class="chapter" data-level="3.1.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance"><i class="fa fa-check"></i><b>3.1.6</b> Variance</a></li>
+<li class="chapter" data-level="3.1.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.7</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.1.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-variance"><i class="fa fa-check"></i><b>3.1.8</b> Properties of Variance</a></li>
+<li class="chapter" data-level="3.1.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#standardized-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Standardized Random Variables</a></li>
+<li class="chapter" data-level="3.1.10" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.11" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.13" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.14" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.15" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-expectations"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="3.1.16" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-statistics"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="3.2.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>3.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="3.2.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="3.2.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="3.2.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="3.2.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#inference"><i class="fa fa-check"></i><b>3.2.9</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#extra-questions"><i class="fa fa-check"></i><b>3.3</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#nonparametric-regression-curse-of-dimensionality"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression.html"><a href="linear-regression.html#partial-effects"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-binary-covariate"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression.html"><a href="linear-regression.html#nonlinear-regression-functions"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
+<li class="chapter" data-level="4.6" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-interaction-terms"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
+<li class="chapter" data-level="4.7" data-path="linear-regression.html"><a href="linear-regression.html#elasticities"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
+<li class="chapter" data-level="4.8" data-path="linear-regression.html"><a href="linear-regression.html#omitted-variable-bias"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.9" data-path="linear-regression.html"><a href="linear-regression.html#how-to-estimate-the-parameters-in-a-regression-model"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
+<li class="chapter" data-level="4.10" data-path="linear-regression.html"><a href="linear-regression.html#inference-1"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
+<li class="chapter" data-level="4.11" data-path="linear-regression.html"><a href="linear-regression.html#extra-questions-1"><i class="fa fa-check"></i><b>4.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="4.12" data-path="linear-regression.html"><a href="linear-regression.html#answers-to-some-extra-questions"><i class="fa fa-check"></i><b>4.12</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="prediction.html"><a href="prediction.html#measures-of-regression-fit"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="prediction.html"><a href="prediction.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="5.1.2" data-path="prediction.html"><a href="prediction.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="prediction.html"><a href="prediction.html#model-selection"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="prediction.html"><a href="prediction.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="prediction.html"><a href="prediction.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="prediction.html"><a href="prediction.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="5.2.4" data-path="prediction.html"><a href="prediction.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="prediction.html"><a href="prediction.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="prediction.html"><a href="prediction.html#machine-learning"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="prediction.html"><a href="prediction.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="5.3.2" data-path="prediction.html"><a href="prediction.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prediction.html"><a href="prediction.html#binary-outcome-models"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="prediction.html"><a href="prediction.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prediction.html"><a href="prediction.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="5.4.3" data-path="prediction.html"><a href="prediction.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prediction.html"><a href="prediction.html#computation"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
+<li class="chapter" data-level="5.6" data-path="prediction.html"><a href="prediction.html#extra-questions-2"><i class="fa fa-check"></i><b>5.6</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.7" data-path="prediction.html"><a href="prediction.html#answers-to-some-extra-questions-1"><i class="fa fa-check"></i><b>5.7</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#potential-outcomes"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#parameters-of-interest"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#experiments"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#unconfoundedness"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a></li>
+<li class="chapter" data-level="6.6" data-path="causal-inference.html"><a href="causal-inference.html#instrumental-variables"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
+<li class="chapter" data-level="6.7" data-path="causal-inference.html"><a href="causal-inference.html#regression-discontinuity"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a></li>
+<li class="chapter" data-level="6.8" data-path="causal-inference.html"><a href="causal-inference.html#extra-questions-3"><i class="fa fa-check"></i><b>6.8</b> Extra Questions</a></li>
+<li class="chapter" data-level="6.9" data-path="causal-inference.html"><a href="causal-inference.html#answers-to-some-extra-questions-2"><i class="fa fa-check"></i><b>6.9</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemtary Notes and References for ECON 4750</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="causal-inference" class="section level1" number="6">
+<h1><span class="header-section-number">Topic 6</span> Causal Inference</h1>
+<p>For simplicity, we will mostly focus on the case where the treatment is binary. We will use <span class="math inline">\(D_i\)</span> to denote the treatment, so that <span class="math inline">\(D_i=1\)</span> if individual <span class="math inline">\(i\)</span> participates in the treatment and <span class="math inline">\(D_i=0\)</span> if individual <span class="math inline">\(i\)</span> does not participate in the treatment.</p>
+<p>Example: SW 13.3</p>
+<div id="potential-outcomes" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Potential Outcomes</h2>
+<p>SW 13.1</p>
+<p><em>Treated potential outcome</em>: <span class="math inline">\(Y_i(1)\)</span>, the outcome an individual <em>would experience</em> if they participated in the treatment</p>
+<p><em>Untreated potential outcome</em>: <span class="math inline">\(Y_i(0)\)</span>, the outcome an individual <em>would experience</em> if they did not participate in the treatment</p>
+<p>For individuals that participate in the treatment, we observe <span class="math inline">\(Y_i(1)\)</span> (but not <span class="math inline">\(Y_i(0)\)</span>). For individuals that do not participate in the treatment, we observe <span class="math inline">\(Y_i(0)\)</span> (but not <span class="math inline">\(Y_i(1)\)</span>). Another way to write this is that the observed outcome, <span class="math inline">\(Y_i\)</span> is given by
+<span class="math display">\[\begin{align*}
+  Y_i = D_i Y_i(1) + (1-D_i) Y_i(0)
+\end{align*}\]</span></p>
+<p>We can think about the individual-level effect of participating in the treatment:
+<span class="math display">\[\begin{align*}
+  TE_i = Y_i(1) - Y_i(0)
+\end{align*}\]</span></p>
+<p>Considering the difference between treated and untreated potential outcomes is a very natural (and, I think, helpful) way to think about causality. The causal effect of the treatment is the difference between the outcome that an individual would experience if they participate in the treatment relative to what they would experience if they did not participate in the treatment.</p>
+<p>This notation makes it clear that we are allowing for <em>treatment effect heterogenity</em> — the effect of participating in the treatment can vary across different individuals.</p>
+<p>That said, most researchers essentially give up on trying to figure out individual level treatment effects. It is not so much that these are not interesting, more it is just that these are very hard to figure out. Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person’s earnings. I went to college, so I know what my <span class="math inline">\(Y(1)\)</span> is, but I don’t know what my <span class="math inline">\(Y(0)\)</span> is — and, I’d even have a hard time coming with a good guess as to what it might be.</p>
+</div>
+<div id="parameters-of-interest" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Parameters of Interest</h2>
+<p>Instead of going for individual-level effects of participating in the treatment, most researchers instead go for more aggregated parameters. The two most common ones are the Average Treatment Effect (ATE) and Average Treatment Effect on the Treated (ATT).</p>
+<p><span class="math display">\[\begin{align*}
+  ATE = \mathbb{E}[Y(1) - Y(0)] \qquad \textrm{and} \qquad ATT = \mathbb{E}[Y(1)-Y(0) | D=1]
+\end{align*}\]</span>
+<span class="math inline">\(ATE\)</span> is the difference between treated potential outcomes and untreated potential outcomes, on average, and for the entire population. <span class="math inline">\(ATT\)</span> is the difference between treated and untreated potential outcomes, on average, conditional on being in the treated group.</p>
+<p>I will mostly focus on <span class="math inline">\(ATT\)</span>.</p>
+<p>It is worth considering the challenges for learning about <span class="math inline">\(ATT\)</span>. In particular, notice that we can write
+<span class="math display">\[\begin{align*}
+  ATT = \mathbb{E}[Y(1)|D=1] - \mathbb{E}[Y(0)|D=1]
+\end{align*}\]</span>
+and consider these term separately</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{E}[Y(1)|D=1]\)</span> is the average treated potential outcome among the treated group. But we observe treated potential outcomes for the treated group <span class="math inline">\(\implies \mathbb{E}[Y(1)|D=1] = \mathbb{E}[Y|D=1]\)</span>. In other words, if we want to estimate this component of the <span class="math inline">\(ATT\)</span>, we can just look right at the data and compute the average outcome experienced by individuals in the treated group.</p></li>
+<li><p><span class="math inline">\(\mathbb{E}[Y(0)|D=1]\)</span> is the average untreated potential outcome among the treated group. This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group. But, in order to learn about the <span class="math inline">\(ATT\)</span>, we will have to <em>somehow</em> deal with this term. I will provide a number of strategies below, but it is important to remember that this is a major challenge, and their may not be a good solution.</p></li>
+</ul>
+<p>As a side-comment, I’d like to point out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer. In economics jargon, this amounts to an <em>identification problem</em> — in other words, there may be competing theories of the world which the available data is not able to distinguish among. I probably do not emphasize this issue enough in our class, but it is something that you should remember!</p>
+</div>
+<div id="experiments" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Experiments</h2>
+<p>An experiment is often called the “gold standard” for causal inference. In particular, here, we are thinking about the case where participation in the treatment is randomly assigned — something like: people who show up to possibly participate in the treatment, someone flips a coin, and if the coin comes up heads then the person participates in the treatment or, if tails, they do not participate in the treatment.</p>
+<p>Random assignment means that participating in the treatment is independent of potential outcomes, by construction. We can write this in math as
+<span class="math display">\[\begin{align*}
+  (Y(1), Y(0)) \perp D
+\end{align*}\]</span>
+For our purposes, this also implies that
+<span class="math display">\[\begin{align*}
+  \mathbb{E}[Y(0)|D=1] = \mathbb{E}[Y(0)|D=0] = \mathbb{E}[Y|D=0]
+\end{align*}\]</span>
+In other words, under random assignment, the average untreated potential among the treated group is equal to the average untreated potential outcome among the untreated group (this is the first equality). This is helpful because untreated potential outcomes are observed for those in the untreated group (this is the second equality).</p>
+<p>Thus, under random assignment,
+<span class="math display">\[\begin{align*}
+  ATT = \mathbb{E}[Y|D=1] - \mathbb{E}[Y|D=0]
+\end{align*}\]</span>
+In other words, the <span class="math inline">\(ATT\)</span> is just the difference in (population) average outcomes among the treated group relative to average outcomes among the untreated group.</p>
+<p>The natural way to estimate the ATT under random assignment is
+<span class="math display">\[\begin{align*}
+  \widehat{ATT} = \bar{Y}_{D=1} - \bar{Y}_{D=0}
+\end{align*}\]</span>
+i.e., as we have done many times before, in order to estimate the parameter of interest, we just replace population averages with sample averages.</p>
+<p>It is also often convenient to introduce a regression based estimator of the ATT. This is primarily convenient as it will allow us to leverage all the things we already know about regressions, and, particularly, we it will immediately provide us with standard errors, t-statistics, etc.</p>
+<p>In order to do this, let’s introduce the following assumption:</p>
+<p><em>Treatment Effect Homogeneity</em>: <span class="math inline">\(Y_i(1) - Y_i(0) = \alpha\)</span> (and <span class="math inline">\(\alpha\)</span> does not vary across individuals).</p>
+<p>This is a potentially quite unrealistic assumption; I’ll make some additional comments about it below, but, for now, let’s just go with it.</p>
+<p>Notice that we can also write
+<span class="math display">\[\begin{align*}
+  Y_i(0) = \beta_0 + U_i
+\end{align*}\]</span>
+where <span class="math inline">\(\mathbb{E}[U|D=0] = \mathbb{E}[U|D=1] = 0\)</span> (this holds under random assignment)</p>
+<p>Recalling the definition of the observed outcome, notice that
+<span class="math display">\[\begin{align*}
+  Y_i &amp;= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &amp;= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &amp;= \alpha D_i + \beta_0 + U_i
+\end{align*}\]</span>
+This suggests running a regression of the observed <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(D_i\)</span> and interpreting the estimated version of <span class="math inline">\(\alpha\)</span> as an estimate of <span class="math inline">\(ATT\)</span> (and you can pick up standard errors, etc. from the regression output) — this is very convenient.</p>
+<p>The previous discussion invoked the extra condition of treatment effect homogeneity. I want to point out some things related to this now. In the above regression model, we can alternatively (and equivalently) write it as
+<span class="math display">\[\begin{align*}
+  \mathbb{E}[Y|D] = \beta_0 + \alpha D
+\end{align*}\]</span>
+Now plug in particular values for <span class="math inline">\(D\)</span>:
+<span class="math display">\[\begin{align*}
+  \mathbb{E}[Y|D=0] = \beta_0 \qquad \textrm{and} \qquad \mathbb{E}[Y|D=1] = \beta_0 + \alpha
+\end{align*}\]</span>
+Subtracting the second equation from the first implies that
+<span class="math display">\[\begin{align*}
+  \alpha = \mathbb{E}[Y|D=1] - \mathbb{E}[Y|D=0]
+\end{align*}\]</span>
+but notice that this is exactly what the <span class="math inline">\(ATT\)</span> is equal to under random assignment. Thus, it is worth pointing out that, although we imposed the assumption of treatment effect homogeneity to arrive at the regression equation, our regression is “robust” to treatment effect heterogeneity.</p>
+<ul>
+<li><p>Internal Validity: SW 13.2</p></li>
+<li><p>External Validity: SW 13.2</p></li>
+</ul>
+</div>
+<div id="unconfoundedness" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Unconfoundedness</h2>
+<p>SW 6.8, SW Ch. 9</p>
+<p><em>Unconfoundedness Assumption</em>:
+<span class="math display">\[\begin{align*}
+  (Y(1),Y(0)) \perp D | X
+\end{align*}\]</span>
+You can think of this as saying that, among individuals with the same covariates <span class="math inline">\(X\)</span>, they have the same distributions of potential outcomes regardless of whether or not they participate in the treatment. Note that the distribution of <span class="math inline">\(X\)</span> is still allowed to be different between the treated and untreated groups. In other words, after you condition on covariates, there is nothing special (in terms of the distributions of potential outcomes) about the group that participates in the treatment relative to the group that doesn’t participate in the treatment.</p>
+<ul>
+<li>This is potentially a strong assumption. In order to believe this assumption, you need to believe that untreated individuals with the same characteristics can deliver, on average, the outcome that individuals in the treated group would have experienced if they had not participated in the treatment. In math, you can write this as
+<span class="math display">\[\begin{align*}
+    \mathbb{E}[Y(0) | X, D=1] = \mathbb{E}[Y(0) | X, D=0]
+  \end{align*}\]</span></li>
+</ul>
+<p>For this case, let’s continue to make the treatment effect heterogeneity assumption as above. In addition, let’s assume a linear model for untreated potential outcomes
+<span class="math display">\[\begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}\]</span>
+and unconfoundedness implies that <span class="math inline">\(\mathbb{E}[U|X_1,X_2,X_3,D] = 0\)</span> (the conditioning on <span class="math inline">\(D\)</span> is the unconfoundedness part). Now, recalling the definition of the observed outcome, we can write
+<span class="math display">\[\begin{align*}
+  Y_i &amp;= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &amp;= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &amp;= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
+\end{align*}\]</span>
+which suggests running the regression of observed <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1,X_2,X_3,\)</span> and <span class="math inline">\(D\)</span> and interpreting the estimate of <span class="math inline">\(\alpha\)</span> as the causal effect of participating in the treatment. In practice, this will be very similar to what we have done before — so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.</p>
+<p>As a final comment, the assumption of treatment effect homogeneity is not quite so innocuous here. It turns out that you can show that, in the presence of treatment effect heterogeneity, <span class="math inline">\(\alpha\)</span> will be equal to a weighted average of individual treatment effects, but the weights can sometimes be “strange.” There are methods that are robust to treatment effect heterogeneity (they are beyond the scope of the current class, but they are not “way” more difficult than what we are doing here). That said, in my experience, the regression estimators (under treatment effect homogeneity) tend to deliver similar estimates to alternative estimators that are robust to treatment effect heterogeneity at least in the setup considered in this section.</p>
+</div>
+<div id="panel-data-approaches" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Panel Data Approaches</h2>
+<p>SW All of Ch. 10 and 13.4</p>
+<p>In the previous section, we invoked the assumption of unconfoundedness and were in the setup where <span class="math inline">\(X\)</span> was fully observed. But suppose instead that you thought this alternative version of unconfoundedness held
+<span class="math display">\[\begin{align*}
+  (Y(1),Y(0)) \perp D | (X,W)
+\end{align*}\]</span>
+where <span class="math inline">\(X\)</span> were observed random variables, but <span class="math inline">\(W\)</span> were not observed. Following exactly the same argument as in the previous section, this would lead to a regression like
+<span class="math display">\[\begin{align*}
+  Y_i = \alpha D_i + \beta_0 + \beta_1 X_i + \beta_2 W_i + U_i
+\end{align*}\]</span>
+(I’m just including one <span class="math inline">\(X\)</span> and one <span class="math inline">\(W\)</span> for simplicity, but you can easily imagine the case where there are more.) If <span class="math inline">\(W\)</span> were observed, then we could just run this regression, but since <span class="math inline">\(W\)</span> is not observed, we run into the problem of omitted variable bias (i.e., if we just ignore <span class="math inline">\(W\)</span>, we won’t be estimating the causal effect <span class="math inline">\(\alpha\)</span>)</p>
+<ul>
+<li>Panel data setup, notation, etc: SW 10.1</li>
+</ul>
+<p>Panel data potentially gives us a way around this problem. This is particularly likely to be the case when <span class="math inline">\(W\)</span> does not vary over time. In that case, we can write
+<span class="math display">\[\begin{align*}
+  Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
+\end{align*}\]</span>
+where we consider the case where <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> both change over time. Then, defining <span class="math inline">\(\Delta Y_{it} = Y_{it} - Y_{it-1}\)</span> (and using similar notation for other variables), notice that
+<span class="math display">\[\begin{align*}
+  \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+\end{align*}\]</span>
+which, importantly, no longer involves the unobserved <span class="math inline">\(W_i\)</span> and suggests running the above regression and interpreting the estimated version of <span class="math inline">\(\alpha\)</span> as an estimate of the effect of participating in the treatment.</p>
+<ul>
+<li>Time fixed effects — The previous regression did not include an intercept. It is common in applied work to allow for the intercept to vary over time (i.e., so that <span class="math inline">\(\beta_0 = \beta_{0,t}\)</span>) which allows for “aggregate shocks” such as recessions or common trends in outcomes over time. In practice, this amounts to just including an intercept in the previous regression.</li>
+</ul>
+<p>Often, there may be many omitted, time invariant variables. In practice, these are usually just lumped into a single <em>fixed effect</em> — even if there are many time invariant, unobserved variables, we can difference them all out at the same time
+<span class="math display">\[\begin{align*}
+  Y_{it} &amp;= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
+  &amp;= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it} 
+\end{align*}\]</span>
+and we can follow the same strategies as above.</p>
+<p>Another case that is common in practice is when there are more than two time periods. This case is similar to the previous one except there are multiple ways to eliminate the unobserved fixed effect. The two most common are the</p>
+<ul>
+<li><p>Within estimator</p>
+<p>To motivate this approach, notice that, if, for each individual, we average their outcomes over time, the we get
+<span class="math display">\[\begin{align*}
+    \bar{Y}_i = \alpha \bar{D}_i + \beta_1 \bar{X}_i + (\textrm{time fixed effects}) + \bar{U}_i
+  \end{align*}\]</span>
+(where I have just written “time fixed effects” to indicate that these are transformed version of original fixed but still show up here.) Subtracting this equation from the expression for <span class="math inline">\(Y_{it}\)</span> gives
+<span class="math display">\[\begin{align*}
+    Y_{it} - \bar{Y}_i = \alpha (D_{it} - \bar{D}_i) + \beta_1 (X_{it} - \bar{X}_i) + (\textrm{time fixed effects}) + U_{it} - \bar{U}_i
+  \end{align*}\]</span></p>
+<p>This is a feasible regression to estimate (everything is observed here). This is called a within estimator because the terms <span class="math inline">\(\bar{Y}_i\)</span>, <span class="math inline">\(\bar{D}_i\)</span>, and <span class="math inline">\(\bar{X}_i\)</span> are the within-individual averages-over-time of the corresponding variable.</p></li>
+<li><p>First differences</p>
+<p>Another approach to eliminating the unobserved fixed effects is to directly consider <span class="math inline">\(\Delta Y_{it}\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+    \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+  \end{align*}\]</span></p>
+<p>This is the same expression as we had before for the two period case. Only here you would include observations from all available time periods on <span class="math inline">\(\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}\)</span> in the regression.</p></li>
+</ul>
+<p>Two cases where a fixed effect strategy can break down:</p>
+<ul>
+<li><p>unobserved variables vary over time (i.e., <span class="math inline">\(\cdots + \beta_2 W_{it} + \cdots\)</span>)</p></li>
+<li><p>the effect of unobserved variables varies over time (i.e., <span class="math inline">\(\cdots + \beta_{2,t} W_i + \cdots\)</span>)</p></li>
+</ul>
+<p>Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context. This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) — both of these are realistic in many applications. This is a main research area of mine and one I am happy to talk way more about.</p>
+<p>The case that we have been talking about where a researcher is interested in the effect of a single “regressor of interest” is often called “Difference in Differences”</p>
+</div>
+<div id="instrumental-variables" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Instrumental Variables</h2>
+<p>SW all of chapter 12</p>
+</div>
+<div id="regression-discontinuity" class="section level2" number="6.7">
+<h2><span class="header-section-number">6.7</span> Regression Discontinuity</h2>
+<p>SW 13.4</p>
+</div>
+<div id="extra-questions-3" class="section level2" number="6.8">
+<h2><span class="header-section-number">6.8</span> Extra Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>What is the difference between treatment effect homogeneity and treatment effect heterogeneity?</p></li>
+<li><p>Why do most researchers give up on trying to estimate the individual-level effect of participating in a treatment?</p></li>
+<li><p>Explain what unconfoundedness means.</p></li>
+<li><p>What is the key condition underlying a difference-in-differences approach to learn about the causal effect of some treatment on some outcome?</p></li>
+<li><p>What are two key conditions for a valid instrument?</p></li>
+<li><p>Suppose you are interested in the causal effect of participating in a union on a person’s income. Consider the following approaches.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Suppose you run the following regression</p>
+<p><span class="math display">\[\begin{align*}
+   Earnings_i = \beta_0 + \alpha Union_i + \beta_1 Education_i + U_i
+ \end{align*}\]</span></p>
+<p>Would it be reasonable to interpret <span class="math inline">\(\hat{\alpha}\)</span> in this regression as an estimate of the causal effect of participating in a union on earnings? Explain.</p></li>
+<li><p>Suppose you have access to panel data and run the following fixed effects regression
+<span class="math display">\[\begin{align*}
+   Earnings_{it} = \beta_{0,t} + \alpha Union_{it} + \beta_1 Education_{it} + \eta_i + U_{it}
+ \end{align*}\]</span></p>
+<p>where <span class="math inline">\(\eta_i\)</span> is an individual fixed effect. Would it be reasonable to interpert <span class="math inline">\(\hat{\alpha}\)</span> in this regression as an estimate of the causal effect of participating in a union on earnings? Explain. Can you think of any other advantages or disadvantages of this approach?</p></li>
+<li><p>Going back to the case with cross-sectional data, consider the regression
+<span class="math display">\[\begin{align*}
+   Earnings_i = \beta_0 + \alpha Union_i + U_i
+ \end{align*}\]</span>
+but using the variable <span class="math inline">\(Z_i = 1\)</span> if birthday is between Jan. 1 and Jun. 30 while <span class="math inline">\(Z_i=0\)</span> otherwise. Would it be reasonable to interpert <span class="math inline">\(\hat{\alpha}\)</span> in this regression as an estimate of the causal effect of participating in a union on earnings? Explain. Can you think of any other advantages or disadvantages of this approach?</p></li>
+</ol></li>
+<li><p>Suppose that you are interested in the effect of lower college costs on the probability of graduating from college. You have access to student-level data from Georgia where students are eligible for the Hope Scholarship if they can keep their GPA above 3.0.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What strategy can use to exploit this institional setting to learn about the causal effect of lower college costs on the probability of going to college?</p></li>
+<li><p>What sort of data would you need in order to implement this strategy?</p></li>
+<li><p>Can you think of any ways that the approach that you suggested could go wrong?</p></li>
+<li><p>Another researcher reads the results from the approach you have implemented and complains that your results are only specific to students who have grades right around the 3.0 cutoff. Is this a fair criticism?</p></li>
+</ol></li>
+<li><p>Suppose you are willing to believe versions of unconfoundedness, a linear model for untreated potential outcomes, and treatment effect homogeneity so that you could write
+<span class="math display">\[\begin{align*}
+  Y_i = \beta_0 + \alpha D_i + \beta_1 X_i + \beta_2 W_i + U_i
+\end{align*}\]</span>
+with <span class="math inline">\(\mathbb{E}[U|D,X,W] = 0\)</span> so that you were willing to interpret <span class="math inline">\(\alpha\)</span> in this regression as the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. However, suppose that <span class="math inline">\(W\)</span> is not observed so that you cannot operationalize the above regression.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Since you do not observe <span class="math inline">\(W\)</span>, you are considering just running a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> and interpreting the estimated coefficient on <span class="math inline">\(D\)</span> as the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. Does this seem like a good idea?</p></li>
+<li><p>In part (a), we can write a version of the model that you are thinking about estimating as
+<span class="math display">\[\begin{align*}
+   Y_i = \delta_0 + \delta_1 D_i + \delta_2 X_i + \epsilon_i
+ \end{align*}\]</span>
+Suppose that <span class="math inline">\(\mathbb{E}[\epsilon | D, X] = 0\)</span> and suppose also that
+<span class="math display">\[\begin{align*}
+W_i = \gamma_0 + \gamma_1 D_i + \gamma_2 X_i + V_i
+  \end{align*}\]</span>
+with <span class="math inline">\(\mathbb{E}[V|D,X]=0\)</span>. Provide an expression for <span class="math inline">\(\delta_1\)</span> in terms of <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\gamma\)</span>’s and <span class="math inline">\(\beta\)</span>’s. Explain what this expression means.</p></li>
+</ol></li>
+<li><p>Suppose you have access to an experiment where some participants were randomly assigned to participate in a job training program and others were randomly assigned not to participate. However, some individuals that were assigned to participate in the treatment decided not to actually participate. Let’s use the following notation: <span class="math inline">\(D=1\)</span> for individuals who actually participated and <span class="math inline">\(D=0\)</span> for individuals who did not participate. <span class="math inline">\(Z=1\)</span> for individuals who were assigned to the treatment and <span class="math inline">\(Z=0\)</span> for individuals assigned not to participate (here, <span class="math inline">\(D\)</span> and <span class="math inline">\(Z\)</span> are not exactly the same because some individuals who were assigned to the treatment did not actually participate).</p>
+<p>You are considering several different approaches to dealing with this issue. Discuss which of the following are good or bad ideas:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Estimating <span class="math inline">\(ATT\)</span> by <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span>.</p></li>
+<li><p>Run the regression <span class="math inline">\(Y_i = \beta_0 + \alpha D_i + U_i\)</span> using <span class="math inline">\(Z_i\)</span> as an instrument.</p></li>
+</ol></li>
+<li><p>Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.). You interpret the difference <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span> as an estimate of the <span class="math inline">\(ATT\)</span>, but your friend says that you should interpret it as an estimate of the <span class="math inline">\(ATE\)</span>. In fact, according to your friend, random treatment assignment implies that <span class="math inline">\(\mathbb{E}[Y(1)] = \mathbb{E}[Y(1)|D=1] = \mathbb{E}[Y|D=1]\)</span> and <span class="math inline">\(\mathbb{E}[Y(0)] = \mathbb{E}[Y(0)|D=0] = \mathbb{E}[Y|D=0]\)</span> which implies that <span class="math inline">\(ATE = \mathbb{E}[Y|D=1] - \mathbb{E}[Y|D=0]\)</span>. Who is right?</p></li>
+</ol>
+</div>
+<div id="answers-to-some-extra-questions-2" class="section level2" number="6.9">
+<h2><span class="header-section-number">6.9</span> Answers to Some Extra Questions</h2>
+<p><strong>Answer to Question 4</strong></p>
+<p>The key condition is the parallel trends assumption that says that, in the absence of participating in the treatment, the <em>path</em> of outcomes that individuals in the treated group is the same, on average, as the path of outcomes that individuals in the untreated group actually experienced.</p>
+<p><strong>Answer to Question 9</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>When some individuals do not comply with their treatment assignment, this approach is probably not so great. In particular, notice that the comparison in this part of the problem is among individuals who <em>actually</em> participated in the treatment relative to those who didn’t (the latter group includes both those assigned not to participate in the treatment along with those assigned to participate in the treatment, but ultimately didn’t actually participate). This suggests that this approach would generally lead to biased estimates of the <span class="math inline">\(ATT\)</span>. In the particular context of job training, you can see this would not be such a good idea if, for example, the people who were assigned to the job training program but who did not participate tended to do this because they were able to find a job before the job training program started.</p></li>
+<li><p>This approach is likely to be better. By construction, <span class="math inline">\(Z\)</span> is not correlated with <span class="math inline">\(U\)</span> (since <span class="math inline">\(Z\)</span> is randomly assigned). <span class="math inline">\(Z\)</span> is also likely to be positively correlated with <span class="math inline">\(Z\)</span> (in particular, this will be the case if being randomly assigned to treatment increases the probability of being treated). This implies that <span class="math inline">\(Z\)</span> is a valid instrument and should be able to deliver a reasonable estimate of the effect of participating in the treatment.</p></li>
+</ol>
+<p><strong>Answer to Question 10</strong></p>
+<p>While your friend’s explanation is not technically wrong, it seems to me that you are more right than your friend. There is an important issue related to external validity here. The group of people that show up to participate in the experiment could be (and likely are) quite different from the general population. Interpreting the results of the experiment as being an <span class="math inline">\(ATE\)</span> (in the sense of across the entire population) is therefore likely to be incorrect — or at least would require extra assumptions and/or justifications. Interpreting them as an <span class="math inline">\(ATT\)</span> (i.e., as the effect among those who participated in the treatment) is still perfectly reasonable though.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prediction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

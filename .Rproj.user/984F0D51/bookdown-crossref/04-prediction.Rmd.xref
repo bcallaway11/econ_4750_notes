@@ -1,0 +1,20 @@
+h1:prediction Prediction
+h2:measures-of-regression-fit Measures of Regression Fit
+h3:tss-ess-ssr TSS, ESS, SSR
+h3:r2 
+h2:model-selection Model Selection
+h3:limitations-of-r2 Limitations of 
+h3:adjusted-r2 Adjusted 
+h3:aic-bic AIC, BIC
+h3:cross-validation Cross-Validation
+h3:model-averaging Model Averaging
+h2:machine-learning Machine Learning
+h3:lasso Lasso
+h3:ridge-regression Ridge Regression
+h2:binary-outcome-models Binary Outcome Models
+h3:linear-probability-model Linear Probability Model
+h3:probit-and-logit Probit and Logit
+h3:average-partial-effects Average Partial Effects
+h2:computation Computation
+h2:extra-questions Extra Questions
+

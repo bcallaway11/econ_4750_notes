@@ -1,0 +1,279 @@
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+
+# Linear Regression
+
+This is probably the part of the class where we will jump around in the book the most this semester.  
+
+The pedagogical approach of the textbook is to introduce the notion of causality very early and to emphasize the requirements on linear regression models in order to deliver causality, while increasing the complexity of the models over several chapters.
+
+This is totally reasonable, but I prefer to start by teaching the mechanics of regressions: how to compute them, how to interpret them (even if you are not able to meet the requirements of causality), and how to use them to make predictions.  Then, we'll have a serious discussion about causality over the last few weeks of the semester.  
+
+In practice, this means we'll cover parts Chapters 4-8 in the textbook now, and then we'll circle back to some of the issues covered in these chapters again towards the end of the semester.  
+
+## Nonparametric Regression / Curse of Dimensionality
+
+* If you knew nothing about regressions, it would seem natural to try to estimate $\E[Y|X_1=x_1,X_2=x_2,X_3=x_3]$ by just calculating the average of $Y$ among observations that have values of the regressors equal to $x_1$, $x_2$, and $x_3$ (if these are discrete) or that are, in some sense, close to $x_1$, $x_2$, and $x_3$ (if these are continuous)
+
+* This is actually a pretty attractive idea
+
+* However, you run into the issue that it is practically challenging to do this when the number of regressors starts to get large (i.e., if you have 10 regressors, generally, you would need tons of data to be able to find a suitable number of observations that are ``close'' to any particular value of the regressors).
+
+* This issue is called the "curse of dimensionality"
+
+* We will focus on linear models for $\E[Y|X_1,X_2,X_3]$ largely to get around the curse of dimensionality
+
+## Linear Regression Models
+
+SW 4.1
+
+## Partial Effects
+
+In the model, 
+\begin{align*}
+  \E[Y | X_1, X_2, X_3]  &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
+\end{align*}
+
+* If $X_1$ is continuous,
+\begin{align*}
+  \beta_1 = \frac{\partial \E[Y|X_1,X_2,X_3]}{\partial X_1}
+\end{align*}
+In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on average, when $X_1$ increases by one unit holding $X_2$ and $X_3$ constant.  *Make sure to get this interpretation right!*
+
+* If $X_1$ is discrete (let's say binary):
+\begin{align*}
+  \beta_1 = \E[Y|X_1=1,X_2,X_3] - \E[Y|X_1=0,X_2,X_3]
+\end{align*}
+In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on average, when $X_1$ changes from 0 to 1, hodling $X_2$ and $X_3$ constant.
+
+* Note: above model can be equivalently written as
+\begin{align*}
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}
+where $\E[U|X_1,X_2,X_3] = 0$.
+
+## Interpreting Binary Covariate
+
+SW 5.3
+
+## Nonlinear Regression Functions
+
+SW 8.1, 8.2
+
+Also, please read all of SW Ch. 8
+
+## Interpreting Interaction Terms
+
+SW 8.3
+
+## Elasticities
+
+SW 8.2
+
+## Omitted Variable Bias
+
+SW 6.1
+
+* The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet.  The same issues arise if we just say that we have some *regression of interest* but are unable to estimate it because some covariates are unobserved.  
+
+* In this case, we would just not be able to interpret, say $\beta_1$, as the partial effect of our interest (except under special cases discussed in class).
+
+* The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the "causal effect", but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.
+
+## How to estimate the parameters in a regression model
+
+SW 4.2, 6.3
+
+## Inference
+
+SW 4.5, 5.1, 5.2, 6.6
+
+**Additional (Optional) Material**
+
+We discussed in class the practical issues of inference in linear regression models.  
+
+These results rely on arguments building on the Central Limit Theorem (this should not surprise you as it is similar to the case for the asymptotic distribution of $\sqrt{n}(\bar{Y} - \E[Y]))$ that we discussed earlier in the semester.  
+
+In this section, I sketch these types of arguments for you.  This material is advanced/optional, but I suggest that you study this material.  
+
+In class, we wrote down that, in the simple linear regression model, 
+\begin{align*}
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V) \quad \textrm{as} \ n \rightarrow \infty
+\end{align*}
+where 
+\begin{align*}
+  V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
+\end{align*}
+and discussed how to use this result to conduct inference.
+
+Now, we want to show why this result holds.
+
+To start with, recall that
+\begin{align}
+  \hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} (\#eq:b1)
+\end{align}
+
+Before providing a main result, let's start with noting the following:
+
+*Helpful Intermediate Result 1*
+Notice that
+\begin{align*}
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})\bar{Y}\Big) &= \bar{Y} \frac{1}{n}\sum_{i=1}^n \Big( X_i-\bar{X} \Big) \\
+  &= \bar{Y} \left( \frac{1}{n}\sum_{i=1}^n X_i - \frac{1}{n}\sum_{i=1}^n \bar{X} \right) \\
+  &= \bar{Y} \Big(\bar{X} - \bar{X} \Big) \\
+  &= 0
+\end{align*}
+where the first equality just pull $\bar{Y}$ out of the summation (it is a constant with respect to the summation), the second equality pushes the summation through the difference, the first part of the third equality holds by the definition of $\bar{X}$ and the second part holds because it is an average of a constant.
+
+This implies that
+\begin{align}
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) (\#eq:hr1)
+\end{align}
+and very similar arguments (basically the same arguments in reverse) also imply that
+\begin{align}
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big) (\#eq:hr2)
+\end{align}
+We use both \@ref(eq:hr1) and \@ref(eq:hr2) below.
+
+\vspace{100pt}
+
+Next, consider the numerator in \@ref(eq:b1)
+\begin{align*}
+  \widehat{\cov}(X,Y) &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
+  &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
+  &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
+  &= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
+\end{align*}
+Now, let's consider each of these in turn.
+
+For (A),
+\begin{align*}
+  \frac{1}{n} \sum_{i=1}^n X_i = \bar{X} \qquad \textrm{and} \qquad \frac{1}{n} \sum_{i=1}^n \bar{X} = \bar{X}
+\end{align*}
+which implies that this term is equal to 0.
+
+For (B), notice that
+\begin{align*}
+  \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i &= \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) (X_i - \bar{X}) \\
+  &= \beta_1 \widehat{\var}(X)
+\end{align*}
+
+For (C), well, we'll just carry that one around for now.
+
+Plugging in the expressions for (A), (B), and (C) back into Equation \ref{eqn:b1} implies that
+\begin{align*}
+  \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
+\end{align*}
+Next, re-arranging terms and multiplying both sides by $\sqrt{n}$ implies that
+\begin{align*}
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) &= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}\right) \\
+  & \approx \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \E[X]) U_i}{\var(X)}\right)
+\end{align*}
+The last line (the approximately one) is kind of a weak argument, but basically you can replace $\bar{X}$ and $\widehat{\var}{X}$ and the effect of this replacement will converge to 0 in large samples (this is the reason for the approximately) --- if you want a more complete explanation, sign up for my graduate econometrics class next semester.
+
+Is this helpful?  It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to.  In particular, maybe it is helpful to define $Z_i = \frac{(X_i - \E[X]) U_i}{\var(X)}$.  We know that we could apply a Central Limit Theorem to $\sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)$ if (i) $Z_i$ had mean 0, and (ii) it is iid.  That it is iid holds immediately from the random sampling assumption.  For mean 0,
+\begin{align*}
+  \E[Z] &= \E\left[ \frac{(X - \E[X]) U}{\var(X)}\right] \\
+  &= \frac{1}{\var(X)} \E[(X - \E[X]) U] \\
+  &= \frac{1}{\var(X)} \E[(X - \E[X]) \underbrace{\E[U|X]}_{=0}] \\
+  &= 0
+\end{align*}
+where the only challenging line here is the third one holds from the Law of Iterated Expectations.  This means that we can apply the central limit theorem, and in particular,
+$\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)$ where $V=\var(Z) = \E[Z^2]$ (where 2nd equality holds because $Z$ has mean 0).  Now, just substituting back in for $Z$ implies that
+\begin{align*}
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
+\end{align*}
+where 
+\begin{align}
+  V &= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
+  &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] (\#eq:V)
+\end{align}
+which is the expression that we used in class.
+
+## Extra Questions
+
+1. Suppose you run the following regression
+\begin{align*}
+  Earnings = \beta_0 + \beta_1 Education + U
+\end{align*}
+with $\E[U|Education] = 0$.  How do you interpret $\beta_1$ here?
+
+2. Suppose you run the following regression
+\begin{align*}
+  Earnings = \beta_0 + \beta_1 Education + \beta_2 Experience + \beta_3 Female + U
+\end{align*}
+with $\E[U|Education, Experience, Female] = 0$.  How do you interpret $\beta_1$ here?
+
+3. Suppose you are interested in testing whether an extra year of education increases earnings by the same amount for men and women.  
+
+    a) Propose a regression and strategy for this sort of test.  
+    
+    b) Suppose you also want to control for experience in conducting this test, how would do it?
+    
+4. Suppose you run the following regression
+\begin{align*}
+  \log(Earnings) = \beta_0 + \beta_1 Education + \beta_2 Experience + \beta_3 Female + U
+\end{align*}
+with $\E[U|Education, Experience, Female] = 0$.  How do you interpret $\beta_1$ here?
+
+5. A common extra condition (though somewhat old-fashioned) is to impose *homoskedasticity*.  Homoskedasticity says that $\E[U^2|X] = \sigma^2$ (i.e., the variance of the error term does not change across different values of $X$).
+
+    a) Under homoskedasticity, the expression for $V$ in \@ref(eq:V) simplifies.  Provide a new expression for $V$ under homoskedasticity.  **Hint:** you will need to use the law of iterated expectations.
+    
+    b) Using this expression for $V$, explain how to calculate standard errors for an estimate of $\beta_1$ in a simple linear regression.
+    
+    c) Explain how to construct a t-statistic for testing $H_0: \beta_1=0$ under homoskedasticity.
+    
+    d) Explain how to contruct a p-value for $\beta_1$ under homoskedasticity.
+    
+    e) Explain how to construct a 95\% confidence interval for $\beta_1$ under homoskedasticity.
+    
+## Answers to Some Extra Questions
+
+**Answer to Question 2**
+
+$\beta_1$ is how much $Earnings$ increase on average when $Education$ increases by one year holding $Experience$ and $Female$ constant.
+
+**Answer to Question 3**
+
+a) Run the regression
+    \begin{align*}
+        Earnings &= \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \times Female + U
+    \end{align*}
+    and test (e.g., calculate a t-statistic and check if it is greater than 1.96 in absolute value) if $\beta_3=0$.
+
+b) You can run the following regression:
+   \begin{align*}
+      Earnings &= \beta_0 + \beta_1 Education + \beta_2 Female \\
+      & \hspace{25pt} + \beta_3 Education \times Female + \beta_4 Experience + U
+   \end{align*}
+   Here, you would still be interested in $\beta_3$.  If you thought that the return to experience varied for men and women, you might also include an interaction term involving $Experience$ and $Female$. 
+
+**Partial Answer to Question 5**
+
+a) Starting from \@ref(eq:V)
+
+  \begin{align*}
+    V &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2} \right] \\
+    &= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 U^2] \\
+    &= \frac{1}{\var(X)^2} \E\big[(X-\E[X])^2 \E[U^2|X] \big] \\
+    &= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 \sigma^2 ] \\
+    &= \frac{\sigma^2}{\var(X)^2} \E[(X-\E[X])^2] \\
+    &= \frac{\sigma^2}{\var(X)^2} \var(X) \\
+    &= \frac{\sigma^2}{\var(X)}
+  \end{align*}
+
+  where 
+
+  * the second equality holds because $\var(X)^2$ is non-random and can come out of the expectation, 
+    
+  * the third equality uses the law of iterated expectations, 
+    
+  * the fourth equality holds by the condition of homoskedasticity, 
+    
+  * the fifth equality holds because $\sigma^2$ is non-random and can come out of the expectation, 
+    
+  * the sixth equality holds by the definition of variance, and 
+    
+  * the last equality holds by cancelling $\var(X)$ in the numerator with one of the $\var(X)$'s in the denominator.

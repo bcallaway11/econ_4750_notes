@@ -1,0 +1,90 @@
+--- 
+title: "Supplemtary Notes and References for ECON 4750"
+author: "Brantly Callaway"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+biblio-style: apalike
+link-citations: yes
+description: This is a set of supplementary notes and additional references for ECON 4750.
+---
+
+# Introduction
+
+## What is this? 
+
+Short answer: I'm not exactly sure, but you can think of this material as being similar to:
+
+* Supplementary Notes --- there are several topics that we will cover in class in substantially more detail than in the textbook.  A big chunk of the material provided here can be seen as additional reference material for topics not covered in depth in the textbook.
+
+* Quasi-Study Guide --- Another main chunk of the material provided here is a course outline (should be close to the order that we cover in class) along with cross-references to the corresponding section in the textbook.  In addition, there are additional practice questions (some with answers) provided at the end of each section.
+
+## What is this not?
+
+There are a couple of things that I want to explicitly say that this material is not.  These include:
+
+* A substitute for coming to class --- I will take attendance anyway, but not attending class and relying on this material is not a good plan.  Please do not do this.  
+
+* A substitute for the textbook --- A lot of the material provided here is just a reference to the corresponding section in the textbook.  This means you still need to use the textbook.  Homework questions will also primarily come from the textbook.
+
+* Sufficient for making good grades on exams --- I don't suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams.  I think this material should be helpful, but not (even close to being) sufficient.
+
+
+## Why did I write this?
+
+I have a strong opinion about the best order to teach the material in ECON 4750.  And, although, there are a number of advanced undergraduate textbooks in Econometrics that I like and reference as I teach the course, none of them go in the same order that I would like to teach.  Therefore, I think one way that I can both go in the order that I want to during the semester without confusing you (the student) too much is to provide a detailed set of references to material that we are covering throughout the semester.
+
+The book that I require for the course is [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1).  <!--I think this is a really great book, but, unfortunately, it is quite expensive --- at the moment, it costs \$172 on Amazon.  My longer term goal for these notes is to make it possible to, say, buy an older edition of this sort of textbook while still being able to follow the course, do the homework problems, etc.  At the moment, I am not there yet; I don't think it is possible to complete the course without buying the textbook, but hopefully, this will be available over the coming years.  For this reason too, I also sincerely welcome and appreciate comments or suggestions about these notes.-->
+By the end of the semester, we will have covered in much detail the first 14 chapters of the textbook (and some topics we will have covered in substantially more detail than in the textbook).  If I had more time, the next topic that I would cover in this course would be Time Series Econometrics.  I used to cover this material in the current course, but I have found that I am happier with the tradeoff of understanding slightly fewer topics better relative to covering more topics but at a faster pace.  Time series is especially important for students who are interested in macroeconomics or finance.  Fortunately, we offer a time series econometrics course, and, if you take it, you should be well prepared for it coming out of this course.
+
+## Additional References
+
+These are all free to download; they are not main textbooks but I sometimes consult them for the class and could potentially be useful for you to consult in the future:
+
+1. For R programming: [Introduction to Econometrics](https://www.econometrics-with-r.org/) with R, by Cristoph Hanck, Martin Arnold, Alexander Gerber, and Martin Schmelzer
+
+2. For prediction/machine learning:  [An Introduction to Statistical Learning](https://faculty.marshall.usc.edu/gareth-james/ISL/), by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
+
+3. For causal inference: [Causal Inference: The Mixtape](http://scunning.com/mixtape.html), by Scott Cunningham 
+
+**Additional R References:**
+
+There are tons of free R resources available online.  Here are some that seem particularly useful to me.
+
+1. Manageable Introduction: [Introduction to R and RStudio](https://sjspielman.github.io/datascience_for_biologists/tutorials/introduction_to_R.html), by Stephanie Spielman
+
+2. Full length book: [Introduction to Data Science: Data Analysis and Prediction Algorithms with R]((https://rafalab.github.io/dsbook/)), by Rafael Irizarry (this is way more than you will need for this course, but I suggest checking out Chapters 1, 2, 3, and 5, and there's plenty more that you might find interesting).
+
+3. Full length book: [STAT 545: Data Wrangling, exploration, and analysis with R](https://stat545.com/), by Jenny Bryan
+
+## Goals for the Course
+
+I have three high level goals --- that by the end of the semester, students should be able to 
+
+1. Run regressions and be able to interpret them, even complex regressions
+
+2. Use data in order to be able to predict outcomes of interest
+
+3. Be able to think clearly about when statistical results can be interpreted causal effects.
+
+
+In order to make progress towards these three goals, we also will need to learn about two additional topics:
+
+* Statistical Programming
+
+* Probability and Statistics
+
+We'll start the course off talking about these two topics.  Perhaps this will be review material for some of you, but I have found that it is worth it to spend several weeks getting everyone on the same page with respect to these topics.
+
+## Studying for the Class
+
+Students ask me all the time "How should I study for your class?"  My advice (and I think this applies to most classes, not just my class) is for you to start by studying the notes from class.  The things that I have discussed in class are the things that I think are most important for you learn in this sort of class and are the material that will be covered on the exam.  That said, it may sometimes be the case that you do not fully understand a lecture or the notes that you took from a lecture when you are studying (this certainly applied to me when I was a student).  If there are places that you do not understand what the notes mean, then I think that is the time when you should find the relevant portion of the textbook (or supplementary notes provided here) in order to "supplement" what the notes say.  
+
+## First Week of Class
+
+SW All of Chapter 1
+
+In the first few classes, we will talk at very high level about the objectives of Econometrics.  

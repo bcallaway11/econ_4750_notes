@@ -1,0 +1,322 @@
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\P}{\mathrm{P}}
+\newcommand{\independent}{\perp}
+
+# Causal Inference
+
+For simplicity, we will mostly focus on the case where the treatment is binary.  We will use $D_i$ to denote the treatment, so that $D_i=1$ if individual $i$ participates in the treatment and $D_i=0$ if individual $i$ does not participate in the treatment.
+
+Example: SW 13.3
+
+## Potential Outcomes
+
+SW 13.1
+
+*Treated potential outcome*: $Y_i(1)$, the outcome an individual *would experience* if they participated in the treatment
+
+*Untreated potential outcome*: $Y_i(0)$, the outcome an individual *would experience* if they did not participate in the treatment
+
+For individuals that participate in the treatment, we observe $Y_i(1)$ (but not $Y_i(0)$).  For individuals that do not participate in the treatment, we observe $Y_i(0)$ (but not $Y_i(1)$).  Another way to write this is that the observed outcome, $Y_i$ is given by
+\begin{align*}
+  Y_i = D_i Y_i(1) + (1-D_i) Y_i(0)
+\end{align*}
+
+We can think about the individual-level effect of participating in the treatment:
+\begin{align*}
+  TE_i = Y_i(1) - Y_i(0)
+\end{align*}
+
+Considering the difference between treated and untreated potential outcomes is a very natural (and, I think, helpful) way to think about causality.  The causal effect of the treatment is the difference between the outcome that an individual would experience if they participate in the treatment relative to what they would experience if they did not participate in the treatment.
+
+This notation makes it clear that we are allowing for *treatment effect heterogenity* --- the effect of participating in the treatment can vary across different individuals.
+
+That said, most researchers essentially give up on trying to figure out individual level treatment effects.  It is not so much that these are not interesting, more it is just that these are very hard to figure out.  Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person's earnings.  I went to college, so I know what my $Y(1)$ is, but I don't know what my $Y(0)$ is --- and, I'd even have a hard time coming with a good guess as to what it might be. 
+
+
+## Parameters of Interest
+
+Instead of going for individual-level effects of participating in the treatment, most researchers instead go for more aggregated parameters.  The two most common ones are the Average Treatment Effect (ATE) and Average Treatment Effect on the Treated (ATT).
+
+\begin{align*}
+  ATE = \E[Y(1) - Y(0)] \qquad \textrm{and} \qquad ATT = \E[Y(1)-Y(0) | D=1]
+\end{align*}
+$ATE$ is the difference between treated potential outcomes and untreated potential outcomes, on average, and for the entire population.  $ATT$ is the difference between treated and untreated potential outcomes, on average, conditional on being in the treated group.
+
+I will mostly focus on $ATT$.
+
+It is worth considering the challenges for learning about $ATT$.  In particular, notice that we can write
+\begin{align*}
+  ATT = \E[Y(1)|D=1] - \E[Y(0)|D=1]
+\end{align*}
+and consider these term separately
+
+* $\E[Y(1)|D=1]$ is the average treated potential outcome among the treated group.  But we observe treated potential outcomes for the treated group $\implies \E[Y(1)|D=1] = \E[Y|D=1]$.  In other words, if we want to estimate this component of the $ATT$, we can just look right at the data and compute the average outcome experienced by individuals in the treated group.
+
+* $\E[Y(0)|D=1]$ is the average untreated potential outcome among the treated group.  This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group.  But, in order to learn about the $ATT$, we will have to *somehow* deal with this term.  I will provide a number of strategies below, but it is important to remember that this is a major challenge, and their may not be a good solution.
+
+As a side-comment, I'd like to point out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer.  In economics jargon, this amounts to an *identification problem* --- in other words, there may be competing theories of the world which the available data is not able to distinguish among.  I probably do not emphasize this issue enough in our class, but it is something that you should remember!
+
+## Experiments
+
+An experiment is often called the "gold standard" for causal inference.  In particular, here, we are thinking about the case where participation in the treatment is randomly assigned --- something like: people who show up to possibly participate in the treatment, someone flips a coin, and if the coin comes up heads then the person participates in the treatment or, if tails, they do not participate in the treatment.
+
+Random assignment means that participating in the treatment is independent of potential outcomes, by construction.  We can write this in math as
+\begin{align*}
+  (Y(1), Y(0)) \independent D
+\end{align*}
+For our purposes, this also implies that
+\begin{align*}
+  \E[Y(0)|D=1] = \E[Y(0)|D=0] = \E[Y|D=0]
+\end{align*}
+In other words, under random assignment, the average untreated potential among the treated group is equal to the average untreated potential outcome among the untreated group (this is the first equality).  This is helpful because untreated potential outcomes are observed for those in the untreated group (this is the second equality).
+
+Thus, under random assignment,
+\begin{align*}
+  ATT = \E[Y|D=1] - \E[Y|D=0]
+\end{align*}
+In other words, the $ATT$ is just the difference in (population) average outcomes among the treated group relative to average outcomes among the untreated group.
+
+The natural way to estimate the ATT under random assignment is
+\begin{align*}
+  \widehat{ATT} = \bar{Y}_{D=1} - \bar{Y}_{D=0}
+\end{align*}
+i.e., as we have done many times before, in order to estimate the parameter of interest, we just replace population averages with sample averages.
+
+It is also often convenient to introduce a regression based estimator of the ATT.  This is primarily convenient as it will allow us to leverage all the things we already know about regressions, and, particularly, we it will immediately provide us with standard errors, t-statistics, etc. 
+
+In order to do this, let's introduce the following assumption:
+
+*Treatment Effect Homogeneity*: $Y_i(1) - Y_i(0) = \alpha$ (and $\alpha$ does not vary across individuals).  
+
+This is a potentially quite unrealistic assumption; I'll make some additional comments about it below, but, for now, let's just go with it.
+
+Notice that we can also write
+\begin{align*}
+  Y_i(0) = \beta_0 + U_i
+\end{align*}
+where $\E[U|D=0] = \E[U|D=1] = 0$ (this holds under random assignment)
+
+Recalling the definition of the observed outcome, notice that
+\begin{align*}
+  Y_i &= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &= \alpha D_i + \beta_0 + U_i
+\end{align*}
+This suggests running a regression of the observed $Y_i$ on $D_i$ and interpreting the estimated version of $\alpha$ as an estimate of $ATT$ (and you can pick up standard errors, etc. from the regression output) --- this is very convenient.
+
+The previous discussion invoked the extra condition of treatment effect homogeneity.  I want to point out some things related to this now.  In the above regression model, we can alternatively (and equivalently) write it as
+\begin{align*}
+  \E[Y|D] = \beta_0 + \alpha D
+\end{align*}
+Now plug in particular values for $D$:
+\begin{align*}
+  \E[Y|D=0] = \beta_0 \qquad \textrm{and} \qquad \E[Y|D=1] = \beta_0 + \alpha
+\end{align*}
+Subtracting the second equation from the first implies that
+\begin{align*}
+  \alpha = \E[Y|D=1] - \E[Y|D=0]
+\end{align*}
+but notice that this is exactly what the $ATT$ is equal to under random assignment.  Thus, it is worth pointing out that, although we imposed the assumption of treatment effect homogeneity to arrive at the regression equation, our regression is "robust" to treatment effect heterogeneity.
+
+* Internal Validity: SW 13.2
+
+* External Validity: SW 13.2
+
+## Unconfoundedness
+
+SW 6.8, SW Ch. 9
+
+*Unconfoundedness Assumption*:
+\begin{align*}
+  (Y(1),Y(0)) \independent D | X
+\end{align*}
+You can think of this as saying that, among individuals with the same covariates $X$, they have the same distributions of potential outcomes regardless of whether or not they participate in the treatment.  Note that the distribution of $X$ is still allowed to be different between the treated and untreated groups.  In other words, after you condition on covariates, there is nothing special (in terms of the distributions of potential outcomes) about the group that participates in the treatment relative to the group that doesn't participate in the treatment.
+
+* This is potentially a strong assumption.  In order to believe this assumption, you need to believe that untreated individuals with the same characteristics can deliver, on average, the outcome that individuals in the treated group would have experienced if they had not participated in the treatment.  In math, you can write this as
+    \begin{align*}
+      \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
+    \end{align*}
+
+For this case, let's continue to make the treatment effect heterogeneity assumption as above.  In addition, let's assume a linear model for untreated potential outcomes
+\begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}
+and unconfoundedness implies that $\E[U|X_1,X_2,X_3,D] = 0$ (the conditioning on $D$ is the unconfoundedness part).  Now, recalling the definition of the observed outcome, we can write
+\begin{align*}
+  Y_i &= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
+\end{align*}
+which suggests running the regression of observed $Y$ on $X_1,X_2,X_3,$ and $D$ and interpreting the estimate of $\alpha$ as the causal effect of participating in the treatment.  In practice, this will be very similar to what we have done before --- so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.
+
+As a final comment, the assumption of treatment effect homogeneity is not quite so innocuous here.  It turns out that you can show that, in the presence of treatment effect heterogeneity, $\alpha$ will be equal to a weighted average of individual treatment effects, but the weights can sometimes be "strange".  There are methods that are robust to treatment effect heterogeneity (they are beyond the scope of the current class, but they are not "way" more difficult than what we are doing here).  That said, in my experience, the regression estimators (under treatment effect homogeneity) tend to deliver similar estimates to alternative estimators that are robust to treatment effect heterogeneity at least in the setup considered in this section.
+
+
+## Panel Data Approaches
+
+SW All of Ch. 10 and 13.4
+
+In the previous section, we invoked the assumption of unconfoundedness and were in the setup where $X$ was fully observed.  But suppose instead that you thought this alternative version of unconfoundedness held
+\begin{align*}
+  (Y(1),Y(0)) \independent D | (X,W)
+\end{align*}
+where $X$ were observed random variables, but $W$ were not observed.  Following exactly the same argument as in the previous section, this would lead to a regression like
+\begin{align*}
+  Y_i = \alpha D_i + \beta_0 + \beta_1 X_i + \beta_2 W_i + U_i
+\end{align*}
+(I'm just including one $X$ and one $W$ for simplicity, but you can easily imagine the case where there are more.)  If $W$ were observed, then we could just run this regression, but since $W$ is not observed, we run into the problem of omitted variable bias (i.e., if we just ignore $W$, we won't be estimating the causal effect $\alpha$)
+
+* Panel data setup, notation, etc: SW 10.1
+
+Panel data potentially gives us a way around this problem.  This is particularly likely to be the case when $W$ does not vary over time.  In that case, we can write
+\begin{align*}
+  Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
+\end{align*}
+where we consider the case where $D$ and $X$ both change over time.  Then, defining $\Delta Y_{it} = Y_{it} - Y_{it-1}$ (and using similar notation for other variables), notice that
+\begin{align*}
+  \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+\end{align*}
+which, importantly, no longer involves the unobserved $W_i$ and suggests running the above regression and interpreting the estimated version of $\alpha$ as an estimate of the effect of participating in the treatment.
+
+* Time fixed effects --- The previous regression did not include an intercept.  It is common in applied work to allow for the intercept to vary over time (i.e., so that $\beta_0 = \beta_{0,t}$) which allows for "aggregate shocks" such as recessions or common trends in outcomes over time.  In practice, this amounts to just including an intercept in the previous regression.
+
+Often, there may be many omitted, time invariant variables.  In practice, these are usually just lumped into a single *fixed effect* --- even if there are many time invariant, unobserved variables, we can difference them all out at the same time
+\begin{align*}
+  Y_{it} &= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
+  &= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it} 
+\end{align*}
+and we can follow the same strategies as above.
+
+Another case that is common in practice is when there are more than two time periods.  This case is similar to the previous one except there are multiple ways to eliminate the unobserved fixed effect.  The two most common are the
+
+* Within estimator
+
+    To motivate this approach, notice that, if, for each individual, we average their outcomes over time, the we get
+    \begin{align*}
+      \bar{Y}_i = \alpha \bar{D}_i + \beta_1 \bar{X}_i + (\textrm{time fixed effects}) + \bar{U}_i
+    \end{align*}
+    (where I have just written "time fixed effects" to indicate that these are transformed version of original fixed but still show up here.)  Subtracting this equation from the expression for $Y_{it}$ gives 
+    \begin{align*}
+      Y_{it} - \bar{Y}_i = \alpha (D_{it} - \bar{D}_i) + \beta_1 (X_{it} - \bar{X}_i) + (\textrm{time fixed effects}) + U_{it} - \bar{U}_i
+    \end{align*}
+    
+    This is a feasible regression to estimate (everything is observed here).  This is called a within estimator because the terms $\bar{Y}_i$, $\bar{D}_i$, and $\bar{X}_i$ are the within-individual averages-over-time of the corresponding variable.
+    
+* First differences
+
+    Another approach to eliminating the unobserved fixed effects is to directly consider $\Delta Y_{it}$:
+    
+    \begin{align*}
+      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+    \end{align*}
+      
+    This is the same expression as we had before for the two period case.  Only here you would include observations from all available time periods on $\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}$ in the regression.
+
+Two cases where a fixed effect strategy can break down:
+
+* unobserved variables vary over time (i.e., $\cdots + \beta_2 W_{it} + \cdots$)
+
+* the effect of unobserved variables varies over time (i.e., $\cdots + \beta_{2,t} W_i + \cdots$)
+
+Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context.  This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) --- both of these are realistic in many applications.  This is a main research area of mine and one I am happy to talk way more about.
+
+The case that we have been talking about where a researcher is interested in the effect of a single "regressor of interest" is often called "Difference in Differences"
+
+## Instrumental Variables
+
+SW all of chapter 12
+
+## Regression Discontinuity
+
+SW 13.4
+
+## Extra Questions
+
+1. What is the difference between treatment effect homogeneity and treatment effect heterogeneity?
+
+2. Why do most researchers give up on trying to estimate the individual-level effect of participating in a treatment?
+
+3. Explain what unconfoundedness means.
+
+4. What is the key condition underlying a difference-in-differences approach to learn about the causal effect of some treatment on some outcome?
+
+5. What are two key conditions for a valid instrument?
+
+6. Suppose you are interested in the causal effect of participating in a union on a person's income.  Consider the following approaches.
+
+    a) Suppose you run the following regression
+    
+        \begin{align*}
+          Earnings_i = \beta_0 + \alpha Union_i + \beta_1 Education_i + U_i
+        \end{align*}
+        
+        Would it be reasonable to interpret $\hat{\alpha}$ in this regression as an estimate of the causal effect of participating in a union on earnings?  Explain.
+        
+    b) Suppose you have access to panel data and run the following fixed effects regression 
+        \begin{align*}
+          Earnings_{it} = \beta_{0,t} + \alpha Union_{it} + \beta_1 Education_{it} + \eta_i + U_{it}
+        \end{align*}
+        
+        where $\eta_i$ is an individual fixed effect.  Would it be reasonable to interpert $\hat{\alpha}$ in this regression as an estimate of the causal effect of participating in a union on earnings?  Explain.  Can you think of any other advantages or disadvantages of this approach?
+        
+    c) Going back to the case with cross-sectional data, consider the regression
+        \begin{align*}
+          Earnings_i = \beta_0 + \alpha Union_i + U_i
+        \end{align*}
+        but using the variable $Z_i = 1$ if birthday is between Jan. 1 and Jun. 30 while $Z_i=0$ otherwise.  Would it be reasonable to interpert $\hat{\alpha}$ in this regression as an estimate of the causal effect of participating in a union on earnings?  Explain.  Can you think of any other advantages or disadvantages of this approach?
+
+7. Suppose that you are interested in the effect of lower college costs on the probability of graduating from college.  You have access to student-level data from Georgia where students are eligible for the Hope Scholarship if they can keep their GPA above 3.0.  
+
+    a) What strategy can use to exploit this institional setting to learn about the causal effect of lower college costs on the probability of going to college?
+    
+    b) What sort of data would you need in order to implement this strategy?
+    
+    c) Can you think of any ways that the approach that you suggested could go wrong?
+    
+    d) Another researcher reads the results from the approach you have implemented and complains that your results are only specific to students who have grades right around the 3.0 cutoff.  Is this a fair criticism?
+
+8. Suppose you are willing to believe versions of unconfoundedness, a linear model for untreated potential outcomes, and treatment effect homogeneity so that you could write
+\begin{align*}
+  Y_i = \beta_0 + \alpha D_i + \beta_1 X_i + \beta_2 W_i + U_i
+\end{align*}
+with $\E[U|D,X,W] = 0$ so that you were willing to interpret $\alpha$ in this regression as the causal effect of $D$ on $Y$.  However, suppose that $W$ is not observed so that you cannot operationalize the above regression.  
+
+    a) Since you do not observe $W$, you are considering just running a regression of $Y$ on $D$ and $X$ and interpreting the estimated coefficient on $D$ as the causal effect of $D$ on $Y$.  Does this seem like a good idea?
+    
+    b) In part (a), we can write a version of the model that you are thinking about estimating as
+    \begin{align*}
+      Y_i = \delta_0 + \delta_1 D_i + \delta_2 X_i + \epsilon_i
+    \end{align*}
+    Suppose that $\E[\epsilon | D, X] = 0$ and suppose also that
+     \begin{align*}
+       W_i = \gamma_0 + \gamma_1 D_i + \gamma_2 X_i + V_i
+     \end{align*}
+     with $\E[V|D,X]=0$.  Provide an expression for $\delta_1$ in terms of $\alpha$, $\gamma$'s and $\beta$'s.  Explain what this expression means.
+     
+9. Suppose you have access to an experiment where some participants were randomly assigned to participate in a job training program and others were randomly assigned not to participate.  However, some individuals that were assigned to participate in the treatment decided not to actually participate.  Let's use the following notation: $D=1$ for individuals who actually participated and $D=0$ for individuals who did not participate.  $Z=1$ for individuals who were assigned to the treatment and $Z=0$ for individuals assigned not to participate (here, $D$ and $Z$ are not exactly the same because some individuals who were assigned to the treatment did not actually participate).
+
+    You are considering several different approaches to dealing with this issue.  Discuss which of the following are good or bad ideas:
+
+    a) Estimating $ATT$ by $\bar{Y}_{D=1} - \bar{Y}_{D=0}$.
+    
+    b) Run the regression $Y_i = \beta_0 + \alpha D_i + U_i$ using $Z_i$ as an instrument.
+
+10. Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.).  You interpret the difference $\bar{Y}_{D=1} - \bar{Y}_{D=0}$ as an estimate of the $ATT$, but your friend says that you should interpret it as an estimate of the $ATE$.  In fact, according to your friend, random treatment assignment implies that $\E[Y(1)] = \E[Y(1)|D=1] = \E[Y|D=1]$ and $\E[Y(0)] = \E[Y(0)|D=0] = \E[Y|D=0]$ which implies that $ATE = \E[Y|D=1] - \E[Y|D=0]$.  Who is right?
+
+## Answers to Some Extra Questions
+
+**Answer to Question 4**
+
+The key condition is the parallel trends assumption that says that, in the absence of participating in the treatment, the *path* of outcomes that individuals in the treated group is the same, on average, as the path of outcomes that individuals in the untreated group actually experienced.
+
+**Answer to Question 9**
+
+a) When some individuals do not comply with their treatment assignment, this approach is probably not so great.  In particular, notice that the comparison in this part of the problem is among individuals who *actually* participated in the treatment relative to those who didn't (the latter group includes both those assigned not to participate in the treatment along with those assigned to participate in the treatment, but ultimately didn't actually participate).  This suggests that this approach would generally lead to biased estimates of the $ATT$.  In the particular context of job training, you can see this would not be such a good idea if, for example, the people who were assigned to the job training program but who did not participate tended to do this because they were able to find a job before the job training program started.
+
+b) This approach is likely to be better.  By construction, $Z$ is not correlated with $U$ (since $Z$ is randomly assigned).  $Z$ is also likely to be positively correlated with $Z$ (in particular, this will be the case if being randomly assigned to treatment increases the probability of being treated).  This implies that $Z$ is a valid instrument and should be able to deliver a reasonable estimate of the effect of participating in the treatment.
+
+**Answer to Question 10**
+
+While your friend's explanation is not technically wrong, it seems to me that you are more right than your friend.  There is an important issue related to external validity here.  The group of people that show up to participate in the experiment could be (and likely are) quite different from the general population.  Interpreting the results of the experiment as being an $ATE$ (in the sense of across the entire population) is therefore likely to be incorrect --- or at least would require extra assumptions and/or justifications.  Interpreting them as an $ATT$ (i.e., as the effect among those who participated in the treatment) is still perfectly reasonable though.

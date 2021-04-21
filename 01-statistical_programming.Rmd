@@ -1,0 +1,149 @@
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+
+<!-- make edits to introduction_to_R_programming.Rmd and copy and paste here -->
+
+# Statistical Programming
+
+We will learn a lot more about statistical programming this semester, but we'll start with a crash course on `R` with the idea of getting you up-and-running.
+
+I listed a few references in the Introduction, but this section will mostly follow the discussion in [Introduction to Data Science: Data Analysis and Prediction Algorithms with R](https://rafalab.github.io/dsbook/), by Rafael Irizarry.  I'll abbreviate this reference as IDS throughout this section.
+
+IDS is not specifically geared towards Econometrics, but I think it is a really fantastic book and resource.  In this section, I point you to the references for the material that I cover in class, but I would strongly recommend reading all of the first 5 chapters of IDS over the next couple of weeks.  We will basically only cover the first 5 chapters in our class, but the course should set you up so that the remaining 35 chapters of the book can serve as helpful reference material throughout the rest of the semester.
+
+## What is R?
+
+* Statistical programming language
+    * => looks like a "real" programming language
+	* => lots of statistical things are easy to do
+
+* Popular among statisticians, computer scientists, economists
+
+* Other popular alternatives
+    * Python
+	* Stata
+	
+* Easy to share code across platforms: Linux, Windows, Mac
+
+* Large community; lots of helpful resources on StackOverflow, etc.
+    * First place to look if you don't know how to do something: DuckDuckGo (or...err...Google)!
+	
+* Easy to write and contribute extensions.
+    * I have 7 (?) R packages that you can easily download and immediately use
+	
+## Downloading R
+
+We will use R ([https://www.r-project.org/](https://www.r-project.org/)) to analyze data.  R is freely available and available across platforms.  You should go ahead and download R for your personal computer as soon as possible --- this should be relatively straightforward.  It is also available at most computer labs on campus.
+
+## RStudio
+
+Base `R` comes with a lightweight development environment (i.e., a place to write and execute code), but most folks prefer RStudio as it has more features.  You can download it here:  \url{https://www.rstudio.com/products/rstudio/download/#download}; choose the free version based on your operating system (Windows, Mac, etc.).
+
+## RStudio Development Environment
+
+IDS 1.4
+
+## Installing R Packages
+
+IDS 1.5
+
+## Running code
+
+IDS 2.1
+
+
+## R Basics
+
+IDS 2.2
+
+## Workspace
+
+IDS 2.2
+
+## Solving the quadratic equation
+
+IDS 2.2
+
+Write a function to do this
+
+## Functions in R
+
+IDS 2.2
+
+
+Practice: 
+
+* What is the sum of the first 100 positive integers? The formula for the sum of integers 1 through n is n(n+1)/2. Define n=100 and then use R to compute the sum of 1 through 100 using the formula. What is the sum?
+
+## Data types 
+
+IDS 2.4
+
+## Vector arithmetic
+
+IDS 2.11
+
+## Subsetting with logicals
+
+IDS 2.13
+
+## Logicals
+
+IDS 2.13
+
+## %in%
+
+IDS 2.13
+
+
+## Basic Plots
+
+IDS 2.15
+
+## Programming basics
+
+## if/else
+
+IDS 3.1
+
+## Writing functions
+
+IDS 3.2
+
+Excercise: Write a function for solving quadratic equation
+
+
+## for loops
+
+IDS 3.4
+
+## Vectorization
+
+IDS 3.5
+
+## Tidyverse
+
+IDS Chapter 4 --- strongly recommend that you read this
+
+* R has very good data cleaning / manipulating tools
+
+* largely won't cover in class
+
+## Data Visualization
+
+IDS Ch. 6-11 --- R has very good data visualization tools; strongly recommend that you read this
+
+* Another very strong point of R
+* ggplot
+* 538's graphs produced with ggplot
+
+## Reproducible Research
+
+IDS Ch. 40
+
+* Rmarkdown is a very useful way to mix code and content
+
+## Technical Writing Tools
+
+This is largely beyond the scope of the course, but, especially for students in ECON 6750, I recommend that you look up Latex.  This is a markup language mainly for writing technical, academic writing.  An easy way to get started here is to use the website [Overleaf](http://www.overleaf.com).  This is also closely related to markdown/R-markdown discussed above (Latex tends to be somewhat more complicate which comes with some associated advantages and disadvantages).

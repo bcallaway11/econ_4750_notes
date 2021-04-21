@@ -1,0 +1,5 @@
+book_filename: "Detailed Course Notes"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Topic "

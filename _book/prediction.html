@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 5 Prediction | Supplemtary Notes and References for ECON 4750</title>
+  <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 5 Prediction | Supplemtary Notes and References for ECON 4750" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 5 Prediction | Supplemtary Notes and References for ECON 4750" />
+  
+  <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+<meta name="author" content="Brantly Callaway" />
+
+
+<meta name="date" content="2021-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="linear-regression.html"/>
+<link rel="next" href="causal-inference.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Course Outline/Notes for ECON 4750</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-this"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-is-this-not"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-did-i-write-this"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.4</b> Additional References</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#goals-for-the-course"><i class="fa fa-check"></i><b>1.5</b> Goals for the Course</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#studying-for-the-class"><i class="fa fa-check"></i><b>1.6</b> Studying for the Class</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#first-week-of-class"><i class="fa fa-check"></i><b>1.7</b> First Week of Class</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistical-programming.html"><a href="statistical-programming.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-programming.html"><a href="statistical-programming.html#downloading-r"><i class="fa fa-check"></i><b>2.2</b> Downloading R</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.4</b> RStudio Development Environment</a></li>
+<li class="chapter" data-level="2.5" data-path="statistical-programming.html"><a href="statistical-programming.html#installing-r-packages"><i class="fa fa-check"></i><b>2.5</b> Installing R Packages</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-programming.html"><a href="statistical-programming.html#running-code"><i class="fa fa-check"></i><b>2.6</b> Running code</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-programming.html"><a href="statistical-programming.html#r-basics"><i class="fa fa-check"></i><b>2.7</b> R Basics</a></li>
+<li class="chapter" data-level="2.8" data-path="statistical-programming.html"><a href="statistical-programming.html#workspace"><i class="fa fa-check"></i><b>2.8</b> Workspace</a></li>
+<li class="chapter" data-level="2.9" data-path="statistical-programming.html"><a href="statistical-programming.html#solving-the-quadratic-equation"><i class="fa fa-check"></i><b>2.9</b> Solving the quadratic equation</a></li>
+<li class="chapter" data-level="2.10" data-path="statistical-programming.html"><a href="statistical-programming.html#functions-in-r"><i class="fa fa-check"></i><b>2.10</b> Functions in R</a></li>
+<li class="chapter" data-level="2.11" data-path="statistical-programming.html"><a href="statistical-programming.html#data-types"><i class="fa fa-check"></i><b>2.11</b> Data types</a></li>
+<li class="chapter" data-level="2.12" data-path="statistical-programming.html"><a href="statistical-programming.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.12</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.13" data-path="statistical-programming.html"><a href="statistical-programming.html#subsetting-with-logicals"><i class="fa fa-check"></i><b>2.13</b> Subsetting with logicals</a></li>
+<li class="chapter" data-level="2.14" data-path="statistical-programming.html"><a href="statistical-programming.html#logicals"><i class="fa fa-check"></i><b>2.14</b> Logicals</a></li>
+<li class="chapter" data-level="2.15" data-path="statistical-programming.html"><a href="statistical-programming.html#in"><i class="fa fa-check"></i><b>2.15</b> %in%</a></li>
+<li class="chapter" data-level="2.16" data-path="statistical-programming.html"><a href="statistical-programming.html#basic-plots"><i class="fa fa-check"></i><b>2.16</b> Basic Plots</a></li>
+<li class="chapter" data-level="2.17" data-path="statistical-programming.html"><a href="statistical-programming.html#programming-basics"><i class="fa fa-check"></i><b>2.17</b> Programming basics</a></li>
+<li class="chapter" data-level="2.18" data-path="statistical-programming.html"><a href="statistical-programming.html#ifelse"><i class="fa fa-check"></i><b>2.18</b> if/else</a></li>
+<li class="chapter" data-level="2.19" data-path="statistical-programming.html"><a href="statistical-programming.html#writing-functions"><i class="fa fa-check"></i><b>2.19</b> Writing functions</a></li>
+<li class="chapter" data-level="2.20" data-path="statistical-programming.html"><a href="statistical-programming.html#for-loops"><i class="fa fa-check"></i><b>2.20</b> for loops</a></li>
+<li class="chapter" data-level="2.21" data-path="statistical-programming.html"><a href="statistical-programming.html#vectorization"><i class="fa fa-check"></i><b>2.21</b> Vectorization</a></li>
+<li class="chapter" data-level="2.22" data-path="statistical-programming.html"><a href="statistical-programming.html#tidyverse"><i class="fa fa-check"></i><b>2.22</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.23" data-path="statistical-programming.html"><a href="statistical-programming.html#data-visualization"><i class="fa fa-check"></i><b>2.23</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.24" data-path="statistical-programming.html"><a href="statistical-programming.html#reproducible-research"><i class="fa fa-check"></i><b>2.24</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.25" data-path="statistical-programming.html"><a href="statistical-programming.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.25</b> Technical Writing Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-probability"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#random-variables"><i class="fa fa-check"></i><b>3.1.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.2</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.1.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#summation-operator"><i class="fa fa-check"></i><b>3.1.3</b> Summation operator</a></li>
+<li class="chapter" data-level="3.1.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.4</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.1.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#expected-values"><i class="fa fa-check"></i><b>3.1.5</b> Expected Values</a></li>
+<li class="chapter" data-level="3.1.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance"><i class="fa fa-check"></i><b>3.1.6</b> Variance</a></li>
+<li class="chapter" data-level="3.1.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.7</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.1.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-variance"><i class="fa fa-check"></i><b>3.1.8</b> Properties of Variance</a></li>
+<li class="chapter" data-level="3.1.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#standardized-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Standardized Random Variables</a></li>
+<li class="chapter" data-level="3.1.10" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.11" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.13" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.14" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.15" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-expectations"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="3.1.16" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-statistics"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="3.2.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>3.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="3.2.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="3.2.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="3.2.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="3.2.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#inference"><i class="fa fa-check"></i><b>3.2.9</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#extra-questions"><i class="fa fa-check"></i><b>3.3</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#nonparametric-regression-curse-of-dimensionality"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression.html"><a href="linear-regression.html#partial-effects"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-binary-covariate"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression.html"><a href="linear-regression.html#nonlinear-regression-functions"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
+<li class="chapter" data-level="4.6" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-interaction-terms"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
+<li class="chapter" data-level="4.7" data-path="linear-regression.html"><a href="linear-regression.html#elasticities"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
+<li class="chapter" data-level="4.8" data-path="linear-regression.html"><a href="linear-regression.html#omitted-variable-bias"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.9" data-path="linear-regression.html"><a href="linear-regression.html#how-to-estimate-the-parameters-in-a-regression-model"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
+<li class="chapter" data-level="4.10" data-path="linear-regression.html"><a href="linear-regression.html#inference-1"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
+<li class="chapter" data-level="4.11" data-path="linear-regression.html"><a href="linear-regression.html#extra-questions-1"><i class="fa fa-check"></i><b>4.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="4.12" data-path="linear-regression.html"><a href="linear-regression.html#answers-to-some-extra-questions"><i class="fa fa-check"></i><b>4.12</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="prediction.html"><a href="prediction.html#measures-of-regression-fit"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="prediction.html"><a href="prediction.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="5.1.2" data-path="prediction.html"><a href="prediction.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="prediction.html"><a href="prediction.html#model-selection"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="prediction.html"><a href="prediction.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="prediction.html"><a href="prediction.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="prediction.html"><a href="prediction.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="5.2.4" data-path="prediction.html"><a href="prediction.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="prediction.html"><a href="prediction.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="prediction.html"><a href="prediction.html#machine-learning"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="prediction.html"><a href="prediction.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="5.3.2" data-path="prediction.html"><a href="prediction.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prediction.html"><a href="prediction.html#binary-outcome-models"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="prediction.html"><a href="prediction.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prediction.html"><a href="prediction.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="5.4.3" data-path="prediction.html"><a href="prediction.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prediction.html"><a href="prediction.html#computation"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
+<li class="chapter" data-level="5.6" data-path="prediction.html"><a href="prediction.html#extra-questions-2"><i class="fa fa-check"></i><b>5.6</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.7" data-path="prediction.html"><a href="prediction.html#answers-to-some-extra-questions-1"><i class="fa fa-check"></i><b>5.7</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#potential-outcomes"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#parameters-of-interest"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#experiments"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#unconfoundedness"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a></li>
+<li class="chapter" data-level="6.6" data-path="causal-inference.html"><a href="causal-inference.html#instrumental-variables"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
+<li class="chapter" data-level="6.7" data-path="causal-inference.html"><a href="causal-inference.html#regression-discontinuity"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a></li>
+<li class="chapter" data-level="6.8" data-path="causal-inference.html"><a href="causal-inference.html#extra-questions-3"><i class="fa fa-check"></i><b>6.8</b> Extra Questions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemtary Notes and References for ECON 4750</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="prediction" class="section level1" number="5">
+<h1><span class="header-section-number">Topic 5</span> Prediction</h1>
+<div id="measures-of-regression-fit" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Measures of Regression Fit</h2>
+<div id="tss-ess-ssr" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> TSS, ESS, SSR</h3>
+<p>SW 6.4</p>
+</div>
+<div id="r2" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> <span class="math inline">\(R^2\)</span></h3>
+<p>SW 6.4</p>
+</div>
+</div>
+<div id="model-selection" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Model Selection</h2>
+<p>SW 7.5 (note: we cover substantially more details than the textbook about model selection)</p>
+<div id="limitations-of-r2" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Limitations of <span class="math inline">\(R^2\)</span></h3>
+<p>SW 6.4</p>
+</div>
+<div id="adjusted-r2" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Adjusted <span class="math inline">\(R^2\)</span></h3>
+<p>SW 6.4</p>
+</div>
+<div id="aic-bic" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> AIC, BIC</h3>
+<p>Alternative criteria functions:</p>
+<ul>
+<li><span class="math inline">\(AIC = 2k + n \log(SSR)\)</span></li>
+<li><span class="math inline">\(BIC = k \log(n) + n \log(SSR)\)</span></li>
+</ul>
+<p>Choose model that minimizes these criteria functions.</p>
+</div>
+<div id="cross-validation" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Cross-Validation</h3>
+<ul>
+<li><p>Intuition: mimic the out-of-sample prediction problem</p></li>
+<li><p>Algorithm:</p>
+<ul>
+<li><p>Split the data into J ``folds’’</p></li>
+<li><p>For the jth fold, do the following:</p>
+<ol style="list-style-type: decimal">
+<li><p>Estimate the model using all observations <em>not in</em> the Jth fold (<span class="math inline">\(\implies\)</span> we obtain estimates <span class="math inline">\(\hat{\beta}_0^j, \hat{\beta}_1^j, \ldots, \hat{\beta}_k^j\)</span>)</p></li>
+<li><p>Predict outcomes for observations in the Jth fold using the estimated model from part (1):
+<span class="math display">\[\begin{align*}
+    \tilde{Y}_{ij} = \hat{\beta}_0^j + \hat{\beta}_1^j X_{1ij} + \cdots + \hat{\beta_k^j} X_{kij}
+  \end{align*}\]</span></p></li>
+<li><p>Compute the prediction error:
+<span class="math display">\[\begin{align*}
+    \tilde{U}_{ij} = Y_{ij} - \tilde{Y}_{ij}
+  \end{align*}\]</span>
+(this is the difference between actual outcomes for individuals in the Jth fold and their predicted outcome based on the model from part (1))</p></li>
+</ol></li>
+<li><p>Do steps 1-3 for all <span class="math inline">\(J\)</span> folds. This gives a prediction error <span class="math inline">\(\tilde{U}_i\)</span> for each observation in the data</p></li>
+<li><p>compute the cross validation criteria (mean squared prediction error):
+<span class="math display">\[\begin{align*}
+CV = \frac{1}{n} \sum_{i=1}^n \tilde{U}_{i}^2
+  \end{align*}\]</span></p></li>
+<li><p>choose the model that produces the smallest value of <span class="math inline">\(CV\)</span>.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="model-averaging" class="section level3" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Model Averaging</h3>
+<p>In the case where you are considering a large number of possible models, it is pretty common that a number of models will, by any of the above model selection criteria, be expected to perform very similarly when making predictions.</p>
+<p>In this case, one strategy that usually does well in terms of making out-of-sample predictions is <em>model averaging</em>.</p>
+<p>Suppose you have <span class="math inline">\(M\)</span> different models, and that each model can produce a predicted value for <span class="math inline">\(Y_i\)</span> — let’s call the predicted value from model <span class="math inline">\(m\)</span>, <span class="math inline">\(\hat{Y}_i^m\)</span>. Model averaging would involve obtaining a new predicted value, call it <span class="math inline">\(\hat{Y}_i\)</span> by computing
+<span class="math display">\[\begin{align*}
+  \hat{Y}_i = \frac{1}{M} \sum_{m=1}^M \hat{Y}_i^m
+\end{align*}\]</span></p>
+<ul>
+<li>Usually, you would throw out models that you know predict poorly and only average together ones that perform reasonably well.</li>
+</ul>
+</div>
+</div>
+<div id="machine-learning" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Machine Learning</h2>
+<p>SW 14.1, 14.2, 14.6</p>
+<p>Some extra resources on estimating Lasso and Ridge regressions in R:</p>
+<ul>
+<li><p><a href="https://www.statology.org/lasso-regression-in-r/">glmnet tutorial</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/glmnetUtils/vignettes/intro.html">glmnetUtils vignette</a></p></li>
+</ul>
+<div id="lasso" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Lasso</h3>
+<p>SW 14.3</p>
+</div>
+<div id="ridge-regression" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Ridge Regression</h3>
+<p>SW 14.4</p>
+</div>
+</div>
+<div id="binary-outcome-models" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Binary Outcome Models</h2>
+<ul>
+<li><p>Note: we are not necessarily so interested in prediction, but I find this a good spot to teach about binary outcome models before we conclude the course talking about causality</p></li>
+<li><p>In addition to referenced material below, please read all of SW Ch. 11</p></li>
+</ul>
+<div id="linear-probability-model" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Linear Probability Model</h3>
+<p>SW 11.1</p>
+</div>
+<div id="probit-and-logit" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Probit and Logit</h3>
+<p>SW 11.2, 11.3</p>
+</div>
+<div id="average-partial-effects" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Average Partial Effects</h3>
+<p>One of the complications with Probit and Logit is that it is not so simple to interpret the estimated parameters.</p>
+<p>Remember we are generally interested in partial effects, not the parameters themselves. It just so happens that in many of the linear models that we have considered so far the <span class="math inline">\(\beta\)</span>’s correspond to the partial effect — this means that it is sometimes easy to forget that they are not what we are typically most interested in.</p>
+<p>This is helpful framing for thinking about how to interpret the results from a Probit or Logit model.</p>
+<p>Let’s focus on the Probit model. In that case,
+<span class="math display">\[\begin{align*}
+  \mathrm{P}(Y=1|X_1,X_2,X_3) = \Phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3)
+\end{align*}\]</span>
+where <span class="math inline">\(\Phi\)</span> is the cdf of standard normal random variable.</p>
+<p><em>Continuous Case</em>: When <span class="math inline">\(X_1\)</span> is continuous, the partial effect of <span class="math inline">\(X_1\)</span> is given by
+<span class="math display">\[\begin{align*}
+  \frac{\partial \mathrm{P}(Y=1|X_1,X_2,X_3)}{\partial X_1} = \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1
+\end{align*}\]</span>
+where <span class="math inline">\(\phi\)</span> is the pdf of a standard normal random variable. This is more complicated than the partial effect in the context of a linear model. It depends on <span class="math inline">\(\phi\)</span> (which looks complicated, but you can just use <code>R</code>’s <code>dnorm</code> command to handle that part). More importantly, the partial effect depends on the values of <span class="math inline">\(X_1,X_2,\)</span> and <span class="math inline">\(X_3\)</span>. [As discussed above, this is likely a good thing in the context of a binary outcome model]. Thus, in order to get a partial effect, we need to put in some values for these. If you have particular values of the covariates that you are interested in, you can definitely do that, but my general suggestion is to report the <em>Average Partial Effect</em>:
+<span class="math display">\[\begin{align*}
+  APE &amp;= \mathbb{E}\left[ \frac{\partial \mathrm{P}(Y=1|X_1,X_2,X_3)}{\partial X_1} \right] \\
+  &amp;= \mathbb{E}\left[ \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1 \right]
+\end{align*}\]</span>
+which you can estimate by
+<span class="math display">\[\begin{align*}
+  \widehat{APE} &amp;= \frac{1}{n} \sum_{i=1}^n \phi(\hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3) \hat{\beta}_1
+\end{align*}\]</span>
+which amounts to just computing the partial effect at each value of the covariates in your data and then averaging these partial effects together. This can be a bit cumbersome to do in practice, and it is often convenient to use the <code>R</code> package <code>mfx</code> to compute these sorts of average partial effects for you.</p>
+<p><em>Discrete/Binary Case</em>: When <span class="math inline">\(X_1\)</span> is discrete (let’s say binary, but extention to discrete is straightforward), the partial effect of <span class="math inline">\(X_1\)</span> is
+<span class="math display">\[\begin{align*}
+  &amp; \mathrm{P}(Y=1|X_1=1, X_2, X_3) - \mathrm{P}(Y=1|X_1=0, X_2, X_3) \\
+  &amp;\hspace{100pt} = \Phi(\beta_0 + \beta_1 + \beta_2 X_2 + \beta_3 X_3) - \Phi(\beta_0 + \beta_2 X_2 + \beta_3 X_3)
+\end{align*}\]</span>
+Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the last term. As above, the partial effect depends on the values of <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> which suggests reporting an <span class="math inline">\(APE\)</span> as above (follows the same steps, just replacing the partial effect, as in the continuous case above)</p>
+<ul>
+<li><p>Extensions to Logit are virtually identical, just replace <span class="math inline">\(\Phi\)</span> with <span class="math inline">\(\Lambda\)</span> and <span class="math inline">\(\phi\)</span> with <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Parameters from LPM, Probit, and Logit could be quite different (in fact, they are quite different by construction), but APE’s are often very similar.</p></li>
+</ul>
+</div>
+</div>
+<div id="computation" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Computation</h2>
+<p><span class="math inline">\(R^2\)</span> and <span class="math inline">\(\bar{R}^2\)</span> are both reported as output from <code>R</code>’s <code>lm</code> command.</p>
+<p>It is straightforward (and a useful excercise) to compute <span class="math inline">\(TSS, ESS,\)</span> and <span class="math inline">\(SSR\)</span> directly. It is also straightforward to calculate <span class="math inline">\(AIC\)</span> and <span class="math inline">\(BIC\)</span> — there are probably packages that will do this for you, but they are so easy that I suggest just calculating on your own.</p>
+<p>The same applies to cross validation. I suspect that there are packages available that will do this for you, but I think these are useful coding exercises and not all that difficult. Also, if you do this yourself, it removes any kinds of “black box” issues from downloading <code>R</code> code where it may not be clear exactly what it is doing.</p>
+<p>Computing Lasso and Ridge regressions is substantially more complicated than most other things that we have computed this semester. The main <code>R</code> package for Lasso and Ridge regressions is the <code>glmnet</code> package. For some reason, the syntax of the package is somewhat different from, for example, the <code>lm</code> command. In my view, it is often easier to use the <code>glmnetUtils</code> package, which seems to be just a wrapper for <code>glmnet</code> but with functions that are analogous to <code>lm</code>.</p>
+<p>Suppose that you have access to a training dataset called <code>train</code> and a testing dataset called <code>test</code>, you can use the <code>glmnetUtils</code> package in the following way:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="prediction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
+<span id="cb1-2"><a href="prediction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>lasso_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, <span class="at">data=</span>train, <span class="at">use.model.frame=</span><span class="cn">TRUE</span>) <span class="co"># or whatever formula you want to use</span></span>
+<span id="cb1-3"><a href="prediction.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_model) <span class="co"># if you are interested in estimated coefficients</span></span>
+<span id="cb1-4"><a href="prediction.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lasso_model, <span class="at">newdata=</span>test) <span class="co"># get predictions</span></span></code></pre></div>
+<p>The main <code>R</code> function for estimating binary outcome models is the <code>glm</code> function (this stands for “generalized linear model”). The syntax is very similar to the syntax for the <code>lm</code> command. For example, suppose <span class="math inline">\(Y\)</span> is binary and you are interested in estimating a logit model with regressors <span class="math inline">\(X1\)</span> and <span class="math inline">\(X2\)</span> which are contained in a <code>data.frame</code> called <code>data</code>. In this case, you could use the following code</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="prediction.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># glm logit</span></span>
+<span id="cb2-2"><a href="prediction.html#cb2-2" aria-hidden="true" tabindex="-1"></a>bin_reg <span class="ot">&lt;-</span> <span class="fu">glm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>), <span class="at">data=</span>data)</span>
+<span id="cb2-3"><a href="prediction.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bin_reg)</span>
+<span id="cb2-4"><a href="prediction.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="prediction.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># average partial effects</span></span>
+<span id="cb2-6"><a href="prediction.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
+<span id="cb2-7"><a href="prediction.html#cb2-7" aria-hidden="true" tabindex="-1"></a>bin_ape <span class="ot">&lt;-</span> <span class="fu">logitmfx</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2, <span class="at">data=</span>data, <span class="at">atmean=</span><span class="cn">FALSE</span>)</span>
+<span id="cb2-8"><a href="prediction.html#cb2-8" aria-hidden="true" tabindex="-1"></a>bin_ape</span>
+<span id="cb2-9"><a href="prediction.html#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="prediction.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># glm probit</span></span>
+<span id="cb2-11"><a href="prediction.html#cb2-11" aria-hidden="true" tabindex="-1"></a>pro_reg <span class="ot">&lt;-</span> <span class="fu">glm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;probit&quot;</span>), <span class="at">data=</span>data)</span>
+<span id="cb2-12"><a href="prediction.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pro_reg)</span>
+<span id="cb2-13"><a href="prediction.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="prediction.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># probit average partial effects</span></span>
+<span id="cb2-15"><a href="prediction.html#cb2-15" aria-hidden="true" tabindex="-1"></a>pro_ape <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2, <span class="at">data=</span>data, <span class="at">atmean=</span><span class="cn">FALSE</span>)</span>
+<span id="cb2-16"><a href="prediction.html#cb2-16" aria-hidden="true" tabindex="-1"></a>pro_ape</span></code></pre></div>
+</div>
+<div id="extra-questions-2" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Extra Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>What are some drawbacks of using <span class="math inline">\(R^2\)</span> as a model selection tool?</p></li>
+<li><p>Does AIC or BIC tend to pick “more complicated” models? What is the reason for this?</p></li>
+<li><p>Suppose you are interested in predicting some outcome <span class="math inline">\(Y\)</span> and have access to covariates <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>. You estimate the following two models
+<span class="math display">\[\begin{align*}
+  Y &amp;= 30 + 4 X_1 - 2 X_2 - 10 X_3, \qquad R^2=0.5, AIC=3421 \\
+  Y &amp;= 9 + 2 X_1 - 3 X_2 - 2 X_3 + 2 X_1^2 + 1 X_2^2 - 4 X_3^2 + 2 X_1 X_2, \qquad R^2 = 0.75, AIC=4018
+\end{align*}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Which model seems to be predicting better? Explain why.</p></li>
+<li><p>Using the model that is predicting better, what would be your prediction for <span class="math inline">\(Y\)</span> when <span class="math inline">\(X_1=10, X_2=1, X_3=5\)</span>?</p></li>
+</ol></li>
+<li><p>In Lasso and Ridge regressions, it is common to “standardize” the regressors before estimating the model (e.g., the <code>glmnet</code> does this automatically for you). What is the reason for doing this?</p></li>
+<li><p>In Lasso and Ridge regressions, the penalty term lead to “shrinking” the estimated parameters in the model towards 0. This tends to introduce bias while reducing variance. Why can introducing bias while reducing variance potentially lead to better predictions? Does this argument always apply or just apply in some cases? Explain.</p></li>
+<li><p>In Lasso and Ridge regressions, the penalty term depends on the tuning parameter <span class="math inline">\(\lambda\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>How is this tuning parameter often chosen in practice? Why does it make sense to choose it in this way?</p></li>
+<li><p>What would happen to the estimated coefficients when <span class="math inline">\(\lambda=0\)</span>?</p></li>
+<li><p>What would happen to the estimated coefficients as <span class="math inline">\(\lambda \rightarrow \infty\)</span>?</p></li>
+</ol></li>
+<li><p>Suppose you try to estimate a linear probability model, probit model, and logit model using the same specifications. You notice that the estimated coefficients are substantially different from each other. Does this mean that something has gone wrong?</p></li>
+</ol>
+</div>
+<div id="answers-to-some-extra-questions-1" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Answers to Some Extra Questions</h2>
+<p><strong>Answer to Question 3</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The first model appears to be predicting better because the AIC is lower. [Also, notice that <span class="math inline">\(R^2\)</span> is higher in the second model, but this is by construction because it includes extra terms relative to the first model which implies that it will fit at least as well in-sample as the first model, but may be suffering from over-fitting.]</p></li>
+<li><p><span class="math display">\[\begin{align*}
+   \hat{Y} &amp;= 30 + 4 (10) - 2 (1) - 10 (5) \\
+   &amp;= 18
+ \end{align*}\]</span></p></li>
+</ol>
+<p><strong>Answer to Question 6</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The tuning parameter is often chosen via cross validation. It makes sense to choose it this way because this is effectively choosing a value of <span class="math inline">\(\lambda\)</span> that is making good pseudo-out-of-sample predictions. As we will see below, if you make bad choices of <span class="math inline">\(\lambda\)</span>, that could result in very poor predictions.</p></li>
+<li><p>When <span class="math inline">\(\lambda=0\)</span>, there would effectively be no penalty term and, therefore, the estimated parameters would coincide with the OLS estimates.</p></li>
+<li><p>When <span class="math inline">\(\lambda \rightarrow \infty\)</span>, the penalty term would overwhelm the term corresponding to minimizing SSR. This would result in setting all the estimated parameters to be equal to 0. This extreme approach is likely to lead to very poor predictions.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="causal-inference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

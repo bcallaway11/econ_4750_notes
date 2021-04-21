@@ -1,0 +1,162 @@
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+
+# Probability and Statistics
+
+This section contains a list of topics, cross references to the textbook, and, in some places, additional discussion.  I mostly just follow Chapters 2 \& 3 in the book for this part of the course, so this is primarily a list of references to the corresponding places in the textbook.
+
+## Topics in Probability
+
+### Random Variables
+
+SW 2.1
+
+### pdfs, pmfs, and cdfs
+
+SW 2.1
+
+### Summation operator
+
+course notes
+
+### Continuous Random Variables
+
+SW 2.1
+
+### Expected Values
+
+SW 2.2
+
+### Variance
+
+SW 2.2
+
+### Mean and Variance of Linear Functions
+
+SW 2.2
+
+### Properties of Variance
+
+SW 2.2
+
+### Standardized Random Variables
+
+SW 2.2
+
+### Multiple Random Variables
+
+SW 2.3
+
+### Conditional Expectations
+
+SW 2.3
+
+### Law of Iterated Expectations
+
+SW 2.3
+
+### Covariance
+
+SW 2.3
+
+### Correlation
+
+SW 2.3
+
+### Properties of Expectations
+
+SW 2.3
+
+### Normal Distribution
+
+SW 2.4
+
+## Topics in Statistics
+
+### Simple Random Sample
+
+SW 2.5
+
+### Estimating $\E[Y]$
+
+SW 2.5, 3.1
+
+### Mean of $\bar{Y}$
+
+SW 2.5, 3.1
+
+### Variance of $\bar{Y}$
+
+SW 2.5, 3.1
+
+### Sampling distribution of estimator
+
+SW 2.5, 3.1
+
+* Bias
+
+* Sampling Variance
+
+### Relative Efficiency
+
+SW 3.1
+
+### Mean Squared Error
+
+Course notes
+
+### Large Sample Properties of Estimators
+
+SW 2.6
+
+Tools:
+
+* Law of Large Numbers
+
+* Central Limit Theorem
+
+Properties:
+
+* Consistency
+
+* Asymptotic Normality
+
+### Inference
+
+SW 3.2, 3.3
+
+* t-statistics
+
+* p-values
+
+* confidence intervals
+
+* statistical vs. economic significance
+
+## Extra Questions
+
+1. Suppose that $\E[X] = 10$ and $\var(X) = 2$.  Also, suppose that $Y=5 + 9 X$.  
+
+    a) What is $\E[Y]$?
+    
+    b) What is $\var(Y)$?
+
+
+2. Suppose you are interested in average height of students at UGA.  Let $Y$ denote a student's height; also let $X$ denote a binary variable that is equal to 1 if a student is female.  Suppose that you know that $\E[Y|X=1] = 5\' \ 4\"$ and that $\E[Y|X=0] = 5\' \ 9\"$
+
+    a) What is $\E[Y]$?
+    
+    b) Explain how the answer to part (a) is related to the Law of Iterated Expectations.
+
+1. What is the difference between consistency and unbiasedness?
+
+2. Suppose you have an estimator that is unbiased.  Will it necessarily be consistent?  If not, provide an example of an unbiased estimator that is not consistent.
+
+3. Suppose you have an estimator that is consistent.  Will it necessarily be unbiased?  If not, provide an example of a consistent estimator that is not unbiased.
+
+4. The Central Limit Theorem says that, $\sqrt{n}\left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right) \rightarrow N(0,V)$ as $n \rightarrow \infty$ where $V = \var(Y)$.
+
+    a) What happens to $n \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right)$ as $n \rightarrow \infty$?  Explain.
+    
+    b) What happens to $n^{1/3} \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right)$ as $n \rightarrow \infty$?  Explain.

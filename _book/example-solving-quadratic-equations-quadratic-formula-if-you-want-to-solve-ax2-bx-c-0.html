@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 3 Example: Solving quadratic equations; “quadratic formula” if you want to solve ax^2 + bx + c = 0 | Detailed Course Outline for ECON 4750</title>
+  <meta name="description" content="This is an extended course outline for ECON 4750." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 3 Example: Solving quadratic equations; “quadratic formula” if you want to solve ax^2 + bx + c = 0 | Detailed Course Outline for ECON 4750" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is an extended course outline for ECON 4750." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 3 Example: Solving quadratic equations; “quadratic formula” if you want to solve ax^2 + bx + c = 0 | Detailed Course Outline for ECON 4750" />
+  
+  <meta name="twitter:description" content="This is an extended course outline for ECON 4750." />
+  
+
+<meta name="author" content="Brantly Callaway" />
+
+
+<meta name="date" content="2021-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="statistical-programming.html"/>
+<link rel="next" href="probability-and-statistics.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Course Outline/Notes for ECON 4750</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.1</b> Additional References</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#goals-for-the-course"><i class="fa fa-check"></i><b>1.2</b> Goals for the Course</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#studying-for-the-class"><i class="fa fa-check"></i><b>1.3</b> Studying for the Class</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#first-week-of-class"><i class="fa fa-check"></i><b>1.4</b> First Week of Class</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistical-programming.html"><a href="statistical-programming.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-programming.html"><a href="statistical-programming.html#downloading-r"><i class="fa fa-check"></i><b>2.2</b> Downloading R</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.4</b> RStudio Development Environment</a></li>
+<li class="chapter" data-level="2.5" data-path="statistical-programming.html"><a href="statistical-programming.html#installing-r-packages"><i class="fa fa-check"></i><b>2.5</b> Installing R Packages</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-programming.html"><a href="statistical-programming.html#running-code"><i class="fa fa-check"></i><b>2.6</b> Running code</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-programming.html"><a href="statistical-programming.html#chapter-2-r-basics"><i class="fa fa-check"></i><b>2.7</b> Chapter 2: R Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><i class="fa fa-check"></i><b>3</b> Example: Solving quadratic equations; “quadratic formula” if you want to solve ax^2 + bx + c = 0</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#workspace"><i class="fa fa-check"></i><b>3.1</b> Workspace</a></li>
+<li class="chapter" data-level="3.2" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#solving-the-quadratic-equation"><i class="fa fa-check"></i><b>3.2</b> Solving the quadratic equation</a></li>
+<li class="chapter" data-level="3.3" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#write-a-function-to-do-this"><i class="fa fa-check"></i><b>3.3</b> Write a function to do this</a></li>
+<li class="chapter" data-level="3.4" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#example-function-log"><i class="fa fa-check"></i><b>3.4</b> Example function log</a></li>
+<li class="chapter" data-level="3.5" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#practice"><i class="fa fa-check"></i><b>3.5</b> Practice:</a></li>
+<li class="chapter" data-level="3.6" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#data-types"><i class="fa fa-check"></i><b>3.6</b> Data types</a></li>
+<li class="chapter" data-level="3.7" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#vector-arithmetic"><i class="fa fa-check"></i><b>3.7</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="3.8" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#subsetting-with-logicals"><i class="fa fa-check"></i><b>3.8</b> subsetting with logicals</a></li>
+<li class="chapter" data-level="3.9" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#logicals"><i class="fa fa-check"></i><b>3.9</b> logicals</a></li>
+<li class="chapter" data-level="3.10" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#in"><i class="fa fa-check"></i><b>3.10</b> %in%</a></li>
+<li class="chapter" data-level="3.11" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#basic-plots"><i class="fa fa-check"></i><b>3.11</b> basic plots</a></li>
+<li class="chapter" data-level="3.12" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#chapter-3-programming-basics"><i class="fa fa-check"></i><b>3.12</b> Chapter 3: Programming basics</a></li>
+<li class="chapter" data-level="3.13" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#ifelse"><i class="fa fa-check"></i><b>3.13</b> if/else</a></li>
+<li class="chapter" data-level="3.14" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#write-quadratic-function"><i class="fa fa-check"></i><b>3.14</b> write quadratic function</a></li>
+<li class="chapter" data-level="3.15" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#for-loops"><i class="fa fa-check"></i><b>3.15</b> for loops</a></li>
+<li class="chapter" data-level="3.16" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#vectorization"><i class="fa fa-check"></i><b>3.16</b> Vectorization</a></li>
+<li class="chapter" data-level="3.17" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#recommend-that-you-read-ch.-4-about-tidyverse"><i class="fa fa-check"></i><b>3.17</b> Recommend that you read Ch. 4 about tidyverse</a></li>
+<li class="chapter" data-level="3.18" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#recommend-that-you-read-ch.-6-11-about-data-visualization"><i class="fa fa-check"></i><b>3.18</b> Recommend that you read Ch. 6-11 about data visualization</a></li>
+<li class="chapter" data-level="3.19" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#ch.-40-reproducible-research"><i class="fa fa-check"></i><b>3.19</b> Ch. 40 Reproducible Research</a></li>
+<li class="chapter" data-level="3.20" data-path="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#for-grad-students-mention-latex-overleaf-suggest-writing-one-homework-solution-in-latex"><i class="fa fa-check"></i><b>3.20</b> for grad students, mention Latex, overleaf, suggest writing one homework solution in latex</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>4</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-probability"><i class="fa fa-check"></i><b>4.1</b> Topics in Probability</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#random-variables"><i class="fa fa-check"></i><b>4.1.1</b> Random Variables</a></li>
+<li class="chapter" data-level="4.1.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>4.1.2</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="4.1.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#summation-operator"><i class="fa fa-check"></i><b>4.1.3</b> Summation operator</a></li>
+<li class="chapter" data-level="4.1.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#continuous-random-variables"><i class="fa fa-check"></i><b>4.1.4</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="4.1.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#expected-values"><i class="fa fa-check"></i><b>4.1.5</b> Expected Values</a></li>
+<li class="chapter" data-level="4.1.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance"><i class="fa fa-check"></i><b>4.1.6</b> Variance</a></li>
+<li class="chapter" data-level="4.1.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>4.1.7</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="4.1.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-variance"><i class="fa fa-check"></i><b>4.1.8</b> Properties of Variance</a></li>
+<li class="chapter" data-level="4.1.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#standardized-random-variables"><i class="fa fa-check"></i><b>4.1.9</b> Standardized Random Variables</a></li>
+<li class="chapter" data-level="4.1.10" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#multiple-random-variables"><i class="fa fa-check"></i><b>4.1.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="4.1.11" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#conditional-expectations"><i class="fa fa-check"></i><b>4.1.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="4.1.12" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>4.1.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="4.1.13" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#covariance"><i class="fa fa-check"></i><b>4.1.13</b> Covariance</a></li>
+<li class="chapter" data-level="4.1.14" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#correlation"><i class="fa fa-check"></i><b>4.1.14</b> Correlation</a></li>
+<li class="chapter" data-level="4.1.15" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-expectations"><i class="fa fa-check"></i><b>4.1.15</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="4.1.16" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>4.1.16</b> Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-statistics"><i class="fa fa-check"></i><b>4.2</b> Topics in Statistics</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>4.2.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="4.2.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>4.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>4.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.2.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>4.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.2.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>4.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="4.2.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>4.2.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="4.2.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>4.2.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.2.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>4.2.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="4.2.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#inference"><i class="fa fa-check"></i><b>4.2.9</b> Inference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>5</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="linear-regression.html"><a href="linear-regression.html#nonparametric-regression-curse-of-dimensionality"><i class="fa fa-check"></i><b>5.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="5.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>5.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="5.3" data-path="linear-regression.html"><a href="linear-regression.html#partial-effects"><i class="fa fa-check"></i><b>5.3</b> Partial Effects</a></li>
+<li class="chapter" data-level="5.4" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-binary-covariate"><i class="fa fa-check"></i><b>5.4</b> Interpreting Binary Covariate</a></li>
+<li class="chapter" data-level="5.5" data-path="linear-regression.html"><a href="linear-regression.html#nonlinear-regression-functions"><i class="fa fa-check"></i><b>5.5</b> Nonlinear Regression Functions</a></li>
+<li class="chapter" data-level="5.6" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-interaction-terms"><i class="fa fa-check"></i><b>5.6</b> Interpreting Interaction Terms</a></li>
+<li class="chapter" data-level="5.7" data-path="linear-regression.html"><a href="linear-regression.html#elasticities"><i class="fa fa-check"></i><b>5.7</b> Elasticities</a></li>
+<li class="chapter" data-level="5.8" data-path="linear-regression.html"><a href="linear-regression.html#omitted-variable-bias"><i class="fa fa-check"></i><b>5.8</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="5.9" data-path="linear-regression.html"><a href="linear-regression.html#how-to-estimate-the-parameters-in-a-regression-model"><i class="fa fa-check"></i><b>5.9</b> How to estimate the parameters in a regression model</a></li>
+<li class="chapter" data-level="5.10" data-path="linear-regression.html"><a href="linear-regression.html#inference-1"><i class="fa fa-check"></i><b>5.10</b> Inference</a></li>
+<li class="chapter" data-level="5.11" data-path="linear-regression.html"><a href="linear-regression.html#extra-questions"><i class="fa fa-check"></i><b>5.11</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>6</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="prediction.html"><a href="prediction.html#measures-of-regression-fit"><i class="fa fa-check"></i><b>6.1</b> Measures of Regression Fit</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="prediction.html"><a href="prediction.html#tss-ess-ssr"><i class="fa fa-check"></i><b>6.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="6.1.2" data-path="prediction.html"><a href="prediction.html#r2"><i class="fa fa-check"></i><b>6.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="prediction.html"><a href="prediction.html#model-selection"><i class="fa fa-check"></i><b>6.2</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="prediction.html"><a href="prediction.html#limitations-of-r2"><i class="fa fa-check"></i><b>6.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="prediction.html"><a href="prediction.html#adjusted-r2"><i class="fa fa-check"></i><b>6.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="prediction.html"><a href="prediction.html#aic-bic"><i class="fa fa-check"></i><b>6.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="6.2.4" data-path="prediction.html"><a href="prediction.html#cross-validation"><i class="fa fa-check"></i><b>6.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="6.2.5" data-path="prediction.html"><a href="prediction.html#model-averaging"><i class="fa fa-check"></i><b>6.2.5</b> Model Averaging</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="prediction.html"><a href="prediction.html#machine-learning"><i class="fa fa-check"></i><b>6.3</b> Machine Learning</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="prediction.html"><a href="prediction.html#lasso"><i class="fa fa-check"></i><b>6.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="6.3.2" data-path="prediction.html"><a href="prediction.html#ridge-regression"><i class="fa fa-check"></i><b>6.3.2</b> Ridge Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="prediction.html"><a href="prediction.html#binary-outcome-models"><i class="fa fa-check"></i><b>6.4</b> Binary Outcome Models</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="prediction.html"><a href="prediction.html#linear-probability-model"><i class="fa fa-check"></i><b>6.4.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="6.4.2" data-path="prediction.html"><a href="prediction.html#probit-and-logit"><i class="fa fa-check"></i><b>6.4.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="6.4.3" data-path="prediction.html"><a href="prediction.html#average-partial-effects"><i class="fa fa-check"></i><b>6.4.3</b> Average Partial Effects</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="prediction.html"><a href="prediction.html#computation"><i class="fa fa-check"></i><b>6.5</b> Computation</a></li>
+<li class="chapter" data-level="6.6" data-path="prediction.html"><a href="prediction.html#extra-questions-1"><i class="fa fa-check"></i><b>6.6</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>7</b> Causal Inference</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="causal-inference.html"><a href="causal-inference.html#potential-outcomes"><i class="fa fa-check"></i><b>7.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="7.2" data-path="causal-inference.html"><a href="causal-inference.html#parameters-of-interest"><i class="fa fa-check"></i><b>7.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="7.3" data-path="causal-inference.html"><a href="causal-inference.html#experiments"><i class="fa fa-check"></i><b>7.3</b> Experiments</a></li>
+<li class="chapter" data-level="7.4" data-path="causal-inference.html"><a href="causal-inference.html#unconfoundedness"><i class="fa fa-check"></i><b>7.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="7.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>7.5</b> Panel Data Approaches</a></li>
+<li class="chapter" data-level="7.6" data-path="causal-inference.html"><a href="causal-inference.html#instrumental-variables"><i class="fa fa-check"></i><b>7.6</b> Instrumental Variables</a></li>
+<li class="chapter" data-level="7.7" data-path="causal-inference.html"><a href="causal-inference.html#regression-discontinuity"><i class="fa fa-check"></i><b>7.7</b> Regression Discontinuity</a></li>
+<li class="chapter" data-level="7.8" data-path="causal-inference.html"><a href="causal-inference.html#extra-questions-2"><i class="fa fa-check"></i><b>7.8</b> Extra Questions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Detailed Course Outline for ECON 4750</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0" class="section level1" number="3">
+<h1><span class="header-section-number">Topic 3</span> Example: Solving quadratic equations; “quadratic formula” if you want to solve ax^2 + bx + c = 0</h1>
+<ul>
+<li>Try:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb6-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-3"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb6-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div>
+<ul>
+<li><p>Notice nothing prints, but we have created <code>objects'' or</code>variables’’ with these names</p></li>
+<li><p>to print the value of the variables, try</p></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb7-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>or</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div id="workspace" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Workspace</h2>
+<ul>
+<li>You can see all objects currently available in the workspace by the command</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot;       &quot;b&quot;       &quot;c&quot;       &quot;murders&quot;</code></pre>
+<ul>
+<li><p>alternatively, just look in the <code>environment</code> tab</p></li>
+<li><p>If you try to access an object not available in the workspace, you will get an error</p></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb13-1" aria-hidden="true" tabindex="-1"></a>  x</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;x&#39; not found</code></pre>
+</div>
+<div id="solving-the-quadratic-equation" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Solving the quadratic equation</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c)) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>a)</span></code></pre></div>
+<pre><code>## Warning in sqrt(b^2 - 4 * a * c): NaNs produced</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span>b <span class="sc">-</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c)) <span class="sc">/</span> (<span class="dv">2</span><span class="sc">*</span>a)</span></code></pre></div>
+<pre><code>## Warning in sqrt(b^2 - 4 * a * c): NaNs produced</code></pre>
+<pre><code>## [1] NaN</code></pre>
+</div>
+<div id="write-a-function-to-do-this" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Write a function to do this</h2>
+</div>
+<div id="example-function-log" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Example function log</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## [1] 2.079442</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">8</span>, <span class="at">base=</span><span class="dv">10</span>) <span class="co"># optional argument</span></span></code></pre></div>
+<pre><code>## [1] 0.90309</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="at">base=</span><span class="dv">10</span>, <span class="at">x=</span><span class="dv">8</span>) <span class="co"># change order if name arguments</span></span></code></pre></div>
+<pre><code>## [1] 0.90309</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb27-1" aria-hidden="true" tabindex="-1"></a>?log</span></code></pre></div>
+</div>
+<div id="practice" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Practice:</h2>
+<ul>
+<li>What is the sum of the first 100 positive integers? The formula for the sum of integers 1 through n is n(n+1)/2. Define n=100 and then use R to compute the sum of 1 through 100 using the formula. What is the sum?</li>
+</ul>
+</div>
+<div id="data-types" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Data types</h2>
+<ul>
+<li><p>we often need to tell the difference between vectors of numbers, tables of numbers, character strings, and more complex data types</p></li>
+<li><p>data.frame</p>
+<ul>
+<li>teach <code>head</code>, the accessor <code>$</code></li>
+</ul></li>
+<li><p>vector</p>
+<ul>
+<li>numeric, character, logical, factors (categorical variables)</li>
+</ul></li>
+<li><p>matrix</p>
+<ul>
+<li>create one</li>
+<li>show relationship with data.frame</li>
+</ul></li>
+<li><p>list</p>
+<ul>
+<li>complicated data structure that can combine these</li>
+</ul></li>
+<li><p>creating vectors</p>
+<ul>
+<li>use <code>c</code> command (stands for concatenate)</li>
+<li>create sequences</li>
+<li>subset of vector, single and group</li>
+<li><code>NA</code> = not available, missing data</li>
+<li>max function</li>
+<li>order, sort functions</li>
+</ul></li>
+</ul>
+</div>
+<div id="vector-arithmetic" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Vector arithmetic</h2>
+<ul>
+<li>multiply vector by constant</li>
+<li>add or subtract vector by constant</li>
+<li>same operations on two vectors of equal length</li>
+</ul>
+</div>
+<div id="subsetting-with-logicals" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> subsetting with logicals</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb28-1" aria-hidden="true" tabindex="-1"></a>murder_rate <span class="ot">&lt;-</span> murders<span class="sc">$</span>total <span class="sc">/</span> murders<span class="sc">$</span>population <span class="sc">*</span> <span class="dv">100000</span></span>
+<span id="cb28-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb28-2" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> murder_rate <span class="sc">&lt;</span> <span class="fl">0.71</span></span>
+<span id="cb28-3"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb28-3" aria-hidden="true" tabindex="-1"></a>murders<span class="sc">$</span>state[ind]</span></code></pre></div>
+<pre><code>## [1] &quot;Hawaii&quot;        &quot;Iowa&quot;          &quot;New Hampshire&quot; &quot;North Dakota&quot; 
+## [5] &quot;Vermont&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(ind)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="logicals" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> logicals</h2>
+<ul>
+<li>TRUE and FALSE, &amp;, ==, &lt;=</li>
+</ul>
+</div>
+<div id="in" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> %in%</h2>
+<ul>
+<li>%in% finds all an element of first vector is in 2nd vector</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb32-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE</code></pre>
+</div>
+<div id="basic-plots" class="section level2" number="3.11">
+<h2><span class="header-section-number">3.11</span> basic plots</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> murders<span class="sc">$</span>population <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">6</span></span>
+<span id="cb34-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb34-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> murders<span class="sc">$</span>total</span>
+<span id="cb34-3"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="chapter-3-programming-basics" class="section level2" number="3.12">
+<h2><span class="header-section-number">3.12</span> Chapter 3: Programming basics</h2>
+</div>
+<div id="ifelse" class="section level2" number="3.13">
+<h2><span class="header-section-number">3.13</span> if/else</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-1" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">which.min</span>(murder_rate)</span>
+<span id="cb36-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(murder_rate[ind] <span class="sc">&lt;</span> <span class="fl">0.5</span>){</span>
+<span id="cb36-4"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(murders<span class="sc">$</span>state[ind]) </span>
+<span id="cb36-5"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>{</span>
+<span id="cb36-6"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;No state has murder rate that low&quot;</span>)</span>
+<span id="cb36-7"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb36-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Vermont&quot;</code></pre>
+<ul>
+<li>any, all</li>
+</ul>
+</div>
+<div id="write-quadratic-function" class="section level2" number="3.14">
+<h2><span class="header-section-number">3.14</span> write quadratic function</h2>
+</div>
+<div id="for-loops" class="section level2" number="3.15">
+<h2><span class="header-section-number">3.15</span> for loops</h2>
+<ul>
+<li>compute sum of series 1 to n</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-1" aria-hidden="true" tabindex="-1"></a>compute_s_n <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb38-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb38-3"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(x)</span>
+<span id="cb38-4"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-5"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-6" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb38-7"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-7" aria-hidden="true" tabindex="-1"></a>s_n <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> m) <span class="co"># create an empty vector</span></span>
+<span id="cb38-8"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m){</span>
+<span id="cb38-9"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-9" aria-hidden="true" tabindex="-1"></a>  s_n[n] <span class="ot">&lt;-</span> <span class="fu">compute_s_n</span>(n)</span>
+<span id="cb38-10"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-11"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-12" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>m</span>
+<span id="cb38-13"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n, s_n)</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="vectorization" class="section level2" number="3.16">
+<h2><span class="header-section-number">3.16</span> Vectorization</h2>
+<ul>
+<li>often preferred over for loops</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb39-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span></span>
+<span id="cb39-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_s_n</span>(n)</span></code></pre></div>
+<pre><code>## Warning in 1:n: numerical expression has 25 elements: only the first used</code></pre>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb42-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span></span>
+<span id="cb42-2"><a href="example-solving-quadratic-equations-quadratic-formula-if-you-want-to-solve-ax2-bx-c-0.html#cb42-2" aria-hidden="true" tabindex="-1"></a>s_n <span class="ot">&lt;-</span> <span class="fu">sapply</span>(n, compute_s_n)</span></code></pre></div>
+</div>
+<div id="recommend-that-you-read-ch.-4-about-tidyverse" class="section level2" number="3.17">
+<h2><span class="header-section-number">3.17</span> Recommend that you read Ch. 4 about tidyverse</h2>
+<ul>
+<li><p>R has very good data clean / manipulating tools</p></li>
+<li><p>largely won’t cover in class</p></li>
+</ul>
+</div>
+<div id="recommend-that-you-read-ch.-6-11-about-data-visualization" class="section level2" number="3.18">
+<h2><span class="header-section-number">3.18</span> Recommend that you read Ch. 6-11 about data visualization</h2>
+<ul>
+<li>Another very strong point of R</li>
+<li>ggplot</li>
+<li>538’s graphs produced with ggplot</li>
+</ul>
+</div>
+<div id="ch.-40-reproducible-research" class="section level2" number="3.19">
+<h2><span class="header-section-number">3.19</span> Ch. 40 Reproducible Research</h2>
+<ul>
+<li><p>Rmarkdown is a very useful way to mix code and content</p></li>
+<li><p>File -&gt; New Rmarkdown</p></li>
+<li><p>Header, alternatively pdf_document</p></li>
+<li><p>code chunks, put some of the code that we have written there</p></li>
+<li><p>click knit</p></li>
+<li><p>lists, italics, bold, <code>code</code>, <a href="www.brantlycallaway.com">links</a></p></li>
+<li><p>equations <span class="math inline">\(1+1\)</span> or</p></li>
+</ul>
+<p><span class="math display">\[ 
+-b \pm \sqrt{b^2 - 4ac}
+\]</span></p>
+<ul>
+<li>tables</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Column 1</th>
+<th align="center">Column 2</th>
+<th align="right">Column 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Cell Contents</td>
+<td align="center">More Stuff</td>
+<td align="right">And Again</td>
+</tr>
+<tr class="even">
+<td align="left">and more</td>
+<td align="center">and more</td>
+<td align="right">and more</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="for-grad-students-mention-latex-overleaf-suggest-writing-one-homework-solution-in-latex" class="section level2" number="3.20">
+<h2><span class="header-section-number">3.20</span> for grad students, mention Latex, overleaf, suggest writing one homework solution in latex</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="statistical-programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probability-and-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

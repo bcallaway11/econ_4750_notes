@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 4 Linear Regression | Supplemtary Notes and References for ECON 4750</title>
+  <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 4 Linear Regression | Supplemtary Notes and References for ECON 4750" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 4 Linear Regression | Supplemtary Notes and References for ECON 4750" />
+  
+  <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+<meta name="author" content="Brantly Callaway" />
+
+
+<meta name="date" content="2021-04-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="probability-and-statistics.html"/>
+<link rel="next" href="prediction.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Course Outline/Notes for ECON 4750</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-this"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-is-this-not"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-did-i-write-this"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#additional-references"><i class="fa fa-check"></i><b>1.4</b> Additional References</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#goals-for-the-course"><i class="fa fa-check"></i><b>1.5</b> Goals for the Course</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#studying-for-the-class"><i class="fa fa-check"></i><b>1.6</b> Studying for the Class</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#first-week-of-class"><i class="fa fa-check"></i><b>1.7</b> First Week of Class</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="statistical-programming.html"><a href="statistical-programming.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="statistical-programming.html"><a href="statistical-programming.html#downloading-r"><i class="fa fa-check"></i><b>2.2</b> Downloading R</a></li>
+<li class="chapter" data-level="2.3" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="statistical-programming.html"><a href="statistical-programming.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.4</b> RStudio Development Environment</a></li>
+<li class="chapter" data-level="2.5" data-path="statistical-programming.html"><a href="statistical-programming.html#installing-r-packages"><i class="fa fa-check"></i><b>2.5</b> Installing R Packages</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-programming.html"><a href="statistical-programming.html#running-code"><i class="fa fa-check"></i><b>2.6</b> Running code</a></li>
+<li class="chapter" data-level="2.7" data-path="statistical-programming.html"><a href="statistical-programming.html#r-basics"><i class="fa fa-check"></i><b>2.7</b> R Basics</a></li>
+<li class="chapter" data-level="2.8" data-path="statistical-programming.html"><a href="statistical-programming.html#workspace"><i class="fa fa-check"></i><b>2.8</b> Workspace</a></li>
+<li class="chapter" data-level="2.9" data-path="statistical-programming.html"><a href="statistical-programming.html#solving-the-quadratic-equation"><i class="fa fa-check"></i><b>2.9</b> Solving the quadratic equation</a></li>
+<li class="chapter" data-level="2.10" data-path="statistical-programming.html"><a href="statistical-programming.html#functions-in-r"><i class="fa fa-check"></i><b>2.10</b> Functions in R</a></li>
+<li class="chapter" data-level="2.11" data-path="statistical-programming.html"><a href="statistical-programming.html#data-types"><i class="fa fa-check"></i><b>2.11</b> Data types</a></li>
+<li class="chapter" data-level="2.12" data-path="statistical-programming.html"><a href="statistical-programming.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.12</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.13" data-path="statistical-programming.html"><a href="statistical-programming.html#subsetting-with-logicals"><i class="fa fa-check"></i><b>2.13</b> Subsetting with logicals</a></li>
+<li class="chapter" data-level="2.14" data-path="statistical-programming.html"><a href="statistical-programming.html#logicals"><i class="fa fa-check"></i><b>2.14</b> Logicals</a></li>
+<li class="chapter" data-level="2.15" data-path="statistical-programming.html"><a href="statistical-programming.html#in"><i class="fa fa-check"></i><b>2.15</b> %in%</a></li>
+<li class="chapter" data-level="2.16" data-path="statistical-programming.html"><a href="statistical-programming.html#basic-plots"><i class="fa fa-check"></i><b>2.16</b> Basic Plots</a></li>
+<li class="chapter" data-level="2.17" data-path="statistical-programming.html"><a href="statistical-programming.html#programming-basics"><i class="fa fa-check"></i><b>2.17</b> Programming basics</a></li>
+<li class="chapter" data-level="2.18" data-path="statistical-programming.html"><a href="statistical-programming.html#ifelse"><i class="fa fa-check"></i><b>2.18</b> if/else</a></li>
+<li class="chapter" data-level="2.19" data-path="statistical-programming.html"><a href="statistical-programming.html#writing-functions"><i class="fa fa-check"></i><b>2.19</b> Writing functions</a></li>
+<li class="chapter" data-level="2.20" data-path="statistical-programming.html"><a href="statistical-programming.html#for-loops"><i class="fa fa-check"></i><b>2.20</b> for loops</a></li>
+<li class="chapter" data-level="2.21" data-path="statistical-programming.html"><a href="statistical-programming.html#vectorization"><i class="fa fa-check"></i><b>2.21</b> Vectorization</a></li>
+<li class="chapter" data-level="2.22" data-path="statistical-programming.html"><a href="statistical-programming.html#tidyverse"><i class="fa fa-check"></i><b>2.22</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.23" data-path="statistical-programming.html"><a href="statistical-programming.html#data-visualization"><i class="fa fa-check"></i><b>2.23</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.24" data-path="statistical-programming.html"><a href="statistical-programming.html#reproducible-research"><i class="fa fa-check"></i><b>2.24</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.25" data-path="statistical-programming.html"><a href="statistical-programming.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.25</b> Technical Writing Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-probability"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#random-variables"><i class="fa fa-check"></i><b>3.1.1</b> Random Variables</a></li>
+<li class="chapter" data-level="3.1.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.2</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.1.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#summation-operator"><i class="fa fa-check"></i><b>3.1.3</b> Summation operator</a></li>
+<li class="chapter" data-level="3.1.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.4</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.1.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#expected-values"><i class="fa fa-check"></i><b>3.1.5</b> Expected Values</a></li>
+<li class="chapter" data-level="3.1.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance"><i class="fa fa-check"></i><b>3.1.6</b> Variance</a></li>
+<li class="chapter" data-level="3.1.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.7</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.1.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-variance"><i class="fa fa-check"></i><b>3.1.8</b> Properties of Variance</a></li>
+<li class="chapter" data-level="3.1.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#standardized-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Standardized Random Variables</a></li>
+<li class="chapter" data-level="3.1.10" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.11" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.13" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.14" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.15" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#properties-of-expectations"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations</a></li>
+<li class="chapter" data-level="3.1.16" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#topics-in-statistics"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="3.2.2" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.4" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="3.2.5" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>3.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="3.2.6" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="3.2.7" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="3.2.8" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="3.2.9" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#inference"><i class="fa fa-check"></i><b>3.2.9</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html#extra-questions"><i class="fa fa-check"></i><b>3.3</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#nonparametric-regression-curse-of-dimensionality"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-models"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression.html"><a href="linear-regression.html#partial-effects"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-binary-covariate"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression.html"><a href="linear-regression.html#nonlinear-regression-functions"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
+<li class="chapter" data-level="4.6" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-interaction-terms"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
+<li class="chapter" data-level="4.7" data-path="linear-regression.html"><a href="linear-regression.html#elasticities"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
+<li class="chapter" data-level="4.8" data-path="linear-regression.html"><a href="linear-regression.html#omitted-variable-bias"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.9" data-path="linear-regression.html"><a href="linear-regression.html#how-to-estimate-the-parameters-in-a-regression-model"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
+<li class="chapter" data-level="4.10" data-path="linear-regression.html"><a href="linear-regression.html#inference-1"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
+<li class="chapter" data-level="4.11" data-path="linear-regression.html"><a href="linear-regression.html#extra-questions-1"><i class="fa fa-check"></i><b>4.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="4.12" data-path="linear-regression.html"><a href="linear-regression.html#answers-to-some-extra-questions"><i class="fa fa-check"></i><b>4.12</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="prediction.html"><a href="prediction.html#measures-of-regression-fit"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="prediction.html"><a href="prediction.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="5.1.2" data-path="prediction.html"><a href="prediction.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="prediction.html"><a href="prediction.html#model-selection"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="prediction.html"><a href="prediction.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="prediction.html"><a href="prediction.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="prediction.html"><a href="prediction.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="5.2.4" data-path="prediction.html"><a href="prediction.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="5.2.5" data-path="prediction.html"><a href="prediction.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="prediction.html"><a href="prediction.html#machine-learning"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="prediction.html"><a href="prediction.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="5.3.2" data-path="prediction.html"><a href="prediction.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="prediction.html"><a href="prediction.html#binary-outcome-models"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="prediction.html"><a href="prediction.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="5.4.2" data-path="prediction.html"><a href="prediction.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="5.4.3" data-path="prediction.html"><a href="prediction.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="prediction.html"><a href="prediction.html#computation"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
+<li class="chapter" data-level="5.6" data-path="prediction.html"><a href="prediction.html#extra-questions-2"><i class="fa fa-check"></i><b>5.6</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="causal-inference.html"><a href="causal-inference.html#potential-outcomes"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#parameters-of-interest"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#experiments"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
+<li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#unconfoundedness"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a></li>
+<li class="chapter" data-level="6.6" data-path="causal-inference.html"><a href="causal-inference.html#instrumental-variables"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
+<li class="chapter" data-level="6.7" data-path="causal-inference.html"><a href="causal-inference.html#regression-discontinuity"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a></li>
+<li class="chapter" data-level="6.8" data-path="causal-inference.html"><a href="causal-inference.html#extra-questions-3"><i class="fa fa-check"></i><b>6.8</b> Extra Questions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemtary Notes and References for ECON 4750</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-regression" class="section level1" number="4">
+<h1><span class="header-section-number">Topic 4</span> Linear Regression</h1>
+<p>This is probably the part of the class where we will jump around in the book the most this semester.</p>
+<p>The pedagogical approach of the textbook is to introduce the notion of causality very early and to emphasize the requirements on linear regression models in order to deliver causality, while increasing the complexity of the models over several chapters.</p>
+<p>This is totally reasonable, but I prefer to start by teaching the mechanics of regressions: how to compute them, how to interpret them (even if you are not able to meet the requirements of causality), and how to use them to make predictions. Then, we’ll have a serious discussion about causality over the last few weeks of the semester.</p>
+<p>In practice, this means we’ll cover parts Chapters 4-8 in the textbook now, and then we’ll circle back to some of the issues covered in these chapters again towards the end of the semester.</p>
+<div id="nonparametric-regression-curse-of-dimensionality" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Nonparametric Regression / Curse of Dimensionality</h2>
+<ul>
+<li><p>If you knew nothing about regressions, it would seem natural to try to estimate <span class="math inline">\(\mathbb{E}[Y|X_1=x_1,X_2=x_2,X_3=x_3]\)</span> by just calculating the average of <span class="math inline">\(Y\)</span> among observations that have values of the regressors equal to <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span> (if these are discrete) or that are, in some sense, close to <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span> (if these are continuous)</p></li>
+<li><p>This is actually a pretty attractive idea</p></li>
+<li><p>However, you run into the issue that it is practically challenging to do this when the number of regressors starts to get large (i.e., if you have 10 regressors, generally, you would need tons of data to be able to find a suitable number of observations that are ``close’’ to any particular value of the regressors).</p></li>
+<li><p>This issue is called the “curse of dimensionality”</p></li>
+<li><p>We will focus on linear models for <span class="math inline">\(\mathbb{E}[Y|X_1,X_2,X_3]\)</span> largely to get around the curse of dimensionality</p></li>
+</ul>
+</div>
+<div id="linear-regression-models" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Linear Regression Models</h2>
+<p>SW 4.1</p>
+</div>
+<div id="partial-effects" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Partial Effects</h2>
+<p>In the model,
+<span class="math display">\[\begin{align*}
+  \mathbb{E}[Y | X_1, X_2, X_3]  &amp;= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
+\end{align*}\]</span></p>
+<ul>
+<li><p>If <span class="math inline">\(X_1\)</span> is continuous,
+<span class="math display">\[\begin{align*}
+\beta_1 = \frac{\partial \mathbb{E}[Y|X_1,X_2,X_3]}{\partial X_1}
+\end{align*}\]</span>
+In other words, <span class="math inline">\(\beta_1\)</span> should be interpreted as how much <span class="math inline">\(Y\)</span> increases, on average, when <span class="math inline">\(X_1\)</span> increases by one unit holding <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> constant. <em>Make sure to get this interpretation right!</em></p></li>
+<li><p>If <span class="math inline">\(X_1\)</span> is discrete (let’s say binary):
+<span class="math display">\[\begin{align*}
+\beta_1 = \mathbb{E}[Y|X_1=1,X_2,X_3] - \mathbb{E}[Y|X_1=0,X_2,X_3]
+\end{align*}\]</span>
+In other words, <span class="math inline">\(\beta_1\)</span> should be interpreted as how much <span class="math inline">\(Y\)</span> increases, on average, when <span class="math inline">\(X_1\)</span> changes from 0 to 1, hodling <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> constant.</p></li>
+<li><p>Note: above model can be equivalently written as
+<span class="math display">\[\begin{align*}
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}\]</span>
+where <span class="math inline">\(\mathbb{E}[U|X_1,X_2,X_3] = 0\)</span>.</p></li>
+</ul>
+</div>
+<div id="interpreting-binary-covariate" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Interpreting Binary Covariate</h2>
+<p>SW 5.3</p>
+</div>
+<div id="nonlinear-regression-functions" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Nonlinear Regression Functions</h2>
+<p>SW 8.1, 8.2</p>
+<p>Also, please read all of SW Ch. 8</p>
+</div>
+<div id="interpreting-interaction-terms" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Interpreting Interaction Terms</h2>
+<p>SW 8.3</p>
+</div>
+<div id="elasticities" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Elasticities</h2>
+<p>SW 8.2</p>
+</div>
+<div id="omitted-variable-bias" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Omitted Variable Bias</h2>
+<p>SW 6.1</p>
+<ul>
+<li><p>The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet. The same issues arise if we just say that we have some <em>regression of interest</em> but are unable to estimate it because some covariates are unobserved.</p></li>
+<li><p>In this case, we would just not be able to interpret, say <span class="math inline">\(\beta_1\)</span>, as the partial effect of our interest (except under special cases discussed in class).</p></li>
+<li><p>The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the “causal effect,” but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.</p></li>
+</ul>
+</div>
+<div id="how-to-estimate-the-parameters-in-a-regression-model" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> How to estimate the parameters in a regression model</h2>
+<p>SW 4.2, 6.3</p>
+</div>
+<div id="inference-1" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Inference</h2>
+<p>SW 4.5, 5.1, 5.2, 6.6</p>
+<p><strong>Additional (Optional) Material</strong></p>
+<p>We discussed in class the practical issues of inference in linear regression models.</p>
+<p>These results rely on arguments building on the Central Limit Theorem (this should not surprise you as it is similar to the case for the asymptotic distribution of <span class="math inline">\(\sqrt{n}(\bar{Y} - \mathbb{E}[Y]))\)</span> that we discussed earlier in the semester.</p>
+<p>In this section, I sketch these types of arguments for you. This material is advanced/optional, but I suggest that you study this material.</p>
+<p>In class, we wrote down that, in the simple linear regression model,
+<span class="math display">\[\begin{align*}
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V) \quad \textrm{as} \ n \rightarrow \infty
+\end{align*}\]</span>
+where
+<span class="math display">\[\begin{align*}
+  V = \frac{\mathbb{E}[(X-\mathbb{E}[X])^2 U^2]}{\mathrm{var}(X)^2}
+\end{align*}\]</span>
+and discussed how to use this result to conduct inference.</p>
+<p>Now, we want to show why this result holds.</p>
+<p>To start with, recall that
+<span class="math display" id="eq:b1">\[\begin{align}
+  \hat{\beta}_1 = \frac{\widehat{\mathrm{cov}}(X,Y)}{\widehat{\mathrm{var}}(X)} \tag{4.1}
+\end{align}\]</span></p>
+<p>Before providing a main result, let’s start with noting the following:</p>
+<p><em>Helpful Intermediate Result 1</em>
+Notice that
+<span class="math display">\[\begin{align*}
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})\bar{Y}\Big) &amp;= \bar{Y} \frac{1}{n}\sum_{i=1}^n \Big( X_i-\bar{X} \Big) \\
+  &amp;= \bar{Y} \left( \frac{1}{n}\sum_{i=1}^n X_i - \frac{1}{n}\sum_{i=1}^n \bar{X} \right) \\
+  &amp;= \bar{Y} \Big(\bar{X} - \bar{X} \Big) \\
+  &amp;= 0
+\end{align*}\]</span>
+where the first equality just pull <span class="math inline">\(\bar{Y}\)</span> out of the summation (it is a constant with respect to the summation), the second equality pushes the summation through the difference, the first part of the third equality holds by the definition of <span class="math inline">\(\bar{X}\)</span> and the second part holds because it is an average of a constant.</p>
+<p>This implies that
+<span class="math display" id="eq:hr1">\[\begin{align}
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) \tag{4.2}
+\end{align}\]</span>
+and very similar arguments (basically the same arguments in reverse) also imply that
+<span class="math display" id="eq:hr2">\[\begin{align}
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big) \tag{4.3}
+\end{align}\]</span>
+We use both <a href="linear-regression.html#eq:hr1">(4.2)</a> and <a href="linear-regression.html#eq:hr2">(4.3)</a> below.</p>
+<p>Next, consider the numerator in <a href="linear-regression.html#eq:b1">(4.1)</a>
+<span class="math display">\[\begin{align*}
+  \widehat{\mathrm{cov}}(X,Y) &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
+  &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
+  &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
+  &amp;= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
+\end{align*}\]</span>
+Now, let’s consider each of these in turn.</p>
+<p>For (A),
+<span class="math display">\[\begin{align*}
+  \frac{1}{n} \sum_{i=1}^n X_i = \bar{X} \qquad \textrm{and} \qquad \frac{1}{n} \sum_{i=1}^n \bar{X} = \bar{X}
+\end{align*}\]</span>
+which implies that this term is equal to 0.</p>
+<p>For (B), notice that
+<span class="math display">\[\begin{align*}
+  \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i &amp;= \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) (X_i - \bar{X}) \\
+  &amp;= \beta_1 \widehat{\mathrm{var}}(X)
+\end{align*}\]</span></p>
+<p>For (C), well, we’ll just carry that one around for now.</p>
+<p>Plugging in the expressions for (A), (B), and (C) back into Equation  implies that
+<span class="math display">\[\begin{align*}
+  \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\mathrm{var}}(X)}
+\end{align*}\]</span>
+Next, re-arranging terms and multiplying both sides by <span class="math inline">\(\sqrt{n}\)</span> implies that
+<span class="math display">\[\begin{align*}
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) &amp;= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\mathrm{var}}(X)}\right) \\
+  &amp; \approx \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \mathbb{E}[X]) U_i}{\mathrm{var}(X)}\right)
+\end{align*}\]</span>
+The last line (the approximately one) is kind of a weak argument, but basically you can replace <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\widehat{\mathrm{var}}{X}\)</span> and the effect of this replacement will converge to 0 in large samples (this is the reason for the approximately) — if you want a more complete explanation, sign up for my graduate econometrics class next semester.</p>
+<p>Is this helpful? It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to. In particular, maybe it is helpful to define <span class="math inline">\(Z_i = \frac{(X_i - \mathbb{E}[X]) U_i}{\mathrm{var}(X)}\)</span>. We know that we could apply a Central Limit Theorem to <span class="math inline">\(\sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)\)</span> if (i) <span class="math inline">\(Z_i\)</span> had mean 0, and (ii) it is iid. That it is iid holds immediately from the random sampling assumption. For mean 0,
+<span class="math display">\[\begin{align*}
+  \mathbb{E}[Z] &amp;= \mathbb{E}\left[ \frac{(X - \mathbb{E}[X]) U}{\mathrm{var}(X)}\right] \\
+  &amp;= \frac{1}{\mathrm{var}(X)} \mathbb{E}[(X - \mathbb{E}[X]) U] \\
+  &amp;= \frac{1}{\mathrm{var}(X)} \mathbb{E}[(X - \mathbb{E}[X]) \underbrace{\mathbb{E}[U|X]}_{=0}] \\
+  &amp;= 0
+\end{align*}\]</span>
+where the only challenging line here is the third one holds from the Law of Iterated Expectations. This means that we can apply the central limit theorem, and in particular,
+<span class="math inline">\(\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)\)</span> where <span class="math inline">\(V=\mathrm{var}(Z) = \mathbb{E}[Z^2]\)</span> (where 2nd equality holds because <span class="math inline">\(Z\)</span> has mean 0). Now, just substituting back in for <span class="math inline">\(Z\)</span> implies that
+<span class="math display">\[\begin{align*}
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
+\end{align*}\]</span>
+where
+<span class="math display" id="eq:V">\[\begin{align}
+  V &amp;= \mathbb{E}\left[ \left( \frac{(X - \mathbb{E}[X]) U}{\mathrm{var}(X)} \right)^2 \right] \nonumber \\
+  &amp;= \mathbb{E}\left[ \frac{(X - \mathbb{E}[X])^2 U^2}{\mathrm{var}(X)^2}\right] \tag{4.4}
+\end{align}\]</span>
+which is the expression that we used in class.</p>
+</div>
+<div id="extra-questions-1" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Extra Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>Suppose you run the following regression
+<span class="math display">\[\begin{align*}
+  Earnings = \beta_0 + \beta_1 Education + U
+\end{align*}\]</span>
+with <span class="math inline">\(\mathbb{E}[U|Education] = 0\)</span>. How do you interpret <span class="math inline">\(\beta_1\)</span> here?</p></li>
+<li><p>Suppose you run the following regression
+<span class="math display">\[\begin{align*}
+  Earnings = \beta_0 + \beta_1 Education + \beta_2 Experience + \beta_3 Female + U
+\end{align*}\]</span>
+with <span class="math inline">\(\mathbb{E}[U|Education, Experience, Female] = 0\)</span>. How do you interpret <span class="math inline">\(\beta_1\)</span> here?</p></li>
+<li><p>Suppose you are interested in testing whether an extra year of education increases earnings by the same amount for men and women.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Propose a regression and strategy for this sort of test.</p></li>
+<li><p>Suppose you also want to control for experience in conducting this test, how would do it?</p></li>
+</ol></li>
+<li><p>Suppose you run the following regression
+<span class="math display">\[\begin{align*}
+  \log(Earnings) = \beta_0 + \beta_1 Education + \beta_2 Experience + \beta_3 Female + U
+\end{align*}\]</span>
+with <span class="math inline">\(\mathbb{E}[U|Education, Experience, Female] = 0\)</span>. How do you interpret <span class="math inline">\(\beta_1\)</span> here?</p></li>
+<li><p>A common extra condition (though somewhat old-fashioned) is to impose <em>homoskedasticity</em>. Homoskedasticity says that <span class="math inline">\(\mathbb{E}[U^2|X] = \sigma^2\)</span> (i.e., the variance of the error term does not change across different values of <span class="math inline">\(X\)</span>).</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Under homoskedasticity, the expression for <span class="math inline">\(V\)</span> in <a href="linear-regression.html#eq:V">(4.4)</a> simplifies. Provide a new expression for <span class="math inline">\(V\)</span> under homoskedasticity. <strong>Hint:</strong> you will need to use the law of iterated expectations.</p></li>
+<li><p>Using this expression for <span class="math inline">\(V\)</span>, explain how to calculate standard errors for an estimate of <span class="math inline">\(\beta_1\)</span> in a simple linear regression.</p></li>
+<li><p>Explain how to construct a t-statistic for testing <span class="math inline">\(H_0: \beta_1=0\)</span> under homoskedasticity.</p></li>
+<li><p>Explain how to contruct a p-value for <span class="math inline">\(\beta_1\)</span> under homoskedasticity.</p></li>
+<li><p>Explain how to construct a 95% confidence interval for <span class="math inline">\(\beta_1\)</span> under homoskedasticity.</p></li>
+</ol></li>
+</ol>
+</div>
+<div id="answers-to-some-extra-questions" class="section level2" number="4.12">
+<h2><span class="header-section-number">4.12</span> Answers to Some Extra Questions</h2>
+<p><strong>Answer to Question 2</strong></p>
+<p><span class="math inline">\(\beta_1\)</span> is how much <span class="math inline">\(Earnings\)</span> increase on average when <span class="math inline">\(Education\)</span> increases by one year holding <span class="math inline">\(Experience\)</span> and <span class="math inline">\(Female\)</span> constant.</p>
+<p><strong>Answer to Question 3</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Run the regression
+<span class="math display">\[\begin{align*}
+     Earnings &amp;= \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \times Female + U
+ \end{align*}\]</span>
+and test (e.g., calculate a t-statistic and check if it is greater than 1.96 in absolute value) if <span class="math inline">\(\beta_3=0\)</span>.</p></li>
+<li><p>You can run the following regression:
+<span class="math display">\[\begin{align*}
+   Earnings &amp;= \beta_0 + \beta_1 Education + \beta_2 Female \\
+   &amp; \hspace{25pt} + \beta_3 Education \times Female + \beta_4 Experience + U
+\end{align*}\]</span>
+Here, you would still be interested in <span class="math inline">\(\beta_3\)</span>. If you thought that the return to experience varied for men and women, you might also include an interaction term involving <span class="math inline">\(Experience\)</span> and <span class="math inline">\(Female\)</span>.</p></li>
+</ol>
+<p><strong>Partial Answer to Question 5</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Starting from <a href="linear-regression.html#eq:V">(4.4)</a></li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+    V &amp;= \mathbb{E}\left[ \frac{(X - \mathbb{E}[X])^2 U^2}{\mathrm{var}(X)^2} \right] \\
+    &amp;= \frac{1}{\mathrm{var}(X)^2} \mathbb{E}[(X-\mathbb{E}[X])^2 U^2] \\
+    &amp;= \frac{1}{\mathrm{var}(X)^2} \mathbb{E}\big[(X-\mathbb{E}[X])^2 \mathbb{E}[U^2|X] \big] \\
+    &amp;= \frac{1}{\mathrm{var}(X)^2} \mathbb{E}[(X-\mathbb{E}[X])^2 \sigma^2 ] \\
+    &amp;= \frac{\sigma^2}{\mathrm{var}(X)^2} \mathbb{E}[(X-\mathbb{E}[X])^2] \\
+    &amp;= \frac{\sigma^2}{\mathrm{var}(X)^2} \mathrm{var}(X) \\
+    &amp;= \frac{\sigma^2}{\mathrm{var}(X)}
+  \end{align*}\]</span></p>
+<p>where</p>
+<ul>
+<li><p>the second equality holds because <span class="math inline">\(\mathrm{var}(X)^2\)</span> is non-random and can come out of the expectation,</p></li>
+<li><p>the third equality uses the law of iterated expectations,</p></li>
+<li><p>the fourth equality holds by the condition of homoskedasticity,</p></li>
+<li><p>the fifth equality holds because <span class="math inline">\(\sigma^2\)</span> is non-random and can come out of the expectation,</p></li>
+<li><p>the sixth equality holds by the definition of variance, and</p></li>
+<li><p>the last equality holds by cancelling <span class="math inline">\(\mathrm{var}(X)\)</span> in the numerator with one of the <span class="math inline">\(\mathrm{var}(X)\)</span>’s in the denominator.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="probability-and-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prediction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
