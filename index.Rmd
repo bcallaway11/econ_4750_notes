@@ -9,7 +9,8 @@ bibliography:
 - packages.bib
 biblio-style: apalike
 link-citations: yes
-description: This is a set of supplementary notes and additional references for ECON 4750.
+description: This is a set of supplementary notes and additional references for ECON
+  4750.
 ---
 
 # Introduction

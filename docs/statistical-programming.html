@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 3 Probability and Statistics | Supplemtary Notes and References for ECON 4750</title>
+  <title>Topic 2 Statistical Programming | Supplemtary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 3 Probability and Statistics | Supplemtary Notes and References for ECON 4750" />
+  <meta property="og:title" content="Topic 2 Statistical Programming | Supplemtary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 3 Probability and Statistics | Supplemtary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="Topic 2 Statistical Programming | Supplemtary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="statistical-programming.html"/>
-<link rel="next" href="linear-regression.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="probability-and-statistics.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,69 +53,6 @@
 
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -283,157 +220,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="probability-and-statistics" class="section level1" number="3">
-<h1><span class="header-section-number">Topic 3</span> Probability and Statistics</h1>
-<p>This section contains a list of topics, cross references to the textbook, and, in some places, additional discussion. I mostly just follow Chapters 2 &amp; 3 in the book for this part of the course, so this is primarily a list of references to the corresponding places in the textbook.</p>
-<div id="topics-in-probability" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Topics in Probability</h2>
-<div id="random-variables" class="section level3" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Random Variables</h3>
-<p>SW 2.1</p>
-</div>
-<div id="pdfs-pmfs-and-cdfs" class="section level3" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> pdfs, pmfs, and cdfs</h3>
-<p>SW 2.1</p>
-</div>
-<div id="summation-operator" class="section level3" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Summation operator</h3>
-<p>course notes</p>
-</div>
-<div id="continuous-random-variables" class="section level3" number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> Continuous Random Variables</h3>
-<p>SW 2.1</p>
-</div>
-<div id="expected-values" class="section level3" number="3.1.5">
-<h3><span class="header-section-number">3.1.5</span> Expected Values</h3>
-<p>SW 2.2</p>
-</div>
-<div id="variance" class="section level3" number="3.1.6">
-<h3><span class="header-section-number">3.1.6</span> Variance</h3>
-<p>SW 2.2</p>
-</div>
-<div id="mean-and-variance-of-linear-functions" class="section level3" number="3.1.7">
-<h3><span class="header-section-number">3.1.7</span> Mean and Variance of Linear Functions</h3>
-<p>SW 2.2</p>
-</div>
-<div id="properties-of-variance" class="section level3" number="3.1.8">
-<h3><span class="header-section-number">3.1.8</span> Properties of Variance</h3>
-<p>SW 2.2</p>
-</div>
-<div id="standardized-random-variables" class="section level3" number="3.1.9">
-<h3><span class="header-section-number">3.1.9</span> Standardized Random Variables</h3>
-<p>SW 2.2</p>
-</div>
-<div id="multiple-random-variables" class="section level3" number="3.1.10">
-<h3><span class="header-section-number">3.1.10</span> Multiple Random Variables</h3>
-<p>SW 2.3</p>
-</div>
-<div id="conditional-expectations" class="section level3" number="3.1.11">
-<h3><span class="header-section-number">3.1.11</span> Conditional Expectations</h3>
-<p>SW 2.3</p>
-</div>
-<div id="law-of-iterated-expectations" class="section level3" number="3.1.12">
-<h3><span class="header-section-number">3.1.12</span> Law of Iterated Expectations</h3>
-<p>SW 2.3</p>
-</div>
-<div id="covariance" class="section level3" number="3.1.13">
-<h3><span class="header-section-number">3.1.13</span> Covariance</h3>
-<p>SW 2.3</p>
-</div>
-<div id="correlation" class="section level3" number="3.1.14">
-<h3><span class="header-section-number">3.1.14</span> Correlation</h3>
-<p>SW 2.3</p>
-</div>
-<div id="properties-of-expectations" class="section level3" number="3.1.15">
-<h3><span class="header-section-number">3.1.15</span> Properties of Expectations</h3>
-<p>SW 2.3</p>
-</div>
-<div id="normal-distribution" class="section level3" number="3.1.16">
-<h3><span class="header-section-number">3.1.16</span> Normal Distribution</h3>
-<p>SW 2.4</p>
-</div>
-</div>
-<div id="topics-in-statistics" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Topics in Statistics</h2>
-<div id="simple-random-sample" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Simple Random Sample</h3>
-<p>SW 2.5</p>
-</div>
-<div id="estimating-mathbbey" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></h3>
-<p>SW 2.5, 3.1</p>
-</div>
-<div id="mean-of-bary" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h3>
-<p>SW 2.5, 3.1</p>
-</div>
-<div id="variance-of-bary" class="section level3" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h3>
-<p>SW 2.5, 3.1</p>
-</div>
-<div id="sampling-distribution-of-estimator" class="section level3" number="3.2.5">
-<h3><span class="header-section-number">3.2.5</span> Sampling distribution of estimator</h3>
-<p>SW 2.5, 3.1</p>
+<div id="statistical-programming" class="section level1" number="2">
+<h1><span class="header-section-number">Topic 2</span> Statistical Programming</h1>
+<p>We will learn a lot more about statistical programming this semester, but we’ll start with a crash course on <code>R</code> with the idea of getting you up-and-running.</p>
+<p>I listed a few references in the Introduction, but this section will mostly follow the discussion in <a href="https://rafalab.github.io/dsbook/">Introduction to Data Science: Data Analysis and Prediction Algorithms with R</a>, by Rafael Irizarry. I’ll abbreviate this reference as IDS throughout this section.</p>
+<p>IDS is not specifically geared towards Econometrics, but I think it is a really fantastic book and resource. In this section, I point you to the references for the material that I cover in class, but I would strongly recommend reading all of the first 5 chapters of IDS over the next couple of weeks. We will basically only cover the first 5 chapters in our class, but the course should set you up so that the remaining 35 chapters of the book can serve as helpful reference material throughout the rest of the semester.</p>
+<div id="what-is-r" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> What is R?</h2>
 <ul>
-<li><p>Bias</p></li>
-<li><p>Sampling Variance</p></li>
+<li><p>Statistical programming language</p>
+<ul>
+<li>=&gt; looks like a “real” programming language</li>
+<li>=&gt; lots of statistical things are easy to do</li>
+</ul></li>
+<li><p>Popular among statisticians, computer scientists, economists</p></li>
+<li><p>Other popular alternatives</p>
+<ul>
+<li>Python</li>
+<li>Stata</li>
+</ul></li>
+<li><p>Easy to share code across platforms: Linux, Windows, Mac</p></li>
+<li><p>Large community; lots of helpful resources on StackOverflow, etc.</p>
+<ul>
+<li>First place to look if you don’t know how to do something: DuckDuckGo (or…err…Google)!</li>
+</ul></li>
+<li><p>Easy to write and contribute extensions.</p>
+<ul>
+<li>I have 7 (?) R packages that you can easily download and immediately use</li>
+</ul></li>
 </ul>
 </div>
-<div id="relative-efficiency" class="section level3" number="3.2.6">
-<h3><span class="header-section-number">3.2.6</span> Relative Efficiency</h3>
-<p>SW 3.1</p>
+<div id="downloading-r" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Downloading R</h2>
+<p>We will use R (<a href="https://www.r-project.org/">https://www.r-project.org/</a>) to analyze data. R is freely available and available across platforms. You should go ahead and download R for your personal computer as soon as possible — this should be relatively straightforward. It is also available at most computer labs on campus.</p>
 </div>
-<div id="mean-squared-error" class="section level3" number="3.2.7">
-<h3><span class="header-section-number">3.2.7</span> Mean Squared Error</h3>
-<p>Course notes</p>
+<div id="rstudio" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> RStudio</h2>
+<p>Base <code>R</code> comes with a lightweight development environment (i.e., a place to write and execute code), but most folks prefer RStudio as it has more features. You can download it here: ; choose the free version based on your operating system (Windows, Mac, etc.).</p>
 </div>
-<div id="large-sample-properties-of-estimators" class="section level3" number="3.2.8">
-<h3><span class="header-section-number">3.2.8</span> Large Sample Properties of Estimators</h3>
-<p>SW 2.6</p>
-<p>Tools:</p>
+<div id="rstudio-development-environment" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> RStudio Development Environment</h2>
+<p>IDS 1.4</p>
+</div>
+<div id="installing-r-packages" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Installing R Packages</h2>
+<p>IDS 1.5</p>
+</div>
+<div id="running-code" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Running code</h2>
+<p>IDS 2.1</p>
+</div>
+<div id="r-basics" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> R Basics</h2>
+<p>IDS 2.2</p>
+</div>
+<div id="workspace" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Workspace</h2>
+<p>IDS 2.2</p>
+</div>
+<div id="solving-the-quadratic-equation" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> Solving the quadratic equation</h2>
+<p>IDS 2.2</p>
+<p>Write a function to do this</p>
+</div>
+<div id="functions-in-r" class="section level2" number="2.10">
+<h2><span class="header-section-number">2.10</span> Functions in R</h2>
+<p>IDS 2.2</p>
+<p>Practice:</p>
 <ul>
-<li><p>Law of Large Numbers</p></li>
-<li><p>Central Limit Theorem</p></li>
+<li>What is the sum of the first 100 positive integers? The formula for the sum of integers 1 through n is n(n+1)/2. Define n=100 and then use R to compute the sum of 1 through 100 using the formula. What is the sum?</li>
 </ul>
-<p>Properties:</p>
+</div>
+<div id="data-types" class="section level2" number="2.11">
+<h2><span class="header-section-number">2.11</span> Data types</h2>
+<p>IDS 2.4</p>
+</div>
+<div id="vector-arithmetic" class="section level2" number="2.12">
+<h2><span class="header-section-number">2.12</span> Vector arithmetic</h2>
+<p>IDS 2.11</p>
+</div>
+<div id="subsetting-with-logicals" class="section level2" number="2.13">
+<h2><span class="header-section-number">2.13</span> Subsetting with logicals</h2>
+<p>IDS 2.13</p>
+</div>
+<div id="logicals" class="section level2" number="2.14">
+<h2><span class="header-section-number">2.14</span> Logicals</h2>
+<p>IDS 2.13</p>
+</div>
+<div id="in" class="section level2" number="2.15">
+<h2><span class="header-section-number">2.15</span> %in%</h2>
+<p>IDS 2.13</p>
+</div>
+<div id="basic-plots" class="section level2" number="2.16">
+<h2><span class="header-section-number">2.16</span> Basic Plots</h2>
+<p>IDS 2.15</p>
+</div>
+<div id="programming-basics" class="section level2" number="2.17">
+<h2><span class="header-section-number">2.17</span> Programming basics</h2>
+</div>
+<div id="ifelse" class="section level2" number="2.18">
+<h2><span class="header-section-number">2.18</span> if/else</h2>
+<p>IDS 3.1</p>
+</div>
+<div id="writing-functions" class="section level2" number="2.19">
+<h2><span class="header-section-number">2.19</span> Writing functions</h2>
+<p>IDS 3.2</p>
+<p>Excercise: Write a function for solving quadratic equation</p>
+</div>
+<div id="for-loops" class="section level2" number="2.20">
+<h2><span class="header-section-number">2.20</span> for loops</h2>
+<p>IDS 3.4</p>
+</div>
+<div id="vectorization" class="section level2" number="2.21">
+<h2><span class="header-section-number">2.21</span> Vectorization</h2>
+<p>IDS 3.5</p>
+</div>
+<div id="tidyverse" class="section level2" number="2.22">
+<h2><span class="header-section-number">2.22</span> Tidyverse</h2>
+<p>IDS Chapter 4 — strongly recommend that you read this</p>
 <ul>
-<li><p>Consistency</p></li>
-<li><p>Asymptotic Normality</p></li>
+<li><p>R has very good data cleaning / manipulating tools</p></li>
+<li><p>largely won’t cover in class</p></li>
 </ul>
 </div>
-<div id="inference" class="section level3" number="3.2.9">
-<h3><span class="header-section-number">3.2.9</span> Inference</h3>
-<p>SW 3.2, 3.3</p>
+<div id="data-visualization" class="section level2" number="2.23">
+<h2><span class="header-section-number">2.23</span> Data Visualization</h2>
+<p>IDS Ch. 6-11 — R has very good data visualization tools; strongly recommend that you read this</p>
 <ul>
-<li><p>t-statistics</p></li>
-<li><p>p-values</p></li>
-<li><p>confidence intervals</p></li>
-<li><p>statistical vs. economic significance</p></li>
+<li>Another very strong point of R</li>
+<li>ggplot</li>
+<li>538’s graphs produced with ggplot</li>
 </ul>
 </div>
+<div id="reproducible-research" class="section level2" number="2.24">
+<h2><span class="header-section-number">2.24</span> Reproducible Research</h2>
+<p>IDS Ch. 40</p>
+<ul>
+<li>Rmarkdown is a very useful way to mix code and content</li>
+</ul>
 </div>
-<div id="extra-questions" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Extra Questions</h2>
-<ol style="list-style-type: decimal">
-<li><p>Suppose that <span class="math inline">\(\mathbb{E}[X] = 10\)</span> and <span class="math inline">\(\mathrm{var}(X) = 2\)</span>. Also, suppose that <span class="math inline">\(Y=5 + 9 X\)</span>.</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>What is <span class="math inline">\(\mathbb{E}[Y]\)</span>?</p></li>
-<li><p>What is <span class="math inline">\(\mathrm{var}(Y)\)</span>?</p></li>
-</ol></li>
-<li><p>Suppose you are interested in average height of students at UGA. Let <span class="math inline">\(Y\)</span> denote a student’s height; also let <span class="math inline">\(X\)</span> denote a binary variable that is equal to 1 if a student is female. Suppose that you know that <span class="math inline">\(\mathbb{E}[Y|X=1] = 5\&#39; \ 4\&quot;\)</span> and that <span class="math inline">\(\mathbb{E}[Y|X=0] = 5\&#39; \ 9\&quot;\)</span></p>
-<ol style="list-style-type: lower-alpha">
-<li><p>What is <span class="math inline">\(\mathbb{E}[Y]\)</span>?</p></li>
-<li><p>Explain how the answer to part (a) is related to the Law of Iterated Expectations.</p></li>
-</ol></li>
-<li><p>What is the difference between consistency and unbiasedness?</p></li>
-<li><p>Suppose you have an estimator that is unbiased. Will it necessarily be consistent? If not, provide an example of an unbiased estimator that is not consistent.</p></li>
-<li><p>Suppose you have an estimator that is consistent. Will it necessarily be unbiased? If not, provide an example of a consistent estimator that is not unbiased.</p></li>
-<li><p>The Central Limit Theorem says that, <span class="math inline">\(\sqrt{n}\left(\frac{1}{n} \sum_{i=1}^n (Y_i - \mathbb{E}[Y])\right) \rightarrow N(0,V)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span> where <span class="math inline">\(V = \mathrm{var}(Y)\)</span>.</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>What happens to <span class="math inline">\(n \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \mathbb{E}[Y])\right)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>? Explain.</p></li>
-<li><p>What happens to <span class="math inline">\(n^{1/3} \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \mathbb{E}[Y])\right)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>? Explain.</p></li>
-</ol></li>
-</ol>
+<div id="technical-writing-tools" class="section level2" number="2.25">
+<h2><span class="header-section-number">2.25</span> Technical Writing Tools</h2>
+<p>This is largely beyond the scope of the course, but, especially for students in ECON 6750, I recommend that you look up Latex. This is a markup language mainly for writing technical, academic writing. An easy way to get started here is to use the website <a href="http://www.overleaf.com">Overleaf</a>. This is also closely related to markdown/R-markdown discussed above (Latex tends to be somewhat more complicate which comes with some associated advantages and disadvantages).</p>
 
 </div>
 </div>
@@ -442,8 +370,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="statistical-programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probability-and-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

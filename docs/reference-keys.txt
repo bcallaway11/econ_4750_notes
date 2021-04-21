@@ -1,7 +1,3 @@
-eq:b1
-eq:hr1
-eq:hr2
-eq:V
 introduction
 what-is-this
 what-is-this-not
@@ -56,7 +52,7 @@ properties-of-expectations
 normal-distribution
 topics-in-statistics
 simple-random-sample
-estimating-mathbbey
+estimating-ey
 mean-of-bary
 variance-of-bary
 sampling-distribution-of-estimator
@@ -108,3 +104,8 @@ instrumental-variables
 regression-discontinuity
 extra-questions-3
 answers-to-some-extra-questions-2
+estimating-mathbbey
+eq:b1
+eq:hr1
+eq:hr2
+eq:V
