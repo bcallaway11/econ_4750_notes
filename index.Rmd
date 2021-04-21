@@ -1,5 +1,5 @@
 --- 
-title: "Supplemtary Notes and References for ECON 4750"
+title: "Supplementary Notes and References for ECON 4750"
 author: "Brantly Callaway"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
