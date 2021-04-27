@@ -222,7 +222,48 @@ Two cases where a fixed effect strategy can break down:
 
 Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context.  This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) --- both of these are realistic in many applications.  This is a main research area of mine and one I am happy to talk way more about.
 
-The case that we have been talking about where a researcher is interested in the effect of a single "regressor of interest" is often called "Difference in Differences"
+### Difference in differences
+
+The panel data approaches that we have been talking about so far are closely related to a natural-experiment type of strategy called *difference in differences* (DID).
+
+One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.
+
+Let's think about the case with exactly two time periods: $t$ and $t-1$.  In this case, we'll suppose that the outcomes that we observe are
+\begin{align*}
+  Y_{it} &= D_i Y_{it}(0) + (1-D_i) Y_{it}(0) \\
+  Y_{it-1} &= Y_{it}(0)
+\end{align*}
+In other words, in the second period, we observe treated potential outcomes for treated units and untreated potential outcomes for untreated units (this is just like the cross-sectional case above).  But in the first period, we observe untreated potential outcomes for all units --- because no one is treated yet.
+
+DID is often motivated by an assumption called the parallel trends assumption:
+
+**Parallel Trends Assumption**
+\begin{align*}
+\E[\Delta Y_t(0) | D=1] = \E[\Delta Y_t(0) | D=0]
+\end{align*}
+This says that the *path* of outcomes that individuals in the treated group would have experienced if they had not been treated is the same as the path of outcomes that individual in the untreated group actually experienced.
+
+As before, we continue to be interested in 
+\begin{align*}
+  ATT = \E[Y_t(1) - Y_t(0) | D=1]
+\end{align*}
+Recall that the key identification challenge if for $\E[Y_t(0)|D=1]$ here, and notice that
+\begin{align*}
+  \E[Y_t(0) | D=1] &= \E[\Delta Y_t(0) | D=1] + \E[Y_{t-1}(0) | D=1] \\
+  &= \E[\Delta Y_t(0) | D=0] + \E[Y_{t-1}(0)|D=1] \\
+  &= \E[\Delta Y_t | D=0] + \E[Y_{t-1}|D=1]
+\end{align*}
+where the first equality adds and subtracts $\E[Y_{t-1}(0)|D=1]$, the second equality uses the parallel trends assumption, and the last equality holds because all the potential outcomes in the previous line are actually observed outcome.  Plugging this expression into the one for $ATT$ yields:
+\begin{align*}
+  ATT = \E[\Delta Y_t | D=1] - \E[\Delta Y_t | D=0]
+\end{align*}
+In other words, under parallel trends, the $ATT$ can be recovered by comparing the path of outcomes that treated units experienced relative to the path of outcomes that untreated units experienced (the latter of which is the path of outcomes that treated units would have experienced if they had not participated in the treatment).
+
+As above, it is often convenient to estimate $ATT$ using a regression.  In fact, you can show that (in the case with two periods), $\alpha$ in the following regression is equal to the $ATT$:
+\begin{align*}
+  Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
+\end{align*}
+where $\E[v_t | D] = 0$.
 
 ## Instrumental Variables
 
@@ -231,6 +272,18 @@ SW all of chapter 12
 ## Regression Discontinuity
 
 SW 13.4
+
+Regression discontinuity is another "trick" to get at causal effects.  The idea is to look for cutoffs that affect whether or not an individual is treated while not otherwise affecting their outcomes.  Here are some examples:
+
+* Cutoffs that make students eligible for a scholarship
+
+* Rules about maximum numbers of students allowed in a classroom in a particular school district
+
+* Very close political elections
+
+* Very close union elections
+
+* Thresholds in tax laws
 
 ## Extra Questions
 

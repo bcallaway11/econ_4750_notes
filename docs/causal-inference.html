@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 6 Causal Inference | Supplemtary Notes and References for ECON 4750</title>
+  <title>Topic 6 Causal Inference | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 6 Causal Inference | Supplemtary Notes and References for ECON 4750" />
+  <meta property="og:title" content="Topic 6 Causal Inference | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 6 Causal Inference | Supplemtary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="Topic 6 Causal Inference | Supplementary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-04-21" />
+<meta name="date" content="2021-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,7 +194,10 @@
 <li class="chapter" data-level="6.2" data-path="causal-inference.html"><a href="causal-inference.html#parameters-of-interest"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
 <li class="chapter" data-level="6.3" data-path="causal-inference.html"><a href="causal-inference.html#experiments"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
 <li class="chapter" data-level="6.4" data-path="causal-inference.html"><a href="causal-inference.html#unconfoundedness"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a></li>
+<li class="chapter" data-level="6.5" data-path="causal-inference.html"><a href="causal-inference.html#panel-data-approaches"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="causal-inference.html"><a href="causal-inference.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
+</ul></li>
 <li class="chapter" data-level="6.6" data-path="causal-inference.html"><a href="causal-inference.html#instrumental-variables"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
 <li class="chapter" data-level="6.7" data-path="causal-inference.html"><a href="causal-inference.html#regression-discontinuity"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a></li>
 <li class="chapter" data-level="6.8" data-path="causal-inference.html"><a href="causal-inference.html#extra-questions-3"><i class="fa fa-check"></i><b>6.8</b> Extra Questions</a></li>
@@ -212,7 +215,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemtary Notes and References for ECON 4750</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplementary Notes and References for ECON 4750</a>
           </h1>
         </div>
 
@@ -401,7 +404,43 @@ and we can follow the same strategies as above.</p>
 <li><p>the effect of unobserved variables varies over time (i.e., <span class="math inline">\(\cdots + \beta_{2,t} W_i + \cdots\)</span>)</p></li>
 </ul>
 <p>Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context. This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) — both of these are realistic in many applications. This is a main research area of mine and one I am happy to talk way more about.</p>
-<p>The case that we have been talking about where a researcher is interested in the effect of a single “regressor of interest” is often called “Difference in Differences”</p>
+<div id="difference-in-differences" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Difference in differences</h3>
+<p>The panel data approaches that we have been talking about so far are closely related to a natural-experiment type of strategy called <em>difference in differences</em> (DID).</p>
+<p>One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.</p>
+<p>Let’s think about the case with exactly two time periods: <span class="math inline">\(t\)</span> and <span class="math inline">\(t-1\)</span>. In this case, we’ll suppose that the outcomes that we observe are
+<span class="math display">\[\begin{align*}
+  Y_{it} &amp;= D_i Y_{it}(0) + (1-D_i) Y_{it}(0) \\
+  Y_{it-1} &amp;= Y_{it}(0)
+\end{align*}\]</span>
+In other words, in the second period, we observe treated potential outcomes for treated units and untreated potential outcomes for untreated units (this is just like the cross-sectional case above). But in the first period, we observe untreated potential outcomes for all units — because no one is treated yet.</p>
+<p>DID is often motivated by an assumption called the parallel trends assumption:</p>
+<p><strong>Parallel Trends Assumption</strong>
+<span class="math display">\[\begin{align*}
+\mathbb{E}[\Delta Y_t(0) | D=1] = \mathbb{E}[\Delta Y_t(0) | D=0]
+\end{align*}\]</span>
+This says that the <em>path</em> of outcomes that individuals in the treated group would have experienced if they had not been treated is the same as the path of outcomes that individual in the untreated group actually experienced.</p>
+<p>As before, we continue to be interested in
+<span class="math display">\[\begin{align*}
+  ATT = \mathbb{E}[Y_t(1) - Y_t(0) | D=1]
+\end{align*}\]</span>
+Recall that the key identification challenge if for <span class="math inline">\(\mathbb{E}[Y_t(0)|D=1]\)</span> here, and notice that
+<span class="math display">\[\begin{align*}
+  \mathbb{E}[Y_t(0) | D=1] &amp;= \mathbb{E}[\Delta Y_t(0) | D=1] + \mathbb{E}[Y_{t-1}(0) | D=1] \\
+  &amp;= \mathbb{E}[\Delta Y_t(0) | D=0] + \mathbb{E}[Y_{t-1}(0)|D=1] \\
+  &amp;= \mathbb{E}[\Delta Y_t | D=0] + \mathbb{E}[Y_{t-1}|D=1]
+\end{align*}\]</span>
+where the first equality adds and subtracts <span class="math inline">\(\mathbb{E}[Y_{t-1}(0)|D=1]\)</span>, the second equality uses the parallel trends assumption, and the last equality holds because all the potential outcomes in the previous line are actually observed outcome. Plugging this expression into the one for <span class="math inline">\(ATT\)</span> yields:
+<span class="math display">\[\begin{align*}
+  ATT = \mathbb{E}[\Delta Y_t | D=1] - \mathbb{E}[\Delta Y_t | D=0]
+\end{align*}\]</span>
+In other words, under parallel trends, the <span class="math inline">\(ATT\)</span> can be recovered by comparing the path of outcomes that treated units experienced relative to the path of outcomes that untreated units experienced (the latter of which is the path of outcomes that treated units would have experienced if they had not participated in the treatment).</p>
+<p>As above, it is often convenient to estimate <span class="math inline">\(ATT\)</span> using a regression. In fact, you can show that (in the case with two periods), <span class="math inline">\(\alpha\)</span> in the following regression is equal to the <span class="math inline">\(ATT\)</span>:
+<span class="math display">\[\begin{align*}
+  Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
+\end{align*}\]</span>
+where <span class="math inline">\(\mathbb{E}[v_t | D] = 0\)</span>.</p>
+</div>
 </div>
 <div id="instrumental-variables" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Instrumental Variables</h2>
@@ -410,6 +449,14 @@ and we can follow the same strategies as above.</p>
 <div id="regression-discontinuity" class="section level2" number="6.7">
 <h2><span class="header-section-number">6.7</span> Regression Discontinuity</h2>
 <p>SW 13.4</p>
+<p>Regression discontinuity is another “trick” to get at causal effects. The idea is to look for cutoffs that affect whether or not an individual is treated while not otherwise affecting their outcomes. Here are some examples:</p>
+<ul>
+<li><p>Cutoffs that make students eligible for a scholarship</p></li>
+<li><p>Rules about maximum numbers of students allowed in a classroom in a particular school district</p></li>
+<li><p>Very close political elections</p></li>
+<li><p>Very close union elections</p></li>
+<li><p>Thresholds in tax laws</p></li>
+</ul>
 </div>
 <div id="extra-questions-3" class="section level2" number="6.8">
 <h2><span class="header-section-number">6.8</span> Extra Questions</h2>

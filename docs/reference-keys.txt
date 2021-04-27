@@ -109,3 +109,4 @@ eq:b1
 eq:hr1
 eq:hr2
 eq:V
+difference-in-differences
