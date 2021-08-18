@@ -4,21 +4,102 @@
 
 # Probability and Statistics
 
-This section contains a list of topics, cross references to the textbook, and, in some places, additional discussion.  I mostly just follow Chapters 2 \& 3 in the book for this part of the course, so this is primarily a list of references to the corresponding places in the textbook.
+This section contains a list of topics, cross references to the textbook, and, in some places, additional discussion.  The discussion mostly follows Chapters 2 \& 3 in the Stock and Watson textbook, and I have cross-listed the relevant sections in the textbook here.
 
 ## Topics in Probability
+
+At a very high level, probability is the set of mathematical tools that allow us to think about **random** events.
+
+Just to be clear, random means *uncertain*, not 50:50.
+
+A simple example of a random event is the outcome from rolling a die.
+
+Eventually, we will treat data as being random draws from some population.  Examples of things that we will treat as random draws are things like a person's hair color, height, income, etc.  We will think of all of these as being random draws because *ex ante* we don't know what they will be.
+
+### Data for this chapter
+
+For this chapter, we'll use data from the U.S. Census Bureau from 2019.  It is not quite a full census, but we'll treat it as the population throughout this chapter.
+
+```{r, echo=FALSE}
+library(haven)
+
+# load data
+load("us_data.RData")
+```
 
 ### Random Variables
 
 SW 2.1
 
+A **random variable** is a numerical summary of some random event.
+
+Some examples:
+
+* Height in inches
+
+* Creating a random variable sometime involves "coding" non-numeric outcomes, e.g., setting `hair=1` if a person's hair color is black, `hair=2` if a person's hair is blonde, etc.
+
+We'll generally classify random variables into one of two categories
+
+* **Discrete** --- A random variable that takes on discrete values such as 0, 1, 2
+
+* **Continuous** --- Takes on a continuum of values
+
+These are broad categories because a lot of random variables in economics sit in between these two.  
+
 ### pdfs, pmfs, and cdfs
 
 SW 2.1
 
+```{r echo=FALSE, message=FALSE}
+library(ggplot2)
+```
+
+```{r echo=FALSE, warning=FALSE, fig.cap="pdf of U.S. wage income"}
+us_data <- subset(us_data, incwage > 1000)
+us_data$lincwage <- log(us_data$incwage)
+ggplot(data=us_data, aes(x=incwage)) + 
+    geom_density(bw=5000) + 
+    xlim(c(0,200000)) + 
+    xlab("Wage Income") + 
+    ylab("pdf")
+```
+
+```{r echo=FALSE, warning=FALSE, fig.cap="cdf of U.S. wage income"}
+ggplot(data=us_data, aes(x=incwage)) + 
+    stat_ecdf() + 
+    xlim(c(0,200000)) + 
+    xlab("Wage Income") +
+    ylab("cdf")
+```
+
+```{r eval=FALSE, echo=FALSE, warning=FALSE, fig.cap="pmf of U.S. education"}
+us_data$EDUC <- as.factor(us_data$educ)
+us_data$EDUC <- forcats::fct_collapse(us_data$EDUC, 
+                      LessHS=c("n/a or no schooling",
+                                             "nursery school to grade 4",
+                                             "grade 5, 6, 7, or 8",
+                                             "grade 9",
+                                             "grade 10",
+                                             "grade 11"),
+                      HS=c("grade 12", 
+                           "1 year of college",
+                           "2 years of college",
+                           "3 years of college"),
+                      COL="4 years of college", 
+                      AdvanceDegree="5+ years of college")
+
+ggplot(data=us_data, aes(x=educ, y=..density..)) + 
+    geom_histogram(binwidth=1)
+    xlab("Years of Education") +
+    ylab("pmf")
+```
+
+
 ### Summation operator
 
 course notes
+
 
 ### Continuous Random Variables
 

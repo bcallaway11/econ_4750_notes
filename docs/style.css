@@ -12,3 +12,35 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+div.example {
+  border: 3px solid #ccc;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+
+div.side-comment {
+  border: 3px solid #ccc;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+span.side-comment{
+  font-weight: bold;
+  color: indigo;
+}
+
+div.practice{
+  border: 3px solid #ccc;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+span.practice {
+  font-weight: bold;
+  color: teal;
+}

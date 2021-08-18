@@ -1,27 +1,37 @@
 h1:statistical-programming Statistical Programming
-h2:what-is-r What is R?
-h2:downloading-r Downloading R
-h2:rstudio RStudio
-h2:rstudio-development-environment RStudio Development Environment
+h2:setting-up-r Setting up R
+h3:what-is-r What is R?
+h3:downloading-r Downloading R
+h3:rstudio RStudio
+h3:rstudio-development-environment RStudio Development Environment
 h2:installing-r-packages Installing R Packages
-h2:running-code Running code
+h3:a-list-of-useful-r-packages A list of useful R packages
 h2:r-basics R Basics
-h2:workspace Workspace
-h2:solving-the-quadratic-equation Solving the quadratic equation
+h3:objects Objects
+h3:workspace Workspace
 h2:functions-in-r Functions in R
 h2:data-types Data types
-h2:vector-arithmetic Vector arithmetic
-h2:subsetting-with-logicals Subsetting with logicals
+h3:numeric-vectors Numeric Vectors
+h3:vector-arithmetic Vector arithmetic
+h3:more-helpful-functions-in-r More helpful functions in R
+h3:other-types-of-vectors Other types of vectors
+h3:data-frames Data Frames
+h3:lists Lists
+h3:matrices Matrices
+h3:factors Factors
+h3:understanding-an-object-in-r Understanding an object in R
 h2:logicals Logicals
-h2:in %in%
+h3:additional-logical-operators Additional Logical Operators
 h2:basic-plots Basic Plots
 h2:programming-basics Programming basics
-h2:ifelse if/else
-h2:writing-functions Writing functions
-h2:for-loops for loops
-h2:vectorization Vectorization
-h2:tidyverse Tidyverse
-h2:data-visualization Data Visualization
-h2:reproducible-research Reproducible Research
-h2:technical-writing-tools Technical Writing Tools
+h3:writing-functions Writing functions
+h3:ifelse if/else
+h3:for-loops for loops
+h3:vectorization Vectorization
+h2:advanced-topics Advanced Topics
+h3:tidyverse Tidyverse
+h3:data-visualization Data Visualization
+h3:reproducible-research Reproducible Research
+h3:technical-writing-tools Technical Writing Tools
+h2:coding-exercises Coding Exercises
 

@@ -4,6 +4,7 @@ author: "Brantly Callaway"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
+highlight: haddock
 bibliography:
 - book.bib
 - packages.bib
@@ -14,6 +15,14 @@ description: This is a set of supplementary notes and additional references for 
 ---
 
 # Introduction
+
+```{r setup, echo=FALSE}
+  knitr::opts_chunk$set(comment="#>")
+```
+
+These are a set of detailed course notes for ECON 4750 at UGA.  They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1) textbook that we use in class.
+
+They are a work in progress, so it is possible that there are some mistakes (if you find any, please let me know) and there are incomplete sections.  That said, I hope you will find this to be a useful resource this semester.
 
 ## What is this? 
 
@@ -29,9 +38,9 @@ There are a couple of things that I want to explicitly say that this material is
 
 * A substitute for coming to class --- I will take attendance anyway, but not attending class and relying on this material is not a good plan.  Please do not do this.  
 
-* A substitute for the textbook --- A lot of the material provided here is just a reference to the corresponding section in the textbook.  This means you still need to use the textbook.  Homework questions will also primarily come from the textbook.
+* A substitute for the textbook --- A lot of the material provided here is just a reference to the corresponding section in the textbook.  The textbook also contains substantially more details than I am able to provide here.  This means you still need to use the textbook.  
 
-* Sufficient for making good grades on exams --- I don't suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams.  I think this material should be helpful, but not (even close to being) sufficient.
+* Sufficient for making good grades on exams --- I don't suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams.  I think this material should be helpful and perhaps even a good starting point when it comes to studying, but it is not sufficient for making a good grade in the class.
 
 
 ## Why did I write this?
@@ -69,7 +78,7 @@ I have three high level goals --- that by the end of the semester, students shou
 
 2. Use data in order to be able to predict outcomes of interest
 
-3. Be able to think clearly about when statistical results can be interpreted causal effects.
+3. Be able to think clearly about when statistical results can be interpreted as causal effects.
 
 
 In order to make progress towards these three goals, we also will need to learn about two additional topics:
@@ -86,6 +95,6 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
 ## First Week of Class
 
-SW All of Chapter 1
+Related Reading: SW All of Chapter 1
 
 In the first few classes, we will talk at very high level about the objectives of Econometrics.  
