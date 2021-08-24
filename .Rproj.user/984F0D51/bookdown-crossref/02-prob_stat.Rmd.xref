@@ -8,24 +8,33 @@ h3:continuous-random-variables Continuous Random Variables
 h3:expected-values Expected Values
 h3:variance Variance
 h3:mean-and-variance-of-linear-functions Mean and Variance of Linear Functions
-h3:properties-of-variance Properties of Variance
-h3:standardized-random-variables Standardized Random Variables
 h3:multiple-random-variables Multiple Random Variables
 h3:conditional-expectations Conditional Expectations
 h3:law-of-iterated-expectations Law of Iterated Expectations
 h3:covariance Covariance
 h3:correlation Correlation
-h3:properties-of-expectations Properties of Expectations
+h3:properties-of-expectationsvariances-of-sums-of-rvs Properties of Expectations/Variances of Sums of RVs
 h3:normal-distribution Normal Distribution
+h3:coding Coding
+h4:basic-plots Basic Plots
 h2:topics-in-statistics Topics in Statistics
 h3:simple-random-sample Simple Random Sample
-h3:estimating-mathbbey Estimating 
+h3:estimating-ey Estimating 
 h3:mean-of-bary Mean of 
 h3:variance-of-bary Variance of 
-h3:sampling-distribution-of-estimator Sampling distribution of estimator
+h3:properties-of-estimators Properties of Estimators
 h3:relative-efficiency Relative Efficiency
 h3:mean-squared-error Mean Squared Error
 h3:large-sample-properties-of-estimators Large Sample Properties of Estimators
-h3:inference Inference
+h4:consistency Consistency
+h4:asymptotic-normality Asymptotic Normality
+h3:inference-hypothesis-testing Inference / Hypothesis Testing
+h4:t-statistics t-statistics
+h4:p-values P-values
+h4:confidence-interval Confidence Interval
+h3:coding-1 Coding
+h2:lab-2-monte-carlo-simulations Lab 2: Monte Carlo Simulations
+h2:lab-2-solutions Lab 2 Solutions
+h2:coding-questions Coding Questions
 h2:extra-questions Extra Questions
 

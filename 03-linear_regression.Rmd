@@ -4,13 +4,48 @@
 
 # Linear Regression
 
-This is probably the part of the class where we will jump around in the book the most this semester.  
+In this chapter, our interest will shift to conditional expectations, such as $\E[Y|X_1,X_2,X_3]$ (I'll write $X_1$, $X_2$, and $X_3$ in a lot of examples in this chapter, but you can think of there being an arbitrary number of $X$'s).
+
+I'll refer to $Y$ as the **outcome**.  You might also sometimes here it called the **dependent variable**.
+
+I'll refer to the $X$'s as either **covariates** or **regressors** or **characteristics**.  You might also here them called **independent variables** sometimes.
+
+Before we start to get into the details, let us first discuss why we're interested in conditional expectations.  First, if we are interested in *making predictions*, it will often be the case that the "best" prediction that one can make is the conditional expectation.  This should make sense to you --- if you want to make a reasonable prediction about what the outcome will be for a new observation that has characteristics $x_1$, $x_2$, and $x_3$, a good way to do it would be to predict that their outcome would be the same as the average outcome across all observations that have the same characteristics; that is, $\E[Y|X_1=x_1, X_2=x_2, X_3=x_3]$.
+
+Next, in economics, we are often interested in how much some outcome of interest changes when a particular covariate changes, holding other covariates constants.  To give some examples, we might be interested in the average return of actively managed mutual funds relative to passively managed mutual funds conditional on investing in assets in the same class (e.g., large cap stocks or international bonds).  As another example, we might be interested in the effect of an increase in the amount of fertilizer on average crop yield but while holding constant the temperature and precipitation.
+
+How much the outcome, $Y$, changes on average when one of the covariates, $X_1$, changes by 1 unit and holding other covariates constant is what we'll call the **average partial effect** of $X_1$ on $Y$.  Suppose $X_1$ is binary, then it is given by
+
+$$
+  APE(x_2,x_3) = \E[Y | X_1=1, X_2=x_2, X_3=x_3] - \E[Y | X_1=0,X_2=x_2,X_3=x_3]
+$$
+Notice that the average partial effect can depend on $x_2$ and $x_3$.  For example, it could be that the effect of active management relative to passive management could be different across different asset classes.
+
+Slightly more generally, if $X_1$ is discrete, so that it can take on several different discrete values, then we define the average partial effect as
+
+$$
+  APE(x_1,x_2,x_3) = \E[Y | X_1=x_1+1, X_2=x_2, X_3=x_3] - \E[Y | X_1=x_1,X_2=x_2,X_3=x_3]
+$$
+which now can depend on $x_1$, $x_2$, and $x_3$.  This is the average effect of going from $X_1=x_1$ to $X_1=x_1+1$ holding $x_2$ and $x_3$ constant.  
+
+Finally, consider the case where we are interested in the average partial effect of $X_1$ which is continuous (for example, as in the fertilizer example mentioned above).  In this case the average partial effect is given by the *partial derivative* of $\E[Y|X_1,X_2,X_3]$ with respect to $X_1$.
+
+$$
+  APE(x_1,x_2,x_3) = \frac{\partial \, \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]}{\partial \, x_1}
+$$
+
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> This is probably the part of the class where we will jump around in the book the most this semester.  
 
 The pedagogical approach of the textbook is to introduce the notion of causality very early and to emphasize the requirements on linear regression models in order to deliver causality, while increasing the complexity of the models over several chapters.
 
 This is totally reasonable, but I prefer to start by teaching the mechanics of regressions: how to compute them, how to interpret them (even if you are not able to meet the requirements of causality), and how to use them to make predictions.  Then, we'll have a serious discussion about causality over the last few weeks of the semester.  
 
 In practice, this means we'll cover parts Chapters 4-8 in the textbook now, and then we'll circle back to some of the issues covered in these chapters again towards the end of the semester.  
+
+:::
 
 ## Nonparametric Regression / Curse of Dimensionality
 
@@ -27,6 +62,35 @@ In practice, this means we'll cover parts Chapters 4-8 in the textbook now, and 
 ## Linear Regression Models
 
 SW 4.1
+
+In order to get around the curse of dimensionality that we discussed in the previous section, we will often an impose a **linear model** for the conditional expectation.  For example,
+
+$$
+  \E[Y|X] = \beta_0 + \beta_1 X
+$$
+or
+
+$$
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
+$$
+If we know the values of $\beta_0$, $\beta_1$, $\beta_2$, and $\beta_3$, then it is straighforward for us to make predictions.  In particular, suppose that we want to predict the outcome for a new observation with characteristics $x_1$, $x_2$, and $x_3$.  Our prediction would be
+
+$$
+  \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3
+$$
+
+::: {.example}
+
+Suppose that you work for an airline and you are interested in predicting the number of passengers for a Saturday morning flight from Atlanta to Memphis.  Let $Y$ denote the number of passengers, $X_1$ be equal to 1 for a morning flight and 0 otherwise, and let $X_2$ be equal to 1 for a weekday flight and 0 otherwise.  Further suppose that $\E[Y|X_1,X_2] = 80 + 20 X_1 - 15 X_2$.  
+
+In this case, you would predict,
+
+$$
+  80 + 20 (1) - 15 (0) = 100
+$$
+passengers on the flight.
+
+:::
 
 ## Partial Effects
 
@@ -45,13 +109,26 @@ In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on av
 \begin{align*}
   \beta_1 = \E[Y|X_1=1,X_2,X_3] - \E[Y|X_1=0,X_2,X_3]
 \end{align*}
-In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on average, when $X_1$ changes from 0 to 1, hodling $X_2$ and $X_3$ constant.
+In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on average, when $X_1$ changes from 0 to 1, holding $X_2$ and $X_3$ constant.
 
-* Note: above model can be equivalently written as
+::: {.side-comment}
+
+Continuing the same example as above,
+
+:::
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span>
+
+The above model can be equivalently written as
 \begin{align*}
   Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
 \end{align*}
-where $\E[U|X_1,X_2,X_3] = 0$.
+where $\E[U|X_1,X_2,X_3] = 0$.  There will be a few times where this formulation will be useful for us.
+
+:::
+
 
 ## Interpreting Binary Covariate
 
@@ -63,23 +140,125 @@ SW 8.1, 8.2
 
 Also, please read all of SW Ch. 8
 
+So far, the the partial effects that we have been interested in have corresponded to a particular parameter in the regression, usually $\beta_1$.  I think this can sometimes be a source of confusion as, at least in my view, we are not typically interested in the parameters for their own sake, but rather are interested in partial effects.  It just so happens that in some leading cases, they coincide.
+
+In this section, we'll see the first of several cases where partial effects do not coincide with a particular parameter.
+
+Suppose that
+
+$$ 
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_1^2 + \beta_3 X_2 + \beta_4 X_3
+$$
+If you know the values of $\beta_0,\beta_1,\beta_2,\beta_3,$ and $\beta_4$, then to get a prediction, you would still just plug in the values of the regressors that you'd like to get a prediction for (including $x_1^2$).  
+
+In this model, the partial effect of $X_1$ is given by
+
+$$
+  \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + 2\beta_2 X_1
+$$
+In other words, the partial effect of $X_1$ depends on the value that $X_1$ takes.  
+
+
+
 ## Interpreting Interaction Terms
 
 SW 8.3
+
+
+Another interesting model is
+
+$$
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \beta_4 X_3
+$$
+The term $X_1 X_2$ is called an **interaction term**.  In this model, the partial effect of $X_1$ is given by
+
+$$
+  \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + \beta_3 X_2
+$$
+In this model, the effect of $X_1$ varies with $X_2$.
+
 
 ## Elasticities
 
 SW 8.2
 
+Economists are often interested in **elasticities**, that is, the percentage change in $Y$ when $X$ changes by 1%.
+
+Recall that the defintiion of percentage change is
+
+$$
+  \textrm{% change} = \frac{y_{new} - y_{old}}{y_{old}} \times 100
+$$
+
+Elasticities are closely connected to natural logarithms; following the most common notation in economics, we'll refer to the natural logarithm using the notation: $\log$.  Further, recall that the derivative of the $\log$ function is given by
+
+$$
+  \frac{d \, \log(x)}{d \, x} = \frac{1}{x} \implies d\, \log(x) = \frac{d \, x}{x}
+$$
+
+
 ## Omitted Variable Bias
 
 SW 6.1
+
+Suppose that we are interested in the following regression model
+
+$$
+  \E[Y|X_1, X_2, Q] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q
+$$
+and, in particular, we are interested in the the partial effect
+
+$$
+  \frac{ \partial \, \E[Y|X_1,X_2,Q]}{\partial \, X_1} = \beta_1
+$$
+But we are faced with the issue that we do not observe $Q$ (which implies that we cannot control for it in the regression)
+
+Recall that we can equivalently write
+
+$$
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U
+$$
+where $\E[U|X_1,X_2,Q]=0$.  
+
+Now, for simplicity, suppose that
+
+$$
+  \E[Q | X_1, X_2] = \gamma_0 + \gamma_1 X_1 + \gamma_2 X_2
+$$
+
+Now, let's consider the idea of just running a regression of $Y$ on $X_1$ and $X_2$ (and just not including $Q$).  We are interested in the question of whether or not we can recover $\beta_1$ if we do this.  If we consider this "feasible" regression, notice that
+
+$$
+  \begin{aligned}
+  \E[Y|X_1,X_2] &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 \E[Q|X_1,X_2] \\
+  &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (\gamma_0 + \gamma_1 X_1 + \gamma_2 X_2) \\
+  &= (\beta_0 + \beta_3 \gamma_0) + (\beta_1 + \beta_3 \gamma_1) X_1 + (\beta_2 + \beta_3 \gamma_2) X_2
+  \end{aligned}
+$$
+
+In other words, if we run the feasible regression of $Y$ on $X_1$ and $X_2$, the coefficient on $X_1$ is not equal to $\beta_1$; rather, it is equal to $(\beta_1 + \beta_3 \gamma_1)$.  
+
+That you are not generally able to recover $\beta_1$ in this case is called **omitted variable bias**
+
+There are two cases where you will recover $\beta_1$ though:
+
+- $\beta_3=0$.  This would be the case where $Q$ has no effect on $Y$
+
+- $\gamma_1=0$.  This would be the case where $X_1$ and $Q$ are uncorrelated after controlling for $X_2$.
+
+Interestingly, there may be some case where you can "sign" the bias; i.e., figure out if $\beta_3 \gamma_1$ is positive or negative.  
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span>
 
 * The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet.  The same issues arise if we just say that we have some *regression of interest* but are unable to estimate it because some covariates are unobserved.  
 
 * In this case, we would just not be able to interpret, say $\beta_1$, as the partial effect of our interest (except under special cases discussed in class).
 
 * The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the "causal effect", but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.
+
+:::
 
 ## How to estimate the parameters in a regression model
 

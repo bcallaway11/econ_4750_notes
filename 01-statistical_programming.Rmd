@@ -146,6 +146,10 @@ This does exactly the same thing as the code before.  What is somewhat better ab
 
 * `ivreg` --- package for IV regressions, diagnostics, etc.
 
+* `estimatr` --- package that runs regressions but with standard errors that economists often like more than the default options in `R`
+
+* `modelsummary` --- package for producing nice output of more than one regression and summary statistics
+
 
 As of this writing, there are currently 18,004 R packages available on CRAN (R's main repository for contributed packages).  
 
@@ -586,6 +590,22 @@ Related Reading: IDS 2.13
 
 There are a number of additional logical operators that can be useful in practice.  Here, we quickly cover several more.
 
+* `!=` --- not equal
+
+  ```{r}
+  c(1,2,3) != 3
+  ```
+
+* We can link together multiple logical comparisons.  If we want to check whether multiple conditions hold, we can use "logical AND" `&`; if we want to check whether any of multiple conditions hold, we can use "logical OR" `|`.
+
+  ```{r}
+  # AND
+  ( c(1,2,3,4,5) >= 3 ) & ( c(1,2,3,4,5) < 5 )
+  
+  # OR
+  ( c(1,2,3,4,5) >= 4 ) | ( c(1,2,3,4,5) < 2 )
+  ```
+
 * `%in%` --- checks whether the elements of one vector show up *in* another vector
 
   ```{r}
@@ -593,19 +613,17 @@ There are a number of additional logical operators that can be useful in practic
   c(1,7) %in% c(1,2,3,4,5)
   ```
 
-Often it is useful to check whether any logical conditions are true or all logical conditions are true.  This can be done as follows
+* Often it is useful to check whether any logical conditions are true or all logical conditions are true.  This can be done as follows
 
-```{r}
-# this one is TRUE because 1 is in the 2nd vector  
-any(c(1,7) %in% c(1,2,3,4,5))
+  ```{r}
+  # this one is TRUE because 1 is in the 2nd vector  
+  any(c(1,7) %in% c(1,2,3,4,5))
 
-# this one is FALSE because 7 is not in the 2nd vector
-all(c(1,7) %in% c(1,2,3,4,5))
-```
+  # this one is FALSE because 7 is not in the 2nd vector
+  all(c(1,7) %in% c(1,2,3,4,5))
+  ```
 
-## Basic Plots
 
-Related Reading: IDS 2.15
 
 ## Programming basics
 
@@ -819,11 +837,133 @@ Related Reading: IDS Ch. 40
 
 * These notes are written in Rmarkdown, and I usually write homework solutions in Rmarkdown
 
+* If you are interested, you can view the source for this book at [http://github.com/bcallaway11/econ_4750_notes](http://github.com/bcallaway11/econ_4750_notes).  The source code for this chapter is in the file `01-statistical-programming.Rmd`.
+
 ### Technical Writing Tools
 
 This is largely beyond the scope of the course, but, especially for students in ECON 6750, I recommend that you look up Latex.  This is a markup language mainly for writing technical, academic writing.  An easy way to get started here is to use the website [Overleaf](http://www.overleaf.com).  This is also closely related to markdown/R-markdown discussed above (Latex tends to be somewhat more complicate which comes with some associated advantages and disadvantages).
 
+## Lab 1: Introduction to R Programming
 
+For this lab, we will do several practice problems related to programming in R.
+
+1. Create two vectors as follows
+
+```{r}
+x <- seq(2,10,by=2)
+y <- c(3,5,7,11,13)
+```
+
+Add `x` and `y`, subtract `y` from `x`, multiply `x` and `y`, and divide `x` by `y` and report your results.
+
+2. The geometric mean of a set of numbers is an alternative measure of central tendency to the more common "arithmetic mean" (this is the mean that we are used to).  For a set of $J$ numbers, $x_1,x_2,\ldots,x_J$, the geometric mean is defined as 
+
+$$
+  (x_1 \cdot x_2 \cdot \cdots \cdot x_J)^{1/J}
+$$
+Write a function called `geometric_mean` that takes in a vector of numbers and computes their geometric mean.  Compute the geometric mean of `c(10,8,13)`
+
+3. Use the `lubridate` package to figure out how many days it has been since Jan. 1, 1981.
+
+4. `mtcars` is one of the data frames that comes packaged with base R.  
+
+    a) How many observations does `mtcars` have?
+    
+    b) How many columns does `mtcars` have?
+    
+    c) What are the names of the columns of `mtcars`?
+    
+    d) Print only the rows of `mtcars` for cars that get at least 20 mpg
+    
+    e) Print only the rows of `mtcars` that get at least 20 mpg and have at least 100 horsepower (it is in the column called `hp`)
+    
+    f) Print only the rows of `mtcars` that have 6 or more cylinders (it is in the column labeld `cyl`) or at least 100 horsepower
+    
+    g) Recover the 10th row of `mtcars`
+    
+    h) Sort the rows of `mtcars` by mpg (from highest to lowest)
+    
+    
+
+## Lab 1: Solutions
+
+1.
+
+```{r}
+x <- seq(2,10,by=2)
+y <- c(3,5,7,11,13)
+
+x+y
+x-y
+x*y
+x/y
+
+```
+
+2. 
+
+```{r}
+geometric_mean <- function(x) {
+  J <- length(x)
+  res <- prod(x)^(1/J)
+  res
+}
+
+geometric_mean(c(10,8,13))
+```
+
+3.
+
+```{r}
+the_date <- lubridate::mdy("01-01-1981")
+today <- lubridate::mdy("08-23-2021")
+today - the_date
+```
+
+4. 
+
+    a) 
+    
+        ```{r}
+        nrow(mtcars)
+        ```
+        
+    b)
+        ```{r}
+        ncol(mtcars)
+        ```
+        
+    c)
+        ```{r}
+        colnames(mtcars)
+        ```
+        
+    d)
+       ```{r}
+       subset(mtcars, mpg >= 20)
+       ```
+       
+    e)
+       ```{r}
+       subset(mtcars, (mpg >= 20) & (hp >= 100))
+       ```
+    
+    f)
+       ```{r}
+       subset(mtcars, (cyl >= 6) | (hp >= 100))
+       ```
+       
+    g)
+       ```{r}
+       mtcars[10,]
+       ```
+       
+    h)
+       ```{r}
+       # without reversing the order, we would order from lowest to smallest
+       mtcars[rev(order(mtcars$mpg)),]
+       ```
+       
 ## Coding Exercises
 
 1. The `stringr` package contains a number of functions for working with strings.  For this problem create the following character vector in R
@@ -849,3 +989,19 @@ This is largely beyond the scope of the course, but, especially for students in 
     ```
     
     Try out all three approaches that you came up with above for $n=100$.  What is the answer?  Do you get the same answer using all three approaches?
+    
+3. The Fibonacci sequence is the sequence of numbers $0,1,1,2,3,5,8,13,21,34,55,\ldots$ that comes from starting with $0$ and $1$ and where each subsequent number is the sum of the previous two.  For example, the 5 in the sequence comes from adding 2 and 3; the 55 in the sequence comes from adding 21 and 34.  
+
+    a) Write a function called `fibonacci` that takes in a number `n` and computes the nth element in the Fibonacci sequence.  For example `fibonacci(5)` should return `3` and `fibonacci(8)` should return `13`.
+  
+    b) Consider an alternative sequence where, starting with the third element, each element is computed as the sum of the previous two elements (the same as with the Fibonacci sequence) but where the first two elements can be arbitrary.  Write a function `alt_seq(a,b,n)` where `a` is the first element in the sequence, `b` is the second element in the sequence, and `n` is which element in the sequence to return.  For example, if $a=3$ and $b=7$, then the sequence would be $3,7,10,17,27,44,71,\ldots$ and `alt_seq(a=3,b=7,n=4) = 17`.
+    
+4. Base `R` includes a data frame called `iris`.  This is data about iris flowers (you can read the details by running `?iris`).
+
+    a) How many observations are there in the entire data frame?
+    
+    b) Calculate the average `Sepal.Length` across all observations in `iris`.
+    
+    c) Calculate the average `Sepal.Width` among the `setosa` iris species.
+    
+    d) Sort `iris` by `Petal.Length` and print the first 10 rows.

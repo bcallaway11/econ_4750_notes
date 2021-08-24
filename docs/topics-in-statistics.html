@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-08-17" />
+<meta name="date" content="2021-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="topics-in-probability.html"/>
-<link rel="next" href="extra-questions.html"/>
+<link rel="next" href="lab-2-monte-carlo-simulations.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,6 +53,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -144,7 +146,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="additional-references.html"><a href="additional-references.html"><i class="fa fa-check"></i><b>1.4</b> Additional References</a></li>
 <li class="chapter" data-level="1.5" data-path="goals-for-the-course.html"><a href="goals-for-the-course.html"><i class="fa fa-check"></i><b>1.5</b> Goals for the Course</a></li>
 <li class="chapter" data-level="1.6" data-path="studying-for-the-class.html"><a href="studying-for-the-class.html"><i class="fa fa-check"></i><b>1.6</b> Studying for the Class</a></li>
-<li class="chapter" data-level="1.7" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.7</b> First Week of Class</a></li>
+<li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
+<li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
 <ul>
@@ -181,22 +184,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="basic-plots.html"><a href="basic-plots.html"><i class="fa fa-check"></i><b>2.7</b> Basic Plots</a></li>
-<li class="chapter" data-level="2.8" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.8</b> Programming basics</a>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.8.1</b> Writing functions</a></li>
-<li class="chapter" data-level="2.8.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.8.2</b> if/else</a></li>
-<li class="chapter" data-level="2.8.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.8.3</b> for loops</a></li>
-<li class="chapter" data-level="2.8.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.8.4</b> Vectorization</a></li>
+<li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
+<li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
+<li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
+<li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.9</b> Advanced Topics</a>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
 <ul>
-<li class="chapter" data-level="2.9.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.9.1</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.9.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.9.2</b> Data Visualization</a></li>
-<li class="chapter" data-level="2.9.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.9.3</b> Reproducible Research</a></li>
-<li class="chapter" data-level="2.9.4" data-path="advanced-topics.html"><a href="advanced-topics.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.9.4</b> Technical Writing Tools</a></li>
+<li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.8.4" data-path="advanced-topics.html"><a href="advanced-topics.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.8.4</b> Technical Writing Tools</a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.10</b> Coding Exercises</a></li>
+<li class="chapter" data-level="2.9" data-path="lab-1-introduction-to-r-programming.html"><a href="lab-1-introduction-to-r-programming.html"><i class="fa fa-check"></i><b>2.9</b> Lab 1: Introduction to R Programming</a></li>
+<li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
+<li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
 <ul>
@@ -210,15 +214,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.6</b> Expected Values</a></li>
 <li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.7</b> Variance</a></li>
 <li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.8</b> Mean and Variance of Linear Functions</a></li>
-<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-variance"><i class="fa fa-check"></i><b>3.1.9</b> Properties of Variance</a></li>
-<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#standardized-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Standardized Random Variables</a></li>
-<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.11</b> Multiple Random Variables</a></li>
-<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Conditional Expectations</a></li>
-<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.13</b> Law of Iterated Expectations</a></li>
-<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.14</b> Covariance</a></li>
-<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.15</b> Correlation</a></li>
-<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>3.1.16</b> Properties of Expectations</a></li>
-<li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.17</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.10</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.12</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.13</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.14</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.15</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.16</b> Coding</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
 <ul>
@@ -226,13 +229,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>3.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
 <li class="chapter" data-level="3.2.6" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
 <li class="chapter" data-level="3.2.7" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
 <li class="chapter" data-level="3.2.8" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference"><i class="fa fa-check"></i><b>3.2.9</b> Inference</a></li>
+<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference-hypothesis-testing"><i class="fa fa-check"></i><b>3.2.9</b> Inference / Hypothesis Testing</a></li>
+<li class="chapter" data-level="3.2.10" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#coding-1"><i class="fa fa-check"></i><b>3.2.10</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.3</b> Extra Questions</a></li>
+<li class="chapter" data-level="3.3" data-path="lab-2-monte-carlo-simulations.html"><a href="lab-2-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>3.3</b> Lab 2: Monte Carlo Simulations</a></li>
+<li class="chapter" data-level="3.4" data-path="lab-2-solutions.html"><a href="lab-2-solutions.html"><i class="fa fa-check"></i><b>3.4</b> Lab 2 Solutions</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
+<li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
 <ul>
@@ -245,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
 <li class="chapter" data-level="4.8" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
 <li class="chapter" data-level="4.9" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
-<li class="chapter" data-level="4.10" data-path="inference-1.html"><a href="inference-1.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
+<li class="chapter" data-level="4.10" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
 <li class="chapter" data-level="4.11" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.11</b> Extra Questions</a></li>
 <li class="chapter" data-level="4.12" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.12</b> Answers to Some Extra Questions</a></li>
 </ul></li>
@@ -276,8 +283,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
-<li class="chapter" data-level="5.6" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.6</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.7" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.7</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.6" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="5.7" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.7</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
 <ul>
@@ -316,61 +325,464 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="topics-in-statistics" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Topics in Statistics</h2>
+<p>So far, we have been talking about <strong>population quantities</strong> such as <span class="math inline">\(f_{Y|X}\)</span> (conditional pdf/pmf), <span class="math inline">\(\mathbb{E}[Y]\)</span> (expected value of <span class="math inline">\(Y\)</span>), or <span class="math inline">\(\mathbb{E}[Y|X]\)</span> (expected value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>).</p>
+<p>In practice, most often we do not know what these population quantities are equal to (with the exception of some trivial cases like flipping a coin or rolling a die).</p>
+<p>A fundamental challenge is that it is uncommon that we observe the entire population.</p>
+<p>Instead, we will take the approach that we have access to a <strong>sample</strong> of data from the original population. We’ll use the sample to try to <strong>estimate</strong> whatever population quantities we are interested in as well as develop the tools to <strong>conduct inference</strong>, paying particular interest to questions like: how precisely can we estimate particular population quantities of interest.</p>
+<p>More broadly, <strong>statistics</strong> is the set of tools to learn about population quantities using data.</p>
 <div id="simple-random-sample" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Simple Random Sample</h3>
 <p>SW 2.5</p>
+<p>Let’s start by talking about how the data that we have access to is collected. There are several possibilities here, but let us start with the most straightforward case (which is also a very common case) called a <strong>simple random sample</strong>.</p>
+<p>In math: <span class="math inline">\(\{Y_i\}_{i=1}^n\)</span> is called a simple random sample if <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent random variables with a common probability distribution <span class="math inline">\(f_Y\)</span>. The two key conditions here are (i) independence and (ii) from a common distribution. For this reason, you may sometimes see a random sample called an iid sample which stands for independent and identically distributed.</p>
+<p>In words: We have access to <span class="math inline">\(n\)</span> observations that are drawn at random from some underlying population and each observation is equally likely to be drawn.</p>
 </div>
 <div id="estimating-mathbbey" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></h3>
 <p>SW 2.5, 3.1</p>
+<p>Let’s start with trying to estimate <span class="math inline">\(\mathbb{E}[Y]\)</span> as this is probably the simplest, non-trivial thing that we can estimate.</p>
+<p>A natural way to estimate population quantities is with their sample analogue. This is called the <strong>analogy principle</strong>. This is perhaps technical jargon, but it is the way you would immediately think to estimate <span class="math inline">\(\mathbb{E}[Y]\)</span>:</p>
+<p><span class="math display">\[
+  \hat{\mathbb{E}}[Y] = \frac{1}{n} \sum_{i=1}^n Y_i = \bar{Y}
+\]</span>
+In this course, we will typically put a “hat” on estimated quantities. The expression <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n Y_i\)</span> is just the average value of <span class="math inline">\(Y\)</span> in our sample. Since we will calculate a ton of averages like this one over the course of the rest of the semester, it’s also convenient to give it a shorthand notation, which is what <span class="math inline">\(\bar{Y}\)</span> means — it is just the sample average of <span class="math inline">\(Y\)</span>.</p>
+<p>One thing that is important to be clear about at this point is that, in general, <span class="math inline">\(\mathbb{E}[Y] \neq \bar{Y}\)</span>. <span class="math inline">\(\mathbb{E}[Y]\)</span> is a population quantity while <span class="math inline">\(\bar{Y}\)</span> is a sample quantity. We will hope (and provide some related conditions/discussions below) that <span class="math inline">\(\bar{Y}\)</span> would be close to <span class="math inline">\(\mathbb{E}[Y]\)</span>, but, in general, they will not be exactly the same.</p>
 </div>
 <div id="mean-of-bary" class="section level3" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h3>
 <p>SW 2.5, 3.1</p>
+<p>Another important thing to notice about <span class="math inline">\(\bar{Y}\)</span> is that it is a random variable (as it is the average of random variables). This is in sharp contrast to <span class="math inline">\(\mathbb{E}[Y]\)</span> which is non-random.</p>
+<p>One related thought experiment is the following: if we could repeatedly collect new samples of size <span class="math inline">\(n\)</span> from the same population and each time were able to estimate <span class="math inline">\(\bar{Y}\)</span>, these estimates would be different from each other.</p>
+<p>In fact, this means that <span class="math inline">\(\bar{Y}\)</span> has a distribution. The distribution of a statistic, like <span class="math inline">\(\bar{Y}\)</span>, is called its <strong>sampling distribution</strong>. We’d like to know about the features of the sampling distribution. Let’s start with its mean. That is, let’s calculate</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \mathbb{E}[\bar{Y}] &amp;= \mathbb{E}\left[ \frac{1}{n} \sum_{i=1}^n Y_i \right] \\
+    &amp;= \frac{1}{n} \mathbb{E}\left[ \sum_{i=1}^n Y_i \right] \\
+    &amp;= \frac{1}{n} \sum_{i=1}^n \mathbb{E}[Y_i] \\
+    &amp;= \frac{1}{n} \sum_{i=1}^n \mathbb{E}[Y] \\
+    &amp;= \frac{1}{n} n \mathbb{E}[Y] \\
+    &amp;= \mathbb{E}[Y]
+  \end{aligned}
+\]</span>
+Let’s think carefully about each step here — the arguments rely heavily on the properties of expectations and summations that we have learned earlier. The first equality holds from the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can therefore come out of the expectation. The third equality holds because the expectation can pass through the sum. The fourth equality holds because <span class="math inline">\(Y_i\)</span> are all from the same distribution which implies that they all of the same mean and that it is equal to <span class="math inline">\(\mathbb{E}[Y]\)</span>. The fifth equality holds because <span class="math inline">\(\mathbb{E}[Y]\)</span> is a constant and we add it up <span class="math inline">\(n\)</span> times. And the last equality just cancels the <span class="math inline">\(n\)</span> in the numerator with the <span class="math inline">\(n\)</span> in the denominator.</p>
+<p>Before moving on, let me make an additional comment:</p>
+<ul>
+<li>The fourth equality might be a little confusing. Certainly it is not saying that all the <span class="math inline">\(Y_i\)</span>’s are equal to each other. Rather, they come from the same distribution. For example, if you roll a die <span class="math inline">\(n\)</span> times, you get different outcomes on different rolls, but they are all from the same distribution so that the population expectation of each roll is always 3.5, but you get different realizations on different particular rolls. Another example is if <span class="math inline">\(Y\)</span> is a person’s income. Again, we are not saying that everyone has the same income, but just that we are thinking of income as being a draw from some distribution — sometimes you get a draw of a person with a very high income; other times you get a draw of a person with a low income, but <span class="math inline">\(\mathbb{E}[Y]\)</span> is a feature of the underlying distribution itself where these draws come from.</li>
+</ul>
+<p>How should interpret the above result? It says that, <span class="math inline">\(\mathbb{E}[\bar{Y}] = \mathbb{E}[Y]\)</span>. This doesn’t mean that <span class="math inline">\(\bar{Y}\)</span> itself is equal to <span class="math inline">\(\mathbb{E}[Y]\)</span>. Rather, it means that, if we could repeatedly obtain (a huge number of times) new samples of size <span class="math inline">\(n\)</span> and compute <span class="math inline">\(\bar{Y}\)</span> each time, the average of <span class="math inline">\(\bar{Y}\)</span> across repeated samples would be equal to <span class="math inline">\(\mathbb{E}[Y]\)</span>.</p>
 </div>
 <div id="variance-of-bary" class="section level3" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h3>
 <p>SW 2.5, 3.1</p>
+<p>Next, let’s calculate the variance of <span class="math inline">\(\bar{Y}\)</span>.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \mathrm{var}(\bar{Y}) &amp;= \mathrm{var}\left(\frac{1}{n} \sum_{i=1}^n Y_i\right) \\
+    &amp;= \frac{1}{n^2} \mathrm{var}\left(\sum_{i=1}^n Y_i\right) \\
+    &amp;= \frac{1}{n^2} \left( \sum_{i=1}^n \mathrm{var}(Y_i) + \textrm{lots of covariance terms} \right) \\
+    &amp;= \frac{1}{n^2} \left( \sum_{i=1}^n \mathrm{var}(Y_i) \right) \\
+    &amp;= \frac{1}{n^2} \sum_{i=1}^n \mathrm{var}(Y) \\
+    &amp;= \frac{1}{n^2} n \mathrm{var}(Y) \\
+    &amp;= \frac{\mathrm{var}(Y)}{n}
+  \end{aligned}
+\]</span>
+Let’s go carefully through each step — these arguments rely heavily on the properties of variance that we talked about earlier. The first equality holds by the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can come out of the variance after squaring it. The third equality holds because the variance of the sum of random variables is equal to the sum of the variances plus all the covariances between the random variables. In the fourth equality, all of the covariance terms go away — this holds because of random sampling which implies that the <span class="math inline">\(Y_i\)</span> are all independent which implies that their covariances are equal to 0. The fifth equality holds because all <span class="math inline">\(Y_i\)</span> are identically distributed so their variances are all the same and equal to <span class="math inline">\(\mathrm{var}(Y)\)</span>. The sixth equality holds by adding up <span class="math inline">\(\mathrm{var}(Y)\)</span> <span class="math inline">\(n\)</span> times. The last equality holds by cancelling the <span class="math inline">\(n\)</span> in the numerator with one of the <span class="math inline">\(n\)</span>’s in the denominator.</p>
+<p>Interestingly, the variance of <span class="math inline">\(\bar{Y}\)</span> depends not just on <span class="math inline">\(\mathrm{var}(Y)\)</span> but also on <span class="math inline">\(n\)</span> — the number of observations in the sample. Notice that <span class="math inline">\(n\)</span> is in the denominator, so the variance of <span class="math inline">\(\bar{Y}\)</span> will be lower for large values of <span class="math inline">\(n\)</span>. Here is an example that may be helpful for understanding this. Suppose that you are rolling a die. If <span class="math inline">\(n=1\)</span>, then clearly, the variance of <span class="math inline">\(\bar{Y}\)</span> is just equal to the variance of <span class="math inline">\(Y\)</span> — sometimes you roll extreme values like <span class="math inline">\(1\)</span> or <span class="math inline">\(6\)</span>. Now, when you increase <span class="math inline">\(n\)</span>, say, to 10, then these extreme values of <span class="math inline">\(\bar{Y}\)</span> are substantially less common. For <span class="math inline">\(\bar{Y}\)</span> to be equal to <span class="math inline">\(6\)</span> in this case, you’d need to roll 10 <span class="math inline">\(6\)</span>’s in a row. If this is not perfectly clear, we will look at some data soon, and I think that should confirm to you that the variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in the sample size.</p>
 </div>
-<div id="sampling-distribution-of-estimator" class="section level3" number="3.2.5">
-<h3><span class="header-section-number">3.2.5</span> Sampling distribution of estimator</h3>
+<div id="properties-of-estimators" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Properties of Estimators</h3>
 <p>SW 2.5, 3.1</p>
-<ul>
-<li><p>Bias</p></li>
-<li><p>Sampling Variance</p></li>
-</ul>
+<p>Suppose we are interested in some population parameter <span class="math inline">\(\theta\)</span> — we’ll write this pretty generically now, but it could be <span class="math inline">\(\mathbb{E}[Y]\)</span> or <span class="math inline">\(\mathbb{E}[Y|X]\)</span> or really any other population quantity that you’d like to estimate.</p>
+<p>Also, suppose that we have access to a random sample of size <span class="math inline">\(n\)</span> and we have some estimate of <span class="math inline">\(\theta\)</span> that we’ll call <span class="math inline">\(\hat{\theta}\)</span>.</p>
+<p>As before, we are going to consider the repeated sampling thought experiment where we imagine that we could repeatedly obtain new samples of size <span class="math inline">\(n\)</span> and with each new sample calculate a new <span class="math inline">\(\hat{\theta}\)</span>. Under this thought experiment, <span class="math inline">\(\hat{\theta}\)</span> would have a sampling distribution. One possibility for what it could look like is the following</p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p>In this case, values of <span class="math inline">\(\hat{\theta}\)</span> are more common around 3 and 4, but it is not highly unusual to get a value of <span class="math inline">\(\hat{\theta}\)</span> that is around 1 or 2 or 5 or 6 either.</p>
+<p>The first property of an estimator that we will take about is called <strong>unbiasedness</strong>. An estimator <span class="math inline">\(\hat{\theta}\)</span> is said to be unbiased if <span class="math inline">\(\mathbb{E}[\hat{\theta}] = \theta\)</span>. Alternatively, we can define the <strong>bias</strong> of an estimator as</p>
+<p><span class="math display">\[
+  \textrm{Bias}(\hat{\theta}) = \mathbb{E}[\hat{\theta}] - \theta
+\]</span>
+For example, if <span class="math inline">\(\textrm{Bias}(\hat{\theta}) &gt; 0\)</span>, it means that, on average (in the repeated sampling thought experiment), our estimates of <span class="math inline">\(\theta\)</span> would be greater than the actual value of <span class="math inline">\(\theta\)</span>.</p>
+<p>In general, unbiasedness is a good property for an estimator to have. That being said, we can come up with examples of not-very-good unbiased estimators and good biased estimators, but all-else-equal, it is better for an estimator to be unbiased.</p>
+<p>The next property of estimators that we will talk about is their <strong>sampling variance</strong>. This is just <span class="math inline">\(\mathrm{var}(\hat{\theta})\)</span>. In general, we would like estimators with low (or 0) bias and low variance. Let me give an example</p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-144-1.png" width="672" />
+This is a helpful figure for thinking about the properties of estimators. In this case, <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased (because their means are <span class="math inline">\(\theta\)</span>) while <span class="math inline">\(\hat{\theta}_3\)</span> is biased — it’s mean is greater than <span class="math inline">\(\theta\)</span>. On the other hand the sampling variance of <span class="math inline">\(\hat{\theta}_2\)</span> and <span class="math inline">\(\hat{\theta}_3\)</span> are about the same and both substantially smaller than for <span class="math inline">\(\theta_1\)</span>. Clearly, <span class="math inline">\(\hat{\theta}_2\)</span> is the best estimator of <span class="math inline">\(\theta\)</span> out of the three. But which is the second best? It is not clear. <span class="math inline">\(\hat{\theta}_3\)</span> systematically over-estimates <span class="math inline">\(\theta\)</span>, but since the variance is relatively small, the misses are systematic but tend to be relatively small. On the other hand, <span class="math inline">\(\hat{\theta}_1\)</span> is, on average, equal to <span class="math inline">\(\theta\)</span>, but sometimes the estimate of <span class="math inline">\(\theta\)</span> could be quite poor due to the large sampling variance.</p>
 </div>
 <div id="relative-efficiency" class="section level3" number="3.2.6">
 <h3><span class="header-section-number">3.2.6</span> Relative Efficiency</h3>
 <p>SW 3.1</p>
+<p>If <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are two unbiased estimators of <span class="math inline">\(\theta\)</span>, then <span class="math inline">\(\hat{\theta}_1\)</span> is <strong>more efficient</strong> than <span class="math inline">\(\hat{\theta}_2\)</span> if <span class="math inline">\(\mathrm{var}(\hat{\theta}_1) &lt; \mathrm{var}(\hat{\theta}_2)\)</span>.</p>
+<p>Relative efficiency gives us a way to rank unbiased estimators.</p>
 </div>
 <div id="mean-squared-error" class="section level3" number="3.2.7">
 <h3><span class="header-section-number">3.2.7</span> Mean Squared Error</h3>
-<p>Course notes</p>
+<p>More generally, two estimators can be compared by their <strong>mean squared error</strong> which is defined as</p>
+<p><span class="math display">\[
+  \textrm{MSE}(\hat{\theta}) := \mathbb{E}\left[ (\hat{\theta} - \theta)^2\right]
+\]</span></p>
+<p>The mean squared error of <span class="math inline">\(\hat{\theta}\)</span> is the average “distance” between <span class="math inline">\(\hat{\theta}\)</span> and <span class="math inline">\(\theta\)</span> in the thought experiment of having repeated samples of size <span class="math inline">\(n\)</span>.</p>
+<p>Another equivalent expression for the mean squared error is</p>
+<p><span class="math display">\[
+  \textrm{MSE}(\hat{\theta}) = \textrm{Bias}(\hat{\theta})^2 + \mathrm{var}(\hat{\theta})
+\]</span>
+In other words, if we can figure out the bias and variance of <span class="math inline">\(\hat{\theta}\)</span>, then we can recover mean squared error.</p>
+<p>Generally, we would like to choose estimators that have low mean squared error (this essentially means that they have low bias and variance). Moreover, mean squared error gives us a way to compare estimators that are potentially biased. [Also, notice that for unbiased estimators, comparing mean squared errors of different estimators just compares their variance (because the bias term is equal to 0), so this is a <em>generalization</em> of relative efficiency from the previous section.]</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 3.7  </strong></span>Let’s compare three estimators of <span class="math inline">\(\mathbb{E}[Y]\)</span> based on their mean squared error. Let’s consider the three following estimators</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \hat{\mu} &amp;:= \frac{1}{n} \sum_{i=1}^n Y_i \\
+    \hat{\mu}_1 &amp;:= Y_1 \\
+    \hat{\mu}_\lambda &amp;:= \lambda \bar{Y} \quad \textrm{for some } \lambda &gt; 0 
+  \end{aligned}
+\]</span>
+<span class="math inline">\(\hat{\mu}\)</span> is just the sample average of <span class="math inline">\(Y\)</span>’s that we have already discussed. <span class="math inline">\(\hat{\mu}_1\)</span> is the (somewhat strange) estimator of <span class="math inline">\(\mathbb{E}[Y]\)</span> that just uses the first observation in the data (regardless of the sample size). <span class="math inline">\(\hat{\mu}_\lambda\)</span> is an estimator of <span class="math inline">\(\mathbb{E}[Y]\)</span> that multiplies <span class="math inline">\(\bar{Y}\)</span> by some positive constant <span class="math inline">\(\lambda\)</span>.</p>
+<p>To calculate the mean squared error of each of these estimators, let’s calculate their means and their variances.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \mathbb{E}[\hat{\mu}] &amp;= \mathbb{E}[Y] \\
+    \mathbb{E}[\hat{\mu}_1] &amp;= \mathbb{E}[Y_1] = \mathbb{E}[Y] \\
+    \mathbb{E}[\hat{\mu}_\lambda] &amp;= \lambda \mathbb{E}[\bar{Y}] = \lambda \mathbb{E}[Y]
+  \end{aligned}
+\]</span>
+This means that <span class="math inline">\(\hat{\mu}\)</span> and <span class="math inline">\(\hat{\mu}_1\)</span> are both unbiased. <span class="math inline">\(\hat{\mu}_\lambda\)</span> is biased (unless <span class="math inline">\(\lambda=1\)</span> though this is a relatively uninteresting case as it would mean that <span class="math inline">\(\hat{\mu}_\lambda\)</span> is exactly the same as <span class="math inline">\(\hat{mu}\)</span>) with $(_) = <span class="math inline">\((\lambda - 1) \mathbb{E}[Y]\)</span>.</p>
+<p>Next, let’s calculate the variance for each estimator</p>
+<p><span class="math display">\[
+  \begin{aligned}
+  \mathrm{var}(\hat{\mu}) &amp;= \frac{\mathrm{var}(Y)}{n} \\
+  \mathrm{var}(\hat{\mu}_1) &amp;= \mathrm{var}(Y_1) = \mathrm{var}(Y) \\
+  \mathrm{var}(\hat{\mu}_\lambda) &amp;= \lambda^2 \mathrm{var}(\bar{Y}) = \lambda^2 \frac{\mathrm{var}(Y)}{n}
+  \end{aligned}
+\]</span>
+This means that we can now calculate mean squared error for each estimator.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \textrm{MSE}(\hat{\mu}) &amp;= \frac{\mathrm{var}{Y}}{n} \\
+    \textrm{MSE}(\hat{\mu}_1) &amp;= \mathrm{var}(Y) \\
+    \textrm{MSE}(\hat{\mu}_\lambda) &amp;= (\lambda-1)^2\mathbb{E}[Y]^2 + \lambda^2 \frac{\mathrm{var}(Y)}{n}
+  \end{aligned}
+\]</span>
+The first thing to notice is that <span class="math inline">\(\hat{\mu}\)</span> <em>dominates</em> <span class="math inline">\(\hat{\mu}_1\)</span> (where dominates means that there isn’t any scenario where you could make a reasonable case that <span class="math inline">\(\hat{\mu}_1\)</span> is a better estimator) because its MSE is strictly lower (they tie only if <span class="math inline">\(n=1\)</span> when they become the same estimator). This is probably not surprising — <span class="math inline">\(\hat{\mu}_1\)</span> just throws away a lot of potentially useful information.</p>
+<p>The more interesting case is <span class="math inline">\(\hat{\mu}_\lambda\)</span>. The first term is the bias term — it is greater than the bias from <span class="math inline">\(\hat{\mu}\)</span> or <span class="math inline">\(\hat{\mu}_1\)</span> because the bias of both of these is equal to 0. However, relative to <span class="math inline">\(\hat{\mu}\)</span>, the variance of <span class="math inline">\(\hat{\mu}_\lambda\)</span> can be smaller when <span class="math inline">\(\lambda\)</span> is less than 1. In fact, you can show that there are estimators that have smaller mean squared error than <span class="math inline">\(\hat{\mu}\)</span> by choosing a <span class="math inline">\(\lambda\)</span> that is smaller than (usually just slightly smaller than) 1. This sort of estimator would be biased, but are able to compensate introducing some bias by having smaller variance. For now, we won’t talk much about this sort of estimator (and stick to <span class="math inline">\(\bar{Y}\)</span>), but this sort of estimator has the “flavor” of modern machine learning estimators that typically introduce some bias while reducing variance. One last comment: if you were to make a “bad” choice of <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(\hat{\mu}_\lambda\)</span> could have higher mean squared error than even <span class="math inline">\(\hat{\mu}_1\)</span>, so if you wanted to proceed this way, you’d have to choose <span class="math inline">\(\lambda\)</span> with some care.</p>
+</div>
 </div>
 <div id="large-sample-properties-of-estimators" class="section level3" number="3.2.8">
 <h3><span class="header-section-number">3.2.8</span> Large Sample Properties of Estimators</h3>
 <p>SW 2.6</p>
-<p>Tools:</p>
-<ul>
-<li><p>Law of Large Numbers</p></li>
-<li><p>Central Limit Theorem</p></li>
-</ul>
-<p>Properties:</p>
-<ul>
-<li><p>Consistency</p></li>
-<li><p>Asymptotic Normality</p></li>
-</ul>
+<p>Statistics/Econometrics often relies on “large sample” (meaning: the number of observations, <span class="math inline">\(n\)</span>, is large) properties of estimators.</p>
+<p>Intuition: We generally expect that estimators that use a large number of observations will perform better than in the case with only a few observations.</p>
+<p>The second goal of this section will be to introduce an approach to conduct hypothesis testing. In particular, we may have some theory and want a way to test whether or not the data that we have “is consistent with” the theory or not. These arguments typically involve either making strong assumptions or having a large sample — we’ll mainly study the large sample case as I think this is more useful.</p>
+<div id="consistency" class="section level4" number="3.2.8.1">
+<h4><span class="header-section-number">3.2.8.1</span> Consistency</h4>
+<p>An estimator <span class="math inline">\(\hat{\theta}\)</span> of <span class="math inline">\(\theta\)</span> is said to be consistent if <span class="math inline">\(\hat{\theta}\)</span> gets close to <span class="math inline">\(\theta\)</span> for large values of <span class="math inline">\(n\)</span>.</p>
+<p>The main tool for studying consistency is the <strong>law of large numbers</strong>. The law of large numbers says that sample averages converge to population averages as the sample size gets large. In math, this is</p>
+<p><span class="math display">\[
+  \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \mathbb{E}[Y] \quad \textrm{as } n \rightarrow \infty
+\]</span>
+In my view, the law of large numbers is very intuitive. If you have a large sample and calculate a sample average, it should be close to the population average.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 3.8  </strong></span>Let’s consider the same three estimators as before and whether or not they are consistent. First, the LLN implies that</p>
+<p><span class="math display">\[
+  \hat{\mu} = \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \mathbb{E}[Y]
+\]</span>
+This implies that <span class="math inline">\(\hat{\mu}\)</span> is consistent. Next,</p>
+<p><span class="math display">\[
+  \hat{\mu}_1 = Y_1
+\]</span>
+doesn’t change depending on the size of the sample (you just use the first observation), so this is not consistent. This is an example of an unbiased estimator that is not consistent. Next,</p>
+<p><span class="math display">\[
+  \hat{\mu}_\lambda = \lambda \bar{Y} \rightarrow \lambda \mathbb{E}[Y] \neq \mathbb{E}[Y]
+\]</span>
+which implies that (as long as <span class="math inline">\(\lambda\)</span> doesn’t change with <span class="math inline">\(n\)</span>), <span class="math inline">\(\hat{\mu}_{\lambda}\)</span> is not consistent. Let’s give one more example. Consider the estimator</p>
+<p><span class="math display">\[
+  \hat{\mu}_c := \bar{Y} + \frac{c}{n}
+\]</span>
+where <span class="math inline">\(c\)</span> is some constant (this is a strange estimate of <span class="math inline">\(\mathbb{E}[Y]\)</span> where we take <span class="math inline">\(\bar{Y}\)</span> and add a constant divided by the sample size). In this case,</p>
+<p><span class="math display">\[
+  \hat{\mu}_c \rightarrow \mathbb{E}[Y] + 0 = \mathbb{E}[Y]
+\]</span></p>
+<p>which implies that it is consistent. It is interesting to note that</p>
+<p><span class="math display">\[
+  \mathbb{E}[\hat{\mu}_c] = \mathbb{E}[Y] + \frac{c}{n}
+\]</span>
+which implies that it is biased. This is an example of a biased estimator that is consistent.</p>
 </div>
-<div id="inference" class="section level3" number="3.2.9">
-<h3><span class="header-section-number">3.2.9</span> Inference</h3>
-<p>SW 3.2, 3.3</p>
+</div>
+<div id="asymptotic-normality" class="section level4" number="3.2.8.2">
+<h4><span class="header-section-number">3.2.8.2</span> Asymptotic Normality</h4>
+<p>The next large sample property that we’ll talk about is <strong>asymptotic normality</strong>. This is a hard one to wrap your mind around, but I’ll try to explain as clearly as possible. We’ll start by talking about what it is, and then we’ll move to why it’s useful.</p>
+<p>Most of the estimators that we will talk about this semester have the following property</p>
+<p><span class="math display">\[
+  \sqrt{n}\left( \hat{\theta} - \theta \right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span>
+In words, what this says is that we can learn something about the sampling distribution of <span class="math inline">\(\hat{\theta}\)</span> as long as we have a large enough sample. More specifically, if <span class="math inline">\(\hat{\theta}\)</span> is asymptotically normal, it means that if we take <span class="math inline">\(\hat{\theta}\)</span> subtract the true value of the parameter <span class="math inline">\(\theta\)</span> (this is often referred to as “centering”) and multiply by <span class="math inline">\(\sqrt{n}\)</span>, then that object (as long as the sample size is large enough) will seem like a draw from a normal distribution with mean 0 and variance <span class="math inline">\(V\)</span>. Since we know lots about normal distributions, we’ll be able to exploit this in very useful ways in the next section.</p>
+<p>An equivalent, alternative expression that is sometimes useful is</p>
+<p><span class="math display">\[
+  \frac{\sqrt{n}\left( \hat{\theta} - \theta\right)}{\sqrt{V}} \rightarrow N(0,1) \quad \textrm{as } n \rightarrow \infty
+\]</span></p>
+<p>To establish asymptotic normality of a particular estimator, the main tool is the <strong>central limit theorem</strong>. The central limit theorem (sometimes abbreviated CLT) says that</p>
+<p><span class="math display">\[
+  \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Y_i - \mathbb{E}[Y]\right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span>
+where <span class="math inline">\(V = \mathrm{var}(Y)\)</span>.</p>
+<p>In words, the CLT says that if you take the difference between <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(\mathbb{E}[Y]\)</span> (which, by the LLN converges to 0 as <span class="math inline">\(n \rightarrow \infty\)</span>) and “scale it up” by <span class="math inline">\(\sqrt{n}\)</span> (which goes to <span class="math inline">\(\infty\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>), then <span class="math inline">\(\sqrt{n}(\bar{Y} - \mathbb{E}[Y])\)</span> will act like a draw from a normal distribution with variance <span class="math inline">\(\mathrm{var}(Y)\)</span>.</p>
+<p>There are a few things to point out:</p>
 <ul>
-<li><p>t-statistics</p></li>
-<li><p>p-values</p></li>
-<li><p>confidence intervals</p></li>
-<li><p>statistical vs. economic significance</p></li>
+<li><p>Just to start with, this is not nearly as “natural” a result as the LLN. The LLN basically makes perfect sense. For me, I know how to prove the CLT (though we are not going to do it in class), but I don’t think that I would have ever been able to come up with this on my own.</p></li>
+<li><p>Notice that the CLT does not rely on any distributional assumptions. We do not need to assume that <span class="math inline">\(Y\)</span> follows a normal distribution and it will apply when <span class="math inline">\(Y\)</span> follows any distribution (up to some relatively minor technical conditions that we will not worry about)</p></li>
+<li><p>It is also quite remarkable. We usually have the sense that as the sample size gets large that things will converge to something (e.g., LLN saying that sample averages converge to population averages) or that they will diverge (i.e., go off to positive or negative infinity themselves). The CLT provides an intermediate case — <span class="math inline">\(\sqrt{n}(\bar{Y} - \mathbb{E}[Y])\)</span> is neither converging to a particular value or diverging to infinity. Instead, it is <em>converging in distribution</em> — meaning: it is settling down to something that looks like a draw from some distribution rather than converging to a particular number. In some sense, you can think of this as a “tie” between the part <span class="math inline">\((\bar{Y}-\mathbb{E}[Y])\)</span> which, by itself, is converging to 0, and <span class="math inline">\(\sqrt{n}\)</span> which, by itself, is diverging to infinity. In fact, if you multiplied instead by something somewhat smaller, say, <span class="math inline">\(n^{1/3}\)</span>, then the term <span class="math inline">\((\bar{Y}-\mathbb{E}[Y])\)</span> would “win” and the whole expression would converge to 0. On the other hand, if you multiplied by something somewhat larger, say, <span class="math inline">\(n\)</span>, then the <span class="math inline">\(n\)</span> part would “win” and the whole thing would diverge. <span class="math inline">\(\sqrt{n}\)</span> turns out to be “just right” so that there is essentially a “tie” and this term neither converges to a particular number nor diverges.</p></li>
+<li><p>A very common question for students is: “how large does <span class="math inline">\(n\)</span> need to be for the central limit theorem to apply?” Unfortunately, there is a not a great answer to this (though some textbooks have sometimes given explicit numbers here). Here is a basic explanation for why it is hard to give a definite number. Suppose <span class="math inline">\(Y\)</span> follows a normal distribution, then it will not take many observations for the normal approximation to hold. On the other hand, if <span class="math inline">\(Y\)</span> were to come from a discrete distribution or just a generally complicated distribution, then it might take many more observations for the normal approximation to hold.</p></li>
 </ul>
+<p>All that to say, I know that the CLT is hard to understand, but the flip-side of that is that it really is a fascinating result. We’ll see how its useful next.</p>
+</div>
+</div>
+<div id="inference-hypothesis-testing" class="section level3" number="3.2.9">
+<h3><span class="header-section-number">3.2.9</span> Inference / Hypothesis Testing</h3>
+<p>SW 3.2, 3.3</p>
+<p>Often in statistics/econometrics, we have some theory that we would like to test. Pretty soon, we will be interested in testing a theory like: some economic policy had no effect on some outcome of interest.</p>
+<p>In this section, we’ll focus on the relatively simple case of conducting inference on <span class="math inline">\(\mathbb{E}[Y]\)</span>, but very similar arguments will apply when we try to start estimating more complicated things soon. Because we’re just focusing on <span class="math inline">\(\mathbb{E}[Y]\)</span>, the examples in this section may be a somewhat trivial/uninteresting, but I want us to learn some mechanics, and then we’ll be able to apply these in more complicated situations.</p>
+<p>Let’s start with defining some terms.</p>
+<p><strong>Null Hypothesis</strong> This is the hypothesis (or theory) that we want to test. We’ll often write it in the following way</p>
+<p><span class="math display">\[
+  H_0 : \mathbb{E}[Y] = \mu_0
+\]</span>
+where <span class="math inline">\(\mu_0\)</span> is some actual number (e.g., 0 or 10 or just whatever coincides with the theory you want to test).</p>
+<p><strong>Alternative Hypothesis</strong> This is what is true if <span class="math inline">\(H_0\)</span> is not. There are other possibilities, but I think the only alternative hypothesis that we will consider this semester is</p>
+<p><span class="math display">\[
+  H_1 : \mathbb{E}[Y] \neq \mu_0
+\]</span>
+i.e., that <span class="math inline">\(\mathbb{E}[Y]\)</span> is not equal to the particular value <span class="math inline">\(\mu_0\)</span>.</p>
+<p>The key conceptual issue is that, even if the null hypothesis is true, because we estimate <span class="math inline">\(\mathbb{E}[Y]\)</span> with a sample, it will generally be the case that <span class="math inline">\(\bar{Y} \neq \mu_0\)</span>. This is just the nature of trying to estimate things with a sample.</p>
+<p>What we are going to go for is essentially trying to tell the difference (or at least be able to weight evidence) regarding whether the difference between <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(\mu_0\)</span> can be fully explained by sampling variation or that the difference is “too big” to be explained by sampling variation. Things will start to get “mathy” in this section, but I think it is helpful to just hold this high-level idea in your head as we go along.</p>
+<div id="t-statistics" class="section level4" number="3.2.9.1">
+<h4><span class="header-section-number">3.2.9.1</span> t-statistics</h4>
+<p>A <strong>t-statistic</strong> is given by</p>
+<p><span class="math display">\[
+  t = \frac{\sqrt{n} (\bar{Y} - \mu_0)}{\sqrt{\hat{V}}}
+\]</span>
+Notice that this is something that we can calculate with our available data. <span class="math inline">\(\sqrt{n}\)</span> is the square root of the sample size, <span class="math inline">\(\bar{Y}\)</span> is the sample average of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mu_0\)</span> is a number (that we have picked) coming from the null hypothesis, and <span class="math inline">\(\hat{V}\)</span> is the sample variance of <span class="math inline">\(Y\)</span> (e.g., computed with <code>var(Y)</code> in <code>R</code>).</p>
+<p>Now, here is the interesting thing about t-statistics. If the null hypothesis is true, then</p>
+<p><span class="math display">\[
+  t = \frac{\sqrt{n} (\bar{Y} - \mathbb{E}[Y])}{\sqrt{\hat{V}}} \approx \frac{\sqrt{n} (\bar{Y} - \mathbb{E}[Y])}{\sqrt{V}}
+\]</span></p>
+<p>where we have substituted in <span class="math inline">\(\mathbb{E}[Y]\)</span> for <span class="math inline">\(\mu_0\)</span> (due to <span class="math inline">\(H_0\)</span> being true) and then replaced <span class="math inline">\(\hat{V}\)</span> with <span class="math inline">\(V\)</span> (which holds under the law of large numbers). This is something that we can apply the CLT to, and, in particular, if <span class="math inline">\(H_0\)</span> holds, then
+<span class="math display">\[
+  t \rightarrow N(0,1)
+\]</span>
+That is, if <span class="math inline">\(H_0\)</span> is true, then <span class="math inline">\(t\)</span> should look like a draw from a normal distribution.</p>
+<p>Now, let’s think about what happens when the null hypothesis isn’t true. Then, we can write</p>
+<p><span class="math display">\[
+  t = \frac{\sqrt{n} (\bar{Y} - \mu_0)}{\sqrt{\hat{V}}}
+\]</span>
+which is just the definition of <span class="math inline">\(t\)</span>, but something different will happen here. In order for <span class="math inline">\(t\)</span> to follow a normal distribution, we need <span class="math inline">\((\bar{Y} - \mu_0)\)</span> to converge to 0. But <span class="math inline">\(\bar{Y}\)</span> converges to <span class="math inline">\(\mathbb{E}[Y]\)</span>, and if the null hypothesis does not hold, then <span class="math inline">\(\mathbb{E}[Y] \neq \mu_0\)</span> which implies that <span class="math inline">\((\bar{Y} - \mu_0) \rightarrow \mathbb{E}[Y] - \mu_0 \neq 0\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>. It’s still the case that <span class="math inline">\(\sqrt{n} \rightarrow \infty\)</span>. Thus, if <span class="math inline">\(H_0\)</span> is not true, then <span class="math inline">\(t\)</span> will diverge (recall: this means that it will either go to positive infinity or negative infinity depending on the sign of <span class="math inline">\((\mathbb{E}[Y] - \mu_0)\)</span>).</p>
+<p>This gives us a very good way to start to think about whether or not the data is compatible with our theory. For example, suppose that you calculate <span class="math inline">\(t\)</span> (using your data and under your null hypothesis) and that it is equal to 1. 1 is not an “unusual” looking draw from a standard normal distribution — this suggests that you at least do not have strong evidence from data against your theory. Alternatively, suppose that you calculate that <span class="math inline">\(t=-24\)</span>. While its technically possible that you could draw <span class="math inline">\(-24\)</span> from a standard normal distribution — it is exceedingly unlikely. We would interpret this as strong evidence against the null hypothesis, and it should probably lead you to “reject” the null hypothesis.</p>
+<p>We have talked about some clear cases, but what about the “close calls?” Suppose you calculate that <span class="math inline">\(t=2\)</span>. Under the null hypothesis, there is about a 4.6% chance of getting a t-statistic at least this large (in absolute value). So…if <span class="math inline">\(H_0\)</span> is true, this is a fairly unusual t-statistic, but it is not extremely unusual. What should you do?</p>
+<p>Before we decide what to do, let’s introduce a little more terminology regarding what could go wrong with hypothesis testing. There are two ways that we could go wrong:</p>
+<p><strong>Type I Error</strong> — This would be to reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true</p>
+<p><strong>Type II Error</strong> — This would be to fail to reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is false</p>
+<p>Clearly, there is a tradeoff here. If you are really concerned with type I errors, you can be very cautious about rejecting <span class="math inline">\(H_0\)</span>. If you are very concerned about type II errors, you could aggressively reject <span class="math inline">\(H_0\)</span>. The traditional approach to trading these off in statistics is to pre-specify a <strong>significance level</strong> indicating what percentage of the time you are willing to commit a type I error. Usually the significance level is denoted by <span class="math inline">\(\alpha\)</span> and the most common choice of <span class="math inline">\(\alpha\)</span> is 0.05 and other common choices are <span class="math inline">\(\alpha=0.1\)</span> or <span class="math inline">\(\alpha=0.01\)</span>. Then, good statistical tests try to make as few type II errors as possible subject to the constraint on the rate of type I errors.</p>
+<p>Often, once you have specified a significance level, it comes with a <strong>critical value</strong>. The critical value is the value of a test statistics for which the test just rejects <span class="math inline">\(H_0\)</span>.</p>
+<p>In practice, this leads to the following decision rule:</p>
+<ul>
+<li><p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; c_{1-\alpha}\)</span> where <span class="math inline">\(c_{1-\alpha}\)</span> is the critical value corresponding to the significance level <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &lt; c_{1-\alpha}\)</span></p></li>
+</ul>
+<p>In our case, since <span class="math inline">\(t\)</span> follows a normal distribution under <span class="math inline">\(H_0\)</span>, the corresponding critical value (when <span class="math inline">\(\alpha=0.05\)</span>) is 1.96. In particular, recall what the pdf of a standard normal random variable looks like</p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<p>The sum of the two blue, shaded areas is 0.05. In other words, under <span class="math inline">\(H_0\)</span>, there is a 5% chance that, by chance, <span class="math inline">\(t\)</span> would fall in the shaded areas. If you want to change the significance level, it would result in a corresponding change in the critical value so that the area in the new shaded region would adjust too. For example, if you set the significance level to be <span class="math inline">\(\alpha=0.1\)</span>, then you would need to adjust the critical value to be 1.64, and if you set <span class="math inline">\(\alpha=0.01\)</span>, then you would need to adjust the critical value to be 2.58.</p>
+</div>
+<div id="p-values" class="section level4" number="3.2.9.2">
+<h4><span class="header-section-number">3.2.9.2</span> P-values</h4>
+<p>Choosing a significance level is somewhat arbitrary. What did we choose 5%?</p>
+<p>Perhaps more importantly, we are essentially throwing away a lot of information if we are to reduce the information from standard errors/t-statistics to a binary “reject” or “fail to reject.”</p>
+<p>One alternative is to report a <strong>p-value</strong>. A p-value is the probability of observing a t-statistic as “extreme” as we did if <span class="math inline">\(H_0\)</span> were true.</p>
+<p>Here is an example of how to calculate a p-value. Suppose we calculate <span class="math inline">\(t=1.85\)</span>. Then,</p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
+<p>Then, under <span class="math inline">\(H_0\)</span>, the probability of getting a t-statistic “as extreme” as 1.85 corresponds to the area of the two shaded regions above. In other words, we need to to compute</p>
+<p><span class="math display">\[
+  \textrm{p-value} = \mathrm{P}(Z \leq -1.85) + \mathrm{P}(Z \geq 1.85)
+\]</span>
+where <span class="math inline">\(Z \sim N(0,1)\)</span>. One thing that is helpful to notice here is that, a standard normal random variable is symmetric. This means that <span class="math inline">\(\mathrm{P}(Z \leq -1.85) = \mathrm{P}(Z \geq 1.85)\)</span>. We also typically denote the cdf of a standard normal random variable with the symbol <span class="math inline">\(\Phi\)</span>. Thus,</p>
+<p><span class="math display">\[
+  \textrm{p-value} = 2 \Phi(-1.85)
+\]</span>
+I don’t know what this is off the top of my head, but it is easy to compute from a table or using <code>R</code>. In <code>R</code>, you can use the function <code>pnorm</code> — here, the p-value is given by <code>2*pnorm(-1.85)</code> which is equal to 1.936.</p>
+<p>More generally, if you calculate a t-statistic (let’s just call it <span class="math inline">\(t\)</span>). Then,</p>
+<p><span class="math display">\[
+  \textrm{p-value} = 2 \Phi(-|t|)
+\]</span></p>
+</div>
+<div id="confidence-interval" class="section level4" number="3.2.9.3">
+<h4><span class="header-section-number">3.2.9.3</span> Confidence Interval</h4>
+<p>Another idea is to report a <span class="math inline">\((1-\alpha)\%\)</span> (e.g., 95%) confidence interval.</p>
+<p>The interpretation of a confidence interval is a bit subtle. It is this: if we collected a large number of samples, and computed a confidence interval each time, 95% of these would contain the true value. This is subtly different than: there is a 95% probability that <span class="math inline">\(\theta\)</span> (the population parameter of interest) falls within the confidence interval — this second interpretation doesn’t make sense because <span class="math inline">\(\theta\)</span> is non-random.</p>
+<p>A 95% confidence interval is given by</p>
+<p><span class="math display">\[
+  CI_{95\%} = \left[\hat{\theta} - 1.96 \ \textrm{s.e.}(\hat{\theta}), \hat{\theta} + 1.96 \  \textrm{s.e.}(\hat{\theta})\right]
+\]</span></p>
+<p>For the particular case where we are interested in <span class="math inline">\(\mathbb{E}[Y]\)</span>, this becomes</p>
+<p><span class="math display">\[
+  CI_{95\%} = \left[ \bar{Y} - 1.96 \ \textrm{s.e.}(\bar{Y}), \bar{Y} + 1.96 \ \textrm{s.e.}(\bar{Y}) \right]
+\]</span>
+#### Inference in Practice</p>
+<p>I have covered the main approaches to inference in this section. I’d like to make a couple of concluding comments. First, all of the approaches discussed here (standard errors, t-statistics, p-values, and confidence intervals) are very closely related (in some sense, they are just alternative ways to report the same information). They all rely heavily on establishing asymptotic normality of the estimate of the parameter of interest — in fact, this is why we were interested in asymptotic normality in the first place. My sense is that the most common thing to report (at least in economics) is an esimate of the parameter of interest (e.g., <span class="math inline">\(\hat{\theta}\)</span> or <span class="math inline">\(\bar{Y}\)</span>) along with its standard error. If you know this information, you (or your reader) can easily compute any of the other expressions that we’ve considered in this section.</p>
+<p>Another important thing to mention is that there is often a distinction between <strong>statistical significance</strong> and <strong>economic significance</strong>. This matters in two ways.</p>
+<p>statistical vs. economic significance</p>
+</div>
+</div>
+<div id="coding-1" class="section level3" number="3.2.10">
+<h3><span class="header-section-number">3.2.10</span> Coding</h3>
+<p>In this section, we’ll use the <code>acs</code> data to calculate an estimate of average wage/salary income among employed individuals in the United States. We’ll test the null hypothesis that the mean income in the United States is $50,000 as well as report the standard error of our estimate of mean income, as well as corresponding p-values, t-statistics, and 95% confidence interval. Finally, we’ll report a table of summary statistics using the <code>modelsummary</code> package separately by college graduates relative to non-college graduates.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="topics-in-statistics.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;acs.RData&quot;</span>)</span>
+<span id="cb79-2"><a href="topics-in-statistics.html#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="topics-in-statistics.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate of mean income</span></span>
+<span id="cb79-4"><a href="topics-in-statistics.html#cb79-4" aria-hidden="true" tabindex="-1"></a>ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(acs<span class="sc">$</span>incwage)</span>
+<span id="cb79-5"><a href="topics-in-statistics.html#cb79-5" aria-hidden="true" tabindex="-1"></a>ybar</span>
+<span id="cb79-6"><a href="topics-in-statistics.html#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 59263.46</span></span>
+<span id="cb79-7"><a href="topics-in-statistics.html#cb79-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-8"><a href="topics-in-statistics.html#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standard error</span></span>
+<span id="cb79-9"><a href="topics-in-statistics.html#cb79-9" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">var</span>(acs<span class="sc">$</span>incwage)</span>
+<span id="cb79-10"><a href="topics-in-statistics.html#cb79-10" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(acs)</span>
+<span id="cb79-11"><a href="topics-in-statistics.html#cb79-11" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(V) <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb79-12"><a href="topics-in-statistics.html#cb79-12" aria-hidden="true" tabindex="-1"></a>se</span>
+<span id="cb79-13"><a href="topics-in-statistics.html#cb79-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 713.8138</span></span>
+<span id="cb79-14"><a href="topics-in-statistics.html#cb79-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-15"><a href="topics-in-statistics.html#cb79-15" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate t-statistic</span></span>
+<span id="cb79-16"><a href="topics-in-statistics.html#cb79-16" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> (ybar <span class="sc">-</span> <span class="dv">50000</span>) <span class="sc">/</span> se</span>
+<span id="cb79-17"><a href="topics-in-statistics.html#cb79-17" aria-hidden="true" tabindex="-1"></a>t_stat</span>
+<span id="cb79-18"><a href="topics-in-statistics.html#cb79-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 12.97742</span></span></code></pre></div>
+<p>This clearly exceeds 1.96 (or any common critical value) which implies that we would reject the null hypothesis that mean income is equal to $50,000.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="topics-in-statistics.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate p-value</span></span>
+<span id="cb80-2"><a href="topics-in-statistics.html#cb80-2" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span></code></pre></div>
+<p>The p-value is essentially equal to 0. This is expected given the value of the t-statistic that we calculated earlier.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="topics-in-statistics.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% confidence interval</span></span>
+<span id="cb81-2"><a href="topics-in-statistics.html#cb81-2" aria-hidden="true" tabindex="-1"></a>ci_L <span class="ot">&lt;-</span> ybar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb81-3"><a href="topics-in-statistics.html#cb81-3" aria-hidden="true" tabindex="-1"></a>ci_U <span class="ot">&lt;-</span> ybar <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb81-4"><a href="topics-in-statistics.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">&quot;[&quot;</span>,<span class="fu">round</span>(ci_L,<span class="dv">1</span>),<span class="st">&quot;,&quot;</span>,<span class="fu">round</span>(ci_U,<span class="dv">1</span>),<span class="st">&quot;]&quot;</span>)</span>
+<span id="cb81-5"><a href="topics-in-statistics.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;[57864.4,60662.5]&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="topics-in-statistics.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb82-2"><a href="topics-in-statistics.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb82-3"><a href="topics-in-statistics.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a factor variable for going to college</span></span>
+<span id="cb82-4"><a href="topics-in-statistics.html#cb82-4" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(acs<span class="sc">$</span>educ <span class="sc">&gt;=</span> <span class="dv">16</span>, <span class="st">&quot;college&quot;</span>, <span class="st">&quot;non-college&quot;</span>)</span>
+<span id="cb82-5"><a href="topics-in-statistics.html#cb82-5" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(acs<span class="sc">$</span>col)</span>
+<span id="cb82-6"><a href="topics-in-statistics.html#cb82-6" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(acs<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb82-7"><a href="topics-in-statistics.html#cb82-7" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>incwage <span class="ot">&lt;-</span> acs<span class="sc">$</span>incwage<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb82-8"><a href="topics-in-statistics.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(<span class="sc">~</span> col, <span class="at">data=</span><span class="fu">select</span>(acs, incwage, female, age, col),</span>
+<span id="cb82-9"><a href="topics-in-statistics.html#cb82-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fmt=</span><span class="dv">2</span>)</span></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+college (N=3871)
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+non-college (N=6129)
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+Std. Dev.
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+Std. Dev.
+</th>
+<th style="text-align:left;">
+Diff. in Means
+</th>
+<th style="text-align:left;">
+Std. Error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+incwage
+</td>
+<td style="text-align:left;">
+89.69
+</td>
+<td style="text-align:left;">
+96.15
+</td>
+<td style="text-align:left;">
+40.05
+</td>
+<td style="text-align:left;">
+39.01
+</td>
+<td style="text-align:left;">
+-49.65
+</td>
+<td style="text-align:left;">
+1.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+0.51
+</td>
+<td style="text-align:left;">
+0.50
+</td>
+<td style="text-align:left;">
+0.46
+</td>
+<td style="text-align:left;">
+0.50
+</td>
+<td style="text-align:left;">
+-0.04
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:left;">
+44.38
+</td>
+<td style="text-align:left;">
+13.43
+</td>
+<td style="text-align:left;">
+42.80
+</td>
+<td style="text-align:left;">
+15.71
+</td>
+<td style="text-align:left;">
+-1.58
+</td>
+<td style="text-align:left;">
+0.29
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
             </section>
@@ -379,7 +791,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="topics-in-probability.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="extra-questions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-2-monte-carlo-simulations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

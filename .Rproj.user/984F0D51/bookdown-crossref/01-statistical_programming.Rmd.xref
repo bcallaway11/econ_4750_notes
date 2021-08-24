@@ -22,7 +22,6 @@ h3:factors Factors
 h3:understanding-an-object-in-r Understanding an object in R
 h2:logicals Logicals
 h3:additional-logical-operators Additional Logical Operators
-h2:basic-plots Basic Plots
 h2:programming-basics Programming basics
 h3:writing-functions Writing functions
 h3:ifelse if/else
@@ -33,5 +32,7 @@ h3:tidyverse Tidyverse
 h3:data-visualization Data Visualization
 h3:reproducible-research Reproducible Research
 h3:technical-writing-tools Technical Writing Tools
+h2:lab-1-introduction-to-r-programming Lab 1: Introduction to R Programming
+h2:lab-1-solutions Lab 1: Solutions
 h2:coding-exercises Coding Exercises
 

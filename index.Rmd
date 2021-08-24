@@ -16,8 +16,18 @@ description: This is a set of supplementary notes and additional references for 
 
 # Introduction
 
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\var}{\mathrm{var}}
+\newcommand{\cov}{\mathrm{cov}}
+\newcommand{\Var}{\mathrm{var}}
+\newcommand{\Cov}{\mathrm{cov}}
+\newcommand{\Corr}{\mathrm{corr}}
+\newcommand{\corr}{\mathrm{corr}}
+\renewcommand{\P}{\mathrm{P}}
+
+
 ```{r setup, echo=FALSE}
-  knitr::opts_chunk$set(comment="#>")
+  knitr::opts_chunk$set(comment="#>", collapse=TRUE)
 ```
 
 These are a set of detailed course notes for ECON 4750 at UGA.  They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1) textbook that we use in class.
@@ -93,6 +103,129 @@ We'll start the course off talking about these two topics.  Perhaps this will be
 
 Students ask me all the time "How should I study for your class?"  My advice (and I think this applies to most classes, not just my class) is for you to start by studying the notes from class.  The things that I have discussed in class are the things that I think are most important for you learn in this sort of class and are the material that will be covered on the exam.  That said, it may sometimes be the case that you do not fully understand a lecture or the notes that you took from a lecture when you are studying (this certainly applied to me when I was a student).  If there are places that you do not understand what the notes mean, then I think that is the time when you should find the relevant portion of the textbook (or supplementary notes provided here) in order to "supplement" what the notes say.  
 
+## Data Used in the Course
+
+
+- `acs`
+
+    - Data from the 2019 American Community Survey about Education and Earnings
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+
+- `Airq`
+
+    - Data about air quality in California counties in 1972.
+    
+    - Access: `data(Airq, package="Ecdat")
+    
+    - Description: `?Ecdat::Airq`
+
+- `Birthweight_Smoking`
+
+    - Data about infant birthweights and mother's smoking from PA 1989
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Mark Watson's website](https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf)
+
+- `Caschool`
+
+    - School-level test score data from California in 1998-1999
+    
+    - Access: `data(Caschool, package="Ecdat")`
+    
+    - Description: `?Ecdat::Caschool`
+
+- `diamond_train`
+
+    - Data about diamond prices.  The full version of this data I got from Kaggle, and then I split it into training and testing data.
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
+
+- `diamond_test`
+
+    - Out of sample version of `diamond_train` data
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
+
+- `Fair`
+
+    - Individual-level data about affairs in the United States
+    
+    - Access: `data(Fair, package="Ecdat")`
+    
+    - Description: `?Ecdat::Fair`
+
+- `Fatality`
+
+    - State-level panel data about drunk driving laws and traffic fatalities
+    
+    - Access: `data(Fatality, package="Ecdat")
+    
+    - Description: `?Ecdat::Fatality`
+
+- `fertilizer_2000`
+
+    - Country-level data about fertilizer and crop yields from the year 2000.  See description of `fertilizer_panel` below for more details
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+- `fertilizer_panel`
+
+    - Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries.  This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. "Fertilizing growth: Agricultural inputs and their effects in economic development." Journal of Development Economics 127 (2017): 133-152. url: [https://doi.org/10.1016/j.jdeveco.2017.02.007](https://doi.org/10.1016/j.jdeveco.2017.02.007).
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+
+- `Housing`
+
+    - Sales prices of houses in Windsor, Canada in 1987
+    
+    - Access: `data(Housing, package="Ecdat")`
+    
+    - Description:  `?Ecdat::Housing`
+
+- `mroz`
+
+    - Labor force particpation of married women
+    
+    - Access: `data(mroz, package="wooldridge")`
+    
+    - Description: `?wooldridge::mroz`
+    
+- `Star`
+
+    - Data from Project STAR that randomly assigned some students to smaller class sizes
+    
+    - Access: `data(Star, package="Ecdat")
+    
+    - Description: `?Ecdat::Star`
+    
+- `titanic_training`
+
+    - Passenger level data on surviving Titanic.  This data is a slightly adapted version of the `titanic` data on [Kaggle](https://www.kaggle.com/c/titanic)
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/) 
+    
+    - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
+    
+- `titanic_testing`
+
+    - Out of sample version of `titanic_training` data
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/) 
+    
+    - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
+    
 ## First Week of Class
 
 Related Reading: SW All of Chapter 1

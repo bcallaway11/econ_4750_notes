@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.8 Programming basics | Supplementary Notes and References for ECON 4750</title>
+  <title>2.7 Programming basics | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.8 Programming basics | Supplementary Notes and References for ECON 4750" />
+  <meta property="og:title" content="2.7 Programming basics | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.8 Programming basics | Supplementary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="2.7 Programming basics | Supplementary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-08-17" />
+<meta name="date" content="2021-08-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="basic-plots.html"/>
+<link rel="prev" href="logicals.html"/>
 <link rel="next" href="advanced-topics.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -53,6 +53,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -144,7 +146,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="additional-references.html"><a href="additional-references.html"><i class="fa fa-check"></i><b>1.4</b> Additional References</a></li>
 <li class="chapter" data-level="1.5" data-path="goals-for-the-course.html"><a href="goals-for-the-course.html"><i class="fa fa-check"></i><b>1.5</b> Goals for the Course</a></li>
 <li class="chapter" data-level="1.6" data-path="studying-for-the-class.html"><a href="studying-for-the-class.html"><i class="fa fa-check"></i><b>1.6</b> Studying for the Class</a></li>
-<li class="chapter" data-level="1.7" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.7</b> First Week of Class</a></li>
+<li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
+<li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
 <ul>
@@ -181,22 +184,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="basic-plots.html"><a href="basic-plots.html"><i class="fa fa-check"></i><b>2.7</b> Basic Plots</a></li>
-<li class="chapter" data-level="2.8" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.8</b> Programming basics</a>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.8.1</b> Writing functions</a></li>
-<li class="chapter" data-level="2.8.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.8.2</b> if/else</a></li>
-<li class="chapter" data-level="2.8.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.8.3</b> for loops</a></li>
-<li class="chapter" data-level="2.8.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.8.4</b> Vectorization</a></li>
+<li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
+<li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
+<li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
+<li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.9</b> Advanced Topics</a>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
 <ul>
-<li class="chapter" data-level="2.9.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.9.1</b> Tidyverse</a></li>
-<li class="chapter" data-level="2.9.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.9.2</b> Data Visualization</a></li>
-<li class="chapter" data-level="2.9.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.9.3</b> Reproducible Research</a></li>
-<li class="chapter" data-level="2.9.4" data-path="advanced-topics.html"><a href="advanced-topics.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.9.4</b> Technical Writing Tools</a></li>
+<li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.8.4" data-path="advanced-topics.html"><a href="advanced-topics.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.8.4</b> Technical Writing Tools</a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.10</b> Coding Exercises</a></li>
+<li class="chapter" data-level="2.9" data-path="lab-1-introduction-to-r-programming.html"><a href="lab-1-introduction-to-r-programming.html"><i class="fa fa-check"></i><b>2.9</b> Lab 1: Introduction to R Programming</a></li>
+<li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
+<li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
 <ul>
@@ -210,15 +214,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.6</b> Expected Values</a></li>
 <li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.7</b> Variance</a></li>
 <li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.8</b> Mean and Variance of Linear Functions</a></li>
-<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-variance"><i class="fa fa-check"></i><b>3.1.9</b> Properties of Variance</a></li>
-<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#standardized-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Standardized Random Variables</a></li>
-<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.11</b> Multiple Random Variables</a></li>
-<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Conditional Expectations</a></li>
-<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.13</b> Law of Iterated Expectations</a></li>
-<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.14</b> Covariance</a></li>
-<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.15</b> Correlation</a></li>
-<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>3.1.16</b> Properties of Expectations</a></li>
-<li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.17</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.10</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.12</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.13</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.14</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.15</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.16</b> Coding</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
 <ul>
@@ -226,13 +229,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#sampling-distribution-of-estimator"><i class="fa fa-check"></i><b>3.2.5</b> Sampling distribution of estimator</a></li>
+<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
 <li class="chapter" data-level="3.2.6" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
 <li class="chapter" data-level="3.2.7" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
 <li class="chapter" data-level="3.2.8" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference"><i class="fa fa-check"></i><b>3.2.9</b> Inference</a></li>
+<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference-hypothesis-testing"><i class="fa fa-check"></i><b>3.2.9</b> Inference / Hypothesis Testing</a></li>
+<li class="chapter" data-level="3.2.10" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#coding-1"><i class="fa fa-check"></i><b>3.2.10</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.3</b> Extra Questions</a></li>
+<li class="chapter" data-level="3.3" data-path="lab-2-monte-carlo-simulations.html"><a href="lab-2-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>3.3</b> Lab 2: Monte Carlo Simulations</a></li>
+<li class="chapter" data-level="3.4" data-path="lab-2-solutions.html"><a href="lab-2-solutions.html"><i class="fa fa-check"></i><b>3.4</b> Lab 2 Solutions</a></li>
+<li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
+<li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
 <ul>
@@ -245,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
 <li class="chapter" data-level="4.8" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
 <li class="chapter" data-level="4.9" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
-<li class="chapter" data-level="4.10" data-path="inference-1.html"><a href="inference-1.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
+<li class="chapter" data-level="4.10" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
 <li class="chapter" data-level="4.11" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.11</b> Extra Questions</a></li>
 <li class="chapter" data-level="4.12" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.12</b> Answers to Some Extra Questions</a></li>
 </ul></li>
@@ -276,8 +283,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
-<li class="chapter" data-level="5.6" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.6</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.7" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.7</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.6" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="5.7" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.7</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
 <ul>
@@ -314,10 +323,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-basics" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Programming basics</h2>
-<div id="writing-functions" class="section level3" number="2.8.1">
-<h3><span class="header-section-number">2.8.1</span> Writing functions</h3>
+<div id="programming-basics" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Programming basics</h2>
+<div id="writing-functions" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Writing functions</h3>
 <p>Related Reading: IDS 3.2</p>
 <p>It is often helpful to write your own functions in R. If you ever find yourself repeating the same code over and over, this suggests that you should write this code as a function and repeatedly call the function.</p>
 <p>Suppose we are interesting in solving the quadratic equation
@@ -329,10 +338,10 @@ If you remember the quadratic formula, the solution to this equation is
   x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
 \]</span>
 It would be tedious to calculate this by hand (especially if we wanted to calculate it for many different values of <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>), so let’s write a function to do it.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="programming-basics.html#cb112-1" aria-hidden="true" tabindex="-1"></a>quadratic_solver <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
-<span id="cb112-2"><a href="programming-basics.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  root1 <span class="ot">&lt;-</span> ( <span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c) ) <span class="sc">/</span> <span class="dv">2</span><span class="sc">*</span>a</span>
-<span id="cb112-3"><a href="programming-basics.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  root1</span>
-<span id="cb112-4"><a href="programming-basics.html#cb112-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="programming-basics.html#cb46-1" aria-hidden="true" tabindex="-1"></a>quadratic_solver <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
+<span id="cb46-2"><a href="programming-basics.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  root1 <span class="ot">&lt;-</span> ( <span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c) ) <span class="sc">/</span> <span class="dv">2</span><span class="sc">*</span>a</span>
+<span id="cb46-3"><a href="programming-basics.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  root1</span>
+<span id="cb46-4"><a href="programming-basics.html#cb46-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Before we try this out, let’s notice a few things. First, while this particular function is for solving the quadratic equation, this is quite representative of what a function looks like in R.</p>
 <ul>
 <li><p><code>quadratic_solver</code> — This is the name of the function. It’s good to give your function a descriptive name related to what it does. But you could call it anything you want. If you wanted to call this function <code>uga</code>, it would still work.</p></li>
@@ -343,76 +352,79 @@ It would be tedious to calculate this by hand (especially if we wanted to calcul
 <li><p>the line <code>root1</code> R returns whatever variable is on the last line of the function. It might be somewhat more clear to write <code>return(root1)</code>. The behavior of the code would be exactly the same, but it is just the more common “style” in R programming to not include the explicit <code>return</code>.</p></li>
 </ul>
 <p>Now let’s try out our function</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="programming-basics.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solves quadratic equation for a=1, b=4, c=3</span></span>
-<span id="cb113-2"><a href="programming-basics.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>)</span></code></pre></div>
-<pre><code>#&gt; [1] -1</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="programming-basics.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solves quadratic equation for a=-1, b=5, c=10</span></span>
-<span id="cb115-2"><a href="programming-basics.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>#&gt; [1] -1.531129</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="programming-basics.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solves quadratic equation for a=1, b=4, c=3</span></span>
+<span id="cb47-2"><a href="programming-basics.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb47-3"><a href="programming-basics.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1</span></span>
+<span id="cb47-4"><a href="programming-basics.html#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="programming-basics.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># solves quadratic equation for a=-1, b=5, c=10</span></span>
+<span id="cb47-6"><a href="programming-basics.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>)</span>
+<span id="cb47-7"><a href="programming-basics.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1.531129</span></span></code></pre></div>
 <p>Two last things that are worth pointing out about functions:</p>
 <ul>
 <li><p>Functions in R can be set up to take default values for some of their arguments</p></li>
 <li><p>Because the arguments have names, if you are explicit about the name of the argument, then the order of the argument does not matter.</p></li>
 </ul>
 <p>To give examples, let’s write a slightly modified version of our function to solve quadratic equations.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="programming-basics.html#cb117-1" aria-hidden="true" tabindex="-1"></a>quadratic_solver2 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a=</span><span class="dv">1</span>, b, c) {</span>
-<span id="cb117-2"><a href="programming-basics.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  root1 <span class="ot">&lt;-</span> ( <span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c) ) <span class="sc">/</span> <span class="dv">2</span><span class="sc">*</span>a</span>
-<span id="cb117-3"><a href="programming-basics.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  root1</span>
-<span id="cb117-4"><a href="programming-basics.html#cb117-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="programming-basics.html#cb48-1" aria-hidden="true" tabindex="-1"></a>quadratic_solver2 <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a=</span><span class="dv">1</span>, b, c) {</span>
+<span id="cb48-2"><a href="programming-basics.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  root1 <span class="ot">&lt;-</span> ( <span class="sc">-</span>b <span class="sc">+</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span><span class="sc">*</span>a<span class="sc">*</span>c) ) <span class="sc">/</span> <span class="dv">2</span><span class="sc">*</span>a</span>
+<span id="cb48-3"><a href="programming-basics.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  root1</span>
+<span id="cb48-4"><a href="programming-basics.html#cb48-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>The only thing different here is that <code>a</code> takes the default value of 1. Now let’s try some different calls to <code>quadratic_solver</code> and <code>quadratic_solver2</code></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="programming-basics.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solve again for a=1,b=4,c=3</span></span>
-<span id="cb118-2"><a href="programming-basics.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver2</span>(<span class="at">b=</span><span class="dv">4</span>,<span class="at">c=</span><span class="dv">3</span>)</span></code></pre></div>
-<pre><code>#&gt; [1] -1</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="programming-basics.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace default and change order</span></span>
-<span id="cb120-2"><a href="programming-basics.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver2</span>(<span class="at">c=</span><span class="dv">10</span>,<span class="at">b=</span><span class="dv">5</span>,<span class="at">a=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>#&gt; [1] -1.531129</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="programming-basics.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no default set for quadratic_solver so it will crash if a not provided</span></span>
-<span id="cb122-2"><a href="programming-basics.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="at">b=</span><span class="dv">4</span>,<span class="at">c=</span><span class="dv">3</span>)</span></code></pre></div>
-<pre><code>#&gt; Error in quadratic_solver(b = 4, c = 3): argument &quot;a&quot; is missing, with no default</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="programming-basics.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solve again for a=1,b=4,c=3</span></span>
+<span id="cb49-2"><a href="programming-basics.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver2</span>(<span class="at">b=</span><span class="dv">4</span>,<span class="at">c=</span><span class="dv">3</span>)</span>
+<span id="cb49-3"><a href="programming-basics.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1</span></span>
+<span id="cb49-4"><a href="programming-basics.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="programming-basics.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># replace default and change order</span></span>
+<span id="cb49-6"><a href="programming-basics.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver2</span>(<span class="at">c=</span><span class="dv">10</span>,<span class="at">b=</span><span class="dv">5</span>,<span class="at">a=</span><span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb49-7"><a href="programming-basics.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1.531129</span></span>
+<span id="cb49-8"><a href="programming-basics.html#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="programming-basics.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># no default set for quadratic_solver so it will crash if a not provided</span></span>
+<span id="cb49-10"><a href="programming-basics.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="at">b=</span><span class="dv">4</span>,<span class="at">c=</span><span class="dv">3</span>)</span>
+<span id="cb49-11"><a href="programming-basics.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in quadratic_solver(b = 4, c = 3): argument &quot;a&quot; is missing, with no default</span></span></code></pre></div>
 </div>
-<div id="ifelse" class="section level3" number="2.8.2">
-<h3><span class="header-section-number">2.8.2</span> if/else</h3>
+<div id="ifelse" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> if/else</h3>
 <p>Related Reading: IDS 3.1</p>
 <p>Often when writing code, you will want to do different things depending on some condition. Let’s write a function that takes in the number of employees that are in a firm and prints “large” if the firm has more than 100 employees and “small” otherwise.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="programming-basics.html#cb124-1" aria-hidden="true" tabindex="-1"></a>large_or_small <span class="ot">&lt;-</span> <span class="cf">function</span>(employees) {</span>
-<span id="cb124-2"><a href="programming-basics.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (employees <span class="sc">&gt;</span> <span class="dv">100</span>) {</span>
-<span id="cb124-3"><a href="programming-basics.html#cb124-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;large&quot;</span>)</span>
-<span id="cb124-4"><a href="programming-basics.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb124-5"><a href="programming-basics.html#cb124-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;small&quot;</span>)</span>
-<span id="cb124-6"><a href="programming-basics.html#cb124-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb124-7"><a href="programming-basics.html#cb124-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="programming-basics.html#cb50-1" aria-hidden="true" tabindex="-1"></a>large_or_small <span class="ot">&lt;-</span> <span class="cf">function</span>(employees) {</span>
+<span id="cb50-2"><a href="programming-basics.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (employees <span class="sc">&gt;</span> <span class="dv">100</span>) {</span>
+<span id="cb50-3"><a href="programming-basics.html#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;large&quot;</span>)</span>
+<span id="cb50-4"><a href="programming-basics.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb50-5"><a href="programming-basics.html#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;small&quot;</span>)</span>
+<span id="cb50-6"><a href="programming-basics.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb50-7"><a href="programming-basics.html#cb50-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>I think, at this point, this code should make sense to you. The only new thing is the if/else. The following is not code that will actually run but is just to help understand the logic of if/else.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="programming-basics.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
-<span id="cb125-2"><a href="programming-basics.html#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
-<span id="cb125-3"><a href="programming-basics.html#cb125-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb125-4"><a href="programming-basics.html#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
-<span id="cb125-5"><a href="programming-basics.html#cb125-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="programming-basics.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb51-2"><a href="programming-basics.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb51-3"><a href="programming-basics.html#cb51-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb51-4"><a href="programming-basics.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb51-5"><a href="programming-basics.html#cb51-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>All that happens with if/else is that we check whether <code>condition</code> evaluate to <code>TRUE</code> or <code>FALSE</code>. If it is <code>TRUE</code>, the code will do whatever is inside the first set of brackets; if it is <code>FALSE</code>, the code will do whatever is in the set of brackets following <code>else</code>.</p>
 </div>
-<div id="for-loops" class="section level3" number="2.8.3">
-<h3><span class="header-section-number">2.8.3</span> for loops</h3>
+<div id="for-loops" class="section level3" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> for loops</h3>
 <p>Related Reading: IDS 3.4</p>
 <p>Often, we need to run the same code over and over again. A <code>for</code> loop is a main programming tool for this case (<code>for</code> loops show up in pretty much all programming languages).</p>
 <p>We’ll have more realistic examples later on in the semester, but we’ll do something trivial for now.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="programming-basics.html#cb126-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb126-2"><a href="programming-basics.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb126-3"><a href="programming-basics.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  out[i] <span class="ot">&lt;-</span> i<span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb126-4"><a href="programming-basics.html#cb126-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="programming-basics.html#cb52-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb52-2"><a href="programming-basics.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb52-3"><a href="programming-basics.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  out[i] <span class="ot">&lt;-</span> i<span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb52-4"><a href="programming-basics.html#cb52-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>The above code, starts with <span class="math inline">\(i=1\)</span>, calculates <span class="math inline">\(i*3\)</span> (which is 3), and then stores that result in the first element of the vector <code>out</code>, then <span class="math inline">\(i\)</span> increases to 2, the code calculates <span class="math inline">\(i*3\)</span> (which is now 6), and stores this result in the second element of <code>out</code>, and so on through <span class="math inline">\(i=10\)</span>.</p>
 </div>
-<div id="vectorization" class="section level3" number="2.8.4">
-<h3><span class="header-section-number">2.8.4</span> Vectorization</h3>
+<div id="vectorization" class="section level3" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> Vectorization</h3>
 <p>Related Reading: IDS 3.5</p>
 <p>Vectorizing functions is a relatively advanced topic in R programming, but it is an important one, so I am including it here.</p>
 <p>Because we will often be working with data, we will often be performing the same operation on all of the observations in the data. For example, suppose that you wanted to take the logarithm of the number of employees for all the firms in <code>firm_data</code>. One way to do this is to use a <code>for</code> loop, but this code would be a bit of a mess. Instead, the function <code>log</code> is <strong>vectorized</strong> — this means that if we apply it to a vector, it will calculate the logarithm of each element in the vector. Besides this, vectorized functions are often faster than <code>for</code> loops.</p>
 <p>Not all functions are vectorized though. Let’s go back to our function earlier called <code>large_or_small</code>. This took in the number of employees at a firm and then printed “large” if the firm had more than 100 employees and “small” otherwise. Let’s see what happens if we call this function on a vector of employees (Ideally, we’d like the function to be applied to each element in the vector).</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="programming-basics.html#cb127-1" aria-hidden="true" tabindex="-1"></a>employees <span class="ot">&lt;-</span> firm_data<span class="sc">$</span>employees</span>
-<span id="cb127-2"><a href="programming-basics.html#cb127-2" aria-hidden="true" tabindex="-1"></a>employees</span></code></pre></div>
-<pre><code>#&gt; [1] 531   6  15 211  25</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="programming-basics.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">large_or_small</span>(employees)</span></code></pre></div>
-<pre><code>#&gt; Warning in if (employees &gt; 100) {: the condition has length &gt; 1 and only the first element will
-#&gt; be used</code></pre>
-<pre><code>#&gt; [1] &quot;large&quot;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="programming-basics.html#cb53-1" aria-hidden="true" tabindex="-1"></a>employees <span class="ot">&lt;-</span> firm_data<span class="sc">$</span>employees</span>
+<span id="cb53-2"><a href="programming-basics.html#cb53-2" aria-hidden="true" tabindex="-1"></a>employees</span>
+<span id="cb53-3"><a href="programming-basics.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 531   6  15 211  25</span></span>
+<span id="cb53-4"><a href="programming-basics.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">large_or_small</span>(employees)</span>
+<span id="cb53-5"><a href="programming-basics.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in if (employees &gt; 100) {: the condition has length &gt; 1 and only the first element will</span></span>
+<span id="cb53-6"><a href="programming-basics.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; be used</span></span>
+<span id="cb53-7"><a href="programming-basics.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;large&quot;</span></span></code></pre></div>
 <p>This is not what we wanted to have happen. It just reported whether or not the first firm was large or small, and then issued a warning that basically said that something may be going wrong here. What’s going on here is that the function <code>large_or_small</code> is not vectorized.</p>
 <p>In order to vectorize a function, we can use one of a number of “apply” functions in R. I’ll list them here</p>
 <ul>
@@ -422,27 +434,27 @@ It would be tedious to calculate this by hand (especially if we wanted to calcul
 <li><p><code>apply</code> — applies a function to either the rows or columns of a matrix-like object (i.e., a matrix or a data frame) depending on the value of the argument <code>MARGIN</code></p></li>
 </ul>
 <p>Let’s use <code>sapply</code> to vectorize <code>large_or_small</code>.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="programming-basics.html#cb132-1" aria-hidden="true" tabindex="-1"></a>large_or_small_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(employees_vec) {</span>
-<span id="cb132-2"><a href="programming-basics.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(employees_vec, <span class="at">FUN =</span> large_or_small)</span>
-<span id="cb132-3"><a href="programming-basics.html#cb132-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="programming-basics.html#cb54-1" aria-hidden="true" tabindex="-1"></a>large_or_small_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(employees_vec) {</span>
+<span id="cb54-2"><a href="programming-basics.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(employees_vec, <span class="at">FUN =</span> large_or_small)</span>
+<span id="cb54-3"><a href="programming-basics.html#cb54-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>All that this will do is call the function <code>large_or_small</code> for each element in the vector <code>employees</code>. Let’s see it in action</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="programming-basics.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">large_or_small_vectorized</span>(employees)</span></code></pre></div>
-<pre><code>#&gt; [1] &quot;large&quot;
-#&gt; [1] &quot;small&quot;
-#&gt; [1] &quot;small&quot;
-#&gt; [1] &quot;large&quot;
-#&gt; [1] &quot;small&quot;</code></pre>
-<pre><code>#&gt; [1] &quot;large&quot; &quot;small&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="programming-basics.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">large_or_small_vectorized</span>(employees)</span>
+<span id="cb55-2"><a href="programming-basics.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;large&quot;</span></span>
+<span id="cb55-3"><a href="programming-basics.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;small&quot;</span></span>
+<span id="cb55-4"><a href="programming-basics.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;small&quot;</span></span>
+<span id="cb55-5"><a href="programming-basics.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;large&quot;</span></span>
+<span id="cb55-6"><a href="programming-basics.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;small&quot;</span></span>
+<span id="cb55-7"><a href="programming-basics.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;large&quot; &quot;small&quot; &quot;small&quot; &quot;large&quot; &quot;small&quot;</span></span></code></pre></div>
 <p>This is what we were hoping for.</p>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> I also typically replace most all <code>for</code> loops with an <code>apply</code> function. In most cases, I don’t think there is much of a performance gain, but the code seems easier to read (or at least more concise).</p>
 <p>Earlier we wrote a function to take a vector of numbers from 1 to 10 and multiply all of them by 3. Here’s how you could do this using <code>sapply</code></p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="programming-basics.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) i<span class="sc">*</span><span class="dv">3</span>)</span></code></pre></div>
-<pre><code>#&gt;  [1]  3  6  9 12 15 18 21 24 27 30</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="programming-basics.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(i) i<span class="sc">*</span><span class="dv">3</span>)</span>
+<span id="cb56-2"><a href="programming-basics.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  3  6  9 12 15 18 21 24 27 30</span></span></code></pre></div>
 <p>which is considerably shorter.</p>
 <p>One last thing worth pointing out though is that multiplication is already vectorized, so you don’t actually need to do <code>sapply</code> or the <code>for</code> loop; a better way is just</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="programming-basics.html#cb138-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">3</span></span></code></pre></div>
-<pre><code>#&gt;  [1]  3  6  9 12 15 18 21 24 27 30</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="programming-basics.html#cb57-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb57-2"><a href="programming-basics.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  3  6  9 12 15 18 21 24 27 30</span></span></code></pre></div>
 </div>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> A relatively popular alternative to <code>apply</code> functions are <code>map</code> functions provided in the <code>purrr</code> package.</p>
@@ -454,7 +466,7 @@ It would be tedious to calculate this by hand (especially if we wanted to calcul
           </div>
         </div>
       </div>
-<a href="basic-plots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="logicals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="advanced-topics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
