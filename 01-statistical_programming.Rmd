@@ -357,6 +357,21 @@ This is definitely an incomplete list, but I'll point you here to some more func
   ```{r}
   sum(c(1,5,8))
   ```
+  
+* `sort`, `order`, and `rev` functions --- functions for understanding the order or changing the order of a vector
+
+  ```{r}
+  sort(c(3,1,5))
+  order(c(3,1,5))
+  rev(c(3,1,5))
+  ```
+  
+* `%%` --- modulo function (i.e., returns the remainder from dividing one number by another)
+
+  ```{r}
+  8 %% 3
+  1 %% 3
+  ```
 
 ::: {.practice}
 <span class="practice">Practice:</span> The function `seq` contains an optional argument `length.out`.  Try running the following code and seeing if you can figure out what `length.out` does.
@@ -467,6 +482,12 @@ firm_data$employes
 
 :::
 
+A few more useful functions for working with data frames are:
+
+- `nrow` and `ncol` --- returns the number of rows or columns in the data frame
+
+- `colnames` and `rownames` --- returns the names of the columns or rows
+
 
 ### Lists
 
@@ -505,7 +526,7 @@ mat[,2]
 
 ### Factors
 
-Sometimes variables in economics are **categorical**.  This sort of variable is somewhat between a numeric variable and a string.  
+Sometimes variables in economics are **categorical**.  This sort of variable is somewhat between a numeric variable and a string.  In `R`, categorical variables are called **factors**.
 
 A good example of a categorical variable is `firm_data$industry`.  It tells you the "category" of the industry that a firm is in.  
 
@@ -738,6 +759,7 @@ out <- c()
 for (i in 1:10) {
   out[i] <- i*3
 }
+out
 ```
 
 The above code, starts with $i=1$, calculates $i*3$ (which is 3), and then stores that result in the first element of the vector `out`, then $i$ increases to 2, the code calculates $i*3$ (which is now 6), and stores this result in the second element of `out`, and so on through $i=10$.
@@ -805,6 +827,27 @@ One last thing worth pointing out though is that multiplication is already vecto
 
 ::: {.side-comment}
 <span class="side-comment">Side Comment:</span> A relatively popular alternative to `apply` functions are `map` functions provided in the `purrr` package.
+:::
+
+::: {.side-comment}
+
+<span class="side-comment">Side Comment:</span> It's often helpful to have a vectorized version of if/else.  In `R`, this is available in the function `ifelse`.  Here is an alternative way to vectorize the function `large_or_small`:
+
+```{r}
+large_or_small_vectorized2 <- function(employees_vec) {
+  ifelse(employees_vec > 100, "large", "small")
+}
+large_or_small_vectorized2(firm_data$employees)
+```
+Here you can see that `ifelse` makes every comparison in its first argument, and then returns the second element for every `TRUE` coming from the first argument, and returns the third element for every `FALSE` coming from the first argument.
+
+`ifelse` also works with vectors in the second and third element.  For example:
+```{r}
+  ifelse(c(1,3,5) < 4, yes=c(1,2,3), no=c(4,5,6))
+```
+which picks up 1 and 2 from the second (`yes`) argument and 6 from the third (`no`) argument.
+
+
 :::
 
 
@@ -995,8 +1038,10 @@ today - the_date
     a) Write a function called `fibonacci` that takes in a number `n` and computes the nth element in the Fibonacci sequence.  For example `fibonacci(5)` should return `3` and `fibonacci(8)` should return `13`.
   
     b) Consider an alternative sequence where, starting with the third element, each element is computed as the sum of the previous two elements (the same as with the Fibonacci sequence) but where the first two elements can be arbitrary.  Write a function `alt_seq(a,b,n)` where `a` is the first element in the sequence, `b` is the second element in the sequence, and `n` is which element in the sequence to return.  For example, if $a=3$ and $b=7$, then the sequence would be $3,7,10,17,27,44,71,\ldots$ and `alt_seq(a=3,b=7,n=4) = 17`.
+ 
+4.  Write a function `prime` that takes `n` as an argument and returns a vector of all the prime numbers from $1$ to $n$.
     
-4. Base `R` includes a data frame called `iris`.  This is data about iris flowers (you can read the details by running `?iris`).
+5. Base `R` includes a data frame called `iris`.  This is data about iris flowers (you can read the details by running `?iris`).
 
     a) How many observations are there in the entire data frame?
     

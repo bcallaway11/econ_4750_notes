@@ -1,7 +1,3 @@
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\var}{\mathrm{var}}
-\newcommand{\cov}{\mathrm{cov}}
-
 # Linear Regression
 
 In this chapter, our interest will shift to conditional expectations, such as $\E[Y|X_1,X_2,X_3]$ (I'll write $X_1$, $X_2$, and $X_3$ in a lot of examples in this chapter, but you can think of there being an arbitrary number of $X$'s).
@@ -184,10 +180,10 @@ SW 8.2
 
 Economists are often interested in **elasticities**, that is, the percentage change in $Y$ when $X$ changes by 1%.
 
-Recall that the defintiion of percentage change is
+Recall that the defintiion of percentage change of moving from, say, $x_{old}$ to $x_{new}$ is given by
 
 $$
-  \textrm{% change} = \frac{y_{new} - y_{old}}{y_{old}} \times 100
+  \textrm{% change} = \frac{x_{new} - x_{old}}{x_{old}} \times 100
 $$
 
 Elasticities are closely connected to natural logarithms; following the most common notation in economics, we'll refer to the natural logarithm using the notation: $\log$.  Further, recall that the derivative of the $\log$ function is given by
@@ -195,7 +191,57 @@ Elasticities are closely connected to natural logarithms; following the most com
 $$
   \frac{d \, \log(x)}{d \, x} = \frac{1}{x} \implies d\, \log(x) = \frac{d \, x}{x}
 $$
+which further implies that
 
+$$
+  \Delta \log(x) := \log(x_{new}) - \log(x_{old}) \approx \frac{x_{new} - x_{old}}{x_{old}}
+$$
+and, thus, that
+
+$$
+  100 \cdot \Delta \log(x) \approx = \textrm{% change}
+$$ 
+where the approximation is better $x_{new}$ and $x_{old}$ are close to each other.
+
+Now, we'll use these properties of logarithms in order to interpret several linear models (for simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as "on average" and "holding other regressors constant" (if there are other regressors in the model)).
+
+- **Log-Log** Model
+
+    $$
+    \log(Y) = \beta_0 + \beta_1 \log(X)
+    $$
+    
+    In this case, 
+    
+    $$
+    \begin{aligned}
+    \beta_1 &= \frac{ d \, \log(Y) }{d \, \log(X)} \\
+    &= \frac{ \frac{d \, Y}{ Y}}{ \frac{d \, X}{X}} \\
+    &= \frac{ \frac{d \, Y}{ Y} \cdot 100 }{ \frac{d \, X}{X} \cdot 100} \\
+    &= \frac{ \% \Delta Y}{ \% \Delta X}
+    \end{aligned}
+    $$
+    
+    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the percentage change in the outcome when the regressor changes by 1%.  The log-log model is sometimes called a **constant elasticity** model.
+    
+- Log-Level model
+
+    $$
+    \log(Y) = \beta_0 + \beta_1 X
+    $$
+    
+    In this case, 
+    
+    $$
+    \begin{aligned}
+    \beta_1 &= \frac{ d \, \log(Y) }{d \, X} \\
+    &= \frac{ \frac{d \, Y}{ Y}}{ d \, X} \\
+    &= \frac{ \frac{d \, Y}{ Y} \cdot 100 }{ \frac{d \, X}{X} \cdot 100} \\
+    &= \frac{ \% \Delta Y}{ \% \Delta X}
+    \end{aligned}
+    $$
+    
+    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the percentage change in the outcome when the regressor changes by 1%.  The log-log model is sometimes called a **constant elasticity** model.
 
 ## Omitted Variable Bias
 
@@ -369,6 +415,155 @@ where
   &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] (\#eq:V)
 \end{align}
 which is the expression that we used in class.
+
+## Lab 3: Birthweight and Smoking
+
+For this lab, we'll use the data `Birthweight_Smoking` and study the relationship between infant birthweight and mother's smoking behavior.
+
+1. Run a regression of $birthweight$ on $smoker$.  How do you interpret the results?
+
+2. Use the `datasummary_balance` function from the `modelsummary` package to provide summary statistics for each variable in the data separately by smoking status of the mother.  Do you notice any interesting patterns?
+
+3. Now run a regression of $birthweight$ on $smoker$, $educ$, $nprevisit$, $age$, and $alcohol$.  How do you interpret the coefficient on $smoker$?  How does its magnitude compare to the result from #1?  What do you make of this?
+
+4. Now run a regression of $birthweight$ on $smoker$, the interaction of $smoker$ and $age$ and the other covariates (including $age$) from #3.  How do you interpret the coefficient on $smoker$ and the coefficient on the interaction term?
+
+5. Now run a regression of $birthweight$ on $smoker$, the interaction of $smoker$ and $alcohol$ and the other covariates from #3.  How do you interpret the coefficient on $smoker$ and the coefficient on the interaction term?
+
+6. Now run a regression of $birthweight$ on $age$ and $age^2$.  Plot the predicted value of birthweight as a function of age for ages from 18 to 44.  What do you make of this?
+
+7. Now run a regression of $\log(birthweight)$ on $smoker$ and the other covariates from #3.  How do you interpret the coefficient on $smoker$?
+
+## Lab 3: Solutions
+
+```{r, message=FALSE}
+# load packages
+library(haven)
+library(modelsummary)
+library(dplyr)
+library(ggplot2)
+
+# load data
+Birthweight_Smoking <- read_dta("data/birthweight_smoking.dta")
+```
+
+1.
+
+```{r}
+reg1 <- lm(birthweight ~ smoker, data=Birthweight_Smoking)
+summary(reg1)
+```
+We estimate that, on average, smoking reduces an infant's birthweight by about 250 grams.  The estimated effect is strongly statistically significant, and (I am not an expert but) that seems like a large effect of smoking to me.
+
+2. 
+```{r}
+# create smoker factor --- just to make table look nicer
+Birthweight_Smoking$smoker_factor <- as.factor(ifelse(Birthweight_Smoking$smoker==1, "smoker", "non-smoker"))
+datasummary_balance(~smoker_factor, 
+                    data=dplyr::select(Birthweight_Smoking, -smoker),
+                    fmt=2)
+
+```
+
+The things that stand out to me are:
+
+- Birthweight tends to be notably lower for smokers relative to non-smokers.  The difference is about 7.4% lower birthweight for babies whose mothers smoked.
+
+- That said, smoking is also correlated with a number of other things that could be related to lower birthweights.  Mothers who smoke went to fewer pre-natal visits on average, were more likely to be unmarried, were more likely to have drink alcohol during their pregnancy, were more likely to be less educated.  They also were, on average, somewhat younger than mothers who did not smoke.
+
+3. 
+
+```{r}
+reg3 <- lm(birthweight ~ smoker + educ + nprevist + age + alcohol,
+           data=Birthweight_Smoking)
+summary(reg3)
+```
+Here we estimate that smoking reduces an infant's birthweight by about 200 grams on average holding education, number of pre-natal visits, age, and whether or not the mother consumed alcohol constant.  The magnitude of the estimated effect is somewhat smaller than the previous estimate.  Due to the discussion in #2 (particularly, that smoking was correlated with a number of other characteristics that are likely associated with lower birthweights), this decrease in the magnitude is not surprising.
+
+4. 
+
+```{r}
+reg4 <- lm(birthweight ~ smoker + I(smoker*age) + educ + nprevist + age + alcohol,
+           data=Birthweight_Smoking)
+summary(reg4)
+```
+We should be careful about the interpretatio here.  We have estimated a model like 
+
+$$
+  \E[Birthweight|Smoker, Age, X] = \beta_0 + \beta_1 Smoker + \beta_2 Smoker \cdot Age + \cdots
+$$
+Therefore, the partial effect of smoking is given by
+
+$$
+  \E[Birthweight | Smoker=1, Age, X] - \E[Birthweight | Smoker=0, Age, X] = \beta_1 + \beta_2 Age
+$$
+Therefore, the partial effect of smoking depends on $Age$.  For example, for $Age=18$, the partial effect is $\beta_1 + \beta_2 (18)$.  For $Age=25$, the partial effect is $\beta_1 + \beta_2 (25)$, and for $Age=35$, the partial effect is $\beta_1 + \beta_2 (35)$.  Let's calculate the partial effect at each of those ages.
+
+```{r}
+bet1 <- coef(reg4)[2]
+bet2 <- coef(reg4)[3]
+
+pe_18 <- bet1 + bet2*18
+pe_25 <- bet1 + bet2*25
+pe_35 <- bet1 + bet2*35
+
+round(cbind.data.frame(pe_18, pe_25, pe_35),2)
+```
+
+This suggests substantially larger effects of smoking on birthweight for older mothers.
+
+```{r}
+reg5 <- lm(birthweight ~ smoker + I(smoker*alcohol) + educ + nprevist + age + alcohol,
+           data=Birthweight_Smoking)
+summary(reg5)
+```
+The point estimate suggests that the effect of smoking is larger for women who consume alcohol and smoke than for women who do not drink alcohol.  This seems plausible, but our evidence is not very strong here --- the estimates are not statistically significant at any conventional significance level (the p-value is equal to 0.32).
+
+6.
+
+```{r}
+reg6 <- lm(birthweight ~ age + I(age^2), data=Birthweight_Smoking)
+summary(reg6)
+```
+```{r}
+preds <- predict(reg6, newdata=data.frame(age=seq(18,40)))
+ggplot(data.frame(preds=preds, age=seq(18,40)), aes(x=age, y=preds)) + 
+  geom_line() + 
+  geom_point(size=3) + 
+  theme_bw() + 
+  ylab("predicted values")
+```
+The figure suggests that predicted birthweight is increasing in mother's age up until about age 34 and then decreasing after that.
+
+7.
+
+```{r}
+reg7 <- lm(I(log(birthweight)) ~ smoker + educ + nprevist + age + alcohol,
+           data=Birthweight_Smoking)
+summary(reg7)
+```
+The estimated coefficient on $smoker$ says that smoking during pregnancy decreases a baby's birthweight by 6.3%, on average, holding education, number of pre-natal visits, age of the mother, and whether or not the mother consumed alcohol during the pregnancy constant.
+
+## Coding Questions
+
+1. For this problem, we will use the data `mtcars`.  
+
+    a) Run a regression of miles per gallon ($mpg$) on horsepower ($hp$).  How should you interpret the estimated coefficient on horsepower?  What is the p-value for the coefficient on horsepower?  
+    
+    b) Run a regression of $\log(mpg)$ on $hp$.  How should you interpret the estimated cofficient on $hp$?
+    
+    c) Run a regression of `mpg` on $\log(hp)$.  How should you interpret the estimated coefficient on $\log(hp)$?
+    
+    d) Run a regression of $\log(mpg)$ on $\log(hp)$.  How should you interpret the estimated coefficient on $\log(hp)$?
+
+2. For this question, we'll use the `fertilizer_2000` data.  
+
+    a) Run a regression of $\log(avyield)$ on $\log(avfert)$.  How do you interpret the estimated coefficient on $\log(avfert)$?  
+    
+    b) Now suppose that you additionally want to control for precipitation and the region that a country is located in.  How would you do this?  Estimate the model that you propose here, report the results, and interpret the coefficient on $\log(avfert)$.
+    
+    c) Now suppose that you are interested in whether the effect of fertilizer varies by region that a country is located in (while still controlling for the same covariates as in part (b)).  Propose a model that can be used for this purpose.  Estimate the model that you proposed, report the results, and discuss whether the effect of fertilizer appears to vary by region or not.
+    
 
 ## Extra Questions
 

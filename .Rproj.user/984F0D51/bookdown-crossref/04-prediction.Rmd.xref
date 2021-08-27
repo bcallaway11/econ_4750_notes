@@ -8,14 +8,16 @@ h3:adjusted-r2 Adjusted
 h3:aic-bic AIC, BIC
 h3:cross-validation Cross-Validation
 h3:model-averaging Model Averaging
+h3:computation Computation
 h2:machine-learning Machine Learning
 h3:lasso Lasso
 h3:ridge-regression Ridge Regression
+h3:computation-1 Computation
 h2:binary-outcome-models Binary Outcome Models
 h3:linear-probability-model Linear Probability Model
 h3:probit-and-logit Probit and Logit
 h3:average-partial-effects Average Partial Effects
-h2:computation Computation
+h3:computation-2 Computation
 h2:lab-4-predicting-diamond-prices Lab 4: Predicting Diamond Prices
 h2:lab-4-solutions Lab 4: Solutions
 h2:extra-questions Extra Questions
