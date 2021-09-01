@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.1 Topics in Probability | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.1 Topics in Probability | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="probability-and-statistics.html"/>
 <link rel="next" href="topics-in-statistics.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,24 +51,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +88,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +121,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,7 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Course Outline/Notes for ECON 4750</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
 <li class="chapter" data-level="1.2" data-path="what-is-this-not.html"><a href="what-is-this-not.html"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
 <li class="chapter" data-level="1.3" data-path="why-did-i-write-this.html"><a href="why-did-i-write-this.html"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
@@ -146,22 +149,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
 <li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a><ul>
-<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a><ul>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="setting-up-r.html"><a href="setting-up-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
 <li class="chapter" data-level="2.1.2" data-path="setting-up-r.html"><a href="setting-up-r.html#downloading-r"><i class="fa fa-check"></i><b>2.1.2</b> Downloading R</a></li>
 <li class="chapter" data-level="2.1.3" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio"><i class="fa fa-check"></i><b>2.1.3</b> RStudio</a></li>
 <li class="chapter" data-level="2.1.4" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.1.4</b> RStudio Development Environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a><ul>
+<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#a-list-of-useful-r-packages"><i class="fa fa-check"></i><b>2.2.1</b> A list of useful R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a><ul>
+<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
-<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>2.5.1</b> Numeric Vectors</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-types.html"><a href="data-types.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.5.2</b> Vector arithmetic</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-types.html"><a href="data-types.html#more-helpful-functions-in-r"><i class="fa fa-check"></i><b>2.5.3</b> More helpful functions in R</a></li>
@@ -172,16 +180,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.5.8</b> Factors</a></li>
 <li class="chapter" data-level="2.5.9" data-path="data-types.html"><a href="data-types.html#understanding-an-object-in-r"><i class="fa fa-check"></i><b>2.5.9</b> Understanding an object in R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a><ul>
+<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a>
+<ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a><ul>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
 <li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
 <li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
 <li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a><ul>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
 <li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
@@ -191,8 +202,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a><ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
 <li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
 <li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
@@ -211,9 +224,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
 <li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
+<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
@@ -228,58 +242,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
 <li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a><ul>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
 <li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
-<li class="chapter" data-level="4.3" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
-<li class="chapter" data-level="4.4" data-path="interpreting-binary-covariate.html"><a href="interpreting-binary-covariate.html"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
-<li class="chapter" data-level="4.5" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
-<li class="chapter" data-level="4.6" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
-<li class="chapter" data-level="4.7" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
-<li class="chapter" data-level="4.8" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.9" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
-<li class="chapter" data-level="4.10" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
-<li class="chapter" data-level="4.11" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.11</b> Lab 3: Birthweight and Smoking</a></li>
-<li class="chapter" data-level="4.12" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Solutions</a></li>
-<li class="chapter" data-level="4.13" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.13</b> Coding Questions</a></li>
-<li class="chapter" data-level="4.14" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Extra Questions</a></li>
-<li class="chapter" data-level="4.15" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.15</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
+<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a><ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a><ul>
+<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
+<li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="4.13" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.13</b> Lab 3: Solutions</a></li>
+<li class="chapter" data-level="4.14" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
 <li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a><ul>
+<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
 <li class="chapter" data-level="5.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
 <li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
-<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a><ul>
+<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
 <li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
-<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-1"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a><ul>
+<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
 <li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
-<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-2"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
+<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-10"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.5</b> Lab 4: Predicting Diamond Prices</a></li>
 <li class="chapter" data-level="5.6" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Solutions</a></li>
-<li class="chapter" data-level="5.7" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.8" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.8</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.7" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Coding Questions</a></li>
+<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
 <li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
 <li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
+<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
@@ -307,17 +353,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="topics-in-probability" class="section level2">
+<div id="topics-in-probability" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Topics in Probability</h2>
 <p>At a very high level, probability is the set of mathematical tools that allow us to think about <strong>random</strong> events.</p>
 <p>Just to be clear, random means <em>uncertain</em>, not 50:50.</p>
 <p>A simple example of a random event is the outcome from rolling a die.</p>
 <p>Eventually, we will treat data as being random draws from some population. Examples of things that we will treat as random draws are things like a person’s hair color, height, income, etc. We will think of all of these as being random draws because <em>ex ante</em> we don’t know what they will be.</p>
-<div id="data-for-this-chapter" class="section level3">
+<div id="data-for-this-chapter" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Data for this chapter</h3>
 <p>For this chapter, we’ll use data from the U.S. Census Bureau from 2019. It is not quite a full census, but we’ll treat it as the population throughout this chapter.</p>
 </div>
-<div id="random-variables" class="section level3">
+<div id="random-variables" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Random Variables</h3>
 <p>SW 2.1</p>
 <p>A <strong>random variable</strong> is a numerical summary of some random event.</p>
@@ -335,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>These are broad categories because a lot of random variables in economics sit in between these two.</p>
 </div>
-<div id="pdfs-pmfs-and-cdfs" class="section level3">
+<div id="pdfs-pmfs-and-cdfs" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> pdfs, pmfs, and cdfs</h3>
 <p>SW 2.1</p>
 <p>The <strong>distribution</strong> of a random variable describes how likely it is take on certain values.</p>
@@ -346,19 +392,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The pmf is somewhat easier to explain, so let’s start there. For some discrete random variable <span class="math inline">\(X\)</span>, its pmf is given by</p>
 <p><span class="math display">\[
-  f_X(x) = \mathrm{P}(X=x)
+  f_X(x) = \P(X=x)
 \]</span>
 That is, the probability that <span class="math inline">\(X\)</span> takes on some particular value <span class="math inline">\(x\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 3.1  </strong></span>Suppose that <span class="math inline">\(X\)</span> denotes the outcome of a roll of a die. Then, <span class="math inline">\(f_X(1)\)</span> is the probability of rolling a one. And, in particular,</p>
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 3.1  </strong></span>Suppose that <span class="math inline">\(X\)</span> denotes the outcome of a roll of a die. Then, <span class="math inline">\(f_X(1)\)</span> is the probability of rolling a one. And, in particular,</p>
 <p><span class="math display">\[
-  f_X(1) = \mathrm{P}(X=1) = \frac{1}{6}
+  f_X(1) = \P(X=1) = \frac{1}{6}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 3.2  </strong></span>Let’s do a bit more realistic example where we look at the pmf of education in the U.S. Suppose that <span class="math inline">\(X\)</span> denotes the years of education that a person has. Then, <span class="math inline">\(f_X(x)\)</span> is the probability that a person has exactly <span class="math inline">\(x\)</span> years of education. We can set <span class="math inline">\(x\)</span> to different values and calculate the probabilities of a person having different amounts of education. That’s what we do in the following figure:</p>
-<div class="figure"><span id="fig:unnamed-chunk-79"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-79-1.png" alt="pmf of U.S. education" width="672" />
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 3.2  </strong></span>Let’s do a bit more realistic example where we look at the pmf of education in the U.S. Suppose that <span class="math inline">\(X\)</span> denotes the years of education that a person has. Then, <span class="math inline">\(f_X(x)\)</span> is the probability that a person has exactly <span class="math inline">\(x\)</span> years of education. We can set <span class="math inline">\(x\)</span> to different values and calculate the probabilities of a person having different amounts of education. That’s what we do in the following figure:</p>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-3-1.png" alt="pmf of U.S. education" width="672" />
 <p class="caption">
 Figure 3.1: pmf of U.S. education
 </p>
@@ -370,19 +416,19 @@ Figure 3.1: pmf of U.S. education
 <li><strong>Cumulative distribution function (cdf)</strong> - The cdf of some random variable <span class="math inline">\(X\)</span> is defined as</li>
 </ul>
 <p><span class="math display">\[
-  F_X(x) = \mathrm{P}(X \leq x)
+  F_X(x) = \P(X \leq x)
 \]</span>
 In words, this cdf is the probability that the random <span class="math inline">\(X\)</span> takes a value less than or equal to <span class="math inline">\(x\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 3.3  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Then, <span class="math inline">\(F_X(3) = \mathrm{P}(X \leq 3)\)</span> is the probability of rolling 3 or lower. Thus,</p>
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 3.3  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Then, <span class="math inline">\(F_X(3) = \P(X \leq 3)\)</span> is the probability of rolling 3 or lower. Thus,</p>
 <p><span class="math display">\[
-  F_X(3) = \mathrm{P}(X \leq 3) = \frac{1}{2}
+  F_X(3) = \P(X \leq 3) = \frac{1}{2}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 3.4  </strong></span>Let’s go back to our example of years of education in the U.S. In this case, <span class="math inline">\(F_X(x)\)</span> is the fraction of the population that has less than <span class="math inline">\(x\)</span> years of education. We can calculate this for different values of <span class="math inline">\(x\)</span>. That’s what we do in the following figure:</p>
-<div class="figure"><span id="fig:unnamed-chunk-80"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-80-1.png" alt="cdf of U.S. educ" width="672" />
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 3.4  </strong></span>Let’s go back to our example of years of education in the U.S. In this case, <span class="math inline">\(F_X(x)\)</span> is the fraction of the population that has less than <span class="math inline">\(x\)</span> years of education. We can calculate this for different values of <span class="math inline">\(x\)</span>. That’s what we do in the following figure:</p>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-4-1.png" alt="cdf of U.S. educ" width="672" />
 <p class="caption">
 Figure 3.2: cdf of U.S. educ
 </p>
@@ -391,7 +437,7 @@ Figure 3.2: cdf of U.S. educ
 </div>
 <p>We’ll go over some properties of pmfs and cdfs momentarily (perhaps you can already deduce some of them from the above figures), but before we do that, we need to go over some (perhaps new) tools.</p>
 </div>
-<div id="summation-operator" class="section level3">
+<div id="summation-operator" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> Summation operator</h3>
 <p>It will be convenient for us to have a notation that allows us to add up many numbers/variables at the same time. To do this, we’ll introduce the <span class="math inline">\(\sum\)</span> operation.</p>
 <p>As a simple example, suppose that we have three variables (it doesn’t matter if they are random or not): <span class="math inline">\(x_1,x_2,x_3\)</span> and we want to add them up. Then, we can write
@@ -426,28 +472,28 @@ Many timess, once we have data, there will be n “observations” and we can ad
 <p>where the first line is just the definition of the summation, the second equality factors out the 7, and the last equality writes the part about adding up the <span class="math inline">\(x\)</span>’s using summation notation.</p></li>
 </ol>
 </div>
-<div id="properties-of-pmfs-and-cdfs" class="section level3">
+<div id="properties-of-pmfs-and-cdfs" class="section level3" number="3.1.5">
 <h3><span class="header-section-number">3.1.5</span> Properties of pmfs and cdfs</h3>
 <p>Let’s define the <strong>support</strong> of a random variable <span class="math inline">\(X\)</span> — this is the set of all possible values that <span class="math inline">\(X\)</span> can possibly take. We’ll use the notation <span class="math inline">\(\mathcal{X}\)</span> to denote the support of <span class="math inline">\(X\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 3.5  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, the support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{1,2,3,4,5,6\}\)</span>. In other words, the only possible values for <span class="math inline">\(X\)</span> are from <span class="math inline">\(1,\ldots,6\)</span>.</p>
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 3.5  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, the support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{1,2,3,4,5,6\}\)</span>. In other words, the only possible values for <span class="math inline">\(X\)</span> are from <span class="math inline">\(1,\ldots,6\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 3.6  </strong></span>Suppose <span class="math inline">\(X\)</span> is the number of years of education that a person has. The support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{0, 1, 2, \ldots, 20\}\)</span>. Perhaps I should have chosen a larger number than 20 to be the maximum possible value that <span class="math inline">\(X\)</span> could take, but you will get the idea — a person’s years of education can be 0 or 1 or 2 or up to some maximum value.</p>
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 3.6  </strong></span>Suppose <span class="math inline">\(X\)</span> is the number of years of education that a person has. The support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{0, 1, 2, \ldots, 20\}\)</span>. Perhaps I should have chosen a larger number than 20 to be the maximum possible value that <span class="math inline">\(X\)</span> could take, but you will get the idea — a person’s years of education can be 0 or 1 or 2 or up to some maximum value.</p>
 </div>
 <p><strong>Properties of pmfs</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>For any <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq f_X(x) \leq 1\)</span></p>
 <p>In words: the probability of <span class="math inline">\(X\)</span> taking some particular value can’t be less than 0 or greater than 1 (neither of those would make any sense)</p></li>
 <li><p><span class="math inline">\(\sum_{x \in \mathcal{X}} f_X(x) = 1\)</span></p>
-<p>In words: if you add up <span class="math inline">\(\mathrm{P}(X=x)\)</span> across all possible values that <span class="math inline">\(X\)</span> could take, they sum to 1.</p></li>
+<p>In words: if you add up <span class="math inline">\(\P(X=x)\)</span> across all possible values that <span class="math inline">\(X\)</span> could take, they sum to 1.</p></li>
 </ol>
 <p><strong>Properties of cdfs for discrete random variables</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>For any <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq F_X(x) \leq 1\)</span></p>
 <p>In words: the probability that <span class="math inline">\(X\)</span> is less than or equal to some particular value <span class="math inline">\(x\)</span> has to be between 0 and 1.</p></li>
 <li><p>If <span class="math inline">\(x_1 &lt; x_2\)</span>, then <span class="math inline">\(F_X(x_1) \leq F_X(x_2)\)</span></p>
-<p>In words: the cdf is increasing in <span class="math inline">\(x\)</span> (e.g., it will always be the case that <span class="math inline">\(\mathrm{P}(X \leq 3) \leq \mathrm{P}(X \leq 4)\)</span>).</p></li>
+<p>In words: the cdf is increasing in <span class="math inline">\(x\)</span> (e.g., it will always be the case that <span class="math inline">\(\P(X \leq 3) \leq \P(X \leq 4)\)</span>).</p></li>
 <li><p><span class="math inline">\(F_X(-\infty)=0\)</span> and <span class="math inline">\(F_X(\infty)=1\)</span></p>
 <p>In words: if you choose small enough values of <span class="math inline">\(x\)</span>, the probability that <span class="math inline">\(X\)</span> will be less than that is 0; similar (but opposite) logic applies for big values of <span class="math inline">\(x\)</span>.</p></li>
 </ol>
@@ -457,7 +503,7 @@ Many timess, once we have data, there will be n “observations” and we can ad
 <p>In words: you can “recover” the cdf from the pmf by adding up the pmf across all possible values that the random variable could take that are less than or equal to <span class="math inline">\(x\)</span>. This will be clearer with an example:</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 3.7  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Earlier we showed that <span class="math inline">\(F_X(3) = 1/2\)</span>. We can calculate this by</p>
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 3.7  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Earlier we showed that <span class="math inline">\(F_X(3) = 1/2\)</span>. We can calculate this by</p>
 <p><span class="math display">\[
   \begin{aligned}
   F_X(3) &amp;= \sum_{z \in \mathcal{X} \\ z \leq 3} f_X(z) \\
@@ -469,17 +515,17 @@ Many timess, once we have data, there will be n “observations” and we can ad
 \]</span></p>
 </div>
 </div>
-<div id="continuous-random-variables" class="section level3">
+<div id="continuous-random-variables" class="section level3" number="3.1.6">
 <h3><span class="header-section-number">3.1.6</span> Continuous Random Variables</h3>
 <p>SW 2.1</p>
 <p>For continuous random variables, you can define the cdf in exactly the same way as we did for discrete random variables. That is, if <span class="math inline">\(X\)</span> is a continuous random variable,</p>
 <p><span class="math display">\[
-  F_X(x) = \mathrm{P}(X \leq x)
+  F_X(x) = \P(X \leq x)
 \]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 3.8  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The cdf of <span class="math inline">\(X\)</span> looks like</p>
-<div class="figure"><span id="fig:unnamed-chunk-81"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-81-1.png" alt="cdf of U.S. wage income" width="672" />
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 3.8  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The cdf of <span class="math inline">\(X\)</span> looks like</p>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-5-1.png" alt="cdf of U.S. wage income" width="672" />
 <p class="caption">
 Figure 3.3: cdf of U.S. wage income
 </p>
@@ -490,7 +536,7 @@ Figure 3.3: cdf of U.S. wage income
 <p><span class="math display">\[
   f_X(x) := \frac{d \, F_X(x)}{d \, x}
 \]</span>
-Recall that the slope of the cdf will be larger in places where <span class="math inline">\(F_X(x)\)</span> is “steeper”.</p>
+Recall that the slope of the cdf will be larger in places where <span class="math inline">\(F_X(x)\)</span> is “steeper.”</p>
 <p>Regions where the pdf is larger correspond to more likely values of <span class="math inline">\(X\)</span> — in this sense the pdf is very similar to the pmf.</p>
 <p>We can also write the cdf as an integral over the pdf. That is,</p>
 <p><span class="math display">\[
@@ -499,33 +545,33 @@ Recall that the slope of the cdf will be larger in places where <span class="mat
 Integration is roughly the continuous version of a summation — thus, this expression is very similar to the expression above for the cdf in terms of the pmf when <span class="math inline">\(X\)</span> is discrete.</p>
 <p><strong>More properties of cdfs</strong></p>
 <ol start="4" style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathrm{P}(X &gt; x) = 1 - \mathrm{P}(X \leq x) = 1-F_X(x)\)</span></p>
+<li><p><span class="math inline">\(\P(X &gt; x) = 1 - \P(X \leq x) = 1-F_X(x)\)</span></p>
 <p>In words, if you want to calculate the probability that <span class="math inline">\(X\)</span> <em>is greater than</em> some particular value <span class="math inline">\(x\)</span>, you can do that by calculating <span class="math inline">\(1-F_X(x)\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathrm{P}(a \leq X \leq b) = F_X(b) - F_X(a)\)</span></p>
+<li><p><span class="math inline">\(\P(a \leq X \leq b) = F_X(b) - F_X(a)\)</span></p>
 <p>In words: you can also calculate the probability that <span class="math inline">\(X\)</span> falls in some range using the cdf.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 3.9  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The pdf of <span class="math inline">\(X\)</span> looks like</p>
-<div class="figure"><span id="fig:unnamed-chunk-82"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-82-1.png" alt="pdf of U.S. wage income" width="672" />
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 3.9  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The pdf of <span class="math inline">\(X\)</span> looks like</p>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-6-1.png" alt="pdf of U.S. wage income" width="672" />
 <p class="caption">
 Figure 3.4: pdf of U.S. wage income
 </p>
 </div>
 <p>From the figure, we can see that the most common values of yearly income are around $25-30,000 per year. Notice that this corresponds to the steepest part of the cdf from the previous figure. The right tail of the distribution is also long. This means that, while incomes of $150,000+ are not common, there are some individuals who have incomes that high.</p>
 <p>Moreover, we can use the properties of pdfs/cdfs above to calculate some specific probabilities. In particular, we can calculating probabilities by calculating integrals (i.e., regions under the curve) / relating the pdf to the cdf. First, the red region above corresponds to the probability of a person’s income being between $50,000 and $100,000. This is given by <span class="math inline">\(F(100,000) - F(50000)\)</span>. We can compute this in <code>R</code> using the <code>ecdf</code> function. In particular,</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="topics-in-probability.html#cb76-1"></a>incwage_cdf &lt;-<span class="st"> </span><span class="kw">ecdf</span>(us_data<span class="op">$</span>incwage)</span>
-<span id="cb76-2"><a href="topics-in-probability.html#cb76-2"></a><span class="kw">round</span>(<span class="kw">incwage_cdf</span>(<span class="dv">100000</span>) <span class="op">-</span><span class="st"> </span><span class="kw">incwage_cdf</span>(<span class="dv">50000</span>),<span class="dv">3</span>)</span>
-<span id="cb76-3"><a href="topics-in-probability.html#cb76-3"></a><span class="co">#&gt; [1] 0.27</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="topics-in-probability.html#cb1-1" aria-hidden="true" tabindex="-1"></a>incwage_cdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(us_data<span class="sc">$</span>incwage)</span>
+<span id="cb1-2"><a href="topics-in-probability.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">incwage_cdf</span>(<span class="dv">100000</span>) <span class="sc">-</span> <span class="fu">incwage_cdf</span>(<span class="dv">50000</span>),<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.27</code></pre>
 <p>The green region in the figure is the probability of a person’s income being above $150,000. Using the above properties of cdfs, we can calculate it as <span class="math inline">\(1-F(150000)\)</span> which is</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="topics-in-probability.html#cb77-1"></a><span class="kw">round</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">incwage_cdf</span>(<span class="dv">150000</span>), <span class="dv">3</span>)</span>
-<span id="cb77-2"><a href="topics-in-probability.html#cb77-2"></a><span class="co">#&gt; [1] 0.052</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="topics-in-probability.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">incwage_cdf</span>(<span class="dv">150000</span>), <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.052</code></pre>
 </div>
 </div>
-<div id="expected-values" class="section level3">
+<div id="expected-values" class="section level3" number="3.1.7">
 <h3><span class="header-section-number">3.1.7</span> Expected Values</h3>
 <p>SW 2.2</p>
-<p>The <strong>expected value</strong> of some random variable <span class="math inline">\(X\)</span> is its (population) mean and is written as <span class="math inline">\(\mathbb{E}[X]\)</span>. [I tend to write <span class="math inline">\(\mathbb{E}[X]\)</span> for the expected value, but you might also see notation like <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\mu_X\)</span> for the expected value.]</p>
+<p>The <strong>expected value</strong> of some random variable <span class="math inline">\(X\)</span> is its (population) mean and is written as <span class="math inline">\(\E[X]\)</span>. [I tend to write <span class="math inline">\(\E[X]\)</span> for the expected value, but you might also see notation like <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\mu_X\)</span> for the expected value.]</p>
 <p>The expected value of a random variable is a <em>feature</em> of its distribution. In other words, if you know the distribution of a random variable, then you also know its mean.</p>
 <p>The expected value is a measure of <strong>central tendency</strong> (alternative measures of central tendency are the <strong>median</strong> and <strong>mode</strong>).</p>
 <p>Expected values are a main concept in the course (and in statistics/econometrics more generally). I think there are two main reasons for this:</p>
@@ -535,101 +581,105 @@ Figure 3.4: pdf of U.S. wage income
 </ul>
 <p>If <span class="math inline">\(X\)</span> is a discrete random variable, then the expected value is defined as</p>
 <p><span class="math display">\[
-  \mathbb{E}[X] = \sum_{x \in \mathcal{X}} x f_X(x)
+  \E[X] = \sum_{x \in \mathcal{X}} x f_X(x)
 \]</span></p>
 <p>If <span class="math inline">\(X\)</span> is a continuous random variable, then the expected value is defined as</p>
 <p><span class="math display">\[
-  \mathbb{E}[X] = \int_{\mathcal{X}} x f_X(x) \, dx
+  \E[X] = \int_{\mathcal{X}} x f_X(x) \, dx
 \]</span>
 Either way, you can think of these as a weighted average of all possible realizations of the random variable <span class="math inline">\(X\)</span> where the weights are given by the probability of <span class="math inline">\(X\)</span> taking that particular value. This may be more clear with an example…</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 3.10  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, its expected value is given by</p>
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 3.10  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, its expected value is given by</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \mathbb{E}[X] &amp;= \sum_{x=1}^6 x f_X(x) \\
+  \E[X] &amp;= \sum_{x=1}^6 x f_X(x) \\
   &amp;= 1\left(\frac{1}{6}\right) + 2\left(\frac{1}{6}\right) + \cdots + 6\left(\frac{1}{6}\right) \\
   &amp;= 3.5
   \end{aligned}
 \]</span></p>
 </div>
 <div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span> When we start to consider more realistic/interesting applications, we typically won’t know (or be able to easily figure out) <span class="math inline">\(\mathbb{E}[X]\)</span>. Instead, we’ll try to estimate it using available data. We’ll carefully distinguish between <strong>population quantities</strong> like <span class="math inline">\(\mathbb{E}[X]\)</span> and <strong>sample quantities</strong> like an estimate of <span class="math inline">\(\mathbb{E}[X]\)</span> soon.</p>
+<p><span class="side-comment">Side-Comment:</span> When we start to consider more realistic/interesting applications, we typically won’t know (or be able to easily figure out) <span class="math inline">\(\E[X]\)</span>. Instead, we’ll try to estimate it using available data. We’ll carefully distinguish between <strong>population quantities</strong> like <span class="math inline">\(\E[X]\)</span> and <strong>sample quantities</strong> like an estimate of <span class="math inline">\(\E[X]\)</span> soon.</p>
 </div>
 </div>
-<div id="variance" class="section level3">
+<div id="variance" class="section level3" number="3.1.8">
 <h3><span class="header-section-number">3.1.8</span> Variance</h3>
 <p>SW 2.2</p>
-<p>The next most important feature of the distribution of a random variable is its <strong>variance</strong>. The variance of a random variable <span class="math inline">\(X\)</span> is a measure of its “spread”, and we will denote it <span class="math inline">\(\mathrm{var}(X)\)</span> [You might also sometimes see the notation <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\sigma_X^2\)</span> for the variance.] The variance is defined as</p>
+<p>The next most important feature of the distribution of a random variable is its <strong>variance</strong>. The variance of a random variable <span class="math inline">\(X\)</span> is a measure of its “spread,” and we will denote it <span class="math inline">\(\Var(X)\)</span> [You might also sometimes see the notation <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\sigma_X^2\)</span> for the variance.] The variance is defined as</p>
 <p><span class="math display">\[
-  \mathrm{var}(X) := \mathbb{E}\left[ (X - \mathbb{E}[X])^2 \right]
+  \Var(X) := \E\left[ (X - \E[X])^2 \right]
 \]</span>
 Before we move forward, let’s think about why this is a measure of the spread of a random variable.</p>
 <ul>
-<li><p><span class="math inline">\((X-\mathbb{E}[X])^2\)</span> is a common way to measure the “distance” between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathbb{E}[X]\)</span>. It is always positive (whether <span class="math inline">\((X - \mathbb{E}[X])\)</span> is positive or negative) which is a good feature for a measure of distance to have. It is also increasing in <span class="math inline">\(|X-\mathbb{E}[X]|\)</span> which also seems a requirement for a reasonable measure of distance.</p></li>
+<li><p><span class="math inline">\((X-\E[X])^2\)</span> is a common way to measure the “distance” between <span class="math inline">\(X\)</span> and <span class="math inline">\(\E[X]\)</span>. It is always positive (whether <span class="math inline">\((X - \E[X])\)</span> is positive or negative) which is a good feature for a measure of distance to have. It is also increasing in <span class="math inline">\(|X-\E[X]|\)</span> which also seems a requirement for a reasonable measure of distance.</p></li>
 <li><p>Then, the outer expectation averages the above distance across the distribution of <span class="math inline">\(X\)</span>.</p></li>
 </ul>
+<p>An alternative expression for <span class="math inline">\(\Var(X)\)</span> that is often useful in calculations is</p>
+<p><span class="math display">\[
+  \Var(X) = \E[X^2] - \E[X]^2
+\]</span></p>
 <p>Sometimes, we will also consider the <strong>standard deviation</strong> of a random variable. The standard deviation is defined as</p>
 <p><span class="math display">\[
-  \textrm{sd}(X) := \sqrt{\mathrm{var}(X)}
+  \textrm{sd}(X) := \sqrt{\Var(X)}
 \]</span>
 You might also see the notation <span class="math inline">\(\sigma\)</span> or <span class="math inline">\(\sigma_X\)</span> for the standard deviation.</p>
 <p>The standard deviation is often easier to interpret than the variance because it has the same “units” as <span class="math inline">\(X\)</span>. Variance “units” are squared units of <span class="math inline">\(X\)</span>.</p>
 <p>That said, variances more often show up in formulas/derivations this semester.</p>
 </div>
-<div id="mean-and-variance-of-linear-functions" class="section level3">
+<div id="mean-and-variance-of-linear-functions" class="section level3" number="3.1.9">
 <h3><span class="header-section-number">3.1.9</span> Mean and Variance of Linear Functions</h3>
 <p>SW 2.2</p>
 <p>For this part, suppose that <span class="math inline">\(Y=a + bX\)</span> where <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are random variables while <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are fixed constants.</p>
 <p><strong>Properties of Expectations</strong></p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathbb{E}[a] = a\)</span> [In words: the expected value of a constant is just the constant. This holds because there is nothing random about <span class="math inline">\(a\)</span> — we just know what it is.]</p></li>
-<li><p><span class="math inline">\(\mathbb{E}[bX] = b\mathbb{E}[X]\)</span> [In words: the expected value of a constant times a random variable is equal to the constant times the expected value of the random variable. We will use this property often this semester.]</p></li>
-<li><p><span class="math inline">\(\mathbb{E}[a + bX] = a + b\mathbb{E}[X]\)</span> [In words: expected values “pass through” sums. We will use this property often this semester.]</p></li>
+<li><p><span class="math inline">\(\E[a] = a\)</span> [In words: the expected value of a constant is just the constant. This holds because there is nothing random about <span class="math inline">\(a\)</span> — we just know what it is.]</p></li>
+<li><p><span class="math inline">\(\E[bX] = b\E[X]\)</span> [In words: the expected value of a constant times a random variable is equal to the constant times the expected value of the random variable. We will use this property often this semester.]</p></li>
+<li><p><span class="math inline">\(\E[a + bX] = a + b\E[X]\)</span> [In words: expected values “pass through” sums. We will use this property often this semester.]</p></li>
 </ol>
 <p>You’ll also notice the similarity between the properties of summations and expectations. This is not a coincidence — it holds because expectations are defined as summations (or very closely related, as integrals).</p>
 <p><strong>Properties of Variance</strong></p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathrm{var}(a) = 0\)</span> [In words: the variance of a constant is equal to 0.]</p></li>
-<li><p><span class="math inline">\(\mathrm{var}(bX) = b^2 \mathrm{var}(X)\)</span> [In words: A constant can come out of the variance, but it needs to be squared first.]</p></li>
-<li><p><span class="math inline">\(\mathrm{var}(a + bX) = \mathrm{var}(bX) = b^2 \mathrm{var}(bX)\)</span></p></li>
+<li><p><span class="math inline">\(\Var(a) = 0\)</span> [In words: the variance of a constant is equal to 0.]</p></li>
+<li><p><span class="math inline">\(\Var(bX) = b^2 \Var(X)\)</span> [In words: A constant can come out of the variance, but it needs to be squared first.]</p></li>
+<li><p><span class="math inline">\(\Var(a + bX) = \Var(bX) = b^2 \Var(bX)\)</span></p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 3.11  </strong></span>Later on in the semester, it will sometimes be convenient for us to “standardize” some random variables. We’ll talk more about the reason to do this later, but for now, I’ll just give the typical formula for standardizing a random variable and we’ll see if we can figure out what the mean and variance of the standardized random variable are.</p>
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 3.11  </strong></span>Later on in the semester, it will sometimes be convenient for us to “standardize” some random variables. We’ll talk more about the reason to do this later, but for now, I’ll just give the typical formula for standardizing a random variable and we’ll see if we can figure out what the mean and variance of the standardized random variable are.</p>
 <p><span class="math display">\[ 
-  Y = \frac{ X - \mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}}
+  Y = \frac{ X - \E[X]}{\sqrt{\Var(X)}}
 \]</span>
 Just to be clear here, we are standardizing the random variable <span class="math inline">\(X\)</span> and calling its standardized version <span class="math inline">\(Y\)</span>. Let’s calculate its mean</p>
 <p><span class="math display">\[
   \begin{aligned}
-    \mathbb{E}[Y] &amp;= \mathbb{E}\left[ \frac{X}{\sqrt{\mathrm{var}(X)}} - \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right] \\
-    &amp;= \mathbb{E}\left[ \frac{X}{\sqrt{\mathrm{var}(X)}} \right] - \mathbb{E}\left[ \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right] \\
-    &amp;= \frac{\mathbb{E}[X]}{\mathrm{var}(X)} - \frac{\mathbb{E}[X]}{\mathrm{var}(X)} \\
+    \E[Y] &amp;= \E\left[ \frac{X}{\sqrt{\Var(X)}} - \frac{\E[X]}{\sqrt{\Var(X)}} \right] \\
+    &amp;= \E\left[ \frac{X}{\sqrt{\Var(X)}} \right] - \E\left[ \frac{\E[X]}{\sqrt{\Var(X)}} \right] \\
+    &amp;= \frac{\E[X]}{\Var(X)} - \frac{\E[X]}{\Var(X)} \\
     &amp;= 0
   \end{aligned}
 \]</span>
-where the first equality just comes from the definition of <span class="math inline">\(Y\)</span> and the second equality holds because expectations can pass through differences. For the first term in the third equality, it holds because <span class="math inline">\(\mathrm{var}(X)\)</span> is a constant and can therefore come out of the expectation, and then all that is left is <span class="math inline">\(\mathbb{E}[X]\)</span>. For the second term, <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathrm{var}(X)\)</span> are both just constants, so this is the expectation of a constant which is just equal to the constant itself. Then, the first term and second term cancel each other so that the mean of <span class="math inline">\(Y\)</span> is 0. Now let’s calculate the variance.</p>
+where the first equality just comes from the definition of <span class="math inline">\(Y\)</span> and the second equality holds because expectations can pass through differences. For the first term in the third equality, it holds because <span class="math inline">\(\Var(X)\)</span> is a constant and can therefore come out of the expectation, and then all that is left is <span class="math inline">\(\E[X]\)</span>. For the second term, <span class="math inline">\(\E[X]\)</span> and <span class="math inline">\(\Var(X)\)</span> are both just constants, so this is the expectation of a constant which is just equal to the constant itself. Then, the first term and second term cancel each other so that the mean of <span class="math inline">\(Y\)</span> is 0. Now let’s calculate the variance.</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \mathrm{var}(Y) &amp;= \mathrm{var}\left( \frac{X}{\sqrt{\mathrm{var}(X)}} - \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right) \\
-  &amp;= \mathrm{var}\left( \frac{X}{\sqrt{\mathrm{var}(X)}}\right) \\
-  &amp;= \left( \frac{1}{\sqrt{\mathrm{var}(X)}} \right)^2 \mathrm{var}(X) \\
-  &amp;= \frac{\mathrm{var}(X)}{\mathrm{var}(X)} \\
+  \Var(Y) &amp;= \Var\left( \frac{X}{\sqrt{\Var(X)}} - \frac{\E[X]}{\sqrt{\Var(X)}} \right) \\
+  &amp;= \Var\left( \frac{X}{\sqrt{\Var(X)}}\right) \\
+  &amp;= \left( \frac{1}{\sqrt{\Var(X)}} \right)^2 \Var(X) \\
+  &amp;= \frac{\Var(X)}{\Var(X)} \\
   &amp;= 1
   \end{aligned}
 \]</span>
-where the first equality holds by the definition of <span class="math inline">\(Y\)</span>, the second equality holds because the second term is a constant and by Variance Property 3 above, the third equality holds because <span class="math inline">\((1/\sqrt{\mathrm{var}(X)})\)</span> is a constant and can come out of the variance but needs to be squared, the fourth equality holds by squaring the term on the left, and the last equality holds by cancelling the numerator and denominator.</p>
+where the first equality holds by the definition of <span class="math inline">\(Y\)</span>, the second equality holds because the second term is a constant and by Variance Property 3 above, the third equality holds because <span class="math inline">\((1/\sqrt{\Var(X)})\)</span> is a constant and can come out of the variance but needs to be squared, the fourth equality holds by squaring the term on the left, and the last equality holds by cancelling the numerator and denominator.</p>
 <p>Therefore, we have showed that the mean of the standardized random variable is 0 and its variance is 1. This is, in fact, the goal of standardizing a random variable — to transform it so that it has mean 0 and variance 1 and the particular transformation given in this example is one that delivers a new random variable with these properties.</p>
 </div>
 </div>
-<div id="multiple-random-variables" class="section level3">
+<div id="multiple-random-variables" class="section level3" number="3.1.10">
 <h3><span class="header-section-number">3.1.10</span> Multiple Random Variables</h3>
 <p>SW 2.3</p>
 <p>Most often in economics, we want to consider two (or more) random variables jointly rather than just a single random variable. For example, mean income is interesting, but mean income as a function of education is more interesting.</p>
 <p>When there is more than one random variable, you can define <strong>joint pmfs</strong>, <strong>joint pdfs</strong>, and <strong>joint cdfs</strong>.</p>
 <p>Let’s quickly go over these for the case where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are two discrete random variables.</p>
-<p><strong>Joint pmf:</strong> <span class="math inline">\(f_{X,Y}(x,y) := \mathrm{P}(X=x, Y=y)\)</span></p>
-<p><strong>Joint cdf:</strong> <span class="math inline">\(F_{X,Y}(x,y) := \mathrm{P}(X \leq x, Y \leq y)\)</span></p>
-<p><strong>Conditional pmf:</strong> <span class="math inline">\(f_{Y|X}(y|x) := \mathrm{P}(Y=y | X=x)\)</span></p>
+<p><strong>Joint pmf:</strong> <span class="math inline">\(f_{X,Y}(x,y) := \P(X=x, Y=y)\)</span></p>
+<p><strong>Joint cdf:</strong> <span class="math inline">\(F_{X,Y}(x,y) := \P(X \leq x, Y \leq y)\)</span></p>
+<p><strong>Conditional pmf:</strong> <span class="math inline">\(f_{Y|X}(y|x) := \P(Y=y | X=x)\)</span></p>
 <p><strong>Properties</strong></p>
 <p>We use the notation that <span class="math inline">\(\mathcal{X}\)</span> denotes the support of <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathcal{Y}\)</span> denotes the support of <span class="math inline">\(Y\)</span>.</p>
 <ol style="list-style-type: decimal">
@@ -643,82 +693,82 @@ where the first equality holds by the definition of <span class="math inline">\(
 </ol>
 <p><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <strong>independent</strong> if <span class="math inline">\(f_{Y|X}(y|x) = f_Y(y)\)</span>. In other words, if knowing the value of <span class="math inline">\(X\)</span> doesn’t provide any information about the distribution <span class="math inline">\(Y\)</span>.</p>
 </div>
-<div id="conditional-expectations" class="section level3">
+<div id="conditional-expectations" class="section level3" number="3.1.11">
 <h3><span class="header-section-number">3.1.11</span> Conditional Expectations</h3>
 <p>SW 2.3</p>
 <p>It is useful to know about joint pmfs/pdfs/cdfs, but they are often hard to work with in practice. For example, if you have two random variables, visualizing their joint distribution would involve interpreting a 3D plot which is often challenging in practice. If you had more than two random variables, then fully visualizing their joint distribution would not be possible. Therefore, we will typically look at summaries of the joint distribution. Probably the most useful one is the conditional expectation that we study in this section; in fact, we will spend much of the semester trying to estimate conditional expectations.</p>
 <p>For two random variables, <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>, the <strong>conditional expectation</strong> of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span> is the mean value of <span class="math inline">\(Y\)</span> conditional on <span class="math inline">\(X\)</span> taking the particular value <span class="math inline">\(x\)</span>. In math, this is written</p>
 <p><span class="math display">\[
-  \mathbb{E}[Y|X=x]
+  \E[Y|X=x]
 \]</span></p>
 <p>One useful way to think of a conditional expectation is as a <em>function</em> of <span class="math inline">\(x\)</span>. For example, suppose that <span class="math inline">\(Y\)</span> is a person’s yearly income and <span class="math inline">\(X\)</span> is a person’s years of education. Clearly, mean income can change for different values of education.</p>
 <p>Conditional expectations will be a main focus of ours throughout the semester</p>
 <p>An extremely useful property of conditional expectations is that they generalize from the case with two variables to the case with multiple variables. For example, suppose that we have four random variables <span class="math inline">\(Y\)</span>, <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>.</p>
 </div>
-<div id="law-of-iterated-expectations" class="section level3">
+<div id="law-of-iterated-expectations" class="section level3" number="3.1.12">
 <h3><span class="header-section-number">3.1.12</span> Law of Iterated Expectations</h3>
 <p>SW 2.3</p>
 <p>Another important property of conditional expectations is called the <strong>law of iterated expectations</strong>. It says that</p>
 <p><span class="math display">\[
-  \mathbb{E}[Y] = \mathbb{E}\big[ \mathbb{E}[Y|X] \big]
+  \E[Y] = \E\big[ \E[Y|X] \big]
 \]</span>
 In words: The expected value of <span class="math inline">\(Y\)</span> is equal to the expected value (this expectation is with respect to <span class="math inline">\(X\)</span>) of the conditional expectation of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>.</p>
 <p>This may seem like a technical property, but I think the right way to think about the law of iterated expectations is that there is an inherent relationship between unconditional expectations and conditional expectations. In other words, although conditional expectations can vary arbitrarily for different values of <span class="math inline">\(X\)</span>, if you know what the conditional expectations are, the overall expected value of <span class="math inline">\(Y\)</span> is fully determined.</p>
-<p>A simple example is one where <span class="math inline">\(X\)</span> takes only two values. Suppose we are interested in mean birthweight (<span class="math inline">\(Y\)</span>) for children of mother’s who either drank alcohol during their pregnancy (<span class="math inline">\(X=1\)</span>) or who didn’t drink alcohol during their pregnancy (<span class="math inline">\(X=0\)</span>). Suppose the following (just to be clear, these are completely made up numbers), <span class="math inline">\(\mathbb{E}[Y|X=1] = 7\)</span>, <span class="math inline">\(\mathbb{E}[Y|X=0]=8\)</span> <span class="math inline">\(\mathrm{P}(X=1) = 0.1\)</span> and <span class="math inline">\(\mathrm{P}(X=0)=0.9\)</span>. The law of iterated expectation says that
+<p>A simple example is one where <span class="math inline">\(X\)</span> takes only two values. Suppose we are interested in mean birthweight (<span class="math inline">\(Y\)</span>) for children of mother’s who either drank alcohol during their pregnancy (<span class="math inline">\(X=1\)</span>) or who didn’t drink alcohol during their pregnancy (<span class="math inline">\(X=0\)</span>). Suppose the following (just to be clear, these are completely made up numbers), <span class="math inline">\(\E[Y|X=1] = 7\)</span>, <span class="math inline">\(\E[Y|X=0]=8\)</span> <span class="math inline">\(\P(X=1) = 0.1\)</span> and <span class="math inline">\(\P(X=0)=0.9\)</span>. The law of iterated expectation says that
 <span class="math display">\[
   \begin{aligned}
-  \mathbb{E}[Y] &amp;= \mathbb{E}\big[ \mathbb{E}[Y|X] \big] \\
-  &amp;= \sum_{x \in \mathcal{X}} \mathbb{E}[Y|X=x] \mathrm{P}(X=x) \\
-  &amp;= \mathbb{E}[Y|X=0]\mathrm{P}(X=0) + \mathbb{E}[Y|X=1]\mathrm{P}(X=1) \\
+  \E[Y] &amp;= \E\big[ \E[Y|X] \big] \\
+  &amp;= \sum_{x \in \mathcal{X}} \E[Y|X=x] \P(X=x) \\
+  &amp;= \E[Y|X=0]\P(X=0) + \E[Y|X=1]\P(X=1) \\
   &amp;= (8)(0.9) + (7)(0.1) \\
   &amp;= 7.9
   \end{aligned}
 \]</span></p>
 <p>The law of iterated expectations still applies in more complicated cases (e.g., <span class="math inline">\(X\)</span> takes more than two values, <span class="math inline">\(X\)</span> is continuous, or <span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>,<span class="math inline">\(X_3\)</span>) but the intuition is still the same.</p>
 </div>
-<div id="covariance" class="section level3">
+<div id="covariance" class="section level3" number="3.1.13">
 <h3><span class="header-section-number">3.1.13</span> Covariance</h3>
 <p>SW 2.3</p>
-<p>The <strong>covariance</strong> between two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a masure of the extent to which they “move together”. It is defined as</p>
+<p>The <strong>covariance</strong> between two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a masure of the extent to which they “move together.” It is defined as</p>
 <p><span class="math display">\[
-  \mathrm{cov}(X,Y) := \mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]
+  \Cov(X,Y) := \E[(X-\E[X])(Y-\E[Y])]
 \]</span>
 A natural first question to ask is: why does this measure how <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> move together. Notice that covariance can be positive or negative. It will tend to be negative if big values of <span class="math inline">\(X\)</span> (so that <span class="math inline">\(X\)</span> is above its mean) tend to happen at the same time as big values of <span class="math inline">\(Y\)</span> (so that <span class="math inline">\(Y\)</span> is above its mean) while small values of <span class="math inline">\(X\)</span> (so that <span class="math inline">\(X\)</span> is below its mean) tend to happen at the same time as small values of <span class="math inline">\(Y\)</span> (so that <span class="math inline">\(Y\)</span> is below its mean).</p>
 <p>An alternative and useful expression for covariance is
 <span class="math display">\[
-  \mathrm{cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+  \Cov(X,Y) = \E[XY] - \E[X]\E[Y]
 \]</span>
 Relative to the first expression, this one is probably less of a natural definition but often more useful in mathematical problems.</p>
-<p>One more thing to notice, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(\mathrm{cov}(X,Y) = 0\)</span>.</p>
+<p>One more thing to notice, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(\Cov(X,Y) = 0\)</span>.</p>
 </div>
-<div id="correlation" class="section level3">
+<div id="correlation" class="section level3" number="3.1.14">
 <h3><span class="header-section-number">3.1.14</span> Correlation</h3>
 <p>SW 2.3</p>
 <p>It’s often hard to interpret covariances directly (the “units” are whatever the units of <span class="math inline">\(X\)</span> are times the units of <span class="math inline">\(Y\)</span>), so it is common to scale the covariance to get the <strong>correlation</strong> between two random variables:</p>
 <p><span class="math display">\[
-  \mathrm{corr}(X,Y) := \frac{\mathrm{cov}(X,Y)}{\sqrt{\mathrm{var}(X)} \sqrt{\mathrm{var}(Y)}}
+  \Corr(X,Y) := \frac{\Cov(X,Y)}{\sqrt{\Var(X)} \sqrt{\Var(Y)}}
 \]</span>
 The correlation has the property that it is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>.</p>
-<p>If <span class="math inline">\(\mathrm{corr}(X,Y) = 0\)</span>, then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <strong>uncorrelated</strong>.</p>
+<p>If <span class="math inline">\(\Corr(X,Y) = 0\)</span>, then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <strong>uncorrelated</strong>.</p>
 </div>
-<div id="properties-of-expectationsvariances-of-sums-of-rvs" class="section level3">
+<div id="properties-of-expectationsvariances-of-sums-of-rvs" class="section level3" number="3.1.15">
 <h3><span class="header-section-number">3.1.15</span> Properties of Expectations/Variances of Sums of RVs</h3>
 <p>SW 2.3</p>
 <p>Here are some more properties of expectations and variances when there are multiple random variables. For two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y]\)</span></p></li>
-<li><p><span class="math inline">\(\mathrm{var}(X+Y) = \mathrm{var}(X) + \mathrm{var}(Y) + 2\mathrm{cov}(X,Y)\)</span></p></li>
+<li><p><span class="math inline">\(\E[X+Y] = \E[X] + \E[Y]\)</span></p></li>
+<li><p><span class="math inline">\(\Var(X+Y) = \Var(X) + \Var(Y) + 2\Cov(X,Y)\)</span></p></li>
 </ol>
 <p>The first property is probably not surprising — expectations continue to pass through sums. The second property, particularly the covariance term, needs more explanation. To start with, you can just plug <span class="math inline">\(X+Y\)</span> into the definition of variance and (with a few lines of algebra) show that the second property is true. But, for the intuition, let me explain with an example. Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are rolls of two dice, but <em>somehow</em> these dice are positively correlated with each other — i.e., both rolls coming up with high numbers (and low numbers) are more likely than with regular dice. Now, think about what the sum of two dice rolls can be: the smallest possible sum is 2 and other values are possible up to 12. Moreover, the smallest and largest possible sum of the rolls (2 and 12), which are farthest away from the mean value of 7, are relatively uncommon. You have to roll either <span class="math inline">\((1,1)\)</span> or <span class="math inline">\((6,6)\)</span> to get either of these and the probability of each of those rolls is just <span class="math inline">\(1/36\)</span>. However, when the dice are positively correlated, the probability of both rolls being very high or very low becomes more likely — thus, since outcomes far away from the mean become more likely, the variance increases.</p>
 <p>One last comment here is that, when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent (or even just uncorrelated), the formula for the variance does not involve the extra covariance term because it is equal to 0.</p>
 <p>These properties for sums of random variables generalize to the case with more than two random variables. For example, suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are random variables, then</p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathbb{E}\left[ \sum_{i=1}^n Y_i ] = \sum_{i=1}^n \mathbb{E}[Y_i]\)</span></p></li>
-<li><p>If <span class="math inline">\(Y_i\)</span> are mutually independent, then <span class="math inline">\(\mathrm{var}\left( \sum_{i=1}^n Y_i \right) = \sum_{i=1}^n \mathrm{var}(Y_i)\)</span></p></li>
+<li><p><span class="math inline">\(\E\left[ \displaystyle \sum_{i=1}^n Y_i \right] = \displaystyle \sum_{i=1}^n \E[Y_i]\)</span></p></li>
+<li><p>If <span class="math inline">\(Y_i\)</span> are mutually independent, then <span class="math inline">\(\Var\left( \displaystyle \sum_{i=1}^n Y_i \right) = \displaystyle \sum_{i=1}^n \Var(Y_i)\)</span></p></li>
 </ol>
 <p>Notice that the last line does not involve any covariance terms, but this is only because of the caveat that the <span class="math inline">\(Y_i\)</span> are mutually independent. Otherwise, there would actually be <em>tons</em> of covariance terms that would need to be accounted for.</p>
 </div>
-<div id="normal-distribution" class="section level3">
+<div id="normal-distribution" class="section level3" number="3.1.16">
 <h3><span class="header-section-number">3.1.16</span> Normal Distribution</h3>
 <p>SW 2.4</p>
 <p>You probably learned about a lot of particular distributions of random variables in your Stats class. There are a number of important distributions:</p>
@@ -735,10 +785,10 @@ The correlation has the property that it is always between <span class="math inl
 <p><span class="math display">\[
   X \sim N(\mu, \sigma^2)
 \]</span>
-where <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> and <span class="math inline">\(\sigma^2 = \mathrm{var}(X)\)</span>.</p>
+where <span class="math inline">\(\mu = \E[X]\)</span> and <span class="math inline">\(\sigma^2 = \Var(X)\)</span>.</p>
 <p>Importantly, if we know that <span class="math inline">\(X\)</span> follows a normal distribution, its entire distribution is fully characterized by its mean and variance. In other words, if <span class="math inline">\(X\)</span> is normally distributed, and we also know its mean and variance, then we know everything about its distribution. [Notice that this is not generally true — if we did not know the distribution of <span class="math inline">\(X\)</span> but knew its mean and variance, we would know two important features of the distribution of <span class="math inline">\(X\)</span>, but we would not know everything about its distribution.]</p>
-<p>You are probably familiar with the pdf of a normal distribution — it is “bell-shaped”.</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p>You are probably familiar with the pdf of a normal distribution — it is “bell-shaped.”</p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>From the figure, you can see that a normal distribution is unimodal (there is just one “peak”) and symmetric (the pdf is the same if you move the same distance above <span class="math inline">\(\mu\)</span> as when you move the same distance below <span class="math inline">\(\mu\)</span>). This means that, for a random variable that follows a normal distribution, its median and mode are also equal to <span class="math inline">\(\mu\)</span>.</p>
 <p>From the plot of the pdf, we can also tell that, if you make a draw from <span class="math inline">\(X \sim N(0,\mu)\)</span>, the most likely values are near the mean. As you move further away from <span class="math inline">\(\mu\)</span>, it becomes less likely (though not impossible) for a draw of <span class="math inline">\(X\)</span> to take that value.</p>
 <p>Recall that we can calculate the probability that <span class="math inline">\(X\)</span> takes on a value in a range by calculating the area under the curve of the pdf. For each shaded region in the figure, there is a 2.5% chance that <span class="math inline">\(X\)</span> falls into that region (so the probability of <span class="math inline">\(X\)</span> falling into either region is 5%). Another way to think about this is that there is a 95% probability that a draw of <span class="math inline">\(X\)</span> will be in the region <span class="math inline">\([\mu-1.96\sigma, \mu+1.96\sigma]\)</span>. Later, we we talk about hypothesis testing, this will be an important property.</p>
@@ -748,41 +798,36 @@ where <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> and <span class="
 \]</span>
 If you think back to your statistics class, you may have done things like calculating a p-value by looking at a “Z-table” in the back of a textbook (I’m actually not sure if this is still commonly done because it is often easier to just do this on a computer, but, back in “my day” this was a very common exercise in statistics classes). Standardizing allows you to look at just one table for any normally distributed random variable that you could encounter rather than requiring you to have different Z table for each value of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>.</p>
 </div>
-<div id="coding" class="section level3">
+<div id="coding" class="section level3" number="3.1.17">
 <h3><span class="header-section-number">3.1.17</span> Coding</h3>
 <p>To conclude this section, we’ll use R to compute the features of the joint distribution of income and education that we have discussed above.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="topics-in-probability.html#cb78-1"></a><span class="co"># create vectors of income and educ</span></span>
-<span id="cb78-2"><a href="topics-in-probability.html#cb78-2"></a>income &lt;-<span class="st"> </span>us_data<span class="op">$</span>incwage</span>
-<span id="cb78-3"><a href="topics-in-probability.html#cb78-3"></a>educ &lt;-<span class="st"> </span>us_data<span class="op">$</span>educ</span>
-<span id="cb78-4"><a href="topics-in-probability.html#cb78-4"></a></span>
-<span id="cb78-5"><a href="topics-in-probability.html#cb78-5"></a><span class="co"># mean of income</span></span>
-<span id="cb78-6"><a href="topics-in-probability.html#cb78-6"></a><span class="kw">mean</span>(income)</span>
-<span id="cb78-7"><a href="topics-in-probability.html#cb78-7"></a><span class="co">#&gt; [1] 58605.75</span></span>
-<span id="cb78-8"><a href="topics-in-probability.html#cb78-8"></a></span>
-<span id="cb78-9"><a href="topics-in-probability.html#cb78-9"></a><span class="co"># mean of education</span></span>
-<span id="cb78-10"><a href="topics-in-probability.html#cb78-10"></a><span class="kw">mean</span>(educ)</span>
-<span id="cb78-11"><a href="topics-in-probability.html#cb78-11"></a><span class="co">#&gt; [1] 13.96299</span></span>
-<span id="cb78-12"><a href="topics-in-probability.html#cb78-12"></a></span>
-<span id="cb78-13"><a href="topics-in-probability.html#cb78-13"></a><span class="co"># variance</span></span>
-<span id="cb78-14"><a href="topics-in-probability.html#cb78-14"></a><span class="kw">var</span>(income)</span>
-<span id="cb78-15"><a href="topics-in-probability.html#cb78-15"></a><span class="co">#&gt; [1] 4776264026</span></span>
-<span id="cb78-16"><a href="topics-in-probability.html#cb78-16"></a><span class="kw">var</span>(educ)</span>
-<span id="cb78-17"><a href="topics-in-probability.html#cb78-17"></a><span class="co">#&gt; [1] 8.345015</span></span>
-<span id="cb78-18"><a href="topics-in-probability.html#cb78-18"></a></span>
-<span id="cb78-19"><a href="topics-in-probability.html#cb78-19"></a><span class="co"># standard deviation</span></span>
-<span id="cb78-20"><a href="topics-in-probability.html#cb78-20"></a><span class="kw">sd</span>(income)</span>
-<span id="cb78-21"><a href="topics-in-probability.html#cb78-21"></a><span class="co">#&gt; [1] 69110.52</span></span>
-<span id="cb78-22"><a href="topics-in-probability.html#cb78-22"></a><span class="kw">sd</span>(educ)</span>
-<span id="cb78-23"><a href="topics-in-probability.html#cb78-23"></a><span class="co">#&gt; [1] 2.888774</span></span>
-<span id="cb78-24"><a href="topics-in-probability.html#cb78-24"></a></span>
-<span id="cb78-25"><a href="topics-in-probability.html#cb78-25"></a><span class="co"># covariance</span></span>
-<span id="cb78-26"><a href="topics-in-probability.html#cb78-26"></a><span class="kw">cov</span>(income,educ)</span>
-<span id="cb78-27"><a href="topics-in-probability.html#cb78-27"></a><span class="co">#&gt; [1] 63766.72</span></span>
-<span id="cb78-28"><a href="topics-in-probability.html#cb78-28"></a></span>
-<span id="cb78-29"><a href="topics-in-probability.html#cb78-29"></a><span class="co"># correlation</span></span>
-<span id="cb78-30"><a href="topics-in-probability.html#cb78-30"></a><span class="kw">cor</span>(income, educ)</span>
-<span id="cb78-31"><a href="topics-in-probability.html#cb78-31"></a><span class="co">#&gt; [1] 0.3194011</span></span></code></pre></div>
-<div id="basic-plots" class="section level4">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="topics-in-probability.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create vectors of income and educ</span></span>
+<span id="cb5-2"><a href="topics-in-probability.html#cb5-2" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> us_data<span class="sc">$</span>incwage</span>
+<span id="cb5-3"><a href="topics-in-probability.html#cb5-3" aria-hidden="true" tabindex="-1"></a>educ <span class="ot">&lt;-</span> us_data<span class="sc">$</span>educ</span>
+<span id="cb5-4"><a href="topics-in-probability.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="topics-in-probability.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of income</span></span>
+<span id="cb5-6"><a href="topics-in-probability.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(income)</span></code></pre></div>
+<pre><code>## [1] 58605.75</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="topics-in-probability.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of education</span></span>
+<span id="cb7-2"><a href="topics-in-probability.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(educ)</span></code></pre></div>
+<pre><code>## [1] 13.96299</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="topics-in-probability.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance</span></span>
+<span id="cb9-2"><a href="topics-in-probability.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(income)</span></code></pre></div>
+<pre><code>## [1] 4776264026</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="topics-in-probability.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(educ)</span></code></pre></div>
+<pre><code>## [1] 8.345015</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="topics-in-probability.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb13-2"><a href="topics-in-probability.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(income)</span></code></pre></div>
+<pre><code>## [1] 69110.52</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="topics-in-probability.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(educ)</span></code></pre></div>
+<pre><code>## [1] 2.888774</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="topics-in-probability.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># covariance</span></span>
+<span id="cb17-2"><a href="topics-in-probability.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(income,educ)</span></code></pre></div>
+<pre><code>## [1] 63766.72</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="topics-in-probability.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation</span></span>
+<span id="cb19-2"><a href="topics-in-probability.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(income, educ)</span></code></pre></div>
+<pre><code>## [1] 0.3194011</code></pre>
+<div id="basic-plots" class="section level4" number="3.1.17.1">
 <h4><span class="header-section-number">3.1.17.1</span> Basic Plots</h4>
 <p>Related Reading: IDS 9.4 (if you are interested, you can read IDS Chapters 6-10 for much more information about plotting in <code>R</code>)</p>
 <p>Finally, in this section, I’ll introduce you to some basic plotting. Probably the most common type of plot that I use is a line plot. We’ll go for trying to make a line plot of average income as a function of education.</p>
@@ -790,37 +835,37 @@ If you think back to your statistics class, you may have done things like calcul
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> Base <code>R</code> has several plotting functions (e.g., <code>plot</code>). Check IDS 2.15 for an introduction to these functions. These are generally easier to learn but less beautiful than plots coming from <code>ggplot2</code>.</p>
 </div>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="topics-in-probability.html#cb79-1"></a><span class="co"># load ggplot2 package </span></span>
-<span id="cb79-2"><a href="topics-in-probability.html#cb79-2"></a><span class="co"># (if you haven&#39;t installed it, you would need to do that first)</span></span>
-<span id="cb79-3"><a href="topics-in-probability.html#cb79-3"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb79-4"><a href="topics-in-probability.html#cb79-4"></a></span>
-<span id="cb79-5"><a href="topics-in-probability.html#cb79-5"></a><span class="co"># load dplyr package for &quot;wrangling&quot; data</span></span>
-<span id="cb79-6"><a href="topics-in-probability.html#cb79-6"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="topics-in-probability.html#cb80-1"></a><span class="co"># arrange data</span></span>
-<span id="cb80-2"><a href="topics-in-probability.html#cb80-2"></a>plot_data &lt;-<span class="st"> </span>us_data <span class="op">%&gt;%</span></span>
-<span id="cb80-3"><a href="topics-in-probability.html#cb80-3"></a><span class="st">    </span><span class="kw">group_by</span>(educ) <span class="op">%&gt;%</span></span>
-<span id="cb80-4"><a href="topics-in-probability.html#cb80-4"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">income=</span><span class="kw">mean</span>(incwage))</span>
-<span id="cb80-5"><a href="topics-in-probability.html#cb80-5"></a></span>
-<span id="cb80-6"><a href="topics-in-probability.html#cb80-6"></a><span class="co"># make the plot</span></span>
-<span id="cb80-7"><a href="topics-in-probability.html#cb80-7"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>plot_data,</span>
-<span id="cb80-8"><a href="topics-in-probability.html#cb80-8"></a>       <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>educ,<span class="dt">y=</span>income)) <span class="op">+</span></span>
-<span id="cb80-9"><a href="topics-in-probability.html#cb80-9"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-10"><a href="topics-in-probability.html#cb80-10"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb80-11"><a href="topics-in-probability.html#cb80-11"></a><span class="st">    </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="topics-in-probability.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load ggplot2 package </span></span>
+<span id="cb21-2"><a href="topics-in-probability.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (if you haven&#39;t installed it, you would need to do that first)</span></span>
+<span id="cb21-3"><a href="topics-in-probability.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-4"><a href="topics-in-probability.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="topics-in-probability.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load dplyr package for &quot;wrangling&quot; data</span></span>
+<span id="cb21-6"><a href="topics-in-probability.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="topics-in-probability.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange data</span></span>
+<span id="cb22-2"><a href="topics-in-probability.html#cb22-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="topics-in-probability.html#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(educ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="topics-in-probability.html#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">income=</span><span class="fu">mean</span>(incwage))</span>
+<span id="cb22-5"><a href="topics-in-probability.html#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="topics-in-probability.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># make the plot</span></span>
+<span id="cb22-7"><a href="topics-in-probability.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
+<span id="cb22-8"><a href="topics-in-probability.html#cb22-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="topics-in-probability.html#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb22-10"><a href="topics-in-probability.html#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb22-11"><a href="topics-in-probability.html#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Let me explain what’s going on here piece-by-piece. Let’s start with this code</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="topics-in-probability.html#cb81-1"></a><span class="co"># arrange data</span></span>
-<span id="cb81-2"><a href="topics-in-probability.html#cb81-2"></a>plot_data &lt;-<span class="st"> </span>us_data <span class="op">%&gt;%</span></span>
-<span id="cb81-3"><a href="topics-in-probability.html#cb81-3"></a><span class="st">    </span><span class="kw">group_by</span>(educ) <span class="op">%&gt;%</span></span>
-<span id="cb81-4"><a href="topics-in-probability.html#cb81-4"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">income=</span><span class="kw">mean</span>(incwage))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="topics-in-probability.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange data</span></span>
+<span id="cb23-2"><a href="topics-in-probability.html#cb23-2" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="topics-in-probability.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(educ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="topics-in-probability.html#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">income=</span><span class="fu">mean</span>(incwage))</span></code></pre></div>
 <p>At a high-level, making plots often involves two steps — first arranging the data in the “appropriate” way (that’s this step) and then actually making the plot.</p>
 <p>This is “tidyverse-style” code too — in my view, it is a little awkward, but it is also common so I think it is worth explaining here a bit.</p>
 <p>First, the <strong>pipe operator</strong>, <code>%&gt;%</code> takes the thing on the left of it and applies the function to the right of it. So, the line <code>us_data %&gt;% group_by(educ)</code> takes <code>us_data</code> and applies the function <code>group_by</code> to it, and what we group by is <code>educ</code>. That creates a new data frame (you could just run that code and see what you get). The next line takes that new data frame and applies the function <code>summarize</code> to it. In this case, <code>summarize</code> creates a new variable called <code>income</code> that is the mean of the column <code>incwage</code> and it is the mean by <code>educ</code> (since we grouped by education in the previous step).</p>
 <p>Take a second and look through what has actually been created here. <code>plot_data</code> is a new data frame, but it only has 18 observations — corresponding to each distinct value of education in the data. It also has two columns, the first one is <code>educ</code> which is the years of education, and the second one is <code>income</code> which is the average income among individuals that have that amount of education.</p>
 <p>An alternative way of writing the exact same code (that seems more natural to me) is</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="topics-in-probability.html#cb82-1"></a><span class="co"># arrange data</span></span>
-<span id="cb82-2"><a href="topics-in-probability.html#cb82-2"></a>grouped_data &lt;-<span class="st"> </span><span class="kw">group_by</span>(us_data, educ)</span>
-<span id="cb82-3"><a href="topics-in-probability.html#cb82-3"></a>plot_data &lt;-<span class="st"> </span><span class="kw">summarize</span>(grouped_data, <span class="dt">income=</span><span class="kw">mean</span>(incwage))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="topics-in-probability.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange data</span></span>
+<span id="cb24-2"><a href="topics-in-probability.html#cb24-2" aria-hidden="true" tabindex="-1"></a>grouped_data <span class="ot">&lt;-</span> <span class="fu">group_by</span>(us_data, educ)</span>
+<span id="cb24-3"><a href="topics-in-probability.html#cb24-3" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">summarize</span>(grouped_data, <span class="at">income=</span><span class="fu">mean</span>(incwage))</span></code></pre></div>
 <p>If you’re familiar with other programming languages, the second version of the code probably seems more familiar. Either way is fine with me — tidyverse-style seems to be trendy in R programming these days, but (for me) I think the second version is a little easier to understand. You can find long “debates” about these two styles of writing code if you happen to be interested…</p>
 <p>Before moving on, let me mention a few other <code>dplyr</code> functions that you might find useful</p>
 <ul>
@@ -830,16 +875,16 @@ If you think back to your statistics class, you may have done things like calcul
 <li><p><code>arrange</code> — useful for sorting your data</p></li>
 </ul>
 <p>Next, let’s consider the second part of the code.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="topics-in-probability.html#cb83-1"></a><span class="co"># make the plot</span></span>
-<span id="cb83-2"><a href="topics-in-probability.html#cb83-2"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>plot_data,</span>
-<span id="cb83-3"><a href="topics-in-probability.html#cb83-3"></a>       <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>educ,<span class="dt">y=</span>income)) <span class="op">+</span></span>
-<span id="cb83-4"><a href="topics-in-probability.html#cb83-4"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb83-5"><a href="topics-in-probability.html#cb83-5"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb83-6"><a href="topics-in-probability.html#cb83-6"></a><span class="st">    </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p>The main function here is <code>ggplot</code>. It takes in two main arguments: <code>data</code> and <code>mapping</code>. Notice that we set <code>data</code> to be equal to <code>plot_data</code> which is the data frame that we just created. The <code>mapping</code> is set equal to <code>aes(x=educ,y=income)</code>. <code>aes</code> stands for “aesthetic”, and here you are just telling <code>ggplot</code> the names of the columns in the data frame that should be on the x-axis (here: <code>educ</code>) and on the y-axis (here: <code>income</code>) in the plot. Also, notice the <code>+</code> at the end of the line; you can interpret this as saying “keep going” to the next line before executing.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="topics-in-probability.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make the plot</span></span>
+<span id="cb25-2"><a href="topics-in-probability.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
+<span id="cb25-3"><a href="topics-in-probability.html#cb25-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="topics-in-probability.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb25-5"><a href="topics-in-probability.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb25-6"><a href="topics-in-probability.html#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p>The main function here is <code>ggplot</code>. It takes in two main arguments: <code>data</code> and <code>mapping</code>. Notice that we set <code>data</code> to be equal to <code>plot_data</code> which is the data frame that we just created. The <code>mapping</code> is set equal to <code>aes(x=educ,y=income)</code>. <code>aes</code> stands for “aesthetic,” and here you are just telling <code>ggplot</code> the names of the columns in the data frame that should be on the x-axis (here: <code>educ</code>) and on the y-axis (here: <code>income</code>) in the plot. Also, notice the <code>+</code> at the end of the line; you can interpret this as saying “keep going” to the next line before executing.</p>
 <p>If we just stopped there, we actually wouldn’t plot anything. We still need to tell <code>ggplot</code> what kind of plot we want to make. That’s where the line <code>geom_line</code> comes in. It tells <code>ggplot</code> that we want to plot a line. Try running the code with just those two lines — you will see that you will get a similar (but not exactly the same) plot.</p>
 <p><code>geom_point</code> adds the dots in the figure. <code>size=3</code> controls the size of the points. I didn’t add this argument originally, but the dots were hard to see so I made them bigger.</p>
-<p><code>theme_bw</code> changes the color scheme of the plot. It stands for “theme black white”.</p>
+<p><code>theme_bw</code> changes the color scheme of the plot. It stands for “theme black white.”</p>
 <p>There is a ton of flexibility with <code>ggplot</code> — way more than I could list here. But let me give you some extras that I tend to use quite frequently.</p>
 <ul>
 <li><p>In <code>geom_line</code> and <code>geom_point</code>, you can add the extra argument <code>color</code>; for example, you could try <code>geom_line(color="blue")</code> and it would change the color of the line to blue.</p></li>
@@ -847,15 +892,15 @@ If you think back to your statistics class, you may have done things like calcul
 <li><p>In <code>geom_line</code>, the argument <code>size</code> controls the thickness of the line.</p></li>
 <li><p>The functions <code>ylab</code> and <code>xlab</code> control the labels on the y-axis and x-axis</p></li>
 <li><p>The functions <code>ylim</code> and <code>xlim</code> control the “limits” of the y-axis and x-axis. Here’s how you can use these:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="topics-in-probability.html#cb84-1"></a><span class="co"># make the plot</span></span>
-<span id="cb84-2"><a href="topics-in-probability.html#cb84-2"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>plot_data,</span>
-<span id="cb84-3"><a href="topics-in-probability.html#cb84-3"></a>     <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>educ,<span class="dt">y=</span>income)) <span class="op">+</span></span>
-<span id="cb84-4"><a href="topics-in-probability.html#cb84-4"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb84-5"><a href="topics-in-probability.html#cb84-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb84-6"><a href="topics-in-probability.html#cb84-6"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb84-7"><a href="topics-in-probability.html#cb84-7"></a><span class="st">  </span>ylim=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">150000</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb84-8"><a href="topics-in-probability.html#cb84-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Income&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb84-9"><a href="topics-in-probability.html#cb84-9"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Education&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="topics-in-probability.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make the plot</span></span>
+<span id="cb26-2"><a href="topics-in-probability.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
+<span id="cb26-3"><a href="topics-in-probability.html#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="topics-in-probability.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb26-5"><a href="topics-in-probability.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb26-6"><a href="topics-in-probability.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb26-7"><a href="topics-in-probability.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  ylim<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">150000</span>) <span class="sc">+</span> </span>
+<span id="cb26-8"><a href="topics-in-probability.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Income&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb26-9"><a href="topics-in-probability.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>)</span></code></pre></div>
 <p>which will adjust the y-axis and change the labels on each axis.</p></li>
 </ul>
 <p>Besides the line plot (using <code>geom_line</code>) and the scatter plot (using <code>geom_point</code>), probably two other types of plots that I make the most are</p>
@@ -896,6 +941,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

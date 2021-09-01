@@ -88,7 +88,7 @@ so that $R^2$ is the fraction of the variation in $Y$ explained by the model.  N
 
 SW 7.5 (note: we cover substantially more details than the textbook about model selection)
 
-Often, when we want to use data to make predictions, there are multiple possible models that we could estimate to make the predictions.  For example, suppose that we are interested in predicting house prices and we have access to data about the number of square feet, whether or not the house has a basement, the number of bedrooms, and the number of bathrooms.  All of these are probably good variables to include in a model to predict house prices (though it is less clear if we should include quadratic terms, interaction terms, or other higher order terms).  But suppose we also observe some variables that are probably irrelevant (e.g., whether the street number is odd or even) or not clear whether they matter or not (e.g., number of ceiling fans or paint color).
+Often, when we want to use data to make predictions, there are multiple possible models that we could estimate to make the predictions.  For example, suppose that we are interested in predicting house prices and we have access to data about the number of square feet, whether or not the house has a basement, the number of bedrooms, and the number of bathrooms.  All of these are probably good variables to include in a model to predict house prices (though it is less clear if we should include quadratic terms, interaction terms, or other higher order terms).  But suppose we also observe some variables that are probably irrelevant (e.g., whether the street number is odd or even) or not clear whether they matter or not (e.g., number of ceiling fans or paint color).  It is not clear which variables we should include in the model.  An alternative way to think about this is that there would be a large number of possible models that we could estimate here, and it is not immediately obvious which one will predict the best.
 
 From the previous example, it seems that in many realistic applications, there are a large number of possible models that we could estimate to make predictions.  How should we choose which one to use?
 
@@ -107,7 +107,7 @@ $$
     Height &= \beta_0 + \beta_1 Male + \beta_2 Year + \beta_3 Birthday + U
   \end{aligned}
 $$
-where $Year$ is what year in school a student is in (e.g., Freshman, Sophomore, etc.), and Birthday is what day of the year a student was born on.
+where $Year$ is what year in school a student is in (e.g., Freshman, Sophomore, etc.), and $Birthday$ is what day of the year a student was born on.
 
 You also notice that $R^2$ is greatest for the third model, in the middle for the second model, and smallest for the first model.
 
@@ -194,7 +194,7 @@ Here is an algorithm for cross-validation:
 
 * Algorithm:
 
-    * Split the data into J "folds"
+    * Split the data into J **folds**
 
     * For the jth fold, do the following:
     
@@ -222,7 +222,7 @@ Here is an algorithm for cross-validation:
     
 Cross-validation is a good way to choose a model, but it can sometimes be computationally challenging (because you are estimating lots of models) --- particularly, if the models under consideration are very complicated or there a large number of observations.
 
-Above, we split the data into $J$ folds.  This introduces some randomness into our model selection criteria.  In particular, if you split the data in a different way from how I split the data, then we could choose different models.  This is a somewhat undesirable feature of a model selection criteria.  One way to get around this is to set $J=n$ --- so that every observation has its own fold.  This is called **leave-one-out cross-validation**.  In this case, there is no randomness in the model selection criteria.  The drawback is that it is more computational --- in this case, you need to estimate the model $n$ times rather than $J$ times.
+Above, we split the data into $J$ folds.  This introduces some randomness into our model selection criteria.  In particular, if you split the data in a different way from how I split the data, then we could choose different models.  This is a somewhat undesirable feature of a model selection criteria.  One way to get around this is to set $J=n$.  This makes it so that every observation has its own fold.  This is called **leave-one-out cross-validation**.  In this case, there is no randomness in the model selection criteria.  The drawback is that it is more computational --- in this case, you need to estimate the model $n$ times rather than $J$ times.
         
 ### Model Averaging
 
@@ -264,29 +264,31 @@ Some extra resources on estimating Lasso and Ridge regressions in R:
 
 $n$ being large is more of a computer science problem.  That said, there are economists who think about these issues, but I think it is still the case that it is relatively uncommon for an economist to have *so much* data that they have trouble computing their estimators.
 
-We'll focus on the second issue --- where $k$ is large.  A main reason that this may occur in applications is that we may be unsure of the functional form for $\E[Y|X_1,X_2,X_3]$.  Should it include higher order terms like $X^2$ or $X^3$?  Should it include interactions like $X_1 X_2$.  Once you start proceeding this way, even if you only have 5-10 actual covariates, $k$ can become quite large.
+We'll focus on the second issue --- where $k$ is large.  A main reason that this may occur in applications is that we may be unsure of the functional form for $\E[Y|X_1,X_2,X_3]$.  Should it include higher order terms like $X_1^2$ or $X_1^3$?  Should it include interactions like $X_1 X_2$.  Once you start proceeding this way, even if you only have 5-10 actual covariates, $k$ can become quite large.
 
 As in the case of the mean, perhaps we can improve predictions by introducing some bias while simultaneously decreasing the variance of our predictions.  
 
-Let's suppose that we have some function that can take in regressors and makes predictions of the outcome; we'll call this function $\hat{f}$ (where the "hat" indicates that we'll typically estimate this function).  An example would just be a regression where, for example, $\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3$.  One way to evaluate how well $\hat{f}$ makes predictions is by considering its mean squared prediction error:
+Let's suppose that we have some function that can take in regressors and makes predictions of the outcome; we'll call this function $\hat{f}$ (where the "hat" indicates that we'll typically estimate this function).  An example would just be a regression where, for example, $\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3$.  One way to evaluate how well $\hat{f}$ makes predictions is by considering its **mean squared prediction error**:
 
 $$
   MSPE := \E\left[ (Y - \hat{f}(X))^2 \right]
 $$
+$MSPE$ quantifies the mean "distance" between our predictions and actual outcomes.
+
 Recall that, if we could just pick any function to minimize $MSPE$, we would set $\hat{f}(X) = \E[Y|X]$, but generally we do not just know what $\E[Y|X]$ is.  We can "decompose" MSPE into several underlying conditions
 
 $$
   \begin{aligned}
-  MSPE &= \E\left[ \left( (Y - \E[Y|X]) - (\hat{f}(X) - \E[\hat{f}(X)]) - (\E[\hat{f}(X)] - \E[Y|X]) \right)^2 \right] \\
-  &= \E\left[ (Y-\E[Y|X])^2 \right] + \E\left[ (\hat{f}(X) - \E[\hat{f}(X))^2\right] + \E\left[ (\E[\hat{f}(X)] - \E[Y|X])^2 \right] \\
-  &= \Var(U) + \Var(\hat{f}(X)) + \textrm{Bias}(\hat{f}(X))^2
+  MSPE &= \E\left[ \left( (Y - \E[Y|X]) - (\hat{f}(X) - \E[\hat{f}(X)|X]) - (\E[\hat{f}(X)|X] - \E[Y|X]) \right)^2 \right] \\
+  &= \E\left[ (Y-\E[Y|X])^2 \right] + \E\left[ (\hat{f}(X) - \E[\hat{f}(X)|X])^2\right] + \E\left[ (\E[\hat{f}(X)|X] - \E[Y|X])^2 \right] \\
+  &= \Var(U) + \E[\Var(\hat{f}(X)|X)] + \E\left[\textrm{Bias}(\hat{f}(X))^2\right]
   \end{aligned}
 $$
-where, to understand this decomposition, the first equality just adds and subtracts $\E[Y|X]$ and $\E[\hat{f}(X)]$.  The second equality squares the long expression from the first equality and cancels some terms.  The third equality holds where $U := Y-\E[Y|X]$, by the definition of variance, and we call the last bias because it is the difference between the mean of our prediction function $\hat{f}$ and $\E[Y|X]$.
+where, to understand this decomposition, the first equality just adds and subtracts $\E[Y|X]$ and $\E[\hat{f}(X)|X]$.  The second equality squares the long expression from the first equality and cancels some terms.  The third equality holds where $U := Y-\E[Y|X]$, by the definition of (conditional) variance, and we call the last bias because it is the difference between the mean of our prediction function $\hat{f}$ and $\E[Y|X]$.
 
-You can think of the term $\Var(U)$ as being irreducible prediction error --- even if we knew $\E[Y|X]$, we wouldn't get every prediction exactly right.  But the other two terms come from having to estimate $\hat{f}$.  Many machine learning estimators have the property of being biased (so that the last term is not equal to 0),  but having reduced variance relative to OLS estimators.
+You can think of the term $\Var(U)$ as being irreducible prediction error --- even if we knew $\E[Y|X]$, we wouldn't get every prediction exactly right.  But the other two terms come from having to estimate $\hat{f}$.  The term $\E[\Var(\hat{f}(X)X)]$ is the average variance of our predictions across different values of $X$.  The term $\E\left[\textrm{Bias}(\hat{f}(X))^2\right]$ is the squared bias of our predictions averaged across different values of $X$.  Many machine learning estimators have the property of being biased (so that the last term is not equal to 0),  but having reduced variance relative to OLS estimators.
 
-To do this, we'll estimate the parameters of the model in a similar way to what we have done before except that we'll add a **penalty** term that gets larger as parameter estimates move further away from 0.  In particular, we consider esetimates of the form
+To do this, we'll estimate the parameters of the model in a similar way to what we have done before except that we'll add a **penalty** term that gets larger as parameter estimates move further away from 0.  In particular, we consider estimates of the form
 
 $$
   (\hat{\beta}_1, \hat{\beta}_2, \ldots, \hat{\beta}_k) = \underset{b_1,\ldots,b_k}{\textrm{argmin}} \sum_{i=1}^n  (Y_i - b_1 X_{1i} - \cdots - b_k X_{ki})^2 + \textrm{penalty}
@@ -311,7 +313,7 @@ $$
 $$
 The absolute value on each of the $b_j$ terms means that the penalty function gets larger for larger values of any $b_j$.  Since we are trying to minimize the objective function, this means that there is a "cost" to choosing a larger value of $b_j$ relative to OLS.  Thus, Lasso estimates tend to be "shrunk" towards 0.
 
-$\lambda$ is called a "tuning parameter** --- larger values of $\lambda$ imply that the penalty term is more important.  Notice that, if you send $\lambda \rightarrow \infty$, then the penalty term will be so large that you would set all the parameters to be equal to 0.  On the other hand, if you set $\lambda=0$, then you will get the OLS estimates (because there will be no penalty in this case).  In general, it is hard to "know" what is the right value for $\lambda$, and it is typically chosen using cross validation.
+$\lambda$ is called a **tuning parameter** --- larger values of $\lambda$ imply that the penalty term is more important.  Notice that, if you send $\lambda \rightarrow \infty$, then the penalty term will be so large that you would set all the parameters to be equal to 0.  On the other hand, if you set $\lambda=0$, then you will get the OLS estimates (because there will be no penalty in this case).  In general, it is hard to know what is the "right" value for $\lambda$, and it is typically chosen using cross validation (this will be done automatically for you using the `glmnet` package).
 
 
 ### Ridge Regression
@@ -337,15 +339,36 @@ Much of the discussion from Lasso applies here.  The only difference is that the
 
 ### Computation
 
-Computing Lasso and Ridge regressions is substantially more complicated than most other things that we have computed this semester.  The main `R` package for Lasso and Ridge regressions is the `glmnet` package.  For some reason, the syntax of the package is somewhat different from, for example, the `lm` command.  In my view, it is often easier to use the `glmnetUtils` package, which seems to be just a wrapper for `glmnet` but with functions that are analogous to `lm`.
+Computing Lasso and Ridge regressions is somewhat more complicated than most other things that we have computed this semester.  The main `R` package for Lasso and Ridge regressions is the `glmnet` package.  For some reason, the syntax of the package is somewhat different from, for example, the `lm` command.  In my view, it is often easier to use the `glmnetUtils` package, which seems to be just a wrapper for `glmnet` but with functions that are analogous to `lm`.
 
-Suppose that you have access to a training dataset called `train` and a testing dataset called `test`, you can use the `glmnetUtils` package in the following way:
+I'm just going to sketch here how you would use these functions to estimate a Lasso or Ridge regression.  In the lab later on in this chapter, we'll do a more concrete example.  Suppose that you have access to a training dataset called `train` and a testing dataset called `test`, you can use the `glmnetUtils` package in the following way:
 ```{r eval=FALSE}
 library(glmnetUtils)
 lasso_model <- cv.glmnet(Y ~ X1 + X2 + X3, data=train, use.model.frame=TRUE) # or whatever formula you want to use
 coef(lasso_model) # if you are interested in estimated coefficients
 predict(lasso_model, newdata=test) # get predictions
+
+ridge_model <- cv.glmnet(Y ~ X1 + X2 + X3, 
+                         data=train, 
+                         alpha=0,
+                         use.model.frame=TRUE)
+coef(ridge_model)
+predict(ridge_model, newdata=test)
 ```
+
+It's worth making a couple of comments about this
+
+- In terms of code, the only difference between the Lasso and Ridge, is that for Ridge, we added the extra argument `alpha=0`.  The default value of `alpha` is 1, and that leads to a Lasso regression (which is why didn't need to specify it for our Lasso estimates).  If you are interested, you can read more details about this in the documentation for `glmnet` using `?glmnet`.
+
+- Generally, if you are going to use Lasso or Ridge, then you would have many more regressors to include than just `X1 + X2 + X3`.  One common way that you get more regressors is when you start to thinking about including higher order terms or interaction terms.  One way to do this quickly is to use the `poly` function inside the formula.  For example,
+
+   ```{r eval=FALSE}
+   lasso_model2 <- cv.glmnet(Y ~ poly(X1, X2, X3, degree=2, raw=TRUE), 
+                             data=train, 
+                             use.model.frame=TRUE)
+   ```
+   
+   would include all interactions between $X_1$, $X_2$ and $X_3$ as well as squared terms for each; if you wanted to include more interactions and cubic terms, you could specify `degree=3`.
 
 
 ## Binary Outcome Models
@@ -354,7 +377,7 @@ In addition to referenced material below, please read all of SW Ch. 11
 
 ::: {.side-comment}
 
-<span class="side-comment">Side-Comment:</span> We are not necessarily so interested in prediction, but I find this a good spot to teach about binary outcome models before we conclude the course talking about causality
+<span class="side-comment">Side-Comment:</span> We are not necessarily so interested in prediction (though you can make predictions using the techniques we discuss below), but I find this a good spot to teach about binary outcome models before we conclude the course talking about causality
 
 :::
 
@@ -395,7 +418,7 @@ $$
   &= \P(Y=1)
   \end{aligned}
 $$
-And exactly the same sort of argument implies that, when $Y$ is binary, $\E[Y|X] = \P(Y=1|X)$.  Thus, if we believer the model in the first part of this section, this result implies that
+And exactly the same sort of argument implies that, when $Y$ is binary, $\E[Y|X] = \P(Y=1|X)$.  Thus, if we believe the model in the first part of this section, this result implies that
 
 $$
   \P(Y=1|X_1,X_2,X_3) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
@@ -450,7 +473,7 @@ where $\Phi$ is the cdf of a standard normal random variable.  This is a nonline
 
 Using $\Phi$ (or any cdf) here has a useful property that no matter what value the "index" $\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3$ takes on, the cdf is always between 0 and 1.  This implies that we cannot get predicted probabilities outside of 0 and 1.
 
-Thus, the circumvents the problems with the linear probability model.  That said, there are some things we have to be careful about.  First, as usual, we are interested in partial effects rather than the parameters themselves.  But partial effects are more complicated here.  Notice that
+Thus, this circumvents the problems with the linear probability model.  That said, there are some things we have to be careful about.  First, as usual, we are interested in partial effects rather than the parameters themselves.  But partial effects are more complicated here.  Notice that
 
 $$
   \begin{aligned}
@@ -473,7 +496,7 @@ $$
 
 Because probit and logit models are nonlinear, estimation is more complicated than for the linear regression models that we were studying before.  In particular, we cannot write down a formula like $\hat{\beta}_1 = \textrm{something}$.  
 
-Instead, probit and logit models are typically esetimated through an approach called **maximum likelihood estimation**.  Basically, the compute will solve an optimization problem trying to choose the "most likely" values of the parameters given the data that you have.  It turns out that this particular optimization problem is actually quite easy for the computer to solve --- even though estimating the parameters is more complicated than for linear regression, it will still feel like `R` can estimate a probit or logit model pretty much instantly.
+Instead, probit and logit models are typically esetimated through an approach called **maximum likelihood estimation**.  Basically, the computer will solve an optimization problem trying to choose the "most likely" values of the parameters given the data that you have.  It turns out that this particular optimization problem is actually quite easy for the computer to solve --- even though estimating the parameters is more complicated than for linear regression, it will still feel like `R` can estimate a probit or logit model pretty much instantly.
 
 
 ### Average Partial Effects
@@ -522,67 +545,105 @@ Notice that $\beta_1$ does not show up in the last term.  As above, the partial 
 
 ### Computation
 
-The main `R` function for estimating binary outcome models is the `glm` function (this stands for "generalized linear model").  The syntax is very similar to the syntax for the `lm` command.  For example, suppose $Y$ is binary and you are interested in estimating a logit model with regressors $X1$ and $X2$ which are contained in a `data.frame` called `data`.  In this case, you could use the following code
-```{r eval=FALSE}
-# glm logit
-bin_reg <- glm(Y ~ X1 + X2, family=binomial(link="logit"), data=data)
-summary(bin_reg)
+In this section, I'll demonstrate how to estimate and interpret binary outcome models using the `titanic_training` data.  The outcome for this data is `Survived` which is a binary variable indicating whether a particular passenger survived the Titanic wreck.  We'll estimate models that also include passenger class (`Pclass`), passenger's sex, and passenger's age.
 
-# average partial effects
-library(mfx)
-bin_ape <- logitmfx(Y ~ X1 + X2, data=data, atmean=FALSE)
-bin_ape
+The main `R` function for estimating binary outcome models is the `glm` function (this stands for "generalized linear model").  The syntax is very similar to the syntax for the `lm` command, so much of what we do below will feel feel familiar.  We'll also use the `probitmfx` and `logitmfx` functions from the `mfx` package to compute partial effects.
 
-# glm probit
-pro_reg <- glm(Y ~ X1 + X2, family=binomial(link="probit"), data=data)
-summary(pro_reg)
+**Linear Probability Model**
 
-# probit average partial effects
-pro_ape <- probitmfx(Y ~ X1 + X2, data=data, atmean=FALSE)
-pro_ape
-```
-
-::: {.example}
-
-To conclude this section, we'll estimate a some models for surviving the Titanic wreck using the data `titanic_train`.  
+We'll start by estimating a linear probability model.
 
 ```{r}
 # load the data
 titanic_train <- read.csv("data/titanic_training.csv")
 
 # linear probability model
-lpm <- lm(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), data=titanic_train)
+lpm <- lm(Survived ~ as.factor(Pclass) + 
+            Sex + Age, 
+          data=titanic_train)
 summary(lpm)
 
+```
+
+Let's quickly interpret a couple of these parameters.  Recall that these can all be directly interpreted as partial effects on the probability of surviving the Titanic wreck.  For example, these estimates indicate that third class passengers were about 33% less likely to survive on average than first class passengers controlling for passenger's sex and age.
+
+The other thing that jumps out is passenger's sex.  These estimates indicate that men were, on average, 49% less likely to survive the Titanic wreck than women after controlling for passenger class, and age.
+
+Before we move on, let's compute a couple of predicted probabilities.  
+
+```{r}
+# young, first class, female
+pred_df1 <- data.frame(Pclass=1, Sex="female", Age=25, Embarked="S")
+
+# old, third class, male
+pred_df2 <- data.frame(Pclass=3, Sex="male", Age=55, Embarked="S")
+pred_df <- rbind.data.frame(pred_df1, pred_df2)
+round(predict(lpm, newdata=pred_df), 3)
+```
+
+This illustrates that there were very large differences in survival probabilities.  It also demonstrates that the linear probability model can deliver non-sensical predictions --- we predict the survival probability of a 55 year old, male, third-class passenger to be -3%.
+
+**Estimating Probit and Logit Models**
+
+Let's estimate Probit and Logit models using the same specifications.  First, Probit:
+
+```{r}
 # probit
 probit <- glm(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
               family=binomial(link="probit"), 
               data=titanic_train)
 summary(probit)
+```
 
+Now, Logit:
+```{r}
 # logit
 logit <- glm(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
               family=binomial(link="logit"), 
               data=titanic_train)
 summary(logit)
 ```
-Now, let's calculate average partial effects for each model.
+
+It's rather hard to interpret the parameters in both of these models (let's defer this to the next section).  But it is worth mentioning that all of the estimated coefficients have the same sign for the linear probability model, the probit model, and the logit model, and the same set of regressors have statistically significant effects across models (and the t-statistics/p-values are very similar across models).
+
+Now, let's calculate the same predicted probabilities as we did for the linear probability model above:
+
+```{r}
+# for probit
+predict(probit, newdata=pred_df, type="response")
+
+# for logit
+predict(logit, newdata=pred_df, type="response")
+```
+Before we interpret the result, notice that we add the argument `type=response` (this indicates that we want to get a predicted probability).
+
+Here (for both models), we estimate that a 25 year old woman traveling first class has a 91% probability of survival (this is slightly smaller than the prediction from the linear probability model).  On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.3% (from probit) or 4.6% (from logit) probability of survival.  While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.
+
+**Average Partial Effects**
+
+To conclude this section, let's calculate average partial effects for each model.  First, for probit: 
 
 ```{r message=FALSE}
 library(mfx)
-probit_ape <- probitmfx(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
+probit_ape <- probitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
                         data=titanic_train, 
                         atmean=FALSE)
 probit_ape
+```
 
-logit_ape <- logitmfx(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
+Now, for logit:
+```{r}
+logit_ape <- logitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
                         data=titanic_train, 
                         atmean=FALSE)
 logit_ape
 ```
 
+A couple of things to notice:
 
-:::
+- The average partial effects are extremely similar across models.  For example, across all three models, the average partial effect of being `male` is to reduce the probability of survival by 49% controlling for the other variables in the model.  The other average partial effects are quite similar across models as well.
+
+- Both `probitmfx` and `logitmfx` functions took in an argument for `atmean`.  We set it equal to `FALSE`.  If you set it equal to `TRUE`, you will compute a different kind of partial effect.  You can check `?probitmfx` or `?logitmfx` for more details.
 
 ## Lab 4: Predicting Diamond Prices
 
@@ -605,7 +666,7 @@ For this lab, we will try our hand at predicted diamond prices.  We will use the
 ## Lab 4: Solutions
 
 ```{r message=FALSE}
-load("diamond_train.RData")
+load("data/diamond_train.RData")
 
 # formulas
 formla1 <- price ~ carat + as.factor(cut) + as.factor(clarity)
@@ -683,7 +744,7 @@ ridge_res <- cv.glmnet(formla3, data=diamond_train, alpha=0)
 
 # out of sample predictions
 
-load("diamond_test.RData")
+load("data/diamond_test.RData")
 
 # compute prediction errors with test data
 u1 <- diamond_test$price - predict(mod1, newdata=diamond_test)
@@ -703,6 +764,26 @@ rmspe_ridge <- sqrt(mean(u_ridge^2))
 rmspe <- data.frame(mod1=rmspe1, mod2=rmspe2, mod3=rmspe3, lasso=rmspe_lasso, ridge=rmspe_ridge)
 round(rmspe,3)
 ```
+
+## Coding Questions
+
+1. For this problem, we will use the data `mroz`.
+
+    a) Estimate a probit model where the outcome is whether or not the wife is in the labor force (`inlf`) using the the number of kids less than 6 (`kidslt6`) and the number of kids who are 6 or older living in the household (`kidsge6`).  Calculate the average partial effect of each variable.  What do you notice?
+    
+    b) Now, add the variables `age`, `educ`, and `city` to the model.  Calculate the average partial effects of `kidslt6` and `kidsge6`.  How do you interpret these?  How do they compare to the answers from part a?
+    
+    c) Estimate a linear probability model and logit model using the same specification as in part b.  For each one, how do the estimated coefficients compare to the ones from part b?  Compute average partial effects for each model.  How do these compare to the ones from part b?
+    
+2. For this problem, we will use the `Fair` data.
+
+    a) The variable `nbaffairs` contains the number of self-reported affairs that an individual has had in the previous year.  Create a variable `had_affair` that is equal to 1 if an individual had any affair in the past year and that is equal to 0 otherwise.  What fraction of individuals in the data have had an affair in the past year?
+    
+    b) Estimate a logit model where the outcome is `had_affair` and the regressor is whether or not the person has a child (`child`).  Calculate the average partial effect of having a child on having an affair.  How do you interpret the results?
+    
+    c) Now add `sex`, `age`, `education`, and `occupation` to the model.  Calculate the average partial effect of each variable.  How do you interpret the results?  **Hint:** Make sure to treat the categorical variables in the model as categorical rather than as numeric.
+    
+    d) In addition to the variables in part c, add the variables years married (`ym`) and `religious` to the mode.  Calculate the average partial effect of each variable.  How do you interpret the results?  **Hint:** Make sure to treat the categorical variables in the model as categorical rather than as numeric.
 
 ## Extra Questions
 

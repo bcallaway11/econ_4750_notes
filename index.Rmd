@@ -121,6 +121,22 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     - Access: `data(Airq, package="Ecdat")
     
     - Description: `?Ecdat::Airq`
+    
+- `AJR`
+
+    - Data about GDP, institutions, and settler mortality
+    
+    - Access: `data(AJR, package="hdm")
+    
+    - Description: `?hdm::AJR`
+    
+- `banks`
+
+    - Data about bank closures in Mississippi during the Great Depression 
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
 
 - `Birthweight_Smoking`
 
@@ -185,6 +201,14 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
     
     - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+- `house`
+
+    - U.S. House of Representatives elections data from 1946-1998
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
 
 - `Housing`
 
@@ -194,6 +218,22 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     
     - Description:  `?Ecdat::Housing`
 
+- `intergenerational_mobility`
+
+    - Intergenerational mobility data from PSID
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+- `mlda`
+
+    - Car accident deaths by age group
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+
 - `mroz`
 
     - Labor force particpation of married women
@@ -202,6 +242,22 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     
     - Description: `?wooldridge::mroz`
     
+- `mutual_funds`
+
+    - Mutual fund performance data
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+- `rand_hie`
+
+    - RAND health insurance experiment
+    
+    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+
 - `Star`
 
     - Data from Project STAR that randomly assigned some students to smaller class sizes

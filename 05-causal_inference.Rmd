@@ -6,7 +6,45 @@
 
 # Causal Inference
 
-For simplicity, we will mostly focus on the case where the treatment is binary.  We will use $D_i$ to denote the treatment, so that $D_i=1$ if individual $i$ participates in the treatment and $D_i=0$ if individual $i$ does not participate in the treatment.
+For the remainder of the semester, we will talk about methods for understanding the **causal effect** of one variable on another.  
+
+Let's start with an example.  Suppose we were interested in understanding the causal effect of attending college on earnings.  We know a lot about calculating averages, so let's consider calculating average earnings of those who went to college and comparing that to the average earnings of those who didn't go to college.  Let's use the data that we used all the way back in Chapter 2 to make this calculation.
+
+```{r}
+load("us_data.RData")
+
+col_earnings <- mean(subset(us_data, educ >= 16)$incwage)
+non_col_earnings <- mean(subset(us_data, educ < 16)$incwage)
+
+round(data.frame(col_earnings, 
+                 non_col_earnings, 
+                 diff=(col_earnings-non_col_earnings)),3)
+```
+This seems to be a huge difference.  We are used to calling this difference a partial effect of going to college, but should we call it *the causal effect* or an average causal effect across individuals?  Probably no.  The main reason is that earnings of individuals who went to college may have been different from individuals that didn't go to college even if no one went to college.  Another way to say this is that there are a number of other things besides college that affect a person's earnings (age, race, IQ, "ability", "hardworking-ness", luck, etc.).  If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.
+
+Before we move on, let me give some more examples of causal questions that may be of interest to economists:
+
+- Causal effects of economic policies
+
+    - What was the causal effect of a country raising its interest rate on GDP or employment?
+    
+    - What was the causal effect of a change in the minimum wage on employment?
+    
+    - What was the causal effect of changing voter ID laws on the number of ballots cast?
+    
+- Causal effects of individual/firm choices
+    
+    - What was the causal effect of a price increase on quantity demanded?
+    
+    - What was the causal effect of changing a product attribute on some outcome of interest (e.g., changing the font type on clicks on Google ads)?
+    
+    - What was the causal effect of a new cholesterol medication on cholesterol levels?
+    
+    - What was the causal effect of a job training program on wages?
+
+You could easily come up with many others too.  A large fraction of the questions that researchers in economics try to address are ultimately about sorting out these sorts of causal effects.
+
+For terminology, we'll refer to the variable that we are interested in understanding its causal effect (going to college in the earlier example) as the **treatment**.  For simplicity, we will mostly focus on the case where the treatment is binary.  We will use $D_i$ to denote the treatment, so that $D_i=1$ if individual $i$ participates in the treatment and $D_i=0$ if individual $i$ does not participate in the treatment.
 
 Example: SW 13.3
 
@@ -14,9 +52,15 @@ Example: SW 13.3
 
 SW 13.1
 
-*Treated potential outcome*: $Y_i(1)$, the outcome an individual *would experience* if they participated in the treatment
+A powerful tool for thinking about causal effects is **counterfactual reasoning**.  For individuals that participate in the treatment, we observe what their outcome is given that they participated in the treatment.  But we don't observe what their outcome would have been if they had not participated in the treatment.  For example, among those that went to college, we don't observe what their earnings would have been if they had not gone to college.  For those that don't participate in the treatment, we face the opposite problem --- we don't observe what their outcome would have been if they had participated in the treatment.  
 
-*Untreated potential outcome*: $Y_i(0)$, the outcome an individual *would experience* if they did not participate in the treatment
+We'll relate causal inference to the problem of trying to figure out what outcomes individuals that participated in the treatment would have experienced if they had *not* participated in the treatment (at least on average) and/or figuring out what outcomes individuals that did not participated in the treatment would have experienced if they *had* participated in the treatment.
+
+To do this, let's introduce somewhat more formal notation/terminology.
+
+**Treated potential outcome**: $Y_i(1)$, the outcome an individual *would experience* if they participated in the treatment
+
+**Untreated potential outcome**: $Y_i(0)$, the outcome an individual *would experience* if they did not participate in the treatment
 
 For individuals that participate in the treatment, we observe $Y_i(1)$ (but not $Y_i(0)$).  For individuals that do not participate in the treatment, we observe $Y_i(0)$ (but not $Y_i(1)$).  Another way to write this is that the observed outcome, $Y_i$ is given by
 \begin{align*}
@@ -30,7 +74,7 @@ We can think about the individual-level effect of participating in the treatment
 
 Considering the difference between treated and untreated potential outcomes is a very natural (and, I think, helpful) way to think about causality.  The causal effect of the treatment is the difference between the outcome that an individual would experience if they participate in the treatment relative to what they would experience if they did not participate in the treatment.
 
-This notation makes it clear that we are allowing for *treatment effect heterogenity* --- the effect of participating in the treatment can vary across different individuals.
+This notation also makes it clear that we are allowing for **treatment effect heterogenity** --- the effect of participating in the treatment can vary across different individuals.
 
 That said, most researchers essentially give up on trying to figure out individual level treatment effects.  It is not so much that these are not interesting, more it is just that these are very hard to figure out.  Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person's earnings.  I went to college, so I know what my $Y(1)$ is, but I don't know what my $Y(0)$ is --- and, I'd even have a hard time coming with a good guess as to what it might be. 
 
@@ -44,7 +88,7 @@ Instead of going for individual-level effects of participating in the treatment,
 \end{align*}
 $ATE$ is the difference between treated potential outcomes and untreated potential outcomes, on average, and for the entire population.  $ATT$ is the difference between treated and untreated potential outcomes, on average, conditional on being in the treated group.
 
-I will mostly focus on $ATT$.
+We will mostly focus on $ATT$.
 
 It is worth considering the challenges for learning about $ATT$.  In particular, notice that we can write
 \begin{align*}
@@ -56,7 +100,11 @@ and consider these term separately
 
 * $\E[Y(0)|D=1]$ is the average untreated potential outcome among the treated group.  This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group.  But, in order to learn about the $ATT$, we will have to *somehow* deal with this term.  I will provide a number of strategies below, but it is important to remember that this is a major challenge, and their may not be a good solution.
 
-As a side-comment, I'd like to point out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer.  In economics jargon, this amounts to an *identification problem* --- in other words, there may be competing theories of the world which the available data is not able to distinguish among.  I probably do not emphasize this issue enough in our class, but it is something that you should remember!
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> I think it is also worth clearly pointing out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer.  In economics jargon, this amounts to an **identification problem** --- in other words, there may be competing theories of the world which the available data is not able to distinguish among.  I probably do not emphasize this issue enough in our class, but it is something that you should remember --- there may be a large number of causal questions that we'd be interested in answering, but where it is not possible to answer them (at least given the information that we have available).
+
+:::
 
 ## Experiments
 
@@ -84,11 +132,13 @@ The natural way to estimate the ATT under random assignment is
 \end{align*}
 i.e., as we have done many times before, in order to estimate the parameter of interest, we just replace population averages with sample averages.
 
+### Estimating ATT with a Regression
+
 It is also often convenient to introduce a regression based estimator of the ATT.  This is primarily convenient as it will allow us to leverage all the things we already know about regressions, and, particularly, we it will immediately provide us with standard errors, t-statistics, etc. 
 
 In order to do this, let's introduce the following assumption:
 
-*Treatment Effect Homogeneity*: $Y_i(1) - Y_i(0) = \alpha$ (and $\alpha$ does not vary across individuals).  
+**Treatment Effect Homogeneity**: $Y_i(1) - Y_i(0) = \alpha$ (and $\alpha$ does not vary across individuals).  
 
 This is a potentially quite unrealistic assumption; I'll make some additional comments about it below, but, for now, let's just go with it.
 
@@ -96,7 +146,7 @@ Notice that we can also write
 \begin{align*}
   Y_i(0) = \beta_0 + U_i
 \end{align*}
-where $\E[U|D=0] = \E[U|D=1] = 0$ (this holds under random assignment)
+where $\E[U|D=0] = \E[U|D=1] = 0$ (this holds under random assignment since random assignment implies that treated and untreated individuals do not have systematically different untreated potential outcomes)
 
 Recalling the definition of the observed outcome, notice that
 \begin{align*}
@@ -104,7 +154,9 @@ Recalling the definition of the observed outcome, notice that
   &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
   &= \alpha D_i + \beta_0 + U_i
 \end{align*}
-This suggests running a regression of the observed $Y_i$ on $D_i$ and interpreting the estimated version of $\alpha$ as an estimate of $ATT$ (and you can pick up standard errors, etc. from the regression output) --- this is very convenient.
+where the second equality just involves re-arranging terms, and the third equality holds under treatment effect homogeneity and using the expression for $Y_i(0)$ in the previous equation. 
+
+This suggests running a regression of the observed $Y_i$ on $D_i$ and interpreting the estimated version of $\alpha$ as an estimate of the causal effect of participating in the treatment (and you can pick up standard errors, etc. from the regression output) --- this is very convenient.
 
 The previous discussion invoked the extra condition of treatment effect homogeneity.  I want to point out some things related to this now.  In the above regression model, we can alternatively (and equivalently) write it as
 \begin{align*}
@@ -120,15 +172,85 @@ Subtracting the second equation from the first implies that
 \end{align*}
 but notice that this is exactly what the $ATT$ is equal to under random assignment.  Thus, it is worth pointing out that, although we imposed the assumption of treatment effect homogeneity to arrive at the regression equation, our regression is "robust" to treatment effect heterogeneity.
 
-* Internal Validity: SW 13.2
+### Internal and External Validity
 
-* External Validity: SW 13.2
+SW 13.2
+
+Although experiments, when they are available, are considered the gold standard of causal inference, there are some ways they can go wrong.
+
+An experiment is said to be **internally valid** if inferences about causal effects are valid for the population being studied.
+
+An experiment is said to be **externally valid** if inferences about causal effects can be generalized from the study setting to other populations/time periods/settings.
+
+Generally, its easier for an experiment to be internally valid than externally valid, but there are a number of "threats" to both internal and external validity.
+
+Threats to internal validity:
+
+- Failure to randomize --- individuals weren't actually randomized into the treatment.  This seems trivial, but some famous examples include experiments that assigned treatment participation by the first letter of a person's last name.  It turns out that this can be correlated with a number of other things (violating the random assignment assumption)
+
+    - As a side-comment, random treatment assignment implies that treatment should be uncorrelated with other covariates (e.g., race, sex, etc.) and this can be used as a way to check if the treatment was really randomly assigned.
+    
+- Failure to follow treatment protocol --- Individuals assigned to participate in the treatment don't participate or vice versa.
+
+    - This is actually a pretty common problem.  A leading example would be in the context of an experimental drug where patients who were assigned the placebo somehow to convince the doctor to give them the real drug.
+    
+- Attrition --- subjects non-randomly drop out of the sample
+
+- Placebo effects --- Participating in an experiment can cause changes in behavior/outcomes.
+
+    - This is a main reason that medical experiments are often "double-blind"
+    
+- Small sample sizes --- Experiments can be expensive to run and therefore often include only a small number of observations, and, therefore, may be less able to detect small effects of a treatment
+
+- Experiments can sometimes be unethical
+
+    - The 2019 Nobel prize in economics was awarded for experiments in developing countries.  Some of these experiments were somewhat controversial (e.g., randomly assigning some schools extra resources and randomly giving glasses to some students but not others).
+    
+Threats to External Validity:
+
+- Nonrepresentative samples --- The population that is willing to participate in an experiment many be substantially different from the overall population.
+
+    - A closely related problem is that the economic environment may change across time and/or space which means that effects of some treatment might be different in different time periods or locations
+    
+- Nonrepresentative program/policy --- The policy in an experiment may be different from other policies being considered
+
+    - For example, the Perry Preschool Project was an experiment that provided intensive pre-school program that seems to have had large and long-lasting effects on participants.  It is not clear if these results should apply to less intensive programs like Head Start.
+    
+- General equilibrium effects --- Expanding policies may alter the "state of the world" in a way that an experiment wouldn't (e.g., the effects of a local minimum wage change could be different from a country-wide minimum wage change)
+
+
+### Example: Project STAR
+
+Project STAR was a an experiment in Tennessee in 1980s on the effects of smaller class sizes on student performance where students and teachers were randomly assigned to be in a small class, a regular class, or a regular class with an aide.  In this example, we'll study the causal effect of being in a small class on reading test scores.
+
+```{r}
+data("Star", package="Ecdat")
+
+# limit data to small class or regular class
+# this drops the other category of regular class size with an aide
+Star <- subset(Star, classk %in% c("small.class", "regular"))
+
+# regression for reading scores
+reading <- lm(log(treadssk) ~ classk, data=Star)
+summary(reading)
+```
+You'll notice that this is a very simple analysis, but that we have access to an experiment means that we do need to do anything complicated --- we can just use a regression to compare the differences between test scores of students in small classes relative to large tests.  These results say that small class sizes increase reading test scores of students by about 1.3%.
+
+Let me also make a few comments about internal and external validity.
+
+- I don't have too much to say about internal validity.  As far as I know, Project STAR is considered internally valid, but it would be worth reading more about it in order to confirm that.
+
+- Thinking about external validity though is quite interesting.  For one thing, this experiment is quite old.  Are the results still valid now?  It is not clear; one could imagine that better teaching technologies now could possibly make having a small class less important.  Another thing that is interesting is that this experiment was for very young students (I think students in kindergarten).  Do these results imply that, say, high school or college students would also benefit from smaller class sizes?  Again, this is not clear.  It is a relevant piece of information, but it also would require a seemingly large amount of extrapolation to say that these results should inform policy decisions about class sizes in the present day and for different age groups.
 
 ## Unconfoundedness
 
 SW 6.8, SW Ch. 9
 
-*Unconfoundedness Assumption*:
+Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we'd be interested in studying.  For example, it's hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of.
+
+For the remainder of this chapter, we'll discuss common approaches to causal inference when the treatment is not randomly assigned.  We'll start with what is probably the most common approach: **unconfoundedness**.
+
+**Unconfoundedness Assumption**:
 \begin{align*}
   (Y(1),Y(0)) \independent D | X
 \end{align*}
@@ -139,7 +261,9 @@ You can think of this as saying that, among individuals with the same covariates
       \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
     \end{align*}
 
-For this case, let's continue to make the treatment effect heterogeneity assumption as above.  In addition, let's assume a linear model for untreated potential outcomes
+If you are willing to believe this assumption, then you can recover the $ATT$.  There are a few different ways that you could implement this.  Probably the most common (and convenient) way is to link this condition to a regression (just like we did in the previous section on experiments).
+
+To do this, let's continue to make the treatment effect heterogeneity assumption as above.  In addition, let's assume a linear model for untreated potential outcomes
 \begin{align*}
   Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
 \end{align*}
@@ -168,9 +292,9 @@ where $X$ were observed random variables, but $W$ were not observed.  Following 
 \end{align*}
 (I'm just including one $X$ and one $W$ for simplicity, but you can easily imagine the case where there are more.)  If $W$ were observed, then we could just run this regression, but since $W$ is not observed, we run into the problem of omitted variable bias (i.e., if we just ignore $W$, we won't be estimating the causal effect $\alpha$)
 
-* Panel data setup, notation, etc: SW 10.1
+In this section, we'll consider the case where a researcher has access to a different type of data called **panel data**.  Panel data is data that follows the same individual (or firm, etc.) over time.  In this case, it is often helpful to index variables by time.  For example, $Y_{it}$ is the outcome for individual $i$ in time period $t$.  $X_{it}$ is the value of a regressor for individual $i$ in time period $t$ and $D_{it}$ is the value of the treatment for individual $i$ in time period $t$.  If some variable doesn't vary over time (e.g., a regressor like race), we won't use a $t$ subscript.
 
-Panel data potentially gives us a way around this problem.  This is particularly likely to be the case when $W$ does not vary over time.  In that case, we can write
+Panel data potentially gives us a way around the problem of not observing some variables that we would like to condition on in the model.  This is particularly likely to be the case when $W$ does not vary over time.  Let's start with there are exactly two time periods of panel data.  In that case, we can write
 \begin{align*}
   Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
 \end{align*}
@@ -178,11 +302,15 @@ where we consider the case where $D$ and $X$ both change over time.  Then, defin
 \begin{align*}
   \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
 \end{align*}
-which, importantly, no longer involves the unobserved $W_i$ and suggests running the above regression and interpreting the estimated version of $\alpha$ as an estimate of the effect of participating in the treatment.
+which, importantly, no longer involves the unobserved $W_i$ and suggests running the above regression and interpreting the estimated version of $\alpha$ as an estimate of the causal effect of participating in the treatment.
 
-* Time fixed effects --- The previous regression did not include an intercept.  It is common in applied work to allow for the intercept to vary over time (i.e., so that $\beta_0 = \beta_{0,t}$) which allows for "aggregate shocks" such as recessions or common trends in outcomes over time.  In practice, this amounts to just including an intercept in the previous regression.
+* **Time fixed effects** --- The previous regression did not include an intercept.  It is common in applied work to allow for the intercept to vary over time (i.e., so that $\beta_0 = \beta_{0,t}$) which allows for "aggregate shocks" such as recessions or common trends in outcomes over time.  In practice, this amounts to just including an intercept in the previous regression, for example,
 
-Often, there may be many omitted, time invariant variables.  In practice, these are usually just lumped into a single *fixed effect* --- even if there are many time invariant, unobserved variables, we can difference them all out at the same time
+    $$
+      \Delta Y_{it} = \underbrace{\theta_t} + \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it} 
+    $$
+
+Often, there may be many omitted, time invariant variables.  In practice, these are usually just lumped into a single **individual fixed effect** --- even if there are many time invariant, unobserved variables, we can difference them all out at the same time
 \begin{align*}
   Y_{it} &= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
   &= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it} 
@@ -191,7 +319,7 @@ and we can follow the same strategies as above.
 
 Another case that is common in practice is when there are more than two time periods.  This case is similar to the previous one except there are multiple ways to eliminate the unobserved fixed effect.  The two most common are the
 
-* Within estimator
+* **Within estimator**
 
     To motivate this approach, notice that, if, for each individual, we average their outcomes over time, the we get
     \begin{align*}
@@ -204,7 +332,7 @@ Another case that is common in practice is when there are more than two time per
     
     This is a feasible regression to estimate (everything is observed here).  This is called a within estimator because the terms $\bar{Y}_i$, $\bar{D}_i$, and $\bar{X}_i$ are the within-individual averages-over-time of the corresponding variable.
     
-* First differences
+* **First differences**
 
     Another approach to eliminating the unobserved fixed effects is to directly consider $\Delta Y_{it}$:
     
@@ -214,17 +342,40 @@ Another case that is common in practice is when there are more than two time per
       
     This is the same expression as we had before for the two period case.  Only here you would include observations from all available time periods on $\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}$ in the regression.
 
-Two cases where a fixed effect strategy can break down:
+It's worth mentioning the cases where a fixed effects strategy can break down:
 
-* unobserved variables vary over time (i.e., $\cdots + \beta_2 W_{it} + \cdots$)
+* Unobserved variables vary over time 
 
-* the effect of unobserved variables varies over time (i.e., $\cdots + \beta_{2,t} W_i + \cdots$)
+    $$
+      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 \underbrace{W_{it}} + U_{it}
+    $$
+    In this case,
+    
+    $$
+      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \beta_2 \underbrace{\Delta W_{it}} + \Delta U_{it}
+    $$
+    
+    which still involves the unobserved $W_{it}$, and implies that the fixed effects regression will contain omitted variable bias.
+
+* The effect of unobserved variables varies over time 
+    
+    $$
+      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \underbrace{\beta_{2,t}} W_i + U_{it}
+    $$
+    In this case,
+    
+    $$
+      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \underbrace{(\beta_{2,t} - \beta_{2,t-1})} W_i + \Delta U_{it}
+    $$
+    
+    which still involves the unobserved $W_i$ (even though it doesn't vary over time) and, therefore, the fixed effects regressions we have been considering will contain omitted variable bias.
+
 
 Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context.  This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) --- both of these are realistic in many applications.  This is a main research area of mine and one I am happy to talk way more about.
 
 ### Difference in differences
 
-The panel data approaches that we have been talking about so far are closely related to a natural-experiment type of strategy called *difference in differences* (DID).
+The panel data approaches that we have been talking about so far are closely related to a **natural-experiment** type of strategy called **difference in differences** (DID).
 
 One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.
 
@@ -269,13 +420,81 @@ where $\E[v_t | D] = 0$.
 
 SW all of chapter 12
 
+In the previous section, I used the word **natural experiment** but didn't really define it.  When an actual experiment is not actually available, a very common strategy used by researchers interested in causal effects is to consider natural experiments --- these are not actual experiments, but more like the case where "something weird" happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes.  This "something weird" is called an **instrumental variable**.  
+
+Let me give you some examples:
+
+- This is not as popular of a topic as it used to be, but many economists used to be interested in the causal effect of military service on earnings.  This is challenging because individuals "self-select" into the military (i.e., individuals don't just randomly choose to join the military, and, while there may be many dimensions of choosing to join the military, probably one dimension is what a person expects the effect to be on their future earnings).
+
+    - A famous example of an instrumental variable in this case is an individual's Vietname draft lottery number.  Here, the idea is that a randomly generated lottery number (by construction) doesn't have any direct effect on earnings, but it does affect the chances that someone participates in the military.  This is therefore a natural experiment and could serve the role of an instrumental variable.
+    
+- For studying the effect of education on on earnings, researchers have used the day of birth as an instrument for years of education.  The idea is that compulsory school laws are set up so that individuals can leave school when they reach a certain age (e.g., 16).  But this means that, among students that want to drop out as early as they can, students who have an "early" birthday (usually around October) will have spent less time in school than students who have a "late" birthday (usually around July) at any particular age.  This is a kind of natural experiment --- comparing earnings of students who drop out at 16 for those who have early birthdays relative to late birthdays.
+
+Let's formalize these arguments.  Using the same arguments as before, suppose we have a regression that we'd like to run
+
+$$
+  Y_i = \beta_0 + \alpha D_i + \underbrace{\beta_1 W_i + U_i}_{V_i}
+$$
+and interpret our estimate of $\alpha$ as an estimate of the causal effect of participating in the treatment.  And where, for simplicity, I am not including any $X$ covariates and where we do not observe $W$.  If $D$ is correlated with $W$, then just ignoring $W$ and running a regression of $Y$ on $D$ will result in omitted variable bias so that regression does not recover an estimate of $\alpha$.  To help with the discussion below, we'll define $V_i$ to be the entire unobservable term, $\beta_1 W_i + U_i$, in the above equation.
+
+An instrumental variable, which we'll call $Z$, needs to satisfy the following two conditions:
+
+1. $\Cov(Z,V) = 0$ --- This condition is called the **exclusion restriction**, and it means that the instrument is uncorrelated with the error term in the above equation.  In practice, we'd mainly need to make sure that it is uncorrelated with whatever we think is in $W$.
+
+2. $\Cov(Z,D) \neq 0$ --- This condition is called **instrument relevance**, and it means that the instrument needs to actually affect whether or not an individual participates in the treatment.  We'll see why this condition is important momentarily.
+
+Next, notice that
+
+$$
+  \begin{aligned}
+  \Cov(Z,Y) &= \Cov(Z,\beta_0 + \alpha D + V) \\
+  &= \alpha \Cov(Z,D)
+  \end{aligned}
+$$
+which holds because $\Cov(Z,\beta_0) = 0$ (because $\beta_0$ is a constant) and $\Cov(Z,V)=0$ by the first condition of $Z$ being a valid instrument.  This implies that
+
+$$
+  \alpha = \frac{\Cov(Z,Y)}{\Cov(Z,D)}
+$$
+That is, if we have a valid instrument, the above formula gives us a path to recovering the causal effect of $D$ on $Y$. [Now you can also see why we needed the second condition --- otherwise, we could divide by 0 here.]
+
+The intuition for this is the following: changes in the instrument can cause changes in the outcome but only because they can change whether or not an individual participates in the treatment.  These changes show up in the numerator.  They are scaled by how much changes in the instrument result in changes in the treatment.
+
+If there are other covariates in the model, the formula for $\alpha$ will become more complicated.  But you can use the `ivreg` function in the `ivreg` package to make these complications for you.
+
+### Example: Return to Education
+
+In this example, we'll estimate the return to education using whether or not an individual lives close to a college as an instrument for attending college.  The idea is that (at least after controlling for some other covariates), the distance that a person lives from a college should not directly affect their earnings but it could affect whether or not they attend college due to it being more or less convenient.  I think that the papers that use this sort of an idea primarily have in mind that distance-to-college may affect whether or not a student attends a community college rather than a university.
+
+```{r}
+library(ivreg)
+library(modelsummary)
+
+data("SchoolingReturns", package="ivreg")
+
+lm_reg <- lm(log(wage) ~ education + poly(experience, 2, raw = TRUE) + ethnicity + smsa + south,
+  data = SchoolingReturns)
+
+iv_reg <- ivreg(log(wage) ~ education + poly(experience, 2, raw = TRUE) + ethnicity + smsa + south, 
+  ~ nearcollege + poly(age, 2, raw = TRUE) + ethnicity + smsa + south,
+  data = SchoolingReturns)
+
+reg_list <- list(lm_reg, iv_reg)
+
+modelsummary(reg_list)
+```
+
+The main parameter of interest here is the coefficient on `education`.  The IV estimates are noticeably larger than the OLS estimates (`0.133` relative to `0.074`).  [This is actually quite surprising as you would think that OLS would tend to *over-estimate* the return to education.  This is a very famous example, and there are actually quite a few "explanations" from labor economists about why this sort of result arises.]
+
 ## Regression Discontinuity
 
 SW 13.4
 
-Regression discontinuity is another "trick" to get at causal effects.  The idea is to look for cutoffs that affect whether or not an individual is treated while not otherwise affecting their outcomes.  Here are some examples:
+The final type of natural experiment that we will talk about is called **regression discontinuity**.  The sort of natural experiment is available when there is a **running variable** with a threshold (i.e., cutoff) where individuals above the threshold are treated while individuals below the threshold are not treated.  These sorts of thresholds/cutoffs are fairly common.
 
-* Cutoffs that make students eligible for a scholarship
+Here are some examples:
+
+* Cutoffs that make students eligible for a scholarship (e.g., the Hope scholarship)
 
 * Rules about maximum numbers of students allowed in a classroom in a particular school district
 
@@ -284,6 +503,123 @@ Regression discontinuity is another "trick" to get at causal effects.  The idea 
 * Very close union elections
 
 * Thresholds in tax laws
+
+Then, the idea is to compare outcomes among individuals that "barely" were treated relative to those that "barely" weren't treated.  By construction, this often has properties that are similar to an actual experiment as those that are just above the cutoff should have observed and unobserved characteristics that are the same as those just below the cutoff.
+
+Typically, regression discontinuity designs are implemented using a regression that includes a binary variable for participating in the treatment, the running variable itself, and the interaction between the running variable and the treatment, *using only observations that are "close" to the cutoff*.  [What should be considered "close" to the cutoff is actually a hard choice and there are tons of papers suggesting various approaches to decide what "close" means --- we'll largely avoid this and just pick what we think is close.]  The estimated coefficient on the treatment indicator variable is an estimate of the average effect of participating in the treatment among those individuals who are close to the cutoff.
+
+This will become clearer with an example.
+
+### Example: Causal effect of Alcohol on Driving Deaths
+
+In this section, we'll be interested in the causal effect of young adult alcohol consumption on the number of deaths in car accidents.  
+
+The idea here will be to compare the number of deaths in car accidents that involve someone who is 21 or just over to the number of deaths in car accidents that involve someone who is just under 21.  The reason to make this comparison is that alcohol consumption markedly increases when individuals turn 21 (due to that being the legal drinking age in the U.S.).  If alcohol consumption increases car accident deaths, then we should also be able to detect a jump in the number of car accident deaths involving those who are just over 21.
+
+The data that we have consists of age groups by age up to a particular month (`agecell`) and the number of car accident deaths involving that age group (`mva`).    
+
+```{r}
+library(ggplot2)
+data("mlda", package="masteringmetrics")
+
+# drop some data with missing observations
+mlda <- mlda[complete.cases(mlda),]
+
+# create treated variable
+mlda$D <- 1*(mlda$agecell >= 21)
+```
+
+In regression discontinuity designs, it is very common to show a plot of the data.  That's what we'll do here.
+
+```{r}
+ggplot(mlda, aes(x=agecell, y=mva)) + 
+  geom_point() + 
+  geom_vline(xintercept=21) + 
+  xlab("age") + 
+  ylab("moving vehicle accident deaths") + 
+  theme_bw()
+```
+
+This figure at least suggests that the number of car accident deaths does appear to jump at age 21.
+
+Now, let's run the regression that we talked about earlier, involving a treatment dummy, age, and age interacted with the treatment.
+
+```{r}
+rd_reg <- lm(mva ~ D + agecell + agecell*D, data=mlda)
+summary(rd_reg)
+```
+These results suggest that alcohol consumption increased car accident deaths (you can see this from the estimated coefficient on `D`).  [The setup in this example is somewhat simplified; if you wanted to be careful about how much alcohol consumption increased car accident deaths, then we would probably need to scale up our estimate by how much alcohol consumption increases on average when people turn 21.  Nevertheless, what we have presented above does suggest that alcohol consumption increases car accident deaths.]
+
+Finally, let me show one more plot that is common to report in a regression discontinuity design.
+
+```{r}
+# get predicted values for plotting
+mlda$preds <- predict(rd_reg)
+
+# make plot
+ggplot(mlda, aes(x=agecell, y=mva, color=as.factor(D))) +
+  geom_point() +
+  geom_line(aes(y=preds)) + 
+  geom_vline(xintercept=21) +
+  labs(color="treated", x="age", y="moving vehicle accident deaths") + 
+  theme_bw()
+```
+
+This shows the two lines that we effectively fit with the regression that included the binary variable for the treatment, the running variable, and their interaction.  The "jump" between the red line and the blue line at `age=21` is our estimated effect of the treatment.
+
+## Lab 5: Drunk Driving Laws
+
+* see lab 6 from last semester
+
+## Lab 5: Solutions
+
+## Coding Questions
+
+1. For this problem, we will use the data `rand_hie`.  This is data from the RAND health insurance experiment in the 1980s.  In the experiment, participants were randomly assigned to get Catastrophic (the least amount of coverage), insurance that came with a Deductible, insurance that came with Cost Sharing (i.e., co-insurance so that an individual pays part of their medical insurance), and Free (so that there is no cost of medical care).
+
+    a) Estimate the effect of 
+
+```{r}
+load("data/rand_hie.RData")
+nrow(rand_hie)
+
+lm(meddol ~ plantype, data=rand_hie)
+lm(ftf ~ plantype, data=rand_hie)
+```
+
+2. For this problem, we will study the causal effect of having more children on women's labor supply using the data `Fertility`.  
+
+    a) Let's start by running a regression of the number of hours that a woman typically works per week (`work`) on whether or not she has more than two children (`morekids`), her age and $age^2$, and race/ethnicity (`afam` and `hispanic`).  Report your results.  How do you feel about interpreting the estimated coefficient on `morekids` as the causal effect of having more than two children?  Explain.
+    
+    b) One possible instrument in this setup is the sex composition of the first two children (i.e., whether they are both girls, both boys, or a boy and a girl).  The thinking here is that, at least in the United States, parents tend to have a preference for having both a girl and a boy and that, therefore, parents whose first two children have the same sex may be more likely to have a third child than they would have been if they have a girl and a boy.  Do you think that using a binary variable for whether or not the first two children have the same sex is a reasonable instrument of for `morekids` from part a?
+    
+    c) Create a new variable called `samesex` that is equal to one for families whose first two children have the same sex.  Using the same specification as in part a, use `samesex` as an instrument for `morekids` and report the results.  Provide some discussion about your results.
+
+
+3.  For this question, we will use the `AJR` data.  A deep question in development economics is: Why are some countries much richer than other countries?  One explanation for this is that richer countries have different institutions (e.g., property rights, democracy, etc.) that are conducive to growth.  Its hard to study these questions though because institutions do not arise randomly --- there could be reverse causality so that property rights, democracy, etc. are (perhaps partially) caused by being rich rather than the other way around.  Alternatively, other factors (say a country's geography) could cause both of these.  We'll consider one instrumental variables approach to thinking about this question in this problem.
+
+    a) Run a regression of the log of per capita GDP (the log of per capita GDP is stored in the variable `GDP`) on a measure of the protection against expropriation risk (this is a measure of how "good" a country's institutions are (a larger number indicates "better" institutions) and it is in the variable `Exprop`).  How do you interpret these results?  Do you think it would be reasonable to interpret the estimated coefficient on `Exprop` as the causal effect of institutions on GDP.
+    
+    b) One possible instrument for `Exprop` is settler mortality (we'll use the log of this which is available in the variable `logMort`).  Settler mortality is a measure of how dangerous it was for early settlers of a particular location.  The idea is that places that have high settler mortality may have set up worse (sometimes called "extractive") institutions than places that had lower settler mortality.  But that settler mortality (from a long time ago) does not have any other direct effect on modern GDP.  Provide some discussion about whether settler mortality is a valid instrument for institutions.
+    
+    c) Estimate an IV regression of `GDP` on `Exprop` using `logMort` as an instrument for `Exprop`. How do you interpret the results?  How do these results compare to the ones from part a?
+
+
+4. For this question, we'll use the data `house` to study the causal effect of incumbency on the probability that a member of the House of Representatives gets re-elected.  
+
+    a) One way to try to estimate the causal effect of incumbency is to just run a regression where the outcome is `democratic_vote_share` (this is the same outcome we'll use below) and where the model includes a dummy variable for whether or not the democratic candidate is an incumbent.  What are some limitions of this strategy?
+    
+    b) The `house` data contains data about the margin of victory (is positive if they won the election and negative if they lost) for Democratic candidates in the current election and data about the Democratic margin of victory in the past election.  Explain how you could use this data in a regression discontinuity design to estimate the causal effect of incumbency.
+    
+    c) Use the `house` data to implement the regression discontinuity design that you proposed in part b.  What do you estimate as the causal effect of incumbency?
+    
+5. For this problem, we will use the data `banks`.  We will study the causal effect of monetary policy on bank closures during the Great Depression.  We'll consider an interesting natural experiment in Mississippi where half the northern half of the state was in St. Louis's federal reserve district (District 8) and the southern half of the state was in Atlanta's federal reserve district (District 6).  Atlanta had much looser monetary policy (meaning they substantially increased lending) than St. Louis during the early part of the Great Depression and our interest is in whether looser monetary policy made an difference.
+
+    a) Plot the total number of banks separately for District 6 and District 8 across all available time periods in the data.
+    
+    b) An important event in the South early in the Great Depression was the collapse of Caldwell and Company --- the largest banking chain in the South at the time.  This happened in November 1930.  The Atlanta Fed's lending markedly increased quickly after this event while St. Louis's did not.  Calculate a DID estimate of the effect of looser monetary policy on the number of banks that are still in business.  How do you interpret these results?  **Hint:** You can calculate this by taking the difference between the number of banks in District 6 relative to the number of banks in District 8 across all time periods relative to the difference between the number of banks in District 6 relative to District 8 in the first period (July 1, 1929).
+
+6. Lead pipes and infant mortality, have solution from hw 3 last year (might go better in interpreting regressions)
 
 ## Extra Questions
 

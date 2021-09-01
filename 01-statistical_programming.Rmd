@@ -862,14 +862,38 @@ Related Reading: IDS Chapter 4 --- strongly recommend that you read this
 
 * R has very good data cleaning / manipulating tools
 
-* largely won't cover in class
+    - Many of them are in the ["tidyverse"](https://www.tidyverse.org/)
+    
+    - Mostly this semester, I'll just give you a data set that is ready to be worked with.  But as you move to your own research projects or do work for a company one day, you will realize that a major step in analyzing data is organizing ("cleaning") the data in a way that you can analyze it
+
+* Main packages
+
+    - `ggplot2` -- see below
+    
+    - `dplyr` --- package to manipulate data
+    
+    - `tidyr` --- more ways to manipulate data
+    
+    - `readr` --- read in data
+    
+    - `purrr` --- alternative versions of `apply` functions and `for` loops
+    
+    - `tibble` --- alternative versions of `data.frame`
+    
+    - `stringr` --- tools for working with strings
+    
+    - `forcats` --- tools for working with factors
+
+* I won't emphasize these too much as they are somewhat advanced topics, but if you are interested, these are good (and marketable) skills to have
 
 ### Data Visualization
 
-Related Reading: IDS Ch. 6-11 --- R has very good data visualization tools; strongly recommend that you read this
+Related Reading: IDS Ch. 6-11 --- `R` has very good data visualization tools; strongly recommend that you read this
 
-* Another very strong point of R
-* ggplot
+* Another very strong point of `R`
+
+* Base `R` comes with the `plot` command, but the `ggplot2` package provides cutting edge plotting tools.  These tools will be somewhat harder to learn, but we'll use `ggplot2` this semester as I think it is worth it.
+
 * 538's graphs produced with ggplot
 
 ### Reproducible Research
@@ -882,9 +906,13 @@ Related Reading: IDS Ch. 40
 
 * If you are interested, you can view the source for this book at [http://github.com/bcallaway11/econ_4750_notes](http://github.com/bcallaway11/econ_4750_notes).  The source code for this chapter is in the file `01-statistical-programming.Rmd`.
 
+* If you are interested, [Github](http://github.com) is a very useful version control tool (i.e., keeps track of the version of your project, useful for merging projects, and sharing or co-authoring code) and [Dropbox](http://dropbox.com) (also useful for sharing code).  I use both of these extensively --- in general, I use Github relatively more for bigger projects and more public projects and Dropbox more for smaller projects and early versions of projects.
+
 ### Technical Writing Tools
 
-This is largely beyond the scope of the course, but, especially for students in ECON 6750, I recommend that you look up Latex.  This is a markup language mainly for writing technical, academic writing.  An easy way to get started here is to use the website [Overleaf](http://www.overleaf.com).  This is also closely related to markdown/R-markdown discussed above (Latex tends to be somewhat more complicate which comes with some associated advantages and disadvantages).
+This is largely beyond the scope of the course, but, especially for students in ECON 6750, I recommend that you look up Latex.  This is a markup language mainly for writing technical, academic writing.  The big payoff is on writing mathematical equations.  The equations in the Course notes are written in Latex.
+
+An easy way to get started here is to use the website [Overleaf](http://www.overleaf.com).  This is also closely related to markdown/R-markdown discussed above (Latex tends to be somewhat more complicate which comes with some associated advantages and disadvantages).  
 
 ## Lab 1: Introduction to R Programming
 
@@ -892,19 +920,20 @@ For this lab, we will do several practice problems related to programming in R.
 
 1. Create two vectors as follows
 
-```{r}
-x <- seq(2,10,by=2)
-y <- c(3,5,7,11,13)
-```
+    ```{r}
+    x <- seq(2,10,by=2)
+    y <- c(3,5,7,11,13)
+    ```
 
-Add `x` and `y`, subtract `y` from `x`, multiply `x` and `y`, and divide `x` by `y` and report your results.
+    Add `x` and `y`, subtract `y` from `x`, multiply `x` and `y`, and divide `x` by `y` and report your results.
 
 2. The geometric mean of a set of numbers is an alternative measure of central tendency to the more common "arithmetic mean" (this is the mean that we are used to).  For a set of $J$ numbers, $x_1,x_2,\ldots,x_J$, the geometric mean is defined as 
 
-$$
-  (x_1 \cdot x_2 \cdot \cdots \cdot x_J)^{1/J}
-$$
-Write a function called `geometric_mean` that takes in a vector of numbers and computes their geometric mean.  Compute the geometric mean of `c(10,8,13)`
+    $$
+      (x_1 \cdot x_2 \cdot \cdots \cdot x_J)^{1/J}
+    $$
+
+    Write a function called `geometric_mean` that takes in a vector of numbers and computes their geometric mean.  Compute the geometric mean of `c(10,8,13)`
 
 3. Use the `lubridate` package to figure out how many days it has been since Jan. 1, 1981.
 

@@ -409,6 +409,12 @@ Before we move forward, let's think about why this is a measure of the spread of
 
 - Then, the outer expectation averages the above distance across the distribution of $X$.
 
+An alternative expression for $\Var(X)$ that is often useful in calculations is
+
+$$
+  \Var(X) = \E[X^2] - \E[X]^2
+$$
+
 Sometimes, we will also consider the **standard deviation** of a random variable.  The standard deviation is defined as
 
 $$
@@ -608,9 +614,9 @@ One last comment here is that, when $X$ and $Y$ are independent (or even just un
 
 These properties for sums of random variables generalize to the case with more than two random variables.  For example, suppose that $Y_1, \ldots, Y_n$ are random variables, then
 
-1. $\E\left[ \sum_{i=1}^n Y_i ] = \sum_{i=1}^n \E[Y_i]$
+1. $\E\left[ \displaystyle \sum_{i=1}^n Y_i \right] = \displaystyle \sum_{i=1}^n \E[Y_i]$
 
-2. If $Y_i$ are mutually independent, then $\Var\left( \sum_{i=1}^n Y_i \right) = \sum_{i=1}^n \Var(Y_i)$
+2. If $Y_i$ are mutually independent, then $\Var\left( \displaystyle \sum_{i=1}^n Y_i \right) = \displaystyle \sum_{i=1}^n \Var(Y_i)$
 
 Notice that the last line does not involve any covariance terms, but this is only because of the caveat that the $Y_i$ are mutually independent.  Otherwise, there would actually be *tons* of covariance terms that would need to be accounted for.
 
@@ -864,7 +870,7 @@ A natural way to estimate population quantities is with their sample analogue.  
 $$
   \hat{\E}[Y] = \frac{1}{n} \sum_{i=1}^n Y_i = \bar{Y}
 $$
-In this course, we will typically put a "hat" on estimated quantities.  The expression $\frac{1}{n}\sum_{i=1}^n Y_i$ is just the average value of $Y$ in our sample.  Since we will calculate a ton of averages like this one over the course of the rest of the semester, it's also convenient to give it a shorthand notation, which is what $\bar{Y}$ means --- it is just the sample average of $Y$.
+In this course, we will typically put a "hat" on estimated quantities.  The expression $\displaystyle \frac{1}{n}\sum_{i=1}^n Y_i$ is just the average value of $Y$ in our sample.  Since we will calculate a ton of averages like this one over the course of the rest of the semester, it's also convenient to give it a shorthand notation, which is what $\bar{Y}$ means --- it is just the sample average of $Y$.
 
 One thing that is important to be clear about at this point is that, in general, $\E[Y] \neq \bar{Y}$.  $\E[Y]$ is a population quantity while $\bar{Y}$ is a sample quantity.  We will hope (and provide some related conditions/discussions below) that $\bar{Y}$ would be close to $\E[Y]$, but, in general, they will not be exactly the same.
 
@@ -1000,7 +1006,7 @@ In other words, if we can figure out the bias and variance of $\hat{\theta}$, th
 
 ::: {.side-comment}
 
-I think it is worth quickly explaining where the second expression for $\textrm{MSE}(\hat{\theta})$ comes from.  Starting from the definition of $\textrm{MSE}(\hat{\theta})$, 
+<span class="side-comment">Side-Comment:</span> I think it is worth quickly explaining where the second expression for $\textrm{MSE}(\hat{\theta})$ comes from.  Starting from the definition of $\textrm{MSE}(\hat{\theta})$, 
 
 $$
   \begin{aligned}
@@ -1132,7 +1138,7 @@ Most of the estimators that we will talk about this semester have the following 
 $$
   \sqrt{n}\left( \hat{\theta} - \theta \right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
 $$
-In words, what this says is that we can learn something about the sampling distribution of $\hat{\theta}$ as long as we have a large enough sample.  More specifically, if $\hat{\theta}$ is asymptotically normal, it means that if we take $\hat{\theta}$ subtract the true value of the parameter $\theta$ (this is often referred to as "centering") and multiply by $\sqrt{n}$, then that object (as long as the sample size is large enough) will seem like a draw from a normal distribution with mean 0 and variance $V$.  Since we know lots about normal distributions, we'll be able to exploit this in very useful ways in the next section.
+In words, what this says is that we can learn something about the sampling distribution of $\hat{\theta}$ as long as we have a large enough sample.  More specifically, if $\hat{\theta}$ is asymptotically normal, it means that if we take $\hat{\theta}$ subtract the true value of the parameter $\theta$ (this is often referred to as "centering") and multiply by $\sqrt{n}$, then that object (as long as the sample size is large enough) will *seem like* a draw from a normal distribution with mean 0 and variance $V$.  Since we know lots about normal distributions, we'll be able to exploit this in very useful ways in the next section.
 
 An equivalent, alternative expression that is sometimes useful is 
 
@@ -1218,7 +1224,7 @@ $$
 Alternatively (from the definition of standard error), we can write
 
 $$
-  t = \frac{(\bar{Y} - \E[Y])}{\textrm{s.e.}(\bar{Y})}
+  t = \frac{(\bar{Y} - \mu_0)}{\textrm{s.e.}(\bar{Y})}
 $$
 though I'll tend to use the first expression, just because I think it makes the arguments below slightly more clear.
 
@@ -1241,7 +1247,7 @@ Now, let's think about what happens when the null hypothesis isn't true.  Then, 
 $$
   t = \frac{\sqrt{n} (\bar{Y} - \mu_0)}{\sqrt{\hat{V}}}
 $$
-which is just the definition of $t$, but something different will happen here.  In order for $t$ to follow a normal distribution, we need $(\bar{Y} - \mu_0)$ to converge to 0.  But $\bar{Y}$ converges to $\E[Y]$, and if the null hypothesis does not hold, then $\E[Y] \neq \mu_0$ which implies that $(\bar{Y} - \mu_0) \rightarrow \E[Y] - \mu_0 \neq 0$ as $n \rightarrow \infty$.  It's still the case that $\sqrt{n} \rightarrow \infty$.  Thus, if $H_0$ is not true, then $t$ will diverge (recall: this means that it will either go to positive infinity or negative infinity depending on the sign of $(\E[Y] - \mu_0)$).
+which is just the definition of $t$, but something different will happen here.  In order for $t$ to follow a normal distribution, we need $(\bar{Y} - \mu_0)$ to converge to 0.  But $\bar{Y}$ converges to $\E[Y]$, and if the null hypothesis does not hold, then $\E[Y] \neq \mu_0$ which implies that $(\bar{Y} - \mu_0) \rightarrow (\E[Y] - \mu_0) \neq 0$ as $n \rightarrow \infty$.  It's still the case that $\sqrt{n} \rightarrow \infty$.  Thus, if $H_0$ is not true, then $t$ will diverge (recall: this means that it will either go to positive infinity or negative infinity depending on the sign of $(\E[Y] - \mu_0)$).
 
 This gives us a very good way to start to think about whether or not the data is compatible with our theory.  For example, suppose that you calculate $t$ (using your data and under your null hypothesis) and that it is equal to 1.  1 is not an "unusual" looking draw from a standard normal distribution --- this suggests that you at least do not have strong evidence from data against your theory.  Alternatively, suppose that you calculate that $t=-24$.  While its technically possible that you could draw $-24$ from a standard normal distribution --- it is exceedingly unlikely.  We would interpret this as strong evidence against the null hypothesis, and it should probably lead you to "reject" the null hypothesis.
 
@@ -1363,7 +1369,7 @@ Another important thing to mention is that there is often a distinction between 
 
 In the next chapter, we'll start to think about the *effect* of one variable on another (e.g., the effect of some economic policy on some outcome of interest).  By far the most common null hypothesis in this case is that "the effect" is equal to 0.  However, in economics/social sciences/business applications, there probably aren't too many cases where (i) it would be interesting enough to consider the effect of one variable on another (ii) while simultaneously the effect is literally equal to 0.  Since, all else equal, standard errors get smaller with more observations, as datasets in economics tend to get larger over time, we tend to find more statistically significant effects.  This doesn't mean that effects are getting bigger or more important --- just that we are able to detect smaller and smaller effects if we have enough data.  And most questions in economics involve more than just answering the binary question: does variable $X$ have any effect at all on variable $Y$?  For example, if you are trying to evaluate the effect of some economic policy, it is usually more helpful to think in terms of a cost-benefit analysis --- what are the benefits or the policy relative to the costs and these sorts of comparisons inherently involve thinking about magnitudes of effects.
 
-A more succinct way to say all this is: the effect of one variable on another can be both "statistically significant" and small at the same time.  And it's important to think about the magnitudes of estimates.
+A more succinct way to say all this is: the effect of one variable on another can be both "statistically significant" and "economically" small at the same time.  Alternatively, if you do not have much data or the data is very "noisy", it may be possible that there are relatively large effects, but that the estimates are not statistically significant (i.e., you are not able to detect them very well with the data that you have).  Therefore, it is important to not become too fixated on statistical significance and to additionally think carefully about the magnitudes of estimates.
 
 
 
@@ -1372,7 +1378,7 @@ A more succinct way to say all this is: the effect of one variable on another ca
 In this section, we'll use the `acs` data to calculate an estimate of average wage/salary income among employed individuals in the United States.  We'll test the null hypothesis that the mean income in the United States is \$50,000 as well as report the standard error of our estimate of mean income, as well as corresponding p-values, t-statistics, and 95% confidence interval.  Finally, we'll report a table of summary statistics using the `modelsummary` package separately by college graduates relative to non-college graduates.
 
 ```{r}
-load("acs.RData")
+load("data/acs.RData")
 
 # estimate of mean income
 ybar <- mean(acs$incwage)

@@ -1,0 +1,10 @@
+Description of `mlda`
+
+Source: This data is a subset of the data used in Carpenter, Christopher, and Carlos Dobkin. "The effect of alcohol consumption on mortality: regression discontinuity evidence from the minimum drinking age." American Economic Journal: Applied Economics 1.1 (2009): 164-82.
+
+The data contains 48 observations of age groups and deaths in motor vehicle accidents involving members of that age group for 19-22 year olds.
+
+The following variables are included:
+
+- agecell -- the age group of individual, it is grouped by month, but coded in fraction of years
+- mva -- the number of deaths in motor vehicle accidents involving members of that age group

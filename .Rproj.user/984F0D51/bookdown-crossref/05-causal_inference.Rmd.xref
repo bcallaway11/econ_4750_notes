@@ -2,11 +2,19 @@ h1:causal-inference Causal Inference
 h2:potential-outcomes Potential Outcomes
 h2:parameters-of-interest Parameters of Interest
 h2:experiments Experiments
+h3:estimating-att-with-a-regression Estimating ATT with a Regression
+h3:internal-and-external-validity Internal and External Validity
+h3:example-project-star Example: Project STAR
 h2:unconfoundedness Unconfoundedness
 h2:panel-data-approaches Panel Data Approaches
 h3:difference-in-differences Difference in differences
 h2:instrumental-variables Instrumental Variables
+h3:example-return-to-education Example: Return to Education
 h2:regression-discontinuity Regression Discontinuity
+h3:example-causal-effect-of-alcohol-on-driving-deaths Example: Causal effect of Alcohol on Driving Deaths
+h2:lab-5-drunk-driving-laws Lab 5: Drunk Driving Laws
+h2:lab-5-solutions Lab 5: Solutions
+h2:coding-questions Coding Questions
 h2:extra-questions Extra Questions
 h2:answers-to-some-extra-questions Answers to Some Extra Questions
 

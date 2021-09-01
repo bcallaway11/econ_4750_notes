@@ -1,0 +1,15 @@
+Description of `rand_hie`
+
+Source: This is a modified (mainly simplified) version of data from [https://jrnold.github.io/masteringmetrics/](https://jrnold.github.io/masteringmetrics/) for Mastering Metrics.  The original data comes from the RAND Health Insurance Experiment.
+
+The data consists of 5,915 observations.
+
+The following variables are included:
+
+- person -- individual id
+- meddol -- average medical expenditure over 5 years
+- plantype -- what type of medical plan
+- ftf -- average number of face to face medical visits over 5 years
+- totadm -- average number hospital admissions over 5 years
+- age -- individual age
+- sex -- individual sex

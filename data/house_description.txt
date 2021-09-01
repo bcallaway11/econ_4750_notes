@@ -1,0 +1,14 @@
+Description of `house`
+
+Source: I got this data from the `rddtools` package and just changed the names of the columns in the data.  It originally comes from Lee, David S. "Randomized experiments from non-random selection in US House elections." Journal of Econometrics 142.2 (2008): 675-697.
+
+The data contains 6558 observations of Democratic vote shares in House of Representatives elections from 1946 to 1998
+
+The following variables are included:
+
+- Dmargin1 -- The Democratic "margin of victory" in the election 2 years ago (if it is positive,
+              it indicates that the Democratic candidate won the election; if it is negative,
+	      it indicates that the Democratic candidate won the election
+- Dmargin2 -- The Democratic "margin of victory" in the current election  (if it is positive,
+              it indicates that the Democratic candidate won the election; if it is negative,
+	      it indicates that the Democratic candidate won the election

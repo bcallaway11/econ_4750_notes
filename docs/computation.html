@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.5 Computation | Supplementary Notes and References for ECON 4750</title>
+  <title>4.3 Computation | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.5 Computation | Supplementary Notes and References for ECON 4750" />
+  <meta property="og:title" content="4.3 Computation | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.5 Computation | Supplementary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="4.3 Computation | Supplementary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,15 +24,16 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-08-25" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="binary-outcome-models.html"/>
-<link rel="next" href="lab-4-predicting-diamond-prices.html"/>
+<link rel="prev" href="linear-regression-models.html"/>
+<link rel="next" href="partial-effects.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,22 +51,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +88,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +121,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -134,7 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Course Outline/Notes for ECON 4750</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
 <li class="chapter" data-level="1.2" data-path="what-is-this-not.html"><a href="what-is-this-not.html"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
 <li class="chapter" data-level="1.3" data-path="why-did-i-write-this.html"><a href="why-did-i-write-this.html"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
@@ -144,22 +149,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
 <li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a><ul>
-<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a><ul>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="setting-up-r.html"><a href="setting-up-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
 <li class="chapter" data-level="2.1.2" data-path="setting-up-r.html"><a href="setting-up-r.html#downloading-r"><i class="fa fa-check"></i><b>2.1.2</b> Downloading R</a></li>
 <li class="chapter" data-level="2.1.3" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio"><i class="fa fa-check"></i><b>2.1.3</b> RStudio</a></li>
 <li class="chapter" data-level="2.1.4" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.1.4</b> RStudio Development Environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a><ul>
+<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#a-list-of-useful-r-packages"><i class="fa fa-check"></i><b>2.2.1</b> A list of useful R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a><ul>
+<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
-<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>2.5.1</b> Numeric Vectors</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-types.html"><a href="data-types.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.5.2</b> Vector arithmetic</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-types.html"><a href="data-types.html#more-helpful-functions-in-r"><i class="fa fa-check"></i><b>2.5.3</b> More helpful functions in R</a></li>
@@ -170,16 +180,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.5.8</b> Factors</a></li>
 <li class="chapter" data-level="2.5.9" data-path="data-types.html"><a href="data-types.html#understanding-an-object-in-r"><i class="fa fa-check"></i><b>2.5.9</b> Understanding an object in R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a><ul>
+<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a>
+<ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a><ul>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
 <li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
 <li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
 <li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a><ul>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
 <li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
@@ -189,26 +202,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a><ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
 <li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
 <li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
 <li class="chapter" data-level="3.1.4" data-path="topics-in-probability.html"><a href="topics-in-probability.html#summation-operator"><i class="fa fa-check"></i><b>3.1.4</b> Summation operator</a></li>
-<li class="chapter" data-level="3.1.5" data-path="topics-in-probability.html"><a href="topics-in-probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.5</b> Continuous Random Variables</a></li>
-<li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.6</b> Expected Values</a></li>
-<li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.7</b> Variance</a></li>
-<li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.8</b> Mean and Variance of Linear Functions</a></li>
-<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.9</b> Multiple Random Variables</a></li>
-<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.10</b> Conditional Expectations</a></li>
-<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Law of Iterated Expectations</a></li>
-<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.12</b> Covariance</a></li>
-<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.13</b> Correlation</a></li>
-<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.14</b> Properties of Expectations/Variances of Sums of RVs</a></li>
-<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.15</b> Normal Distribution</a></li>
-<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.16</b> Coding</a></li>
+<li class="chapter" data-level="3.1.5" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.5</b> Properties of pmfs and cdfs</a></li>
+<li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.6</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.7</b> Expected Values</a></li>
+<li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.8</b> Variance</a></li>
+<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.9</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
+<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
 <li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
@@ -225,56 +242,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
 <li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a><ul>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
 <li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
-<li class="chapter" data-level="4.3" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
-<li class="chapter" data-level="4.4" data-path="interpreting-binary-covariate.html"><a href="interpreting-binary-covariate.html"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
-<li class="chapter" data-level="4.5" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
-<li class="chapter" data-level="4.6" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
-<li class="chapter" data-level="4.7" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
-<li class="chapter" data-level="4.8" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.9" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
-<li class="chapter" data-level="4.10" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
-<li class="chapter" data-level="4.11" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.11</b> Lab 3: Birthweight and Smoking</a></li>
-<li class="chapter" data-level="4.12" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Solutions</a></li>
-<li class="chapter" data-level="4.13" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.13</b> Coding Questions</a></li>
-<li class="chapter" data-level="4.14" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Extra Questions</a></li>
-<li class="chapter" data-level="4.15" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.15</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
+<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a><ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a><ul>
+<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
+<li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="4.13" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.13</b> Lab 3: Solutions</a></li>
+<li class="chapter" data-level="4.14" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
 <li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a><ul>
+<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
 <li class="chapter" data-level="5.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
 <li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
+<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a><ul>
+<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
 <li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
+<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a><ul>
+<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
 <li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
+<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-10"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.5</b> Computation</a></li>
-<li class="chapter" data-level="5.6" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Predicting Diamond Prices</a></li>
-<li class="chapter" data-level="5.7" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.7</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.5" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.5</b> Lab 4: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="5.6" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.7" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Coding Questions</a></li>
 <li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
 <li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
 <li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
 <li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
+<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
@@ -302,42 +353,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="computation" class="section level2">
-<h2><span class="header-section-number">5.5</span> Computation</h2>
-<p><span class="math inline">\(R^2\)</span> and <span class="math inline">\(\bar{R}^2\)</span> are both reported as output from <code>R</code>’s <code>lm</code> command.</p>
-<p>It is straightforward (and a useful excercise) to compute <span class="math inline">\(TSS, ESS,\)</span> and <span class="math inline">\(SSR\)</span> directly. It is also straightforward to calculate <span class="math inline">\(AIC\)</span> and <span class="math inline">\(BIC\)</span> — there are probably packages that will do this for you, but they are so easy that I suggest just calculating on your own.</p>
-<p>The same applies to cross validation. I suspect that there are packages available that will do this for you, but I think these are useful coding exercises and not all that difficult. Also, if you do this yourself, it removes any kinds of “black box” issues from downloading <code>R</code> code where it may not be clear exactly what it is doing.</p>
-<p>Computing Lasso and Ridge regressions is substantially more complicated than most other things that we have computed this semester. The main <code>R</code> package for Lasso and Ridge regressions is the <code>glmnet</code> package. For some reason, the syntax of the package is somewhat different from, for example, the <code>lm</code> command. In my view, it is often easier to use the <code>glmnetUtils</code> package, which seems to be just a wrapper for <code>glmnet</code> but with functions that are analogous to <code>lm</code>.</p>
-<p>Suppose that you have access to a training dataset called <code>train</code> and a testing dataset called <code>test</code>, you can use the <code>glmnetUtils</code> package in the following way:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="computation.html#cb2-1"></a><span class="kw">library</span>(glmnetUtils)</span>
-<span id="cb2-2"><a href="computation.html#cb2-2"></a>lasso_model &lt;-<span class="st"> </span><span class="kw">cv.glmnet</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2 <span class="op">+</span><span class="st"> </span>X3, <span class="dt">data=</span>train, <span class="dt">use.model.frame=</span><span class="ot">TRUE</span>) <span class="co"># or whatever formula you want to use</span></span>
-<span id="cb2-3"><a href="computation.html#cb2-3"></a><span class="kw">coef</span>(lasso_model) <span class="co"># if you are interested in estimated coefficients</span></span>
-<span id="cb2-4"><a href="computation.html#cb2-4"></a><span class="kw">predict</span>(lasso_model, <span class="dt">newdata=</span>test) <span class="co"># get predictions</span></span></code></pre></div>
-<p>The main <code>R</code> function for estimating binary outcome models is the <code>glm</code> function (this stands for “generalized linear model”). The syntax is very similar to the syntax for the <code>lm</code> command. For example, suppose <span class="math inline">\(Y\)</span> is binary and you are interested in estimating a logit model with regressors <span class="math inline">\(X1\)</span> and <span class="math inline">\(X2\)</span> which are contained in a <code>data.frame</code> called <code>data</code>. In this case, you could use the following code</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="computation.html#cb3-1"></a><span class="co"># glm logit</span></span>
-<span id="cb3-2"><a href="computation.html#cb3-2"></a>bin_reg &lt;-<span class="st"> </span><span class="kw">glm</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;logit&quot;</span>), <span class="dt">data=</span>data)</span>
-<span id="cb3-3"><a href="computation.html#cb3-3"></a><span class="kw">summary</span>(bin_reg)</span>
-<span id="cb3-4"><a href="computation.html#cb3-4"></a></span>
-<span id="cb3-5"><a href="computation.html#cb3-5"></a><span class="co"># average partial effects</span></span>
-<span id="cb3-6"><a href="computation.html#cb3-6"></a><span class="kw">library</span>(mfx)</span>
-<span id="cb3-7"><a href="computation.html#cb3-7"></a>bin_ape &lt;-<span class="st"> </span><span class="kw">logitmfx</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">data=</span>data, <span class="dt">atmean=</span><span class="ot">FALSE</span>)</span>
-<span id="cb3-8"><a href="computation.html#cb3-8"></a>bin_ape</span>
-<span id="cb3-9"><a href="computation.html#cb3-9"></a></span>
-<span id="cb3-10"><a href="computation.html#cb3-10"></a><span class="co"># glm probit</span></span>
-<span id="cb3-11"><a href="computation.html#cb3-11"></a>pro_reg &lt;-<span class="st"> </span><span class="kw">glm</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&quot;probit&quot;</span>), <span class="dt">data=</span>data)</span>
-<span id="cb3-12"><a href="computation.html#cb3-12"></a><span class="kw">summary</span>(pro_reg)</span>
-<span id="cb3-13"><a href="computation.html#cb3-13"></a></span>
-<span id="cb3-14"><a href="computation.html#cb3-14"></a><span class="co"># probit average partial effects</span></span>
-<span id="cb3-15"><a href="computation.html#cb3-15"></a>pro_ape &lt;-<span class="st"> </span><span class="kw">probitmfx</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2, <span class="dt">data=</span>data, <span class="dt">atmean=</span><span class="ot">FALSE</span>)</span>
-<span id="cb3-16"><a href="computation.html#cb3-16"></a>pro_ape</span></code></pre></div>
+<div id="computation" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Computation</h2>
+<p>Even if we know that <span class="math inline">\(\E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3\)</span>, in general, we do not know the values of the population parameters (the <span class="math inline">\(\beta\)</span>’s). This is analogous to the framework in the previous chapter where we were interested in
+the population parameter <span class="math inline">\(\E[Y]\)</span> and estimated it by <span class="math inline">\(\bar{Y}\)</span>.</p>
+<p>In this section, we’ll discuss how to estimate <span class="math inline">\((\beta_0,\beta_1,\beta_2,\beta_3)\)</span> using <code>R</code>. We’ll refer to the estimated values of the parameters as <span class="math inline">\((\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3)\)</span>. As in the previous section, it will not be the case that the estimated <span class="math inline">\(\hat{\beta}\)</span>’s are exactly equal to the population <span class="math inline">\(\beta\)</span>’s. Later on in this chapter, we will establish properties like consistency (so that, as long as we have a large sample, the estimated <span class="math inline">\(\hat{\beta}\)</span>’s should be “close” to the population <span class="math inline">\(\beta\)</span>’s) and asymptotic normality (so that we can conduct inference).</p>
+<p>Also later on in this chapter, we’ll talk about how <code>R</code> itself actually makes these computations.</p>
+<p>The main function in <code>R</code> for estimating linear regressions is the <code>lm</code> function (<code>lm</code> stands for linear model). The key things to specify for running a regression in <code>R</code> are a <code>formula</code> argument which tells <code>lm</code> which variables are the outcome and which variables are the regressors and a <code>data</code> argument which tells the <code>lm</code> command what data we are using to estimate the regression. Let’s give an example using the <code>mtcars</code> data.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="computation.html#cb1-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data=</span>mtcars)</span></code></pre></div>
+<p>What this line of code does is to run a regression. The formula is <code>mpg ~ hp + wt</code>. In other words <code>mpg</code> (standing for miles per gallon) is the outcome, and we are running a regression on <code>hp</code> (horse power) and <code>wt</code> (weight). The <code>~</code> symbol is a “tilde.” In order to add regressors, we separate them with a <code>+</code>. The second argument <code>data=mtcars</code> says to use the <code>mtcars</code> data. All of the variables in the formula need to correspond to column names in the data. We saved the results of the regression in a variable called <code>reg</code>. It’s most common to report the results of the regression using the <code>summary</code> command.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="computation.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ hp + wt, data = mtcars)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -3.941 -1.600 -0.182  1.050  5.854 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
+## hp          -0.03177    0.00903  -3.519  0.00145 ** 
+## wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.593 on 29 degrees of freedom
+## Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 
+## F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+<p>The main thing that this reports is the estimated parameters. Our estimate of the “Intercept” (i.e., this is <span class="math inline">\(\hat{\beta}_0\)</span>) is in the first row of the table; our estimate is <code>37.227</code>. The estimated coefficient on <code>hp</code> is <code>-0.0318</code>, and the estimated coefficient on <code>wt</code> is <code>-3.878</code>.</p>
+<p>You can also see standard errors for each estimated parameter, a t-statistic, and a p-value in the other columns. We will talk about these in more detail in the next section.</p>
+<p>For now, we’ll also ignore the information provided at the bottom of the summary.</p>
+<p>Now that we have estimated the parameters, we can use these to predict <span class="math inline">\(mpg\)</span> given a value of <span class="math inline">\(hp\)</span> and <span class="math inline">\(wt\)</span>. For example, suppose that you wanted to predict the <span class="math inline">\(mpg\)</span> of a 2500 pound car (note: weight in <span class="math inline">\(mtcars\)</span> is in 1000s of pounds) and 120 horsepower car, you could compute</p>
+<p><span class="math display">\[
+  37.227 - 0.0318(120) - 3.878(2.5) = 23.716
+\]</span>
+Alternatively, there is a built-in function in <code>R</code> called <code>predict</code> that can be used to generate predicted values. We just need to specify the values that we would like to get predicted values for by passing in a data frame with the relevant columns though the <code>newdata</code> argument. For example,</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="computation.html#cb4-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">hp=</span><span class="dv">120</span>,<span class="at">wt=</span><span class="fl">2.5</span>))</span>
+<span id="cb4-2"><a href="computation.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pred,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##     1 
+## 23.72</code></pre>
+<div class="side-comment">
+<p>A popular alternative to <code>R</code>’s <code>lm</code> function is the <code>lm_robust</code> function from the <code>estimatr</code> package. This provides different standard errors from the default standard errors provided by <code>lm</code> that are, at least in most applications in economics, typically a better choice — we’ll have a further discussion on this topic when we talk about inference later on in this chapter.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="binary-outcome-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-4-predicting-diamond-prices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-regression-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="partial-effects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -360,6 +427,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

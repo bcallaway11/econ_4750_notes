@@ -1,14 +1,25 @@
 h1:linear-regression Linear Regression
 h2:nonparametric-regression-curse-of-dimensionality Nonparametric Regression / Curse of Dimensionality
 h2:linear-regression-models Linear Regression Models
+h2:computation Computation
 h2:partial-effects Partial Effects
-h2:interpreting-binary-covariate Interpreting Binary Covariate
+h3:computation-1 Computation
+h2:binary-regressors Binary Regressors
+h3:computation-2 Computation
 h2:nonlinear-regression-functions Nonlinear Regression Functions
+h3:computation-3 Computation
 h2:interpreting-interaction-terms Interpreting Interaction Terms
+h3:computation-4 Computation
 h2:elasticities Elasticities
+h3:computation-5 Computation
 h2:omitted-variable-bias Omitted Variable Bias
 h2:how-to-estimate-the-parameters-in-a-regression-model How to estimate the parameters in a regression model
+eq:foc-bet0
+where the  comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of  on the inside. I also replaced  and  here since  and  are the values that will solve this equation.Next, let’s take the derivative with respect to :eq:foc-bet1
+where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and  at the end come from taking the derivative of the inside with respect to .h3:computation-6 Computation
+h3:more-than-one-regressor More than one regressor
 h2:inference Inference
+h3:computation-7 Computation
 h2:lab-3-birthweight-and-smoking Lab 3: Birthweight and Smoking
 h2:lab-3-solutions Lab 3: Solutions
 h2:coding-questions Coding Questions

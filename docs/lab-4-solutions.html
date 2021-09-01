@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="lab-4-predicting-diamond-prices.html"/>
-<link rel="next" href="extra-questions-2.html"/>
+<link rel="next" href="coding-questions-2.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,24 +51,22 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +86,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,7 +136,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Course Outline/Notes for ECON 4750</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
 <li class="chapter" data-level="1.2" data-path="what-is-this-not.html"><a href="what-is-this-not.html"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
 <li class="chapter" data-level="1.3" data-path="why-did-i-write-this.html"><a href="why-did-i-write-this.html"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
@@ -146,22 +147,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
 <li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a><ul>
-<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a><ul>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="setting-up-r.html"><a href="setting-up-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
 <li class="chapter" data-level="2.1.2" data-path="setting-up-r.html"><a href="setting-up-r.html#downloading-r"><i class="fa fa-check"></i><b>2.1.2</b> Downloading R</a></li>
 <li class="chapter" data-level="2.1.3" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio"><i class="fa fa-check"></i><b>2.1.3</b> RStudio</a></li>
 <li class="chapter" data-level="2.1.4" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.1.4</b> RStudio Development Environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a><ul>
+<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#a-list-of-useful-r-packages"><i class="fa fa-check"></i><b>2.2.1</b> A list of useful R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a><ul>
+<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
-<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>2.5.1</b> Numeric Vectors</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-types.html"><a href="data-types.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.5.2</b> Vector arithmetic</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-types.html"><a href="data-types.html#more-helpful-functions-in-r"><i class="fa fa-check"></i><b>2.5.3</b> More helpful functions in R</a></li>
@@ -172,16 +178,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.5.8</b> Factors</a></li>
 <li class="chapter" data-level="2.5.9" data-path="data-types.html"><a href="data-types.html#understanding-an-object-in-r"><i class="fa fa-check"></i><b>2.5.9</b> Understanding an object in R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a><ul>
+<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a>
+<ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a><ul>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
 <li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
 <li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
 <li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a><ul>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
 <li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
@@ -191,8 +200,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a><ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
 <li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
 <li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
@@ -211,9 +222,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
 <li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
+<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
@@ -228,58 +240,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
 <li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a><ul>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
 <li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
-<li class="chapter" data-level="4.3" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.3</b> Partial Effects</a></li>
-<li class="chapter" data-level="4.4" data-path="interpreting-binary-covariate.html"><a href="interpreting-binary-covariate.html"><i class="fa fa-check"></i><b>4.4</b> Interpreting Binary Covariate</a></li>
-<li class="chapter" data-level="4.5" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.5</b> Nonlinear Regression Functions</a></li>
-<li class="chapter" data-level="4.6" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.6</b> Interpreting Interaction Terms</a></li>
-<li class="chapter" data-level="4.7" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.7</b> Elasticities</a></li>
-<li class="chapter" data-level="4.8" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.8</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.9" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.9</b> How to estimate the parameters in a regression model</a></li>
-<li class="chapter" data-level="4.10" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.10</b> Inference</a></li>
-<li class="chapter" data-level="4.11" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.11</b> Lab 3: Birthweight and Smoking</a></li>
-<li class="chapter" data-level="4.12" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Solutions</a></li>
-<li class="chapter" data-level="4.13" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.13</b> Coding Questions</a></li>
-<li class="chapter" data-level="4.14" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Extra Questions</a></li>
-<li class="chapter" data-level="4.15" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.15</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
+<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a><ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a><ul>
+<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
+<li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="4.13" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.13</b> Lab 3: Solutions</a></li>
+<li class="chapter" data-level="4.14" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
 <li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a><ul>
+<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
 <li class="chapter" data-level="5.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
 <li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
-<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a><ul>
+<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
 <li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
-<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-1"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a><ul>
+<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
 <li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
-<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-2"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
+<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-10"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.5</b> Lab 4: Predicting Diamond Prices</a></li>
 <li class="chapter" data-level="5.6" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Solutions</a></li>
-<li class="chapter" data-level="5.7" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.8" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.8</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.7" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Coding Questions</a></li>
+<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
 <li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
 <li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
+<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
@@ -307,117 +351,115 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-4-solutions" class="section level2">
+<div id="lab-4-solutions" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Lab 4: Solutions</h2>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="lab-4-solutions.html#cb124-1"></a><span class="kw">load</span>(<span class="st">&quot;diamond_train.RData&quot;</span>)</span>
-<span id="cb124-2"><a href="lab-4-solutions.html#cb124-2"></a></span>
-<span id="cb124-3"><a href="lab-4-solutions.html#cb124-3"></a><span class="co"># formulas</span></span>
-<span id="cb124-4"><a href="lab-4-solutions.html#cb124-4"></a>formla1 &lt;-<span class="st"> </span>price <span class="op">~</span><span class="st"> </span>carat <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(cut) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(clarity)</span>
-<span id="cb124-5"><a href="lab-4-solutions.html#cb124-5"></a>formla2 &lt;-<span class="st"> </span>price <span class="op">~</span><span class="st"> </span>carat <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(cut) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(clarity) <span class="op">+</span><span class="st"> </span>depth <span class="op">+</span><span class="st"> </span>table <span class="op">+</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>x</span>
-<span id="cb124-6"><a href="lab-4-solutions.html#cb124-6"></a>formla3 &lt;-<span class="st"> </span>price <span class="op">~</span><span class="st"> </span>(carat <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(cut) <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(clarity) <span class="op">+</span><span class="st"> </span>depth <span class="op">+</span><span class="st"> </span>table <span class="op">+</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>x)<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb124-7"><a href="lab-4-solutions.html#cb124-7"></a></span>
-<span id="cb124-8"><a href="lab-4-solutions.html#cb124-8"></a><span class="co"># estimate each model</span></span>
-<span id="cb124-9"><a href="lab-4-solutions.html#cb124-9"></a>mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(formla1, <span class="dt">data=</span>diamond_train)</span>
-<span id="cb124-10"><a href="lab-4-solutions.html#cb124-10"></a>mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(formla2, <span class="dt">data=</span>diamond_train)</span>
-<span id="cb124-11"><a href="lab-4-solutions.html#cb124-11"></a>mod3 &lt;-<span class="st"> </span><span class="kw">lm</span>(formla3, <span class="dt">data=</span>diamond_train)</span>
-<span id="cb124-12"><a href="lab-4-solutions.html#cb124-12"></a></span>
-<span id="cb124-13"><a href="lab-4-solutions.html#cb124-13"></a>mod_sel &lt;-<span class="st"> </span><span class="cf">function</span>(formla) {</span>
-<span id="cb124-14"><a href="lab-4-solutions.html#cb124-14"></a>  mod &lt;-<span class="st"> </span><span class="kw">lm</span>(formla, <span class="dt">data=</span>diamond_train)</span>
-<span id="cb124-15"><a href="lab-4-solutions.html#cb124-15"></a>  r.squared &lt;-<span class="st"> </span><span class="kw">summary</span>(mod)<span class="op">$</span>r.squared</span>
-<span id="cb124-16"><a href="lab-4-solutions.html#cb124-16"></a>  adj.r.squared &lt;-<span class="st"> </span><span class="kw">summary</span>(mod)<span class="op">$</span>adj.r.squared</span>
-<span id="cb124-17"><a href="lab-4-solutions.html#cb124-17"></a></span>
-<span id="cb124-18"><a href="lab-4-solutions.html#cb124-18"></a>  n &lt;-<span class="st"> </span><span class="kw">nrow</span>(diamond_train)</span>
-<span id="cb124-19"><a href="lab-4-solutions.html#cb124-19"></a>  uhat &lt;-<span class="st"> </span><span class="kw">resid</span>(mod)</span>
-<span id="cb124-20"><a href="lab-4-solutions.html#cb124-20"></a>  ssr &lt;-<span class="st"> </span><span class="kw">sum</span>(uhat<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb124-21"><a href="lab-4-solutions.html#cb124-21"></a>  k &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">coef</span>(mod))</span>
-<span id="cb124-22"><a href="lab-4-solutions.html#cb124-22"></a>  aic &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>k <span class="op">+</span><span class="st"> </span>n<span class="op">*</span><span class="kw">log</span>(ssr)</span>
-<span id="cb124-23"><a href="lab-4-solutions.html#cb124-23"></a>  bic &lt;-<span class="st"> </span>k<span class="op">*</span><span class="kw">log</span>(n) <span class="op">+</span><span class="st"> </span>n<span class="op">*</span><span class="kw">log</span>(ssr)</span>
-<span id="cb124-24"><a href="lab-4-solutions.html#cb124-24"></a></span>
-<span id="cb124-25"><a href="lab-4-solutions.html#cb124-25"></a>  <span class="co"># show results</span></span>
-<span id="cb124-26"><a href="lab-4-solutions.html#cb124-26"></a>  result &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">tibble</span>(r.squared, adj.r.squared, aic, bic)</span>
-<span id="cb124-27"><a href="lab-4-solutions.html#cb124-27"></a>  <span class="kw">return</span>(result)</span>
-<span id="cb124-28"><a href="lab-4-solutions.html#cb124-28"></a>}</span>
-<span id="cb124-29"><a href="lab-4-solutions.html#cb124-29"></a></span>
-<span id="cb124-30"><a href="lab-4-solutions.html#cb124-30"></a>res1 &lt;-<span class="st"> </span><span class="kw">mod_sel</span>(formla1)</span>
-<span id="cb124-31"><a href="lab-4-solutions.html#cb124-31"></a>res2 &lt;-<span class="st"> </span><span class="kw">mod_sel</span>(formla2)</span>
-<span id="cb124-32"><a href="lab-4-solutions.html#cb124-32"></a>res3 &lt;-<span class="st"> </span><span class="kw">mod_sel</span>(formla3)</span>
-<span id="cb124-33"><a href="lab-4-solutions.html#cb124-33"></a></span>
-<span id="cb124-34"><a href="lab-4-solutions.html#cb124-34"></a><span class="kw">round</span>(<span class="kw">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb124-35"><a href="lab-4-solutions.html#cb124-35"></a><span class="co">#&gt; # A tibble: 3 x 4</span></span>
-<span id="cb124-36"><a href="lab-4-solutions.html#cb124-36"></a><span class="co">#&gt;   r.squared adj.r.squared      aic      bic</span></span>
-<span id="cb124-37"><a href="lab-4-solutions.html#cb124-37"></a><span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb124-38"><a href="lab-4-solutions.html#cb124-38"></a><span class="co">#&gt; 1     0.898         0.898 1104188. 1104301.</span></span>
-<span id="cb124-39"><a href="lab-4-solutions.html#cb124-39"></a><span class="co">#&gt; 2     0.9           0.9   1103499. 1103647.</span></span>
-<span id="cb124-40"><a href="lab-4-solutions.html#cb124-40"></a><span class="co">#&gt; 3     0.928         0.928 1089372. 1090328.</span></span>
-<span id="cb124-41"><a href="lab-4-solutions.html#cb124-41"></a></span>
-<span id="cb124-42"><a href="lab-4-solutions.html#cb124-42"></a><span class="co"># k-fold cross validation</span></span>
-<span id="cb124-43"><a href="lab-4-solutions.html#cb124-43"></a></span>
-<span id="cb124-44"><a href="lab-4-solutions.html#cb124-44"></a><span class="co"># setup data</span></span>
-<span id="cb124-45"><a href="lab-4-solutions.html#cb124-45"></a>k &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb124-46"><a href="lab-4-solutions.html#cb124-46"></a>n &lt;-<span class="st"> </span><span class="kw">nrow</span>(diamond_train)</span>
-<span id="cb124-47"><a href="lab-4-solutions.html#cb124-47"></a>diamond_train<span class="op">$</span>fold &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>k, <span class="dt">size=</span>n, <span class="dt">replace=</span><span class="ot">TRUE</span>)</span>
-<span id="cb124-48"><a href="lab-4-solutions.html#cb124-48"></a>diamond_train<span class="op">$</span>id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>n</span>
-<span id="cb124-49"><a href="lab-4-solutions.html#cb124-49"></a></span>
-<span id="cb124-50"><a href="lab-4-solutions.html#cb124-50"></a>cv_mod_sel &lt;-<span class="st"> </span><span class="cf">function</span>(formla) {</span>
-<span id="cb124-51"><a href="lab-4-solutions.html#cb124-51"></a>  u.squared &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, n)</span>
-<span id="cb124-52"><a href="lab-4-solutions.html#cb124-52"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k) {</span>
-<span id="cb124-53"><a href="lab-4-solutions.html#cb124-53"></a>    this.train &lt;-<span class="st"> </span><span class="kw">subset</span>(diamond_train, fold <span class="op">!=</span><span class="st"> </span>i)</span>
-<span id="cb124-54"><a href="lab-4-solutions.html#cb124-54"></a>    this.test &lt;-<span class="st"> </span><span class="kw">subset</span>(diamond_train, fold <span class="op">==</span><span class="st"> </span>i)</span>
-<span id="cb124-55"><a href="lab-4-solutions.html#cb124-55"></a>    this.id &lt;-<span class="st"> </span>this.test<span class="op">$</span>id</span>
-<span id="cb124-56"><a href="lab-4-solutions.html#cb124-56"></a>    cv_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(formla,</span>
-<span id="cb124-57"><a href="lab-4-solutions.html#cb124-57"></a>              <span class="dt">data=</span>this.train)</span>
-<span id="cb124-58"><a href="lab-4-solutions.html#cb124-58"></a>    pred &lt;-<span class="st"> </span><span class="kw">predict</span>(cv_reg, <span class="dt">newdata=</span>this.test)</span>
-<span id="cb124-59"><a href="lab-4-solutions.html#cb124-59"></a>    u &lt;-<span class="st"> </span>this.test<span class="op">$</span>price <span class="op">-</span><span class="st"> </span>pred</span>
-<span id="cb124-60"><a href="lab-4-solutions.html#cb124-60"></a>    u.squared[this.id] &lt;-<span class="st"> </span>u<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb124-61"><a href="lab-4-solutions.html#cb124-61"></a>  }</span>
-<span id="cb124-62"><a href="lab-4-solutions.html#cb124-62"></a>  cv &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(u.squared))</span>
-<span id="cb124-63"><a href="lab-4-solutions.html#cb124-63"></a>  <span class="kw">return</span>(cv)</span>
-<span id="cb124-64"><a href="lab-4-solutions.html#cb124-64"></a>}</span>
-<span id="cb124-65"><a href="lab-4-solutions.html#cb124-65"></a></span>
-<span id="cb124-66"><a href="lab-4-solutions.html#cb124-66"></a>cv_res1 &lt;-<span class="st"> </span><span class="kw">cv_mod_sel</span>(formla1)</span>
-<span id="cb124-67"><a href="lab-4-solutions.html#cb124-67"></a>cv_res2 &lt;-<span class="st"> </span><span class="kw">cv_mod_sel</span>(formla2)</span>
-<span id="cb124-68"><a href="lab-4-solutions.html#cb124-68"></a>cv_res3 &lt;-<span class="st"> </span><span class="kw">cv_mod_sel</span>(formla3)</span>
-<span id="cb124-69"><a href="lab-4-solutions.html#cb124-69"></a></span>
-<span id="cb124-70"><a href="lab-4-solutions.html#cb124-70"></a>res1 &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(res1, <span class="dt">cv=</span>cv_res1)</span>
-<span id="cb124-71"><a href="lab-4-solutions.html#cb124-71"></a>res2 &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(res2, <span class="dt">cv=</span>cv_res2)</span>
-<span id="cb124-72"><a href="lab-4-solutions.html#cb124-72"></a>res3 &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(res3, <span class="dt">cv=</span>cv_res3)</span>
-<span id="cb124-73"><a href="lab-4-solutions.html#cb124-73"></a></span>
-<span id="cb124-74"><a href="lab-4-solutions.html#cb124-74"></a><span class="kw">round</span>(<span class="kw">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb124-75"><a href="lab-4-solutions.html#cb124-75"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic       cv</span></span>
-<span id="cb124-76"><a href="lab-4-solutions.html#cb124-76"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301 1366.008</span></span>
-<span id="cb124-77"><a href="lab-4-solutions.html#cb124-77"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647 1371.323</span></span>
-<span id="cb124-78"><a href="lab-4-solutions.html#cb124-78"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328 2116.416</span></span>
-<span id="cb124-79"><a href="lab-4-solutions.html#cb124-79"></a></span>
-<span id="cb124-80"><a href="lab-4-solutions.html#cb124-80"></a><span class="co"># lasso and ridge</span></span>
-<span id="cb124-81"><a href="lab-4-solutions.html#cb124-81"></a><span class="kw">library</span>(glmnet)</span>
-<span id="cb124-82"><a href="lab-4-solutions.html#cb124-82"></a><span class="kw">library</span>(glmnetUtils)</span>
-<span id="cb124-83"><a href="lab-4-solutions.html#cb124-83"></a></span>
-<span id="cb124-84"><a href="lab-4-solutions.html#cb124-84"></a>lasso_res &lt;-<span class="st"> </span><span class="kw">cv.glmnet</span>(formla3, <span class="dt">data=</span>diamond_train, <span class="dt">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb124-85"><a href="lab-4-solutions.html#cb124-85"></a>ridge_res &lt;-<span class="st"> </span><span class="kw">cv.glmnet</span>(formla3, <span class="dt">data=</span>diamond_train, <span class="dt">alpha=</span><span class="dv">0</span>)</span>
-<span id="cb124-86"><a href="lab-4-solutions.html#cb124-86"></a></span>
-<span id="cb124-87"><a href="lab-4-solutions.html#cb124-87"></a><span class="co"># out of sample predictions</span></span>
-<span id="cb124-88"><a href="lab-4-solutions.html#cb124-88"></a></span>
-<span id="cb124-89"><a href="lab-4-solutions.html#cb124-89"></a><span class="kw">load</span>(<span class="st">&quot;diamond_test.RData&quot;</span>)</span>
-<span id="cb124-90"><a href="lab-4-solutions.html#cb124-90"></a></span>
-<span id="cb124-91"><a href="lab-4-solutions.html#cb124-91"></a><span class="co"># compute prediction errors with test data</span></span>
-<span id="cb124-92"><a href="lab-4-solutions.html#cb124-92"></a>u1 &lt;-<span class="st"> </span>diamond_test<span class="op">$</span>price <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod1, <span class="dt">newdata=</span>diamond_test)</span>
-<span id="cb124-93"><a href="lab-4-solutions.html#cb124-93"></a>u2 &lt;-<span class="st"> </span>diamond_test<span class="op">$</span>price <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod2, <span class="dt">newdata=</span>diamond_test)</span>
-<span id="cb124-94"><a href="lab-4-solutions.html#cb124-94"></a>u3 &lt;-<span class="st"> </span>diamond_test<span class="op">$</span>price <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(mod3, <span class="dt">newdata=</span>diamond_test)</span>
-<span id="cb124-95"><a href="lab-4-solutions.html#cb124-95"></a>u_lasso &lt;-<span class="st"> </span>diamond_test<span class="op">$</span>price <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(lasso_res, <span class="dt">newdata=</span>diamond_test)</span>
-<span id="cb124-96"><a href="lab-4-solutions.html#cb124-96"></a>u_ridge &lt;-<span class="st"> </span>diamond_test<span class="op">$</span>price <span class="op">-</span><span class="st"> </span><span class="kw">predict</span>(ridge_res, <span class="dt">newdata=</span>diamond_test)</span>
-<span id="cb124-97"><a href="lab-4-solutions.html#cb124-97"></a></span>
-<span id="cb124-98"><a href="lab-4-solutions.html#cb124-98"></a><span class="co"># compute root mean squared prediction errors</span></span>
-<span id="cb124-99"><a href="lab-4-solutions.html#cb124-99"></a>rmspe1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(u1<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb124-100"><a href="lab-4-solutions.html#cb124-100"></a>rmspe2 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(u2<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb124-101"><a href="lab-4-solutions.html#cb124-101"></a>rmspe3 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(u3<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb124-102"><a href="lab-4-solutions.html#cb124-102"></a>rmspe_lasso &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(u_lasso<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb124-103"><a href="lab-4-solutions.html#cb124-103"></a>rmspe_ridge &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(u_ridge<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb124-104"><a href="lab-4-solutions.html#cb124-104"></a></span>
-<span id="cb124-105"><a href="lab-4-solutions.html#cb124-105"></a><span class="co"># report results</span></span>
-<span id="cb124-106"><a href="lab-4-solutions.html#cb124-106"></a>rmspe &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mod1=</span>rmspe1, <span class="dt">mod2=</span>rmspe2, <span class="dt">mod3=</span>rmspe3, <span class="dt">lasso=</span>rmspe_lasso, <span class="dt">ridge=</span>rmspe_ridge)</span>
-<span id="cb124-107"><a href="lab-4-solutions.html#cb124-107"></a><span class="kw">round</span>(rmspe,<span class="dv">3</span>)</span>
-<span id="cb124-108"><a href="lab-4-solutions.html#cb124-108"></a><span class="co">#&gt;      mod1    mod2    mod3   lasso   ridge</span></span>
-<span id="cb124-109"><a href="lab-4-solutions.html#cb124-109"></a><span class="co">#&gt; 1 856.014 785.171 616.996 680.809 794.276</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="lab-4-solutions.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_train.RData&quot;</span>)</span>
+<span id="cb19-2"><a href="lab-4-solutions.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="lab-4-solutions.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># formulas</span></span>
+<span id="cb19-4"><a href="lab-4-solutions.html#cb19-4" aria-hidden="true" tabindex="-1"></a>formla1 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity)</span>
+<span id="cb19-5"><a href="lab-4-solutions.html#cb19-5" aria-hidden="true" tabindex="-1"></a>formla2 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x</span>
+<span id="cb19-6"><a href="lab-4-solutions.html#cb19-6" aria-hidden="true" tabindex="-1"></a>formla3 <span class="ot">&lt;-</span> price <span class="sc">~</span> (carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb19-7"><a href="lab-4-solutions.html#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="lab-4-solutions.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate each model</span></span>
+<span id="cb19-9"><a href="lab-4-solutions.html#cb19-9" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla1, <span class="at">data=</span>diamond_train)</span>
+<span id="cb19-10"><a href="lab-4-solutions.html#cb19-10" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla2, <span class="at">data=</span>diamond_train)</span>
+<span id="cb19-11"><a href="lab-4-solutions.html#cb19-11" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla3, <span class="at">data=</span>diamond_train)</span>
+<span id="cb19-12"><a href="lab-4-solutions.html#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="lab-4-solutions.html#cb19-13" aria-hidden="true" tabindex="-1"></a>mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
+<span id="cb19-14"><a href="lab-4-solutions.html#cb19-14" aria-hidden="true" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla, <span class="at">data=</span>diamond_train)</span>
+<span id="cb19-15"><a href="lab-4-solutions.html#cb19-15" aria-hidden="true" tabindex="-1"></a>  r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>r.squared</span>
+<span id="cb19-16"><a href="lab-4-solutions.html#cb19-16" aria-hidden="true" tabindex="-1"></a>  adj.r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb19-17"><a href="lab-4-solutions.html#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="lab-4-solutions.html#cb19-18" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
+<span id="cb19-19"><a href="lab-4-solutions.html#cb19-19" aria-hidden="true" tabindex="-1"></a>  uhat <span class="ot">&lt;-</span> <span class="fu">resid</span>(mod)</span>
+<span id="cb19-20"><a href="lab-4-solutions.html#cb19-20" aria-hidden="true" tabindex="-1"></a>  ssr <span class="ot">&lt;-</span> <span class="fu">sum</span>(uhat<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb19-21"><a href="lab-4-solutions.html#cb19-21" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod))</span>
+<span id="cb19-22"><a href="lab-4-solutions.html#cb19-22" aria-hidden="true" tabindex="-1"></a>  aic <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>k <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
+<span id="cb19-23"><a href="lab-4-solutions.html#cb19-23" aria-hidden="true" tabindex="-1"></a>  bic <span class="ot">&lt;-</span> k<span class="sc">*</span><span class="fu">log</span>(n) <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
+<span id="cb19-24"><a href="lab-4-solutions.html#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="lab-4-solutions.html#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show results</span></span>
+<span id="cb19-26"><a href="lab-4-solutions.html#cb19-26" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">tibble</span>(r.squared, adj.r.squared, aic, bic)</span>
+<span id="cb19-27"><a href="lab-4-solutions.html#cb19-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb19-28"><a href="lab-4-solutions.html#cb19-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-29"><a href="lab-4-solutions.html#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="lab-4-solutions.html#cb19-30" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla1)</span>
+<span id="cb19-31"><a href="lab-4-solutions.html#cb19-31" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla2)</span>
+<span id="cb19-32"><a href="lab-4-solutions.html#cb19-32" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla3)</span>
+<span id="cb19-33"><a href="lab-4-solutions.html#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-34"><a href="lab-4-solutions.html#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 4
+##   r.squared adj.r.squared      aic      bic
+##       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1     0.898         0.898 1104188. 1104301.
+## 2     0.9           0.9   1103499. 1103647.
+## 3     0.928         0.928 1089372. 1090328.</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="lab-4-solutions.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># k-fold cross validation</span></span>
+<span id="cb21-2"><a href="lab-4-solutions.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="lab-4-solutions.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># setup data</span></span>
+<span id="cb21-4"><a href="lab-4-solutions.html#cb21-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb21-5"><a href="lab-4-solutions.html#cb21-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
+<span id="cb21-6"><a href="lab-4-solutions.html#cb21-6" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>fold <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb21-7"><a href="lab-4-solutions.html#cb21-7" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb21-8"><a href="lab-4-solutions.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="lab-4-solutions.html#cb21-9" aria-hidden="true" tabindex="-1"></a>cv_mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
+<span id="cb21-10"><a href="lab-4-solutions.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  u.squared <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb21-11"><a href="lab-4-solutions.html#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb21-12"><a href="lab-4-solutions.html#cb21-12" aria-hidden="true" tabindex="-1"></a>    this.train <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">!=</span> i)</span>
+<span id="cb21-13"><a href="lab-4-solutions.html#cb21-13" aria-hidden="true" tabindex="-1"></a>    this.test <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">==</span> i)</span>
+<span id="cb21-14"><a href="lab-4-solutions.html#cb21-14" aria-hidden="true" tabindex="-1"></a>    this.id <span class="ot">&lt;-</span> this.test<span class="sc">$</span>id</span>
+<span id="cb21-15"><a href="lab-4-solutions.html#cb21-15" aria-hidden="true" tabindex="-1"></a>    cv_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla,</span>
+<span id="cb21-16"><a href="lab-4-solutions.html#cb21-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>this.train)</span>
+<span id="cb21-17"><a href="lab-4-solutions.html#cb21-17" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(cv_reg, <span class="at">newdata=</span>this.test)</span>
+<span id="cb21-18"><a href="lab-4-solutions.html#cb21-18" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> this.test<span class="sc">$</span>price <span class="sc">-</span> pred</span>
+<span id="cb21-19"><a href="lab-4-solutions.html#cb21-19" aria-hidden="true" tabindex="-1"></a>    u.squared[this.id] <span class="ot">&lt;-</span> u<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb21-20"><a href="lab-4-solutions.html#cb21-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-21"><a href="lab-4-solutions.html#cb21-21" aria-hidden="true" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u.squared))</span>
+<span id="cb21-22"><a href="lab-4-solutions.html#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cv)</span>
+<span id="cb21-23"><a href="lab-4-solutions.html#cb21-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-24"><a href="lab-4-solutions.html#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-25"><a href="lab-4-solutions.html#cb21-25" aria-hidden="true" tabindex="-1"></a>cv_res1 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla1)</span>
+<span id="cb21-26"><a href="lab-4-solutions.html#cb21-26" aria-hidden="true" tabindex="-1"></a>cv_res2 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla2)</span>
+<span id="cb21-27"><a href="lab-4-solutions.html#cb21-27" aria-hidden="true" tabindex="-1"></a>cv_res3 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla3)</span>
+<span id="cb21-28"><a href="lab-4-solutions.html#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="lab-4-solutions.html#cb21-29" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res1, <span class="at">cv=</span>cv_res1)</span>
+<span id="cb21-30"><a href="lab-4-solutions.html#cb21-30" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res2, <span class="at">cv=</span>cv_res2)</span>
+<span id="cb21-31"><a href="lab-4-solutions.html#cb21-31" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res3, <span class="at">cv=</span>cv_res3)</span>
+<span id="cb21-32"><a href="lab-4-solutions.html#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="lab-4-solutions.html#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   r.squared adj.r.squared     aic     bic       cv
+## 1     0.898         0.898 1104188 1104301 1365.949
+## 2     0.900         0.900 1103499 1103647 1367.502
+## 3     0.928         0.928 1089372 1090328 2107.604</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="lab-4-solutions.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
+<span id="cb23-2"><a href="lab-4-solutions.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb23-3"><a href="lab-4-solutions.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
+<span id="cb23-4"><a href="lab-4-solutions.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="lab-4-solutions.html#cb23-5" aria-hidden="true" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb23-6"><a href="lab-4-solutions.html#cb23-6" aria-hidden="true" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
+<span id="cb23-7"><a href="lab-4-solutions.html#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="lab-4-solutions.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
+<span id="cb23-9"><a href="lab-4-solutions.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="lab-4-solutions.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
+<span id="cb23-11"><a href="lab-4-solutions.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="lab-4-solutions.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
+<span id="cb23-13"><a href="lab-4-solutions.html#cb23-13" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb23-14"><a href="lab-4-solutions.html#cb23-14" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb23-15"><a href="lab-4-solutions.html#cb23-15" aria-hidden="true" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb23-16"><a href="lab-4-solutions.html#cb23-16" aria-hidden="true" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb23-17"><a href="lab-4-solutions.html#cb23-17" aria-hidden="true" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb23-18"><a href="lab-4-solutions.html#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="lab-4-solutions.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
+<span id="cb23-20"><a href="lab-4-solutions.html#cb23-20" aria-hidden="true" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb23-21"><a href="lab-4-solutions.html#cb23-21" aria-hidden="true" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb23-22"><a href="lab-4-solutions.html#cb23-22" aria-hidden="true" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb23-23"><a href="lab-4-solutions.html#cb23-23" aria-hidden="true" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb23-24"><a href="lab-4-solutions.html#cb23-24" aria-hidden="true" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb23-25"><a href="lab-4-solutions.html#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-26"><a href="lab-4-solutions.html#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="co"># report results</span></span>
+<span id="cb23-27"><a href="lab-4-solutions.html#cb23-27" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
+<span id="cb23-28"><a href="lab-4-solutions.html#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      mod1    mod2    mod3   lasso   ridge
+## 1 856.014 785.171 616.996 659.187 794.276</code></pre>
 </div>
             </section>
 
@@ -425,7 +467,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="lab-4-predicting-diamond-prices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="extra-questions-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coding-questions-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -448,6 +490,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
