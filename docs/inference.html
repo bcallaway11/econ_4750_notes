@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.11 Inference | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.11 Inference | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-08-31" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="how-to-estimate-the-parameters-in-a-regression-model.html"/>
 <link rel="next" href="lab-3-birthweight-and-smoking.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,24 +50,24 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -88,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -121,7 +120,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -138,8 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Course Outline/Notes for ECON 4750</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
 <li class="chapter" data-level="1.2" data-path="what-is-this-not.html"><a href="what-is-this-not.html"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
 <li class="chapter" data-level="1.3" data-path="why-did-i-write-this.html"><a href="why-did-i-write-this.html"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
@@ -149,27 +146,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
 <li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a>
-<ul>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="setting-up-r.html"><a href="setting-up-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
 <li class="chapter" data-level="2.1.2" data-path="setting-up-r.html"><a href="setting-up-r.html#downloading-r"><i class="fa fa-check"></i><b>2.1.2</b> Downloading R</a></li>
 <li class="chapter" data-level="2.1.3" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio"><i class="fa fa-check"></i><b>2.1.3</b> RStudio</a></li>
 <li class="chapter" data-level="2.1.4" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.1.4</b> RStudio Development Environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a>
-<ul>
+<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#a-list-of-useful-r-packages"><i class="fa fa-check"></i><b>2.2.1</b> A list of useful R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
-<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
-<ul>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>2.5.1</b> Numeric Vectors</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-types.html"><a href="data-types.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.5.2</b> Vector arithmetic</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-types.html"><a href="data-types.html#more-helpful-functions-in-r"><i class="fa fa-check"></i><b>2.5.3</b> More helpful functions in R</a></li>
@@ -180,19 +172,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.5.8</b> Factors</a></li>
 <li class="chapter" data-level="2.5.9" data-path="data-types.html"><a href="data-types.html#understanding-an-object-in-r"><i class="fa fa-check"></i><b>2.5.9</b> Understanding an object in R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a>
-<ul>
+<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a><ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
-<ul>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a><ul>
 <li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
 <li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
 <li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
 <li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
-<ul>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a><ul>
 <li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
 <li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
@@ -202,10 +191,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
-<ul>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a><ul>
+<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
 <li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
 <li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
@@ -224,10 +211,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
 <li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
@@ -242,39 +228,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
 <li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
-<ul>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a><ul>
 <li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
 <li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
 <li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
-<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
-<ul>
+<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
-<ul>
+<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
-<ul>
+<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
-<ul>
+<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
-<ul>
+<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a><ul>
 <li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
-<ul>
+<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a><ul>
 <li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
 <li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
-<ul>
+<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a><ul>
 <li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
@@ -283,15 +261,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
 <li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
-<ul>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a><ul>
+<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
 <li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
-<ul>
+<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
@@ -299,14 +274,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
 <li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
-<ul>
+<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
 <li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
 <li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
-<ul>
+<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
 <li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
@@ -318,20 +291,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
 <li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
-<ul>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
 <li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
 <li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
-<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a></li>
+<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>6.3.1</b> Estimating ATT with a Regression</a></li>
+<li class="chapter" data-level="6.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>6.3.2</b> Internal and External Validity</a></li>
+<li class="chapter" data-level="6.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>6.3.3</b> Example: Project STAR</a></li>
+</ul></li>
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
-<ul>
+<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a></li>
-<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a></li>
-<li class="chapter" data-level="6.8" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.8</b> Extra Questions</a></li>
-<li class="chapter" data-level="6.9" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>6.9</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>6.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="lab-5-drunk-driving-laws.html"><a href="lab-5-drunk-driving-laws.html"><i class="fa fa-check"></i><b>6.8</b> Lab 5: Drunk Driving Laws</a></li>
+<li class="chapter" data-level="6.9" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.9</b> Lab 5: Solutions</a></li>
+<li class="chapter" data-level="6.10" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>6.10</b> Coding Questions</a></li>
+<li class="chapter" data-level="6.11" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="6.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>6.12</b> Answers to Some Extra Questions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -353,11 +335,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="inference" class="section level2" number="4.11">
+<div id="inference" class="section level2">
 <h2><span class="header-section-number">4.11</span> Inference</h2>
 <p>SW 4.5, 5.1, 5.2, 6.6</p>
 <p>We discussed in class the practical issues of inference in linear regression models.</p>
-<p>These results rely on arguments building on the Central Limit Theorem (this should not surprise you as it is similar to the case for the asymptotic distribution of <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y]))\)</span> that we discussed earlier in the semester.</p>
+<p>These results rely on arguments building on the Central Limit Theorem (this should not surprise you as it is similar to the case for the asymptotic distribution of <span class="math inline">\(\sqrt{n}(\bar{Y} - \mathbb{E}[Y]))\)</span> that we discussed earlier in the semester.</p>
 <p>In this section, I sketch these types of arguments for you. This material is advanced, but I suggest that you study this material.</p>
 <p>We are going to show that, in the simple linear regression model,
 <span class="math display">\[\begin{align*}
@@ -365,13 +347,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \end{align*}\]</span>
 where
 <span class="math display">\[\begin{align*}
-  V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
+  V = \frac{\mathbb{E}[(X-\mathbb{E}[X])^2 U^2]}{\mathrm{var}(X)^2}
 \end{align*}\]</span>
 and discuss how to use this result to conduct inference.</p>
 <p>Let’s start by showing why this result holds.</p>
 <p>To start with, recall that
 <span class="math display" id="eq:b1">\[\begin{align}
-  \hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} \tag{4.3}
+  \hat{\beta}_1 = \frac{\widehat{\mathrm{cov}}(X,Y)}{\widehat{\mathrm{var}}(X)} \tag{4.3}
 \end{align}\]</span></p>
 <p>Before providing a main result, let’s start with noting the following:</p>
 <p><em>Helpful Intermediate Result 1</em>
@@ -392,9 +374,10 @@ and very similar arguments (basically the same arguments in reverse) also imply 
   \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big) \tag{4.5}
 \end{align}\]</span>
 We use both <a href="inference.html#eq:hr1">(4.4)</a> and <a href="inference.html#eq:hr2">(4.5)</a> below.</p>
+
 <p>Next, consider the numerator in <a href="inference.html#eq:b1">(4.3)</a>
 <span class="math display">\[\begin{align*}
-  \widehat{\cov}(X,Y) &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
+  \widehat{\mathrm{cov}}(X,Y) &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
   &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
   &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
   &amp;= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
@@ -409,41 +392,41 @@ which implies that this term is equal to 0.</p>
 <p>For (B), notice that
 <span class="math display">\[\begin{align*}
   \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i &amp;= \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) (X_i - \bar{X}) \\
-  &amp;= \beta_1 \widehat{\var}(X)
+  &amp;= \beta_1 \widehat{\mathrm{var}}(X)
 \end{align*}\]</span>
 where the first equality holds by <a href="inference.html#eq:hr2">(4.5)</a> and the second equality holds by the definition of sample variance.</p>
 <p>For (C), well, we’ll just carry that one around for now.</p>
 <p>Plugging in the expressions for (A), (B), and (C) back into Equation <a href="inference.html#eq:b1">(4.3)</a> implies that
 <span class="math display">\[\begin{align*}
-  \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
+  \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\mathrm{var}}(X)}
 \end{align*}\]</span>
 Next, re-arranging terms and multiplying both sides by <span class="math inline">\(\sqrt{n}\)</span> implies that
 <span class="math display">\[\begin{align*}
-  \sqrt{n}(\hat{\beta}_1 - \beta_1) &amp;= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}\right) \\
-  &amp; \approx \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \E[X]) U_i}{\var(X)}\right)
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) &amp;= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\mathrm{var}}(X)}\right) \\
+  &amp; \approx \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \mathbb{E}[X]) U_i}{\mathrm{var}(X)}\right)
 \end{align*}\]</span>
-The last line (the approximately one) is kind of a weak argument, but basically you can replace <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\widehat{\var}(X)\)</span> and the effect of this replacement will converge to 0 in large samples (this is the reason for the approximately) — if you want a more complete explanation, sign up for my graduate econometrics class next semester.</p>
-<p>Is this helpful? It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to. In particular, maybe it is helpful to define <span class="math inline">\(Z_i = \frac{(X_i - \E[X]) U_i}{\var(X)}\)</span>. We know that we could apply a Central Limit Theorem to <span class="math inline">\(\sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)\)</span> if (i) <span class="math inline">\(Z_i\)</span> had mean 0, and (ii) it is iid. That it is iid holds immediately from the random sampling assumption. For mean 0,
+The last line (the approximately one) is kind of a weak argument, but basically you can replace <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\widehat{\mathrm{var}}(X)\)</span> and the effect of this replacement will converge to 0 in large samples (this is the reason for the approximately) — if you want a more complete explanation, sign up for my graduate econometrics class next semester.</p>
+<p>Is this helpful? It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to. In particular, maybe it is helpful to define <span class="math inline">\(Z_i = \frac{(X_i - \mathbb{E}[X]) U_i}{\mathrm{var}(X)}\)</span>. We know that we could apply a Central Limit Theorem to <span class="math inline">\(\sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)\)</span> if (i) <span class="math inline">\(Z_i\)</span> had mean 0, and (ii) it is iid. That it is iid holds immediately from the random sampling assumption. For mean 0,
 <span class="math display">\[\begin{align*}
-  \E[Z] &amp;= \E\left[ \frac{(X - \E[X]) U}{\var(X)}\right] \\
-  &amp;= \frac{1}{\var(X)} \E[(X - \E[X]) U] \\
-  &amp;= \frac{1}{\var(X)} \E[(X - \E[X]) \underbrace{\E[U|X]}_{=0}] \\
+  \mathbb{E}[Z] &amp;= \mathbb{E}\left[ \frac{(X - \mathbb{E}[X]) U}{\mathrm{var}(X)}\right] \\
+  &amp;= \frac{1}{\mathrm{var}(X)} \mathbb{E}[(X - \mathbb{E}[X]) U] \\
+  &amp;= \frac{1}{\mathrm{var}(X)} \mathbb{E}[(X - \mathbb{E}[X]) \underbrace{\mathbb{E}[U|X]}_{=0}] \\
   &amp;= 0
 \end{align*}\]</span>
 where the only challenging line here is the third one holds from the Law of Iterated Expectations. This means that we can apply the central limit theorem, and in particular,
-<span class="math inline">\(\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)\)</span> where <span class="math inline">\(V=\var(Z) = \E[Z^2]\)</span> (where the 2nd equality here holds because <span class="math inline">\(Z\)</span> has mean 0). Now, just substituting back in for <span class="math inline">\(Z\)</span> implies that
+<span class="math inline">\(\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)\)</span> where <span class="math inline">\(V=\mathrm{var}(Z) = \mathbb{E}[Z^2]\)</span> (where the 2nd equality here holds because <span class="math inline">\(Z\)</span> has mean 0). Now, just substituting back in for <span class="math inline">\(Z\)</span> implies that
 <span class="math display">\[\begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
 \end{align*}\]</span>
 where
 <span class="math display" id="eq:V">\[\begin{align}
-  V &amp;= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
-  &amp;= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] \tag{4.6}
+  V &amp;= \mathbb{E}\left[ \left( \frac{(X - \mathbb{E}[X]) U}{\mathrm{var}(X)} \right)^2 \right] \nonumber \\
+  &amp;= \mathbb{E}\left[ \frac{(X - \mathbb{E}[X])^2 U^2}{\mathrm{var}(X)^2}\right] \tag{4.6}
 \end{align}\]</span>
 which is what we were aiming for.</p>
 <p>Given this result, all our previous work on standard errors, t-statistics, p-values, and confidence intervals applies. First, let me mention the way that you would estimate <span class="math inline">\(V\)</span> (same as always, just replace the population quantities with corresponding sample quantities).</p>
 <p><span class="math display">\[
-  \hat{V} = \frac{ \frac{1}{n} \displaystyle \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
+  \hat{V} = \frac{ \frac{1}{n} \displaystyle \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\mathrm{var}}(X)^2}
 \]</span></p>
 <p>where <span class="math inline">\(\hat{U}_i\)</span> are the residuals.</p>
 <p>Now, standard errors are just the same as before (the only difference is that <span class="math inline">\(\hat{V}\)</span> itself has changed)</p>
@@ -464,70 +447,72 @@ and a 95% confidence interval is given by</p>
 <p><span class="math display">\[
   CI = [\hat{\beta} - 1.96 \textrm{s.e.}(\hat{\beta}), \hat{\beta} + 1.96 \textrm{s.e.}(\hat{\beta})]
 \]</span></p>
-<div id="computation-7" class="section level3" number="4.11.1">
+<div id="computation-7" class="section level3">
 <h3><span class="header-section-number">4.11.1</span> Computation</h3>
 <p>Let’s check if what we derived is what we can compute using <code>R</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="inference.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the same regression as in the previous section</span></span>
-<span id="cb24-2"><a href="inference.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg8)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = mpg ~ hp, data = mtcars)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -5.7121 -2.1122 -0.8854  1.5819  8.2360 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***
-## hp          -0.06823    0.01012  -6.742 1.79e-07 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 3.863 on 30 degrees of freedom
-## Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 
-## F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="inference.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show previous calcuations</span></span>
-<span id="cb26-2"><a href="inference.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">bet0=</span>bet0, <span class="at">bet1=</span>bet1)</span></code></pre></div>
-<pre><code>##       bet0        bet1
-## 1 30.09886 -0.06822828</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="inference.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># components of Vhat</span></span>
-<span id="cb28-2"><a href="inference.html#cb28-2" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
-<span id="cb28-3"><a href="inference.html#cb28-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp</span>
-<span id="cb28-4"><a href="inference.html#cb28-4" aria-hidden="true" tabindex="-1"></a>Uhat <span class="ot">&lt;-</span> Y <span class="sc">-</span> bet0 <span class="sc">-</span> bet1<span class="sc">*</span>X</span>
-<span id="cb28-5"><a href="inference.html#cb28-5" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
-<span id="cb28-6"><a href="inference.html#cb28-6" aria-hidden="true" tabindex="-1"></a>varX <span class="ot">&lt;-</span> <span class="fu">mean</span>( (X<span class="sc">-</span>Xbar)<span class="sc">^</span><span class="dv">2</span> )</span>
-<span id="cb28-7"><a href="inference.html#cb28-7" aria-hidden="true" tabindex="-1"></a>Vhat <span class="ot">&lt;-</span> <span class="fu">mean</span>( (X<span class="sc">-</span>Xbar)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> Uhat<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> ( varX<span class="sc">^</span><span class="dv">2</span> )</span>
-<span id="cb28-8"><a href="inference.html#cb28-8" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(mtcars)</span>
-<span id="cb28-9"><a href="inference.html#cb28-9" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(Vhat)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb28-10"><a href="inference.html#cb28-10" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> bet1<span class="sc">/</span>se</span>
-<span id="cb28-11"><a href="inference.html#cb28-11" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span>
-<span id="cb28-12"><a href="inference.html#cb28-12" aria-hidden="true" tabindex="-1"></a>ci_L <span class="ot">&lt;-</span> bet1 <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
-<span id="cb28-13"><a href="inference.html#cb28-13" aria-hidden="true" tabindex="-1"></a>ci_U <span class="ot">&lt;-</span> bet1 <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
-<span id="cb28-14"><a href="inference.html#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="inference.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
-<span id="cb28-16"><a href="inference.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(se, t_stat, p_val, ci_L, ci_U),<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>##        se   t_stat p_val     ci_L     ci_U
-## 1 0.01313 -5.19644     0 -0.09396 -0.04249</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="inference.html#cb122-1"></a><span class="co"># this is the same regression as in the previous section</span></span>
+<span id="cb122-2"><a href="inference.html#cb122-2"></a><span class="kw">summary</span>(reg8)</span>
+<span id="cb122-3"><a href="inference.html#cb122-3"></a><span class="co">#&gt; </span></span>
+<span id="cb122-4"><a href="inference.html#cb122-4"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb122-5"><a href="inference.html#cb122-5"></a><span class="co">#&gt; lm(formula = mpg ~ hp, data = mtcars)</span></span>
+<span id="cb122-6"><a href="inference.html#cb122-6"></a><span class="co">#&gt; </span></span>
+<span id="cb122-7"><a href="inference.html#cb122-7"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb122-8"><a href="inference.html#cb122-8"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb122-9"><a href="inference.html#cb122-9"></a><span class="co">#&gt; -5.7121 -2.1122 -0.8854  1.5819  8.2360 </span></span>
+<span id="cb122-10"><a href="inference.html#cb122-10"></a><span class="co">#&gt; </span></span>
+<span id="cb122-11"><a href="inference.html#cb122-11"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb122-12"><a href="inference.html#cb122-12"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb122-13"><a href="inference.html#cb122-13"></a><span class="co">#&gt; (Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***</span></span>
+<span id="cb122-14"><a href="inference.html#cb122-14"></a><span class="co">#&gt; hp          -0.06823    0.01012  -6.742 1.79e-07 ***</span></span>
+<span id="cb122-15"><a href="inference.html#cb122-15"></a><span class="co">#&gt; ---</span></span>
+<span id="cb122-16"><a href="inference.html#cb122-16"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb122-17"><a href="inference.html#cb122-17"></a><span class="co">#&gt; </span></span>
+<span id="cb122-18"><a href="inference.html#cb122-18"></a><span class="co">#&gt; Residual standard error: 3.863 on 30 degrees of freedom</span></span>
+<span id="cb122-19"><a href="inference.html#cb122-19"></a><span class="co">#&gt; Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 </span></span>
+<span id="cb122-20"><a href="inference.html#cb122-20"></a><span class="co">#&gt; F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</span></span>
+<span id="cb122-21"><a href="inference.html#cb122-21"></a></span>
+<span id="cb122-22"><a href="inference.html#cb122-22"></a><span class="co"># show previous calcuations</span></span>
+<span id="cb122-23"><a href="inference.html#cb122-23"></a><span class="kw">data.frame</span>(<span class="dt">bet0=</span>bet0, <span class="dt">bet1=</span>bet1)</span>
+<span id="cb122-24"><a href="inference.html#cb122-24"></a><span class="co">#&gt;       bet0        bet1</span></span>
+<span id="cb122-25"><a href="inference.html#cb122-25"></a><span class="co">#&gt; 1 30.09886 -0.06822828</span></span>
+<span id="cb122-26"><a href="inference.html#cb122-26"></a></span>
+<span id="cb122-27"><a href="inference.html#cb122-27"></a><span class="co"># components of Vhat</span></span>
+<span id="cb122-28"><a href="inference.html#cb122-28"></a>Y &lt;-<span class="st"> </span>mtcars<span class="op">$</span>mpg</span>
+<span id="cb122-29"><a href="inference.html#cb122-29"></a>X &lt;-<span class="st"> </span>mtcars<span class="op">$</span>hp</span>
+<span id="cb122-30"><a href="inference.html#cb122-30"></a>Uhat &lt;-<span class="st"> </span>Y <span class="op">-</span><span class="st"> </span>bet0 <span class="op">-</span><span class="st"> </span>bet1<span class="op">*</span>X</span>
+<span id="cb122-31"><a href="inference.html#cb122-31"></a>Xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(X)</span>
+<span id="cb122-32"><a href="inference.html#cb122-32"></a>varX &lt;-<span class="st"> </span><span class="kw">mean</span>( (X<span class="op">-</span>Xbar)<span class="op">^</span><span class="dv">2</span> )</span>
+<span id="cb122-33"><a href="inference.html#cb122-33"></a>Vhat &lt;-<span class="st"> </span><span class="kw">mean</span>( (X<span class="op">-</span>Xbar)<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>Uhat<span class="op">^</span><span class="dv">2</span> ) <span class="op">/</span><span class="st"> </span>( varX<span class="op">^</span><span class="dv">2</span> )</span>
+<span id="cb122-34"><a href="inference.html#cb122-34"></a>n &lt;-<span class="st"> </span><span class="kw">nrow</span>(mtcars)</span>
+<span id="cb122-35"><a href="inference.html#cb122-35"></a>se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(Vhat)<span class="op">/</span><span class="kw">sqrt</span>(n)</span>
+<span id="cb122-36"><a href="inference.html#cb122-36"></a>t_stat &lt;-<span class="st"> </span>bet1<span class="op">/</span>se</span>
+<span id="cb122-37"><a href="inference.html#cb122-37"></a>p_val &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pnorm</span>(<span class="op">-</span><span class="kw">abs</span>(t_stat))</span>
+<span id="cb122-38"><a href="inference.html#cb122-38"></a>ci_L &lt;-<span class="st"> </span>bet1 <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span>se</span>
+<span id="cb122-39"><a href="inference.html#cb122-39"></a>ci_U &lt;-<span class="st"> </span>bet1 <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span><span class="op">*</span>se</span>
+<span id="cb122-40"><a href="inference.html#cb122-40"></a></span>
+<span id="cb122-41"><a href="inference.html#cb122-41"></a><span class="co"># print results</span></span>
+<span id="cb122-42"><a href="inference.html#cb122-42"></a><span class="kw">round</span>(<span class="kw">data.frame</span>(se, t_stat, p_val, ci_L, ci_U),<span class="dv">5</span>)</span>
+<span id="cb122-43"><a href="inference.html#cb122-43"></a><span class="co">#&gt;        se   t_stat p_val     ci_L     ci_U</span></span>
+<span id="cb122-44"><a href="inference.html#cb122-44"></a><span class="co">#&gt; 1 0.01313 -5.19644     0 -0.09396 -0.04249</span></span></code></pre></div>
 <p>Interestingly, these are not <em>exactly</em> the same as what comes from the <code>lm</code> command. Here’s what the difference is: <code>R</code> makes a simplifying assumption called “homoskedasticity” that simplifies the expression for the variance. This can result in slightly different standard errors (and therefore slightly different t-statistics, p-values, and confidence intervals too) than the ones we calculated.</p>
 <p>An alternative package that is popular among economists for estimating regressions and getting “heteroskedasticity robust” standard errors is the <code>estimatr</code> package.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="inference.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
-<span id="cb30-2"><a href="inference.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="inference.html#cb30-3" aria-hidden="true" tabindex="-1"></a>reg9 <span class="ot">&lt;-</span> <span class="fu">lm_robust</span>(mpg <span class="sc">~</span> hp, <span class="at">data=</span>mtcars, <span class="at">se_type=</span><span class="st">&quot;HC0&quot;</span>)</span>
-<span id="cb30-4"><a href="inference.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg9)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm_robust(formula = mpg ~ hp, data = mtcars, se_type = &quot;HC0&quot;)
-## 
-## Standard error type:  HC0 
-## 
-## Coefficients:
-##             Estimate Std. Error t value  Pr(&gt;|t|) CI Lower CI Upper DF
-## (Intercept) 30.09886    2.01067  14.970 1.851e-15 25.99252 34.20520 30
-## hp          -0.06823    0.01313  -5.196 1.338e-05 -0.09504 -0.04141 30
-## 
-## Multiple R-squared:  0.6024 ,    Adjusted R-squared:  0.5892 
-## F-statistic:    27 on 1 and 30 DF,  p-value: 1.338e-05</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="inference.html#cb123-1"></a><span class="kw">library</span>(estimatr)</span>
+<span id="cb123-2"><a href="inference.html#cb123-2"></a></span>
+<span id="cb123-3"><a href="inference.html#cb123-3"></a>reg9 &lt;-<span class="st"> </span><span class="kw">lm_robust</span>(mpg <span class="op">~</span><span class="st"> </span>hp, <span class="dt">data=</span>mtcars, <span class="dt">se_type=</span><span class="st">&quot;HC0&quot;</span>)</span>
+<span id="cb123-4"><a href="inference.html#cb123-4"></a><span class="kw">summary</span>(reg9)</span>
+<span id="cb123-5"><a href="inference.html#cb123-5"></a><span class="co">#&gt; </span></span>
+<span id="cb123-6"><a href="inference.html#cb123-6"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb123-7"><a href="inference.html#cb123-7"></a><span class="co">#&gt; lm_robust(formula = mpg ~ hp, data = mtcars, se_type = &quot;HC0&quot;)</span></span>
+<span id="cb123-8"><a href="inference.html#cb123-8"></a><span class="co">#&gt; </span></span>
+<span id="cb123-9"><a href="inference.html#cb123-9"></a><span class="co">#&gt; Standard error type:  HC0 </span></span>
+<span id="cb123-10"><a href="inference.html#cb123-10"></a><span class="co">#&gt; </span></span>
+<span id="cb123-11"><a href="inference.html#cb123-11"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb123-12"><a href="inference.html#cb123-12"></a><span class="co">#&gt;             Estimate Std. Error t value  Pr(&gt;|t|) CI Lower CI Upper DF</span></span>
+<span id="cb123-13"><a href="inference.html#cb123-13"></a><span class="co">#&gt; (Intercept) 30.09886    2.01067  14.970 1.851e-15 25.99252 34.20520 30</span></span>
+<span id="cb123-14"><a href="inference.html#cb123-14"></a><span class="co">#&gt; hp          -0.06823    0.01313  -5.196 1.338e-05 -0.09504 -0.04141 30</span></span>
+<span id="cb123-15"><a href="inference.html#cb123-15"></a><span class="co">#&gt; </span></span>
+<span id="cb123-16"><a href="inference.html#cb123-16"></a><span class="co">#&gt; Multiple R-squared:  0.6024 ,    Adjusted R-squared:  0.5892 </span></span>
+<span id="cb123-17"><a href="inference.html#cb123-17"></a><span class="co">#&gt; F-statistic:    27 on 1 and 30 DF,  p-value: 1.338e-05</span></span></code></pre></div>
 <p>The “HC0” standard errors are “heteroskedasticity consistent” standard errors, and you can see that they match what we calculated above.</p>
 </div>
 </div>
@@ -560,7 +545,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

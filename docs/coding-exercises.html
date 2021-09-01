@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -337,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.11</span> Coding Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>The <code>stringr</code> package contains a number of functions for working with strings. For this problem create the following character vector in R</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="coding-exercises.html#cb190-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;economics&quot;</span>, <span class="st">&quot;econometrics&quot;</span>, <span class="st">&quot;ECON 4750&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="coding-exercises.html#cb74-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;economics&quot;</span>, <span class="st">&quot;econometrics&quot;</span>, <span class="st">&quot;ECON 4750&quot;</span>)</span></code></pre></div>
 <p>Install the <code>stringr</code> package and use the <code>str_length</code> function in the package in order to calculate the length (number of characters) in each element of <code>x</code>.</p></li>
 <li><p>For this problem, we are going to write a function to calculate the sum of the numbers from 1 to <span class="math inline">\(n\)</span> where <span class="math inline">\(n\)</span> is some positive integer. There are actually a lot of different ways to do this.</p>
 <ul>
@@ -347,9 +349,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Approach 3: A more brute force approach is to create a list of numbers from 1 to <span class="math inline">\(n\)</span> (you can use <code>seq</code> here) and add them up using a <code>for</code> loop — basically, just keep track of what the current total is and add the next number to the total in each iteration of the for loop. Write a function called <code>sum_one_to_n_3</code> that does this.</p></li>
 </ul>
 <p><strong>Hint:</strong> All of the functions should look like</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="coding-exercises.html#cb191-1"></a>sum_one_to_n &lt;-<span class="st"> </span><span class="cf">function</span>(n) {</span>
-<span id="cb191-2"><a href="coding-exercises.html#cb191-2"></a>  <span class="co"># do something</span></span>
-<span id="cb191-3"><a href="coding-exercises.html#cb191-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="coding-exercises.html#cb75-1"></a>sum_one_to_n &lt;-<span class="st"> </span><span class="cf">function</span>(n) {</span>
+<span id="cb75-2"><a href="coding-exercises.html#cb75-2"></a>  <span class="co"># do something</span></span>
+<span id="cb75-3"><a href="coding-exercises.html#cb75-3"></a>}</span></code></pre></div>
 <p>Try out all three approaches that you came up with above for <span class="math inline">\(n=100\)</span>. What is the answer? Do you get the same answer using all three approaches?</p></li>
 <li><p>The Fibonacci sequence is the sequence of numbers <span class="math inline">\(0,1,1,2,3,5,8,13,21,34,55,\ldots\)</span> that comes from starting with <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> and where each subsequent number is the sum of the previous two. For example, the 5 in the sequence comes from adding 2 and 3; the 55 in the sequence comes from adding 21 and 34.</p>
 <ol style="list-style-type: lower-alpha">

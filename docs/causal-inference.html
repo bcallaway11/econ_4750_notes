@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
@@ -339,16 +339,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Topic 6</span> Causal Inference</h1>
 <p>For the remainder of the semester, we will talk about methods for understanding the <strong>causal effect</strong> of one variable on another.</p>
 <p>Let’s start with an example. Suppose we were interested in understanding the causal effect of attending college on earnings. We know a lot about calculating averages, so let’s consider calculating average earnings of those who went to college and comparing that to the average earnings of those who didn’t go to college. Let’s use the data that we used all the way back in Chapter 2 to make this calculation.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="causal-inference.html#cb1-1"></a><span class="kw">load</span>(<span class="st">&quot;us_data.RData&quot;</span>)</span>
-<span id="cb1-2"><a href="causal-inference.html#cb1-2"></a></span>
-<span id="cb1-3"><a href="causal-inference.html#cb1-3"></a>col_earnings &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">subset</span>(us_data, educ <span class="op">&gt;=</span><span class="st"> </span><span class="dv">16</span>)<span class="op">$</span>incwage)</span>
-<span id="cb1-4"><a href="causal-inference.html#cb1-4"></a>non_col_earnings &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">subset</span>(us_data, educ <span class="op">&lt;</span><span class="st"> </span><span class="dv">16</span>)<span class="op">$</span>incwage)</span>
-<span id="cb1-5"><a href="causal-inference.html#cb1-5"></a></span>
-<span id="cb1-6"><a href="causal-inference.html#cb1-6"></a><span class="kw">round</span>(<span class="kw">data.frame</span>(col_earnings, </span>
-<span id="cb1-7"><a href="causal-inference.html#cb1-7"></a>                 non_col_earnings, </span>
-<span id="cb1-8"><a href="causal-inference.html#cb1-8"></a>                 <span class="dt">diff=</span>(col_earnings<span class="op">-</span>non_col_earnings)),<span class="dv">3</span>)</span></code></pre></div>
-<pre><code>##   col_earnings non_col_earnings     diff
-## 1     87306.33         40557.28 46749.05</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="causal-inference.html#cb144-1"></a><span class="kw">load</span>(<span class="st">&quot;us_data.RData&quot;</span>)</span>
+<span id="cb144-2"><a href="causal-inference.html#cb144-2"></a></span>
+<span id="cb144-3"><a href="causal-inference.html#cb144-3"></a>col_earnings &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">subset</span>(us_data, educ <span class="op">&gt;=</span><span class="st"> </span><span class="dv">16</span>)<span class="op">$</span>incwage)</span>
+<span id="cb144-4"><a href="causal-inference.html#cb144-4"></a>non_col_earnings &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">subset</span>(us_data, educ <span class="op">&lt;</span><span class="st"> </span><span class="dv">16</span>)<span class="op">$</span>incwage)</span>
+<span id="cb144-5"><a href="causal-inference.html#cb144-5"></a></span>
+<span id="cb144-6"><a href="causal-inference.html#cb144-6"></a><span class="kw">round</span>(<span class="kw">data.frame</span>(col_earnings, </span>
+<span id="cb144-7"><a href="causal-inference.html#cb144-7"></a>                 non_col_earnings, </span>
+<span id="cb144-8"><a href="causal-inference.html#cb144-8"></a>                 <span class="dt">diff=</span>(col_earnings<span class="op">-</span>non_col_earnings)),<span class="dv">3</span>)</span>
+<span id="cb144-9"><a href="causal-inference.html#cb144-9"></a><span class="co">#&gt;   col_earnings non_col_earnings     diff</span></span>
+<span id="cb144-10"><a href="causal-inference.html#cb144-10"></a><span class="co">#&gt; 1     87306.33         40557.28 46749.05</span></span></code></pre></div>
 <p>This seems to be a huge difference. We are used to calling this difference a partial effect of going to college, but should we call it <em>the causal effect</em> or an average causal effect across individuals? Probably no. The main reason is that earnings of individuals who went to college may have been different from individuals that didn’t go to college even if no one went to college. Another way to say this is that there are a number of other things besides college that affect a person’s earnings (age, race, IQ, “ability”, “hardworking-ness”, luck, etc.). If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.</p>
 <p>Before we move on, let me give some more examples of causal questions that may be of interest to economists:</p>
 <ul>

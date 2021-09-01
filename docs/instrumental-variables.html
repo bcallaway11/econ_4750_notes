@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
@@ -354,19 +354,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 and interpret our estimate of <span class="math inline">\(\alpha\)</span> as an estimate of the causal effect of participating in the treatment. And where, for simplicity, I am not including any <span class="math inline">\(X\)</span> covariates and where we do not observe <span class="math inline">\(W\)</span>. If <span class="math inline">\(D\)</span> is correlated with <span class="math inline">\(W\)</span>, then just ignoring <span class="math inline">\(W\)</span> and running a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> will result in omitted variable bias so that regression does not recover an estimate of <span class="math inline">\(\alpha\)</span>. To help with the discussion below, we’ll define <span class="math inline">\(V_i\)</span> to be the entire unobservable term, <span class="math inline">\(\beta_1 W_i + U_i\)</span>, in the above equation.</p>
 <p>An instrumental variable, which we’ll call <span class="math inline">\(Z\)</span>, needs to satisfy the following two conditions:</p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\Cov(Z,V) = 0\)</span> — This condition is called the <strong>exclusion restriction</strong>, and it means that the instrument is uncorrelated with the error term in the above equation. In practice, we’d mainly need to make sure that it is uncorrelated with whatever we think is in <span class="math inline">\(W\)</span>.</p></li>
-<li><p><span class="math inline">\(\Cov(Z,D) \neq 0\)</span> — This condition is called <strong>instrument relevance</strong>, and it means that the instrument needs to actually affect whether or not an individual participates in the treatment. We’ll see why this condition is important momentarily.</p></li>
+<li><p><span class="math inline">\(\mathrm{cov}(Z,V) = 0\)</span> — This condition is called the <strong>exclusion restriction</strong>, and it means that the instrument is uncorrelated with the error term in the above equation. In practice, we’d mainly need to make sure that it is uncorrelated with whatever we think is in <span class="math inline">\(W\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{cov}(Z,D) \neq 0\)</span> — This condition is called <strong>instrument relevance</strong>, and it means that the instrument needs to actually affect whether or not an individual participates in the treatment. We’ll see why this condition is important momentarily.</p></li>
 </ol>
 <p>Next, notice that</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \Cov(Z,Y) &amp;= \Cov(Z,\beta_0 + \alpha D + V) \\
-  &amp;= \alpha \Cov(Z,D)
+  \mathrm{cov}(Z,Y) &amp;= \mathrm{cov}(Z,\beta_0 + \alpha D + V) \\
+  &amp;= \alpha \mathrm{cov}(Z,D)
   \end{aligned}
 \]</span>
-which holds because <span class="math inline">\(\Cov(Z,\beta_0) = 0\)</span> (because <span class="math inline">\(\beta_0\)</span> is a constant) and <span class="math inline">\(\Cov(Z,V)=0\)</span> by the first condition of <span class="math inline">\(Z\)</span> being a valid instrument. This implies that</p>
+which holds because <span class="math inline">\(\mathrm{cov}(Z,\beta_0) = 0\)</span> (because <span class="math inline">\(\beta_0\)</span> is a constant) and <span class="math inline">\(\mathrm{cov}(Z,V)=0\)</span> by the first condition of <span class="math inline">\(Z\)</span> being a valid instrument. This implies that</p>
 <p><span class="math display">\[
-  \alpha = \frac{\Cov(Z,Y)}{\Cov(Z,D)}
+  \alpha = \frac{\mathrm{cov}(Z,Y)}{\mathrm{cov}(Z,D)}
 \]</span>
 That is, if we have a valid instrument, the above formula gives us a path to recovering the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. [Now you can also see why we needed the second condition — otherwise, we could divide by 0 here.]</p>
 <p>The intuition for this is the following: changes in the instrument can cause changes in the outcome but only because they can change whether or not an individual participates in the treatment. These changes show up in the numerator. They are scaled by how much changes in the instrument result in changes in the treatment.</p>
@@ -374,21 +374,21 @@ That is, if we have a valid instrument, the above formula gives us a path to rec
 <div id="example-return-to-education" class="section level3">
 <h3><span class="header-section-number">6.6.1</span> Example: Return to Education</h3>
 <p>In this example, we’ll estimate the return to education using whether or not an individual lives close to a college as an instrument for attending college. The idea is that (at least after controlling for some other covariates), the distance that a person lives from a college should not directly affect their earnings but it could affect whether or not they attend college due to it being more or less convenient. I think that the papers that use this sort of an idea primarily have in mind that distance-to-college may affect whether or not a student attends a community college rather than a university.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="instrumental-variables.html#cb5-1"></a><span class="kw">library</span>(ivreg)</span>
-<span id="cb5-2"><a href="instrumental-variables.html#cb5-2"></a><span class="kw">library</span>(modelsummary)</span>
-<span id="cb5-3"><a href="instrumental-variables.html#cb5-3"></a></span>
-<span id="cb5-4"><a href="instrumental-variables.html#cb5-4"></a><span class="kw">data</span>(<span class="st">&quot;SchoolingReturns&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ivreg&quot;</span>)</span>
-<span id="cb5-5"><a href="instrumental-variables.html#cb5-5"></a></span>
-<span id="cb5-6"><a href="instrumental-variables.html#cb5-6"></a>lm_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
-<span id="cb5-7"><a href="instrumental-variables.html#cb5-7"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
-<span id="cb5-8"><a href="instrumental-variables.html#cb5-8"></a></span>
-<span id="cb5-9"><a href="instrumental-variables.html#cb5-9"></a>iv_reg &lt;-<span class="st"> </span><span class="kw">ivreg</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south, </span>
-<span id="cb5-10"><a href="instrumental-variables.html#cb5-10"></a>  <span class="op">~</span><span class="st"> </span>nearcollege <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
-<span id="cb5-11"><a href="instrumental-variables.html#cb5-11"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
-<span id="cb5-12"><a href="instrumental-variables.html#cb5-12"></a></span>
-<span id="cb5-13"><a href="instrumental-variables.html#cb5-13"></a>reg_list &lt;-<span class="st"> </span><span class="kw">list</span>(lm_reg, iv_reg)</span>
-<span id="cb5-14"><a href="instrumental-variables.html#cb5-14"></a></span>
-<span id="cb5-15"><a href="instrumental-variables.html#cb5-15"></a><span class="kw">modelsummary</span>(reg_list)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="instrumental-variables.html#cb146-1"></a><span class="kw">library</span>(ivreg)</span>
+<span id="cb146-2"><a href="instrumental-variables.html#cb146-2"></a><span class="kw">library</span>(modelsummary)</span>
+<span id="cb146-3"><a href="instrumental-variables.html#cb146-3"></a></span>
+<span id="cb146-4"><a href="instrumental-variables.html#cb146-4"></a><span class="kw">data</span>(<span class="st">&quot;SchoolingReturns&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ivreg&quot;</span>)</span>
+<span id="cb146-5"><a href="instrumental-variables.html#cb146-5"></a></span>
+<span id="cb146-6"><a href="instrumental-variables.html#cb146-6"></a>lm_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
+<span id="cb146-7"><a href="instrumental-variables.html#cb146-7"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
+<span id="cb146-8"><a href="instrumental-variables.html#cb146-8"></a></span>
+<span id="cb146-9"><a href="instrumental-variables.html#cb146-9"></a>iv_reg &lt;-<span class="st"> </span><span class="kw">ivreg</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south, </span>
+<span id="cb146-10"><a href="instrumental-variables.html#cb146-10"></a>  <span class="op">~</span><span class="st"> </span>nearcollege <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
+<span id="cb146-11"><a href="instrumental-variables.html#cb146-11"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
+<span id="cb146-12"><a href="instrumental-variables.html#cb146-12"></a></span>
+<span id="cb146-13"><a href="instrumental-variables.html#cb146-13"></a>reg_list &lt;-<span class="st"> </span><span class="kw">list</span>(lm_reg, iv_reg)</span>
+<span id="cb146-14"><a href="instrumental-variables.html#cb146-14"></a></span>
+<span id="cb146-15"><a href="instrumental-variables.html#cb146-15"></a><span class="kw">modelsummary</span>(reg_list)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -342,7 +344,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Related Reading: IDS 2.2</p>
 <p>The very first step to writing code that can actually do something is to able to store things. In R, we store things in <strong>objects</strong> (perhaps sometimes I will also use the word variables).</p>
 <p>Earlier, we used R to calculate <span class="math inline">\(1+1\)</span>. Let’s go back to the Source pane (top left pane in RStudio) and type</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-basics.html#cb12-1"></a>answer &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-basics.html#cb6-1"></a>answer &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
 <p>Press <code>Ctrl+ENTER</code> on this line to run it. You should see the same line down in the Console now.</p>
 <p>Let’s think carefully about what is happening here</p>
 <ul>
@@ -358,8 +360,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="practice">Practice:</span> Try creating variable called <code>five_squared</code> that is equal to <span class="math inline">\(5 \times 5\)</span> (multiplication in R is done using the <code>*</code> symbol).</p>
 </div>
 <p>There are a number of reasons why you might like to create an object in R. Perhaps the main one is so that you can reuse it. Let’s try multiplying <code>answer</code> by <span class="math inline">\(3\)</span>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-basics.html#cb13-1"></a>answer<span class="op">*</span><span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-basics.html#cb7-1"></a>answer<span class="op">*</span><span class="dv">3</span></span>
+<span id="cb7-2"><a href="r-basics.html#cb7-2"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p>If you wanted, you could also save this as its own variable too.</p>
 </div>
 <div id="workspace" class="section level3">

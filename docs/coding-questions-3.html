@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-ey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
@@ -343,29 +343,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Estimate the effect of</li>
 </ol></li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="coding-questions-3.html#cb11-1"></a><span class="kw">load</span>(<span class="st">&quot;data/rand_hie.RData&quot;</span>)</span>
-<span id="cb11-2"><a href="coding-questions-3.html#cb11-2"></a><span class="kw">nrow</span>(rand_hie)</span></code></pre></div>
-<pre><code>## [1] 5915</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="coding-questions-3.html#cb13-1"></a><span class="kw">lm</span>(meddol <span class="op">~</span><span class="st"> </span>plantype, <span class="dt">data=</span>rand_hie)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = meddol ~ plantype, data = rand_hie)
-## 
-## Coefficients:
-##          (Intercept)    plantypeDeductible  plantypeCost Sharing  
-##               283.53                 97.86                 94.11  
-##         plantypeFree  
-##               165.20</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="coding-questions-3.html#cb15-1"></a><span class="kw">lm</span>(ftf <span class="op">~</span><span class="st"> </span>plantype, <span class="dt">data=</span>rand_hie)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = ftf ~ plantype, data = rand_hie)
-## 
-## Coefficients:
-##          (Intercept)    plantypeDeductible  plantypeCost Sharing  
-##               2.7777                0.2213                0.5788  
-##         plantypeFree  
-##               1.7022</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="coding-questions-3.html#cb151-1"></a><span class="kw">load</span>(<span class="st">&quot;data/rand_hie.RData&quot;</span>)</span>
+<span id="cb151-2"><a href="coding-questions-3.html#cb151-2"></a><span class="kw">nrow</span>(rand_hie)</span>
+<span id="cb151-3"><a href="coding-questions-3.html#cb151-3"></a><span class="co">#&gt; [1] 5915</span></span>
+<span id="cb151-4"><a href="coding-questions-3.html#cb151-4"></a></span>
+<span id="cb151-5"><a href="coding-questions-3.html#cb151-5"></a><span class="kw">lm</span>(meddol <span class="op">~</span><span class="st"> </span>plantype, <span class="dt">data=</span>rand_hie)</span>
+<span id="cb151-6"><a href="coding-questions-3.html#cb151-6"></a><span class="co">#&gt; </span></span>
+<span id="cb151-7"><a href="coding-questions-3.html#cb151-7"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb151-8"><a href="coding-questions-3.html#cb151-8"></a><span class="co">#&gt; lm(formula = meddol ~ plantype, data = rand_hie)</span></span>
+<span id="cb151-9"><a href="coding-questions-3.html#cb151-9"></a><span class="co">#&gt; </span></span>
+<span id="cb151-10"><a href="coding-questions-3.html#cb151-10"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb151-11"><a href="coding-questions-3.html#cb151-11"></a><span class="co">#&gt;          (Intercept)    plantypeDeductible  plantypeCost Sharing          plantypeFree  </span></span>
+<span id="cb151-12"><a href="coding-questions-3.html#cb151-12"></a><span class="co">#&gt;               283.53                 97.86                 94.11                165.20</span></span>
+<span id="cb151-13"><a href="coding-questions-3.html#cb151-13"></a><span class="kw">lm</span>(ftf <span class="op">~</span><span class="st"> </span>plantype, <span class="dt">data=</span>rand_hie)</span>
+<span id="cb151-14"><a href="coding-questions-3.html#cb151-14"></a><span class="co">#&gt; </span></span>
+<span id="cb151-15"><a href="coding-questions-3.html#cb151-15"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb151-16"><a href="coding-questions-3.html#cb151-16"></a><span class="co">#&gt; lm(formula = ftf ~ plantype, data = rand_hie)</span></span>
+<span id="cb151-17"><a href="coding-questions-3.html#cb151-17"></a><span class="co">#&gt; </span></span>
+<span id="cb151-18"><a href="coding-questions-3.html#cb151-18"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb151-19"><a href="coding-questions-3.html#cb151-19"></a><span class="co">#&gt;          (Intercept)    plantypeDeductible  plantypeCost Sharing          plantypeFree  </span></span>
+<span id="cb151-20"><a href="coding-questions-3.html#cb151-20"></a><span class="co">#&gt;               2.7777                0.2213                0.5788                1.7022</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>For this problem, we will study the causal effect of having more children on women’s labor supply using the data <code>Fertility</code>.</p>
 <ol style="list-style-type: lower-alpha">
