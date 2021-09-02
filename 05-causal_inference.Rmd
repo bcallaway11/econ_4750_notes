@@ -817,7 +817,6 @@ Before we finish, let me mention a few caveats to these results:
     
     b) An important event in the South early in the Great Depression was the collapse of Caldwell and Company --- the largest banking chain in the South at the time.  This happened in November 1930.  The Atlanta Fed's lending markedly increased quickly after this event while St. Louis's did not.  Calculate a DID estimate of the effect of looser monetary policy on the number of banks that are still in business.  How do you interpret these results?  **Hint:** You can calculate this by taking the difference between the number of banks in District 6 relative to the number of banks in District 8 across all time periods relative to the difference between the number of banks in District 6 relative to District 8 in the first period (July 1, 1929).
 
-6. Lead pipes and infant mortality, have solution from hw 3 last year (might go better in interpreting regressions)
 
 ## Extra Questions
 

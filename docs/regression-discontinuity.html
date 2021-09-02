@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb152-4"><a href="regression-discontinuity.html#cb152-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;age&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb152-5"><a href="regression-discontinuity.html#cb152-5"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb152-6"><a href="regression-discontinuity.html#cb152-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 <p>This figure at least suggests that the number of car accident deaths does appear to jump at age 21.</p>
 <p>Now, let’s run the regression that we talked about earlier, involving a treatment dummy, age, and age interacted with the treatment.</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="regression-discontinuity.html#cb153-1"></a>rd_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(mva <span class="op">~</span><span class="st"> </span>D <span class="op">+</span><span class="st"> </span>agecell <span class="op">+</span><span class="st"> </span>agecell<span class="op">*</span>D, <span class="dt">data=</span>mlda)</span>
@@ -408,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb154-8"><a href="regression-discontinuity.html#cb154-8"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="dv">21</span>) <span class="op">+</span></span>
 <span id="cb154-9"><a href="regression-discontinuity.html#cb154-9"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;treated&quot;</span>, <span class="dt">x=</span><span class="st">&quot;age&quot;</span>, <span class="dt">y=</span><span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb154-10"><a href="regression-discontinuity.html#cb154-10"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <p>This shows the two lines that we effectively fit with the regression that included the binary variable for the treatment, the running variable, and their interaction. The “jump” between the red line and the blue line at <code>age=21</code> is our estimated effect of the treatment.</p>
 </div>
 </div>
