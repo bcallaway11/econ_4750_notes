@@ -1,0 +1,512 @@
+smokers <- filter(birthweight_smoking, smoker==1)
+nonsmokers <- filter(birthweight_smoking, smoker==0)
+this_x <- select(smokers, !smoker)[1,]
+this_x
+this_nonsmoker <- filter(nonsmokers, !smoker)[j,]
+j <- 1
+this_nonsmoker <- filter(nonsmokers, !smoker)[j,]
+this_smoker - this_nonsmoker
+this_smoker <- select(smokers, !smoker)[1,]
+source('~/.active-rstudio-document', echo=TRUE)
+this_smoker <- select(smokers, !smoker)[1,]
+this_nonsmoker <- filter(nonsmokers, !smoker)[j,]
+this_smoker - this_nonsmoker
+this_nonsmoker <- as.numeric(filter(nonsmokers, !smoker)[j,])
+this_smoker <- as.numeric(select(smokers, !smoker)[1,])
+this_nonsmoker <- as.numeric(filter(nonsmokers, !smoker)[j,])
+this_smoker - this_nonsmoker
+this_smoker
+cbind(this_smoker, this_nonsmoker)
+length(this_smoker)
+length(this_nonsmoker)
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1)
+nonsmokers <- filter(birthweight_smoking, smoker==0)
+this_smoker <- as.numeric(select(smokers, !smoker)[1,])
+this_nonsmoker <- as.numeric(select(nonsmokers, !smoker)[j,])
+this_smoker - this_nonsmoker
+this_diff <- this_smoker - this_nonsmoker
+?select
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(c(!smoker, !birthweight))
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(c(!smoker, !birthweight))
+this_smoker <- as.numeric(smokers[i,])
+i <-1
+this_smoker <- as.numeric(smokers[i,])
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+this_diff
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(c(!smoker, !birthweight))
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(c(!smoker, !birthweight))
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+this_nonsmoker
+smokers
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(c(!smoker, !birthweight))
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(!smoker)
+smokers
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(!smoker & !birthweight)
+smokers
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(!smoker and !birthweight)
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(!smoker and !birthweight))
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(!smoker & !birthweight))
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(!smoker & !birthweight)
+nonsmokers
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(!smoker & !birthweight)
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(!smoker & !birthweight)
+this_smoker <- as.numeric(smokers[i,])
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+this_diff
+# approach 2, matching
+smokers <- filter(birthweight_smoking, smoker==1) %>% select(!smoker & !birthweight & !tripre3)
+nonsmokers <- filter(birthweight_smoking, smoker==0) %>% select(!smoker & !birthweight & !tripre3)
+this_smoker <- as.numeric(smokers[i,])
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+sum(this_diff^2)
+dist <- sum(this_diff^2)
+match_quality <- matrix(nrow=nrow(smokers), ncol=ncol(nonsmokers))
+match_quality <- c()
+this_smoker <- as.numeric(smokers[i,])
+match_quality <- c()
+this_smoker <- as.numeric(smokers[i,])
+for (j in 1:nrow(nonsmokers)) {
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+dist <- sum(this_diff^2)
+match_quality[j] <- dist
+}
+match_quality
+which.min(match_quality)
+match_idx <- which.min(match_quality)
+match <- nonsmokers[match_idx,]
+match
+match_idx <- c()
+for (i in 1:nrow(smokers)) {
+match_quality <- c()
+this_smoker <- as.numeric(smokers[i,])
+for (j in 1:nrow(nonsmokers)) {
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+dist <- sum(this_diff^2)
+match_quality[j] <- dist
+}
+match_idx[i] <- which.min(match_quality)
+}
+match_idx <- c()
+for (i in 1:nrow(smokers)) {
+match_quality <- c()
+this_smoker <- as.numeric(smokers[i,])
+for (j in 1:nrow(nonsmokers)) {
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+dist <- sum(this_diff^2)
+match_quality[j] <- dist
+}
+match_idx[i] <- which.min(match_quality)
+cat(i)
+}
+match_idx <- c()
+for (i in 1:nrow(smokers)) {
+match_quality <- c()
+this_smoker <- as.numeric(smokers[i,])
+for (j in 1:nrow(nonsmokers)) {
+this_nonsmoker <- as.numeric(nonsmokers[j,])
+this_diff <- this_smoker - this_nonsmoker
+dist <- sum(this_diff^2)
+match_quality[j] <- dist
+}
+match_idx[i] <- which.min(match_quality)
+if (i %% 10 == 0) {
+cat(i, "\n")
+}
+}
+matched_data <- rbind.data.frame(smokers, nonsmokers[match_idx,])
+nrow(matched_data)
+match_idx
+matched_data %>%
+group_by(smoker) %>%
+summarize(n=n(),
+age=mean(age),
+educ=mean(educ),
+unmarried=mean(unmarried),
+alcohol=mean(alcohol),
+drinks=mean(drinks),
+tripre1=mean(tripre1),
+tripre2=mean(tripre2),
+tripre3=mean(tripre3),
+tripre0=mean(tripre0),
+nprevist=mean(nprevist)
+)
+smokers$smoker <-1
+nonsmokers$smoker <- 0
+matched_data <- rbind.data.frame(smokers, nonsmokers[match_idx,])
+matched_data %>%
+group_by(smoker) %>%
+summarize(n=n(),
+age=mean(age),
+educ=mean(educ),
+unmarried=mean(unmarried),
+alcohol=mean(alcohol),
+drinks=mean(drinks),
+tripre1=mean(tripre1),
+tripre2=mean(tripre2),
+tripre3=mean(tripre3),
+tripre0=mean(tripre0),
+nprevist=mean(nprevist)
+)
+matched_data %>%
+group_by(smoker) %>%
+summarize(n=n(),
+age=mean(age),
+educ=mean(educ),
+unmarried=mean(unmarried),
+alcohol=mean(alcohol),
+drinks=mean(drinks),
+tripre1=mean(tripre1),
+tripre2=mean(tripre2),
+tripre0=mean(tripre0),
+nprevist=mean(nprevist)
+)
+devtools::install_github("rstudio/packrat")
+remove.packages("packrat")
+devtools::install_github("rstudio/packrat")
+library(packrat)
+remove.packages("packrat")
+install.packages("packrat")
+load("us_data.RData")
+getwd()
+setwd("~/Dropbox/Courses/Georgia/Undergrad Econometrics/Detailed Course Notes")
+load("us_data.RData")
+ecdf(us_data$incwage)(50000)
+ecdf(us_data$incwage)(20000)
+ecdf(us_data$incwage)(100000)
+20*60
+19.8*60
+knitr::opts_chunk$set(echo = TRUE)
+vec <- seq(1,511,length.out=23)
+log(vec, base=2)
+vec <- seq(1,511,length.out=23)[13]
+log(vec, base=2)
+b <- seq(1,511,length.out=23)[13]
+b <- log(b, base=2)
+sqrt(b)
+proc.time()
+length(b)
+x1 <- seq(20000,100000,length.out=10)
+x1
+15000+0.7*x1 - 0.000005*x1 + 800*12
+d <- 15000+0.7*x1 - 0.000005*x1 + 800*12
+plot(x1, d)
+d <- 15000+0.7*x1 - 0.00003*x1 + 800*12
+plot(x1, d)
+d <- 15000+0.7*x1 - 0.00005*x1 + 800*12
+plot(x1, d)
+d
+d <- 15000+0.7*x1 - 0.0005*x1 + 800*12
+plot(x1, d)
+d
+d <- 15000+0.7*x1 - 0.000005*x1^2 + 800*12
+d
+d <- 15000+0.7*x1 - 0.0000005*x1^2 + 800*12
+d
+plot(x1, d)
+d <- 15000+0.7*x1 - 0.000002*x1^2 + 800*12
+plot(x1, d)
+d
+x1
+15000+0.7*(50000) - 0.000002*(50000)^2 + 800*12
+x2 <- c(20000,50000,100000)
+0.7 - 0.000004 * x2
+mtcars
+?mtcars
+reg2 <- lm(mpg ~ hp + wt + am, data=mtcars)
+summary(reg2)
+mtcars
+head(mtcars)
+?I
+reg3 <- lm(mpg ~ hp + I(hp^2), data=mtcars)
+reg3 <- lm(mpg ~ hp + I(hp^2), data=mtcars)
+summary(reg3)
+min(mtcars$hp)
+max(mtcars$hp)
+hp_vec <- c(100,200,300)
+# there might be a native function in r
+# to compute these partial effects; I just
+# don't know it.
+pe <- function(hp) {
+# partial effect is b1 + 2b2*hp
+coef(reg3)[2] + 2*coef(reg3)[3]*hp
+}
+pe(hp_vec)
+# there might be a native function in r
+# to compute these partial effects; I just
+# don't know it.
+pe <- function(hp) {
+# partial effect is b1 + 2b2*hp
+pes <- coef(reg3)[2] + 2*coef(reg3)[3]*hp
+# print using a data frame
+data.frame(hp=hp, pe=round(pes,3))
+}
+pe(hp_vec)
+lm(mpg ~ hp + wt + am + I(hp*wt), data=mtcars)
+reg4 <- lm(mpg ~ hp + wt + am + I(hp*wt), data=mtcars)
+summary(reg4)
+reg4 <- lm(mpg ~ hp + wt + am + I(hp*am), data=mtcars)
+summary(reg4)
+log(20000)
+log(50000)
+160000*log(50000)
+log(50000)*0.4
+log(50000)*0.4 + 9.5 + 0.008*12
+.008*12
+log(50000)*0.4 + 9.5 + 0.008*12
+log(log(50000)*0.4 + 9.5 + 0.008*12)
+exp(log(50000)*0.4 + 9.5 + 0.008*12)
+exp(log(50000)*0.4 + 8.5 + 0.008*12)
+exp(log(50000)*0.4 + 8.9 + 0.008*12)
+exp(log(50000)*0.4 + 8.8 + 0.008*12)
+0.000006*50000
+exp(0.000006*50000 + 8.8 + 0.008*12)
+exp(0.00006*50000 + 8.8 + 0.008*12)
+exp(0.000009*50000 + 8.8 + 0.008*12)
+exp(0.00002*50000 + 8.9 + 0.008*12)
+exp(0.00004*50000 + 8.9 + 0.008*12)
+exp(0.00004*50000 + 8.9 + 0.007*12)
+25000+16000*log(50000) + 900*12
+25000+1600*log(50000) + 900*12
+1600/100
+log(1000)
+25000+160000*log(50000) + 900*12
+-75000+160000*log(50000) + 900*12
+-175000+160000*log(50000) + 900*12
+-750000+160000*log(50000) + 900*12
+-7500000+160000*log(50000) + 900*12
+160000*log(50000)
+-7500000+160000*log(50000) + 900*12
+-2500000+160000*log(50000) + 900*12
+-500000+160000*log(50000) + 900*12
+-800000+160000*log(50000) + 900*12
+-1000000+160000*log(50000) + 900*12
+-1500000+160000*log(50000) + 900*12
+-2000000+160000*log(50000) + 900*12
+-1800000+160000*log(50000) + 900*12
+-1700000+160000*log(50000) + 900*12
+-1650000+160000*log(50000) + 900*12
+-1620000+160000*log(50000) + 900*12
+-1680000+160000*log(50000) + 900*12
+-1680000+160000*log(50000) + 900*12
+-1680000+160000*log(60000) + 900*12
+-1680000+160000*log(90000) + 900*12
+-1680000+120000*log(50000) + 900*12
+library(modelsumary)
+library(modelsummary)
+model_list <- list(reg5, reg6, reg7)
+reg5 <- lm(log(mpg) ~ log(hp) + wt, data=mtcars)
+reg6 <- lm(log(mpg) ~ hp + wt, data=mtcars)
+reg7 <- lm(mpg ~ log(hp) + wt, data=mtcars)
+model_list <- list(reg5, reg6, reg7)
+modelsummary(model_list)
+reg3 <- lm(mpg ~ hp + hp^2, data=mtcars)
+summary(reg3)
+reg3 <- lm(mpg ~ hp + hp^3, data=mtcars)
+summary(reg3)
+reg4 <- lm(mpg ~ hp + wt + am + hp*am, data=mtcars)
+summary(reg4)
+bet0 <- 2
+bet1 <- 1
+n <- 25
+X <- rexp(n)
+Y <- bet0 + bet1*X + rnorm(n)
+ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) +
+geom_point()
+library(ggplot2)
+ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) +
+geom_point()
+ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) +
+geom_point() +
+geom_abline(slope=1,intercept=2,color="blue") +
+geom_abline(slope=-2,intercept=4,color="green") +
+geom_abline(intercept=1, slope=0.2, color="red")
+ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) +
+geom_point() +
+geom_abline(slope=1,intercept=2,color="blue") +
+geom_abline(slope=-2,intercept=4,color="green") +
+geom_abline(intercept=1, slope=0.2, color="red") +
+ylim(c(-2,10)) +
+theme_bw()
+ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) +
+geom_point() +
+geom_abline(slope=1,intercept=2,color="blue") +
+geom_abline(slope=-2,intercept=4,color="green") +
+geom_abline(intercept=1, slope=0.2, color="red") +
+ylim(c(-2,7)) +
+theme_bw()
+ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) +
+geom_point() +
+geom_abline(slope=1,intercept=2,color="blue") +
+geom_abline(slope=-1.5,intercept=3,color="green") +
+geom_abline(intercept=6, slope=0.5, color="red") +
+ylim(c(-5,10)) +
+theme_bw()
+# using lm
+reg8 <- lm(mpg ~ hp, data=mtcars)
+summary(reg8)
+# using our formulas
+bet1 <- cov(mtcars$mpg, mtcars$hp) / var(mtcars$hp)
+bet0 <- mean(mtcars$mpg) - bet1*mean(mtcars$hp)
+n <- nrow(mtcars)
+pnorm(0)
+pnorm(-1.96)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars)
+library(estimatr)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type = "HC0")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type = "HC1")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type = "HC2")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type = "HC3")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type = "classical")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type="HC0")
+summary(reg9)
+# print results
+round(data.frame(se, t_stat, p_val, ci_L, ci_U),5)
+# this is the same regression as in the previous section
+summary(reg8)
+# show previous calcuations
+data.frame(bet0=bet0, bet1=bet1)
+# components of Vhat
+Y <- mtcars$mpg
+X <- mtcars$hp
+Uhat <- Y - bet0 - bet1*X
+Xbar <- mean(X)
+Vhat <- mean( (X-Xbar)^2 * Uhat^2 ) / ( var(X)^2 )
+n <- nrow(mtcars)
+se <- sqrt(Vhat)/sqrt(n)
+t_stat <- bet1/se
+p_val <- 2*pnorm(-abs(t_stat))
+ci_L <- bet1 - 1.96*se
+ci_U <- bet1 + 1.96*se
+# print results
+round(data.frame(se, t_stat, p_val, ci_L, ci_U),5)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type="HC2")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type="HC1")
+summary(reg9)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type="HC0")
+summary(reg9)
+?var
+varX <- mean( (X-Xbar)^2 )
+# this is the same regression as in the previous section
+summary(reg8)
+# show previous calcuations
+data.frame(bet0=bet0, bet1=bet1)
+# components of Vhat
+Y <- mtcars$mpg
+X <- mtcars$hp
+Uhat <- Y - bet0 - bet1*X
+Xbar <- mean(X)
+varX <- mean( (X-Xbar)^2 )
+Vhat <- mean( (X-Xbar)^2 * Uhat^2 ) / ( varX^2 )
+n <- nrow(mtcars)
+se <- sqrt(Vhat)/sqrt(n)
+t_stat <- bet1/se
+p_val <- 2*pnorm(-abs(t_stat))
+ci_L <- bet1 - 1.96*se
+ci_U <- bet1 + 1.96*se
+# print results
+round(data.frame(se, t_stat, p_val, ci_L, ci_U),5)
+library(estimatr)
+reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type="HC0")
+summary(reg9)
+setwd("~/Dropbox/Courses/Georgia/Undergrad Econometrics/Detailed Course Notes")
+load("data/mutual_funds.RData")
+med <- median(mutual_funds$fund_net_annual_expense_ratio)
+med
+mutual_funds$high_cost <- 1*(mutual_funds$fund_net_annual_expense_ratio > med)
+min(mutual_funds$fund_net_annual_expense_ratio)
+mean(1*(mutual_funds$fund_net_annual_expense_ratio))
+mean(1*(mutual_funds$fund_net_annual_expense_ratio==0))
+mutual_funds <- subset(mutual_funds, fund_net_annual_expense_ratio > 0)
+load("data/mutual_funds.RData")
+min(mutual_funds$fund_return_3years)
+mean(mutual_funds$fund_return_3years)
+lm(fund_return_3years ~ fund_net_annual_expense_ratio, data=mutual_funds)
+reg <- lm(fund_return_3years ~ fund_net_annual_expense_ratio, data=mutual_funds)
+summary(reg)
+library(modelsummary)
+med <- median(mutual_funds$fund_net_annual_expense_ratio)
+mutual_funds$high_cost <- 1*(mutual_funds$fund_net_annual_expense_ratio > med)
+datasummary_balance(~ high_cost, data=select(mutual_funds, fund_net_annual_expense_ratio, fund_return_3years, investment_type, risk_rating, size_type, asset_cash, asset_stocks, asset_bonds), fmt=2)
+library(dplyr)
+datasummary_balance(~ high_cost, data=select(mutual_funds, fund_net_annual_expense_ratio, fund_return_3years, investment_type, risk_rating, size_type, asset_cash, asset_stocks, asset_bonds), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, investment_type, risk_rating, size_type, asset_cash, asset_stocks, asset_bonds), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, investment_type), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, risk_rating, size_type, asset_cash, asset_stocks, asset_bonds), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, asset_cash, asset_stocks, asset_bonds), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, risk_rating, asset_cash, asset_stocks, asset_bonds), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, size_type, risk_rating, asset_cash, asset_stocks, asset_bonds), fmt=2)
+mutual_funds$size_type
+mutual_funds$size_type <- as.factor(mutual_funds$size_type)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, size_type, risk_rating, asset_cash, asset_stocks, asset_bonds), fmt=2)
+reg2 <- lm(fund_return_3years ~ fund_net_annual_expense_ration, data=mutual_funds)
+reg2 <- lm(fund_return_3years ~ fund_net_annual_expense_ratio, data=mutual_funds)
+reg2 <- lm(fund_return_3years ~ fund_net_annual_expense_ratio + as.factor(investment_type), data=mutual_funds)
+reg2 <- lm(fund_return_3years ~ fund_net_annual_expense_ratio + as.factor(investment_type) + as.factor(risk_rating) + as.factor(size_type), data=mutual_funds)
+summary(reg2)
+reg2 <- lm(fund_return_3years ~ fund_net_annual_expense_ratio + as.factor(investment_type) + as.factor(risk_rating) + as.factor(size_type) + asset_cash + asset_bonds + asset_stocks, data=mutual_funds)
+summary(reg2)
+?datasummary_balance
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, size_type, risk_rating, asset_cash, asset_stocks, asset_bonds), fmt=2)
+datasummary_balance(~ high_cost, data=select(mutual_funds, high_cost,fund_net_annual_expense_ratio, fund_return_3years, risk_rating, asset_cash, asset_stocks, asset_bonds), fmt=2)
+setwd("~/Dropbox/Courses/Georgia/Undergrad Econometrics/Detailed Course Notes")
+data(mroz, package="Ecdat")
+data(mroz, package="wooldridge")
+head(mroz)
+data(Fair, package="Ecdat")
+head(Fair)
+?Fair
+?data(Fair, package="Ecdat")
+Fair$had_affair <- 1*(Fair$nbaffairs > 0)
+mean(Fair$had_affair)
+logit_mod <- glm(had_affair ~ child, data=Fair, family=binomial(link="logit"))
+summary(logit_mod)
+library(mfx)
+logitmfx(had_affair ~ child, data=Fair, atmean=FALSE)
+logitmfx(had_affair ~ child + sex + age + education + as.factor(occupation), data=Fair, atmean=FALSE)
+logitmfx(had_affair ~ child + sex + age + education + as.factor(occupation) + ym + as.factor(religious), data=Fair, atmean=FALSE)
+data("labsup", package="wooldridge")
+head(labsup)
+ols_reg <- lm(hours ~ morekids + age + I(age^2) + black + educ, data=labsup)
+summary(ols_reg)
+library(ivreg)
+iv_reg <- ivreg(hours ~ morekids + age + I(age^2) + black + educ, ~ samesex + age + I(age^2) + black + educ, data=labsup)
+summary(iv_reg)
+data("Fertility", package="AER")
+head(Fertility)
+class(Fertility$morekids)
+Fertility$samesex <- 1*(Fertility$gender1 == Fertility$gender2)
+ols_reg <- lm(work ~ morekids + age + I(age^2) + afam + hispanic, data=lab)
+ols_reg <- lm(work ~ morekids + age + I(age^2) + afam + hispanic, data=Fertility)
+summary(ols_reg)
+iv_reg <- ivreg(work ~ morekids + age + I(age^2) + afam + hispanic,
+~ samesex + age + I(age^2) + afam + hispan,
+data=Fertility)
+iv_reg <- ivreg(work ~ morekids + age + I(age^2) + afam + hispanic,
+~ samesex + age + I(age^2) + afam + hispanic,
+data=Fertility)
+summary(iv_reg)
+summary(ols_reg)
+head(Fertility)
+summary(lm(work~morekids,data=Fertility))

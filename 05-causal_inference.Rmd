@@ -416,6 +416,60 @@ As above, it is often convenient to estimate $ATT$ using a regression.  In fact,
 \end{align*}
 where $\E[v_t | D] = 0$.
 
+### Computation
+
+The lab in this chapter uses panel data to think about causal effects, so I won't provide an extended discussion here but rather just mention the syntax for a few panel data estimators.  Let's suppose that you had a data frame that, for the first few rows, looked like (this is totally made up data)
+
+```{r echo=FALSE}
+set.seed(1234)
+data.frame(id=c(1,1,1,2,2,2),
+           year=c(2019,2020,2021,2019,2020,2021),
+           Y=(rnorm(6)*10 + 100),
+           X1=(rnorm(6)*8 + 500),
+           X2=sample(c(0,1),size=6,replace=TRUE)
+)
+```
+This is what panel data typically looks like --- here, we are following a single individual (who is distinguished by their `id` variable) over three years (from 2019-2021), there is an outcome `Y` and potential regressors `X1` and `X2`.  
+
+There are several packages in `R` for estimating the fixed effects models that we have been considering.  I mainly use `plm` (for "panel linear models"), so I'll show you that one and then mention one more.
+
+For `plm`, if you want to estimate a fixed effects model in first differences, you would use the `plm` command with the following sort of syntax
+
+```{r eval=FALSE}
+library(plm)
+plm(Y ~ X1 + X2 + as.factor(year), 
+    data=name_of_data,
+    effect="individual",
+    model="fd",
+    index="id")
+```
+
+We include here `as.factor(year)` to include time fixed effects, `effect="individual"` means to include an individual fixed effect, `model="fd"` says to estimate the model in first differences, and `index="id"` means that the individual identifier is in the column "id".
+
+The code for estimating the model using a within transformation is very similar:
+
+```{r eval=FALSE}
+plm(Y ~ X1 + X2 + as.factor(year), 
+    data=name_of_data,
+    effect="individual",
+    model="within",
+    index="id")
+```
+
+The only difference is that `model="fd"` has been replaced with `model="within"`.
+
+Let me also just mention that the `estimatr` package can estimate a fixed effects model using a within transformation.  The code for this case would look like
+
+```{r eval=FALSE}
+library(estimatr)
+
+lm_robust(Y ~ X1 + X2 + as.factor(year), 
+          data=name_of_data,
+          fixed_effects=~id)
+```
+
+I think the advantage of using this approach is that it seems straightforward to get the heteroskedasticity robust standard errors (or cluster-robust standard errors) that are popular in economics (as we have done before for heteroskedasticity robust standard errors for a regression with just cross sectional data).  But I am not sure how (or if it is possible) to use `estimatr` to estimate the fixed effects model in first differences.
+
 ## Instrumental Variables
 
 SW all of chapter 12
@@ -569,23 +623,167 @@ This shows the two lines that we effectively fit with the regression that includ
 
 ## Lab 5: Drunk Driving Laws
 
-* see lab 6 from last semester
+For this lab, we will use the `Fatality` data.  We will study the causal effect of mandatory jail sentence policies for drunk driving on traffic fatalities.  The `Fatality` data consists of panel data of traffic fatality death rates, whether or not a state has a mandatory jail sentence policy or not as well as several other variables from 1982-1988.  Economic theory suggests that raising the cost of some behavior (in this case, you can think of a mandatory jail sentence as raising the cost of drunk driving) will lead to less of that behavior.  That being said, it's both interesting to test this theory and also consider the magnitude of this effect.  That's what we'll do in this problem.
+
+
+
+1. This data comes in a somewhat messier format than some of the data that we have used previously.  To start with, create a new column in the data called `afatal_per_million` that is the number of alcohol involved vehicle fatalities per millions people in a state in a particular year.  The variable `afatal` contains the total number of alcohol involved vehicle fatalities, and the variable `pop` contains the total population in a state.
+
+2. Using a subset of the data from 1988, run a regression of `afatal_per_million` on whether or not a state has a mandatory jail sentence policy `jail`.  How do you interpret the results?
+
+3. Using the same subset from part 2, run a regression of `afatal_per_million` on `jail`, unemployment rate (`unemp`), the tax on a case of beer (`beertax`), the percentage of southern baptists in the state (`baptist`), the percentage of residents residing in dry counties (`dry`), the percentage of young drivers in the state, (`youngdrivers`), and the average miles driven per person in a state (`miles`).  How do you interpret the estimated coefficient on `jail`?  Would you consider this to be a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related fatalities?
+
+4. Now, using the full data, let's estimate a fixed effects model with alcohol related fatalities per million as the outcome and mandatory jail policies as a regressor.  Estimate the model using first differences and make sure to include time fixed effects.  How do you interpret the results?
+
+5. Estimate the same model as in part 4, but using the within estimator instead of first differences.  Compare these results to the ones from part 4.
+
+6. Using the same within estimator as in part 5, include the same set of covariates from part 3 and interpret the estimated effect of mandatory jail policies.  How do these estimates compare to the earlier ones?
+
+7. Now, we'll switch to using a difference in differences approach to estimating the effect of mandatory jail policies.  First, we'll manipulate the data some.
+
+    a) To keep things simple, let's start by limiting the data to the years 1982 and 1988 and drop the in-between periods.
+    
+    b) Second, let's calculate the change in alcohol related fatalities per million between 1982 and 1998 and keep the covariates that we have been using from 1982.  One way to do this, is to use the `pivot_wider` function from the `tidyr`.  In the case of panel data, "long format" data means that each row in the data corresponds to a paricular observation *and* a particular time period.  Thus, with long format data, there are $n \times T$ total rows in the data.  On the other hand, "wide format" data means that each row holds all the data (across all time periods) for a particular observation.  Converting back and forth between long and wide formats is a common data manipulation task.  **Hint:** This step is probably unfamiliar, so I'd recommend seeing if you can use `?tidyr::pivot_wider` to see if you can figure out how to complete this step, but, if not, you can copy this code from the solutions in the next section.
+    
+    c) Finally, drop all states that are already treated in 1982.
+    
+8. Using the data that you constructed in part 7, implement the difference in differences regression of the change in alcohol related fatalities per million from 1982 to 1988 on the mandatory jail policy.  How do you interpret these results and how do they compare to the previous ones?  Now, additionally include the set of covariates that we have been using in this model.  How do you interpret these results and how do they compare to the previous ones?
+
+9. An alternative to DID, is to include the lagged outcome as a covariate.  Using the data constructed in part 7, run a regression of alcohol related fatalities per million in 1988 on the mandatory jail policy and alcohol related fatalities per million in 1982.  How do you interpret these results and how do they compare to the previous ones?  Now include the additional covariates that we have been using in this model.  How do you interpret these results and how do they compare to the previous ones?
+
+10. Comment on your results from parts 1-9.  Which, if any, of these are you most inclined to interpret as a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related policies?  
 
 ## Lab 5: Solutions
+
+1. 
+
+```{r}
+library(tidyr)
+library(plm)
+
+data(Fatalities, package="AER")
+
+Fatalities$afatal_per_million <- 1000000 * (Fatalities$afatal / Fatalities$pop )
+```
+
+
+2.
+
+```{r}
+Fatalities88 <- subset(Fatalities, year==1988)
+
+reg88 <- lm(afatal_per_million ~ jail, data=Fatalities88)
+summary(reg88)
+```
+The estimated coefficient on mandatory jail laws is 9.155.  We should interpret this as just the difference between alcohol related fatalities per million in states that had mandatory jail laws in 1988 relative to states that did not have them.  We cannot reject that there is no difference between states where the policy is in place relative to those that do not have the policy.
+
+3.
+
+```{r}
+reg88_covs <- lm(afatal_per_million ~ jail + unemp + beertax + baptist + dry + youngdrivers + miles, data=Fatalities88)
+summary(reg88_covs)
+```
+The estimated coefficient on jail is 3.12.  It is somewhat smaller than the previous estimate, though neither is statistically significant.  We should interpret this as the partial effect of the mandatory jail policy, that is, that we estimate that mandatory jail laws increase the number of alcohol related fatalities per million by 3.12 on average controlling for the unemployment rate, beer tax, the fraction of southern baptists in the state, the fraction of residents in dry counties, the fraction of young drivers, and the average miles driven in the state.  We cannot reject that the partial effect of mandatory jail policies is equal to 0.
+
+4.
+
+```{r}
+fd_reg <- plm(afatal_per_million ~ jail + as.factor(year),
+              effect="individual",
+              index="state", model="fd",
+              data=Fatalities)
+summary(fd_reg)
+```
+We should interpret the estimated coefficient on `jail` as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after accounting for time invariant variables whose effects do not change over time.  Again, we cannot reject that the effect is equal to 0.
+
+5.
+
+```{r}
+within_reg <- plm(afatal_per_million ~ jail + as.factor(year),
+              effect="individual",
+              index="state", model="within",
+              data=Fatalities)
+summary(within_reg)
+```
+The estimated coefficient on `jail` has the same interpretation as in the previous problem.  The estimated effect here is marginally statistically significant.
+6.
+
+```{r}
+within_reg_covs <- plm(afatal_per_million ~ jail + unemp + beertax + baptist + dry + youngdrivers + miles,
+                       effect="individual",
+                       index="state", model="within",
+                       data=Fatalities)
+summary(within_reg_covs)
+```
+
+We should interpret the estimated coefficient on `jail` as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after controlling for the unemployment rate, beer taxes, the fraction of the state that is southern baptist, the fraction of the state that lives in a dry county, the fraction of young drivers in a state, and the average number of miles driven per person in the stata, and accounting for time invariant variables whose effects do not change over time.
+
+7.
+
+```{r}
+# part a: convert data to two period panel data
+two_period <- subset(Fatalities, year==1982 | year==1988)
+# and drop some missing
+two_period <- subset(two_period, !is.na(jail))
+two_period <- BMisc::makeBalancedPanel(two_period, "state", "year")
+two_period$jail <- 1*(two_period$jail=="yes")
+
+# part b: convert into wide format
+wide_df <- pivot_wider(two_period, 
+                       id_cols="state", 
+                       names_from="year",
+                       values_from=c("jail", "afatal_per_million"))
+
+# add back other covariates from 1982
+wide_df <- merge(wide_df, subset(Fatalities, year==1982)[,c("unemp", "beertax", "baptist", "dry", "youngdrivers", "miles","state")], by="state")
+
+# change in fatal accidents over time
+wide_df$Dafatal_per_million <- wide_df$afatal_per_million_1988 - wide_df$afatal_per_million_1982
+
+# part c: drop already treated states
+wide_df <- subset(wide_df, jail_1982==0)
+```
+
+8.
+
+```{r}
+did <- lm(Dafatal_per_million ~ jail_1988, data=wide_df)
+summary(did)
+did_covs <- lm(Dafatal_per_million ~ jail_1988 + unemp + beertax + baptist + dry + youngdrivers + miles, data=wide_df)
+summary(did_covs)
+```
+If we are willing to believe that, in the absence of the policy, that trends in alcohol related fatalities per million people would have followed the same trends over time for treated and untreated states, then we can interpret these as causal effects.  These estimates are broadly similar to the previous ones though the second ones (that include additional covariates) are about the only ones where we ever get a negative estimate for the effect of mandatory jail policies.  Like the previous estimates, neither of these estimates are statistically different from 0.
+
+9.
+
+```{r}
+lag_reg <- lm(afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982, data=wide_df)
+summary(lag_reg)
+lag_reg_covs <- lm(afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982 + unemp + beertax + baptist + dry + youngdrivers + miles, data=wide_df)
+summary(lag_reg_covs)
+```
+These estimates directly control for alcohol related fatalities per million in the pre-treatment period 1982.  These sorts of specifications are less common in economics, but, in my view, it seems like a reasonable approach here.  That said, the results are more or less the same as earlier estimates.
+
+10.  We don't have very strong evidence that mandatory jail policies reduced the number traffic fatalities.  In my view, probably the best specifications for trying to understand the causal effects are the ones in part 7 (particularly, the ones that include covariates there), but I think that the the results in parts 4-9 are also informative.  Broadly, these estimates are more or less similar --- none of them are statistically significant and most are positive (which is an unexpected sign).  
+
+Before we finish, let me mention a few caveats to these results:
+
+- First, I would be very hesitant to interpret these results as definitively saying that mandatory jail policies have no effect on alcohol related traffic fatalities.  The main reason to be clear about this is that our standard error are quite large.  For example, in the second specification in part 7 (the one I like the most), a 95% confidence interval for our estimate is $[-23.1, 19.4]$.  This is a wide confidence interval --- the average number of alcohol related traffic fatalities per million across all states and time periods is only 66.  So our estimates are basically still compatible with very large reductions in alcohol related traffic fatalities up to large increases in alcohol related traffic fatalities.
+
+- Let me make one more comment about the sign of our results.  Many of our point estimates are positive; as we discussed earlier, it is hard to rationalize harsher punishments *increasing* alcohol related traffic fatalities.  I think the main explanation for these results is just that our estimates are pretty noisy and, therefore, more or less "by chance" we are getting estimates that have an unexpected sign.  But there are some other possible explanations that are worth mentioning.  For one, there are a number of other policies related to drunk driving that occurred in the 1980s (particularly, related to legal drinking age) but perhaps others.  It is not clear how these would interact with our estimates, but they could certainly play some role.  Besides that, it seems to me that we have a pretty good set of covariates that enter our models, but there could be important covariates that we are missing.  For this reason, some expertise in how to model state-level traffic fatalities is actually a very important skill here (actually probably the key skill here!)
 
 ## Coding Questions
 
 1. For this problem, we will use the data `rand_hie`.  This is data from the RAND health insurance experiment in the 1980s.  In the experiment, participants were randomly assigned to get Catastrophic (the least amount of coverage), insurance that came with a Deductible, insurance that came with Cost Sharing (i.e., co-insurance so that an individual pays part of their medical insurance), and Free (so that there is no cost of medical care).
 
-    a) Estimate the effect of 
+    a) Estimate the average difference between total medical expenditure (`total_med_expenditure`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    
+    b) Estimate the average difference between face to face doctors visits (`face_to_face_visits`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    
+    c) Estimate the average difference between the overall health index (`health_index`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    
+    d) How do you interpret the results from parts a-c?
 
-```{r}
-load("data/rand_hie.RData")
-nrow(rand_hie)
-
-lm(meddol ~ plantype, data=rand_hie)
-lm(ftf ~ plantype, data=rand_hie)
-```
 
 2. For this problem, we will study the causal effect of having more children on women's labor supply using the data `Fertility`.  
 

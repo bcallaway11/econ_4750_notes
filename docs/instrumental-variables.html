@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,6 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
 <li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
@@ -374,21 +375,21 @@ That is, if we have a valid instrument, the above formula gives us a path to rec
 <div id="example-return-to-education" class="section level3">
 <h3><span class="header-section-number">6.6.1</span> Example: Return to Education</h3>
 <p>In this example, we’ll estimate the return to education using whether or not an individual lives close to a college as an instrument for attending college. The idea is that (at least after controlling for some other covariates), the distance that a person lives from a college should not directly affect their earnings but it could affect whether or not they attend college due to it being more or less convenient. I think that the papers that use this sort of an idea primarily have in mind that distance-to-college may affect whether or not a student attends a community college rather than a university.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="instrumental-variables.html#cb146-1"></a><span class="kw">library</span>(ivreg)</span>
-<span id="cb146-2"><a href="instrumental-variables.html#cb146-2"></a><span class="kw">library</span>(modelsummary)</span>
-<span id="cb146-3"><a href="instrumental-variables.html#cb146-3"></a></span>
-<span id="cb146-4"><a href="instrumental-variables.html#cb146-4"></a><span class="kw">data</span>(<span class="st">&quot;SchoolingReturns&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ivreg&quot;</span>)</span>
-<span id="cb146-5"><a href="instrumental-variables.html#cb146-5"></a></span>
-<span id="cb146-6"><a href="instrumental-variables.html#cb146-6"></a>lm_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
-<span id="cb146-7"><a href="instrumental-variables.html#cb146-7"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
-<span id="cb146-8"><a href="instrumental-variables.html#cb146-8"></a></span>
-<span id="cb146-9"><a href="instrumental-variables.html#cb146-9"></a>iv_reg &lt;-<span class="st"> </span><span class="kw">ivreg</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south, </span>
-<span id="cb146-10"><a href="instrumental-variables.html#cb146-10"></a>  <span class="op">~</span><span class="st"> </span>nearcollege <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
-<span id="cb146-11"><a href="instrumental-variables.html#cb146-11"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
-<span id="cb146-12"><a href="instrumental-variables.html#cb146-12"></a></span>
-<span id="cb146-13"><a href="instrumental-variables.html#cb146-13"></a>reg_list &lt;-<span class="st"> </span><span class="kw">list</span>(lm_reg, iv_reg)</span>
-<span id="cb146-14"><a href="instrumental-variables.html#cb146-14"></a></span>
-<span id="cb146-15"><a href="instrumental-variables.html#cb146-15"></a><span class="kw">modelsummary</span>(reg_list)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="instrumental-variables.html#cb150-1"></a><span class="kw">library</span>(ivreg)</span>
+<span id="cb150-2"><a href="instrumental-variables.html#cb150-2"></a><span class="kw">library</span>(modelsummary)</span>
+<span id="cb150-3"><a href="instrumental-variables.html#cb150-3"></a></span>
+<span id="cb150-4"><a href="instrumental-variables.html#cb150-4"></a><span class="kw">data</span>(<span class="st">&quot;SchoolingReturns&quot;</span>, <span class="dt">package=</span><span class="st">&quot;ivreg&quot;</span>)</span>
+<span id="cb150-5"><a href="instrumental-variables.html#cb150-5"></a></span>
+<span id="cb150-6"><a href="instrumental-variables.html#cb150-6"></a>lm_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
+<span id="cb150-7"><a href="instrumental-variables.html#cb150-7"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
+<span id="cb150-8"><a href="instrumental-variables.html#cb150-8"></a></span>
+<span id="cb150-9"><a href="instrumental-variables.html#cb150-9"></a>iv_reg &lt;-<span class="st"> </span><span class="kw">ivreg</span>(<span class="kw">log</span>(wage) <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(experience, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south, </span>
+<span id="cb150-10"><a href="instrumental-variables.html#cb150-10"></a>  <span class="op">~</span><span class="st"> </span>nearcollege <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(age, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>ethnicity <span class="op">+</span><span class="st"> </span>smsa <span class="op">+</span><span class="st"> </span>south,</span>
+<span id="cb150-11"><a href="instrumental-variables.html#cb150-11"></a>  <span class="dt">data =</span> SchoolingReturns)</span>
+<span id="cb150-12"><a href="instrumental-variables.html#cb150-12"></a></span>
+<span id="cb150-13"><a href="instrumental-variables.html#cb150-13"></a>reg_list &lt;-<span class="st"> </span><span class="kw">list</span>(lm_reg, iv_reg)</span>
+<span id="cb150-14"><a href="instrumental-variables.html#cb150-14"></a></span>
+<span id="cb150-15"><a href="instrumental-variables.html#cb150-15"></a><span class="kw">modelsummary</span>(reg_list)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,6 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
 <li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
@@ -340,30 +341,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li><p>For this problem, we will use the data <code>rand_hie</code>. This is data from the RAND health insurance experiment in the 1980s. In the experiment, participants were randomly assigned to get Catastrophic (the least amount of coverage), insurance that came with a Deductible, insurance that came with Cost Sharing (i.e., co-insurance so that an individual pays part of their medical insurance), and Free (so that there is no cost of medical care).</p>
 <ol style="list-style-type: lower-alpha">
-<li>Estimate the effect of</li>
+<li><p>Estimate the average difference between total medical expenditure (<code>total_med_expenditure</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
+<li><p>Estimate the average difference between face to face doctors visits (<code>face_to_face_visits</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
+<li><p>Estimate the average difference between the overall health index (<code>health_index</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
+<li><p>How do you interpret the results from parts a-c?</p></li>
 </ol></li>
-</ol>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="coding-questions-3.html#cb151-1"></a><span class="kw">load</span>(<span class="st">&quot;data/rand_hie.RData&quot;</span>)</span>
-<span id="cb151-2"><a href="coding-questions-3.html#cb151-2"></a><span class="kw">nrow</span>(rand_hie)</span>
-<span id="cb151-3"><a href="coding-questions-3.html#cb151-3"></a><span class="co">#&gt; [1] 5915</span></span>
-<span id="cb151-4"><a href="coding-questions-3.html#cb151-4"></a></span>
-<span id="cb151-5"><a href="coding-questions-3.html#cb151-5"></a><span class="kw">lm</span>(meddol <span class="op">~</span><span class="st"> </span>plantype, <span class="dt">data=</span>rand_hie)</span>
-<span id="cb151-6"><a href="coding-questions-3.html#cb151-6"></a><span class="co">#&gt; </span></span>
-<span id="cb151-7"><a href="coding-questions-3.html#cb151-7"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb151-8"><a href="coding-questions-3.html#cb151-8"></a><span class="co">#&gt; lm(formula = meddol ~ plantype, data = rand_hie)</span></span>
-<span id="cb151-9"><a href="coding-questions-3.html#cb151-9"></a><span class="co">#&gt; </span></span>
-<span id="cb151-10"><a href="coding-questions-3.html#cb151-10"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb151-11"><a href="coding-questions-3.html#cb151-11"></a><span class="co">#&gt;          (Intercept)    plantypeDeductible  plantypeCost Sharing          plantypeFree  </span></span>
-<span id="cb151-12"><a href="coding-questions-3.html#cb151-12"></a><span class="co">#&gt;               283.53                 97.86                 94.11                165.20</span></span>
-<span id="cb151-13"><a href="coding-questions-3.html#cb151-13"></a><span class="kw">lm</span>(ftf <span class="op">~</span><span class="st"> </span>plantype, <span class="dt">data=</span>rand_hie)</span>
-<span id="cb151-14"><a href="coding-questions-3.html#cb151-14"></a><span class="co">#&gt; </span></span>
-<span id="cb151-15"><a href="coding-questions-3.html#cb151-15"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb151-16"><a href="coding-questions-3.html#cb151-16"></a><span class="co">#&gt; lm(formula = ftf ~ plantype, data = rand_hie)</span></span>
-<span id="cb151-17"><a href="coding-questions-3.html#cb151-17"></a><span class="co">#&gt; </span></span>
-<span id="cb151-18"><a href="coding-questions-3.html#cb151-18"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb151-19"><a href="coding-questions-3.html#cb151-19"></a><span class="co">#&gt;          (Intercept)    plantypeDeductible  plantypeCost Sharing          plantypeFree  </span></span>
-<span id="cb151-20"><a href="coding-questions-3.html#cb151-20"></a><span class="co">#&gt;               2.7777                0.2213                0.5788                1.7022</span></span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
 <li><p>For this problem, we will study the causal effect of having more children on women’s labor supply using the data <code>Fertility</code>.</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>Let’s start by running a regression of the number of hours that a woman typically works per week (<code>work</code>) on whether or not she has more than two children (<code>morekids</code>), her age and <span class="math inline">\(age^2\)</span>, and race/ethnicity (<code>afam</code> and <code>hispanic</code>). Report your results. How do you feel about interpreting the estimated coefficient on <code>morekids</code> as the causal effect of having more than two children? Explain.</p></li>

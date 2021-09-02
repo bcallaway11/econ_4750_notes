@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,6 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
 <li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
@@ -446,6 +447,41 @@ In other words, under parallel trends, the <span class="math inline">\(ATT\)</sp
   Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
 \end{align*}\]</span>
 where <span class="math inline">\(\mathbb{E}[v_t | D] = 0\)</span>.</p>
+</div>
+<div id="computation-11" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> Computation</h3>
+<p>The lab in this chapter uses panel data to think about causal effects, so I won’t provide an extended discussion here but rather just mention the syntax for a few panel data estimators. Let’s suppose that you had a data frame that, for the first few rows, looked like (this is totally made up data)</p>
+<pre><code>#&gt;   id year         Y       X1 X2
+#&gt; 1  1 2019  87.92934 495.4021  1
+#&gt; 2  1 2020 102.77429 495.6269  1
+#&gt; 3  1 2021 110.84441 495.4844  0
+#&gt; 4  2 2019  76.54302 492.8797  1
+#&gt; 5  2 2020 104.29125 496.1825  1
+#&gt; 6  2 2021 105.06056 492.0129  1</code></pre>
+<p>This is what panel data typically looks like — here, we are following a single individual (who is distinguished by their <code>id</code> variable) over three years (from 2019-2021), there is an outcome <code>Y</code> and potential regressors <code>X1</code> and <code>X2</code>.</p>
+<p>There are several packages in <code>R</code> for estimating the fixed effects models that we have been considering. I mainly use <code>plm</code> (for “panel linear models”), so I’ll show you that one and then mention one more.</p>
+<p>For <code>plm</code>, if you want to estimate a fixed effects model in first differences, you would use the <code>plm</code> command with the following sort of syntax</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="panel-data-approaches.html#cb147-1"></a><span class="kw">library</span>(plm)</span>
+<span id="cb147-2"><a href="panel-data-approaches.html#cb147-2"></a><span class="kw">plm</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2 <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(year), </span>
+<span id="cb147-3"><a href="panel-data-approaches.html#cb147-3"></a>    <span class="dt">data=</span>name_of_data,</span>
+<span id="cb147-4"><a href="panel-data-approaches.html#cb147-4"></a>    <span class="dt">effect=</span><span class="st">&quot;individual&quot;</span>,</span>
+<span id="cb147-5"><a href="panel-data-approaches.html#cb147-5"></a>    <span class="dt">model=</span><span class="st">&quot;fd&quot;</span>,</span>
+<span id="cb147-6"><a href="panel-data-approaches.html#cb147-6"></a>    <span class="dt">index=</span><span class="st">&quot;id&quot;</span>)</span></code></pre></div>
+<p>We include here <code>as.factor(year)</code> to include time fixed effects, <code>effect="individual"</code> means to include an individual fixed effect, <code>model="fd"</code> says to estimate the model in first differences, and <code>index="id"</code> means that the individual identifier is in the column “id”.</p>
+<p>The code for estimating the model using a within transformation is very similar:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="panel-data-approaches.html#cb148-1"></a><span class="kw">plm</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2 <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(year), </span>
+<span id="cb148-2"><a href="panel-data-approaches.html#cb148-2"></a>    <span class="dt">data=</span>name_of_data,</span>
+<span id="cb148-3"><a href="panel-data-approaches.html#cb148-3"></a>    <span class="dt">effect=</span><span class="st">&quot;individual&quot;</span>,</span>
+<span id="cb148-4"><a href="panel-data-approaches.html#cb148-4"></a>    <span class="dt">model=</span><span class="st">&quot;within&quot;</span>,</span>
+<span id="cb148-5"><a href="panel-data-approaches.html#cb148-5"></a>    <span class="dt">index=</span><span class="st">&quot;id&quot;</span>)</span></code></pre></div>
+<p>The only difference is that <code>model="fd"</code> has been replaced with <code>model="within"</code>.</p>
+<p>Let me also just mention that the <code>estimatr</code> package can estimate a fixed effects model using a within transformation. The code for this case would look like</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="panel-data-approaches.html#cb149-1"></a><span class="kw">library</span>(estimatr)</span>
+<span id="cb149-2"><a href="panel-data-approaches.html#cb149-2"></a></span>
+<span id="cb149-3"><a href="panel-data-approaches.html#cb149-3"></a><span class="kw">lm_robust</span>(Y <span class="op">~</span><span class="st"> </span>X1 <span class="op">+</span><span class="st"> </span>X2 <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(year), </span>
+<span id="cb149-4"><a href="panel-data-approaches.html#cb149-4"></a>          <span class="dt">data=</span>name_of_data,</span>
+<span id="cb149-5"><a href="panel-data-approaches.html#cb149-5"></a>          <span class="dt">fixed_effects=</span><span class="op">~</span>id)</span></code></pre></div>
+<p>I think the advantage of using this approach is that it seems straightforward to get the heteroskedasticity robust standard errors (or cluster-robust standard errors) that are popular in economics (as we have done before for heteroskedasticity robust standard errors for a regression with just cross sectional data). But I am not sure how (or if it is possible) to use <code>estimatr</code> to estimate the fixed effects model in first differences.</p>
 </div>
 </div>
             </section>

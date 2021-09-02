@@ -1193,6 +1193,17 @@ The estimated coefficient on $smoker$ says that smoking during pregnancy decreas
     
     e) Now, add the variables `assets_cash`, `assets_stocks`, and `assets_bonds` to the model from part d.  How do you interpret these results?  Compare and interpret the differences between parts c, d, and e.
 
+4. For this question, we'll use the data `Lead_Mortality` to study the effect of lead pipes on infant mortality in 1900.    
+
+    a) Run a regression of infant mortality (`infrate`) on whether or not a city had lead pipes (`lead`) and interpret/discuss the results.
+    
+    b) It turns out that the amount of lead in drinking water depends on how acidic the water is, with more acidic water leaching more of the lead (so that there is more exposure to lead with more acidic water).  To measure acidity, we'll use the pH of the water in a particular city (`ph`); recall that, a lower value of pH indicates higher acidity.  Run a regression of infant mortality on whether or not a city has lead pipes, the pH of its water, and the interaction between having lead pipes and pH.  Report your results.  What is the estimated partial effect of having lead pipes from this model?
+    
+    c) Given the results in part b, calculate an estimate of the average partial effect of having lead pipes on infant mortality.
+    
+    d) Given the results in part b, how much does the partial effect of having lead pipes differ for cities that have a pH of 6.5 relative to a pH of 7.5?
+    
+
 ## Extra Questions
 
 1. Suppose you run the following regression

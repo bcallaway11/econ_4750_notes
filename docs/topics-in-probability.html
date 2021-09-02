@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,6 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
 <li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
@@ -385,8 +386,8 @@ That is, the probability that <span class="math inline">\(X\)</span> takes on so
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-5" class="example"><strong>Example 3.2  </strong></span>Let’s do a bit more realistic example where we look at the pmf of education in the U.S. Suppose that <span class="math inline">\(X\)</span> denotes the years of education that a person has. Then, <span class="math inline">\(f_X(x)\)</span> is the probability that a person has exactly <span class="math inline">\(x\)</span> years of education. We can set <span class="math inline">\(x\)</span> to different values and calculate the probabilities of a person having different amounts of education. That’s what we do in the following figure:</p>
-<div class="figure"><span id="fig:unnamed-chunk-146"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-146-1.png" alt="pmf of U.S. education" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-141"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-141-1.png" alt="pmf of U.S. education" width="672" />
 <p class="caption">
 Figure 3.1: pmf of U.S. education
 </p>
@@ -409,8 +410,8 @@ In words, this cdf is the probability that the random <span class="math inline">
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-7" class="example"><strong>Example 3.4  </strong></span>Let’s go back to our example of years of education in the U.S. In this case, <span class="math inline">\(F_X(x)\)</span> is the fraction of the population that has less than <span class="math inline">\(x\)</span> years of education. We can calculate this for different values of <span class="math inline">\(x\)</span>. That’s what we do in the following figure:</p>
-<div class="figure"><span id="fig:unnamed-chunk-147"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-147-1.png" alt="cdf of U.S. educ" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-142"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-142-1.png" alt="cdf of U.S. educ" width="672" />
 <p class="caption">
 Figure 3.2: cdf of U.S. educ
 </p>
@@ -506,8 +507,8 @@ Many timess, once we have data, there will be n “observations” and we can ad
 \]</span></p>
 <div class="example">
 <p><span id="exm:unlabeled-div-11" class="example"><strong>Example 3.8  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The cdf of <span class="math inline">\(X\)</span> looks like</p>
-<div class="figure"><span id="fig:unnamed-chunk-148"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-148-1.png" alt="cdf of U.S. wage income" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-143"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-143-1.png" alt="cdf of U.S. wage income" width="672" />
 <p class="caption">
 Figure 3.3: cdf of U.S. wage income
 </p>
@@ -534,8 +535,8 @@ Integration is roughly the continuous version of a summation — thus, this expr
 </ol>
 <div class="example">
 <p><span id="exm:unlabeled-div-12" class="example"><strong>Example 3.9  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The pdf of <span class="math inline">\(X\)</span> looks like</p>
-<div class="figure"><span id="fig:unnamed-chunk-149"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-149-1.png" alt="pdf of U.S. wage income" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-144"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-144-1.png" alt="pdf of U.S. wage income" width="672" />
 <p class="caption">
 Figure 3.4: pdf of U.S. wage income
 </p>
@@ -770,7 +771,7 @@ The correlation has the property that it is always between <span class="math inl
 where <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> and <span class="math inline">\(\sigma^2 = \mathrm{var}(X)\)</span>.</p>
 <p>Importantly, if we know that <span class="math inline">\(X\)</span> follows a normal distribution, its entire distribution is fully characterized by its mean and variance. In other words, if <span class="math inline">\(X\)</span> is normally distributed, and we also know its mean and variance, then we know everything about its distribution. [Notice that this is not generally true — if we did not know the distribution of <span class="math inline">\(X\)</span> but knew its mean and variance, we would know two important features of the distribution of <span class="math inline">\(X\)</span>, but we would not know everything about its distribution.]</p>
 <p>You are probably familiar with the pdf of a normal distribution — it is “bell-shaped”.</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p>From the figure, you can see that a normal distribution is unimodal (there is just one “peak”) and symmetric (the pdf is the same if you move the same distance above <span class="math inline">\(\mu\)</span> as when you move the same distance below <span class="math inline">\(\mu\)</span>). This means that, for a random variable that follows a normal distribution, its median and mode are also equal to <span class="math inline">\(\mu\)</span>.</p>
 <p>From the plot of the pdf, we can also tell that, if you make a draw from <span class="math inline">\(X \sim N(0,\mu)\)</span>, the most likely values are near the mean. As you move further away from <span class="math inline">\(\mu\)</span>, it becomes less likely (though not impossible) for a draw of <span class="math inline">\(X\)</span> to take that value.</p>
 <p>Recall that we can calculate the probability that <span class="math inline">\(X\)</span> takes on a value in a range by calculating the area under the curve of the pdf. For each shaded region in the figure, there is a 2.5% chance that <span class="math inline">\(X\)</span> falls into that region (so the probability of <span class="math inline">\(X\)</span> falling into either region is 5%). Another way to think about this is that there is a 95% probability that a draw of <span class="math inline">\(X\)</span> will be in the region <span class="math inline">\([\mu-1.96\sigma, \mu+1.96\sigma]\)</span>. Later, we we talk about hypothesis testing, this will be an important property.</p>
@@ -839,7 +840,7 @@ If you think back to your statistics class, you may have done things like calcul
 <span id="cb80-9"><a href="topics-in-probability.html#cb80-9"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></span>
 <span id="cb80-10"><a href="topics-in-probability.html#cb80-10"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb80-11"><a href="topics-in-probability.html#cb80-11"></a><span class="st">    </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 <p>Let me explain what’s going on here piece-by-piece. Let’s start with this code</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="topics-in-probability.html#cb81-1"></a><span class="co"># arrange data</span></span>
 <span id="cb81-2"><a href="topics-in-probability.html#cb81-2"></a>plot_data &lt;-<span class="st"> </span>us_data <span class="op">%&gt;%</span></span>

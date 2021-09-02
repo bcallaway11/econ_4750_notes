@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-01" />
+<meta name="date" content="2021-09-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,6 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
 <li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
@@ -358,6 +359,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Run a regression of <code>fund_return_3years</code> on <code>fund_net_annual_expense_ratio</code>. How do you interpret the results?</p></li>
 <li><p>Now, additionally control for <code>investment_type</code>, <code>risk_rating</code>, and <code>size_type</code> <strong>Hint:</strong> think carefully about what type of variables each of these are and how they should enter the model. How do these results compare to the ones from part c?</p></li>
 <li><p>Now, add the variables <code>assets_cash</code>, <code>assets_stocks</code>, and <code>assets_bonds</code> to the model from part d. How do you interpret these results? Compare and interpret the differences between parts c, d, and e.</p></li>
+</ol></li>
+<li><p>For this question, we’ll use the data <code>Lead_Mortality</code> to study the effect of lead pipes on infant mortality in 1900.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Run a regression of infant mortality (<code>infrate</code>) on whether or not a city had lead pipes (<code>lead</code>) and interpret/discuss the results.</p></li>
+<li><p>It turns out that the amount of lead in drinking water depends on how acidic the water is, with more acidic water leaching more of the lead (so that there is more exposure to lead with more acidic water). To measure acidity, we’ll use the pH of the water in a particular city (<code>ph</code>); recall that, a lower value of pH indicates higher acidity. Run a regression of infant mortality on whether or not a city has lead pipes, the pH of its water, and the interaction between having lead pipes and pH. Report your results. What is the estimated partial effect of having lead pipes from this model?</p></li>
+<li><p>Given the results in part b, calculate an estimate of the average partial effect of having lead pipes on infant mortality.</p></li>
+<li><p>Given the results in part b, how much does the partial effect of having lead pipes differ for cities that have a pH of 6.5 relative to a pH of 7.5?</p></li>
 </ol></li>
 </ol>
 </div>

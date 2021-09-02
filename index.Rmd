@@ -178,13 +178,13 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     
     - Description: `?Ecdat::Fair`
 
-- `Fatality`
+- `Fatalities`
 
     - State-level panel data about drunk driving laws and traffic fatalities
     
-    - Access: `data(Fatality, package="Ecdat")
+    - Access: `data(Fatality, package="AER")
     
-    - Description: `?Ecdat::Fatality`
+    - Description: `?AER::Fatality`
 
 - `fertilizer_2000`
 
@@ -210,14 +210,6 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     
     - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
 
-- `Housing`
-
-    - Sales prices of houses in Windsor, Canada in 1987
-    
-    - Access: `data(Housing, package="Ecdat")`
-    
-    - Description:  `?Ecdat::Housing`
-
 - `intergenerational_mobility`
 
     - Intergenerational mobility data from PSID
@@ -226,6 +218,14 @@ Students ask me all the time "How should I study for your class?"  My advice (an
     
     - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
     
+- `Lead_Mortality`
+
+    - Infant mortality and lead pipes in 1900
+    
+    - Access: Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2021/)
+    
+    - Description: [Mark Watson's website](http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf)
+
 - `mlda`
 
     - Car accident deaths by age group
