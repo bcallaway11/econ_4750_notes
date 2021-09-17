@@ -1,1 +1,7 @@
-An alternative version of the Angrist and Evans data is available here:https://vincentarelbundock.github.io/Rdatasets/doc/AER/Fertility2.html  This has more total observations (includes white women, I think), but fewer columns
+* Var(bX^2) is miscalculated
+
+* N(0,mu) should be N(mu,sigma^2)
+
+* histograms should include more points on x-axis
+
+* An alternative version of the Angrist and Evans data is available here:https://vincentarelbundock.github.io/Rdatasets/doc/AER/Fertility2.html  This has more total observations (includes white women, I think), but fewer columns

@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-02" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -342,11 +342,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li></li>
 </ol>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lab-5-solutions.html#cb155-1"></a><span class="kw">library</span>(tidyr)</span>
-<span id="cb155-2"><a href="lab-5-solutions.html#cb155-2"></a><span class="kw">library</span>(plm)</span>
-<span id="cb155-3"><a href="lab-5-solutions.html#cb155-3"></a></span>
-<span id="cb155-4"><a href="lab-5-solutions.html#cb155-4"></a><span class="kw">data</span>(Fatalities, <span class="dt">package=</span><span class="st">&quot;AER&quot;</span>)</span>
-<span id="cb155-5"><a href="lab-5-solutions.html#cb155-5"></a></span>
-<span id="cb155-6"><a href="lab-5-solutions.html#cb155-6"></a>Fatalities<span class="op">$</span>afatal_per_million &lt;-<span class="st"> </span><span class="dv">1000000</span> <span class="op">*</span><span class="st"> </span>(Fatalities<span class="op">$</span>afatal <span class="op">/</span><span class="st"> </span>Fatalities<span class="op">$</span>pop )</span></code></pre></div>
+<span id="cb155-2"><a href="lab-5-solutions.html#cb155-2"></a><span class="co">#&gt; </span></span>
+<span id="cb155-3"><a href="lab-5-solutions.html#cb155-3"></a><span class="co">#&gt; Attaching package: &#39;tidyr&#39;</span></span>
+<span id="cb155-4"><a href="lab-5-solutions.html#cb155-4"></a><span class="co">#&gt; The following objects are masked from &#39;package:Matrix&#39;:</span></span>
+<span id="cb155-5"><a href="lab-5-solutions.html#cb155-5"></a><span class="co">#&gt; </span></span>
+<span id="cb155-6"><a href="lab-5-solutions.html#cb155-6"></a><span class="co">#&gt;     expand, pack, unpack</span></span>
+<span id="cb155-7"><a href="lab-5-solutions.html#cb155-7"></a><span class="kw">library</span>(plm)</span>
+<span id="cb155-8"><a href="lab-5-solutions.html#cb155-8"></a><span class="co">#&gt; </span></span>
+<span id="cb155-9"><a href="lab-5-solutions.html#cb155-9"></a><span class="co">#&gt; Attaching package: &#39;plm&#39;</span></span>
+<span id="cb155-10"><a href="lab-5-solutions.html#cb155-10"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb155-11"><a href="lab-5-solutions.html#cb155-11"></a><span class="co">#&gt; </span></span>
+<span id="cb155-12"><a href="lab-5-solutions.html#cb155-12"></a><span class="co">#&gt;     between, lag, lead</span></span>
+<span id="cb155-13"><a href="lab-5-solutions.html#cb155-13"></a></span>
+<span id="cb155-14"><a href="lab-5-solutions.html#cb155-14"></a><span class="kw">data</span>(Fatalities, <span class="dt">package=</span><span class="st">&quot;AER&quot;</span>)</span>
+<span id="cb155-15"><a href="lab-5-solutions.html#cb155-15"></a></span>
+<span id="cb155-16"><a href="lab-5-solutions.html#cb155-16"></a>Fatalities<span class="op">$</span>afatal_per_million &lt;-<span class="st"> </span><span class="dv">1000000</span> <span class="op">*</span><span class="st"> </span>(Fatalities<span class="op">$</span>afatal <span class="op">/</span><span class="st"> </span>Fatalities<span class="op">$</span>pop )</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>

@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-02" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -624,7 +624,7 @@ You might also see the notation <span class="math inline">\(\sigma\)</span> or <
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\mathrm{var}(a) = 0\)</span> [In words: the variance of a constant is equal to 0.]</p></li>
 <li><p><span class="math inline">\(\mathrm{var}(bX) = b^2 \mathrm{var}(X)\)</span> [In words: A constant can come out of the variance, but it needs to be squared first.]</p></li>
-<li><p><span class="math inline">\(\mathrm{var}(a + bX) = \mathrm{var}(bX) = b^2 \mathrm{var}(bX)\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{var}(a + bX) = \mathrm{var}(bX) = b^2 \mathrm{var}(X)\)</span></p></li>
 </ol>
 <div class="example">
 <p><span id="exm:unlabeled-div-14" class="example"><strong>Example 3.11  </strong></span>Later on in the semester, it will sometimes be convenient for us to “standardize” some random variables. We’ll talk more about the reason to do this later, but for now, I’ll just give the typical formula for standardizing a random variable and we’ll see if we can figure out what the mean and variance of the standardized random variable are.</p>
@@ -634,13 +634,14 @@ You might also see the notation <span class="math inline">\(\sigma\)</span> or <
 Just to be clear here, we are standardizing the random variable <span class="math inline">\(X\)</span> and calling its standardized version <span class="math inline">\(Y\)</span>. Let’s calculate its mean</p>
 <p><span class="math display">\[
   \begin{aligned}
-    \mathbb{E}[Y] &amp;= \mathbb{E}\left[ \frac{X}{\sqrt{\mathrm{var}(X)}} - \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right] \\
-    &amp;= \mathbb{E}\left[ \frac{X}{\sqrt{\mathrm{var}(X)}} \right] - \mathbb{E}\left[ \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right] \\
-    &amp;= \frac{\mathbb{E}[X]}{\mathrm{var}(X)} - \frac{\mathbb{E}[X]}{\mathrm{var}(X)} \\
+    \mathbb{E}[Y] &amp;= \mathbb{E}\left[ \frac{X - \mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right] \\
+    &amp;= \frac{1}{\sqrt{\mathrm{var}(X)}} \mathbb{E}\big[ X - \mathbb{E}[X] \big] \\
+    &amp;= \frac{1}{\sqrt{\mathrm{var}(X)}} \left( \mathbb{E}[X] - \mathbb{E}\big[\mathbb{E}[X]\big] \right) \\
+    &amp;= \frac{1}{\sqrt{\mathrm{var}(X)}} \left( \mathbb{E}[X] - \mathbb{E}[X] \right) \\
     &amp;= 0
   \end{aligned}
 \]</span>
-where the first equality just comes from the definition of <span class="math inline">\(Y\)</span> and the second equality holds because expectations can pass through differences. For the first term in the third equality, it holds because <span class="math inline">\(\mathrm{var}(X)\)</span> is a constant and can therefore come out of the expectation, and then all that is left is <span class="math inline">\(\mathbb{E}[X]\)</span>. For the second term, <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathrm{var}(X)\)</span> are both just constants, so this is the expectation of a constant which is just equal to the constant itself. Then, the first term and second term cancel each other so that the mean of <span class="math inline">\(Y\)</span> is 0. Now let’s calculate the variance.</p>
+where the first equality just comes from the definition of <span class="math inline">\(Y\)</span>, the second equality holds because <span class="math inline">\(1/\sqrt{\mathrm{var}(X)}\)</span> is a constant and can therefore come out of the expectation, the third equality holds because the expectation can pass through the difference, the fourth equality holds because <span class="math inline">\(\mathbb{E}[X]\)</span> is a constant and therefore <span class="math inline">\(\mathbb{E}\big[\mathbb{E}[X]\big] = \mathbb{E}[X]\)</span>, and the last equality holds because the term in parentheses is equal to 0. Thus, the mean of <span class="math inline">\(Y\)</span> is equal to 0. Now let’s calculate the variance.</p>
 <p><span class="math display">\[
   \begin{aligned}
   \mathrm{var}(Y) &amp;= \mathrm{var}\left( \frac{X}{\sqrt{\mathrm{var}(X)}} - \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right) \\
@@ -773,7 +774,7 @@ where <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> and <span class="
 <p>You are probably familiar with the pdf of a normal distribution — it is “bell-shaped”.</p>
 <p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <p>From the figure, you can see that a normal distribution is unimodal (there is just one “peak”) and symmetric (the pdf is the same if you move the same distance above <span class="math inline">\(\mu\)</span> as when you move the same distance below <span class="math inline">\(\mu\)</span>). This means that, for a random variable that follows a normal distribution, its median and mode are also equal to <span class="math inline">\(\mu\)</span>.</p>
-<p>From the plot of the pdf, we can also tell that, if you make a draw from <span class="math inline">\(X \sim N(0,\mu)\)</span>, the most likely values are near the mean. As you move further away from <span class="math inline">\(\mu\)</span>, it becomes less likely (though not impossible) for a draw of <span class="math inline">\(X\)</span> to take that value.</p>
+<p>From the plot of the pdf, we can also tell that, if you make a draw from <span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span>, the most likely values are near the mean. As you move further away from <span class="math inline">\(\mu\)</span>, it becomes less likely (though not impossible) for a draw of <span class="math inline">\(X\)</span> to take that value.</p>
 <p>Recall that we can calculate the probability that <span class="math inline">\(X\)</span> takes on a value in a range by calculating the area under the curve of the pdf. For each shaded region in the figure, there is a 2.5% chance that <span class="math inline">\(X\)</span> falls into that region (so the probability of <span class="math inline">\(X\)</span> falling into either region is 5%). Another way to think about this is that there is a 95% probability that a draw of <span class="math inline">\(X\)</span> will be in the region <span class="math inline">\([\mu-1.96\sigma, \mu+1.96\sigma]\)</span>. Later, we we talk about hypothesis testing, this will be an important property.</p>
 <p>Earlier, we talked about standardizing random variables. If you know that a random variable follows a normal distribution, it is very common to standardize it. In particular notice that, if you create the standardized random variable</p>
 <p><span class="math display">\[

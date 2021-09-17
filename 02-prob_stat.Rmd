@@ -449,7 +449,7 @@ You'll also notice the similarity between the properties of summations and expec
 
 2. $\Var(bX) = b^2 \Var(X)$ [In words: A constant can come out of the variance, but it needs to be squared first.]
 
-3. $\Var(a + bX) = \Var(bX) = b^2 \Var(bX)$
+3. $\Var(a + bX) = \Var(bX) = b^2 \Var(X)$
 
 ::: {.example}
 
@@ -462,13 +462,14 @@ Just to be clear here, we are standardizing the random variable $X$ and calling 
 
 $$
   \begin{aligned}
-    \E[Y] &= \E\left[ \frac{X}{\sqrt{\Var(X)}} - \frac{\E[X]}{\sqrt{\Var(X)}} \right] \\
-    &= \E\left[ \frac{X}{\sqrt{\Var(X)}} \right] - \E\left[ \frac{\E[X]}{\sqrt{\Var(X)}} \right] \\
-    &= \frac{\E[X]}{\Var(X)} - \frac{\E[X]}{\Var(X)} \\
+    \E[Y] &= \E\left[ \frac{X - \E[X]}{\sqrt{\Var(X)}} \right] \\
+    &= \frac{1}{\sqrt{\Var(X)}} \E\big[ X - \E[X] \big] \\
+    &= \frac{1}{\sqrt{\Var(X)}} \left( \E[X] - \E\big[\E[X]\big] \right) \\
+    &= \frac{1}{\sqrt{\Var(X)}} \left( \E[X] - \E[X] \right) \\
     &= 0
   \end{aligned}
 $$
-where the first equality just comes from the definition of $Y$ and the second equality holds because expectations can pass through differences.  For the first term in the third equality, it holds because $\Var(X)$ is a constant and can therefore come out of the expectation, and then all that is left is $\E[X]$.  For the second term, $\E[X]$ and $\Var(X)$ are both just constants, so this is the expectation of a constant which is just equal to the constant itself.  Then, the first term and second term cancel each other so that the mean of $Y$ is 0.  Now let's calculate the variance.
+where the first equality just comes from the definition of $Y$, the second equality holds because $1/\sqrt{\Var(X)}$ is a constant and can therefore come out of the expectation, the third equality holds because the expectation can pass through the difference, the fourth equality holds because $\E[X]$ is a constant and therefore $\E\big[\E[X]\big] = \E[X]$, and the last equality holds because the term in parentheses is equal to 0.  Thus, the mean of $Y$ is equal to 0.  Now let's calculate the variance.
 
 $$
   \begin{aligned}
@@ -674,7 +675,7 @@ ggplot(plot_df, aes(x=x)) +
 
 From the figure, you can see that a normal distribution is unimodal (there is just one "peak") and symmetric (the pdf is the same if you move the same distance above $\mu$ as when you move the same distance below $\mu$).  This means that, for a random variable that follows a normal distribution, its median and mode are also equal to $\mu$.  
 
-From the plot of the pdf, we can also tell that, if you make a draw from $X \sim N(0,\mu)$, the most likely values are near the mean.  As you move further away from $\mu$, it becomes less likely (though not impossible) for a draw of $X$ to take that value.
+From the plot of the pdf, we can also tell that, if you make a draw from $X \sim N(\mu,\sigma^2)$, the most likely values are near the mean.  As you move further away from $\mu$, it becomes less likely (though not impossible) for a draw of $X$ to take that value.
 
 Recall that we can calculate the probability that $X$ takes on a value in a range by calculating the area under the curve of the pdf.  For each shaded region in the figure, there is a 2.5\% chance that $X$ falls into that region (so the probability of $X$ falling into either region is 5\%).  Another way to think about this is that there is a 95\% probability that a draw of $X$ will be in the region $[\mu-1.96\sigma, \mu+1.96\sigma]$.  Later, we we talk about hypothesis testing, this will be an important property.
 
@@ -1646,11 +1647,30 @@ mc_sim(1000, 0.95, 0.95)
 
 2. Use the definition of variance to show that $\Var(bX) = b^2 \Var(X)$ (where $b$ is a constant and $X$ is some random variable).
 
-2. Suppose you are interested in average height of students at UGA.  Let $Y$ denote a student's height; also let $X$ denote a binary variable that is equal to 1 if a student is female.  Suppose that you know that $\E[Y|X=1] = 5\' \ 4\"$ and that $\E[Y|X=0] = 5\' \ 9\"$
+3. Suppose you are interested in average height of students at UGA.  Let $Y$ denote a student's height; also let $X$ denote a binary variable that is equal to 1 if a student is female.  Suppose that you know that $\E[Y|X=1] = 5\' \ 4\"$ and that $\E[Y|X=0] = 5\' \ 9\"$ (and that $\P(X=1) = 0.5$).
 
     a) What is $\E[Y]$?
     
     b) Explain how the answer to part (a) is related to the Law of Iterated Expectations.
+
+4. Consider a random variable $X$ with support $\mathcal{X} = \{2,7,13,21\}$.  Suppose that it has the following pmf:
+
+    $$
+       \begin{aligned}
+        f_X(2) &= 0.5 \\
+        f_X(7) &= 0.25 \\
+        f_X(13) &= 0.15 \\
+        f_X(21) &= ??
+      \end{aligned}
+    $$
+    
+    a) What is $f_X(21)$?  How do you know?
+    
+    b) What is the expected value of $X$? [Show your calculation.]
+    
+    c) What is the variance of $X$? [Show your calculation.]
+    
+    d) Calculate $F_X(x)$ for $x=1$, $x=7$, $x=8$, and $x=25$.
 
 1. What is the difference between consistency and unbiasedness?
 

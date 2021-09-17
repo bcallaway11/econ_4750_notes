@@ -623,7 +623,7 @@ This shows the two lines that we effectively fit with the regression that includ
 
 ## Lab 5: Drunk Driving Laws
 
-For this lab, we will use the `Fatality` data.  We will study the causal effect of mandatory jail sentence policies for drunk driving on traffic fatalities.  The `Fatality` data consists of panel data of traffic fatality death rates, whether or not a state has a mandatory jail sentence policy or not as well as several other variables from 1982-1988.  Economic theory suggests that raising the cost of some behavior (in this case, you can think of a mandatory jail sentence as raising the cost of drunk driving) will lead to less of that behavior.  That being said, it's both interesting to test this theory and also consider the magnitude of this effect.  That's what we'll do in this problem.
+For this lab, we will use the `Fatalities` data.  We will study the causal effect of mandatory jail sentence policies for drunk driving on traffic fatalities.  The `Fatalities` data consists of panel data of traffic fatality death rates, whether or not a state has a mandatory jail sentence policy or not as well as several other variables from 1982-1988.  Economic theory suggests that raising the cost of some behavior (in this case, you can think of a mandatory jail sentence as raising the cost of drunk driving) will lead to less of that behavior.  That being said, it's both interesting to test this theory and also consider the magnitude of this effect.  That's what we'll do in this problem.
 
 
 

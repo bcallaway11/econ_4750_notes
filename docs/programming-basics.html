@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-02" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -437,9 +437,8 @@ It would be tedious to calculate this by hand (especially if we wanted to calcul
 <span id="cb55-2"><a href="programming-basics.html#cb55-2"></a>employees</span>
 <span id="cb55-3"><a href="programming-basics.html#cb55-3"></a><span class="co">#&gt; [1] 531   6  15 211  25</span></span>
 <span id="cb55-4"><a href="programming-basics.html#cb55-4"></a><span class="kw">large_or_small</span>(employees)</span>
-<span id="cb55-5"><a href="programming-basics.html#cb55-5"></a><span class="co">#&gt; Warning in if (employees &gt; 100) {: the condition has length &gt; 1 and only the first element</span></span>
-<span id="cb55-6"><a href="programming-basics.html#cb55-6"></a><span class="co">#&gt; will be used</span></span>
-<span id="cb55-7"><a href="programming-basics.html#cb55-7"></a><span class="co">#&gt; [1] &quot;large&quot;</span></span></code></pre></div>
+<span id="cb55-5"><a href="programming-basics.html#cb55-5"></a><span class="co">#&gt; Warning in if (employees &gt; 100) {: the condition has length &gt; 1 and only the first element will be used</span></span>
+<span id="cb55-6"><a href="programming-basics.html#cb55-6"></a><span class="co">#&gt; [1] &quot;large&quot;</span></span></code></pre></div>
 <p>This is not what we wanted to have happen. It just reported whether or not the first firm was large or small, and then issued a warning that basically said that something may be going wrong here. What’s going on here is that the function <code>large_or_small</code> is not vectorized.</p>
 <p>In order to vectorize a function, we can use one of a number of “apply” functions in R. I’ll list them here</p>
 <ul>
