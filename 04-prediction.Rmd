@@ -159,9 +159,9 @@ Given the above discussion, we would like to have a way to choose a model that d
 A main way to do this is to add a **penalty** to adding more regressors to the model.  One version of this is called **adjusted $R^2$**, which we will write as $\bar{R}^2$.  It is defined as
 
 $$
-  \bar{R}^2 := 1 - \underbrace{\frac{(n-1)}{(n-k-1)}}_{\textrm{penalty}} \frac{SSR}{SST}
+  \bar{R}^2 := 1 - \underbrace{\frac{(n-1)}{(n-k)}}_{\textrm{penalty}} \frac{SSR}{TSS}
 $$
-where $k$ is the number of regressors included in the model.  Notice, if the penalty term were equal to 1, then this would just be $R^2$.  
+where $k$ is the number of regressors included in the model (note: we also count the intercept as a regressor here; so for example, in the regression $\E[Y|X_1,X_2] = \beta_0 + \beta_1 X_1 + \beta_2 X_2$, $k=3$).  Notice, if the penalty term were equal to 1, then this would just be $R^2$.  
 
 Now, let's think about what happens to $\bar{R}^2$ when you add a new regressor to the model.
 

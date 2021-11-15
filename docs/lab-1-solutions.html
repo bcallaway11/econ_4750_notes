@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.10 Lab 1: Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.10 Lab 1: Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-09-17" />
+<meta name="date" content="2021-11-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,9 @@
   
 <link rel="prev" href="lab-1-introduction-to-r-programming.html"/>
 <link rel="next" href="coding-exercises.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,25 +51,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +88,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +121,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,7 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Course Outline/Notes for ECON 4750</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
 <li class="chapter" data-level="1.2" data-path="what-is-this-not.html"><a href="what-is-this-not.html"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
 <li class="chapter" data-level="1.3" data-path="why-did-i-write-this.html"><a href="why-did-i-write-this.html"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
@@ -146,22 +149,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
 <li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a><ul>
-<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a><ul>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="setting-up-r.html"><a href="setting-up-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
 <li class="chapter" data-level="2.1.2" data-path="setting-up-r.html"><a href="setting-up-r.html#downloading-r"><i class="fa fa-check"></i><b>2.1.2</b> Downloading R</a></li>
 <li class="chapter" data-level="2.1.3" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio"><i class="fa fa-check"></i><b>2.1.3</b> RStudio</a></li>
 <li class="chapter" data-level="2.1.4" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.1.4</b> RStudio Development Environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a><ul>
+<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#a-list-of-useful-r-packages"><i class="fa fa-check"></i><b>2.2.1</b> A list of useful R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a><ul>
+<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
-<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>2.5.1</b> Numeric Vectors</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-types.html"><a href="data-types.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.5.2</b> Vector arithmetic</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-types.html"><a href="data-types.html#more-helpful-functions-in-r"><i class="fa fa-check"></i><b>2.5.3</b> More helpful functions in R</a></li>
@@ -172,16 +180,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.5.8</b> Factors</a></li>
 <li class="chapter" data-level="2.5.9" data-path="data-types.html"><a href="data-types.html#understanding-an-object-in-r"><i class="fa fa-check"></i><b>2.5.9</b> Understanding an object in R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a><ul>
+<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a>
+<ul>
 <li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a><ul>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
 <li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
 <li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
 <li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a><ul>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
 <li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
 <li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
@@ -191,8 +202,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a><ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a><ul>
+<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
 <li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
 <li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
@@ -211,7 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
 <li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a><ul>
+<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
 <li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
@@ -228,31 +242,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
 <li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a><ul>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
 <li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
 <li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
-<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a><ul>
+<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a><ul>
+<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a><ul>
+<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a><ul>
+<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<ul>
 <li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a><ul>
+<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<ul>
 <li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a><ul>
+<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<ul>
 <li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
 <li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a><ul>
+<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<ul>
 <li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
@@ -261,12 +283,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
 <li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a><ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a><ul>
+<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
 <li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a><ul>
+<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
 <li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
@@ -274,12 +299,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
 <li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a><ul>
+<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
 <li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
 <li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a><ul>
+<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
 <li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
 <li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
@@ -291,23 +318,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
 <li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
 <li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
-<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a><ul>
+<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>6.3.1</b> Estimating ATT with a Regression</a></li>
 <li class="chapter" data-level="6.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>6.3.2</b> Internal and External Validity</a></li>
 <li class="chapter" data-level="6.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>6.3.3</b> Example: Project STAR</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a><ul>
+<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
 <li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a><ul>
+<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a>
+<ul>
 <li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a><ul>
+<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a>
+<ul>
 <li class="chapter" data-level="6.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>6.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
 </ul></li>
 <li class="chapter" data-level="6.8" data-path="lab-5-drunk-driving-laws.html"><a href="lab-5-drunk-driving-laws.html"><i class="fa fa-check"></i><b>6.8</b> Lab 5: Drunk Driving Laws</a></li>
@@ -336,134 +368,134 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-1-solutions" class="section level2">
+<div id="lab-1-solutions" class="section level2" number="2.10">
 <h2><span class="header-section-number">2.10</span> Lab 1: Solutions</h2>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lab-1-solutions.html#cb63-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dt">by=</span><span class="dv">2</span>)</span>
-<span id="cb63-2"><a href="lab-1-solutions.html#cb63-2"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
-<span id="cb63-3"><a href="lab-1-solutions.html#cb63-3"></a></span>
-<span id="cb63-4"><a href="lab-1-solutions.html#cb63-4"></a>x<span class="op">+</span>y</span>
-<span id="cb63-5"><a href="lab-1-solutions.html#cb63-5"></a><span class="co">#&gt; [1]  5  9 13 19 23</span></span>
-<span id="cb63-6"><a href="lab-1-solutions.html#cb63-6"></a>x<span class="op">-</span>y</span>
-<span id="cb63-7"><a href="lab-1-solutions.html#cb63-7"></a><span class="co">#&gt; [1] -1 -1 -1 -3 -3</span></span>
-<span id="cb63-8"><a href="lab-1-solutions.html#cb63-8"></a>x<span class="op">*</span>y</span>
-<span id="cb63-9"><a href="lab-1-solutions.html#cb63-9"></a><span class="co">#&gt; [1]   6  20  42  88 130</span></span>
-<span id="cb63-10"><a href="lab-1-solutions.html#cb63-10"></a>x<span class="op">/</span>y</span>
-<span id="cb63-11"><a href="lab-1-solutions.html#cb63-11"></a><span class="co">#&gt; [1] 0.6666667 0.8000000 0.8571429 0.7272727 0.7692308</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lab-1-solutions.html#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
+<span id="cb63-2"><a href="lab-1-solutions.html#cb63-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb63-3"><a href="lab-1-solutions.html#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="lab-1-solutions.html#cb63-4" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>y</span>
+<span id="cb63-5"><a href="lab-1-solutions.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  5  9 13 19 23</span></span>
+<span id="cb63-6"><a href="lab-1-solutions.html#cb63-6" aria-hidden="true" tabindex="-1"></a>x<span class="sc">-</span>y</span>
+<span id="cb63-7"><a href="lab-1-solutions.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -1 -1 -1 -3 -3</span></span>
+<span id="cb63-8"><a href="lab-1-solutions.html#cb63-8" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span>
+<span id="cb63-9"><a href="lab-1-solutions.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]   6  20  42  88 130</span></span>
+<span id="cb63-10"><a href="lab-1-solutions.html#cb63-10" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>y</span>
+<span id="cb63-11"><a href="lab-1-solutions.html#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.6666667 0.8000000 0.8571429 0.7272727 0.7692308</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lab-1-solutions.html#cb64-1"></a>geometric_mean &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb64-2"><a href="lab-1-solutions.html#cb64-2"></a>  J &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
-<span id="cb64-3"><a href="lab-1-solutions.html#cb64-3"></a>  res &lt;-<span class="st"> </span><span class="kw">prod</span>(x)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span>J)</span>
-<span id="cb64-4"><a href="lab-1-solutions.html#cb64-4"></a>  res</span>
-<span id="cb64-5"><a href="lab-1-solutions.html#cb64-5"></a>}</span>
-<span id="cb64-6"><a href="lab-1-solutions.html#cb64-6"></a></span>
-<span id="cb64-7"><a href="lab-1-solutions.html#cb64-7"></a><span class="kw">geometric_mean</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">13</span>))</span>
-<span id="cb64-8"><a href="lab-1-solutions.html#cb64-8"></a><span class="co">#&gt; [1] 10.13159</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lab-1-solutions.html#cb64-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb64-2"><a href="lab-1-solutions.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  J <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb64-3"><a href="lab-1-solutions.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">prod</span>(x)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>J)</span>
+<span id="cb64-4"><a href="lab-1-solutions.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  res</span>
+<span id="cb64-5"><a href="lab-1-solutions.html#cb64-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb64-6"><a href="lab-1-solutions.html#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="lab-1-solutions.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geometric_mean</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">13</span>))</span>
+<span id="cb64-8"><a href="lab-1-solutions.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 10.13159</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lab-1-solutions.html#cb65-1"></a>the_date &lt;-<span class="st"> </span>lubridate<span class="op">::</span><span class="kw">mdy</span>(<span class="st">&quot;01-01-1981&quot;</span>)</span>
-<span id="cb65-2"><a href="lab-1-solutions.html#cb65-2"></a>today &lt;-<span class="st"> </span>lubridate<span class="op">::</span><span class="kw">mdy</span>(<span class="st">&quot;08-23-2021&quot;</span>)</span>
-<span id="cb65-3"><a href="lab-1-solutions.html#cb65-3"></a>today <span class="op">-</span><span class="st"> </span>the_date</span>
-<span id="cb65-4"><a href="lab-1-solutions.html#cb65-4"></a><span class="co">#&gt; Time difference of 14844 days</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lab-1-solutions.html#cb65-1" aria-hidden="true" tabindex="-1"></a>the_date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">&quot;01-01-1981&quot;</span>)</span>
+<span id="cb65-2"><a href="lab-1-solutions.html#cb65-2" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">&quot;08-23-2021&quot;</span>)</span>
+<span id="cb65-3"><a href="lab-1-solutions.html#cb65-3" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> the_date</span>
+<span id="cb65-4"><a href="lab-1-solutions.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time difference of 14844 days</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li><ol style="list-style-type: lower-alpha">
-<li><div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lab-1-solutions.html#cb66-1"></a><span class="kw">nrow</span>(mtcars)</span>
-<span id="cb66-2"><a href="lab-1-solutions.html#cb66-2"></a><span class="co">#&gt; [1] 32</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lab-1-solutions.html#cb67-1"></a><span class="kw">ncol</span>(mtcars)</span>
-<span id="cb67-2"><a href="lab-1-solutions.html#cb67-2"></a><span class="co">#&gt; [1] 11</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lab-1-solutions.html#cb68-1"></a><span class="kw">colnames</span>(mtcars)</span>
-<span id="cb68-2"><a href="lab-1-solutions.html#cb68-2"></a><span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot; &quot;carb&quot;</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lab-1-solutions.html#cb69-1"></a><span class="kw">subset</span>(mtcars, mpg <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>)</span>
-<span id="cb69-2"><a href="lab-1-solutions.html#cb69-2"></a><span class="co">#&gt;                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb69-3"><a href="lab-1-solutions.html#cb69-3"></a><span class="co">#&gt; Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb69-4"><a href="lab-1-solutions.html#cb69-4"></a><span class="co">#&gt; Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb69-5"><a href="lab-1-solutions.html#cb69-5"></a><span class="co">#&gt; Datsun 710     22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span></span>
-<span id="cb69-6"><a href="lab-1-solutions.html#cb69-6"></a><span class="co">#&gt; Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb69-7"><a href="lab-1-solutions.html#cb69-7"></a><span class="co">#&gt; Merc 240D      24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span></span>
-<span id="cb69-8"><a href="lab-1-solutions.html#cb69-8"></a><span class="co">#&gt; Merc 230       22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span></span>
-<span id="cb69-9"><a href="lab-1-solutions.html#cb69-9"></a><span class="co">#&gt; Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span></span>
-<span id="cb69-10"><a href="lab-1-solutions.html#cb69-10"></a><span class="co">#&gt; Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span></span>
-<span id="cb69-11"><a href="lab-1-solutions.html#cb69-11"></a><span class="co">#&gt; Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span></span>
-<span id="cb69-12"><a href="lab-1-solutions.html#cb69-12"></a><span class="co">#&gt; Toyota Corona  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span></span>
-<span id="cb69-13"><a href="lab-1-solutions.html#cb69-13"></a><span class="co">#&gt; Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span></span>
-<span id="cb69-14"><a href="lab-1-solutions.html#cb69-14"></a><span class="co">#&gt; Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span></span>
-<span id="cb69-15"><a href="lab-1-solutions.html#cb69-15"></a><span class="co">#&gt; Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
-<span id="cb69-16"><a href="lab-1-solutions.html#cb69-16"></a><span class="co">#&gt; Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lab-1-solutions.html#cb70-1"></a><span class="kw">subset</span>(mtcars, (mpg <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>) <span class="op">&amp;</span><span class="st"> </span>(hp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>))</span>
-<span id="cb70-2"><a href="lab-1-solutions.html#cb70-2"></a><span class="co">#&gt;                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb70-3"><a href="lab-1-solutions.html#cb70-3"></a><span class="co">#&gt; Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb70-4"><a href="lab-1-solutions.html#cb70-4"></a><span class="co">#&gt; Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb70-5"><a href="lab-1-solutions.html#cb70-5"></a><span class="co">#&gt; Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb70-6"><a href="lab-1-solutions.html#cb70-6"></a><span class="co">#&gt; Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
-<span id="cb70-7"><a href="lab-1-solutions.html#cb70-7"></a><span class="co">#&gt; Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lab-1-solutions.html#cb71-1"></a><span class="kw">subset</span>(mtcars, (cyl <span class="op">&gt;=</span><span class="st"> </span><span class="dv">6</span>) <span class="op">|</span><span class="st"> </span>(hp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>))</span>
-<span id="cb71-2"><a href="lab-1-solutions.html#cb71-2"></a><span class="co">#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb71-3"><a href="lab-1-solutions.html#cb71-3"></a><span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb71-4"><a href="lab-1-solutions.html#cb71-4"></a><span class="co">#&gt; Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb71-5"><a href="lab-1-solutions.html#cb71-5"></a><span class="co">#&gt; Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb71-6"><a href="lab-1-solutions.html#cb71-6"></a><span class="co">#&gt; Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span></span>
-<span id="cb71-7"><a href="lab-1-solutions.html#cb71-7"></a><span class="co">#&gt; Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span></span>
-<span id="cb71-8"><a href="lab-1-solutions.html#cb71-8"></a><span class="co">#&gt; Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span></span>
-<span id="cb71-9"><a href="lab-1-solutions.html#cb71-9"></a><span class="co">#&gt; Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span></span>
-<span id="cb71-10"><a href="lab-1-solutions.html#cb71-10"></a><span class="co">#&gt; Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4</span></span>
-<span id="cb71-11"><a href="lab-1-solutions.html#cb71-11"></a><span class="co">#&gt; Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3</span></span>
-<span id="cb71-12"><a href="lab-1-solutions.html#cb71-12"></a><span class="co">#&gt; Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</span></span>
-<span id="cb71-13"><a href="lab-1-solutions.html#cb71-13"></a><span class="co">#&gt; Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</span></span>
-<span id="cb71-14"><a href="lab-1-solutions.html#cb71-14"></a><span class="co">#&gt; Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</span></span>
-<span id="cb71-15"><a href="lab-1-solutions.html#cb71-15"></a><span class="co">#&gt; Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</span></span>
-<span id="cb71-16"><a href="lab-1-solutions.html#cb71-16"></a><span class="co">#&gt; Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4</span></span>
-<span id="cb71-17"><a href="lab-1-solutions.html#cb71-17"></a><span class="co">#&gt; Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2</span></span>
-<span id="cb71-18"><a href="lab-1-solutions.html#cb71-18"></a><span class="co">#&gt; AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2</span></span>
-<span id="cb71-19"><a href="lab-1-solutions.html#cb71-19"></a><span class="co">#&gt; Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4</span></span>
-<span id="cb71-20"><a href="lab-1-solutions.html#cb71-20"></a><span class="co">#&gt; Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span></span>
-<span id="cb71-21"><a href="lab-1-solutions.html#cb71-21"></a><span class="co">#&gt; Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
-<span id="cb71-22"><a href="lab-1-solutions.html#cb71-22"></a><span class="co">#&gt; Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span></span>
-<span id="cb71-23"><a href="lab-1-solutions.html#cb71-23"></a><span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span></span>
-<span id="cb71-24"><a href="lab-1-solutions.html#cb71-24"></a><span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span></span>
-<span id="cb71-25"><a href="lab-1-solutions.html#cb71-25"></a><span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="lab-1-solutions.html#cb72-1"></a>mtcars[<span class="dv">10</span>,]</span>
-<span id="cb72-2"><a href="lab-1-solutions.html#cb72-2"></a><span class="co">#&gt;           mpg cyl  disp  hp drat   wt qsec vs am gear carb</span></span>
-<span id="cb72-3"><a href="lab-1-solutions.html#cb72-3"></a><span class="co">#&gt; Merc 280 19.2   6 167.6 123 3.92 3.44 18.3  1  0    4    4</span></span></code></pre></div></li>
-<li><div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="lab-1-solutions.html#cb73-1"></a><span class="co"># without reversing the order, we would order from lowest to smallest</span></span>
-<span id="cb73-2"><a href="lab-1-solutions.html#cb73-2"></a>mtcars[<span class="kw">rev</span>(<span class="kw">order</span>(mtcars<span class="op">$</span>mpg)),]</span>
-<span id="cb73-3"><a href="lab-1-solutions.html#cb73-3"></a><span class="co">#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb73-4"><a href="lab-1-solutions.html#cb73-4"></a><span class="co">#&gt; Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span></span>
-<span id="cb73-5"><a href="lab-1-solutions.html#cb73-5"></a><span class="co">#&gt; Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span></span>
-<span id="cb73-6"><a href="lab-1-solutions.html#cb73-6"></a><span class="co">#&gt; Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
-<span id="cb73-7"><a href="lab-1-solutions.html#cb73-7"></a><span class="co">#&gt; Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span></span>
-<span id="cb73-8"><a href="lab-1-solutions.html#cb73-8"></a><span class="co">#&gt; Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span></span>
-<span id="cb73-9"><a href="lab-1-solutions.html#cb73-9"></a><span class="co">#&gt; Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span></span>
-<span id="cb73-10"><a href="lab-1-solutions.html#cb73-10"></a><span class="co">#&gt; Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span></span>
-<span id="cb73-11"><a href="lab-1-solutions.html#cb73-11"></a><span class="co">#&gt; Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span></span>
-<span id="cb73-12"><a href="lab-1-solutions.html#cb73-12"></a><span class="co">#&gt; Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span></span>
-<span id="cb73-13"><a href="lab-1-solutions.html#cb73-13"></a><span class="co">#&gt; Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span></span>
-<span id="cb73-14"><a href="lab-1-solutions.html#cb73-14"></a><span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span>
-<span id="cb73-15"><a href="lab-1-solutions.html#cb73-15"></a><span class="co">#&gt; Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb73-16"><a href="lab-1-solutions.html#cb73-16"></a><span class="co">#&gt; Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb73-17"><a href="lab-1-solutions.html#cb73-17"></a><span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb73-18"><a href="lab-1-solutions.html#cb73-18"></a><span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span></span>
-<span id="cb73-19"><a href="lab-1-solutions.html#cb73-19"></a><span class="co">#&gt; Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span></span>
-<span id="cb73-20"><a href="lab-1-solutions.html#cb73-20"></a><span class="co">#&gt; Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span></span>
-<span id="cb73-21"><a href="lab-1-solutions.html#cb73-21"></a><span class="co">#&gt; Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span></span>
-<span id="cb73-22"><a href="lab-1-solutions.html#cb73-22"></a><span class="co">#&gt; Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span></span>
-<span id="cb73-23"><a href="lab-1-solutions.html#cb73-23"></a><span class="co">#&gt; Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4</span></span>
-<span id="cb73-24"><a href="lab-1-solutions.html#cb73-24"></a><span class="co">#&gt; Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</span></span>
-<span id="cb73-25"><a href="lab-1-solutions.html#cb73-25"></a><span class="co">#&gt; Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3</span></span>
-<span id="cb73-26"><a href="lab-1-solutions.html#cb73-26"></a><span class="co">#&gt; Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span></span>
-<span id="cb73-27"><a href="lab-1-solutions.html#cb73-27"></a><span class="co">#&gt; Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2</span></span>
-<span id="cb73-28"><a href="lab-1-solutions.html#cb73-28"></a><span class="co">#&gt; AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2</span></span>
-<span id="cb73-29"><a href="lab-1-solutions.html#cb73-29"></a><span class="co">#&gt; Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</span></span>
-<span id="cb73-30"><a href="lab-1-solutions.html#cb73-30"></a><span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span></span>
-<span id="cb73-31"><a href="lab-1-solutions.html#cb73-31"></a><span class="co">#&gt; Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4</span></span>
-<span id="cb73-32"><a href="lab-1-solutions.html#cb73-32"></a><span class="co">#&gt; Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span></span>
-<span id="cb73-33"><a href="lab-1-solutions.html#cb73-33"></a><span class="co">#&gt; Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4</span></span>
-<span id="cb73-34"><a href="lab-1-solutions.html#cb73-34"></a><span class="co">#&gt; Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</span></span>
-<span id="cb73-35"><a href="lab-1-solutions.html#cb73-35"></a><span class="co">#&gt; Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lab-1-solutions.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars)</span>
+<span id="cb66-2"><a href="lab-1-solutions.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 32</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lab-1-solutions.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars)</span>
+<span id="cb67-2"><a href="lab-1-solutions.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 11</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lab-1-solutions.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)</span>
+<span id="cb68-2"><a href="lab-1-solutions.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot; &quot;carb&quot;</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lab-1-solutions.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, mpg <span class="sc">&gt;=</span> <span class="dv">20</span>)</span>
+<span id="cb69-2"><a href="lab-1-solutions.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span id="cb69-3"><a href="lab-1-solutions.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span id="cb69-4"><a href="lab-1-solutions.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span id="cb69-5"><a href="lab-1-solutions.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Datsun 710     22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span></span>
+<span id="cb69-6"><a href="lab-1-solutions.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span id="cb69-7"><a href="lab-1-solutions.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 240D      24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span></span>
+<span id="cb69-8"><a href="lab-1-solutions.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 230       22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span></span>
+<span id="cb69-9"><a href="lab-1-solutions.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span></span>
+<span id="cb69-10"><a href="lab-1-solutions.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span></span>
+<span id="cb69-11"><a href="lab-1-solutions.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span></span>
+<span id="cb69-12"><a href="lab-1-solutions.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Toyota Corona  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span></span>
+<span id="cb69-13"><a href="lab-1-solutions.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span></span>
+<span id="cb69-14"><a href="lab-1-solutions.html#cb69-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span></span>
+<span id="cb69-15"><a href="lab-1-solutions.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
+<span id="cb69-16"><a href="lab-1-solutions.html#cb69-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lab-1-solutions.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, (mpg <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">&amp;</span> (hp <span class="sc">&gt;=</span> <span class="dv">100</span>))</span>
+<span id="cb70-2"><a href="lab-1-solutions.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span id="cb70-3"><a href="lab-1-solutions.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span id="cb70-4"><a href="lab-1-solutions.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span id="cb70-5"><a href="lab-1-solutions.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span id="cb70-6"><a href="lab-1-solutions.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
+<span id="cb70-7"><a href="lab-1-solutions.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lab-1-solutions.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, (cyl <span class="sc">&gt;=</span> <span class="dv">6</span>) <span class="sc">|</span> (hp <span class="sc">&gt;=</span> <span class="dv">100</span>))</span>
+<span id="cb71-2"><a href="lab-1-solutions.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span id="cb71-3"><a href="lab-1-solutions.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span id="cb71-4"><a href="lab-1-solutions.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span id="cb71-5"><a href="lab-1-solutions.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span id="cb71-6"><a href="lab-1-solutions.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span></span>
+<span id="cb71-7"><a href="lab-1-solutions.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span></span>
+<span id="cb71-8"><a href="lab-1-solutions.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span></span>
+<span id="cb71-9"><a href="lab-1-solutions.html#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span></span>
+<span id="cb71-10"><a href="lab-1-solutions.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4</span></span>
+<span id="cb71-11"><a href="lab-1-solutions.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3</span></span>
+<span id="cb71-12"><a href="lab-1-solutions.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</span></span>
+<span id="cb71-13"><a href="lab-1-solutions.html#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</span></span>
+<span id="cb71-14"><a href="lab-1-solutions.html#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</span></span>
+<span id="cb71-15"><a href="lab-1-solutions.html#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</span></span>
+<span id="cb71-16"><a href="lab-1-solutions.html#cb71-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4</span></span>
+<span id="cb71-17"><a href="lab-1-solutions.html#cb71-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2</span></span>
+<span id="cb71-18"><a href="lab-1-solutions.html#cb71-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2</span></span>
+<span id="cb71-19"><a href="lab-1-solutions.html#cb71-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4</span></span>
+<span id="cb71-20"><a href="lab-1-solutions.html#cb71-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span></span>
+<span id="cb71-21"><a href="lab-1-solutions.html#cb71-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
+<span id="cb71-22"><a href="lab-1-solutions.html#cb71-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span></span>
+<span id="cb71-23"><a href="lab-1-solutions.html#cb71-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span></span>
+<span id="cb71-24"><a href="lab-1-solutions.html#cb71-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span></span>
+<span id="cb71-25"><a href="lab-1-solutions.html#cb71-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="lab-1-solutions.html#cb72-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">10</span>,]</span>
+<span id="cb72-2"><a href="lab-1-solutions.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           mpg cyl  disp  hp drat   wt qsec vs am gear carb</span></span>
+<span id="cb72-3"><a href="lab-1-solutions.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 280 19.2   6 167.6 123 3.92 3.44 18.3  1  0    4    4</span></span></code></pre></div></li>
+<li><div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="lab-1-solutions.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># without reversing the order, we would order from lowest to smallest</span></span>
+<span id="cb73-2"><a href="lab-1-solutions.html#cb73-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">rev</span>(<span class="fu">order</span>(mtcars<span class="sc">$</span>mpg)),]</span>
+<span id="cb73-3"><a href="lab-1-solutions.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
+<span id="cb73-4"><a href="lab-1-solutions.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span></span>
+<span id="cb73-5"><a href="lab-1-solutions.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span></span>
+<span id="cb73-6"><a href="lab-1-solutions.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
+<span id="cb73-7"><a href="lab-1-solutions.html#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span></span>
+<span id="cb73-8"><a href="lab-1-solutions.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span></span>
+<span id="cb73-9"><a href="lab-1-solutions.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span></span>
+<span id="cb73-10"><a href="lab-1-solutions.html#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span></span>
+<span id="cb73-11"><a href="lab-1-solutions.html#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span></span>
+<span id="cb73-12"><a href="lab-1-solutions.html#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span></span>
+<span id="cb73-13"><a href="lab-1-solutions.html#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span></span>
+<span id="cb73-14"><a href="lab-1-solutions.html#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span>
+<span id="cb73-15"><a href="lab-1-solutions.html#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
+<span id="cb73-16"><a href="lab-1-solutions.html#cb73-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
+<span id="cb73-17"><a href="lab-1-solutions.html#cb73-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
+<span id="cb73-18"><a href="lab-1-solutions.html#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span></span>
+<span id="cb73-19"><a href="lab-1-solutions.html#cb73-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span></span>
+<span id="cb73-20"><a href="lab-1-solutions.html#cb73-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span></span>
+<span id="cb73-21"><a href="lab-1-solutions.html#cb73-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span></span>
+<span id="cb73-22"><a href="lab-1-solutions.html#cb73-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span></span>
+<span id="cb73-23"><a href="lab-1-solutions.html#cb73-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4</span></span>
+<span id="cb73-24"><a href="lab-1-solutions.html#cb73-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</span></span>
+<span id="cb73-25"><a href="lab-1-solutions.html#cb73-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3</span></span>
+<span id="cb73-26"><a href="lab-1-solutions.html#cb73-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span></span>
+<span id="cb73-27"><a href="lab-1-solutions.html#cb73-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2</span></span>
+<span id="cb73-28"><a href="lab-1-solutions.html#cb73-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2</span></span>
+<span id="cb73-29"><a href="lab-1-solutions.html#cb73-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</span></span>
+<span id="cb73-30"><a href="lab-1-solutions.html#cb73-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span></span>
+<span id="cb73-31"><a href="lab-1-solutions.html#cb73-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4</span></span>
+<span id="cb73-32"><a href="lab-1-solutions.html#cb73-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span></span>
+<span id="cb73-33"><a href="lab-1-solutions.html#cb73-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4</span></span>
+<span id="cb73-34"><a href="lab-1-solutions.html#cb73-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</span></span>
+<span id="cb73-35"><a href="lab-1-solutions.html#cb73-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</span></span></code></pre></div></li>
 </ol></li>
 </ol>
 </div>
@@ -477,7 +509,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -496,6 +527,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -516,6 +548,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

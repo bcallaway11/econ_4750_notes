@@ -583,7 +583,7 @@ But we are faced with the issue that we do not observe $Q$ (which implies that w
 Recall that we can equivalently write
 
 $$
-  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U (\#eq:ovb-y)
 $$
 where $\E[U|X_1,X_2,Q]=0$.  
 
@@ -593,21 +593,25 @@ $$
   \E[Q | X_1, X_2] = \gamma_0 + \gamma_1 X_1 + \gamma_2 X_2
 $$
 
-Now, let's consider the idea of just running a regression of $Y$ on $X_1$ and $X_2$ (and just not including $Q$).  We are interested in the question of whether or not we can recover $\beta_1$ if we do this.  If we consider this "feasible" regression, notice that
+Now, let's consider the idea of just running a regression of $Y$ on $X_1$ and $X_2$ (and just not including $Q$); in other words, consider the regression
+$$
+  \E[Y|X_1,X_2] = \delta_0 + \delta_1 X_1 + \delta_2 X_2
+$$
+We are interested in the question of whether or not we can recover $\beta_1$ if we do this.  If we consider this "feasible" regression, notice if we plug in the expression for $Y$ from Equation \@ref(eq:ovb-y),
 
 $$
   \begin{aligned}
   \E[Y|X_1,X_2] &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 \E[Q|X_1,X_2] \\
   &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (\gamma_0 + \gamma_1 X_1 + \gamma_2 X_2) \\
-  &= (\beta_0 + \beta_3 \gamma_0) + (\beta_1 + \beta_3 \gamma_1) X_1 + (\beta_2 + \beta_3 \gamma_2) X_2
+  &= \underbrace{(\beta_0 + \beta_3 \gamma_0)}_{\delta_0} + \underbrace{(\beta_1 + \beta_3 \gamma_1)}_{\delta_1} X_1 + \underbrace{(\beta_2 + \beta_3 \gamma_2)}_{\delta_2} X_2
   \end{aligned}
 $$
 
-In other words, if we run the feasible regression of $Y$ on $X_1$ and $X_2$, the coefficient on $X_1$ is not equal to $\beta_1$; rather, it is equal to $(\beta_1 + \beta_3 \gamma_1)$.  
+In other words, if we run the feasible regression of $Y$ on $X_1$ and $X_2$, $\delta_1$ (the coefficient on $X_1$) is not equal to $\beta_1$; rather, it is equal to $(\beta_1 + \beta_3 \gamma_1)$.  
 
 That you are not generally able to recover $\beta_1$ in this case is called **omitted variable bias**
 
-There are two cases where you will recover $\beta_1$ though:
+There are two cases where you will recover $\delta_1 = \beta_1$ though which occur when $\beta_3 \gamma_1 = 0$:
 
 - $\beta_3=0$.  This would be the case where $Q$ has no effect on $Y$
 
@@ -616,9 +620,9 @@ There are two cases where you will recover $\beta_1$ though:
 Interestingly, there may be some case where you can "sign" the bias; i.e., figure out if $\beta_3 \gamma_1$ is positive or negative.  For example, you might have theoretical reasons to suspect that $\gamma_1 > 0$ and $\beta_3 > 0$.  In this case,
 
 $$
-  \gamma_1 = \beta_1 + \textrm{something positive}
+  \delta_1 = \beta_1 + \textrm{something positive}
 $$
-which implies that $\gamma_1$ (i.e., ignoring $Q$) would cause us to tend to over-estimate $\beta_1$.  
+which implies that $\delta_1$ (i.e., running a regression that ignores $Q$) would cause us to tend to over-estimate $\beta_1$.  
 
 ::: {.side-comment}
 
@@ -1185,7 +1189,7 @@ The estimated coefficient on $smoker$ says that smoking during pregnancy decreas
 
     a) Calculate the median `fund_net_annual_expense_ratio`.
     
-    b) Split the data based on whether the mutual fund has an expense ratio above the median or below the median.  Use the `datasummary_balance` function from the `modelsummary` package to report summary statistics for `fund_return_3year`, `fund_net_annual_expense_ratio`, `risk_rating`, `asset_cash`, `asset_stocks`, `asset_bonds` based on whether their expense ratio is above or below the median.  Do you notice any interesting patterns?
+    b) Use the `datasummary_balance` function from the `modelsummary` package to report summary statistics for `fund_return_3year`, `fund_net_annual_expense_ratio`, `risk_rating`, `asset_cash`, `asset_stocks`, `asset_bonds` based on whether their expense ratio is above or below the median.  Do you notice any interesting patterns?
     
     c) Run a regression of `fund_return_3years` on `fund_net_annual_expense_ratio`.  How do you interpret the results?
     
