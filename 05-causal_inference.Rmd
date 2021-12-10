@@ -381,8 +381,8 @@ One important difference relative to the previous approach is that DID is typica
 
 Let's think about the case with exactly two time periods: $t$ and $t-1$.  In this case, we'll suppose that the outcomes that we observe are
 \begin{align*}
-  Y_{it} &= D_i Y_{it}(0) + (1-D_i) Y_{it}(0) \\
-  Y_{it-1} &= Y_{it}(0)
+  Y_{it} &= D_i Y_{it}(1) + (1-D_i) Y_{it}(0) \\
+  Y_{it-1} &= Y_{it-1}(0)
 \end{align*}
 In other words, in the second period, we observe treated potential outcomes for treated units and untreated potential outcomes for untreated units (this is just like the cross-sectional case above).  But in the first period, we observe untreated potential outcomes for all units --- because no one is treated yet.
 
