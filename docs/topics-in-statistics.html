@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-11-15" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -440,7 +441,7 @@ Let’s go carefully through each step — these arguments rely heavily on the p
 <p>Suppose we are interested in some population parameter <span class="math inline">\(\theta\)</span> — we’ll write this pretty generically now, but it could be <span class="math inline">\(\mathbb{E}[Y]\)</span> or <span class="math inline">\(\mathbb{E}[Y|X]\)</span> or really any other population quantity that you’d like to estimate.</p>
 <p>Also, suppose that we have access to a random sample of size <span class="math inline">\(n\)</span> and we have some estimate of <span class="math inline">\(\theta\)</span> that we’ll call <span class="math inline">\(\hat{\theta}\)</span>.</p>
 <p>As before, we are going to consider the repeated sampling thought experiment where we imagine that we could repeatedly obtain new samples of size <span class="math inline">\(n\)</span> and with each new sample calculate a new <span class="math inline">\(\hat{\theta}\)</span>. Under this thought experiment, <span class="math inline">\(\hat{\theta}\)</span> would have a sampling distribution. One possibility for what it could look like is the following</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 <p>In this case, values of <span class="math inline">\(\hat{\theta}\)</span> are more common around 3 and 4, but it is not highly unusual to get a value of <span class="math inline">\(\hat{\theta}\)</span> that is around 1 or 2 or 5 or 6 either.</p>
 <p>The first property of an estimator that we will take about is called <strong>unbiasedness</strong>. An estimator <span class="math inline">\(\hat{\theta}\)</span> is said to be unbiased if <span class="math inline">\(\mathbb{E}[\hat{\theta}] = \theta\)</span>. Alternatively, we can define the <strong>bias</strong> of an estimator as</p>
 <p><span class="math display">\[
@@ -449,7 +450,7 @@ Let’s go carefully through each step — these arguments rely heavily on the p
 For example, if <span class="math inline">\(\textrm{Bias}(\hat{\theta}) &gt; 0\)</span>, it means that, on average (in the repeated sampling thought experiment), our estimates of <span class="math inline">\(\theta\)</span> would be greater than the actual value of <span class="math inline">\(\theta\)</span>.</p>
 <p>In general, unbiasedness is a good property for an estimator to have. That being said, we can come up with examples of not-very-good unbiased estimators and good biased estimators, but all-else-equal, it is better for an estimator to be unbiased.</p>
 <p>The next property of estimators that we will talk about is their <strong>sampling variance</strong>. This is just <span class="math inline">\(\mathrm{var}(\hat{\theta})\)</span>. In general, we would like estimators with low (or 0) bias and low sampling variance. Let me give an example</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-114-1.png" width="672" />
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-94-1.png" width="672" />
 This is a helpful figure for thinking about the properties of estimators. In this case, <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased (because their means are <span class="math inline">\(\theta\)</span>) while <span class="math inline">\(\hat{\theta}_3\)</span> is biased — it’s mean is greater than <span class="math inline">\(\theta\)</span>. On the other hand the sampling variance of <span class="math inline">\(\hat{\theta}_2\)</span> and <span class="math inline">\(\hat{\theta}_3\)</span> are about the same and both substantially smaller than for <span class="math inline">\(\hat{\theta}_1\)</span>. Clearly, <span class="math inline">\(\hat{\theta}_2\)</span> is the best estimator of <span class="math inline">\(\theta\)</span> out of the three. But which is the second best? It is not clear. <span class="math inline">\(\hat{\theta}_3\)</span> systematically over-estimates <span class="math inline">\(\theta\)</span>, but since the variance is relatively small, the misses are systematic but tend to be relatively small. On the other hand, <span class="math inline">\(\hat{\theta}_1\)</span> is, on average, equal to <span class="math inline">\(\theta\)</span>, but sometimes the estimate of <span class="math inline">\(\theta\)</span> could be quite poor due to the large sampling variance.</p>
 </div>
 <div id="relative-efficiency" class="section level3" number="3.2.6">
@@ -663,7 +664,7 @@ which is just the definition of <span class="math inline">\(t\)</span>, but some
 <li><p>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &lt; c_{1-\alpha}\)</span></p></li>
 </ul>
 <p>In our case, since <span class="math inline">\(t\)</span> follows a normal distribution under <span class="math inline">\(H_0\)</span>, the corresponding critical value (when <span class="math inline">\(\alpha=0.05\)</span>) is 1.96. In particular, recall what the pdf of a standard normal random variable looks like</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <p>The sum of the two blue, shaded areas is 0.05. In other words, under <span class="math inline">\(H_0\)</span>, there is a 5% chance that, by chance, <span class="math inline">\(t\)</span> would fall in the shaded areas. If you want to change the significance level, it would result in a corresponding change in the critical value so that the area in the new shaded region would adjust too. For example, if you set the significance level to be <span class="math inline">\(\alpha=0.1\)</span>, then you would need to adjust the critical value to be 1.64, and if you set <span class="math inline">\(\alpha=0.01\)</span>, then you would need to adjust the critical value to be 2.58.</p>
 </div>
 <div id="p-values" class="section level4" number="3.2.9.2">
@@ -672,7 +673,7 @@ which is just the definition of <span class="math inline">\(t\)</span>, but some
 <p>Perhaps more importantly, we are essentially throwing away a lot of information if we are to reduce the information from standard errors/t-statistics to a binary “reject” or “fail to reject.”</p>
 <p>One alternative is to report a <strong>p-value</strong>. A p-value is the probability of observing a t-statistic as “extreme” as we did if <span class="math inline">\(H_0\)</span> were true.</p>
 <p>Here is an example of how to calculate a p-value. Suppose we calculate <span class="math inline">\(t=1.85\)</span>. Then,</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <p>Then, under <span class="math inline">\(H_0\)</span>, the probability of getting a t-statistic “as extreme” as 1.85 corresponds to the area of the two shaded regions above. In other words, we need to to compute</p>
 <p><span class="math display">\[
   \textrm{p-value} = \mathrm{P}(Z \leq -1.85) + \mathrm{P}(Z \geq 1.85)

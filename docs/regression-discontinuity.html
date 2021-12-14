@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-11-15" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -403,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb152-4"><a href="regression-discontinuity.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;age&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb152-5"><a href="regression-discontinuity.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb152-6"><a href="regression-discontinuity.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 <p>This figure at least suggests that the number of car accident deaths does appear to jump at age 21.</p>
 <p>Now, let’s run the regression that we talked about earlier, involving a treatment dummy, age, and age interacted with the treatment.</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="regression-discontinuity.html#cb153-1" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mva <span class="sc">~</span> D <span class="sc">+</span> agecell <span class="sc">+</span> agecell<span class="sc">*</span>D, <span class="at">data=</span>mlda)</span>
@@ -440,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb154-8"><a href="regression-discontinuity.html#cb154-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span></span>
 <span id="cb154-9"><a href="regression-discontinuity.html#cb154-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color=</span><span class="st">&quot;treated&quot;</span>, <span class="at">x=</span><span class="st">&quot;age&quot;</span>, <span class="at">y=</span><span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb154-10"><a href="regression-discontinuity.html#cb154-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <p>This shows the two lines that we effectively fit with the regression that included the binary variable for the treatment, the running variable, and their interaction. The “jump” between the red line and the blue line at <code>age=21</code> is our estimated effect of the treatment.</p>
 </div>
 </div>

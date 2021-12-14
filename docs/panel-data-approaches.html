@@ -24,7 +24,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-11-15" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,6 +61,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -449,8 +450,8 @@ In this case,</p>
 <p>One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.</p>
 <p>Let’s think about the case with exactly two time periods: <span class="math inline">\(t\)</span> and <span class="math inline">\(t-1\)</span>. In this case, we’ll suppose that the outcomes that we observe are
 <span class="math display">\[\begin{align*}
-  Y_{it} &amp;= D_i Y_{it}(0) + (1-D_i) Y_{it}(0) \\
-  Y_{it-1} &amp;= Y_{it}(0)
+  Y_{it} &amp;= D_i Y_{it}(1) + (1-D_i) Y_{it}(0) \\
+  Y_{it-1} &amp;= Y_{it-1}(0)
 \end{align*}\]</span>
 In other words, in the second period, we observe treated potential outcomes for treated units and untreated potential outcomes for untreated units (this is just like the cross-sectional case above). But in the first period, we observe untreated potential outcomes for all units — because no one is treated yet.</p>
 <p>DID is often motivated by an assumption called the parallel trends assumption:</p>
