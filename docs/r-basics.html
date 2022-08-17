@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.3 R Basics | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.3 R Basics | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="installing-r-packages.html"/>
 <link rel="next" href="functions-in-r.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,10 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -369,16 +366,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-basics" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> R Basics</h2>
+<div id="r-basics" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> R Basics<a href="r-basics.html#r-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Related Reading: IDS 2.1</p>
 <p>In this section, we’ll start to work towards writing useful R code.</p>
-<div id="objects" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Objects</h3>
+<div id="objects" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Objects<a href="r-basics.html#objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Related Reading: IDS 2.2</p>
 <p>The very first step to writing code that can actually do something is to able to store things. In R, we store things in <strong>objects</strong> (perhaps sometimes I will also use the word variables).</p>
 <p>Earlier, we used R to calculate <span class="math inline">\(1+1\)</span>. Let’s go back to the Source pane (top left pane in RStudio) and type</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-basics.html#cb6-1" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-basics.html#cb12-1" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <p>Press <code>Ctrl+ENTER</code> on this line to run it. You should see the same line down in the Console now.</p>
 <p>Let’s think carefully about what is happening here</p>
 <ul>
@@ -388,18 +385,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>You can think about the above code as computing <span class="math inline">\(1+1\)</span> and then <em>saving</em> it in the variable <code>answer</code>.</p>
 <div class="side-comment">
-<p><span class="side-comment">Side Comment:</span> The assignment operator, <code>&lt;-</code>, is a “less than sign” followed by a “hyphen.” It’s often convenient though to use the keyboard shortcut <code>Alt+-</code> (i.e., hold down <code>Alt</code> and press the hypen key) to insert it. You can also use an <code>=</code> for assignment, but this is less commonly done in R.</p>
+<p><span class="side-comment">Side Comment:</span> The assignment operator, <code>&lt;-</code>, is a “less than sign” followed by a “hyphen”. It’s often convenient though to use the keyboard shortcut <code>Alt+-</code> (i.e., hold down <code>Alt</code> and press the hypen key) to insert it. You can also use an <code>=</code> for assignment, but this is less commonly done in R.</p>
 </div>
 <div class="practice">
 <p><span class="practice">Practice:</span> Try creating variable called <code>five_squared</code> that is equal to <span class="math inline">\(5 \times 5\)</span> (multiplication in R is done using the <code>*</code> symbol).</p>
 </div>
 <p>There are a number of reasons why you might like to create an object in R. Perhaps the main one is so that you can reuse it. Let’s try multiplying <code>answer</code> by <span class="math inline">\(3\)</span>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-basics.html#cb7-1" aria-hidden="true" tabindex="-1"></a>answer<span class="sc">*</span><span class="dv">3</span></span>
-<span id="cb7-2"><a href="r-basics.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-basics.html#cb13-1" aria-hidden="true" tabindex="-1"></a>answer<span class="sc">*</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
 <p>If you wanted, you could also save this as its own variable too.</p>
 </div>
-<div id="workspace" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Workspace</h3>
+<div id="workspace" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Workspace<a href="r-basics.html#workspace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Related Reading: IDS 2.2</p>
 <p>Before we move on, I just want to show you what my workspace looks like now.</p>
 <p><img src="rstudio_environment.png"></p>
@@ -407,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now, take a look at the top right pane. You will see under the Environment tab that <code>answer</code> shows up there with a value of <code>2</code>. The Environment tab keeps track of all the variables that you have created in your current session. A couple of other things that might be useful to point out there.</p>
 <ul>
 <li><p>Later on in the class, we will often import data to work with. The “Import Dataset” button that is located in this top right pane is often useful for this.</p></li>
-<li><p>Occasionally, you might get into the case where you have saved a bunch of variables and it would be helpful to “start over.” The broom in this pane will “clean” your workspace (this just means delete everything).</p></li>
+<li><p>Occasionally, you might get into the case where you have saved a bunch of variables and it would be helpful to “start over”. The broom in this pane will “clean” your workspace (this just means delete everything).</p></li>
 </ul>
 </div>
 </div>
@@ -477,7 +474,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

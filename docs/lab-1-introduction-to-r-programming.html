@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.9 Lab 1: Introduction to R Programming | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.9 Lab 1: Introduction to R Programming | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="advanced-topics.html"/>
 <link rel="next" href="lab-1-solutions.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,10 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -369,18 +366,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-1-introduction-to-r-programming" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> Lab 1: Introduction to R Programming</h2>
+<div id="lab-1-introduction-to-r-programming" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Lab 1: Introduction to R Programming<a href="lab-1-introduction-to-r-programming.html#lab-1-introduction-to-r-programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this lab, we will do several practice problems related to programming in R.</p>
 <ol style="list-style-type: decimal">
 <li><p>Create two vectors as follows</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="lab-1-introduction-to-r-programming.html#cb62-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
-<span id="cb62-2"><a href="lab-1-introduction-to-r-programming.html#cb62-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lab-1-introduction-to-r-programming.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
+<span id="cb160-2"><a href="lab-1-introduction-to-r-programming.html#cb160-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span></code></pre></div>
 <p>Add <code>x</code> and <code>y</code>, subtract <code>y</code> from <code>x</code>, multiply <code>x</code> and <code>y</code>, and divide <code>x</code> by <code>y</code> and report your results.</p></li>
 <li><p>The geometric mean of a set of numbers is an alternative measure of central tendency to the more common “arithmetic mean” (this is the mean that we are used to). For a set of <span class="math inline">\(J\)</span> numbers, <span class="math inline">\(x_1,x_2,\ldots,x_J\)</span>, the geometric mean is defined as</p>
 <p><span class="math display">\[
    (x_1 \cdot x_2 \cdot \cdots \cdot x_J)^{1/J}
- \]</span></p>
+\]</span></p>
 <p>Write a function called <code>geometric_mean</code> that takes in a vector of numbers and computes their geometric mean. Compute the geometric mean of <code>c(10,8,13)</code></p></li>
 <li><p>Use the <code>lubridate</code> package to figure out how many days it has been since Jan. 1, 1981.</p></li>
 <li><p><code>mtcars</code> is one of the data frames that comes packaged with base R.</p>
@@ -462,7 +459,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

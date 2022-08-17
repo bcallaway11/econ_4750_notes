@@ -32,15 +32,15 @@ description: This is a set of supplementary notes and additional references for 
 
 These are a set of detailed course notes for ECON 4750 at UGA.  They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1) textbook that we use in class.
 
-They are a work in progress, so it is possible that there are some mistakes (if you find any, please let me know) and there are incomplete sections.  That said, I hope you will find this to be a useful resource this semester.
+They are a work in progress, so it is possible that there are some mistakes (if you find any, please let me know).  That said, I hope you will find this to be a useful resource this semester.
 
 ## What is this? 
 
 Short answer: I'm not exactly sure, but you can think of this material as being similar to:
 
-* Supplementary Notes --- there are several topics that we will cover in class in substantially more detail than in the textbook.  A big chunk of the material provided here can be seen as additional reference material for topics not covered in depth in the textbook.
+* Supplementary Notes --- there are several topics that we will cover in class in substantially more detail than in the textbook.  A big chunk of the material provided here can be seen as additional reference material for topics not covered in depth in the textbook.  
 
-* Quasi-Study Guide --- Another main chunk of the material provided here is a course outline (should be close to the order that we cover in class) along with cross-references to the corresponding section in the textbook.  In addition, there are additional practice questions (some with answers) provided at the end of each section.
+* Quasi-Study Guide --- Another main chunk of the material provided here is a course outline (should be close to the order that we cover in class) along with cross-references to the corresponding section in the textbook.  For some topics here, I provide substantially less detail than the book; this may help you when it comes to studying as it may give you a sense of the material I see as being most important.  In addition, there are additional practice questions (some with answers) provided at the end of each section.
 
 ## What is this not?
 
@@ -48,7 +48,7 @@ There are a couple of things that I want to explicitly say that this material is
 
 * A substitute for coming to class --- I will take attendance anyway, but not attending class and relying on this material is not a good plan.  Please do not do this.  
 
-* A substitute for the textbook --- A lot of the material provided here is just a reference to the corresponding section in the textbook.  The textbook also contains substantially more details than I am able to provide here.  This means you still need to use the textbook.  
+* A substitute for the textbook --- In a number of places, the textbook contains substantially more details than I am able to provide here.  In my experience, it is also useful to have different "voices" that you can refer to (e.g., you may find my explanation unclear but may find the textbook much clearer).
 
 * Sufficient for making good grades on exams --- I don't suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams.  I think this material should be helpful and perhaps even a good starting point when it comes to studying, but it is not sufficient for making a good grade in the class.
 
@@ -57,7 +57,7 @@ There are a couple of things that I want to explicitly say that this material is
 
 I have a strong opinion about the best order to teach the material in ECON 4750.  And, although, there are a number of advanced undergraduate textbooks in Econometrics that I like and reference as I teach the course, none of them go in the same order that I would like to teach.  Therefore, I think one way that I can both go in the order that I want to during the semester without confusing you (the student) too much is to provide a detailed set of references to material that we are covering throughout the semester.
 
-The book that I require for the course is [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1).  <!--I think this is a really great book, but, unfortunately, it is quite expensive --- at the moment, it costs \$172 on Amazon.  My longer term goal for these notes is to make it possible to, say, buy an older edition of this sort of textbook while still being able to follow the course, do the homework problems, etc.  At the moment, I am not there yet; I don't think it is possible to complete the course without buying the textbook, but hopefully, this will be available over the coming years.  For this reason too, I also sincerely welcome and appreciate comments or suggestions about these notes.-->
+The book that I strongly suggest for the course is [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1).  <!--I think this is a really great book, but, unfortunately, it is quite expensive --- at the moment, it costs \$172 on Amazon.  My longer term goal for these notes is to make it possible to, say, buy an older edition of this sort of textbook while still being able to follow the course, do the homework problems, etc.  At the moment, I am not there yet; I don't think it is possible to complete the course without buying the textbook, but hopefully, this will be available over the coming years.  For this reason too, I also sincerely welcome and appreciate comments or suggestions about these notes.-->
 By the end of the semester, we will have covered in much detail the first 14 chapters of the textbook (and some topics we will have covered in substantially more detail than in the textbook).  If I had more time, the next topic that I would cover in this course would be Time Series Econometrics.  I used to cover this material in the current course, but I have found that I am happier with the tradeoff of understanding slightly fewer topics better relative to covering more topics but at a faster pace.  Time series is especially important for students who are interested in macroeconomics or finance.  Fortunately, we offer a time series econometrics course, and, if you take it, you should be well prepared for it coming out of this course.
 
 ## Additional References

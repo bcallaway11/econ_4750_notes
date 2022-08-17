@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.5 Data types | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.5 Data types | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="functions-in-r.html"/>
 <link rel="next" href="logicals.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,10 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -369,132 +366,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-types" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Data types</h2>
+<div id="data-types" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Data types<a href="data-types.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Related Reading: IDS 2.4</p>
-<div id="numeric-vectors" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Numeric Vectors</h3>
+<div id="numeric-vectors" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Numeric Vectors<a href="data-types.html#numeric-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The most basic data type in <code>R</code> is the vector. In fact, above when we created variables that were just a single number, they are actually stored as a numeric vector.</p>
 <p>To more explicitly create a vector, you can use the <code>c</code> function in <code>R</code>. For example, let’s create a vector called <code>five</code> that contains the numbers 1 through 5.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-types.html#cb11-1" aria-hidden="true" tabindex="-1"></a>  five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-types.html#cb20-1" aria-hidden="true" tabindex="-1"></a>  five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span></code></pre></div>
 <p>We can print the contents of the vector <code>five</code> just by typing its name</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-types.html#cb12-1" aria-hidden="true" tabindex="-1"></a>five</span>
-<span id="cb12-2"><a href="data-types.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-types.html#cb21-1" aria-hidden="true" tabindex="-1"></a>five</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>Another common operation on vectors is to get a particular element of a vector. Let me give an example</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-types.html#cb13-1" aria-hidden="true" tabindex="-1"></a>five[<span class="dv">3</span>]</span>
-<span id="cb13-2"><a href="data-types.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-types.html#cb23-1" aria-hidden="true" tabindex="-1"></a>five[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
 <p>This code takes the vector <code>five</code> and returns the third element in the vector. Notice that the above line contains braces, <code>[</code> and <code>]</code> rather than parentheses.</p>
 <p>If you want several different elements from a vector, you can do the following</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-types.html#cb14-1" aria-hidden="true" tabindex="-1"></a>five[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>)]</span>
-<span id="cb14-2"><a href="data-types.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-types.html#cb25-1" aria-hidden="true" tabindex="-1"></a>five[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>)]</span></code></pre></div>
+<pre><code>## [1] 1 4</code></pre>
 <p>This code takes the vector <code>five</code> and returns the first and fourth element in the vector.</p>
 <p>One more useful function for vectors is the function <code>length</code>. This tells you the number of elements in vector. For example,</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-types.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(five)</span>
-<span id="cb15-2"><a href="data-types.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-types.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(five)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
 <p>which means that there are five total elements in the vector <code>five</code>.</p>
 </div>
-<div id="vector-arithmetic" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Vector arithmetic</h3>
+<div id="vector-arithmetic" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Vector arithmetic<a href="data-types.html#vector-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Related Reading: IDS 2.11</p>
 <p>The main operations on numeric vectors are <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> which correspond to addition, subtraction, multiplication, and division. Often, we would like to carry out these operations on vectors.</p>
 <p>There are two main cases. The first case is when you try to add a single number (i.e., a scalar) to all the elements in a vector. In this setup, the operation will happen element-wise which means the same number will be added to all numbers in the vector. This will be clear with some examples.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-types.html#cb16-1" aria-hidden="true" tabindex="-1"></a>five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb16-2"><a href="data-types.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="data-types.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adds one to each element in vector</span></span>
-<span id="cb16-4"><a href="data-types.html#cb16-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb16-5"><a href="data-types.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 3 4 5 6</span></span>
-<span id="cb16-6"><a href="data-types.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="data-types.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># also adds one to each element in vector</span></span>
-<span id="cb16-8"><a href="data-types.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> five</span>
-<span id="cb16-9"><a href="data-types.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 3 4 5 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-types.html#cb29-1" aria-hidden="true" tabindex="-1"></a>five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb29-2"><a href="data-types.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="data-types.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adds one to each element in vector</span></span>
+<span id="cb29-4"><a href="data-types.html#cb29-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] 2 3 4 5 6</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-types.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># also adds one to each element in vector</span></span>
+<span id="cb31-2"><a href="data-types.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> five</span></code></pre></div>
+<pre><code>## [1] 2 3 4 5 6</code></pre>
 <p>Similar things will happen with the other mathematical operations above. Here are some more examples:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-types.html#cb17-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="cb17-2"><a href="data-types.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  3  6  9 12 15</span></span>
-<span id="cb17-3"><a href="data-types.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="data-types.html#cb17-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">-</span> <span class="dv">3</span></span>
-<span id="cb17-5"><a href="data-types.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -2 -1  0  1  2</span></span>
-<span id="cb17-6"><a href="data-types.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="data-types.html#cb17-7" aria-hidden="true" tabindex="-1"></a>five <span class="sc">/</span> <span class="dv">3</span></span>
-<span id="cb17-8"><a href="data-types.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3333333 0.6666667 1.0000000 1.3333333 1.6666667</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-types.html#cb33-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1]  3  6  9 12 15</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-types.html#cb35-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">-</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] -2 -1  0  1  2</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-types.html#cb37-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">/</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0.3333333 0.6666667 1.0000000 1.3333333 1.6666667</code></pre>
 <p>The other interesting case is what happens when you try to apply any of the same mathematical operators to two different vectors.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data-types.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just some random numbers</span></span>
-<span id="cb18-2"><a href="data-types.html#cb18-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">7</span>)</span>
-<span id="cb18-3"><a href="data-types.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="data-types.html#cb18-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> vec2</span>
-<span id="cb18-5"><a href="data-types.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  9 -1  7  5 12</span></span>
-<span id="cb18-6"><a href="data-types.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="data-types.html#cb18-7" aria-hidden="true" tabindex="-1"></a>five <span class="sc">-</span> vec2</span>
-<span id="cb18-8"><a href="data-types.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -7  5 -1  3 -2</span></span>
-<span id="cb18-9"><a href="data-types.html#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="data-types.html#cb18-10" aria-hidden="true" tabindex="-1"></a>five <span class="sc">*</span> vec2</span>
-<span id="cb18-11"><a href="data-types.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  8 -6 12  4 35</span></span>
-<span id="cb18-12"><a href="data-types.html#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="data-types.html#cb18-13" aria-hidden="true" tabindex="-1"></a>five <span class="sc">/</span> vec2</span>
-<span id="cb18-14"><a href="data-types.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  0.1250000 -0.6666667  0.7500000  4.0000000  0.7142857</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-types.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just some random numbers</span></span>
+<span id="cb39-2"><a href="data-types.html#cb39-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">7</span>)</span>
+<span id="cb39-3"><a href="data-types.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="data-types.html#cb39-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> vec2</span></code></pre></div>
+<pre><code>## [1]  9 -1  7  5 12</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-types.html#cb41-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">-</span> vec2</span></code></pre></div>
+<pre><code>## [1] -7  5 -1  3 -2</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-types.html#cb43-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">*</span> vec2</span></code></pre></div>
+<pre><code>## [1]  8 -6 12  4 35</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-types.html#cb45-1" aria-hidden="true" tabindex="-1"></a>five <span class="sc">/</span> vec2</span></code></pre></div>
+<pre><code>## [1]  0.1250000 -0.6666667  0.7500000  4.0000000  0.7142857</code></pre>
 <p>You can immediately see what happens here. For example, for <code>five + vec2</code>, the first element of <code>five</code> is added to the first element of <code>vec2</code>, the second element of <code>five</code> is added to the second element of <code>vec2</code> and so on. Similar things happen for each of the other mathematical operations too.</p>
 <p>There’s one other case that might be interesting to consider too. What happens if you try to apply these mathematical operations to two vectors of different lengths? Let’s find out</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-types.html#cb19-1" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)</span>
-<span id="cb19-2"><a href="data-types.html#cb19-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> vec3</span>
-<span id="cb19-3"><a href="data-types.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in five + vec3: longer object length is not a multiple of shorter object</span></span>
-<span id="cb19-4"><a href="data-types.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; length</span></span>
-<span id="cb19-5"><a href="data-types.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  3  8  5 10  7</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-types.html#cb47-1" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb47-2"><a href="data-types.html#cb47-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> vec3</span></code></pre></div>
+<pre><code>## Warning in five + vec3: longer object length is not a multiple of shorter object
+## length</code></pre>
+<pre><code>## [1]  3  8  5 10  7</code></pre>
 <p>You’ll notice that this computes <em>something</em> but it also issues a warning. What happens here is that the result is equal to the first element of <code>five</code> plus the first element of <code>vec3</code>, the second of <code>five</code> plus the second element of <code>vec3</code>, the third element of <code>five</code> plus <em>the first element of <code>vec3</code></em>, the fourth element of <code>five</code> plus <em>the second element of <code>vec3</code></em>, and the fifth element of <code>five</code> plus <em>the first element of <code>vec3</code></em>. What’s happening here is that, since <code>vec3</code> contains fewere elements that <code>five</code>, the elements of <code>vec3</code> are getting <em>recycled</em>. In my experience, this warning often indicates a coding mistake. There are many cases where I want to add the same number to all elements in a vector, and many other cases where I want to add two vectors that have the same length, but I cannot think of any cases where I would want to add two vectors the way that is being carried out here.</p>
 <p>The same sort of things will happen with subtraction, multiplication, and division (feel free to try it out).</p>
 </div>
-<div id="more-helpful-functions-in-r" class="section level3" number="2.5.3">
-<h3><span class="header-section-number">2.5.3</span> More helpful functions in R</h3>
+<div id="more-helpful-functions-in-r" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> More helpful functions in R<a href="data-types.html#more-helpful-functions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is definitely an incomplete list, but I’ll point you here to some more functions in R that are often helpful along with quick examples of them.</p>
 <ul>
 <li><p><code>seq</code> function — creates a “sequence” of numbers</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-types.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">7</span>)</span>
-<span id="cb20-2"><a href="data-types.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 3 4 5 6 7</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-types.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] 2 3 4 5 6 7</code></pre></li>
 <li><p><code>sum</code> function — computes the sum of a vector of numbers</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-types.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb21-2"><a href="data-types.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 14</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-types.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>))</span></code></pre></div>
+<pre><code>## [1] 14</code></pre></li>
 <li><p><code>sort</code>, <code>order</code>, and <code>rev</code> functions — functions for understanding the order or changing the order of a vector</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-types.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>))</span>
-<span id="cb22-2"><a href="data-types.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 3 5</span></span>
-<span id="cb22-3"><a href="data-types.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>))</span>
-<span id="cb22-4"><a href="data-types.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 1 3</span></span>
-<span id="cb22-5"><a href="data-types.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>))</span>
-<span id="cb22-6"><a href="data-types.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 5 1 3</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-types.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>))</span></code></pre></div>
+<pre><code>## [1] 1 3 5</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-types.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>))</span></code></pre></div>
+<pre><code>## [1] 2 1 3</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-types.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>))</span></code></pre></div>
+<pre><code>## [1] 5 1 3</code></pre></li>
 <li><p><code>%%</code> — modulo function (i.e., returns the remainder from dividing one number by another)</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-types.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">%%</span> <span class="dv">3</span></span>
-<span id="cb23-2"><a href="data-types.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb23-3"><a href="data-types.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">%%</span> <span class="dv">3</span></span>
-<span id="cb23-4"><a href="data-types.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-types.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">%%</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-types.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">%%</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre></li>
 </ul>
 <div class="practice">
 <p><span class="practice">Practice:</span> The function <code>seq</code> contains an optional argument <code>length.out</code>. Try running the following code and seeing if you can figure out what <code>length.out</code> does.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data-types.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">5</span>)</span>
-<span id="cb24-2"><a href="data-types.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">10</span>)</span>
-<span id="cb24-3"><a href="data-types.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="fl">1.10</span>,<span class="at">length.out=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-types.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">5</span>)</span>
+<span id="cb64-2"><a href="data-types.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">10</span>)</span>
+<span id="cb64-3"><a href="data-types.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="fl">1.10</span>,<span class="at">length.out=</span><span class="dv">20</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="other-types-of-vectors" class="section level3" number="2.5.4">
-<h3><span class="header-section-number">2.5.4</span> Other types of vectors</h3>
+<div id="other-types-of-vectors" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Other types of vectors<a href="data-types.html#other-types-of-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are other types of vectors in R too. Probably the main two other types of vectors are <strong>character vectors</strong> and <strong>logical vectors</strong>. We’ll talk about character vectors here and defer logical vectors until later. Character vectors are often referred to as <strong>strings</strong>.</p>
 <p>We can create a character vector as follows</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-types.html#cb25-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="ot">&lt;-</span> <span class="st">&quot;econometrics&quot;</span></span>
-<span id="cb25-2"><a href="data-types.html#cb25-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="ot">&lt;-</span> <span class="st">&quot;class&quot;</span></span>
-<span id="cb25-3"><a href="data-types.html#cb25-3" aria-hidden="true" tabindex="-1"></a>string1</span>
-<span id="cb25-4"><a href="data-types.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;econometrics&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-types.html#cb65-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="ot">&lt;-</span> <span class="st">&quot;econometrics&quot;</span></span>
+<span id="cb65-2"><a href="data-types.html#cb65-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="ot">&lt;-</span> <span class="st">&quot;class&quot;</span></span>
+<span id="cb65-3"><a href="data-types.html#cb65-3" aria-hidden="true" tabindex="-1"></a>string1</span></code></pre></div>
+<pre><code>## [1] &quot;econometrics&quot;</code></pre>
 <p>The above code creates two character vectors and then prints the first one.</p>
 <div class="side-comment">
-<p><span class="side-comment">Side Comment</span> <code>c</code> stands for “concatenate.” Concatenate is a computer science word that means to combine two vectors. Probably the most well known version of this is “string concatenation” that combines two vectors of characters. Here is an example of string concatenation.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-types.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(string1, string2)</span>
-<span id="cb26-2"><a href="data-types.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;econometrics&quot; &quot;class&quot;</span></span></code></pre></div>
+<p><span class="side-comment">Side Comment</span> <code>c</code> stands for “concatenate”. Concatenate is a computer science word that means to combine two vectors. Probably the most well known version of this is “string concatenation” that combines two vectors of characters. Here is an example of string concatenation.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-types.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(string1, string2)</span></code></pre></div>
+<pre><code>## [1] &quot;econometrics&quot; &quot;class&quot;</code></pre>
 <p>Sometimes string concatenation means to put two (or more strings) into the same string. This can be done using the <code>paste</code> command in R.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data-types.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(string1, string2)</span>
-<span id="cb27-2"><a href="data-types.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;econometrics class&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-types.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(string1, string2)</span></code></pre></div>
+<pre><code>## [1] &quot;econometrics class&quot;</code></pre>
 <p>Notice that <code>paste</code> puts in a space between <code>string1</code> and <code>string2</code>. For practice, see if you can find an argument to the <code>paste</code> function that allows you to remove the space between the two strings.</p>
 </div>
 </div>
-<div id="data-frames" class="section level3" number="2.5.5">
-<h3><span class="header-section-number">2.5.5</span> Data Frames</h3>
+<div id="data-frames" class="section level3 hasAnchor" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> Data Frames<a href="data-types.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another very important type of object in R is the <strong>data frame</strong>. I think it is helpful to think of a data frame as being very similar to an Excel spreadsheet — sort of like a matrix or a two-dimensional array. Each row typically corresponds to a particular observation, and each column typically provides the value of a particular variable for that observation.</p>
 <p>Just to give a simple example, suppose that we had firm-level data about the name of the firm, what industry a firm was in, what county they were located in, and their number of employees. I created a data frame like this (it is totally made up, BTW) and show it to you next</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-types.html#cb28-1" aria-hidden="true" tabindex="-1"></a>firm_data</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-types.html#cb71-1" aria-hidden="true" tabindex="-1"></a>firm_data</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -539,39 +530,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> If you are following along on R, I created this data frame using the following code</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-types.html#cb29-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name=</span><span class="fu">c</span>(<span class="st">&quot;ABC Manufacturing&quot;</span>, <span class="st">&quot;Martin</span><span class="sc">\&#39;</span><span class="st">s Muffins&quot;</span>, <span class="st">&quot;Down Home Appliances&quot;</span>, <span class="st">&quot;Classic City Widgets&quot;</span>, <span class="st">&quot;Watkinsville Diner&quot;</span>),</span>
-<span id="cb29-2"><a href="data-types.html#cb29-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">industry=</span><span class="fu">c</span>(<span class="st">&quot;Manufacturing&quot;</span>, <span class="st">&quot;Food Services&quot;</span>, <span class="st">&quot;Manufacturing&quot;</span>, <span class="st">&quot;Manufacturing&quot;</span>, <span class="st">&quot;Food Services&quot;</span>),</span>
-<span id="cb29-3"><a href="data-types.html#cb29-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">county=</span><span class="fu">c</span>(<span class="st">&quot;Clarke&quot;</span>, <span class="st">&quot;Oconee&quot;</span>, <span class="st">&quot;Clarke&quot;</span>, <span class="st">&quot;Clarke&quot;</span>, <span class="st">&quot;Oconee&quot;</span>),</span>
-<span id="cb29-4"><a href="data-types.html#cb29-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">employees=</span><span class="fu">c</span>(<span class="dv">531</span>, <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">211</span>, <span class="dv">25</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-types.html#cb72-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name=</span><span class="fu">c</span>(<span class="st">&quot;ABC Manufacturing&quot;</span>, <span class="st">&quot;Martin</span><span class="sc">\&#39;</span><span class="st">s Muffins&quot;</span>, <span class="st">&quot;Down Home Appliances&quot;</span>, <span class="st">&quot;Classic City Widgets&quot;</span>, <span class="st">&quot;Watkinsville Diner&quot;</span>),</span>
+<span id="cb72-2"><a href="data-types.html#cb72-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">industry=</span><span class="fu">c</span>(<span class="st">&quot;Manufacturing&quot;</span>, <span class="st">&quot;Food Services&quot;</span>, <span class="st">&quot;Manufacturing&quot;</span>, <span class="st">&quot;Manufacturing&quot;</span>, <span class="st">&quot;Food Services&quot;</span>),</span>
+<span id="cb72-3"><a href="data-types.html#cb72-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">county=</span><span class="fu">c</span>(<span class="st">&quot;Clarke&quot;</span>, <span class="st">&quot;Oconee&quot;</span>, <span class="st">&quot;Clarke&quot;</span>, <span class="st">&quot;Clarke&quot;</span>, <span class="st">&quot;Oconee&quot;</span>),</span>
+<span id="cb72-4"><a href="data-types.html#cb72-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">employees=</span><span class="fu">c</span>(<span class="dv">531</span>, <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">211</span>, <span class="dv">25</span>))</span></code></pre></div>
 </div>
 <p>Often, we’ll like to access a particular column in a data frame. For example, you might want to calculate the average number of employees across all the firms in our data.</p>
 <p>Typically, the easiest way to do this, is to use the <strong>accessor</strong> symbol, which is <code>$</code> in R. This will make more sense with an example:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-types.html#cb30-1" aria-hidden="true" tabindex="-1"></a>firm_data<span class="sc">$</span>employees</span>
-<span id="cb30-2"><a href="data-types.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 531   6  15 211  25</span></span></code></pre></div>
-<p><code>firm_data$employees</code> just provides the column called “employees” in the data frame called “firm_data.” You can also notice that <code>firm_data$employees</code> is just a numeric vector. This means that you can apply any of the functions that we have been covering on it</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-types.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(firm_data<span class="sc">$</span>employees)</span>
-<span id="cb31-2"><a href="data-types.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 157.6</span></span>
-<span id="cb31-3"><a href="data-types.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="data-types.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(firm_data<span class="sc">$</span>employees)</span>
-<span id="cb31-5"><a href="data-types.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.274762 1.791759 2.708050 5.351858 3.218876</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-types.html#cb73-1" aria-hidden="true" tabindex="-1"></a>firm_data<span class="sc">$</span>employees</span></code></pre></div>
+<pre><code>## [1] 531   6  15 211  25</code></pre>
+<p><code>firm_data$employees</code> just provides the column called “employees” in the data frame called “firm_data”. You can also notice that <code>firm_data$employees</code> is just a numeric vector. This means that you can apply any of the functions that we have been covering on it</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-types.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(firm_data<span class="sc">$</span>employees)</span></code></pre></div>
+<pre><code>## [1] 157.6</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-types.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(firm_data<span class="sc">$</span>employees)</span></code></pre></div>
+<pre><code>## [1] 6.274762 1.791759 2.708050 5.351858 3.218876</code></pre>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> Notice that the function <code>mean</code> and <code>log</code> behave differently. <code>mean</code> calculates the average over all the elements in the vector <code>firm_data$employees</code> and therefore returns a single number. <code>log</code> calculates the logarithm of each element in the vector <code>firm_data$employees</code> and therefore returns a numeric vector with five elements.</p>
 </div>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span></p>
 <p>The <code>$</code> is not the only way to access the elements in a data frame. You can also access them by their position. For example, if you want whatever is in the third row and second column of the data frame, you can get it by</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-types.html#cb32-1" aria-hidden="true" tabindex="-1"></a>firm_data[<span class="dv">3</span>,<span class="dv">2</span>]</span>
-<span id="cb32-2"><a href="data-types.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Manufacturing&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-types.html#cb79-1" aria-hidden="true" tabindex="-1"></a>firm_data[<span class="dv">3</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Manufacturing&quot;</code></pre>
 <p>Sometimes it is also convenient to recover a particular row or column by its position in the data frame. Here is an example of recovering the entire fourth row</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-types.html#cb33-1" aria-hidden="true" tabindex="-1"></a>firm_data[<span class="dv">4</span>,]</span>
-<span id="cb33-2"><a href="data-types.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry county employees</span></span>
-<span id="cb33-3"><a href="data-types.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing Clarke       211</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="data-types.html#cb81-1" aria-hidden="true" tabindex="-1"></a>firm_data[<span class="dv">4</span>,]</span></code></pre></div>
+<pre><code>##                   name      industry county employees
+## 4 Classic City Widgets Manufacturing Clarke       211</code></pre>
 <p>Notice that you just leave the “column index” (which is the second one) blank</p>
 </div>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> One other thing that sometimes takes some getting used to is that, for programming in general, you have to be very precise. Suppose you were to make a very small typo. R is not going to understand what you mean. See if you can spot the typo in the next line of code.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-types.html#cb34-1" aria-hidden="true" tabindex="-1"></a>firm_data<span class="sc">$</span>employes</span>
-<span id="cb34-2"><a href="data-types.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-types.html#cb83-1" aria-hidden="true" tabindex="-1"></a>firm_data<span class="sc">$</span>employes</span></code></pre></div>
+<pre><code>## NULL</code></pre>
 </div>
 <p>A few more useful functions for working with data frames are:</p>
 <ul>
@@ -579,52 +569,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>colnames</code> and <code>rownames</code> — returns the names of the columns or rows</p></li>
 </ul>
 </div>
-<div id="lists" class="section level3" number="2.5.6">
-<h3><span class="header-section-number">2.5.6</span> Lists</h3>
-<p>Vectors and data frames are the main two types of objects that we’ll use this semester, but let me give you a quick overview of a few other types of objects. Let’s start with <strong>lists</strong>. Lists are very generic in the sense that they can carry around complicated data. If you are familiar with any object oriented programming language like Java or C++, they have the flavor of an “object,” in the object-oriented sense.</p>
+<div id="lists" class="section level3 hasAnchor" number="2.5.6">
+<h3><span class="header-section-number">2.5.6</span> Lists<a href="data-types.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vectors and data frames are the main two types of objects that we’ll use this semester, but let me give you a quick overview of a few other types of objects. Let’s start with <strong>lists</strong>. Lists are very generic in the sense that they can carry around complicated data. If you are familiar with any object oriented programming language like Java or C++, they have the flavor of an “object”, in the object-oriented sense.</p>
 <p>I’m not sure if we will see any examples this semester where you <em>have</em> to use a list. But here is an example. Suppose that we wanted to put the vector that we created earlier <code>five</code> and the data frame that we created earlier <code>firm_data</code> into the same object. We could do it as follows</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-types.html#cb35-1" aria-hidden="true" tabindex="-1"></a>unusual_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">numbers=</span>five, <span class="at">df=</span>firm_data)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="data-types.html#cb85-1" aria-hidden="true" tabindex="-1"></a>unusual_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">numbers=</span>five, <span class="at">df=</span>firm_data)</span></code></pre></div>
 <p>You can access the elements of a list in a few different ways. Sometimes it is convenient to access them via the <code>$</code></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-types.html#cb36-1" aria-hidden="true" tabindex="-1"></a>unusual_list<span class="sc">$</span>numbers</span>
-<span id="cb36-2"><a href="data-types.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-types.html#cb86-1" aria-hidden="true" tabindex="-1"></a>unusual_list<span class="sc">$</span>numbers</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>Other times, it is convenient to access them via their position in the list</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-types.html#cb37-1" aria-hidden="true" tabindex="-1"></a>unusual_list[[<span class="dv">2</span>]] <span class="co"># notice the double brackets</span></span>
-<span id="cb37-2"><a href="data-types.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry county employees</span></span>
-<span id="cb37-3"><a href="data-types.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    ABC Manufacturing Manufacturing Clarke       531</span></span>
-<span id="cb37-4"><a href="data-types.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Martin&#39;s Muffins Food Services Oconee         6</span></span>
-<span id="cb37-5"><a href="data-types.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Down Home Appliances Manufacturing Clarke        15</span></span>
-<span id="cb37-6"><a href="data-types.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing Clarke       211</span></span>
-<span id="cb37-7"><a href="data-types.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   Watkinsville Diner Food Services Oconee        25</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-types.html#cb88-1" aria-hidden="true" tabindex="-1"></a>unusual_list[[<span class="dv">2</span>]] <span class="co"># notice the double brackets</span></span></code></pre></div>
+<pre><code>##                   name      industry county employees
+## 1    ABC Manufacturing Manufacturing Clarke       531
+## 2     Martin&#39;s Muffins Food Services Oconee         6
+## 3 Down Home Appliances Manufacturing Clarke        15
+## 4 Classic City Widgets Manufacturing Clarke       211
+## 5   Watkinsville Diner Food Services Oconee        25</code></pre>
 </div>
-<div id="matrices" class="section level3" number="2.5.7">
-<h3><span class="header-section-number">2.5.7</span> Matrices</h3>
+<div id="matrices" class="section level3 hasAnchor" number="2.5.7">
+<h3><span class="header-section-number">2.5.7</span> Matrices<a href="data-types.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Matrices are very similar to data frames, but the data should all be of the same type. Matrices are very useful in some numerical calculations that are beyond the scope of this class. Here is an example of a matrix.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-types.html#cb38-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb38-2"><a href="data-types.html#cb38-2" aria-hidden="true" tabindex="-1"></a>mat</span>
-<span id="cb38-3"><a href="data-types.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1] [,2]</span></span>
-<span id="cb38-4"><a href="data-types.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1    2</span></span>
-<span id="cb38-5"><a href="data-types.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    3    4</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-types.html#cb90-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb90-2"><a href="data-types.html#cb90-2" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4</code></pre>
 <p>You can access elements of a matrix by their position in the matrix, just like for the data frame above.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-types.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first row, second column</span></span>
-<span id="cb39-2"><a href="data-types.html#cb39-2" aria-hidden="true" tabindex="-1"></a>mat[<span class="dv">1</span>,<span class="dv">2</span>]</span>
-<span id="cb39-3"><a href="data-types.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span>
-<span id="cb39-4"><a href="data-types.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows in second column</span></span>
-<span id="cb39-5"><a href="data-types.html#cb39-5" aria-hidden="true" tabindex="-1"></a>mat[,<span class="dv">2</span>] </span>
-<span id="cb39-6"><a href="data-types.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-types.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first row, second column</span></span>
+<span id="cb92-2"><a href="data-types.html#cb92-2" aria-hidden="true" tabindex="-1"></a>mat[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-types.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows in second column</span></span>
+<span id="cb94-2"><a href="data-types.html#cb94-2" aria-hidden="true" tabindex="-1"></a>mat[,<span class="dv">2</span>] </span></code></pre></div>
+<pre><code>## [1] 2 4</code></pre>
 </div>
-<div id="factors" class="section level3" number="2.5.8">
-<h3><span class="header-section-number">2.5.8</span> Factors</h3>
+<div id="factors" class="section level3 hasAnchor" number="2.5.8">
+<h3><span class="header-section-number">2.5.8</span> Factors<a href="data-types.html#factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes variables in economics are <strong>categorical</strong>. This sort of variable is somewhat between a numeric variable and a string. In <code>R</code>, categorical variables are called <strong>factors</strong>.</p>
 <p>A good example of a categorical variable is <code>firm_data$industry</code>. It tells you the “category” of the industry that a firm is in.</p>
 <p>Oftentimes, we may have to tell R that a variable is a “factor” rather than just a string. Let’s create a variable called <code>industry</code> that contains the industry from <code>firm_data</code> but as a factor.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-types.html#cb40-1" aria-hidden="true" tabindex="-1"></a>industry <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(firm_data<span class="sc">$</span>industry)</span>
-<span id="cb40-2"><a href="data-types.html#cb40-2" aria-hidden="true" tabindex="-1"></a>industry</span>
-<span id="cb40-3"><a href="data-types.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Manufacturing Food Services Manufacturing Manufacturing Food Services</span></span>
-<span id="cb40-4"><a href="data-types.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Food Services Manufacturing</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-types.html#cb96-1" aria-hidden="true" tabindex="-1"></a>industry <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(firm_data<span class="sc">$</span>industry)</span>
+<span id="cb96-2"><a href="data-types.html#cb96-2" aria-hidden="true" tabindex="-1"></a>industry</span></code></pre></div>
+<pre><code>## [1] Manufacturing Food Services Manufacturing Manufacturing Food Services
+## Levels: Food Services Manufacturing</code></pre>
 <p>A useful package for working with factor variables is the <code>forcats</code> package.</p>
 </div>
-<div id="understanding-an-object-in-r" class="section level3" number="2.5.9">
-<h3><span class="header-section-number">2.5.9</span> Understanding an object in R</h3>
+<div id="understanding-an-object-in-r" class="section level3 hasAnchor" number="2.5.9">
+<h3><span class="header-section-number">2.5.9</span> Understanding an object in R<a href="data-types.html#understanding-an-object-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes you may be in the case where there is a variable where you don’t know what exactly it contains. Some functions that are helpful in this case are</p>
 <ul>
 <li><p><code>class</code> — tells you, err, the class of an object (i.e., its “type”)</p></li>
@@ -632,23 +622,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>str</code> — stands for “structure” of an object</p></li>
 </ul>
 <p>Let’s try these out</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-types.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(firm_data)</span>
-<span id="cb41-2"><a href="data-types.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;data.frame&quot;</span></span>
-<span id="cb41-3"><a href="data-types.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># typically would show the first five rows of a data frame,</span></span>
-<span id="cb41-4"><a href="data-types.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but that is the whole data frame here</span></span>
-<span id="cb41-5"><a href="data-types.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(firm_data) </span>
-<span id="cb41-6"><a href="data-types.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry county employees</span></span>
-<span id="cb41-7"><a href="data-types.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    ABC Manufacturing Manufacturing Clarke       531</span></span>
-<span id="cb41-8"><a href="data-types.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Martin&#39;s Muffins Food Services Oconee         6</span></span>
-<span id="cb41-9"><a href="data-types.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Down Home Appliances Manufacturing Clarke        15</span></span>
-<span id="cb41-10"><a href="data-types.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing Clarke       211</span></span>
-<span id="cb41-11"><a href="data-types.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   Watkinsville Diner Food Services Oconee        25</span></span>
-<span id="cb41-12"><a href="data-types.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(firm_data)</span>
-<span id="cb41-13"><a href="data-types.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    5 obs. of  4 variables:</span></span>
-<span id="cb41-14"><a href="data-types.html#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name     : chr  &quot;ABC Manufacturing&quot; &quot;Martin&#39;s Muffins&quot; &quot;Down Home Appliances&quot; &quot;Classic City Widgets&quot; ...</span></span>
-<span id="cb41-15"><a href="data-types.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ industry : chr  &quot;Manufacturing&quot; &quot;Food Services&quot; &quot;Manufacturing&quot; &quot;Manufacturing&quot; ...</span></span>
-<span id="cb41-16"><a href="data-types.html#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ county   : chr  &quot;Clarke&quot; &quot;Oconee&quot; &quot;Clarke&quot; &quot;Clarke&quot; ...</span></span>
-<span id="cb41-17"><a href="data-types.html#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ employees: num  531 6 15 211 25</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-types.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(firm_data)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-types.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># typically would show the first five rows of a data frame,</span></span>
+<span id="cb100-2"><a href="data-types.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but that is the whole data frame here</span></span>
+<span id="cb100-3"><a href="data-types.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(firm_data) </span></code></pre></div>
+<pre><code>##                   name      industry county employees
+## 1    ABC Manufacturing Manufacturing Clarke       531
+## 2     Martin&#39;s Muffins Food Services Oconee         6
+## 3 Down Home Appliances Manufacturing Clarke        15
+## 4 Classic City Widgets Manufacturing Clarke       211
+## 5   Watkinsville Diner Food Services Oconee        25</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-types.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(firm_data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  4 variables:
+##  $ name     : chr  &quot;ABC Manufacturing&quot; &quot;Martin&#39;s Muffins&quot; &quot;Down Home Appliances&quot; &quot;Classic City Widgets&quot; ...
+##  $ industry : chr  &quot;Manufacturing&quot; &quot;Food Services&quot; &quot;Manufacturing&quot; &quot;Manufacturing&quot; ...
+##  $ county   : chr  &quot;Clarke&quot; &quot;Oconee&quot; &quot;Clarke&quot; &quot;Clarke&quot; ...
+##  $ employees: num  531 6 15 211 25</code></pre>
 <div class="practice">
 <p><span class="practice">Practice:</span> Try running <code>class</code>, <code>head</code>, and <code>str</code> on the vector <code>five</code> that we created earlier.</p>
 </div>
@@ -720,7 +710,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

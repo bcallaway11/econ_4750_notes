@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.1 Setting up R | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.1 Setting up R | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="statistical-programming.html"/>
 <link rel="next" href="installing-r-packages.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,10 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -369,11 +366,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="setting-up-r" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Setting up R</h2>
+<div id="setting-up-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Setting up R<a href="setting-up-r.html#setting-up-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This section covers how to set up R and RStudio and then what RStudio will look like when you open it up.</p>
-<div id="what-is-r" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> What is R?</h3>
+<div id="what-is-r" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> What is R?<a href="setting-up-r.html#what-is-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Related Reading: IDS 1.1</p>
 <p>R is a statistical programming language. This is important for two reasons</p>
 <ul>
@@ -388,25 +385,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>StackOverflow</p></li>
 </ul>
 </div>
-<div id="downloading-r" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Downloading R</h3>
+<div id="downloading-r" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Downloading R<a href="setting-up-r.html#downloading-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will use R (<a href="https://www.r-project.org/">https://www.r-project.org/</a>) to analyze data. R is freely available and available across platforms. You should go ahead and download R for your personal computer as soon as possible — this should be relatively straightforward. It is also available at most computer labs on campus.</p>
 </div>
-<div id="rstudio" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> RStudio</h3>
+<div id="rstudio" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> RStudio<a href="setting-up-r.html#rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Base <code>R</code> comes with a lightweight development environment (i.e., a place to write and execute code), but most folks prefer RStudio as it has more features. You can download it here: <a href="https://www.rstudio.com/products/rstudio/download/#download">https://www.rstudio.com/products/rstudio/download/#download</a>; choose the free version based on your operating system (Linux, Windows, Mac, etc.).</p>
 </div>
-<div id="rstudio-development-environment" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> RStudio Development Environment</h3>
+<div id="rstudio-development-environment" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> RStudio Development Environment<a href="setting-up-r.html#rstudio-development-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Related Reading: IDS 1.4</p>
 <p>When you first open Rstudio, it will look something like this</p>
 <p><img src="open_rstudio.png"></p>
 <p>Typically, we will write <strong>scripts</strong>, basically just as a way to save the code that we have written. Go to <code>File -&gt; New File -&gt; R Script</code>. This will open up a new pane, and your screen should look something like this</p>
 <p><img src="rstudio_script.png"></p>
-<p>Let’s look around here. The top left pane is called the “Source Pane.” It is where you can write an R script. Try typing</p>
+<p>Let’s look around here. The top left pane is called the “Source Pane”. It is where you can write an R script. Try typing</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="setting-up-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span></code></pre></div>
 <p>in that pane. This is a very simple R program. Now, type <code>Ctrl+s</code> to save the script. This will likely prompt you to provide a name for the script. You can call it <code>first_script.R</code> or something like that. The only thing that really matters is that the file name ends in “.R” (although you should at least give the file a reasonably descriptive name).</p>
-<p>Now let’s move to the bottom left pane. This is called the “Console Pane.” It is where the actual computations happen in R (Notice that, although we have already saved our first script, we haven’t actually run any code). Beside the blue arrow in that pane, try typing</p>
+<p>Now let’s move to the bottom left pane. This is called the “Console Pane”. It is where the actual computations happen in R (Notice that, although we have already saved our first script, we haven’t actually run any code). Beside the blue arrow in that pane, try typing</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="setting-up-r.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
 <p>and then press <code>ENTER</code>. This time you should actually see the answer.</p>
 <p>Now, let’s go back to the Source pane. Often, it is convenient to run R programs line by line (mainly in order for it to be easy for you to digest the results). You can do this by pressing <code>Ctrl+ENTER</code> on any line in your script for it to run next. Try this on the first line of your script file where we previously typed <code>1+1</code>. This code should now run, and you should be able to see the result down in the bottom left Console pane.</p>
@@ -479,7 +476,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

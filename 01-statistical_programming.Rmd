@@ -774,12 +774,12 @@ Because we will often be working with data, we will often be performing the same
 
 Not all functions are vectorized though.  Let's go back to our function earlier called `large_or_small`.  This took in the number of employees at a firm and then printed "large" if the firm had more than 100 employees and "small" otherwise.  Let's see what happens if we call this function on a vector of employees (Ideally, we'd like the function to be applied to each element in the vector).
 
-```{r}
+```{r, error=TRUE}
 employees <- firm_data$employees
 employees
 large_or_small(employees)
 ```
-This is not what we wanted to have happen.  It just reported whether or not the first firm was large or small, and then issued a warning that basically said that something may be going wrong here.  What's going on here is that the function `large_or_small` is not vectorized.
+This is not what we wanted to have happen. Instead of determining whether each firm was large or small, we get an error basically said that something may be going wrong here.  What's going on here is that the function `large_or_small` is not vectorized.
 
 In order to vectorize a function, we can use one of a number of "apply" functions in R.  I'll list them here
 
