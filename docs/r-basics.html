@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -376,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Related Reading: IDS 2.2</p>
 <p>The very first step to writing code that can actually do something is to able to store things. In R, we store things in <strong>objects</strong> (perhaps sometimes I will also use the word variables).</p>
 <p>Earlier, we used R to calculate <span class="math inline">\(1+1\)</span>. Let’s go back to the Source pane (top left pane in RStudio) and type</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-basics.html#cb12-1" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-basics.html#cb6-1" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <p>Press <code>Ctrl+ENTER</code> on this line to run it. You should see the same line down in the Console now.</p>
 <p>Let’s think carefully about what is happening here</p>
 <ul>
@@ -392,8 +394,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="practice">Practice:</span> Try creating variable called <code>five_squared</code> that is equal to <span class="math inline">\(5 \times 5\)</span> (multiplication in R is done using the <code>*</code> symbol).</p>
 </div>
 <p>There are a number of reasons why you might like to create an object in R. Perhaps the main one is so that you can reuse it. Let’s try multiplying <code>answer</code> by <span class="math inline">\(3\)</span>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-basics.html#cb13-1" aria-hidden="true" tabindex="-1"></a>answer<span class="sc">*</span><span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-basics.html#cb7-1" aria-hidden="true" tabindex="-1"></a>answer<span class="sc">*</span><span class="dv">3</span></span>
+<span id="cb7-2"><a href="r-basics.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p>If you wanted, you could also save this as its own variable too.</p>
 </div>
 <div id="workspace" class="section level3 hasAnchor" number="2.3.2">
@@ -414,12 +416,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>On the course website, I posted three files <code>firm.data.csv</code>, <code>firm_data.RData</code>, and <code>firm_data.dta</code>. All three of these contain exactly the same small, fictitious dataset, but are saved in different formats.</p>
 <p>Probably the easiest way to import data in R is through the Files pane on the bottom right. In particular, suppose that you saved <code>firm_data.csv</code> in your “Downloads” folder. Try clicking the “…” (which, in the screenshot of my workspace above, is right beside the folder that I am in which is called “Detailed Course Notes”), then select your Downloads folder. This will switch the content of the Files pane to show the files in your Downloads folder. Now click <code>firm_data.csv</code>. This will open a menu to import the data. <code>R</code> is quite good at recognizing different types of data files and importing them, so this same procedure will work for <code>firm_data.RData</code> and <code>firm_data.dta</code> even though they are different types of files.</p>
 <p>Next, let’s discuss how to import data by writing computer code (by the way, this is actually what is happening behind the scenes when you import data through the user interface as described above). “csv” stands for “Comma Separated Values”. This is basically a plain text file (e.g., try opening it in Notepad or Text Editor) where the columns are separated by commas and the rows are separated by being on different lines. Most any computer program can read this type of file; that is, you could easily import this file into, say, R, Excel, or Stata. You can import a <code>.csv</code> file using <code>R</code> code by</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-basics.html#cb15-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;firm_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-basics.html#cb8-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;firm_data.csv&quot;</span>)</span></code></pre></div>
 <p>An <code>RData</code> file is the native format for saving data in <code>R</code>. You can import an <code>RData</code> file using the following command:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-basics.html#cb16-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">&quot;firm_data.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-basics.html#cb9-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">&quot;firm_data.RData&quot;</span>)</span></code></pre></div>
 <p>Similarly, a <code>dta</code> file the native format for saving data in Stata. You can import a <code>dta</code> file using the following command:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-basics.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># external package for reading dta file</span></span>
-<span id="cb17-2"><a href="r-basics.html#cb17-2" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;firm_data.dta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-basics.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># external package for reading dta file</span></span>
+<span id="cb10-2"><a href="r-basics.html#cb10-2" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;firm_data.dta&quot;</span>)</span></code></pre></div>
 <p>In all three cases above, what we have done is to create a new <code>data.frame</code> (a <code>data.frame</code> is a type of object that we’ll talk about in detail later on in this chapter) called <code>firm_data</code> that contains the data that we were trying to load.</p>
 </div>
 </div>

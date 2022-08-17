@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.1 Nonparametric Regression / Curse of Dimensionality | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.1 Nonparametric Regression / Curse of Dimensionality | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="linear-regression.html"/>
 <link rel="next" href="linear-regression-models.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,13 +369,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="nonparametric-regression-curse-of-dimensionality" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Nonparametric Regression / Curse of Dimensionality</h2>
+<div id="nonparametric-regression-curse-of-dimensionality" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Nonparametric Regression / Curse of Dimensionality<a href="nonparametric-regression-curse-of-dimensionality.html#nonparametric-regression-curse-of-dimensionality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you knew nothing about regressions, it would seem natural to try to estimate <span class="math inline">\(\mathbb{E}[Y|X_1=x_1,X_2=x_2,X_3=x_3]\)</span> by just calculating the average of <span class="math inline">\(Y\)</span> among observations that have values of the regressors equal to <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span> (if these are discrete) or that are, in some sense, close to <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span> (if these are continuous).</p>
 <p>This is actually a pretty attractive idea.</p>
 <p>However, you run into the issue that it is practically challenging to do this when the number of regressors starts to get large (i.e., if you have 10 regressors, generally, you would need tons of data to be able to find a suitable number of observations that are “close” to any particular value of the regressors).</p>
 <p>Let me give a more concrete example. Suppose that you were trying to estimate mean house price as a function of a house’s characteristics. If the only characteristic of the house that you knew was the number of bedrooms, then it would be pretty easy to just calculate the average house price among houses with 2, 3, 4, etc. bedrooms. Now suppose that you knew both the number of bedrooms and the number of square feet. In this case, if we wanted to estimate mean house prices as a function of these characteristics, we would need to find houses that have the same number of bedrooms and (at least) a similar number of square feet. This starts to “slice” the data that you have more thinly. If you continue with this idea (suppose that you want to estimate mean house price as a function of number of bedrooms, number of bathrooms, number of square feet, what year the house was built in, whether or not it has a basement, what zip code it is located in, etc.) then you will start to stretch your data extremely thin to the point that you may have very few relevant observations (or perhaps no relevant observations) for particular values of the characteristics.</p>
-<p>This issue is called the “curse of dimensionality.”</p>
+<p>This issue is called the “curse of dimensionality”.</p>
 <p>We will focus on linear models for <span class="math inline">\(\mathbb{E}[Y|X_1,X_2,X_3]\)</span> largely to get around the curse of dimensionality.</p>
 <div class="side-comment">
 <p>This idea of using observations that are very close in terms of characteristics in order to estimate a conditional expectation is called <strong>nonparametric</strong> econometrics/statistics. You can take entire courses (typically graduate-level) on this topic if you were interested. The reason that it is is called nonparametric is that it doesn’t involve making any functional form assumptions (like linearity) but the cost is that it would typically require many more observations (due to the curse of dimensionality).</p>
@@ -447,7 +447,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

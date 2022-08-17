@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.9 Omitted Variable Bias | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.9 Omitted Variable Bias | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="elasticities.html"/>
 <link rel="next" href="how-to-estimate-the-parameters-in-a-regression-model.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="omitted-variable-bias" class="section level2" number="4.9">
-<h2><span class="header-section-number">4.9</span> Omitted Variable Bias</h2>
+<div id="omitted-variable-bias" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Omitted Variable Bias<a href="omitted-variable-bias.html#omitted-variable-bias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 6.1</p>
 <p>Suppose that we are interested in the following regression model</p>
 <p><span class="math display">\[
@@ -418,7 +418,7 @@ which implies that <span class="math inline">\(\delta_1\)</span> (i.e., running 
 <p><span class="side-comment">Side-Comment:</span></p>
 <ul>
 <li><p>The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet. The same issues arise if we just say that we have some <em>regression of interest</em> but are unable to estimate it because some covariates are unobserved.</p></li>
-<li><p>The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the “causal effect,” but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.</p></li>
+<li><p>The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the “causal effect”, but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.</p></li>
 </ul>
 </div>
 </div>
@@ -488,7 +488,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

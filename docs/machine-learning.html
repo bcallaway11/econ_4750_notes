@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.3 Machine Learning | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.3 Machine Learning | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="model-selection.html"/>
 <link rel="next" href="binary-outcome-models.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="machine-learning" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Machine Learning</h2>
+<div id="machine-learning" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Machine Learning<a href="machine-learning.html#machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 14.1, 14.2, 14.6</p>
 <p>Some extra resources on estimating Lasso and Ridge regressions in R:</p>
 <ul>
@@ -408,8 +408,8 @@ where, to understand this decomposition, the first equality just adds and subtra
 <div class="side-comment">
 <p><span class="side-comment">Side-Comment:</span> Generally, you should “standardize” the regressors before implementing Lasso or Ridge regression. The <code>glmnet</code> package does this for you by default.</p>
 </div>
-<div id="lasso" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Lasso</h3>
+<div id="lasso" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Lasso<a href="machine-learning.html#lasso" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SW 14.3</p>
 <p>For Lasso, the penalty term is given by</p>
 <p><span class="math display">\[
@@ -418,8 +418,8 @@ where, to understand this decomposition, the first equality just adds and subtra
 The absolute value on each of the <span class="math inline">\(b_j\)</span> terms means that the penalty function gets larger for larger values of any <span class="math inline">\(b_j\)</span>. Since we are trying to minimize the objective function, this means that there is a “cost” to choosing a larger value of <span class="math inline">\(b_j\)</span> relative to OLS. Thus, Lasso estimates tend to be “shrunk” towards 0.</p>
 <p><span class="math inline">\(\lambda\)</span> is called a <strong>tuning parameter</strong> — larger values of <span class="math inline">\(\lambda\)</span> imply that the penalty term is more important. Notice that, if you send <span class="math inline">\(\lambda \rightarrow \infty\)</span>, then the penalty term will be so large that you would set all the parameters to be equal to 0. On the other hand, if you set <span class="math inline">\(\lambda=0\)</span>, then you will get the OLS estimates (because there will be no penalty in this case). In general, it is hard to know what is the “right” value for <span class="math inline">\(\lambda\)</span>, and it is typically chosen using cross validation (this will be done automatically for you using the <code>glmnet</code> package).</p>
 </div>
-<div id="ridge-regression" class="section level3" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Ridge Regression</h3>
+<div id="ridge-regression" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Ridge Regression<a href="machine-learning.html#ridge-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SW 14.4</p>
 <p>For Ridge, the penalty term is given by</p>
 <p><span class="math display">\[
@@ -434,28 +434,28 @@ Much of the discussion from Lasso applies here. The only difference is that the 
 <li><p>Lasso also performs “model selection” — that is, if you use the Lasso, many of the estimated parameters will be set equal to 0. This can sometimes be an advantage. Ridge (like OLS) will generally produce non-zero estimates of all parameters in the model.</p></li>
 </ul>
 </div>
-<div id="computation-9" class="section level3" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Computation</h3>
+<div id="computation-9" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Computation<a href="machine-learning.html#computation-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Computing Lasso and Ridge regressions is somewhat more complicated than most other things that we have computed this semester. The main <code>R</code> package for Lasso and Ridge regressions is the <code>glmnet</code> package. For some reason, the syntax of the package is somewhat different from, for example, the <code>lm</code> command. In my view, it is often easier to use the <code>glmnetUtils</code> package, which seems to be just a wrapper for <code>glmnet</code> but with functions that are analogous to <code>lm</code>.</p>
 <p>I’m just going to sketch here how you would use these functions to estimate a Lasso or Ridge regression. In the lab later on in this chapter, we’ll do a more concrete example. Suppose that you have access to a training dataset called <code>train</code> and a testing dataset called <code>test</code>, you can use the <code>glmnetUtils</code> package in the following way:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="machine-learning.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
-<span id="cb134-2"><a href="machine-learning.html#cb134-2" aria-hidden="true" tabindex="-1"></a>lasso_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, <span class="at">data=</span>train, <span class="at">use.model.frame=</span><span class="cn">TRUE</span>) <span class="co"># or whatever formula you want to use</span></span>
-<span id="cb134-3"><a href="machine-learning.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_model) <span class="co"># if you are interested in estimated coefficients</span></span>
-<span id="cb134-4"><a href="machine-learning.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lasso_model, <span class="at">newdata=</span>test) <span class="co"># get predictions</span></span>
-<span id="cb134-5"><a href="machine-learning.html#cb134-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-6"><a href="machine-learning.html#cb134-6" aria-hidden="true" tabindex="-1"></a>ridge_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, </span>
-<span id="cb134-7"><a href="machine-learning.html#cb134-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>train, </span>
-<span id="cb134-8"><a href="machine-learning.html#cb134-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">alpha=</span><span class="dv">0</span>,</span>
-<span id="cb134-9"><a href="machine-learning.html#cb134-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">use.model.frame=</span><span class="cn">TRUE</span>)</span>
-<span id="cb134-10"><a href="machine-learning.html#cb134-10" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(ridge_model)</span>
-<span id="cb134-11"><a href="machine-learning.html#cb134-11" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(ridge_model, <span class="at">newdata=</span>test)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="machine-learning.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
+<span id="cb137-2"><a href="machine-learning.html#cb137-2" aria-hidden="true" tabindex="-1"></a>lasso_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, <span class="at">data=</span>train, <span class="at">use.model.frame=</span><span class="cn">TRUE</span>) <span class="co"># or whatever formula you want to use</span></span>
+<span id="cb137-3"><a href="machine-learning.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_model) <span class="co"># if you are interested in estimated coefficients</span></span>
+<span id="cb137-4"><a href="machine-learning.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lasso_model, <span class="at">newdata=</span>test) <span class="co"># get predictions</span></span>
+<span id="cb137-5"><a href="machine-learning.html#cb137-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-6"><a href="machine-learning.html#cb137-6" aria-hidden="true" tabindex="-1"></a>ridge_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, </span>
+<span id="cb137-7"><a href="machine-learning.html#cb137-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>train, </span>
+<span id="cb137-8"><a href="machine-learning.html#cb137-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">alpha=</span><span class="dv">0</span>,</span>
+<span id="cb137-9"><a href="machine-learning.html#cb137-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">use.model.frame=</span><span class="cn">TRUE</span>)</span>
+<span id="cb137-10"><a href="machine-learning.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(ridge_model)</span>
+<span id="cb137-11"><a href="machine-learning.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(ridge_model, <span class="at">newdata=</span>test)</span></code></pre></div>
 <p>It’s worth making a couple of comments about this</p>
 <ul>
 <li><p>In terms of code, the only difference between the Lasso and Ridge, is that for Ridge, we added the extra argument <code>alpha=0</code>. The default value of <code>alpha</code> is 1, and that leads to a Lasso regression (which is why didn’t need to specify it for our Lasso estimates). If you are interested, you can read more details about this in the documentation for <code>glmnet</code> using <code>?glmnet</code>.</p></li>
 <li><p>Generally, if you are going to use Lasso or Ridge, then you would have many more regressors to include than just <code>X1 + X2 + X3</code>. One common way that you get more regressors is when you start to thinking about including higher order terms or interaction terms. One way to do this quickly is to use the <code>poly</code> function inside the formula. For example,</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="machine-learning.html#cb135-1" aria-hidden="true" tabindex="-1"></a>lasso_model2 <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> <span class="fu">poly</span>(X1, X2, X3, <span class="at">degree=</span><span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), </span>
-<span id="cb135-2"><a href="machine-learning.html#cb135-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data=</span>train, </span>
-<span id="cb135-3"><a href="machine-learning.html#cb135-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">use.model.frame=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="machine-learning.html#cb138-1" aria-hidden="true" tabindex="-1"></a>lasso_model2 <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> <span class="fu">poly</span>(X1, X2, X3, <span class="at">degree=</span><span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), </span>
+<span id="cb138-2"><a href="machine-learning.html#cb138-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data=</span>train, </span>
+<span id="cb138-3"><a href="machine-learning.html#cb138-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">use.model.frame=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p>would include all interactions between <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> as well as squared terms for each; if you wanted to include more interactions and cubic terms, you could specify <code>degree=3</code>.</p></li>
 </ul>
 </div>
@@ -526,7 +526,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

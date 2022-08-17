@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.3 Computation | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.3 Computation | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="linear-regression-models.html"/>
 <link rel="next" href="partial-effects.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,35 +369,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="computation" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Computation</h2>
+<div id="computation" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Computation<a href="computation.html#computation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Even if we know that <span class="math inline">\(\mathbb{E}[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3\)</span>, in general, we do not know the values of the population parameters (the <span class="math inline">\(\beta\)</span>’s). This is analogous to the framework in the previous chapter where we were interested in
 the population parameter <span class="math inline">\(\mathbb{E}[Y]\)</span> and estimated it by <span class="math inline">\(\bar{Y}\)</span>.</p>
 <p>In this section, we’ll discuss how to estimate <span class="math inline">\((\beta_0,\beta_1,\beta_2,\beta_3)\)</span> using <code>R</code>. We’ll refer to the estimated values of the parameters as <span class="math inline">\((\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3)\)</span>. As in the previous section, it will not be the case that the estimated <span class="math inline">\(\hat{\beta}\)</span>’s are exactly equal to the population <span class="math inline">\(\beta\)</span>’s. Later on in this chapter, we will establish properties like consistency (so that, as long as we have a large sample, the estimated <span class="math inline">\(\hat{\beta}\)</span>’s should be “close” to the population <span class="math inline">\(\beta\)</span>’s) and asymptotic normality (so that we can conduct inference).</p>
 <p>Also later on in this chapter, we’ll talk about how <code>R</code> itself actually makes these computations.</p>
 <p>The main function in <code>R</code> for estimating linear regressions is the <code>lm</code> function (<code>lm</code> stands for linear model). The key things to specify for running a regression in <code>R</code> are a <code>formula</code> argument which tells <code>lm</code> which variables are the outcome and which variables are the regressors and a <code>data</code> argument which tells the <code>lm</code> command what data we are using to estimate the regression. Let’s give an example using the <code>mtcars</code> data.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="computation.html#cb110-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data=</span>mtcars)</span></code></pre></div>
-<p>What this line of code does is to run a regression. The formula is <code>mpg ~ hp + wt</code>. In other words <code>mpg</code> (standing for miles per gallon) is the outcome, and we are running a regression on <code>hp</code> (horse power) and <code>wt</code> (weight). The <code>~</code> symbol is a “tilde.” In order to add regressors, we separate them with a <code>+</code>. The second argument <code>data=mtcars</code> says to use the <code>mtcars</code> data. All of the variables in the formula need to correspond to column names in the data. We saved the results of the regression in a variable called <code>reg</code>. It’s most common to report the results of the regression using the <code>summary</code> command.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="computation.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span>
-<span id="cb111-2"><a href="computation.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb111-3"><a href="computation.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb111-4"><a href="computation.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = mpg ~ hp + wt, data = mtcars)</span></span>
-<span id="cb111-5"><a href="computation.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb111-6"><a href="computation.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb111-7"><a href="computation.html#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Min     1Q Median     3Q    Max </span></span>
-<span id="cb111-8"><a href="computation.html#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -3.941 -1.600 -0.182  1.050  5.854 </span></span>
-<span id="cb111-9"><a href="computation.html#cb111-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb111-10"><a href="computation.html#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb111-11"><a href="computation.html#cb111-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb111-12"><a href="computation.html#cb111-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***</span></span>
-<span id="cb111-13"><a href="computation.html#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.03177    0.00903  -3.519  0.00145 ** </span></span>
-<span id="cb111-14"><a href="computation.html#cb111-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          -3.87783    0.63273  -6.129 1.12e-06 ***</span></span>
-<span id="cb111-15"><a href="computation.html#cb111-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb111-16"><a href="computation.html#cb111-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb111-17"><a href="computation.html#cb111-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb111-18"><a href="computation.html#cb111-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.593 on 29 degrees of freedom</span></span>
-<span id="cb111-19"><a href="computation.html#cb111-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 </span></span>
-<span id="cb111-20"><a href="computation.html#cb111-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="computation.html#cb113-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data=</span>mtcars)</span></code></pre></div>
+<p>What this line of code does is to run a regression. The formula is <code>mpg ~ hp + wt</code>. In other words <code>mpg</code> (standing for miles per gallon) is the outcome, and we are running a regression on <code>hp</code> (horse power) and <code>wt</code> (weight). The <code>~</code> symbol is a “tilde”. In order to add regressors, we separate them with a <code>+</code>. The second argument <code>data=mtcars</code> says to use the <code>mtcars</code> data. All of the variables in the formula need to correspond to column names in the data. We saved the results of the regression in a variable called <code>reg</code>. It’s most common to report the results of the regression using the <code>summary</code> command.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="computation.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span>
+<span id="cb114-2"><a href="computation.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb114-3"><a href="computation.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb114-4"><a href="computation.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = mpg ~ hp + wt, data = mtcars)</span></span>
+<span id="cb114-5"><a href="computation.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb114-6"><a href="computation.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb114-7"><a href="computation.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Min     1Q Median     3Q    Max </span></span>
+<span id="cb114-8"><a href="computation.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -3.941 -1.600 -0.182  1.050  5.854 </span></span>
+<span id="cb114-9"><a href="computation.html#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb114-10"><a href="computation.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb114-11"><a href="computation.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
+<span id="cb114-12"><a href="computation.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 37.22727    1.59879  23.285</span></span>
+<span id="cb114-13"><a href="computation.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.03177    0.00903  -3.519</span></span>
+<span id="cb114-14"><a href="computation.html#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          -3.87783    0.63273  -6.129</span></span>
+<span id="cb114-15"><a href="computation.html#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
+<span id="cb114-16"><a href="computation.html#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  &lt; 2e-16 ***</span></span>
+<span id="cb114-17"><a href="computation.html#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp           0.00145 ** </span></span>
+<span id="cb114-18"><a href="computation.html#cb114-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          1.12e-06 ***</span></span>
+<span id="cb114-19"><a href="computation.html#cb114-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb114-20"><a href="computation.html#cb114-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb114-21"><a href="computation.html#cb114-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
+<span id="cb114-22"><a href="computation.html#cb114-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
+<span id="cb114-23"><a href="computation.html#cb114-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb114-24"><a href="computation.html#cb114-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.593 on 29 degrees of freedom</span></span>
+<span id="cb114-25"><a href="computation.html#cb114-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 </span></span>
+<span id="cb114-26"><a href="computation.html#cb114-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</span></span></code></pre></div>
 <p>The main thing that this reports is the estimated parameters. Our estimate of the “Intercept” (i.e., this is <span class="math inline">\(\hat{\beta}_0\)</span>) is in the first row of the table; our estimate is <code>37.227</code>. The estimated coefficient on <code>hp</code> is <code>-0.0318</code>, and the estimated coefficient on <code>wt</code> is <code>-3.878</code>.</p>
 <p>You can also see standard errors for each estimated parameter, a t-statistic, and a p-value in the other columns. We will talk about these in more detail in the next section.</p>
 <p>For now, we’ll also ignore the information provided at the bottom of the summary.</p>
@@ -406,10 +412,10 @@ the population parameter <span class="math inline">\(\mathbb{E}[Y]\)</span> and 
   37.227 - 0.0318(120) - 3.878(2.5) = 23.716
 \]</span>
 Alternatively, there is a built-in function in <code>R</code> called <code>predict</code> that can be used to generate predicted values. We just need to specify the values that we would like to get predicted values for by passing in a data frame with the relevant columns though the <code>newdata</code> argument. For example,</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="computation.html#cb112-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">hp=</span><span class="dv">120</span>,<span class="at">wt=</span><span class="fl">2.5</span>))</span>
-<span id="cb112-2"><a href="computation.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pred,<span class="dv">3</span>)</span>
-<span id="cb112-3"><a href="computation.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1 </span></span>
-<span id="cb112-4"><a href="computation.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23.72</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="computation.html#cb115-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">hp=</span><span class="dv">120</span>,<span class="at">wt=</span><span class="fl">2.5</span>))</span>
+<span id="cb115-2"><a href="computation.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pred,<span class="dv">3</span>)</span>
+<span id="cb115-3"><a href="computation.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     1 </span></span>
+<span id="cb115-4"><a href="computation.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23.72</span></span></code></pre></div>
 <div class="side-comment">
 <p>A popular alternative to <code>R</code>’s <code>lm</code> function is the <code>lm_robust</code> function from the <code>estimatr</code> package. This provides different standard errors from the default standard errors provided by <code>lm</code> that are, at least in most applications in economics, typically a better choice — we’ll have a further discussion on this topic when we talk about inference later on in this chapter.</p>
 </div>
@@ -480,7 +486,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

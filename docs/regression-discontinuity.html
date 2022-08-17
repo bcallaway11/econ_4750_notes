@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.7 Regression Discontinuity | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.7 Regression Discontinuity | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="instrumental-variables.html"/>
 <link rel="next" href="lab-5-drunk-driving-laws.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="regression-discontinuity" class="section level2" number="6.7">
-<h2><span class="header-section-number">6.7</span> Regression Discontinuity</h2>
+<div id="regression-discontinuity" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Regression Discontinuity<a href="regression-discontinuity.html#regression-discontinuity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 13.4</p>
 <p>The final type of natural experiment that we will talk about is called <strong>regression discontinuity</strong>. The sort of natural experiment is available when there is a <strong>running variable</strong> with a threshold (i.e., cutoff) where individuals above the threshold are treated while individuals below the threshold are not treated. These sorts of thresholds/cutoffs are fairly common.</p>
 <p>Here are some examples:</p>
@@ -384,64 +384,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then, the idea is to compare outcomes among individuals that “barely” were treated relative to those that “barely” weren’t treated. By construction, this often has properties that are similar to an actual experiment as those that are just above the cutoff should have observed and unobserved characteristics that are the same as those just below the cutoff.</p>
 <p>Typically, regression discontinuity designs are implemented using a regression that includes a binary variable for participating in the treatment, the running variable itself, and the interaction between the running variable and the treatment, <em>using only observations that are “close” to the cutoff</em>. [What should be considered “close” to the cutoff is actually a hard choice and there are tons of papers suggesting various approaches to decide what “close” means — we’ll largely avoid this and just pick what we think is close.] The estimated coefficient on the treatment indicator variable is an estimate of the average effect of participating in the treatment among those individuals who are close to the cutoff.</p>
 <p>This will become clearer with an example.</p>
-<div id="example-causal-effect-of-alcohol-on-driving-deaths" class="section level3" number="6.7.1">
-<h3><span class="header-section-number">6.7.1</span> Example: Causal effect of Alcohol on Driving Deaths</h3>
+<div id="example-causal-effect-of-alcohol-on-driving-deaths" class="section level3 hasAnchor" number="6.7.1">
+<h3><span class="header-section-number">6.7.1</span> Example: Causal effect of Alcohol on Driving Deaths<a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this section, we’ll be interested in the causal effect of young adult alcohol consumption on the number of deaths in car accidents.</p>
 <p>The idea here will be to compare the number of deaths in car accidents that involve someone who is 21 or just over to the number of deaths in car accidents that involve someone who is just under 21. The reason to make this comparison is that alcohol consumption markedly increases when individuals turn 21 (due to that being the legal drinking age in the U.S.). If alcohol consumption increases car accident deaths, then we should also be able to detect a jump in the number of car accident deaths involving those who are just over 21.</p>
 <p>The data that we have consists of age groups by age up to a particular month (<code>agecell</code>) and the number of car accident deaths involving that age group (<code>mva</code>).</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="regression-discontinuity.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb151-2"><a href="regression-discontinuity.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mlda&quot;</span>, <span class="at">package=</span><span class="st">&quot;masteringmetrics&quot;</span>)</span>
-<span id="cb151-3"><a href="regression-discontinuity.html#cb151-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-4"><a href="regression-discontinuity.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="co"># drop some data with missing observations</span></span>
-<span id="cb151-5"><a href="regression-discontinuity.html#cb151-5" aria-hidden="true" tabindex="-1"></a>mlda <span class="ot">&lt;-</span> mlda[<span class="fu">complete.cases</span>(mlda),]</span>
-<span id="cb151-6"><a href="regression-discontinuity.html#cb151-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-7"><a href="regression-discontinuity.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create treated variable</span></span>
-<span id="cb151-8"><a href="regression-discontinuity.html#cb151-8" aria-hidden="true" tabindex="-1"></a>mlda<span class="sc">$</span>D <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(mlda<span class="sc">$</span>agecell <span class="sc">&gt;=</span> <span class="dv">21</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regression-discontinuity.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb154-2"><a href="regression-discontinuity.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;mlda&quot;</span>, <span class="at">package=</span><span class="st">&quot;masteringmetrics&quot;</span>)</span>
+<span id="cb154-3"><a href="regression-discontinuity.html#cb154-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-4"><a href="regression-discontinuity.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="co"># drop some data with missing observations</span></span>
+<span id="cb154-5"><a href="regression-discontinuity.html#cb154-5" aria-hidden="true" tabindex="-1"></a>mlda <span class="ot">&lt;-</span> mlda[<span class="fu">complete.cases</span>(mlda),]</span>
+<span id="cb154-6"><a href="regression-discontinuity.html#cb154-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-7"><a href="regression-discontinuity.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create treated variable</span></span>
+<span id="cb154-8"><a href="regression-discontinuity.html#cb154-8" aria-hidden="true" tabindex="-1"></a>mlda<span class="sc">$</span>D <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(mlda<span class="sc">$</span>agecell <span class="sc">&gt;=</span> <span class="dv">21</span>)</span></code></pre></div>
 <p>In regression discontinuity designs, it is very common to show a plot of the data. That’s what we’ll do here.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="regression-discontinuity.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mlda, <span class="fu">aes</span>(<span class="at">x=</span>agecell, <span class="at">y=</span>mva)) <span class="sc">+</span> </span>
-<span id="cb152-2"><a href="regression-discontinuity.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb152-3"><a href="regression-discontinuity.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb152-4"><a href="regression-discontinuity.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;age&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb152-5"><a href="regression-discontinuity.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb152-6"><a href="regression-discontinuity.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="regression-discontinuity.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mlda, <span class="fu">aes</span>(<span class="at">x=</span>agecell, <span class="at">y=</span>mva)) <span class="sc">+</span> </span>
+<span id="cb155-2"><a href="regression-discontinuity.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb155-3"><a href="regression-discontinuity.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb155-4"><a href="regression-discontinuity.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;age&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb155-5"><a href="regression-discontinuity.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb155-6"><a href="regression-discontinuity.html#cb155-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <p>This figure at least suggests that the number of car accident deaths does appear to jump at age 21.</p>
 <p>Now, let’s run the regression that we talked about earlier, involving a treatment dummy, age, and age interacted with the treatment.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="regression-discontinuity.html#cb153-1" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mva <span class="sc">~</span> D <span class="sc">+</span> agecell <span class="sc">+</span> agecell<span class="sc">*</span>D, <span class="at">data=</span>mlda)</span>
-<span id="cb153-2"><a href="regression-discontinuity.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rd_reg)</span>
-<span id="cb153-3"><a href="regression-discontinuity.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb153-4"><a href="regression-discontinuity.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb153-5"><a href="regression-discontinuity.html#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = mva ~ D + agecell + agecell * D, data = mlda)</span></span>
-<span id="cb153-6"><a href="regression-discontinuity.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb153-7"><a href="regression-discontinuity.html#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb153-8"><a href="regression-discontinuity.html#cb153-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb153-9"><a href="regression-discontinuity.html#cb153-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.4124 -0.7774 -0.2913  0.8495  3.2378 </span></span>
-<span id="cb153-10"><a href="regression-discontinuity.html#cb153-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb153-11"><a href="regression-discontinuity.html#cb153-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb153-12"><a href="regression-discontinuity.html#cb153-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb153-13"><a href="regression-discontinuity.html#cb153-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  83.8492     9.3328   8.984 1.63e-11 ***</span></span>
-<span id="cb153-14"><a href="regression-discontinuity.html#cb153-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D            28.9450    13.8638   2.088   0.0426 *  </span></span>
-<span id="cb153-15"><a href="regression-discontinuity.html#cb153-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; agecell      -2.5676     0.4661  -5.508 1.77e-06 ***</span></span>
-<span id="cb153-16"><a href="regression-discontinuity.html#cb153-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D:agecell    -1.1624     0.6592  -1.763   0.0848 .  </span></span>
-<span id="cb153-17"><a href="regression-discontinuity.html#cb153-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb153-18"><a href="regression-discontinuity.html#cb153-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb153-19"><a href="regression-discontinuity.html#cb153-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb153-20"><a href="regression-discontinuity.html#cb153-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 1.299 on 44 degrees of freedom</span></span>
-<span id="cb153-21"><a href="regression-discontinuity.html#cb153-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.7222, Adjusted R-squared:  0.7032 </span></span>
-<span id="cb153-22"><a href="regression-discontinuity.html#cb153-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 38.13 on 3 and 44 DF,  p-value: 2.671e-12</span></span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="regression-discontinuity.html#cb156-1" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mva <span class="sc">~</span> D <span class="sc">+</span> agecell <span class="sc">+</span> agecell<span class="sc">*</span>D, <span class="at">data=</span>mlda)</span>
+<span id="cb156-2"><a href="regression-discontinuity.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rd_reg)</span>
+<span id="cb156-3"><a href="regression-discontinuity.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb156-4"><a href="regression-discontinuity.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb156-5"><a href="regression-discontinuity.html#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = mva ~ D + agecell + agecell * D, data = mlda)</span></span>
+<span id="cb156-6"><a href="regression-discontinuity.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb156-7"><a href="regression-discontinuity.html#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb156-8"><a href="regression-discontinuity.html#cb156-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb156-9"><a href="regression-discontinuity.html#cb156-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.4124 -0.7774 -0.2913  0.8495  3.2378 </span></span>
+<span id="cb156-10"><a href="regression-discontinuity.html#cb156-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb156-11"><a href="regression-discontinuity.html#cb156-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb156-12"><a href="regression-discontinuity.html#cb156-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
+<span id="cb156-13"><a href="regression-discontinuity.html#cb156-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  83.8492     9.3328   8.984</span></span>
+<span id="cb156-14"><a href="regression-discontinuity.html#cb156-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D            28.9450    13.8638   2.088</span></span>
+<span id="cb156-15"><a href="regression-discontinuity.html#cb156-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; agecell      -2.5676     0.4661  -5.508</span></span>
+<span id="cb156-16"><a href="regression-discontinuity.html#cb156-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D:agecell    -1.1624     0.6592  -1.763</span></span>
+<span id="cb156-17"><a href="regression-discontinuity.html#cb156-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
+<span id="cb156-18"><a href="regression-discontinuity.html#cb156-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.63e-11 ***</span></span>
+<span id="cb156-19"><a href="regression-discontinuity.html#cb156-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D             0.0426 *  </span></span>
+<span id="cb156-20"><a href="regression-discontinuity.html#cb156-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; agecell     1.77e-06 ***</span></span>
+<span id="cb156-21"><a href="regression-discontinuity.html#cb156-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D:agecell     0.0848 .  </span></span>
+<span id="cb156-22"><a href="regression-discontinuity.html#cb156-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb156-23"><a href="regression-discontinuity.html#cb156-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb156-24"><a href="regression-discontinuity.html#cb156-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
+<span id="cb156-25"><a href="regression-discontinuity.html#cb156-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
+<span id="cb156-26"><a href="regression-discontinuity.html#cb156-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb156-27"><a href="regression-discontinuity.html#cb156-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 1.299 on 44 degrees of freedom</span></span>
+<span id="cb156-28"><a href="regression-discontinuity.html#cb156-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.7222, Adjusted R-squared:  0.7032 </span></span>
+<span id="cb156-29"><a href="regression-discontinuity.html#cb156-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 38.13 on 3 and 44 DF,  p-value: 2.671e-12</span></span></code></pre></div>
 <p>These results suggest that alcohol consumption increased car accident deaths (you can see this from the estimated coefficient on <code>D</code>). [The setup in this example is somewhat simplified; if you wanted to be careful about how much alcohol consumption increased car accident deaths, then we would probably need to scale up our estimate by how much alcohol consumption increases on average when people turn 21. Nevertheless, what we have presented above does suggest that alcohol consumption increases car accident deaths.]</p>
 <p>Finally, let me show one more plot that is common to report in a regression discontinuity design.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="regression-discontinuity.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get predicted values for plotting</span></span>
-<span id="cb154-2"><a href="regression-discontinuity.html#cb154-2" aria-hidden="true" tabindex="-1"></a>mlda<span class="sc">$</span>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(rd_reg)</span>
-<span id="cb154-3"><a href="regression-discontinuity.html#cb154-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-4"><a href="regression-discontinuity.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make plot</span></span>
-<span id="cb154-5"><a href="regression-discontinuity.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mlda, <span class="fu">aes</span>(<span class="at">x=</span>agecell, <span class="at">y=</span>mva, <span class="at">color=</span><span class="fu">as.factor</span>(D))) <span class="sc">+</span></span>
-<span id="cb154-6"><a href="regression-discontinuity.html#cb154-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb154-7"><a href="regression-discontinuity.html#cb154-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>preds)) <span class="sc">+</span> </span>
-<span id="cb154-8"><a href="regression-discontinuity.html#cb154-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb154-9"><a href="regression-discontinuity.html#cb154-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color=</span><span class="st">&quot;treated&quot;</span>, <span class="at">x=</span><span class="st">&quot;age&quot;</span>, <span class="at">y=</span><span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb154-10"><a href="regression-discontinuity.html#cb154-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="regression-discontinuity.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get predicted values for plotting</span></span>
+<span id="cb157-2"><a href="regression-discontinuity.html#cb157-2" aria-hidden="true" tabindex="-1"></a>mlda<span class="sc">$</span>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(rd_reg)</span>
+<span id="cb157-3"><a href="regression-discontinuity.html#cb157-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-4"><a href="regression-discontinuity.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make plot</span></span>
+<span id="cb157-5"><a href="regression-discontinuity.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mlda, <span class="fu">aes</span>(<span class="at">x=</span>agecell, <span class="at">y=</span>mva, <span class="at">color=</span><span class="fu">as.factor</span>(D))) <span class="sc">+</span></span>
+<span id="cb157-6"><a href="regression-discontinuity.html#cb157-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb157-7"><a href="regression-discontinuity.html#cb157-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>preds)) <span class="sc">+</span> </span>
+<span id="cb157-8"><a href="regression-discontinuity.html#cb157-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb157-9"><a href="regression-discontinuity.html#cb157-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color=</span><span class="st">&quot;treated&quot;</span>, <span class="at">x=</span><span class="st">&quot;age&quot;</span>, <span class="at">y=</span><span class="st">&quot;moving vehicle accident deaths&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb157-10"><a href="regression-discontinuity.html#cb157-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 <p>This shows the two lines that we effectively fit with the regression that included the binary variable for the treatment, the running variable, and their interaction. The “jump” between the red line and the blue line at <code>age=21</code> is our estimated effect of the treatment.</p>
 </div>
 </div>
@@ -511,7 +518,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

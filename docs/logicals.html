@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -372,29 +374,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Related Reading: IDS 2.13</p>
 <p>All programming languages have ways of tracking whether variables meet certain criteria. These are often called Booleans or Logicals. For us, this will particularly come up in the context of subsetting data (i.e., selecting data based on some condition) and in running particular portions of code based on some condition.</p>
 <p>Some main logical operators are <code>==</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&gt;</code> corresponding to whether or not two things are equal, less than or equal to, greater than or equal, strictly less than, and strictly greater than. These can be applied to vectors. And the comparisons result in either <code>TRUE</code> or <code>FALSE</code>. Here are some examples</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="logicals.html#cb107-1" aria-hidden="true" tabindex="-1"></a>five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb107-2"><a href="logicals.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="logicals.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="co"># only 3 is equal to 3</span></span>
-<span id="cb107-4"><a href="logicals.html#cb107-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">==</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="logicals.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1,2,3 are all less than or equal to 3</span></span>
-<span id="cb109-2"><a href="logicals.html#cb109-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&lt;=</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="logicals.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3,4,5, are all greater than or equal to 3</span></span>
-<span id="cb111-2"><a href="logicals.html#cb111-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&gt;=</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="logicals.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1,2 are strictly less than 3</span></span>
-<span id="cb113-2"><a href="logicals.html#cb113-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="logicals.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4,5 are strictly greater than 3</span></span>
-<span id="cb115-2"><a href="logicals.html#cb115-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&gt;</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="logicals.html#cb45-1" aria-hidden="true" tabindex="-1"></a>five <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb45-2"><a href="logicals.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="logicals.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># only 3 is equal to 3</span></span>
+<span id="cb45-4"><a href="logicals.html#cb45-4" aria-hidden="true" tabindex="-1"></a>five <span class="sc">==</span> <span class="dv">3</span></span>
+<span id="cb45-5"><a href="logicals.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb45-6"><a href="logicals.html#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="logicals.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1,2,3 are all less than or equal to 3</span></span>
+<span id="cb45-8"><a href="logicals.html#cb45-8" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&lt;=</span> <span class="dv">3</span></span>
+<span id="cb45-9"><a href="logicals.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</span></span>
+<span id="cb45-10"><a href="logicals.html#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="logicals.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3,4,5, are all greater than or equal to 3</span></span>
+<span id="cb45-12"><a href="logicals.html#cb45-12" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb45-13"><a href="logicals.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE  TRUE</span></span>
+<span id="cb45-14"><a href="logicals.html#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="logicals.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 1,2 are strictly less than 3</span></span>
+<span id="cb45-16"><a href="logicals.html#cb45-16" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&lt;</span> <span class="dv">3</span></span>
+<span id="cb45-17"><a href="logicals.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</span></span>
+<span id="cb45-18"><a href="logicals.html#cb45-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-19"><a href="logicals.html#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4,5 are strictly greater than 3</span></span>
+<span id="cb45-20"><a href="logicals.html#cb45-20" aria-hidden="true" tabindex="-1"></a>five <span class="sc">&gt;</span> <span class="dv">3</span></span>
+<span id="cb45-21"><a href="logicals.html#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE FALSE  TRUE  TRUE</span></span></code></pre></div>
 <div class="example">
 <p><span id="exm:unlabeled-div-3" class="example"><strong>Example 2.3  </strong></span>Often, we might be interested in learning about a subset of our data. As a simple example, using our <code>firm_data</code> from earlier, you could imagine being interested in average employment for manufacturing firms.</p>
 <p>We can do this using the <code>subset</code> function along with the logical operations we’ve learned in this section.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="logicals.html#cb117-1" aria-hidden="true" tabindex="-1"></a>manufacturing_firms <span class="ot">&lt;-</span> <span class="fu">subset</span>(firm_data, industry<span class="sc">==</span><span class="st">&quot;Manufacturing&quot;</span>)</span>
-<span id="cb117-2"><a href="logicals.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(manufacturing_firms<span class="sc">$</span>employees)</span></code></pre></div>
-<pre><code>## [1] 252.3333</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="logicals.html#cb46-1" aria-hidden="true" tabindex="-1"></a>manufacturing_firms <span class="ot">&lt;-</span> <span class="fu">subset</span>(firm_data, industry<span class="sc">==</span><span class="st">&quot;Manufacturing&quot;</span>)</span>
+<span id="cb46-2"><a href="logicals.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(manufacturing_firms<span class="sc">$</span>employees)</span>
+<span id="cb46-3"><a href="logicals.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 252.3333</span></span></code></pre></div>
 <p>As practice, try creating a subset of <code>firm_data</code> based on firms having more than 100 employees.</p>
 </div>
 <div id="additional-logical-operators" class="section level3 hasAnchor" number="2.6.1">
@@ -403,26 +409,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are a number of additional logical operators that can be useful in practice. Here, we quickly cover several more.</p>
 <ul>
 <li><p><code>!=</code> — not equal</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="logicals.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="sc">!=</span> <span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1]  TRUE  TRUE FALSE</code></pre></li>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="logicals.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="sc">!=</span> <span class="dv">3</span></span>
+<span id="cb47-2"><a href="logicals.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE  TRUE FALSE</span></span></code></pre></div></li>
 <li><p>We can link together multiple logical comparisons. If we want to check whether multiple conditions hold, we can use “logical AND” <code>&amp;</code>; if we want to check whether any of multiple conditions hold, we can use “logical OR” <code>|</code>.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="logicals.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AND</span></span>
-<span id="cb121-2"><a href="logicals.html#cb121-2" aria-hidden="true" tabindex="-1"></a>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&gt;=</span> <span class="dv">3</span> ) <span class="sc">&amp;</span> ( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&lt;</span> <span class="dv">5</span> )</span></code></pre></div>
-<pre><code>## [1] FALSE FALSE  TRUE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="logicals.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb123-2"><a href="logicals.html#cb123-2" aria-hidden="true" tabindex="-1"></a>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&gt;=</span> <span class="dv">4</span> ) <span class="sc">|</span> ( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&lt;</span> <span class="dv">2</span> )</span></code></pre></div>
-<pre><code>## [1]  TRUE FALSE FALSE  TRUE  TRUE</code></pre></li>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="logicals.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AND</span></span>
+<span id="cb48-2"><a href="logicals.html#cb48-2" aria-hidden="true" tabindex="-1"></a>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&gt;=</span> <span class="dv">3</span> ) <span class="sc">&amp;</span> ( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&lt;</span> <span class="dv">5</span> )</span>
+<span id="cb48-3"><a href="logicals.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE FALSE  TRUE  TRUE FALSE</span></span>
+<span id="cb48-4"><a href="logicals.html#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="logicals.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb48-6"><a href="logicals.html#cb48-6" aria-hidden="true" tabindex="-1"></a>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&gt;=</span> <span class="dv">4</span> ) <span class="sc">|</span> ( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="sc">&lt;</span> <span class="dv">2</span> )</span>
+<span id="cb48-7"><a href="logicals.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE FALSE FALSE  TRUE  TRUE</span></span></code></pre></div></li>
 <li><p><code>%in%</code> — checks whether the elements of one vector show up <em>in</em> another vector</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="logicals.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 is in the 2nd vector, but 7 is not</span></span>
-<span id="cb125-2"><a href="logicals.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1]  TRUE FALSE</code></pre></li>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="logicals.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 is in the 2nd vector, but 7 is not</span></span>
+<span id="cb49-2"><a href="logicals.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb49-3"><a href="logicals.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  TRUE FALSE</span></span></code></pre></div></li>
 <li><p>Often it is useful to check whether any logical conditions are true or all logical conditions are true. This can be done as follows</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="logicals.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this one is TRUE because 1 is in the 2nd vector  </span></span>
-<span id="cb127-2"><a href="logicals.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="logicals.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this one is FALSE because 7 is not in the 2nd vector</span></span>
-<span id="cb129-2"><a href="logicals.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre></li>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="logicals.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this one is TRUE because 1 is in the 2nd vector  </span></span>
+<span id="cb50-2"><a href="logicals.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb50-3"><a href="logicals.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb50-4"><a href="logicals.html#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="logicals.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># this one is FALSE because 7 is not in the 2nd vector</span></span>
+<span id="cb50-6"><a href="logicals.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span>
+<span id="cb50-7"><a href="logicals.html#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div></li>
 </ul>
 </div>
 </div>

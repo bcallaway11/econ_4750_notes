@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.4 Lab 2 Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.4 Lab 2 Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="lab-2-monte-carlo-simulations.html"/>
 <link rel="next" href="coding-questions.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,174 +369,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-2-solutions" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Lab 2 Solutions</h2>
+<div id="lab-2-solutions" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Lab 2 Solutions<a href="lab-2-solutions.html#lab-2-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="lab-2-solutions.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to flip a coin with probability p</span></span>
-<span id="cb91-2"><a href="lab-2-solutions.html#cb91-2" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
-<span id="cb91-3"><a href="lab-2-solutions.html#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>p,p)))</span>
-<span id="cb91-4"><a href="lab-2-solutions.html#cb91-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb91-5"><a href="lab-2-solutions.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-6"><a href="lab-2-solutions.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="co"># test out flip function</span></span>
-<span id="cb91-7"><a href="lab-2-solutions.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fl">0.5</span>)</span>
-<span id="cb91-8"><a href="lab-2-solutions.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="lab-2-solutions.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to flip a coin with probability p</span></span>
+<span id="cb94-2"><a href="lab-2-solutions.html#cb94-2" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb94-3"><a href="lab-2-solutions.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>p,p)))</span>
+<span id="cb94-4"><a href="lab-2-solutions.html#cb94-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-5"><a href="lab-2-solutions.html#cb94-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-6"><a href="lab-2-solutions.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="co"># test out flip function</span></span>
+<span id="cb94-7"><a href="lab-2-solutions.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fl">0.5</span>)</span>
+<span id="cb94-8"><a href="lab-2-solutions.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="lab-2-solutions.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate a sample of size n</span></span>
-<span id="cb92-2"><a href="lab-2-solutions.html#cb92-2" aria-hidden="true" tabindex="-1"></a>generate_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(n,p) {</span>
-<span id="cb92-3"><a href="lab-2-solutions.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb92-4"><a href="lab-2-solutions.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb92-5"><a href="lab-2-solutions.html#cb92-5" aria-hidden="true" tabindex="-1"></a>    Y[i] <span class="ot">&lt;-</span> <span class="fu">flip</span>(p)</span>
-<span id="cb92-6"><a href="lab-2-solutions.html#cb92-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb92-7"><a href="lab-2-solutions.html#cb92-7" aria-hidden="true" tabindex="-1"></a>  Y</span>
-<span id="cb92-8"><a href="lab-2-solutions.html#cb92-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb92-9"><a href="lab-2-solutions.html#cb92-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-10"><a href="lab-2-solutions.html#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test out generate_sample function</span></span>
-<span id="cb92-11"><a href="lab-2-solutions.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_sample</span>(<span class="dv">10</span>,<span class="fl">0.5</span>)</span>
-<span id="cb92-12"><a href="lab-2-solutions.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 0 0 1 1 1 1 1 0 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="lab-2-solutions.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate a sample of size n</span></span>
+<span id="cb95-2"><a href="lab-2-solutions.html#cb95-2" aria-hidden="true" tabindex="-1"></a>generate_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(n,p) {</span>
+<span id="cb95-3"><a href="lab-2-solutions.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb95-4"><a href="lab-2-solutions.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb95-5"><a href="lab-2-solutions.html#cb95-5" aria-hidden="true" tabindex="-1"></a>    Y[i] <span class="ot">&lt;-</span> <span class="fu">flip</span>(p)</span>
+<span id="cb95-6"><a href="lab-2-solutions.html#cb95-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb95-7"><a href="lab-2-solutions.html#cb95-7" aria-hidden="true" tabindex="-1"></a>  Y</span>
+<span id="cb95-8"><a href="lab-2-solutions.html#cb95-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb95-9"><a href="lab-2-solutions.html#cb95-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-10"><a href="lab-2-solutions.html#cb95-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test out generate_sample function</span></span>
+<span id="cb95-11"><a href="lab-2-solutions.html#cb95-11" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_sample</span>(<span class="dv">10</span>,<span class="fl">0.5</span>)</span>
+<span id="cb95-12"><a href="lab-2-solutions.html#cb95-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 1 0 0 1 1 1 1 1 0 0</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="lab-2-solutions.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carry out monte carlo simulations</span></span>
-<span id="cb93-2"><a href="lab-2-solutions.html#cb93-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb93-3"><a href="lab-2-solutions.html#cb93-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb93-4"><a href="lab-2-solutions.html#cb93-4" aria-hidden="true" tabindex="-1"></a>nsims <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># need to pick large number of monte carlo simulations</span></span>
-<span id="cb93-5"><a href="lab-2-solutions.html#cb93-5" aria-hidden="true" tabindex="-1"></a>mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
-<span id="cb93-6"><a href="lab-2-solutions.html#cb93-6" aria-hidden="true" tabindex="-1"></a>mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
-<span id="cb93-7"><a href="lab-2-solutions.html#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-8"><a href="lab-2-solutions.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
-<span id="cb93-9"><a href="lab-2-solutions.html#cb93-9" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
-<span id="cb93-10"><a href="lab-2-solutions.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
-<span id="cb93-11"><a href="lab-2-solutions.html#cb93-11" aria-hidden="true" tabindex="-1"></a>  mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
-<span id="cb93-12"><a href="lab-2-solutions.html#cb93-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb93-13"><a href="lab-2-solutions.html#cb93-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-14"><a href="lab-2-solutions.html#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compute bias</span></span>
-<span id="cb93-15"><a href="lab-2-solutions.html#cb93-15" aria-hidden="true" tabindex="-1"></a>bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
-<span id="cb93-16"><a href="lab-2-solutions.html#cb93-16" aria-hidden="true" tabindex="-1"></a>bias</span>
-<span id="cb93-17"><a href="lab-2-solutions.html#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0046</span></span>
-<span id="cb93-18"><a href="lab-2-solutions.html#cb93-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-19"><a href="lab-2-solutions.html#cb93-19" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
-<span id="cb93-20"><a href="lab-2-solutions.html#cb93-20" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
-<span id="cb93-21"><a href="lab-2-solutions.html#cb93-21" aria-hidden="true" tabindex="-1"></a>var</span>
-<span id="cb93-22"><a href="lab-2-solutions.html#cb93-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0240629</span></span>
-<span id="cb93-23"><a href="lab-2-solutions.html#cb93-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-24"><a href="lab-2-solutions.html#cb93-24" aria-hidden="true" tabindex="-1"></a><span class="co"># compute mean squared error</span></span>
-<span id="cb93-25"><a href="lab-2-solutions.html#cb93-25" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
-<span id="cb93-26"><a href="lab-2-solutions.html#cb93-26" aria-hidden="true" tabindex="-1"></a>mse</span>
-<span id="cb93-27"><a href="lab-2-solutions.html#cb93-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.02408406</span></span>
-<span id="cb93-28"><a href="lab-2-solutions.html#cb93-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-29"><a href="lab-2-solutions.html#cb93-29" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> p</span>
-<span id="cb93-30"><a href="lab-2-solutions.html#cb93-30" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
-<span id="cb93-31"><a href="lab-2-solutions.html#cb93-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
-<span id="cb93-32"><a href="lab-2-solutions.html#cb93-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
-<span id="cb93-33"><a href="lab-2-solutions.html#cb93-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb93-34"><a href="lab-2-solutions.html#cb93-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing non-finite values (stat_bin).</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="lab-2-solutions.html#cb94-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-2"><a href="lab-2-solutions.html#cb94-2" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
-<span id="cb94-3"><a href="lab-2-solutions.html#cb94-3" aria-hidden="true" tabindex="-1"></a>rej</span>
-<span id="cb94-4"><a href="lab-2-solutions.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.107</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="lab-2-solutions.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carry out monte carlo simulations</span></span>
+<span id="cb96-2"><a href="lab-2-solutions.html#cb96-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb96-3"><a href="lab-2-solutions.html#cb96-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb96-4"><a href="lab-2-solutions.html#cb96-4" aria-hidden="true" tabindex="-1"></a>nsims <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># need to pick large number of monte carlo simulations</span></span>
+<span id="cb96-5"><a href="lab-2-solutions.html#cb96-5" aria-hidden="true" tabindex="-1"></a>mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
+<span id="cb96-6"><a href="lab-2-solutions.html#cb96-6" aria-hidden="true" tabindex="-1"></a>mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
+<span id="cb96-7"><a href="lab-2-solutions.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-8"><a href="lab-2-solutions.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb96-9"><a href="lab-2-solutions.html#cb96-9" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
+<span id="cb96-10"><a href="lab-2-solutions.html#cb96-10" aria-hidden="true" tabindex="-1"></a>  mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb96-11"><a href="lab-2-solutions.html#cb96-11" aria-hidden="true" tabindex="-1"></a>  mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
+<span id="cb96-12"><a href="lab-2-solutions.html#cb96-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb96-13"><a href="lab-2-solutions.html#cb96-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-14"><a href="lab-2-solutions.html#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compute bias</span></span>
+<span id="cb96-15"><a href="lab-2-solutions.html#cb96-15" aria-hidden="true" tabindex="-1"></a>bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
+<span id="cb96-16"><a href="lab-2-solutions.html#cb96-16" aria-hidden="true" tabindex="-1"></a>bias</span>
+<span id="cb96-17"><a href="lab-2-solutions.html#cb96-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0046</span></span>
+<span id="cb96-18"><a href="lab-2-solutions.html#cb96-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-19"><a href="lab-2-solutions.html#cb96-19" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
+<span id="cb96-20"><a href="lab-2-solutions.html#cb96-20" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
+<span id="cb96-21"><a href="lab-2-solutions.html#cb96-21" aria-hidden="true" tabindex="-1"></a>var</span>
+<span id="cb96-22"><a href="lab-2-solutions.html#cb96-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.0240629</span></span>
+<span id="cb96-23"><a href="lab-2-solutions.html#cb96-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-24"><a href="lab-2-solutions.html#cb96-24" aria-hidden="true" tabindex="-1"></a><span class="co"># compute mean squared error</span></span>
+<span id="cb96-25"><a href="lab-2-solutions.html#cb96-25" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
+<span id="cb96-26"><a href="lab-2-solutions.html#cb96-26" aria-hidden="true" tabindex="-1"></a>mse</span>
+<span id="cb96-27"><a href="lab-2-solutions.html#cb96-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.02408406</span></span>
+<span id="cb96-28"><a href="lab-2-solutions.html#cb96-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-29"><a href="lab-2-solutions.html#cb96-29" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> p</span>
+<span id="cb96-30"><a href="lab-2-solutions.html#cb96-30" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
+<span id="cb96-31"><a href="lab-2-solutions.html#cb96-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
+<span id="cb96-32"><a href="lab-2-solutions.html#cb96-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb96-33"><a href="lab-2-solutions.html#cb96-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb96-34"><a href="lab-2-solutions.html#cb96-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing non-finite</span></span>
+<span id="cb96-35"><a href="lab-2-solutions.html#cb96-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; values (stat_bin).</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lab-2-solutions.html#cb97-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-2"><a href="lab-2-solutions.html#cb97-2" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
+<span id="cb97-3"><a href="lab-2-solutions.html#cb97-3" aria-hidden="true" tabindex="-1"></a>rej</span>
+<span id="cb97-4"><a href="lab-2-solutions.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.107</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="lab-2-solutions.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># since we are going to do this over and over, let&#39;s write a function to do it</span></span>
-<span id="cb95-2"><a href="lab-2-solutions.html#cb95-2" aria-hidden="true" tabindex="-1"></a>mc_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, p, H0) {</span>
-<span id="cb95-3"><a href="lab-2-solutions.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
-<span id="cb95-4"><a href="lab-2-solutions.html#cb95-4" aria-hidden="true" tabindex="-1"></a>  mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
-<span id="cb95-5"><a href="lab-2-solutions.html#cb95-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-6"><a href="lab-2-solutions.html#cb95-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
-<span id="cb95-7"><a href="lab-2-solutions.html#cb95-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
-<span id="cb95-8"><a href="lab-2-solutions.html#cb95-8" aria-hidden="true" tabindex="-1"></a>    mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
-<span id="cb95-9"><a href="lab-2-solutions.html#cb95-9" aria-hidden="true" tabindex="-1"></a>    mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
-<span id="cb95-10"><a href="lab-2-solutions.html#cb95-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb95-11"><a href="lab-2-solutions.html#cb95-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-12"><a href="lab-2-solutions.html#cb95-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute bias</span></span>
-<span id="cb95-13"><a href="lab-2-solutions.html#cb95-13" aria-hidden="true" tabindex="-1"></a>  bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
-<span id="cb95-14"><a href="lab-2-solutions.html#cb95-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-15"><a href="lab-2-solutions.html#cb95-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute sampling variance</span></span>
-<span id="cb95-16"><a href="lab-2-solutions.html#cb95-16" aria-hidden="true" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
-<span id="cb95-17"><a href="lab-2-solutions.html#cb95-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-18"><a href="lab-2-solutions.html#cb95-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute mean squared error</span></span>
-<span id="cb95-19"><a href="lab-2-solutions.html#cb95-19" aria-hidden="true" tabindex="-1"></a>  mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
-<span id="cb95-20"><a href="lab-2-solutions.html#cb95-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb95-21"><a href="lab-2-solutions.html#cb95-21" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
-<span id="cb95-22"><a href="lab-2-solutions.html#cb95-22" aria-hidden="true" tabindex="-1"></a>  hist_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
-<span id="cb95-23"><a href="lab-2-solutions.html#cb95-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span> </span>
-<span id="cb95-24"><a href="lab-2-solutions.html#cb95-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
-<span id="cb95-25"><a href="lab-2-solutions.html#cb95-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-26"><a href="lab-2-solutions.html#cb95-26" aria-hidden="true" tabindex="-1"></a>  rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
-<span id="cb95-27"><a href="lab-2-solutions.html#cb95-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb95-28"><a href="lab-2-solutions.html#cb95-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print results</span></span>
-<span id="cb95-29"><a href="lab-2-solutions.html#cb95-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;bias: &quot;</span>, <span class="fu">round</span>(bias,<span class="dv">4</span>)))</span>
-<span id="cb95-30"><a href="lab-2-solutions.html#cb95-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;var : &quot;</span>, <span class="fu">round</span>(var,<span class="dv">4</span>)))</span>
-<span id="cb95-31"><a href="lab-2-solutions.html#cb95-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;mse : &quot;</span>, <span class="fu">round</span>(mse,<span class="dv">4</span>)))</span>
-<span id="cb95-32"><a href="lab-2-solutions.html#cb95-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(hist_plot)</span>
-<span id="cb95-33"><a href="lab-2-solutions.html#cb95-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;rej : &quot;</span>, <span class="fu">round</span>(rej,<span class="dv">4</span>)))</span>
-<span id="cb95-34"><a href="lab-2-solutions.html#cb95-34" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb95-35"><a href="lab-2-solutions.html#cb95-35" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
-<span id="cb95-36"><a href="lab-2-solutions.html#cb95-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 0.0014&quot;</span></span>
-<span id="cb95-37"><a href="lab-2-solutions.html#cb95-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.0056&quot;</span></span>
-<span id="cb95-38"><a href="lab-2-solutions.html#cb95-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.0056&quot;</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lab-2-solutions.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># since we are going to do this over and over, let&#39;s write a function to do it</span></span>
+<span id="cb98-2"><a href="lab-2-solutions.html#cb98-2" aria-hidden="true" tabindex="-1"></a>mc_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, p, H0) {</span>
+<span id="cb98-3"><a href="lab-2-solutions.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
+<span id="cb98-4"><a href="lab-2-solutions.html#cb98-4" aria-hidden="true" tabindex="-1"></a>  mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
+<span id="cb98-5"><a href="lab-2-solutions.html#cb98-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-6"><a href="lab-2-solutions.html#cb98-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb98-7"><a href="lab-2-solutions.html#cb98-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
+<span id="cb98-8"><a href="lab-2-solutions.html#cb98-8" aria-hidden="true" tabindex="-1"></a>    mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb98-9"><a href="lab-2-solutions.html#cb98-9" aria-hidden="true" tabindex="-1"></a>    mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
+<span id="cb98-10"><a href="lab-2-solutions.html#cb98-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb98-11"><a href="lab-2-solutions.html#cb98-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-12"><a href="lab-2-solutions.html#cb98-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute bias</span></span>
+<span id="cb98-13"><a href="lab-2-solutions.html#cb98-13" aria-hidden="true" tabindex="-1"></a>  bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
+<span id="cb98-14"><a href="lab-2-solutions.html#cb98-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-15"><a href="lab-2-solutions.html#cb98-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute sampling variance</span></span>
+<span id="cb98-16"><a href="lab-2-solutions.html#cb98-16" aria-hidden="true" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
+<span id="cb98-17"><a href="lab-2-solutions.html#cb98-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-18"><a href="lab-2-solutions.html#cb98-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute mean squared error</span></span>
+<span id="cb98-19"><a href="lab-2-solutions.html#cb98-19" aria-hidden="true" tabindex="-1"></a>  mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
+<span id="cb98-20"><a href="lab-2-solutions.html#cb98-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb98-21"><a href="lab-2-solutions.html#cb98-21" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
+<span id="cb98-22"><a href="lab-2-solutions.html#cb98-22" aria-hidden="true" tabindex="-1"></a>  hist_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
+<span id="cb98-23"><a href="lab-2-solutions.html#cb98-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span> </span>
+<span id="cb98-24"><a href="lab-2-solutions.html#cb98-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb98-25"><a href="lab-2-solutions.html#cb98-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-26"><a href="lab-2-solutions.html#cb98-26" aria-hidden="true" tabindex="-1"></a>  rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
+<span id="cb98-27"><a href="lab-2-solutions.html#cb98-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb98-28"><a href="lab-2-solutions.html#cb98-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print results</span></span>
+<span id="cb98-29"><a href="lab-2-solutions.html#cb98-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;bias: &quot;</span>, <span class="fu">round</span>(bias,<span class="dv">4</span>)))</span>
+<span id="cb98-30"><a href="lab-2-solutions.html#cb98-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;var : &quot;</span>, <span class="fu">round</span>(var,<span class="dv">4</span>)))</span>
+<span id="cb98-31"><a href="lab-2-solutions.html#cb98-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;mse : &quot;</span>, <span class="fu">round</span>(mse,<span class="dv">4</span>)))</span>
+<span id="cb98-32"><a href="lab-2-solutions.html#cb98-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(hist_plot)</span>
+<span id="cb98-33"><a href="lab-2-solutions.html#cb98-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;rej : &quot;</span>, <span class="fu">round</span>(rej,<span class="dv">4</span>)))</span>
+<span id="cb98-34"><a href="lab-2-solutions.html#cb98-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-35"><a href="lab-2-solutions.html#cb98-35" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb98-36"><a href="lab-2-solutions.html#cb98-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 0.0014&quot;</span></span>
+<span id="cb98-37"><a href="lab-2-solutions.html#cb98-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.0056&quot;</span></span>
+<span id="cb98-38"><a href="lab-2-solutions.html#cb98-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.0056&quot;</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.085&quot;</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lab-2-solutions.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span>
-<span id="cb97-2"><a href="lab-2-solutions.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.0015&quot;</span></span>
-<span id="cb97-3"><a href="lab-2-solutions.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.0048&quot;</span></span>
-<span id="cb97-4"><a href="lab-2-solutions.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.0048&quot;</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lab-2-solutions.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span>
+<span id="cb100-2"><a href="lab-2-solutions.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.0015&quot;</span></span>
+<span id="cb100-3"><a href="lab-2-solutions.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.0048&quot;</span></span>
+<span id="cb100-4"><a href="lab-2-solutions.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.0048&quot;</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.339&quot;</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lab-2-solutions.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
-<span id="cb99-2"><a href="lab-2-solutions.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 0.0011&quot;</span></span>
-<span id="cb99-3"><a href="lab-2-solutions.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.005&quot;</span></span>
-<span id="cb99-4"><a href="lab-2-solutions.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.005&quot;</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lab-2-solutions.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
+<span id="cb102-2"><a href="lab-2-solutions.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 0.0011&quot;</span></span>
+<span id="cb102-3"><a href="lab-2-solutions.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.005&quot;</span></span>
+<span id="cb102-4"><a href="lab-2-solutions.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.005&quot;</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 1&quot;</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lab-2-solutions.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span>
-<span id="cb101-2"><a href="lab-2-solutions.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 4e-04&quot;</span></span>
-<span id="cb101-3"><a href="lab-2-solutions.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 2e-04&quot;</span></span>
-<span id="cb101-4"><a href="lab-2-solutions.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 2e-04&quot;</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lab-2-solutions.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span>
+<span id="cb104-2"><a href="lab-2-solutions.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 4e-04&quot;</span></span>
+<span id="cb104-3"><a href="lab-2-solutions.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 2e-04&quot;</span></span>
+<span id="cb104-4"><a href="lab-2-solutions.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 2e-04&quot;</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 1&quot;</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lab-2-solutions.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">10</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span>
-<span id="cb103-2"><a href="lab-2-solutions.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.0058&quot;</span></span>
-<span id="cb103-3"><a href="lab-2-solutions.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.005&quot;</span></span>
-<span id="cb103-4"><a href="lab-2-solutions.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.005&quot;</span></span>
-<span id="cb103-5"><a href="lab-2-solutions.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 555 rows containing non-finite values (stat_bin).</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lab-2-solutions.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">10</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span>
+<span id="cb106-2"><a href="lab-2-solutions.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.0058&quot;</span></span>
+<span id="cb106-3"><a href="lab-2-solutions.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.005&quot;</span></span>
+<span id="cb106-4"><a href="lab-2-solutions.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.005&quot;</span></span>
+<span id="cb106-5"><a href="lab-2-solutions.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 555 rows containing non-finite</span></span>
+<span id="cb106-6"><a href="lab-2-solutions.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; values (stat_bin).</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.556&quot;</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lab-2-solutions.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span>
-<span id="cb105-2"><a href="lab-2-solutions.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.001&quot;</span></span>
-<span id="cb105-3"><a href="lab-2-solutions.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 9e-04&quot;</span></span>
-<span id="cb105-4"><a href="lab-2-solutions.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 9e-04&quot;</span></span>
-<span id="cb105-5"><a href="lab-2-solutions.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 59 rows containing non-finite values (stat_bin).</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="lab-2-solutions.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span>
+<span id="cb108-2"><a href="lab-2-solutions.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.001&quot;</span></span>
+<span id="cb108-3"><a href="lab-2-solutions.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 9e-04&quot;</span></span>
+<span id="cb108-4"><a href="lab-2-solutions.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 9e-04&quot;</span></span>
+<span id="cb108-5"><a href="lab-2-solutions.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 59 rows containing non-finite</span></span>
+<span id="cb108-6"><a href="lab-2-solutions.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; values (stat_bin).</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.064&quot;</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lab-2-solutions.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span>
-<span id="cb107-2"><a href="lab-2-solutions.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 1e-04&quot;</span></span>
-<span id="cb107-3"><a href="lab-2-solutions.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0&quot;</span></span>
-<span id="cb107-4"><a href="lab-2-solutions.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0&quot;</span></span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="lab-2-solutions.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span>
+<span id="cb110-2"><a href="lab-2-solutions.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: 1e-04&quot;</span></span>
+<span id="cb110-3"><a href="lab-2-solutions.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0&quot;</span></span>
+<span id="cb110-4"><a href="lab-2-solutions.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0&quot;</span></span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.057&quot;</code></pre>
 </div>
             </section>
@@ -605,7 +608,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

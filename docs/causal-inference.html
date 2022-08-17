@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 6 Causal Inference | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 6 Causal Inference | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="answers-to-some-extra-questions-1.html"/>
 <link rel="next" href="potential-outcomes.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,21 +369,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="causal-inference" class="section level1" number="6">
-<h1><span class="header-section-number">Topic 6</span> Causal Inference</h1>
+<div id="causal-inference" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Topic 6</span> Causal Inference<a href="causal-inference.html#causal-inference" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>For the remainder of the semester, we will talk about methods for understanding the <strong>causal effect</strong> of one variable on another.</p>
 <p>Let’s start with an example. Suppose we were interested in understanding the causal effect of attending college on earnings. We know a lot about calculating averages, so let’s consider calculating average earnings of those who went to college and comparing that to the average earnings of those who didn’t go to college. Let’s use the data that we used all the way back in Chapter 2 to make this calculation.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="causal-inference.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;us_data.RData&quot;</span>)</span>
-<span id="cb144-2"><a href="causal-inference.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-3"><a href="causal-inference.html#cb144-3" aria-hidden="true" tabindex="-1"></a>col_earnings <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">subset</span>(us_data, educ <span class="sc">&gt;=</span> <span class="dv">16</span>)<span class="sc">$</span>incwage)</span>
-<span id="cb144-4"><a href="causal-inference.html#cb144-4" aria-hidden="true" tabindex="-1"></a>non_col_earnings <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">subset</span>(us_data, educ <span class="sc">&lt;</span> <span class="dv">16</span>)<span class="sc">$</span>incwage)</span>
-<span id="cb144-5"><a href="causal-inference.html#cb144-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-6"><a href="causal-inference.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(col_earnings, </span>
-<span id="cb144-7"><a href="causal-inference.html#cb144-7" aria-hidden="true" tabindex="-1"></a>                 non_col_earnings, </span>
-<span id="cb144-8"><a href="causal-inference.html#cb144-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">diff=</span>(col_earnings<span class="sc">-</span>non_col_earnings)),<span class="dv">3</span>)</span>
-<span id="cb144-9"><a href="causal-inference.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   col_earnings non_col_earnings     diff</span></span>
-<span id="cb144-10"><a href="causal-inference.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     87306.33         40557.28 46749.05</span></span></code></pre></div>
-<p>This seems to be a huge difference. We are used to calling this difference a partial effect of going to college, but should we call it <em>the causal effect</em> or an average causal effect across individuals? Probably no. The main reason is that earnings of individuals who went to college may have been different from individuals that didn’t go to college even if no one went to college. Another way to say this is that there are a number of other things besides college that affect a person’s earnings (age, race, IQ, “ability,” “hardworking-ness,” luck, etc.). If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="causal-inference.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;us_data.RData&quot;</span>)</span>
+<span id="cb147-2"><a href="causal-inference.html#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="causal-inference.html#cb147-3" aria-hidden="true" tabindex="-1"></a>col_earnings <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">subset</span>(us_data, educ <span class="sc">&gt;=</span> <span class="dv">16</span>)<span class="sc">$</span>incwage)</span>
+<span id="cb147-4"><a href="causal-inference.html#cb147-4" aria-hidden="true" tabindex="-1"></a>non_col_earnings <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">subset</span>(us_data, educ <span class="sc">&lt;</span> <span class="dv">16</span>)<span class="sc">$</span>incwage)</span>
+<span id="cb147-5"><a href="causal-inference.html#cb147-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-6"><a href="causal-inference.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(col_earnings, </span>
+<span id="cb147-7"><a href="causal-inference.html#cb147-7" aria-hidden="true" tabindex="-1"></a>                 non_col_earnings, </span>
+<span id="cb147-8"><a href="causal-inference.html#cb147-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">diff=</span>(col_earnings<span class="sc">-</span>non_col_earnings)),<span class="dv">3</span>)</span>
+<span id="cb147-9"><a href="causal-inference.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   col_earnings non_col_earnings     diff</span></span>
+<span id="cb147-10"><a href="causal-inference.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     87306.33         40557.28 46749.05</span></span></code></pre></div>
+<p>This seems to be a huge difference. We are used to calling this difference a partial effect of going to college, but should we call it <em>the causal effect</em> or an average causal effect across individuals? Probably no. The main reason is that earnings of individuals who went to college may have been different from individuals that didn’t go to college even if no one went to college. Another way to say this is that there are a number of other things besides college that affect a person’s earnings (age, race, IQ, “ability”, “hardworking-ness”, luck, etc.). If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.</p>
 <p>Before we move on, let me give some more examples of causal questions that may be of interest to economists:</p>
 <ul>
 <li><p>Causal effects of economic policies</p>
@@ -470,7 +470,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

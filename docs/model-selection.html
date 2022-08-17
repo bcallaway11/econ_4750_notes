@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.2 Model Selection | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.2 Model Selection | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="measures-of-regression-fit.html"/>
 <link rel="next" href="machine-learning.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model-selection" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Model Selection</h2>
+<div id="model-selection" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Model Selection<a href="model-selection.html#model-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 7.5 (note: we cover substantially more details than the textbook about model selection)</p>
 <p>Often, when we want to use data to make predictions, there are multiple possible models that we could estimate to make the predictions. For example, suppose that we are interested in predicting house prices and we have access to data about the number of square feet, whether or not the house has a basement, the number of bedrooms, and the number of bathrooms. All of these are probably good variables to include in a model to predict house prices (though it is less clear if we should include quadratic terms, interaction terms, or other higher order terms). But suppose we also observe some variables that are probably irrelevant (e.g., whether the street number is odd or even) or not clear whether they matter or not (e.g., number of ceiling fans or paint color). It is not clear which variables we should include in the model. An alternative way to think about this is that there would be a large number of possible models that we could estimate here, and it is not immediately obvious which one will predict the best.</p>
 <p>From the previous example, it seems that in many realistic applications, there are a large number of possible models that we could estimate to make predictions. How should we choose which one to use?</p>
@@ -390,8 +390,8 @@ where <span class="math inline">\(Year\)</span> is what year in school a student
 <p>The third model likely suffers from over-fitting. In particular, knowing a student’s birthday may really help you predict height in-sample. For example, suppose that the center on the basketball team is in your sample, and his birthday is July 15. Knowing this, you will likely be able to make a much better prediction for this observation in your data using Model 3 which <span class="math inline">\(\implies\)</span> that the <span class="math inline">\(R^2\)</span> will be much higher for this model. But this won’t help you predict well out-of-sample. If a new person shows up whose birthday is July 15, they are unlikely to also be a center on the basketball team which further implies that your prediction of their height is likely to be very poor.</p>
 </div>
 <p>The previous example is about over-fitting with the idea that better in-sample predictions can actually lead to worse out-of-sample predictions.</p>
-<div id="limitations-of-r2" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Limitations of <span class="math inline">\(R^2\)</span></h3>
+<div id="limitations-of-r2" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Limitations of <span class="math inline">\(R^2\)</span><a href="model-selection.html#limitations-of-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SW 6.4</p>
 <p><span class="math inline">\(R^2\)</span> is a measure of in-sample fit. In fact, you can always increase <span class="math inline">\(R^2\)</span> by adding new variables into a model. To see this, notice that</p>
 <p><span class="math display">\[
@@ -414,8 +414,8 @@ Recall that, for both models, we estimate the parameters by minimizing the sum o
 <p>This discussion means that, if we estimate <span class="math inline">\(\hat{\delta}_2=0\)</span>, then <span class="math inline">\(SSR\)</span> wil be the same across the first and second model, and that if we estimate any other value for <span class="math inline">\(\hat{\delta}_2\)</span>, then <span class="math inline">\(SSR\)</span> for the second model will be lower than for the first model.</p>
 </div>
 </div>
-<div id="adjusted-r2" class="section level3" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Adjusted <span class="math inline">\(R^2\)</span></h3>
+<div id="adjusted-r2" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Adjusted <span class="math inline">\(R^2\)</span><a href="model-selection.html#adjusted-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>SW 6.4</p>
 <p>Given the above discussion, we would like to have a way to choose a model that doesn’t necessarily always select the most complicated model.</p>
 <p>A main way to do this is to add a <strong>penalty</strong> to adding more regressors to the model. One version of this is called <strong>adjusted <span class="math inline">\(R^2\)</span></strong>, which we will write as <span class="math inline">\(\bar{R}^2\)</span>. It is defined as</p>
@@ -428,10 +428,10 @@ where <span class="math inline">\(k\)</span> is the number of regressors include
 <li><p><span class="math inline">\(SSR \downarrow \implies \bar{R}^2 \uparrow\)</span></p></li>
 <li><p><span class="math inline">\((n-k-1) \downarrow \implies \bar{R}^2 \downarrow\)</span></p></li>
 </ul>
-<p>Thus, there is a “benefit” and a “cost” to adding a new regressor. If you are choosing among several models based on <span class="math inline">\(\bar{R}^2\)</span>, you would choose the model that has the highest <span class="math inline">\(\bar{R}^2\)</span>. And the logic is this: if the regressor greatly decreases <span class="math inline">\(SSR\)</span>, then the “benefit” of adding that regressor will tend to outweigh the “cost.” On the other hand, if the regressor has little effect on <span class="math inline">\(SSR\)</span>, then the “benefit” of adding that regressor will tend to be smaller than the “cost.”</p>
+<p>Thus, there is a “benefit” and a “cost” to adding a new regressor. If you are choosing among several models based on <span class="math inline">\(\bar{R}^2\)</span>, you would choose the model that has the highest <span class="math inline">\(\bar{R}^2\)</span>. And the logic is this: if the regressor greatly decreases <span class="math inline">\(SSR\)</span>, then the “benefit” of adding that regressor will tend to outweigh the “cost”. On the other hand, if the regressor has little effect on <span class="math inline">\(SSR\)</span>, then the “benefit” of adding that regressor will tend to be smaller than the “cost”.</p>
 </div>
-<div id="aic-bic" class="section level3" number="5.2.3">
-<h3><span class="header-section-number">5.2.3</span> AIC, BIC</h3>
+<div id="aic-bic" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> AIC, BIC<a href="model-selection.html#aic-bic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are other approaches to model selection that follow a similar idea. Two of the most common ones are the Akaike Information Criteria (AIC) and the Bayesian Information Criteria (BIC). These tend to be somewhat better choices for model selection than <span class="math inline">\(\bar{R}^2\)</span>.</p>
 <p>These are given by</p>
 <ul>
@@ -440,8 +440,8 @@ where <span class="math inline">\(k\)</span> is the number of regressors include
 </ul>
 <p>For both AIC and BIC, you would choose the model that minimizes these.</p>
 </div>
-<div id="cross-validation" class="section level3" number="5.2.4">
-<h3><span class="header-section-number">5.2.4</span> Cross-Validation</h3>
+<div id="cross-validation" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Cross-Validation<a href="model-selection.html#cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another common way to choose a model is called <strong>cross-validation</strong>. The idea is to mimic the out-of-sample prediction problem using the data that we have access to.</p>
 <p>In particular, one simple version of this is to split your data into two parts: these are usually called the <strong>training sample</strong> and the <strong>testing sample</strong>. Then, estimate all models under consideration using the training sample. Given the estimated values of the parameters, then predict the outcomes for observations in the testing sample; and compare these predictions to the actual outcomes in the testing sample. Choose the model that minimizes the squared prediction error in the testing sample.</p>
 <p>Cross-validation is a somewhat more complicated version of the same idea. Basically, we will <em>repeatedly</em> split the data into a training sample and a testing sample, and get predictions for all observations in our data (instead of just for a held-out testing sample).</p>
@@ -474,8 +474,8 @@ CV = \frac{1}{n} \sum_{i=1}^n \tilde{U}_{i}^2
 <p>Cross-validation is a good way to choose a model, but it can sometimes be computationally challenging (because you are estimating lots of models) — particularly, if the models under consideration are very complicated or there a large number of observations.</p>
 <p>Above, we split the data into <span class="math inline">\(J\)</span> folds. This introduces some randomness into our model selection criteria. In particular, if you split the data in a different way from how I split the data, then we could choose different models. This is a somewhat undesirable feature of a model selection criteria. One way to get around this is to set <span class="math inline">\(J=n\)</span>. This makes it so that every observation has its own fold. This is called <strong>leave-one-out cross-validation</strong>. In this case, there is no randomness in the model selection criteria. The drawback is that it is more computational — in this case, you need to estimate the model <span class="math inline">\(n\)</span> times rather than <span class="math inline">\(J\)</span> times.</p>
 </div>
-<div id="model-averaging" class="section level3" number="5.2.5">
-<h3><span class="header-section-number">5.2.5</span> Model Averaging</h3>
+<div id="model-averaging" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Model Averaging<a href="model-selection.html#model-averaging" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the case where you are considering a large number of possible models, it is pretty common that a number of models will, by any of the above model selection criteria, be expected to perform very similarly when making predictions.</p>
 <p>In this case, one strategy that usually does well in terms of making out-of-sample predictions is <em>model averaging</em>.</p>
 <p>Suppose you have <span class="math inline">\(M\)</span> different models, and that each model can produce a predicted value for <span class="math inline">\(Y_i\)</span> — let’s call the predicted value from model <span class="math inline">\(m\)</span>, <span class="math inline">\(\hat{Y}_i^m\)</span>. Model averaging would involve obtaining a new predicted value, call it <span class="math inline">\(\hat{Y}_i\)</span> by computing
@@ -486,8 +486,8 @@ CV = \frac{1}{n} \sum_{i=1}^n \tilde{U}_{i}^2
 <li>Usually, you would throw out models that you know predict poorly and only average together ones that perform reasonably well.</li>
 </ul>
 </div>
-<div id="computation-8" class="section level3" number="5.2.6">
-<h3><span class="header-section-number">5.2.6</span> Computation</h3>
+<div id="computation-8" class="section level3 hasAnchor" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> Computation<a href="model-selection.html#computation-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="math inline">\(R^2\)</span> and <span class="math inline">\(\bar{R}^2\)</span> are both reported as output from <code>R</code>’s <code>lm</code> command.</p>
 <p>It is straightforward (and a useful exercise) to compute <span class="math inline">\(TSS, ESS,\)</span> and <span class="math inline">\(SSR\)</span> directly. It is also straightforward to calculate <span class="math inline">\(AIC\)</span> and <span class="math inline">\(BIC\)</span> — there are probably packages that will do this for you, but they are so easy that I suggest just calculating on your own.</p>
 <p>The same applies to cross validation. I suspect that there are packages available that will do this for you, but I think these are useful coding exercises and not all that difficult. Also, if you do this yourself, it removes any kinds of “black box” issues from downloading <code>R</code> code where it may not be clear exactly what it is doing.</p>
@@ -559,7 +559,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.6 Instrumental Variables | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.6 Instrumental Variables | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="panel-data-approaches.html"/>
 <link rel="next" href="regression-discontinuity.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="instrumental-variables" class="section level2" number="6.6">
-<h2><span class="header-section-number">6.6</span> Instrumental Variables</h2>
+<div id="instrumental-variables" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Instrumental Variables<a href="instrumental-variables.html#instrumental-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW all of chapter 12</p>
 <p>In the previous section, I used the word <strong>natural experiment</strong> but didn’t really define it. When an actual experiment is not actually available, a very common strategy used by researchers interested in causal effects is to consider natural experiments — these are not actual experiments, but more like the case where “something weird” happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes. This “something weird” is called an <strong>instrumental variable</strong>.</p>
 <p>Let me give you some examples:</p>
@@ -405,24 +405,24 @@ which holds because <span class="math inline">\(\mathrm{cov}(Z,\beta_0) = 0\)</s
 That is, if we have a valid instrument, the above formula gives us a path to recovering the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. [Now you can also see why we needed the second condition — otherwise, we could divide by 0 here.]</p>
 <p>The intuition for this is the following: changes in the instrument can cause changes in the outcome but only because they can change whether or not an individual participates in the treatment. These changes show up in the numerator. They are scaled by how much changes in the instrument result in changes in the treatment.</p>
 <p>If there are other covariates in the model, the formula for <span class="math inline">\(\alpha\)</span> will become more complicated. But you can use the <code>ivreg</code> function in the <code>ivreg</code> package to make these complications for you.</p>
-<div id="example-return-to-education" class="section level3" number="6.6.1">
-<h3><span class="header-section-number">6.6.1</span> Example: Return to Education</h3>
+<div id="example-return-to-education" class="section level3 hasAnchor" number="6.6.1">
+<h3><span class="header-section-number">6.6.1</span> Example: Return to Education<a href="instrumental-variables.html#example-return-to-education" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this example, we’ll estimate the return to education using whether or not an individual lives close to a college as an instrument for attending college. The idea is that (at least after controlling for some other covariates), the distance that a person lives from a college should not directly affect their earnings but it could affect whether or not they attend college due to it being more or less convenient. I think that the papers that use this sort of an idea primarily have in mind that distance-to-college may affect whether or not a student attends a community college rather than a university.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="instrumental-variables.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ivreg)</span>
-<span id="cb150-2"><a href="instrumental-variables.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb150-3"><a href="instrumental-variables.html#cb150-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-4"><a href="instrumental-variables.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;SchoolingReturns&quot;</span>, <span class="at">package=</span><span class="st">&quot;ivreg&quot;</span>)</span>
-<span id="cb150-5"><a href="instrumental-variables.html#cb150-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-6"><a href="instrumental-variables.html#cb150-6" aria-hidden="true" tabindex="-1"></a>lm_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">poly</span>(experience, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south,</span>
-<span id="cb150-7"><a href="instrumental-variables.html#cb150-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> SchoolingReturns)</span>
-<span id="cb150-8"><a href="instrumental-variables.html#cb150-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-9"><a href="instrumental-variables.html#cb150-9" aria-hidden="true" tabindex="-1"></a>iv_reg <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(<span class="fu">log</span>(wage) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">poly</span>(experience, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south, </span>
-<span id="cb150-10"><a href="instrumental-variables.html#cb150-10" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> nearcollege <span class="sc">+</span> <span class="fu">poly</span>(age, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south,</span>
-<span id="cb150-11"><a href="instrumental-variables.html#cb150-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> SchoolingReturns)</span>
-<span id="cb150-12"><a href="instrumental-variables.html#cb150-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-13"><a href="instrumental-variables.html#cb150-13" aria-hidden="true" tabindex="-1"></a>reg_list <span class="ot">&lt;-</span> <span class="fu">list</span>(lm_reg, iv_reg)</span>
-<span id="cb150-14"><a href="instrumental-variables.html#cb150-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb150-15"><a href="instrumental-variables.html#cb150-15" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(reg_list)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="instrumental-variables.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ivreg)</span>
+<span id="cb153-2"><a href="instrumental-variables.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb153-3"><a href="instrumental-variables.html#cb153-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-4"><a href="instrumental-variables.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;SchoolingReturns&quot;</span>, <span class="at">package=</span><span class="st">&quot;ivreg&quot;</span>)</span>
+<span id="cb153-5"><a href="instrumental-variables.html#cb153-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-6"><a href="instrumental-variables.html#cb153-6" aria-hidden="true" tabindex="-1"></a>lm_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">poly</span>(experience, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south,</span>
+<span id="cb153-7"><a href="instrumental-variables.html#cb153-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> SchoolingReturns)</span>
+<span id="cb153-8"><a href="instrumental-variables.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-9"><a href="instrumental-variables.html#cb153-9" aria-hidden="true" tabindex="-1"></a>iv_reg <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(<span class="fu">log</span>(wage) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">poly</span>(experience, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south, </span>
+<span id="cb153-10"><a href="instrumental-variables.html#cb153-10" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> nearcollege <span class="sc">+</span> <span class="fu">poly</span>(age, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south,</span>
+<span id="cb153-11"><a href="instrumental-variables.html#cb153-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> SchoolingReturns)</span>
+<span id="cb153-12"><a href="instrumental-variables.html#cb153-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-13"><a href="instrumental-variables.html#cb153-13" aria-hidden="true" tabindex="-1"></a>reg_list <span class="ot">&lt;-</span> <span class="fu">list</span>(lm_reg, iv_reg)</span>
+<span id="cb153-14"><a href="instrumental-variables.html#cb153-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-15"><a href="instrumental-variables.html#cb153-15" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(reg_list)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -622,9 +622,10 @@ R2 Adj.
 AIC
 </td>
 <td style="text-align:center;">
-2633.4
+40329.6
 </td>
 <td style="text-align:center;">
+40778.6
 </td>
 </tr>
 <tr>
@@ -632,9 +633,10 @@ AIC
 BIC
 </td>
 <td style="text-align:center;">
-2681.5
+40377.7
 </td>
 <td style="text-align:center;">
+40826.7
 </td>
 </tr>
 <tr>
@@ -655,6 +657,17 @@ F
 204.932
 </td>
 <td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RMSE
+</td>
+<td style="text-align:center;">
+0.37
+</td>
+<td style="text-align:center;">
+0.40
 </td>
 </tr>
 </tbody>
@@ -728,7 +741,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

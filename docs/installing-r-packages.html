@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -386,21 +388,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="example">
 <p><span id="exm:unlabeled-div-2" class="example"><strong>Example 2.2  </strong></span>Dates can be tricky to work with in R (and in programming languages generally). For example, they are not exactly numbers, but they also have more structure than just a character string. The <code>lubridate</code> package contains functions for converting numbers/strings into dates.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="installing-r-packages.html#cb4-1" aria-hidden="true" tabindex="-1"></a>bday <span class="ot">&lt;-</span> <span class="st">&quot;07-15-1985&quot;</span></span>
-<span id="cb4-2"><a href="installing-r-packages.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bday) <span class="co"># R doesn&#39;t know this is actually a date yet</span></span></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="installing-r-packages.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package</span></span>
-<span id="cb6-2"><a href="installing-r-packages.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb6-3"><a href="installing-r-packages.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mdy stands for &quot;month, day, year&quot;</span></span>
-<span id="cb6-4"><a href="installing-r-packages.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if date were in different format, could use ymd, etc.</span></span>
-<span id="cb6-5"><a href="installing-r-packages.html#cb6-5" aria-hidden="true" tabindex="-1"></a>date_bday <span class="ot">&lt;-</span> <span class="fu">mdy</span>(bday)</span>
-<span id="cb6-6"><a href="installing-r-packages.html#cb6-6" aria-hidden="true" tabindex="-1"></a>date_bday</span></code></pre></div>
-<pre><code>## [1] &quot;1985-07-15&quot;</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="installing-r-packages.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now R knows this is a date</span></span>
-<span id="cb8-2"><a href="installing-r-packages.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date_bday)</span></code></pre></div>
-<pre><code>## [1] &quot;Date&quot;</code></pre>
+<span id="cb4-2"><a href="installing-r-packages.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bday) <span class="co"># R doesn&#39;t know this is actually a date yet</span></span>
+<span id="cb4-3"><a href="installing-r-packages.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span>
+<span id="cb4-4"><a href="installing-r-packages.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="installing-r-packages.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package</span></span>
+<span id="cb4-6"><a href="installing-r-packages.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb4-7"><a href="installing-r-packages.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># mdy stands for &quot;month, day, year&quot;</span></span>
+<span id="cb4-8"><a href="installing-r-packages.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># if date were in different format, could use ymd, etc.</span></span>
+<span id="cb4-9"><a href="installing-r-packages.html#cb4-9" aria-hidden="true" tabindex="-1"></a>date_bday <span class="ot">&lt;-</span> <span class="fu">mdy</span>(bday)</span>
+<span id="cb4-10"><a href="installing-r-packages.html#cb4-10" aria-hidden="true" tabindex="-1"></a>date_bday</span>
+<span id="cb4-11"><a href="installing-r-packages.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1985-07-15&quot;</span></span>
+<span id="cb4-12"><a href="installing-r-packages.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># now R knows this is a date</span></span>
+<span id="cb4-13"><a href="installing-r-packages.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(date_bday)</span>
+<span id="cb4-14"><a href="installing-r-packages.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Date&quot;</span></span></code></pre></div>
 <p>Another (and perhaps better) way to call a function from a package is to use the <code>::</code> syntax. In this case, you do not need the call to <code>library</code> from above. Instead, you can try</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="installing-r-packages.html#cb10-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">mdy</span>(bday)</span></code></pre></div>
-<pre><code>## [1] &quot;1985-07-15&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="installing-r-packages.html#cb5-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">mdy</span>(bday)</span>
+<span id="cb5-2"><a href="installing-r-packages.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;1985-07-15&quot;</span></span></code></pre></div>
 <p>This does exactly the same thing as the code before. What is somewhat better about this code is that it is easier to tell that the <code>mdy</code> function came from the <code>lubridate</code> package.</p>
 </div>
 <div id="a-list-of-useful-r-packages" class="section level3 hasAnchor" number="2.2.1">

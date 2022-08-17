@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="lab-4-predicting-diamond-prices.html"/>
 <link rel="next" href="coding-questions-2.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,117 +369,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-4-solutions" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Lab 4: Solutions</h2>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="lab-4-solutions.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_train.RData&quot;</span>)</span>
-<span id="cb143-2"><a href="lab-4-solutions.html#cb143-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-3"><a href="lab-4-solutions.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="co"># formulas</span></span>
-<span id="cb143-4"><a href="lab-4-solutions.html#cb143-4" aria-hidden="true" tabindex="-1"></a>formla1 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity)</span>
-<span id="cb143-5"><a href="lab-4-solutions.html#cb143-5" aria-hidden="true" tabindex="-1"></a>formla2 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x</span>
-<span id="cb143-6"><a href="lab-4-solutions.html#cb143-6" aria-hidden="true" tabindex="-1"></a>formla3 <span class="ot">&lt;-</span> price <span class="sc">~</span> (carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb143-7"><a href="lab-4-solutions.html#cb143-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-8"><a href="lab-4-solutions.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate each model</span></span>
-<span id="cb143-9"><a href="lab-4-solutions.html#cb143-9" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla1, <span class="at">data=</span>diamond_train)</span>
-<span id="cb143-10"><a href="lab-4-solutions.html#cb143-10" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla2, <span class="at">data=</span>diamond_train)</span>
-<span id="cb143-11"><a href="lab-4-solutions.html#cb143-11" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla3, <span class="at">data=</span>diamond_train)</span>
-<span id="cb143-12"><a href="lab-4-solutions.html#cb143-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-13"><a href="lab-4-solutions.html#cb143-13" aria-hidden="true" tabindex="-1"></a>mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
-<span id="cb143-14"><a href="lab-4-solutions.html#cb143-14" aria-hidden="true" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla, <span class="at">data=</span>diamond_train)</span>
-<span id="cb143-15"><a href="lab-4-solutions.html#cb143-15" aria-hidden="true" tabindex="-1"></a>  r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>r.squared</span>
-<span id="cb143-16"><a href="lab-4-solutions.html#cb143-16" aria-hidden="true" tabindex="-1"></a>  adj.r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>adj.r.squared</span>
-<span id="cb143-17"><a href="lab-4-solutions.html#cb143-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-18"><a href="lab-4-solutions.html#cb143-18" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
-<span id="cb143-19"><a href="lab-4-solutions.html#cb143-19" aria-hidden="true" tabindex="-1"></a>  uhat <span class="ot">&lt;-</span> <span class="fu">resid</span>(mod)</span>
-<span id="cb143-20"><a href="lab-4-solutions.html#cb143-20" aria-hidden="true" tabindex="-1"></a>  ssr <span class="ot">&lt;-</span> <span class="fu">sum</span>(uhat<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb143-21"><a href="lab-4-solutions.html#cb143-21" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod))</span>
-<span id="cb143-22"><a href="lab-4-solutions.html#cb143-22" aria-hidden="true" tabindex="-1"></a>  aic <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>k <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
-<span id="cb143-23"><a href="lab-4-solutions.html#cb143-23" aria-hidden="true" tabindex="-1"></a>  bic <span class="ot">&lt;-</span> k<span class="sc">*</span><span class="fu">log</span>(n) <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
-<span id="cb143-24"><a href="lab-4-solutions.html#cb143-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-25"><a href="lab-4-solutions.html#cb143-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show results</span></span>
-<span id="cb143-26"><a href="lab-4-solutions.html#cb143-26" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">tibble</span>(r.squared, adj.r.squared, aic, bic)</span>
-<span id="cb143-27"><a href="lab-4-solutions.html#cb143-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb143-28"><a href="lab-4-solutions.html#cb143-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb143-29"><a href="lab-4-solutions.html#cb143-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-30"><a href="lab-4-solutions.html#cb143-30" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla1)</span>
-<span id="cb143-31"><a href="lab-4-solutions.html#cb143-31" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla2)</span>
-<span id="cb143-32"><a href="lab-4-solutions.html#cb143-32" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla3)</span>
-<span id="cb143-33"><a href="lab-4-solutions.html#cb143-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-34"><a href="lab-4-solutions.html#cb143-34" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb143-35"><a href="lab-4-solutions.html#cb143-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
-<span id="cb143-36"><a href="lab-4-solutions.html#cb143-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared      aic      bic</span></span>
-<span id="cb143-37"><a href="lab-4-solutions.html#cb143-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb143-38"><a href="lab-4-solutions.html#cb143-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188. 1104301.</span></span>
-<span id="cb143-39"><a href="lab-4-solutions.html#cb143-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.9           0.9   1103499. 1103647.</span></span>
-<span id="cb143-40"><a href="lab-4-solutions.html#cb143-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372. 1090328.</span></span>
-<span id="cb143-41"><a href="lab-4-solutions.html#cb143-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-42"><a href="lab-4-solutions.html#cb143-42" aria-hidden="true" tabindex="-1"></a><span class="co"># k-fold cross validation</span></span>
-<span id="cb143-43"><a href="lab-4-solutions.html#cb143-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-44"><a href="lab-4-solutions.html#cb143-44" aria-hidden="true" tabindex="-1"></a><span class="co"># setup data</span></span>
-<span id="cb143-45"><a href="lab-4-solutions.html#cb143-45" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb143-46"><a href="lab-4-solutions.html#cb143-46" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
-<span id="cb143-47"><a href="lab-4-solutions.html#cb143-47" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>fold <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb143-48"><a href="lab-4-solutions.html#cb143-48" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
-<span id="cb143-49"><a href="lab-4-solutions.html#cb143-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-50"><a href="lab-4-solutions.html#cb143-50" aria-hidden="true" tabindex="-1"></a>cv_mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
-<span id="cb143-51"><a href="lab-4-solutions.html#cb143-51" aria-hidden="true" tabindex="-1"></a>  u.squared <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
-<span id="cb143-52"><a href="lab-4-solutions.html#cb143-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
-<span id="cb143-53"><a href="lab-4-solutions.html#cb143-53" aria-hidden="true" tabindex="-1"></a>    this.train <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">!=</span> i)</span>
-<span id="cb143-54"><a href="lab-4-solutions.html#cb143-54" aria-hidden="true" tabindex="-1"></a>    this.test <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">==</span> i)</span>
-<span id="cb143-55"><a href="lab-4-solutions.html#cb143-55" aria-hidden="true" tabindex="-1"></a>    this.id <span class="ot">&lt;-</span> this.test<span class="sc">$</span>id</span>
-<span id="cb143-56"><a href="lab-4-solutions.html#cb143-56" aria-hidden="true" tabindex="-1"></a>    cv_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla,</span>
-<span id="cb143-57"><a href="lab-4-solutions.html#cb143-57" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>this.train)</span>
-<span id="cb143-58"><a href="lab-4-solutions.html#cb143-58" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(cv_reg, <span class="at">newdata=</span>this.test)</span>
-<span id="cb143-59"><a href="lab-4-solutions.html#cb143-59" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> this.test<span class="sc">$</span>price <span class="sc">-</span> pred</span>
-<span id="cb143-60"><a href="lab-4-solutions.html#cb143-60" aria-hidden="true" tabindex="-1"></a>    u.squared[this.id] <span class="ot">&lt;-</span> u<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb143-61"><a href="lab-4-solutions.html#cb143-61" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb143-62"><a href="lab-4-solutions.html#cb143-62" aria-hidden="true" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u.squared))</span>
-<span id="cb143-63"><a href="lab-4-solutions.html#cb143-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cv)</span>
-<span id="cb143-64"><a href="lab-4-solutions.html#cb143-64" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb143-65"><a href="lab-4-solutions.html#cb143-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-66"><a href="lab-4-solutions.html#cb143-66" aria-hidden="true" tabindex="-1"></a>cv_res1 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla1)</span>
-<span id="cb143-67"><a href="lab-4-solutions.html#cb143-67" aria-hidden="true" tabindex="-1"></a>cv_res2 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla2)</span>
-<span id="cb143-68"><a href="lab-4-solutions.html#cb143-68" aria-hidden="true" tabindex="-1"></a>cv_res3 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla3)</span>
-<span id="cb143-69"><a href="lab-4-solutions.html#cb143-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-70"><a href="lab-4-solutions.html#cb143-70" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res1, <span class="at">cv=</span>cv_res1)</span>
-<span id="cb143-71"><a href="lab-4-solutions.html#cb143-71" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res2, <span class="at">cv=</span>cv_res2)</span>
-<span id="cb143-72"><a href="lab-4-solutions.html#cb143-72" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res3, <span class="at">cv=</span>cv_res3)</span>
-<span id="cb143-73"><a href="lab-4-solutions.html#cb143-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-74"><a href="lab-4-solutions.html#cb143-74" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb143-75"><a href="lab-4-solutions.html#cb143-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic       cv</span></span>
-<span id="cb143-76"><a href="lab-4-solutions.html#cb143-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301 1366.021</span></span>
-<span id="cb143-77"><a href="lab-4-solutions.html#cb143-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647 1397.104</span></span>
-<span id="cb143-78"><a href="lab-4-solutions.html#cb143-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328 2247.940</span></span>
-<span id="cb143-79"><a href="lab-4-solutions.html#cb143-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-80"><a href="lab-4-solutions.html#cb143-80" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
-<span id="cb143-81"><a href="lab-4-solutions.html#cb143-81" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb143-82"><a href="lab-4-solutions.html#cb143-82" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
-<span id="cb143-83"><a href="lab-4-solutions.html#cb143-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-84"><a href="lab-4-solutions.html#cb143-84" aria-hidden="true" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb143-85"><a href="lab-4-solutions.html#cb143-85" aria-hidden="true" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
-<span id="cb143-86"><a href="lab-4-solutions.html#cb143-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-87"><a href="lab-4-solutions.html#cb143-87" aria-hidden="true" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
-<span id="cb143-88"><a href="lab-4-solutions.html#cb143-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-89"><a href="lab-4-solutions.html#cb143-89" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
-<span id="cb143-90"><a href="lab-4-solutions.html#cb143-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-91"><a href="lab-4-solutions.html#cb143-91" aria-hidden="true" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
-<span id="cb143-92"><a href="lab-4-solutions.html#cb143-92" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb143-93"><a href="lab-4-solutions.html#cb143-93" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb143-94"><a href="lab-4-solutions.html#cb143-94" aria-hidden="true" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb143-95"><a href="lab-4-solutions.html#cb143-95" aria-hidden="true" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb143-96"><a href="lab-4-solutions.html#cb143-96" aria-hidden="true" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb143-97"><a href="lab-4-solutions.html#cb143-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-98"><a href="lab-4-solutions.html#cb143-98" aria-hidden="true" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
-<span id="cb143-99"><a href="lab-4-solutions.html#cb143-99" aria-hidden="true" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb143-100"><a href="lab-4-solutions.html#cb143-100" aria-hidden="true" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb143-101"><a href="lab-4-solutions.html#cb143-101" aria-hidden="true" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb143-102"><a href="lab-4-solutions.html#cb143-102" aria-hidden="true" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb143-103"><a href="lab-4-solutions.html#cb143-103" aria-hidden="true" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb143-104"><a href="lab-4-solutions.html#cb143-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-105"><a href="lab-4-solutions.html#cb143-105" aria-hidden="true" tabindex="-1"></a><span class="co"># report results</span></span>
-<span id="cb143-106"><a href="lab-4-solutions.html#cb143-106" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
-<span id="cb143-107"><a href="lab-4-solutions.html#cb143-107" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span>
-<span id="cb143-108"><a href="lab-4-solutions.html#cb143-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      mod1    mod2    mod3  lasso   ridge</span></span>
-<span id="cb143-109"><a href="lab-4-solutions.html#cb143-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 856.014 785.171 616.996 683.36 794.276</span></span></code></pre></div>
+<div id="lab-4-solutions" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Lab 4: Solutions<a href="lab-4-solutions.html#lab-4-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="lab-4-solutions.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_train.RData&quot;</span>)</span>
+<span id="cb146-2"><a href="lab-4-solutions.html#cb146-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="lab-4-solutions.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="co"># formulas</span></span>
+<span id="cb146-4"><a href="lab-4-solutions.html#cb146-4" aria-hidden="true" tabindex="-1"></a>formla1 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity)</span>
+<span id="cb146-5"><a href="lab-4-solutions.html#cb146-5" aria-hidden="true" tabindex="-1"></a>formla2 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x</span>
+<span id="cb146-6"><a href="lab-4-solutions.html#cb146-6" aria-hidden="true" tabindex="-1"></a>formla3 <span class="ot">&lt;-</span> price <span class="sc">~</span> (carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb146-7"><a href="lab-4-solutions.html#cb146-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-8"><a href="lab-4-solutions.html#cb146-8" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate each model</span></span>
+<span id="cb146-9"><a href="lab-4-solutions.html#cb146-9" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla1, <span class="at">data=</span>diamond_train)</span>
+<span id="cb146-10"><a href="lab-4-solutions.html#cb146-10" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla2, <span class="at">data=</span>diamond_train)</span>
+<span id="cb146-11"><a href="lab-4-solutions.html#cb146-11" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla3, <span class="at">data=</span>diamond_train)</span>
+<span id="cb146-12"><a href="lab-4-solutions.html#cb146-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-13"><a href="lab-4-solutions.html#cb146-13" aria-hidden="true" tabindex="-1"></a>mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
+<span id="cb146-14"><a href="lab-4-solutions.html#cb146-14" aria-hidden="true" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla, <span class="at">data=</span>diamond_train)</span>
+<span id="cb146-15"><a href="lab-4-solutions.html#cb146-15" aria-hidden="true" tabindex="-1"></a>  r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>r.squared</span>
+<span id="cb146-16"><a href="lab-4-solutions.html#cb146-16" aria-hidden="true" tabindex="-1"></a>  adj.r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb146-17"><a href="lab-4-solutions.html#cb146-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-18"><a href="lab-4-solutions.html#cb146-18" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
+<span id="cb146-19"><a href="lab-4-solutions.html#cb146-19" aria-hidden="true" tabindex="-1"></a>  uhat <span class="ot">&lt;-</span> <span class="fu">resid</span>(mod)</span>
+<span id="cb146-20"><a href="lab-4-solutions.html#cb146-20" aria-hidden="true" tabindex="-1"></a>  ssr <span class="ot">&lt;-</span> <span class="fu">sum</span>(uhat<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb146-21"><a href="lab-4-solutions.html#cb146-21" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod))</span>
+<span id="cb146-22"><a href="lab-4-solutions.html#cb146-22" aria-hidden="true" tabindex="-1"></a>  aic <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>k <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
+<span id="cb146-23"><a href="lab-4-solutions.html#cb146-23" aria-hidden="true" tabindex="-1"></a>  bic <span class="ot">&lt;-</span> k<span class="sc">*</span><span class="fu">log</span>(n) <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
+<span id="cb146-24"><a href="lab-4-solutions.html#cb146-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-25"><a href="lab-4-solutions.html#cb146-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show results</span></span>
+<span id="cb146-26"><a href="lab-4-solutions.html#cb146-26" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">tibble</span>(r.squared, adj.r.squared, aic, bic)</span>
+<span id="cb146-27"><a href="lab-4-solutions.html#cb146-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb146-28"><a href="lab-4-solutions.html#cb146-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb146-29"><a href="lab-4-solutions.html#cb146-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-30"><a href="lab-4-solutions.html#cb146-30" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla1)</span>
+<span id="cb146-31"><a href="lab-4-solutions.html#cb146-31" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla2)</span>
+<span id="cb146-32"><a href="lab-4-solutions.html#cb146-32" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla3)</span>
+<span id="cb146-33"><a href="lab-4-solutions.html#cb146-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-34"><a href="lab-4-solutions.html#cb146-34" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
+<span id="cb146-35"><a href="lab-4-solutions.html#cb146-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span id="cb146-36"><a href="lab-4-solutions.html#cb146-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared      aic      bic</span></span>
+<span id="cb146-37"><a href="lab-4-solutions.html#cb146-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb146-38"><a href="lab-4-solutions.html#cb146-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188. 1104301.</span></span>
+<span id="cb146-39"><a href="lab-4-solutions.html#cb146-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.9           0.9   1103499. 1103647.</span></span>
+<span id="cb146-40"><a href="lab-4-solutions.html#cb146-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372. 1090328.</span></span>
+<span id="cb146-41"><a href="lab-4-solutions.html#cb146-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-42"><a href="lab-4-solutions.html#cb146-42" aria-hidden="true" tabindex="-1"></a><span class="co"># k-fold cross validation</span></span>
+<span id="cb146-43"><a href="lab-4-solutions.html#cb146-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-44"><a href="lab-4-solutions.html#cb146-44" aria-hidden="true" tabindex="-1"></a><span class="co"># setup data</span></span>
+<span id="cb146-45"><a href="lab-4-solutions.html#cb146-45" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb146-46"><a href="lab-4-solutions.html#cb146-46" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
+<span id="cb146-47"><a href="lab-4-solutions.html#cb146-47" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>fold <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb146-48"><a href="lab-4-solutions.html#cb146-48" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb146-49"><a href="lab-4-solutions.html#cb146-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-50"><a href="lab-4-solutions.html#cb146-50" aria-hidden="true" tabindex="-1"></a>cv_mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
+<span id="cb146-51"><a href="lab-4-solutions.html#cb146-51" aria-hidden="true" tabindex="-1"></a>  u.squared <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb146-52"><a href="lab-4-solutions.html#cb146-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb146-53"><a href="lab-4-solutions.html#cb146-53" aria-hidden="true" tabindex="-1"></a>    this.train <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">!=</span> i)</span>
+<span id="cb146-54"><a href="lab-4-solutions.html#cb146-54" aria-hidden="true" tabindex="-1"></a>    this.test <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">==</span> i)</span>
+<span id="cb146-55"><a href="lab-4-solutions.html#cb146-55" aria-hidden="true" tabindex="-1"></a>    this.id <span class="ot">&lt;-</span> this.test<span class="sc">$</span>id</span>
+<span id="cb146-56"><a href="lab-4-solutions.html#cb146-56" aria-hidden="true" tabindex="-1"></a>    cv_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla,</span>
+<span id="cb146-57"><a href="lab-4-solutions.html#cb146-57" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>this.train)</span>
+<span id="cb146-58"><a href="lab-4-solutions.html#cb146-58" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(cv_reg, <span class="at">newdata=</span>this.test)</span>
+<span id="cb146-59"><a href="lab-4-solutions.html#cb146-59" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> this.test<span class="sc">$</span>price <span class="sc">-</span> pred</span>
+<span id="cb146-60"><a href="lab-4-solutions.html#cb146-60" aria-hidden="true" tabindex="-1"></a>    u.squared[this.id] <span class="ot">&lt;-</span> u<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb146-61"><a href="lab-4-solutions.html#cb146-61" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb146-62"><a href="lab-4-solutions.html#cb146-62" aria-hidden="true" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u.squared))</span>
+<span id="cb146-63"><a href="lab-4-solutions.html#cb146-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cv)</span>
+<span id="cb146-64"><a href="lab-4-solutions.html#cb146-64" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb146-65"><a href="lab-4-solutions.html#cb146-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-66"><a href="lab-4-solutions.html#cb146-66" aria-hidden="true" tabindex="-1"></a>cv_res1 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla1)</span>
+<span id="cb146-67"><a href="lab-4-solutions.html#cb146-67" aria-hidden="true" tabindex="-1"></a>cv_res2 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla2)</span>
+<span id="cb146-68"><a href="lab-4-solutions.html#cb146-68" aria-hidden="true" tabindex="-1"></a>cv_res3 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla3)</span>
+<span id="cb146-69"><a href="lab-4-solutions.html#cb146-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-70"><a href="lab-4-solutions.html#cb146-70" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res1, <span class="at">cv=</span>cv_res1)</span>
+<span id="cb146-71"><a href="lab-4-solutions.html#cb146-71" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res2, <span class="at">cv=</span>cv_res2)</span>
+<span id="cb146-72"><a href="lab-4-solutions.html#cb146-72" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res3, <span class="at">cv=</span>cv_res3)</span>
+<span id="cb146-73"><a href="lab-4-solutions.html#cb146-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-74"><a href="lab-4-solutions.html#cb146-74" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
+<span id="cb146-75"><a href="lab-4-solutions.html#cb146-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic</span></span>
+<span id="cb146-76"><a href="lab-4-solutions.html#cb146-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301</span></span>
+<span id="cb146-77"><a href="lab-4-solutions.html#cb146-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647</span></span>
+<span id="cb146-78"><a href="lab-4-solutions.html#cb146-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328</span></span>
+<span id="cb146-79"><a href="lab-4-solutions.html#cb146-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         cv</span></span>
+<span id="cb146-80"><a href="lab-4-solutions.html#cb146-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1366.021</span></span>
+<span id="cb146-81"><a href="lab-4-solutions.html#cb146-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1397.104</span></span>
+<span id="cb146-82"><a href="lab-4-solutions.html#cb146-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2247.940</span></span>
+<span id="cb146-83"><a href="lab-4-solutions.html#cb146-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-84"><a href="lab-4-solutions.html#cb146-84" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
+<span id="cb146-85"><a href="lab-4-solutions.html#cb146-85" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb146-86"><a href="lab-4-solutions.html#cb146-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
+<span id="cb146-87"><a href="lab-4-solutions.html#cb146-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-88"><a href="lab-4-solutions.html#cb146-88" aria-hidden="true" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb146-89"><a href="lab-4-solutions.html#cb146-89" aria-hidden="true" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
+<span id="cb146-90"><a href="lab-4-solutions.html#cb146-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-91"><a href="lab-4-solutions.html#cb146-91" aria-hidden="true" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
+<span id="cb146-92"><a href="lab-4-solutions.html#cb146-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-93"><a href="lab-4-solutions.html#cb146-93" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
+<span id="cb146-94"><a href="lab-4-solutions.html#cb146-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-95"><a href="lab-4-solutions.html#cb146-95" aria-hidden="true" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
+<span id="cb146-96"><a href="lab-4-solutions.html#cb146-96" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-97"><a href="lab-4-solutions.html#cb146-97" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-98"><a href="lab-4-solutions.html#cb146-98" aria-hidden="true" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-99"><a href="lab-4-solutions.html#cb146-99" aria-hidden="true" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-100"><a href="lab-4-solutions.html#cb146-100" aria-hidden="true" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-101"><a href="lab-4-solutions.html#cb146-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-102"><a href="lab-4-solutions.html#cb146-102" aria-hidden="true" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
+<span id="cb146-103"><a href="lab-4-solutions.html#cb146-103" aria-hidden="true" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-104"><a href="lab-4-solutions.html#cb146-104" aria-hidden="true" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-105"><a href="lab-4-solutions.html#cb146-105" aria-hidden="true" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-106"><a href="lab-4-solutions.html#cb146-106" aria-hidden="true" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-107"><a href="lab-4-solutions.html#cb146-107" aria-hidden="true" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-108"><a href="lab-4-solutions.html#cb146-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-109"><a href="lab-4-solutions.html#cb146-109" aria-hidden="true" tabindex="-1"></a><span class="co"># report results</span></span>
+<span id="cb146-110"><a href="lab-4-solutions.html#cb146-110" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
+<span id="cb146-111"><a href="lab-4-solutions.html#cb146-111" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span>
+<span id="cb146-112"><a href="lab-4-solutions.html#cb146-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      mod1    mod2    mod3  lasso   ridge</span></span>
+<span id="cb146-113"><a href="lab-4-solutions.html#cb146-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 856.014 785.171 616.996 683.36 794.276</span></span></code></pre></div>
 </div>
             </section>
 
@@ -547,7 +551,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

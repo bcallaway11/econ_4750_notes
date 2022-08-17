@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -372,8 +374,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this lab, we will do several practice problems related to programming in R.</p>
 <ol style="list-style-type: decimal">
 <li><p>Create two vectors as follows</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="lab-1-introduction-to-r-programming.html#cb163-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
-<span id="cb163-2"><a href="lab-1-introduction-to-r-programming.html#cb163-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lab-1-introduction-to-r-programming.html#cb65-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
+<span id="cb65-2"><a href="lab-1-introduction-to-r-programming.html#cb65-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span></code></pre></div>
 <p>Add <code>x</code> and <code>y</code>, subtract <code>y</code> from <code>x</code>, multiply <code>x</code> and <code>y</code>, and divide <code>x</code> by <code>y</code> and report your results.</p></li>
 <li><p>The geometric mean of a set of numbers is an alternative measure of central tendency to the more common “arithmetic mean” (this is the mean that we are used to). For a set of <span class="math inline">\(J\)</span> numbers, <span class="math inline">\(x_1,x_2,\ldots,x_J\)</span>, the geometric mean is defined as</p>
 <p><span class="math display">\[

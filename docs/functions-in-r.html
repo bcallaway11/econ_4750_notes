@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -371,18 +373,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.4</span> Functions in R<a href="functions-in-r.html#functions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Related Reading: IDS 2.2</p>
 <p>R has a large number of helpful, built-in functions. Let’s start with a pretty representative example: computing logarithms. This can be done using the R function <code>log</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="functions-in-r.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 1.609438</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="functions-in-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">5</span>)</span>
+<span id="cb11-2"><a href="functions-in-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.609438</span></span></code></pre></div>
 <p>You can tell this is a function because of the parentheses. The <code>5</code> inside of the parentheses is called the <strong>argument</strong> of the function. As practice, try computing the <span class="math inline">\(\log\)</span> of 7.</p>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> As a reminder, the logarithm of some number, let’s call it <span class="math inline">\(b\)</span>, is is the value of <span class="math inline">\(a\)</span> that solves <span class="math inline">\(\textrm{base}^a = b\)</span>.</p>
 </div>
 <p>The default base in R is <span class="math inline">\(e \approx 2.718\)</span>, so that <code>log(5)</code> actually computes what you might be more used to calling the “natural logarithm”. You can change the default value of the base by adding an extra argument to the function.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="functions-in-r.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">5</span>, <span class="at">base=</span><span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## [1] 0.69897</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="functions-in-r.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">5</span>, <span class="at">base=</span><span class="dv">10</span>)</span>
+<span id="cb12-2"><a href="functions-in-r.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.69897</span></span></code></pre></div>
 <p>In order to learn about what arguments are available (and what they mean), you can access the help files for a particular function by running either</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="functions-in-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(log)</span>
-<span id="cb22-2"><a href="functions-in-r.html#cb22-2" aria-hidden="true" tabindex="-1"></a>?log</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="functions-in-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(log)</span>
+<span id="cb13-2"><a href="functions-in-r.html#cb13-2" aria-hidden="true" tabindex="-1"></a>?log</span></code></pre></div>
 <p>and, of course, substituting the name of whatever function you want to learn about in place of <code>log</code>.</p>
 <p>In RStudio, it can also be helpful to press <code>Tab</code> and RStudio will provide possible completions to the function you are typing as well as what arguments can be provided to that function.</p>
 <div class="practice">

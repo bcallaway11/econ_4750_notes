@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.10 How to estimate the parameters in a regression model | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.10 How to estimate the parameters in a regression model | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2021-12-14" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="omitted-variable-bias.html"/>
 <link rel="next" href="inference.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -167,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="how-to-estimate-the-parameters-in-a-regression-model" class="section level2" number="4.10">
-<h2><span class="header-section-number">4.10</span> How to estimate the parameters in a regression model</h2>
+<div id="how-to-estimate-the-parameters-in-a-regression-model" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> How to estimate the parameters in a regression model<a href="how-to-estimate-the-parameters-in-a-regression-model.html#how-to-estimate-the-parameters-in-a-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 4.2, 6.3</p>
 <p>Let’s start with the simple linear regression model (i.e., where there is just one regressor):</p>
 <p><span class="math display">\[
@@ -398,29 +398,29 @@ where, for example, <span class="math inline">\(b_0^b\)</span> and <span class="
   \frac{1}{n}\sum_{i=1}^n {U_i^b}^2, \quad \frac{1}{n}\sum_{i=1}^n {U_i^g}^2, \quad \frac{1}{n}\sum_{i=1}^n {U_i^r}^2
 \]</span>
 for the blue line, green line, and red line. These are actually numbers that we can compute.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intercept and slope of each line</span></span>
-<span id="cb120-2"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (I just picked these)</span></span>
-<span id="cb120-3"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-3" aria-hidden="true" tabindex="-1"></a>int_blue <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb120-4"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-4" aria-hidden="true" tabindex="-1"></a>slope_blue <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb120-5"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-5" aria-hidden="true" tabindex="-1"></a>int_green <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb120-6"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-6" aria-hidden="true" tabindex="-1"></a>slope_green <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.5</span></span>
-<span id="cb120-7"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-7" aria-hidden="true" tabindex="-1"></a>int_red <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb120-8"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-8" aria-hidden="true" tabindex="-1"></a>slope_red <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb120-9"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-10"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compute &quot;errors&quot;</span></span>
-<span id="cb120-11"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-11" aria-hidden="true" tabindex="-1"></a>Ub <span class="ot">&lt;-</span> Y <span class="sc">-</span> int_blue <span class="sc">-</span> slope_blue<span class="sc">*</span>X</span>
-<span id="cb120-12"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-12" aria-hidden="true" tabindex="-1"></a>Ug <span class="ot">&lt;-</span> Y <span class="sc">-</span> int_green <span class="sc">-</span> slope_green<span class="sc">*</span>X</span>
-<span id="cb120-13"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-13" aria-hidden="true" tabindex="-1"></a>Ur <span class="ot">&lt;-</span> Y <span class="sc">-</span> int_red <span class="sc">-</span> slope_red<span class="sc">*</span>X</span>
-<span id="cb120-14"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-15"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="co"># compute distances</span></span>
-<span id="cb120-16"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-16" aria-hidden="true" tabindex="-1"></a>dist_blue <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ub<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb120-17"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-17" aria-hidden="true" tabindex="-1"></a>dist_green <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ug<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb120-18"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-18" aria-hidden="true" tabindex="-1"></a>dist_red <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ur<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb120-19"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-20"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-20" aria-hidden="true" tabindex="-1"></a><span class="co"># report distances</span></span>
-<span id="cb120-21"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-21" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(dist_blue, dist_green, dist_red), <span class="dv">3</span>)</span>
-<span id="cb120-22"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   dist_blue dist_green dist_red</span></span>
-<span id="cb120-23"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb120-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.255      5.828   14.728</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intercept and slope of each line</span></span>
+<span id="cb123-2"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (I just picked these)</span></span>
+<span id="cb123-3"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-3" aria-hidden="true" tabindex="-1"></a>int_blue <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb123-4"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-4" aria-hidden="true" tabindex="-1"></a>slope_blue <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb123-5"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-5" aria-hidden="true" tabindex="-1"></a>int_green <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb123-6"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-6" aria-hidden="true" tabindex="-1"></a>slope_green <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.5</span></span>
+<span id="cb123-7"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-7" aria-hidden="true" tabindex="-1"></a>int_red <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb123-8"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-8" aria-hidden="true" tabindex="-1"></a>slope_red <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb123-9"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-10"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compute &quot;errors&quot;</span></span>
+<span id="cb123-11"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-11" aria-hidden="true" tabindex="-1"></a>Ub <span class="ot">&lt;-</span> Y <span class="sc">-</span> int_blue <span class="sc">-</span> slope_blue<span class="sc">*</span>X</span>
+<span id="cb123-12"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-12" aria-hidden="true" tabindex="-1"></a>Ug <span class="ot">&lt;-</span> Y <span class="sc">-</span> int_green <span class="sc">-</span> slope_green<span class="sc">*</span>X</span>
+<span id="cb123-13"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-13" aria-hidden="true" tabindex="-1"></a>Ur <span class="ot">&lt;-</span> Y <span class="sc">-</span> int_red <span class="sc">-</span> slope_red<span class="sc">*</span>X</span>
+<span id="cb123-14"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-15"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-15" aria-hidden="true" tabindex="-1"></a><span class="co"># compute distances</span></span>
+<span id="cb123-16"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-16" aria-hidden="true" tabindex="-1"></a>dist_blue <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ub<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb123-17"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-17" aria-hidden="true" tabindex="-1"></a>dist_green <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ug<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb123-18"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-18" aria-hidden="true" tabindex="-1"></a>dist_red <span class="ot">&lt;-</span> <span class="fu">mean</span>(Ur<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb123-19"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-20"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-20" aria-hidden="true" tabindex="-1"></a><span class="co"># report distances</span></span>
+<span id="cb123-21"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-21" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(dist_blue, dist_green, dist_red), <span class="dv">3</span>)</span>
+<span id="cb123-22"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   dist_blue dist_green dist_red</span></span>
+<span id="cb123-23"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb123-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.255      5.828   14.728</span></span></code></pre></div>
 <p>This corroborates our earlier intuition — the blue line appears to fit the data much better than the other two lines.</p>
 <p>It turns out that we can use the same sort of idea as above to choose not just among three possible lines to fit the data, but to choose among <em>all possible lines</em>. More generally than we have been doing, let’s write</p>
 <p><span class="math display">\[
@@ -456,8 +456,8 @@ where the 2 comes from taking the derivative of the squared part, and the negati
   &amp; \phantom{\implies} -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) &amp;= 0 \\
   &amp; \implies \frac{1}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) &amp;= 0 \\
   &amp; \implies \bar{Y} - \hat{\beta}_0 - \hat{\beta}_1 \bar{X} &amp;= 0 \\
-  &amp; \implies \boxed{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}} 
-  \end{aligned} 
+  &amp; \implies \boxed{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}}
+  \end{aligned}
 \]</span>
 where the second line holds by dividing both sides by <span class="math inline">\(-2\)</span>, the third line holds by pushing the summation through the sums/differences and simplifying terms, and the last line holds by rearranging to solve for <span class="math inline">\(\hat{\beta}_0\)</span>.</p>
 <p>Now, let’s use the above result and Equation <a href="how-to-estimate-the-parameters-in-a-regression-model.html#eq:foc-bet1">(4.3)</a> to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
@@ -491,44 +491,49 @@ which is the difference between individual <span class="math inline">\(i\)</span
 \]</span>
 so that <span class="math inline">\(\hat{U}_i\)</span> is the difference between individual <span class="math inline">\(i\)</span>’s outcome and the estimated regression line. Moreover, since generally <span class="math inline">\(\beta_0 \neq \hat{\beta}_0\)</span> and <span class="math inline">\(\beta_1 \neq \hat{\beta}_1\)</span>, generally <span class="math inline">\(U_i \neq \hat{U}_i\)</span>.</p>
 </div>
-<div id="computation-6" class="section level3" number="4.10.1">
-<h3><span class="header-section-number">4.10.1</span> Computation</h3>
+<div id="computation-6" class="section level3 hasAnchor" number="4.10.1">
+<h3><span class="header-section-number">4.10.1</span> Computation<a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before moving on, let’s just confirm that the formulas that we derived are actually what <code>R</code> uses in order to estimates the parameters in a regression.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using lm</span></span>
-<span id="cb121-2"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-2" aria-hidden="true" tabindex="-1"></a>reg8 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data=</span>mtcars)</span>
-<span id="cb121-3"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg8)</span>
-<span id="cb121-4"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb121-5"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb121-6"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = mpg ~ hp, data = mtcars)</span></span>
-<span id="cb121-7"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb121-8"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb121-9"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb121-10"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -5.7121 -2.1122 -0.8854  1.5819  8.2360 </span></span>
-<span id="cb121-11"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb121-12"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb121-13"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb121-14"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***</span></span>
-<span id="cb121-15"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.06823    0.01012  -6.742 1.79e-07 ***</span></span>
-<span id="cb121-16"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb121-17"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb121-18"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb121-19"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 3.863 on 30 degrees of freedom</span></span>
-<span id="cb121-20"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 </span></span>
-<span id="cb121-21"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</span></span>
-<span id="cb121-22"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-23"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-23" aria-hidden="true" tabindex="-1"></a><span class="co"># using our formulas</span></span>
-<span id="cb121-24"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-24" aria-hidden="true" tabindex="-1"></a>bet1 <span class="ot">&lt;-</span> <span class="fu">cov</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp) <span class="sc">/</span> <span class="fu">var</span>(mtcars<span class="sc">$</span>hp)</span>
-<span id="cb121-25"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-26"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-26" aria-hidden="true" tabindex="-1"></a>bet0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg) <span class="sc">-</span> bet1<span class="sc">*</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)</span>
-<span id="cb121-27"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-28"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-28" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
-<span id="cb121-29"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-29" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">bet0=</span>bet0, <span class="at">bet1=</span>bet1)</span>
-<span id="cb121-30"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       bet0        bet1</span></span>
-<span id="cb121-31"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb121-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 30.09886 -0.06822828</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using lm</span></span>
+<span id="cb124-2"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-2" aria-hidden="true" tabindex="-1"></a>reg8 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data=</span>mtcars)</span>
+<span id="cb124-3"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg8)</span>
+<span id="cb124-4"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb124-5"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb124-6"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = mpg ~ hp, data = mtcars)</span></span>
+<span id="cb124-7"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb124-8"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb124-9"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb124-10"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -5.7121 -2.1122 -0.8854  1.5819  8.2360 </span></span>
+<span id="cb124-11"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb124-12"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb124-13"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
+<span id="cb124-14"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 30.09886    1.63392  18.421</span></span>
+<span id="cb124-15"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.06823    0.01012  -6.742</span></span>
+<span id="cb124-16"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
+<span id="cb124-17"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  &lt; 2e-16 ***</span></span>
+<span id="cb124-18"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          1.79e-07 ***</span></span>
+<span id="cb124-19"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb124-20"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb124-21"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
+<span id="cb124-22"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
+<span id="cb124-23"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb124-24"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 3.863 on 30 degrees of freedom</span></span>
+<span id="cb124-25"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 </span></span>
+<span id="cb124-26"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</span></span>
+<span id="cb124-27"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-28"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-28" aria-hidden="true" tabindex="-1"></a><span class="co"># using our formulas</span></span>
+<span id="cb124-29"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-29" aria-hidden="true" tabindex="-1"></a>bet1 <span class="ot">&lt;-</span> <span class="fu">cov</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>hp) <span class="sc">/</span> <span class="fu">var</span>(mtcars<span class="sc">$</span>hp)</span>
+<span id="cb124-30"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-31"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-31" aria-hidden="true" tabindex="-1"></a>bet0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg) <span class="sc">-</span> bet1<span class="sc">*</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)</span>
+<span id="cb124-32"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-33"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-33" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
+<span id="cb124-34"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-34" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">bet0=</span>bet0, <span class="at">bet1=</span>bet1)</span>
+<span id="cb124-35"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       bet0        bet1</span></span>
+<span id="cb124-36"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#cb124-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 30.09886 -0.06822828</span></span></code></pre></div>
 <p>and they are identical.</p>
 </div>
-<div id="more-than-one-regressor" class="section level3" number="4.10.2">
-<h3><span class="header-section-number">4.10.2</span> More than one regressor</h3>
+<div id="more-than-one-regressor" class="section level3 hasAnchor" number="4.10.2">
+<h3><span class="header-section-number">4.10.2</span> More than one regressor<a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now, let’s suppose that you want to estimate a more complicated regressions like</p>
 <p><span class="math display">\[
   Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
@@ -610,7 +615,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
