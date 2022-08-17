@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-16" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,6 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -371,45 +372,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lab-1-solutions.html#cb161-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
-<span id="cb161-2"><a href="lab-1-solutions.html#cb161-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
-<span id="cb161-3"><a href="lab-1-solutions.html#cb161-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-4"><a href="lab-1-solutions.html#cb161-4" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lab-1-solutions.html#cb164-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
+<span id="cb164-2"><a href="lab-1-solutions.html#cb164-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb164-3"><a href="lab-1-solutions.html#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-4"><a href="lab-1-solutions.html#cb164-4" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>y</span></code></pre></div>
 <pre><code>## [1]  5  9 13 19 23</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="lab-1-solutions.html#cb163-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">-</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lab-1-solutions.html#cb166-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">-</span>y</span></code></pre></div>
 <pre><code>## [1] -1 -1 -1 -3 -3</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="lab-1-solutions.html#cb165-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lab-1-solutions.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span></code></pre></div>
 <pre><code>## [1]   6  20  42  88 130</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lab-1-solutions.html#cb167-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>y</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="lab-1-solutions.html#cb170-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>y</span></code></pre></div>
 <pre><code>## [1] 0.6666667 0.8000000 0.8571429 0.7272727 0.7692308</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lab-1-solutions.html#cb169-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb169-2"><a href="lab-1-solutions.html#cb169-2" aria-hidden="true" tabindex="-1"></a>  J <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb169-3"><a href="lab-1-solutions.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">prod</span>(x)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>J)</span>
-<span id="cb169-4"><a href="lab-1-solutions.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  res</span>
-<span id="cb169-5"><a href="lab-1-solutions.html#cb169-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb169-6"><a href="lab-1-solutions.html#cb169-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-7"><a href="lab-1-solutions.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geometric_mean</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">13</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="lab-1-solutions.html#cb172-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb172-2"><a href="lab-1-solutions.html#cb172-2" aria-hidden="true" tabindex="-1"></a>  J <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb172-3"><a href="lab-1-solutions.html#cb172-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">prod</span>(x)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>J)</span>
+<span id="cb172-4"><a href="lab-1-solutions.html#cb172-4" aria-hidden="true" tabindex="-1"></a>  res</span>
+<span id="cb172-5"><a href="lab-1-solutions.html#cb172-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb172-6"><a href="lab-1-solutions.html#cb172-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-7"><a href="lab-1-solutions.html#cb172-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geometric_mean</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">13</span>))</span></code></pre></div>
 <pre><code>## [1] 10.13159</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lab-1-solutions.html#cb171-1" aria-hidden="true" tabindex="-1"></a>the_date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">&quot;01-01-1981&quot;</span>)</span>
-<span id="cb171-2"><a href="lab-1-solutions.html#cb171-2" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">&quot;08-23-2021&quot;</span>)</span>
-<span id="cb171-3"><a href="lab-1-solutions.html#cb171-3" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> the_date</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="lab-1-solutions.html#cb174-1" aria-hidden="true" tabindex="-1"></a>the_date <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">&quot;01-01-1981&quot;</span>)</span>
+<span id="cb174-2"><a href="lab-1-solutions.html#cb174-2" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="st">&quot;08-23-2021&quot;</span>)</span>
+<span id="cb174-3"><a href="lab-1-solutions.html#cb174-3" aria-hidden="true" tabindex="-1"></a>today <span class="sc">-</span> the_date</span></code></pre></div>
 <pre><code>## Time difference of 14844 days</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><ol style="list-style-type: lower-alpha">
-<li><div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lab-1-solutions.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars)</span></code></pre></div>
+<li><div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="lab-1-solutions.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars)</span></code></pre></div>
 <pre><code>## [1] 32</code></pre></li>
-<li><div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lab-1-solutions.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars)</span></code></pre></div>
+<li><div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="lab-1-solutions.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre></li>
-<li><div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lab-1-solutions.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)</span></code></pre></div>
+<li><div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="lab-1-solutions.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)</span></code></pre></div>
 <pre><code>##  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
 ## [11] &quot;carb&quot;</code></pre></li>
-<li><div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lab-1-solutions.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, mpg <span class="sc">&gt;=</span> <span class="dv">20</span>)</span></code></pre></div>
+<li><div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="lab-1-solutions.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, mpg <span class="sc">&gt;=</span> <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -425,14 +426,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
 ## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
 ## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre></li>
-<li><div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lab-1-solutions.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, (mpg <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">&amp;</span> (hp <span class="sc">&gt;=</span> <span class="dv">100</span>))</span></code></pre></div>
+<li><div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="lab-1-solutions.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, (mpg <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">&amp;</span> (hp <span class="sc">&gt;=</span> <span class="dv">100</span>))</span></code></pre></div>
 <pre><code>##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
 ## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
 ## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
 ## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre></li>
-<li><div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="lab-1-solutions.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, (cyl <span class="sc">&gt;=</span> <span class="dv">6</span>) <span class="sc">|</span> (hp <span class="sc">&gt;=</span> <span class="dv">100</span>))</span></code></pre></div>
+<li><div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="lab-1-solutions.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, (cyl <span class="sc">&gt;=</span> <span class="dv">6</span>) <span class="sc">|</span> (hp <span class="sc">&gt;=</span> <span class="dv">100</span>))</span></code></pre></div>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -457,11 +458,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 ## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 ## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre></li>
-<li><div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="lab-1-solutions.html#cb185-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">10</span>,]</span></code></pre></div>
+<li><div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lab-1-solutions.html#cb188-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">10</span>,]</span></code></pre></div>
 <pre><code>##           mpg cyl  disp  hp drat   wt qsec vs am gear carb
 ## Merc 280 19.2   6 167.6 123 3.92 3.44 18.3  1  0    4    4</code></pre></li>
-<li><div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lab-1-solutions.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># without reversing the order, we would order from lowest to smallest</span></span>
-<span id="cb187-2"><a href="lab-1-solutions.html#cb187-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">rev</span>(<span class="fu">order</span>(mtcars<span class="sc">$</span>mpg)),]</span></code></pre></div>
+<li><div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lab-1-solutions.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># without reversing the order, we would order from lowest to smallest</span></span>
+<span id="cb190-2"><a href="lab-1-solutions.html#cb190-2" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">rev</span>(<span class="fu">order</span>(mtcars<span class="sc">$</span>mpg)),]</span></code></pre></div>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
 ## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1

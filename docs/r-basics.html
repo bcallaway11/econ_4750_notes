@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-16" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,6 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -406,6 +407,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Later on in the class, we will often import data to work with. The “Import Dataset” button that is located in this top right pane is often useful for this.</p></li>
 <li><p>Occasionally, you might get into the case where you have saved a bunch of variables and it would be helpful to “start over”. The broom in this pane will “clean” your workspace (this just means delete everything).</p></li>
 </ul>
+</div>
+<div id="importing-data" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Importing Data<a href="r-basics.html#importing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To work with actual data in R, we will need to import it. I mentioned the “Import Data” button above, but let me mention a few other possibilities here, including how to import data by writing code.</p>
+<p>On the course website, I posted three files <code>firm.data.csv</code>, <code>firm_data.RData</code>, and <code>firm_data.dta</code>. All three of these contain exactly the same small, fictitious dataset, but are saved in different formats.</p>
+<p>Probably the easiest way to import data in R is through the Files pane on the bottom right. In particular, suppose that you saved <code>firm_data.csv</code> in your “Downloads” folder. Try clicking the “…” (which, in the screenshot of my workspace above, is right beside the folder that I am in which is called “Detailed Course Notes”), then select your Downloads folder. This will switch the content of the Files pane to show the files in your Downloads folder. Now click <code>firm_data.csv</code>. This will open a menu to import the data. <code>R</code> is quite good at recognizing different types of data files and importing them, so this same procedure will work for <code>firm_data.RData</code> and <code>firm_data.dta</code> even though they are different types of files.</p>
+<p>Next, let’s discuss how to import data by writing computer code (by the way, this is actually what is happening behind the scenes when you import data through the user interface as described above). “csv” stands for “Comma Separated Values”. This is basically a plain text file (e.g., try opening it in Notepad or Text Editor) where the columns are separated by commas and the rows are separated by being on different lines. Most any computer program can read this type of file; that is, you could easily import this file into, say, R, Excel, or Stata. You can import a <code>.csv</code> file using <code>R</code> code by</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-basics.html#cb15-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;firm_data.csv&quot;</span>)</span></code></pre></div>
+<p>An <code>RData</code> file is the native format for saving data in <code>R</code>. You can import an <code>RData</code> file using the following command:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-basics.html#cb16-1" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">&quot;firm_data.RData&quot;</span>)</span></code></pre></div>
+<p>Similarly, a <code>dta</code> file the native format for saving data in Stata. You can import a <code>dta</code> file using the following command:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-basics.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># external package for reading dta file</span></span>
+<span id="cb17-2"><a href="r-basics.html#cb17-2" aria-hidden="true" tabindex="-1"></a>firm_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;firm_data.dta&quot;</span>)</span></code></pre></div>
+<p>In all three cases above, what we have done is to create a new <code>data.frame</code> (a <code>data.frame</code> is a type of object that we’ll talk about in detail later on in this chapter) called <code>firm_data</code> that contains the data that we were trying to load.</p>
 </div>
 </div>
             </section>

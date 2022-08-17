@@ -213,6 +213,36 @@ Now, take a look at the top right pane.  You will see under the Environment tab 
 
 * Occasionally, you might get into the case where you have saved a bunch of variables and it would be helpful to "start over".  The broom in this pane will "clean" your workspace (this just means delete everything).
 
+### Importing Data
+
+To work with actual data in R, we will need to import it.  I mentioned the "Import Data" button above, but let me mention a few other possibilities here, including how to import data by writing code.
+
+On the course website, I posted three files `firm.data.csv`, `firm_data.RData`, and `firm_data.dta`.  All three of these contain exactly the same small, fictitious dataset, but are saved in different formats.  
+
+Probably the easiest way to import data in R is through the Files pane on the bottom right.  In particular, suppose that you saved `firm_data.csv` in your "Downloads" folder.  Try clicking the "..." (which, in the screenshot of my workspace above, is right beside the folder that I am in which is called "Detailed Course Notes"), then select your Downloads folder.  This will switch the content of the Files pane to show the files in your Downloads folder.  Now click `firm_data.csv`.  This will open a menu to import the data.  `R` is quite good at recognizing different types of data files and importing them, so this same procedure will work for `firm_data.RData` and `firm_data.dta` even though they are different types of files.
+
+Next, let's discuss how to import data by writing computer code (by the way, this is actually what is happening behind the scenes when you import data through the user interface as described above).  "csv" stands for "Comma Separated Values".  This is basically a plain text file (e.g., try opening it in Notepad or Text Editor) where the columns are separated by commas and the rows are separated by being on different lines.  Most any computer program can read this type of file; that is, you could easily import this file into, say, R, Excel, or Stata.  You can import a `.csv` file using `R` code by
+
+```{r, eval=FALSE}
+firm_data <- read.csv("firm_data.csv")
+```
+
+An `RData` file is the native format for saving data in `R`.  You can import an `RData` file using the following command:
+
+```{r, eval=FALSE}
+firm_data <- load("firm_data.RData")
+```
+
+Similarly, a `dta` file the native format for saving data in Stata.  You can import a `dta` file using the following command:
+
+```{r, eval=FALSE}
+library(haven) # external package for reading dta file
+firm_data <- read_dta("firm_data.dta")
+```
+
+In all three cases above, what we have done is to create a new `data.frame` (a `data.frame` is a type of object that we'll talk about in detail later on in this chapter) called `firm_data` that contains the data that we were trying to load.
+
+
 ## Functions in R
 
 Related Reading: IDS 2.2
@@ -435,6 +465,9 @@ firm_data <- data.frame(name=c("ABC Manufacturing", "Martin\'s Muffins", "Down H
                         county=c("Clarke", "Oconee", "Clarke", "Clarke", "Oconee"),
                         employees=c(531, 6, 15, 211, 25))
 ```
+
+This is also the same data that we loaded earlier in Section 2.3.
+
 :::
 
 Often, we'll like to access a particular column in a data frame.  For example, you might want to calculate the average number of employees across all the firms in our data.

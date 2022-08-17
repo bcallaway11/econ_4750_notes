@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-16" />
+<meta name="date" content="2022-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,6 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
 <li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
@@ -370,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.11</span> Coding Exercises<a href="coding-exercises.html#coding-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>The <code>stringr</code> package contains a number of functions for working with strings. For this problem create the following character vector in R</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="coding-exercises.html#cb189-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;economics&quot;</span>, <span class="st">&quot;econometrics&quot;</span>, <span class="st">&quot;ECON 4750&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="coding-exercises.html#cb192-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;economics&quot;</span>, <span class="st">&quot;econometrics&quot;</span>, <span class="st">&quot;ECON 4750&quot;</span>)</span></code></pre></div>
 <p>Install the <code>stringr</code> package and use the <code>str_length</code> function in the package in order to calculate the length (number of characters) in each element of <code>x</code>.</p></li>
 <li><p>For this problem, we are going to write a function to calculate the sum of the numbers from 1 to <span class="math inline">\(n\)</span> where <span class="math inline">\(n\)</span> is some positive integer. There are actually a lot of different ways to do this.</p>
 <ul>
@@ -380,9 +381,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Approach 3: A more brute force approach is to create a list of numbers from 1 to <span class="math inline">\(n\)</span> (you can use <code>seq</code> here) and add them up using a <code>for</code> loop — basically, just keep track of what the current total is and add the next number to the total in each iteration of the for loop. Write a function called <code>sum_one_to_n_3</code> that does this.</p></li>
 </ul>
 <p><strong>Hint:</strong> All of the functions should look like</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="coding-exercises.html#cb190-1" aria-hidden="true" tabindex="-1"></a>sum_one_to_n <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb190-2"><a href="coding-exercises.html#cb190-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
-<span id="cb190-3"><a href="coding-exercises.html#cb190-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="coding-exercises.html#cb193-1" aria-hidden="true" tabindex="-1"></a>sum_one_to_n <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb193-2"><a href="coding-exercises.html#cb193-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb193-3"><a href="coding-exercises.html#cb193-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Try out all three approaches that you came up with above for <span class="math inline">\(n=100\)</span>. What is the answer? Do you get the same answer using all three approaches?</p></li>
 <li><p>The Fibonacci sequence is the sequence of numbers <span class="math inline">\(0,1,1,2,3,5,8,13,21,34,55,\ldots\)</span> that comes from starting with <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> and where each subsequent number is the sum of the previous two. For example, the 5 in the sequence comes from adding 2 and 3; the 55 in the sequence comes from adding 21 and 34.</p>
 <ol style="list-style-type: lower-alpha">
