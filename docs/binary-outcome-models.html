@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.4 Binary Outcome Models | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.4 Binary Outcome Models | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -518,32 +518,29 @@ Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the
 <span id="cb139-11"><a href="binary-outcome-models.html#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = Survived ~ as.factor(Pclass) + Sex + Age, data = titanic_train)</span></span>
 <span id="cb139-12"><a href="binary-outcome-models.html#cb139-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb139-13"><a href="binary-outcome-models.html#cb139-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb139-14"><a href="binary-outcome-models.html#cb139-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q </span></span>
-<span id="cb139-15"><a href="binary-outcome-models.html#cb139-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -1.05638 -0.26294 -0.07656  0.21103 </span></span>
-<span id="cb139-16"><a href="binary-outcome-models.html#cb139-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Max </span></span>
-<span id="cb139-17"><a href="binary-outcome-models.html#cb139-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.98057 </span></span>
-<span id="cb139-18"><a href="binary-outcome-models.html#cb139-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb139-19"><a href="binary-outcome-models.html#cb139-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb139-20"><a href="binary-outcome-models.html#cb139-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Estimate Std. Error</span></span>
-<span id="cb139-21"><a href="binary-outcome-models.html#cb139-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)         1.065516   0.061481</span></span>
-<span id="cb139-22"><a href="binary-outcome-models.html#cb139-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.148575   0.050593</span></span>
-<span id="cb139-23"><a href="binary-outcome-models.html#cb139-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.349809   0.046462</span></span>
-<span id="cb139-24"><a href="binary-outcome-models.html#cb139-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.490605   0.037330</span></span>
-<span id="cb139-25"><a href="binary-outcome-models.html#cb139-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.004570   0.001317</span></span>
-<span id="cb139-26"><a href="binary-outcome-models.html#cb139-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    t value Pr(&gt;|t|)    </span></span>
-<span id="cb139-27"><a href="binary-outcome-models.html#cb139-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)         17.331  &lt; 2e-16 ***</span></span>
-<span id="cb139-28"><a href="binary-outcome-models.html#cb139-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2  -2.937 0.003472 ** </span></span>
-<span id="cb139-29"><a href="binary-outcome-models.html#cb139-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3  -7.529 2.44e-13 ***</span></span>
-<span id="cb139-30"><a href="binary-outcome-models.html#cb139-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -13.143  &lt; 2e-16 ***</span></span>
-<span id="cb139-31"><a href="binary-outcome-models.html#cb139-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                 -3.471 0.000564 ***</span></span>
-<span id="cb139-32"><a href="binary-outcome-models.html#cb139-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb139-33"><a href="binary-outcome-models.html#cb139-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb139-34"><a href="binary-outcome-models.html#cb139-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb139-35"><a href="binary-outcome-models.html#cb139-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb139-36"><a href="binary-outcome-models.html#cb139-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb139-37"><a href="binary-outcome-models.html#cb139-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.3915 on 495 degrees of freedom</span></span>
-<span id="cb139-38"><a href="binary-outcome-models.html#cb139-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.3747, Adjusted R-squared:  0.3696 </span></span>
-<span id="cb139-39"><a href="binary-outcome-models.html#cb139-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 74.14 on 4 and 495 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<span id="cb139-14"><a href="binary-outcome-models.html#cb139-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb139-15"><a href="binary-outcome-models.html#cb139-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -1.05638 -0.26294 -0.07656  0.21103  0.98057 </span></span>
+<span id="cb139-16"><a href="binary-outcome-models.html#cb139-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb139-17"><a href="binary-outcome-models.html#cb139-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb139-18"><a href="binary-outcome-models.html#cb139-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb139-19"><a href="binary-outcome-models.html#cb139-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)         1.065516   0.061481  17.331  &lt; 2e-16</span></span>
+<span id="cb139-20"><a href="binary-outcome-models.html#cb139-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.148575   0.050593  -2.937 0.003472</span></span>
+<span id="cb139-21"><a href="binary-outcome-models.html#cb139-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.349809   0.046462  -7.529 2.44e-13</span></span>
+<span id="cb139-22"><a href="binary-outcome-models.html#cb139-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.490605   0.037330 -13.143  &lt; 2e-16</span></span>
+<span id="cb139-23"><a href="binary-outcome-models.html#cb139-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.004570   0.001317  -3.471 0.000564</span></span>
+<span id="cb139-24"><a href="binary-outcome-models.html#cb139-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       </span></span>
+<span id="cb139-25"><a href="binary-outcome-models.html#cb139-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)        ***</span></span>
+<span id="cb139-26"><a href="binary-outcome-models.html#cb139-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 ** </span></span>
+<span id="cb139-27"><a href="binary-outcome-models.html#cb139-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 ***</span></span>
+<span id="cb139-28"><a href="binary-outcome-models.html#cb139-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            ***</span></span>
+<span id="cb139-29"><a href="binary-outcome-models.html#cb139-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                ***</span></span>
+<span id="cb139-30"><a href="binary-outcome-models.html#cb139-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb139-31"><a href="binary-outcome-models.html#cb139-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb139-32"><a href="binary-outcome-models.html#cb139-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb139-33"><a href="binary-outcome-models.html#cb139-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb139-34"><a href="binary-outcome-models.html#cb139-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.3915 on 495 degrees of freedom</span></span>
+<span id="cb139-35"><a href="binary-outcome-models.html#cb139-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.3747, Adjusted R-squared:  0.3696 </span></span>
+<span id="cb139-36"><a href="binary-outcome-models.html#cb139-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 74.14 on 4 and 495 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
 <p>Let’s quickly interpret a couple of these parameters. Recall that these can all be directly interpreted as partial effects on the probability of surviving the Titanic wreck. For example, these estimates indicate that third class passengers were about 33% less likely to survive on average than first class passengers controlling for passenger’s sex and age.</p>
 <p>The other thing that jumps out is passenger’s sex. These estimates indicate that men were, on average, 49% less likely to survive the Titanic wreck than women after controlling for passenger class, and age.</p>
 <p>Before we move on, let’s compute a couple of predicted probabilities.</p>
@@ -570,42 +567,39 @@ Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the
 <span id="cb141-9"><a href="binary-outcome-models.html#cb141-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     family = binomial(link = &quot;probit&quot;), data = titanic_train)</span></span>
 <span id="cb141-10"><a href="binary-outcome-models.html#cb141-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb141-11"><a href="binary-outcome-models.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Deviance Residuals: </span></span>
-<span id="cb141-12"><a href="binary-outcome-models.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min       1Q   Median       3Q  </span></span>
-<span id="cb141-13"><a href="binary-outcome-models.html#cb141-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.5145  -0.7433  -0.4397   0.6560  </span></span>
-<span id="cb141-14"><a href="binary-outcome-models.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Max  </span></span>
-<span id="cb141-15"><a href="binary-outcome-models.html#cb141-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2.3799  </span></span>
-<span id="cb141-16"><a href="binary-outcome-models.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-17"><a href="binary-outcome-models.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb141-18"><a href="binary-outcome-models.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate Std. Error</span></span>
-<span id="cb141-19"><a href="binary-outcome-models.html#cb141-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)            5.418219 146.954198</span></span>
-<span id="cb141-20"><a href="binary-outcome-models.html#cb141-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -0.445235   0.197398</span></span>
-<span id="cb141-21"><a href="binary-outcome-models.html#cb141-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -1.145788   0.188508</span></span>
-<span id="cb141-22"><a href="binary-outcome-models.html#cb141-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale               -1.464201   0.136512</span></span>
-<span id="cb141-23"><a href="binary-outcome-models.html#cb141-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -0.015764   0.005009</span></span>
-<span id="cb141-24"><a href="binary-outcome-models.html#cb141-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C  -3.443295 146.954199</span></span>
-<span id="cb141-25"><a href="binary-outcome-models.html#cb141-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q  -3.464431 146.954544</span></span>
-<span id="cb141-26"><a href="binary-outcome-models.html#cb141-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S  -3.662911 146.954180</span></span>
-<span id="cb141-27"><a href="binary-outcome-models.html#cb141-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      z value Pr(&gt;|z|)    </span></span>
-<span id="cb141-28"><a href="binary-outcome-models.html#cb141-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)            0.037  0.97059    </span></span>
-<span id="cb141-29"><a href="binary-outcome-models.html#cb141-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -2.256  0.02410 *  </span></span>
-<span id="cb141-30"><a href="binary-outcome-models.html#cb141-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -6.078 1.22e-09 ***</span></span>
-<span id="cb141-31"><a href="binary-outcome-models.html#cb141-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale              -10.726  &lt; 2e-16 ***</span></span>
-<span id="cb141-32"><a href="binary-outcome-models.html#cb141-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -3.147  0.00165 ** </span></span>
-<span id="cb141-33"><a href="binary-outcome-models.html#cb141-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C  -0.023  0.98131    </span></span>
-<span id="cb141-34"><a href="binary-outcome-models.html#cb141-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q  -0.024  0.98119    </span></span>
-<span id="cb141-35"><a href="binary-outcome-models.html#cb141-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S  -0.025  0.98011    </span></span>
-<span id="cb141-36"><a href="binary-outcome-models.html#cb141-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb141-37"><a href="binary-outcome-models.html#cb141-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb141-38"><a href="binary-outcome-models.html#cb141-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb141-39"><a href="binary-outcome-models.html#cb141-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb141-40"><a href="binary-outcome-models.html#cb141-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-41"><a href="binary-outcome-models.html#cb141-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb141-42"><a href="binary-outcome-models.html#cb141-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-43"><a href="binary-outcome-models.html#cb141-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Null deviance: 678.28  on 499  degrees of freedom</span></span>
-<span id="cb141-44"><a href="binary-outcome-models.html#cb141-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual deviance: 468.38  on 492  degrees of freedom</span></span>
-<span id="cb141-45"><a href="binary-outcome-models.html#cb141-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AIC: 484.38</span></span>
-<span id="cb141-46"><a href="binary-outcome-models.html#cb141-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-47"><a href="binary-outcome-models.html#cb141-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of Fisher Scoring iterations: 12</span></span></code></pre></div>
+<span id="cb141-12"><a href="binary-outcome-models.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb141-13"><a href="binary-outcome-models.html#cb141-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.5145  -0.7433  -0.4397   0.6560   2.3799  </span></span>
+<span id="cb141-14"><a href="binary-outcome-models.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb141-15"><a href="binary-outcome-models.html#cb141-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb141-16"><a href="binary-outcome-models.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate Std. Error z value Pr(&gt;|z|)</span></span>
+<span id="cb141-17"><a href="binary-outcome-models.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)            5.418219 146.954198   0.037  0.97059</span></span>
+<span id="cb141-18"><a href="binary-outcome-models.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -0.445235   0.197398  -2.256  0.02410</span></span>
+<span id="cb141-19"><a href="binary-outcome-models.html#cb141-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -1.145788   0.188508  -6.078 1.22e-09</span></span>
+<span id="cb141-20"><a href="binary-outcome-models.html#cb141-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale               -1.464201   0.136512 -10.726  &lt; 2e-16</span></span>
+<span id="cb141-21"><a href="binary-outcome-models.html#cb141-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -0.015764   0.005009  -3.147  0.00165</span></span>
+<span id="cb141-22"><a href="binary-outcome-models.html#cb141-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C  -3.443295 146.954199  -0.023  0.98131</span></span>
+<span id="cb141-23"><a href="binary-outcome-models.html#cb141-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q  -3.464431 146.954544  -0.024  0.98119</span></span>
+<span id="cb141-24"><a href="binary-outcome-models.html#cb141-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S  -3.662911 146.954180  -0.025  0.98011</span></span>
+<span id="cb141-25"><a href="binary-outcome-models.html#cb141-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         </span></span>
+<span id="cb141-26"><a href="binary-outcome-models.html#cb141-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)             </span></span>
+<span id="cb141-27"><a href="binary-outcome-models.html#cb141-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2   *  </span></span>
+<span id="cb141-28"><a href="binary-outcome-models.html#cb141-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3   ***</span></span>
+<span id="cb141-29"><a href="binary-outcome-models.html#cb141-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale              ***</span></span>
+<span id="cb141-30"><a href="binary-outcome-models.html#cb141-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                  ** </span></span>
+<span id="cb141-31"><a href="binary-outcome-models.html#cb141-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C    </span></span>
+<span id="cb141-32"><a href="binary-outcome-models.html#cb141-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q    </span></span>
+<span id="cb141-33"><a href="binary-outcome-models.html#cb141-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S    </span></span>
+<span id="cb141-34"><a href="binary-outcome-models.html#cb141-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb141-35"><a href="binary-outcome-models.html#cb141-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb141-36"><a href="binary-outcome-models.html#cb141-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb141-37"><a href="binary-outcome-models.html#cb141-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb141-38"><a href="binary-outcome-models.html#cb141-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb141-39"><a href="binary-outcome-models.html#cb141-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb141-40"><a href="binary-outcome-models.html#cb141-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Null deviance: 678.28  on 499  degrees of freedom</span></span>
+<span id="cb141-41"><a href="binary-outcome-models.html#cb141-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual deviance: 468.38  on 492  degrees of freedom</span></span>
+<span id="cb141-42"><a href="binary-outcome-models.html#cb141-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AIC: 484.38</span></span>
+<span id="cb141-43"><a href="binary-outcome-models.html#cb141-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb141-44"><a href="binary-outcome-models.html#cb141-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of Fisher Scoring iterations: 12</span></span></code></pre></div>
 <p>Now, Logit:</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="binary-outcome-models.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logit</span></span>
 <span id="cb142-2"><a href="binary-outcome-models.html#cb142-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age <span class="sc">+</span> <span class="fu">as.factor</span>(Embarked), </span>
@@ -618,42 +612,39 @@ Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the
 <span id="cb142-9"><a href="binary-outcome-models.html#cb142-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = titanic_train)</span></span>
 <span id="cb142-10"><a href="binary-outcome-models.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb142-11"><a href="binary-outcome-models.html#cb142-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Deviance Residuals: </span></span>
-<span id="cb142-12"><a href="binary-outcome-models.html#cb142-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min       1Q   Median       3Q  </span></span>
-<span id="cb142-13"><a href="binary-outcome-models.html#cb142-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.4680  -0.7289  -0.4336   0.6471  </span></span>
-<span id="cb142-14"><a href="binary-outcome-models.html#cb142-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Max  </span></span>
-<span id="cb142-15"><a href="binary-outcome-models.html#cb142-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2.3689  </span></span>
-<span id="cb142-16"><a href="binary-outcome-models.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-17"><a href="binary-outcome-models.html#cb142-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb142-18"><a href="binary-outcome-models.html#cb142-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate Std. Error</span></span>
-<span id="cb142-19"><a href="binary-outcome-models.html#cb142-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)           14.646649 535.411272</span></span>
-<span id="cb142-20"><a href="binary-outcome-models.html#cb142-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -0.793003   0.342058</span></span>
-<span id="cb142-21"><a href="binary-outcome-models.html#cb142-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -2.055828   0.335386</span></span>
-<span id="cb142-22"><a href="binary-outcome-models.html#cb142-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale               -2.461563   0.241113</span></span>
-<span id="cb142-23"><a href="binary-outcome-models.html#cb142-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -0.028436   0.008764</span></span>
-<span id="cb142-24"><a href="binary-outcome-models.html#cb142-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C -11.262004 535.411277</span></span>
-<span id="cb142-25"><a href="binary-outcome-models.html#cb142-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q -11.229232 535.411568</span></span>
-<span id="cb142-26"><a href="binary-outcome-models.html#cb142-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S -11.593053 535.411259</span></span>
-<span id="cb142-27"><a href="binary-outcome-models.html#cb142-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      z value Pr(&gt;|z|)    </span></span>
-<span id="cb142-28"><a href="binary-outcome-models.html#cb142-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)            0.027  0.97818    </span></span>
-<span id="cb142-29"><a href="binary-outcome-models.html#cb142-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -2.318  0.02043 *  </span></span>
-<span id="cb142-30"><a href="binary-outcome-models.html#cb142-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -6.130  8.8e-10 ***</span></span>
-<span id="cb142-31"><a href="binary-outcome-models.html#cb142-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale              -10.209  &lt; 2e-16 ***</span></span>
-<span id="cb142-32"><a href="binary-outcome-models.html#cb142-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -3.245  0.00118 ** </span></span>
-<span id="cb142-33"><a href="binary-outcome-models.html#cb142-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C  -0.021  0.98322    </span></span>
-<span id="cb142-34"><a href="binary-outcome-models.html#cb142-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q  -0.021  0.98327    </span></span>
-<span id="cb142-35"><a href="binary-outcome-models.html#cb142-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S  -0.022  0.98273    </span></span>
-<span id="cb142-36"><a href="binary-outcome-models.html#cb142-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb142-37"><a href="binary-outcome-models.html#cb142-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb142-38"><a href="binary-outcome-models.html#cb142-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb142-39"><a href="binary-outcome-models.html#cb142-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb142-40"><a href="binary-outcome-models.html#cb142-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-41"><a href="binary-outcome-models.html#cb142-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb142-42"><a href="binary-outcome-models.html#cb142-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-43"><a href="binary-outcome-models.html#cb142-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Null deviance: 678.28  on 499  degrees of freedom</span></span>
-<span id="cb142-44"><a href="binary-outcome-models.html#cb142-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual deviance: 467.01  on 492  degrees of freedom</span></span>
-<span id="cb142-45"><a href="binary-outcome-models.html#cb142-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AIC: 483.01</span></span>
-<span id="cb142-46"><a href="binary-outcome-models.html#cb142-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-47"><a href="binary-outcome-models.html#cb142-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of Fisher Scoring iterations: 12</span></span></code></pre></div>
+<span id="cb142-12"><a href="binary-outcome-models.html#cb142-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></span>
+<span id="cb142-13"><a href="binary-outcome-models.html#cb142-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.4680  -0.7289  -0.4336   0.6471   2.3689  </span></span>
+<span id="cb142-14"><a href="binary-outcome-models.html#cb142-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb142-15"><a href="binary-outcome-models.html#cb142-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb142-16"><a href="binary-outcome-models.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate Std. Error z value Pr(&gt;|z|)</span></span>
+<span id="cb142-17"><a href="binary-outcome-models.html#cb142-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)           14.646649 535.411272   0.027  0.97818</span></span>
+<span id="cb142-18"><a href="binary-outcome-models.html#cb142-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -0.793003   0.342058  -2.318  0.02043</span></span>
+<span id="cb142-19"><a href="binary-outcome-models.html#cb142-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -2.055828   0.335386  -6.130  8.8e-10</span></span>
+<span id="cb142-20"><a href="binary-outcome-models.html#cb142-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale               -2.461563   0.241113 -10.209  &lt; 2e-16</span></span>
+<span id="cb142-21"><a href="binary-outcome-models.html#cb142-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -0.028436   0.008764  -3.245  0.00118</span></span>
+<span id="cb142-22"><a href="binary-outcome-models.html#cb142-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C -11.262004 535.411276  -0.021  0.98322</span></span>
+<span id="cb142-23"><a href="binary-outcome-models.html#cb142-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q -11.229232 535.411568  -0.021  0.98327</span></span>
+<span id="cb142-24"><a href="binary-outcome-models.html#cb142-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S -11.593053 535.411259  -0.022  0.98273</span></span>
+<span id="cb142-25"><a href="binary-outcome-models.html#cb142-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         </span></span>
+<span id="cb142-26"><a href="binary-outcome-models.html#cb142-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)             </span></span>
+<span id="cb142-27"><a href="binary-outcome-models.html#cb142-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2   *  </span></span>
+<span id="cb142-28"><a href="binary-outcome-models.html#cb142-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3   ***</span></span>
+<span id="cb142-29"><a href="binary-outcome-models.html#cb142-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale              ***</span></span>
+<span id="cb142-30"><a href="binary-outcome-models.html#cb142-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                  ** </span></span>
+<span id="cb142-31"><a href="binary-outcome-models.html#cb142-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C    </span></span>
+<span id="cb142-32"><a href="binary-outcome-models.html#cb142-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q    </span></span>
+<span id="cb142-33"><a href="binary-outcome-models.html#cb142-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S    </span></span>
+<span id="cb142-34"><a href="binary-outcome-models.html#cb142-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb142-35"><a href="binary-outcome-models.html#cb142-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb142-36"><a href="binary-outcome-models.html#cb142-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb142-37"><a href="binary-outcome-models.html#cb142-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb142-38"><a href="binary-outcome-models.html#cb142-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span id="cb142-39"><a href="binary-outcome-models.html#cb142-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb142-40"><a href="binary-outcome-models.html#cb142-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Null deviance: 678.28  on 499  degrees of freedom</span></span>
+<span id="cb142-41"><a href="binary-outcome-models.html#cb142-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual deviance: 467.01  on 492  degrees of freedom</span></span>
+<span id="cb142-42"><a href="binary-outcome-models.html#cb142-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AIC: 483.01</span></span>
+<span id="cb142-43"><a href="binary-outcome-models.html#cb142-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb142-44"><a href="binary-outcome-models.html#cb142-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of Fisher Scoring iterations: 12</span></span></code></pre></div>
 <p>It’s rather hard to interpret the parameters in both of these models (let’s defer this to the next section). But it is worth mentioning that all of the estimated coefficients have the same sign for the linear probability model, the probit model, and the logit model, and the same set of regressors have statistically significant effects across models (and the t-statistics/p-values are very similar across models).</p>
 <p>Now, let’s calculate the same predicted probabilities as we did for the linear probability model above:</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="binary-outcome-models.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for probit</span></span>
@@ -679,26 +670,24 @@ Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the
 <span id="cb144-8"><a href="binary-outcome-models.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = titanic_train, atmean = FALSE)</span></span>
 <span id="cb144-9"><a href="binary-outcome-models.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb144-10"><a href="binary-outcome-models.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Marginal Effects:</span></span>
-<span id="cb144-11"><a href="binary-outcome-models.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         dF/dx  Std. Err.</span></span>
-<span id="cb144-12"><a href="binary-outcome-models.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.1303971  0.0424994</span></span>
-<span id="cb144-13"><a href="binary-outcome-models.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.3438262  0.0470404</span></span>
-<span id="cb144-14"><a href="binary-outcome-models.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.4895845  0.0412840</span></span>
-<span id="cb144-15"><a href="binary-outcome-models.html#cb144-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.0042614  0.0012934</span></span>
-<span id="cb144-16"><a href="binary-outcome-models.html#cb144-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           z     P&gt;|z|    </span></span>
-<span id="cb144-17"><a href="binary-outcome-models.html#cb144-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2  -3.0682 0.0021534 ** </span></span>
-<span id="cb144-18"><a href="binary-outcome-models.html#cb144-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3  -7.3092 2.688e-13 ***</span></span>
-<span id="cb144-19"><a href="binary-outcome-models.html#cb144-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -11.8590 &lt; 2.2e-16 ***</span></span>
-<span id="cb144-20"><a href="binary-outcome-models.html#cb144-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                 -3.2948 0.0009851 ***</span></span>
+<span id="cb144-11"><a href="binary-outcome-models.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         dF/dx  Std. Err.        z     P&gt;|z|</span></span>
+<span id="cb144-12"><a href="binary-outcome-models.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.1303971  0.0424994  -3.0682 0.0021534</span></span>
+<span id="cb144-13"><a href="binary-outcome-models.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.3438262  0.0470404  -7.3092 2.688e-13</span></span>
+<span id="cb144-14"><a href="binary-outcome-models.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.4895845  0.0412840 -11.8590 &lt; 2.2e-16</span></span>
+<span id="cb144-15"><a href="binary-outcome-models.html#cb144-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.0042614  0.0012934  -3.2948 0.0009851</span></span>
+<span id="cb144-16"><a href="binary-outcome-models.html#cb144-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       </span></span>
+<span id="cb144-17"><a href="binary-outcome-models.html#cb144-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 ** </span></span>
+<span id="cb144-18"><a href="binary-outcome-models.html#cb144-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 ***</span></span>
+<span id="cb144-19"><a href="binary-outcome-models.html#cb144-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            ***</span></span>
+<span id="cb144-20"><a href="binary-outcome-models.html#cb144-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                ***</span></span>
 <span id="cb144-21"><a href="binary-outcome-models.html#cb144-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
 <span id="cb144-22"><a href="binary-outcome-models.html#cb144-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb144-23"><a href="binary-outcome-models.html#cb144-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb144-24"><a href="binary-outcome-models.html#cb144-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb144-25"><a href="binary-outcome-models.html#cb144-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb144-26"><a href="binary-outcome-models.html#cb144-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dF/dx is for discrete change for the following variables:</span></span>
-<span id="cb144-27"><a href="binary-outcome-models.html#cb144-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb144-28"><a href="binary-outcome-models.html#cb144-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;as.factor(Pclass)2&quot;</span></span>
-<span id="cb144-29"><a href="binary-outcome-models.html#cb144-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;as.factor(Pclass)3&quot;</span></span>
-<span id="cb144-30"><a href="binary-outcome-models.html#cb144-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Sexmale&quot;</span></span></code></pre></div>
+<span id="cb144-23"><a href="binary-outcome-models.html#cb144-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb144-24"><a href="binary-outcome-models.html#cb144-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb144-25"><a href="binary-outcome-models.html#cb144-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dF/dx is for discrete change for the following variables:</span></span>
+<span id="cb144-26"><a href="binary-outcome-models.html#cb144-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb144-27"><a href="binary-outcome-models.html#cb144-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;as.factor(Pclass)2&quot; &quot;as.factor(Pclass)3&quot;</span></span>
+<span id="cb144-28"><a href="binary-outcome-models.html#cb144-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Sexmale&quot;</span></span></code></pre></div>
 <p>Now, for logit:</p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="binary-outcome-models.html#cb145-1" aria-hidden="true" tabindex="-1"></a>logit_ape <span class="ot">&lt;-</span> <span class="fu">logitmfx</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
 <span id="cb145-2"><a href="binary-outcome-models.html#cb145-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>titanic_train, </span>
@@ -709,26 +698,24 @@ Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the
 <span id="cb145-7"><a href="binary-outcome-models.html#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = titanic_train, atmean = FALSE)</span></span>
 <span id="cb145-8"><a href="binary-outcome-models.html#cb145-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb145-9"><a href="binary-outcome-models.html#cb145-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Marginal Effects:</span></span>
-<span id="cb145-10"><a href="binary-outcome-models.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         dF/dx  Std. Err.</span></span>
-<span id="cb145-11"><a href="binary-outcome-models.html#cb145-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.1304383  0.0420444</span></span>
-<span id="cb145-12"><a href="binary-outcome-models.html#cb145-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.3542499  0.0474154</span></span>
-<span id="cb145-13"><a href="binary-outcome-models.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.4859890  0.0413167</span></span>
-<span id="cb145-14"><a href="binary-outcome-models.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.0044098  0.0014205</span></span>
-<span id="cb145-15"><a href="binary-outcome-models.html#cb145-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           z     P&gt;|z|    </span></span>
-<span id="cb145-16"><a href="binary-outcome-models.html#cb145-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2  -3.1024  0.001920 ** </span></span>
-<span id="cb145-17"><a href="binary-outcome-models.html#cb145-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3  -7.4712 7.947e-14 ***</span></span>
-<span id="cb145-18"><a href="binary-outcome-models.html#cb145-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -11.7625 &lt; 2.2e-16 ***</span></span>
-<span id="cb145-19"><a href="binary-outcome-models.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                 -3.1045  0.001906 ** </span></span>
+<span id="cb145-10"><a href="binary-outcome-models.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         dF/dx  Std. Err.        z     P&gt;|z|</span></span>
+<span id="cb145-11"><a href="binary-outcome-models.html#cb145-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.1304383  0.0420444  -3.1024  0.001920</span></span>
+<span id="cb145-12"><a href="binary-outcome-models.html#cb145-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.3542499  0.0474154  -7.4712 7.947e-14</span></span>
+<span id="cb145-13"><a href="binary-outcome-models.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.4859890  0.0413167 -11.7625 &lt; 2.2e-16</span></span>
+<span id="cb145-14"><a href="binary-outcome-models.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.0044098  0.0014205  -3.1045  0.001906</span></span>
+<span id="cb145-15"><a href="binary-outcome-models.html#cb145-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       </span></span>
+<span id="cb145-16"><a href="binary-outcome-models.html#cb145-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 ** </span></span>
+<span id="cb145-17"><a href="binary-outcome-models.html#cb145-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 ***</span></span>
+<span id="cb145-18"><a href="binary-outcome-models.html#cb145-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            ***</span></span>
+<span id="cb145-19"><a href="binary-outcome-models.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                ** </span></span>
 <span id="cb145-20"><a href="binary-outcome-models.html#cb145-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
 <span id="cb145-21"><a href="binary-outcome-models.html#cb145-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb145-22"><a href="binary-outcome-models.html#cb145-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb145-23"><a href="binary-outcome-models.html#cb145-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb145-24"><a href="binary-outcome-models.html#cb145-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb145-25"><a href="binary-outcome-models.html#cb145-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dF/dx is for discrete change for the following variables:</span></span>
-<span id="cb145-26"><a href="binary-outcome-models.html#cb145-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb145-27"><a href="binary-outcome-models.html#cb145-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;as.factor(Pclass)2&quot;</span></span>
-<span id="cb145-28"><a href="binary-outcome-models.html#cb145-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;as.factor(Pclass)3&quot;</span></span>
-<span id="cb145-29"><a href="binary-outcome-models.html#cb145-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Sexmale&quot;</span></span></code></pre></div>
+<span id="cb145-22"><a href="binary-outcome-models.html#cb145-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb145-23"><a href="binary-outcome-models.html#cb145-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb145-24"><a href="binary-outcome-models.html#cb145-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dF/dx is for discrete change for the following variables:</span></span>
+<span id="cb145-25"><a href="binary-outcome-models.html#cb145-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb145-26"><a href="binary-outcome-models.html#cb145-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;as.factor(Pclass)2&quot; &quot;as.factor(Pclass)3&quot;</span></span>
+<span id="cb145-27"><a href="binary-outcome-models.html#cb145-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Sexmale&quot;</span></span></code></pre></div>
 <p>A couple of things to notice:</p>
 <ul>
 <li><p>The average partial effects are extremely similar across models. For example, across all three models, the average partial effect of being <code>male</code> is to reduce the probability of survival by 49% controlling for the other variables in the model. The other average partial effects are quite similar across models as well.</p></li>
@@ -802,7 +789,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

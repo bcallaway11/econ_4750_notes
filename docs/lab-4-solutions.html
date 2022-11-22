@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -445,45 +445,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb146-72"><a href="lab-4-solutions.html#cb146-72" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res3, <span class="at">cv=</span>cv_res3)</span>
 <span id="cb146-73"><a href="lab-4-solutions.html#cb146-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb146-74"><a href="lab-4-solutions.html#cb146-74" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb146-75"><a href="lab-4-solutions.html#cb146-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic</span></span>
-<span id="cb146-76"><a href="lab-4-solutions.html#cb146-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301</span></span>
-<span id="cb146-77"><a href="lab-4-solutions.html#cb146-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647</span></span>
-<span id="cb146-78"><a href="lab-4-solutions.html#cb146-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328</span></span>
-<span id="cb146-79"><a href="lab-4-solutions.html#cb146-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         cv</span></span>
-<span id="cb146-80"><a href="lab-4-solutions.html#cb146-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1366.021</span></span>
-<span id="cb146-81"><a href="lab-4-solutions.html#cb146-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 1397.104</span></span>
-<span id="cb146-82"><a href="lab-4-solutions.html#cb146-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2247.940</span></span>
+<span id="cb146-75"><a href="lab-4-solutions.html#cb146-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic       cv</span></span>
+<span id="cb146-76"><a href="lab-4-solutions.html#cb146-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301 1366.021</span></span>
+<span id="cb146-77"><a href="lab-4-solutions.html#cb146-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647 1397.104</span></span>
+<span id="cb146-78"><a href="lab-4-solutions.html#cb146-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328 2247.940</span></span>
+<span id="cb146-79"><a href="lab-4-solutions.html#cb146-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-80"><a href="lab-4-solutions.html#cb146-80" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
+<span id="cb146-81"><a href="lab-4-solutions.html#cb146-81" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb146-82"><a href="lab-4-solutions.html#cb146-82" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
 <span id="cb146-83"><a href="lab-4-solutions.html#cb146-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-84"><a href="lab-4-solutions.html#cb146-84" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
-<span id="cb146-85"><a href="lab-4-solutions.html#cb146-85" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb146-86"><a href="lab-4-solutions.html#cb146-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
-<span id="cb146-87"><a href="lab-4-solutions.html#cb146-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-88"><a href="lab-4-solutions.html#cb146-88" aria-hidden="true" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb146-89"><a href="lab-4-solutions.html#cb146-89" aria-hidden="true" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
+<span id="cb146-84"><a href="lab-4-solutions.html#cb146-84" aria-hidden="true" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb146-85"><a href="lab-4-solutions.html#cb146-85" aria-hidden="true" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
+<span id="cb146-86"><a href="lab-4-solutions.html#cb146-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-87"><a href="lab-4-solutions.html#cb146-87" aria-hidden="true" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
+<span id="cb146-88"><a href="lab-4-solutions.html#cb146-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-89"><a href="lab-4-solutions.html#cb146-89" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
 <span id="cb146-90"><a href="lab-4-solutions.html#cb146-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-91"><a href="lab-4-solutions.html#cb146-91" aria-hidden="true" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
-<span id="cb146-92"><a href="lab-4-solutions.html#cb146-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-93"><a href="lab-4-solutions.html#cb146-93" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
-<span id="cb146-94"><a href="lab-4-solutions.html#cb146-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-95"><a href="lab-4-solutions.html#cb146-95" aria-hidden="true" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
-<span id="cb146-96"><a href="lab-4-solutions.html#cb146-96" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-97"><a href="lab-4-solutions.html#cb146-97" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-98"><a href="lab-4-solutions.html#cb146-98" aria-hidden="true" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-99"><a href="lab-4-solutions.html#cb146-99" aria-hidden="true" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-100"><a href="lab-4-solutions.html#cb146-100" aria-hidden="true" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-101"><a href="lab-4-solutions.html#cb146-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-102"><a href="lab-4-solutions.html#cb146-102" aria-hidden="true" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
-<span id="cb146-103"><a href="lab-4-solutions.html#cb146-103" aria-hidden="true" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-104"><a href="lab-4-solutions.html#cb146-104" aria-hidden="true" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-105"><a href="lab-4-solutions.html#cb146-105" aria-hidden="true" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-106"><a href="lab-4-solutions.html#cb146-106" aria-hidden="true" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-107"><a href="lab-4-solutions.html#cb146-107" aria-hidden="true" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-108"><a href="lab-4-solutions.html#cb146-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-109"><a href="lab-4-solutions.html#cb146-109" aria-hidden="true" tabindex="-1"></a><span class="co"># report results</span></span>
-<span id="cb146-110"><a href="lab-4-solutions.html#cb146-110" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
-<span id="cb146-111"><a href="lab-4-solutions.html#cb146-111" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span>
-<span id="cb146-112"><a href="lab-4-solutions.html#cb146-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      mod1    mod2    mod3  lasso   ridge</span></span>
-<span id="cb146-113"><a href="lab-4-solutions.html#cb146-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 856.014 785.171 616.996 683.36 794.276</span></span></code></pre></div>
+<span id="cb146-91"><a href="lab-4-solutions.html#cb146-91" aria-hidden="true" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
+<span id="cb146-92"><a href="lab-4-solutions.html#cb146-92" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-93"><a href="lab-4-solutions.html#cb146-93" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-94"><a href="lab-4-solutions.html#cb146-94" aria-hidden="true" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-95"><a href="lab-4-solutions.html#cb146-95" aria-hidden="true" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-96"><a href="lab-4-solutions.html#cb146-96" aria-hidden="true" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb146-97"><a href="lab-4-solutions.html#cb146-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-98"><a href="lab-4-solutions.html#cb146-98" aria-hidden="true" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
+<span id="cb146-99"><a href="lab-4-solutions.html#cb146-99" aria-hidden="true" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-100"><a href="lab-4-solutions.html#cb146-100" aria-hidden="true" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-101"><a href="lab-4-solutions.html#cb146-101" aria-hidden="true" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-102"><a href="lab-4-solutions.html#cb146-102" aria-hidden="true" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-103"><a href="lab-4-solutions.html#cb146-103" aria-hidden="true" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb146-104"><a href="lab-4-solutions.html#cb146-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-105"><a href="lab-4-solutions.html#cb146-105" aria-hidden="true" tabindex="-1"></a><span class="co"># report results</span></span>
+<span id="cb146-106"><a href="lab-4-solutions.html#cb146-106" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
+<span id="cb146-107"><a href="lab-4-solutions.html#cb146-107" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span>
+<span id="cb146-108"><a href="lab-4-solutions.html#cb146-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      mod1    mod2    mod3  lasso   ridge</span></span>
+<span id="cb146-109"><a href="lab-4-solutions.html#cb146-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 856.014 785.171 616.996 683.36 794.276</span></span></code></pre></div>
 </div>
             </section>
 
@@ -551,7 +547,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

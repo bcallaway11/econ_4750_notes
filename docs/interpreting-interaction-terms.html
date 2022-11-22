@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.7 Interpreting Interaction Terms | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.7 Interpreting Interaction Terms | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -428,26 +428,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb120-9"><a href="interpreting-interaction-terms.html#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -3.435 -1.510 -0.697  1.284  5.245 </span></span>
 <span id="cb120-10"><a href="interpreting-interaction-terms.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb120-11"><a href="interpreting-interaction-terms.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb120-12"><a href="interpreting-interaction-terms.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
-<span id="cb120-13"><a href="interpreting-interaction-terms.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 33.34196    2.79711  11.920</span></span>
-<span id="cb120-14"><a href="interpreting-interaction-terms.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.02918    0.01449  -2.014</span></span>
-<span id="cb120-15"><a href="interpreting-interaction-terms.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          -3.05617    0.94036  -3.250</span></span>
-<span id="cb120-16"><a href="interpreting-interaction-terms.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; am           3.55141    2.35742   1.506</span></span>
-<span id="cb120-17"><a href="interpreting-interaction-terms.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp:am       -0.01129    0.01466  -0.770</span></span>
-<span id="cb120-18"><a href="interpreting-interaction-terms.html#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
-<span id="cb120-19"><a href="interpreting-interaction-terms.html#cb120-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 2.89e-12 ***</span></span>
-<span id="cb120-20"><a href="interpreting-interaction-terms.html#cb120-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp           0.05407 .  </span></span>
-<span id="cb120-21"><a href="interpreting-interaction-terms.html#cb120-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt           0.00309 ** </span></span>
-<span id="cb120-22"><a href="interpreting-interaction-terms.html#cb120-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; am           0.14355    </span></span>
-<span id="cb120-23"><a href="interpreting-interaction-terms.html#cb120-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp:am        0.44809    </span></span>
-<span id="cb120-24"><a href="interpreting-interaction-terms.html#cb120-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb120-25"><a href="interpreting-interaction-terms.html#cb120-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb120-26"><a href="interpreting-interaction-terms.html#cb120-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb120-27"><a href="interpreting-interaction-terms.html#cb120-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb120-28"><a href="interpreting-interaction-terms.html#cb120-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb120-29"><a href="interpreting-interaction-terms.html#cb120-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.556 on 27 degrees of freedom</span></span>
-<span id="cb120-30"><a href="interpreting-interaction-terms.html#cb120-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8433, Adjusted R-squared:  0.8201 </span></span>
-<span id="cb120-31"><a href="interpreting-interaction-terms.html#cb120-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</span></span></code></pre></div>
+<span id="cb120-12"><a href="interpreting-interaction-terms.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb120-13"><a href="interpreting-interaction-terms.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 33.34196    2.79711  11.920 2.89e-12 ***</span></span>
+<span id="cb120-14"><a href="interpreting-interaction-terms.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.02918    0.01449  -2.014  0.05407 .  </span></span>
+<span id="cb120-15"><a href="interpreting-interaction-terms.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          -3.05617    0.94036  -3.250  0.00309 ** </span></span>
+<span id="cb120-16"><a href="interpreting-interaction-terms.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; am           3.55141    2.35742   1.506  0.14355    </span></span>
+<span id="cb120-17"><a href="interpreting-interaction-terms.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp:am       -0.01129    0.01466  -0.770  0.44809    </span></span>
+<span id="cb120-18"><a href="interpreting-interaction-terms.html#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb120-19"><a href="interpreting-interaction-terms.html#cb120-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb120-20"><a href="interpreting-interaction-terms.html#cb120-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb120-21"><a href="interpreting-interaction-terms.html#cb120-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb120-22"><a href="interpreting-interaction-terms.html#cb120-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.556 on 27 degrees of freedom</span></span>
+<span id="cb120-23"><a href="interpreting-interaction-terms.html#cb120-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8433, Adjusted R-squared:  0.8201 </span></span>
+<span id="cb120-24"><a href="interpreting-interaction-terms.html#cb120-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</span></span></code></pre></div>
 <p>The interaction term in the results is in the row that starts with <code>hp:am</code>. These estimates suggest that, while horsepower does seem to decrease miles per gallon controlling for weight and whether or not the car has an automatic transmission, the effect of horsepower does not seem to vary much by whether or not the car has an automatic transmission (at least not in a big enough way that we can detect it with the data that we have).</p>
 </div>
 </div>
@@ -517,7 +510,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

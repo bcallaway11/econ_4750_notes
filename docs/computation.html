@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.3 Computation | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.3 Computation | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -388,22 +388,17 @@ the population parameter <span class="math inline">\(\mathbb{E}[Y]\)</span> and 
 <span id="cb114-8"><a href="computation.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -3.941 -1.600 -0.182  1.050  5.854 </span></span>
 <span id="cb114-9"><a href="computation.html#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb114-10"><a href="computation.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb114-11"><a href="computation.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
-<span id="cb114-12"><a href="computation.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 37.22727    1.59879  23.285</span></span>
-<span id="cb114-13"><a href="computation.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.03177    0.00903  -3.519</span></span>
-<span id="cb114-14"><a href="computation.html#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          -3.87783    0.63273  -6.129</span></span>
-<span id="cb114-15"><a href="computation.html#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
-<span id="cb114-16"><a href="computation.html#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  &lt; 2e-16 ***</span></span>
-<span id="cb114-17"><a href="computation.html#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp           0.00145 ** </span></span>
-<span id="cb114-18"><a href="computation.html#cb114-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          1.12e-06 ***</span></span>
-<span id="cb114-19"><a href="computation.html#cb114-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb114-20"><a href="computation.html#cb114-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb114-21"><a href="computation.html#cb114-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb114-22"><a href="computation.html#cb114-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb114-23"><a href="computation.html#cb114-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb114-24"><a href="computation.html#cb114-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.593 on 29 degrees of freedom</span></span>
-<span id="cb114-25"><a href="computation.html#cb114-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 </span></span>
-<span id="cb114-26"><a href="computation.html#cb114-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</span></span></code></pre></div>
+<span id="cb114-11"><a href="computation.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb114-12"><a href="computation.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***</span></span>
+<span id="cb114-13"><a href="computation.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.03177    0.00903  -3.519  0.00145 ** </span></span>
+<span id="cb114-14"><a href="computation.html#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; wt          -3.87783    0.63273  -6.129 1.12e-06 ***</span></span>
+<span id="cb114-15"><a href="computation.html#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb114-16"><a href="computation.html#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb114-17"><a href="computation.html#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb114-18"><a href="computation.html#cb114-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb114-19"><a href="computation.html#cb114-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.593 on 29 degrees of freedom</span></span>
+<span id="cb114-20"><a href="computation.html#cb114-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 </span></span>
+<span id="cb114-21"><a href="computation.html#cb114-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</span></span></code></pre></div>
 <p>The main thing that this reports is the estimated parameters. Our estimate of the “Intercept” (i.e., this is <span class="math inline">\(\hat{\beta}_0\)</span>) is in the first row of the table; our estimate is <code>37.227</code>. The estimated coefficient on <code>hp</code> is <code>-0.0318</code>, and the estimated coefficient on <code>wt</code> is <code>-3.878</code>.</p>
 <p>You can also see standard errors for each estimated parameter, a t-statistic, and a p-value in the other columns. We will talk about these in more detail in the next section.</p>
 <p>For now, we’ll also ignore the information provided at the bottom of the summary.</p>
@@ -486,7 +481,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

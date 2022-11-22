@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.4 Lab 2 Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.4 Lab 2 Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -433,8 +433,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb96-31"><a href="lab-2-solutions.html#cb96-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
 <span id="cb96-32"><a href="lab-2-solutions.html#cb96-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
 <span id="cb96-33"><a href="lab-2-solutions.html#cb96-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb96-34"><a href="lab-2-solutions.html#cb96-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing non-finite</span></span>
-<span id="cb96-35"><a href="lab-2-solutions.html#cb96-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; values (stat_bin).</span></span></code></pre></div>
+<span id="cb96-34"><a href="lab-2-solutions.html#cb96-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing non-finite values</span></span>
+<span id="cb96-35"><a href="lab-2-solutions.html#cb96-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (`stat_bin()`).</span></span></code></pre></div>
 <p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lab-2-solutions.html#cb97-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-2"><a href="lab-2-solutions.html#cb97-2" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
@@ -517,8 +517,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb106-2"><a href="lab-2-solutions.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.0058&quot;</span></span>
 <span id="cb106-3"><a href="lab-2-solutions.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 0.005&quot;</span></span>
 <span id="cb106-4"><a href="lab-2-solutions.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 0.005&quot;</span></span>
-<span id="cb106-5"><a href="lab-2-solutions.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 555 rows containing non-finite</span></span>
-<span id="cb106-6"><a href="lab-2-solutions.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; values (stat_bin).</span></span></code></pre></div>
+<span id="cb106-5"><a href="lab-2-solutions.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 555 rows containing non-finite values</span></span>
+<span id="cb106-6"><a href="lab-2-solutions.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (`stat_bin()`).</span></span></code></pre></div>
 <p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.556&quot;</code></pre>
 <ol start="9" style="list-style-type: decimal">
@@ -528,8 +528,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb108-2"><a href="lab-2-solutions.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;bias: -0.001&quot;</span></span>
 <span id="cb108-3"><a href="lab-2-solutions.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;var : 9e-04&quot;</span></span>
 <span id="cb108-4"><a href="lab-2-solutions.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;mse : 9e-04&quot;</span></span>
-<span id="cb108-5"><a href="lab-2-solutions.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 59 rows containing non-finite</span></span>
-<span id="cb108-6"><a href="lab-2-solutions.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; values (stat_bin).</span></span></code></pre></div>
+<span id="cb108-5"><a href="lab-2-solutions.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 59 rows containing non-finite values</span></span>
+<span id="cb108-6"><a href="lab-2-solutions.html#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (`stat_bin()`).</span></span></code></pre></div>
 <p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 <pre><code>#&gt; [1] &quot;rej : 0.064&quot;</code></pre>
 <ol start="10" style="list-style-type: decimal">
@@ -608,7 +608,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -507,9 +507,13 @@ Let's quickly go over these for the case where $X$ and $Y$ are two discrete rand
 
 We use the notation that $\mathcal{X}$ denotes the support of $X$ and $\mathcal{Y}$ denotes the support of $Y$.
 
-1. $\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} f_{X,Y}(x,y) = 1$
+1. $0 \leq f_{X,Y}(x,y) \geq 1$ for all $x,y$
 
-2. $f_{X,Y}(x,y) \geq 0$ for all $x,y$
+    In words: the probability of $X$ and $Y$ taking any particular values can't be less than 0 or greater than 1 (because these are probabilities)
+
+2. $\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} f_{X,Y}(x,y) = 1$
+
+    In words: If you add up $\P(X=x, Y=y)$ across all possible values of $x$ and $y$, they sum up to 1 (again, this is just a property of probabilities)
 
 3. If you know the joint pmf, then you can recover the "marginal" pmf, that is,
 

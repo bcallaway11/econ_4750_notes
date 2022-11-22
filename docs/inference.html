@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.11 Inference | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.11 Inference | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -494,44 +494,40 @@ and a 95% confidence interval is given by</p>
 <span id="cb125-9"><a href="inference.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -5.7121 -2.1122 -0.8854  1.5819  8.2360 </span></span>
 <span id="cb125-10"><a href="inference.html#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb125-11"><a href="inference.html#cb125-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb125-12"><a href="inference.html#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
-<span id="cb125-13"><a href="inference.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 30.09886    1.63392  18.421</span></span>
-<span id="cb125-14"><a href="inference.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.06823    0.01012  -6.742</span></span>
-<span id="cb125-15"><a href="inference.html#cb125-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
-<span id="cb125-16"><a href="inference.html#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  &lt; 2e-16 ***</span></span>
-<span id="cb125-17"><a href="inference.html#cb125-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          1.79e-07 ***</span></span>
-<span id="cb125-18"><a href="inference.html#cb125-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb125-19"><a href="inference.html#cb125-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb125-20"><a href="inference.html#cb125-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb125-21"><a href="inference.html#cb125-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb125-22"><a href="inference.html#cb125-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb125-23"><a href="inference.html#cb125-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 3.863 on 30 degrees of freedom</span></span>
-<span id="cb125-24"><a href="inference.html#cb125-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 </span></span>
-<span id="cb125-25"><a href="inference.html#cb125-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</span></span>
-<span id="cb125-26"><a href="inference.html#cb125-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-27"><a href="inference.html#cb125-27" aria-hidden="true" tabindex="-1"></a><span class="co"># show previous calcuations</span></span>
-<span id="cb125-28"><a href="inference.html#cb125-28" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">bet0=</span>bet0, <span class="at">bet1=</span>bet1)</span>
-<span id="cb125-29"><a href="inference.html#cb125-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       bet0        bet1</span></span>
-<span id="cb125-30"><a href="inference.html#cb125-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 30.09886 -0.06822828</span></span>
-<span id="cb125-31"><a href="inference.html#cb125-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-32"><a href="inference.html#cb125-32" aria-hidden="true" tabindex="-1"></a><span class="co"># components of Vhat</span></span>
-<span id="cb125-33"><a href="inference.html#cb125-33" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
-<span id="cb125-34"><a href="inference.html#cb125-34" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp</span>
-<span id="cb125-35"><a href="inference.html#cb125-35" aria-hidden="true" tabindex="-1"></a>Uhat <span class="ot">&lt;-</span> Y <span class="sc">-</span> bet0 <span class="sc">-</span> bet1<span class="sc">*</span>X</span>
-<span id="cb125-36"><a href="inference.html#cb125-36" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
-<span id="cb125-37"><a href="inference.html#cb125-37" aria-hidden="true" tabindex="-1"></a>varX <span class="ot">&lt;-</span> <span class="fu">mean</span>( (X<span class="sc">-</span>Xbar)<span class="sc">^</span><span class="dv">2</span> )</span>
-<span id="cb125-38"><a href="inference.html#cb125-38" aria-hidden="true" tabindex="-1"></a>Vhat <span class="ot">&lt;-</span> <span class="fu">mean</span>( (X<span class="sc">-</span>Xbar)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> Uhat<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> ( varX<span class="sc">^</span><span class="dv">2</span> )</span>
-<span id="cb125-39"><a href="inference.html#cb125-39" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(mtcars)</span>
-<span id="cb125-40"><a href="inference.html#cb125-40" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(Vhat)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb125-41"><a href="inference.html#cb125-41" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> bet1<span class="sc">/</span>se</span>
-<span id="cb125-42"><a href="inference.html#cb125-42" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span>
-<span id="cb125-43"><a href="inference.html#cb125-43" aria-hidden="true" tabindex="-1"></a>ci_L <span class="ot">&lt;-</span> bet1 <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
-<span id="cb125-44"><a href="inference.html#cb125-44" aria-hidden="true" tabindex="-1"></a>ci_U <span class="ot">&lt;-</span> bet1 <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
-<span id="cb125-45"><a href="inference.html#cb125-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-46"><a href="inference.html#cb125-46" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
-<span id="cb125-47"><a href="inference.html#cb125-47" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(se, t_stat, p_val, ci_L, ci_U),<span class="dv">5</span>)</span>
-<span id="cb125-48"><a href="inference.html#cb125-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        se   t_stat p_val     ci_L     ci_U</span></span>
-<span id="cb125-49"><a href="inference.html#cb125-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.01313 -5.19644     0 -0.09396 -0.04249</span></span></code></pre></div>
+<span id="cb125-12"><a href="inference.html#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb125-13"><a href="inference.html#cb125-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***</span></span>
+<span id="cb125-14"><a href="inference.html#cb125-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.06823    0.01012  -6.742 1.79e-07 ***</span></span>
+<span id="cb125-15"><a href="inference.html#cb125-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb125-16"><a href="inference.html#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb125-17"><a href="inference.html#cb125-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb125-18"><a href="inference.html#cb125-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb125-19"><a href="inference.html#cb125-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 3.863 on 30 degrees of freedom</span></span>
+<span id="cb125-20"><a href="inference.html#cb125-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 </span></span>
+<span id="cb125-21"><a href="inference.html#cb125-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</span></span>
+<span id="cb125-22"><a href="inference.html#cb125-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-23"><a href="inference.html#cb125-23" aria-hidden="true" tabindex="-1"></a><span class="co"># show previous calcuations</span></span>
+<span id="cb125-24"><a href="inference.html#cb125-24" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">bet0=</span>bet0, <span class="at">bet1=</span>bet1)</span>
+<span id="cb125-25"><a href="inference.html#cb125-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       bet0        bet1</span></span>
+<span id="cb125-26"><a href="inference.html#cb125-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 30.09886 -0.06822828</span></span>
+<span id="cb125-27"><a href="inference.html#cb125-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-28"><a href="inference.html#cb125-28" aria-hidden="true" tabindex="-1"></a><span class="co"># components of Vhat</span></span>
+<span id="cb125-29"><a href="inference.html#cb125-29" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb125-30"><a href="inference.html#cb125-30" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp</span>
+<span id="cb125-31"><a href="inference.html#cb125-31" aria-hidden="true" tabindex="-1"></a>Uhat <span class="ot">&lt;-</span> Y <span class="sc">-</span> bet0 <span class="sc">-</span> bet1<span class="sc">*</span>X</span>
+<span id="cb125-32"><a href="inference.html#cb125-32" aria-hidden="true" tabindex="-1"></a>Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(X)</span>
+<span id="cb125-33"><a href="inference.html#cb125-33" aria-hidden="true" tabindex="-1"></a>varX <span class="ot">&lt;-</span> <span class="fu">mean</span>( (X<span class="sc">-</span>Xbar)<span class="sc">^</span><span class="dv">2</span> )</span>
+<span id="cb125-34"><a href="inference.html#cb125-34" aria-hidden="true" tabindex="-1"></a>Vhat <span class="ot">&lt;-</span> <span class="fu">mean</span>( (X<span class="sc">-</span>Xbar)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> Uhat<span class="sc">^</span><span class="dv">2</span> ) <span class="sc">/</span> ( varX<span class="sc">^</span><span class="dv">2</span> )</span>
+<span id="cb125-35"><a href="inference.html#cb125-35" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(mtcars)</span>
+<span id="cb125-36"><a href="inference.html#cb125-36" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(Vhat)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb125-37"><a href="inference.html#cb125-37" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> bet1<span class="sc">/</span>se</span>
+<span id="cb125-38"><a href="inference.html#cb125-38" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span>
+<span id="cb125-39"><a href="inference.html#cb125-39" aria-hidden="true" tabindex="-1"></a>ci_L <span class="ot">&lt;-</span> bet1 <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb125-40"><a href="inference.html#cb125-40" aria-hidden="true" tabindex="-1"></a>ci_U <span class="ot">&lt;-</span> bet1 <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb125-41"><a href="inference.html#cb125-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-42"><a href="inference.html#cb125-42" aria-hidden="true" tabindex="-1"></a><span class="co"># print results</span></span>
+<span id="cb125-43"><a href="inference.html#cb125-43" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(se, t_stat, p_val, ci_L, ci_U),<span class="dv">5</span>)</span>
+<span id="cb125-44"><a href="inference.html#cb125-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        se   t_stat p_val     ci_L     ci_U</span></span>
+<span id="cb125-45"><a href="inference.html#cb125-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 0.01313 -5.19644     0 -0.09396 -0.04249</span></span></code></pre></div>
 <p>Interestingly, these are not <em>exactly</em> the same as what comes from the <code>lm</code> command. Here’s what the difference is: <code>R</code> makes a simplifying assumption called “homoskedasticity” that simplifies the expression for the variance. This can result in slightly different standard errors (and therefore slightly different t-statistics, p-values, and confidence intervals too) than the ones we calculated.</p>
 <p>An alternative package that is popular among economists for estimating regressions and getting “heteroskedasticity robust” standard errors is the <code>estimatr</code> package.</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="inference.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
@@ -545,12 +541,12 @@ and a 95% confidence interval is given by</p>
 <span id="cb126-9"><a href="inference.html#cb126-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Standard error type:  HC0 </span></span>
 <span id="cb126-10"><a href="inference.html#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb126-11"><a href="inference.html#cb126-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb126-12"><a href="inference.html#cb126-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
-<span id="cb126-13"><a href="inference.html#cb126-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 30.09886    2.01067  14.970</span></span>
-<span id="cb126-14"><a href="inference.html#cb126-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.06823    0.01313  -5.196</span></span>
-<span id="cb126-15"><a href="inference.html#cb126-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Pr(&gt;|t|) CI Lower CI Upper DF</span></span>
-<span id="cb126-16"><a href="inference.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.851e-15 25.99252 34.20520 30</span></span>
-<span id="cb126-17"><a href="inference.html#cb126-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          1.338e-05 -0.09504 -0.04141 30</span></span>
+<span id="cb126-12"><a href="inference.html#cb126-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value  Pr(&gt;|t|) CI Lower</span></span>
+<span id="cb126-13"><a href="inference.html#cb126-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 30.09886    2.01067  14.970 1.851e-15 25.99252</span></span>
+<span id="cb126-14"><a href="inference.html#cb126-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.06823    0.01313  -5.196 1.338e-05 -0.09504</span></span>
+<span id="cb126-15"><a href="inference.html#cb126-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             CI Upper DF</span></span>
+<span id="cb126-16"><a href="inference.html#cb126-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 34.20520 30</span></span>
+<span id="cb126-17"><a href="inference.html#cb126-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -0.04141 30</span></span>
 <span id="cb126-18"><a href="inference.html#cb126-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb126-19"><a href="inference.html#cb126-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6024 ,    Adjusted R-squared:  0.5892 </span></span>
 <span id="cb126-20"><a href="inference.html#cb126-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic:    27 on 1 and 30 DF,  p-value: 1.338e-05</span></span></code></pre></div>
@@ -623,7 +619,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

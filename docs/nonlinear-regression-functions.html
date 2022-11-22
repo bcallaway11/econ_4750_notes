@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.6 Nonlinear Regression Functions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.6 Nonlinear Regression Functions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -447,22 +447,17 @@ Let’s compute a few different partial effects for different values of parents�
 <span id="cb118-9"><a href="nonlinear-regression-functions.html#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -4.5512 -1.6027 -0.6977  1.5509  8.7213 </span></span>
 <span id="cb118-10"><a href="nonlinear-regression-functions.html#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb118-11"><a href="nonlinear-regression-functions.html#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb118-12"><a href="nonlinear-regression-functions.html#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value</span></span>
-<span id="cb118-13"><a href="nonlinear-regression-functions.html#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  4.041e+01  2.741e+00  14.744</span></span>
-<span id="cb118-14"><a href="nonlinear-regression-functions.html#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -2.133e-01  3.488e-02  -6.115</span></span>
-<span id="cb118-15"><a href="nonlinear-regression-functions.html#cb118-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; I(hp^2)      4.208e-04  9.844e-05   4.275</span></span>
-<span id="cb118-16"><a href="nonlinear-regression-functions.html#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
-<span id="cb118-17"><a href="nonlinear-regression-functions.html#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept) 5.23e-15 ***</span></span>
-<span id="cb118-18"><a href="nonlinear-regression-functions.html#cb118-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          1.16e-06 ***</span></span>
-<span id="cb118-19"><a href="nonlinear-regression-functions.html#cb118-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; I(hp^2)     0.000189 ***</span></span>
-<span id="cb118-20"><a href="nonlinear-regression-functions.html#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb118-21"><a href="nonlinear-regression-functions.html#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb118-22"><a href="nonlinear-regression-functions.html#cb118-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb118-23"><a href="nonlinear-regression-functions.html#cb118-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb118-24"><a href="nonlinear-regression-functions.html#cb118-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb118-25"><a href="nonlinear-regression-functions.html#cb118-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 3.077 on 29 degrees of freedom</span></span>
-<span id="cb118-26"><a href="nonlinear-regression-functions.html#cb118-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.7561, Adjusted R-squared:  0.7393 </span></span>
-<span id="cb118-27"><a href="nonlinear-regression-functions.html#cb118-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 44.95 on 2 and 29 DF,  p-value: 1.301e-09</span></span></code></pre></div>
+<span id="cb118-12"><a href="nonlinear-regression-functions.html#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb118-13"><a href="nonlinear-regression-functions.html#cb118-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  4.041e+01  2.741e+00  14.744 5.23e-15 ***</span></span>
+<span id="cb118-14"><a href="nonlinear-regression-functions.html#cb118-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hp          -2.133e-01  3.488e-02  -6.115 1.16e-06 ***</span></span>
+<span id="cb118-15"><a href="nonlinear-regression-functions.html#cb118-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; I(hp^2)      4.208e-04  9.844e-05   4.275 0.000189 ***</span></span>
+<span id="cb118-16"><a href="nonlinear-regression-functions.html#cb118-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb118-17"><a href="nonlinear-regression-functions.html#cb118-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb118-18"><a href="nonlinear-regression-functions.html#cb118-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb118-19"><a href="nonlinear-regression-functions.html#cb118-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb118-20"><a href="nonlinear-regression-functions.html#cb118-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 3.077 on 29 degrees of freedom</span></span>
+<span id="cb118-21"><a href="nonlinear-regression-functions.html#cb118-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.7561, Adjusted R-squared:  0.7393 </span></span>
+<span id="cb118-22"><a href="nonlinear-regression-functions.html#cb118-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 44.95 on 2 and 29 DF,  p-value: 1.301e-09</span></span></code></pre></div>
 <p>The only thing that is new here is <code>I(hp^2)</code>. The <code>I</code> function stands for inhibit (you can read the documentation using <code>?I</code>). For us, this is not too important. You can understand it like this: there is no variable names <code>hp^2</code> in the data, but if we put the name of a variable that is in the data (here: <code>hp</code>) then we can apply a function to it (here: squaring it) before including it as a regressor.</p>
 <p>Interestingly, here it seems there are nonlinear effects of horsepower on miles per gallon. Let’s just quickly report the estimated partial effects for a few different values of horsepower.</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="nonlinear-regression-functions.html#cb119-1" aria-hidden="true" tabindex="-1"></a>hp_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">300</span>)</span>
@@ -549,7 +544,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.3 Experiments | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.3 Experiments | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -482,26 +482,20 @@ but notice that this is exactly what the <span class="math inline">\(ATT\)</span
 <span id="cb148-12"><a href="experiments.html#cb148-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(treadssk) ~ classk, data = Star)</span></span>
 <span id="cb148-13"><a href="experiments.html#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb148-14"><a href="experiments.html#cb148-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb148-15"><a href="experiments.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q </span></span>
-<span id="cb148-16"><a href="experiments.html#cb148-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -0.31960 -0.04873 -0.00607  0.03929 </span></span>
-<span id="cb148-17"><a href="experiments.html#cb148-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Max </span></span>
-<span id="cb148-18"><a href="experiments.html#cb148-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.36877 </span></span>
-<span id="cb148-19"><a href="experiments.html#cb148-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb148-20"><a href="experiments.html#cb148-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb148-21"><a href="experiments.html#cb148-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Estimate Std. Error</span></span>
-<span id="cb148-22"><a href="experiments.html#cb148-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)       6.072176   0.001568</span></span>
-<span id="cb148-23"><a href="experiments.html#cb148-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; classksmall.class 0.013324   0.002302</span></span>
-<span id="cb148-24"><a href="experiments.html#cb148-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    t value Pr(&gt;|t|)    </span></span>
-<span id="cb148-25"><a href="experiments.html#cb148-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)       3871.502  &lt; 2e-16 ***</span></span>
-<span id="cb148-26"><a href="experiments.html#cb148-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; classksmall.class    5.788  7.7e-09 ***</span></span>
-<span id="cb148-27"><a href="experiments.html#cb148-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb148-28"><a href="experiments.html#cb148-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb148-29"><a href="experiments.html#cb148-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb148-30"><a href="experiments.html#cb148-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.1 &#39; &#39; 1</span></span>
-<span id="cb148-31"><a href="experiments.html#cb148-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb148-32"><a href="experiments.html#cb148-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.07014 on 3731 degrees of freedom</span></span>
-<span id="cb148-33"><a href="experiments.html#cb148-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.0089, Adjusted R-squared:  0.008634 </span></span>
-<span id="cb148-34"><a href="experiments.html#cb148-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic:  33.5 on 1 and 3731 DF,  p-value: 7.699e-09</span></span></code></pre></div>
+<span id="cb148-15"><a href="experiments.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb148-16"><a href="experiments.html#cb148-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -0.31960 -0.04873 -0.00607  0.03929  0.36877 </span></span>
+<span id="cb148-17"><a href="experiments.html#cb148-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb148-18"><a href="experiments.html#cb148-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb148-19"><a href="experiments.html#cb148-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Estimate Std. Error  t value Pr(&gt;|t|)    </span></span>
+<span id="cb148-20"><a href="experiments.html#cb148-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)       6.072176   0.001568 3871.502  &lt; 2e-16 ***</span></span>
+<span id="cb148-21"><a href="experiments.html#cb148-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; classksmall.class 0.013324   0.002302    5.788  7.7e-09 ***</span></span>
+<span id="cb148-22"><a href="experiments.html#cb148-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb148-23"><a href="experiments.html#cb148-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb148-24"><a href="experiments.html#cb148-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb148-25"><a href="experiments.html#cb148-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb148-26"><a href="experiments.html#cb148-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.07014 on 3731 degrees of freedom</span></span>
+<span id="cb148-27"><a href="experiments.html#cb148-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.0089, Adjusted R-squared:  0.008634 </span></span>
+<span id="cb148-28"><a href="experiments.html#cb148-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic:  33.5 on 1 and 3731 DF,  p-value: 7.699e-09</span></span></code></pre></div>
 <p>You’ll notice that this is a very simple analysis, but that we have access to an experiment means that we do need to do anything complicated — we can just use a regression to compare the differences between test scores of students in small classes relative to large tests. These results say that small class sizes increase reading test scores of students by about 1.3%.</p>
 <p>Let me also make a few comments about internal and external validity.</p>
 <ul>
@@ -576,7 +570,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

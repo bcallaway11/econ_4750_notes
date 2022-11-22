@@ -263,7 +263,7 @@ You can think of this as saying that, among individuals with the same covariates
 
 If you are willing to believe this assumption, then you can recover the $ATT$.  There are a few different ways that you could implement this.  Probably the most common (and convenient) way is to link this condition to a regression (just like we did in the previous section on experiments).
 
-To do this, let's continue to make the treatment effect heterogeneity assumption as above.  In addition, let's assume a linear model for untreated potential outcomes
+To do this, let's continue to make the treatment effect homogeneity assumption as above.  In addition, let's assume a linear model for untreated potential outcomes
 \begin{align*}
   Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
 \end{align*}
@@ -776,11 +776,21 @@ Before we finish, let me mention a few caveats to these results:
 
 1. For this problem, we will use the data `rand_hie`.  This is data from the RAND health insurance experiment in the 1980s.  In the experiment, participants were randomly assigned to get Catastrophic (the least amount of coverage), insurance that came with a Deductible, insurance that came with Cost Sharing (i.e., co-insurance so that an individual pays part of their medical insurance), and Free (so that there is no cost of medical care).
 
-    a) Estimate the average difference between total medical expenditure (`total_med_expenditure`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    For this problem, we will be interested in whether or not changing the type of health insurance changed the amount of health care utilization and the health status of individuals.
     
-    b) Estimate the average difference between face to face doctors visits (`face_to_face_visits`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    We will focus on the difference between the least amount of health insurance ("Catastrophic") and the most amount of health insurance ("Free").  In particular, you can start this problem by creating a new dataset as follows:
     
-    c) Estimate the average difference between the overall health index (`health_index`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    ```{r eval=FALSE}
+        rand_hie_subset <- subset(rand_hie, plan_type %in% c("Catastrophic", "Free"))
+    ```
+    
+    and use this data to answer the questions below.
+
+    a) Use a regression to estimate the average difference between total medical expenditure (`total_med_expenditure`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    
+    b) Use a regression to estimate the average difference between face to face doctors visits (`face_to_face_visits`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
+    
+    c) Use a regression to estimate the average difference between the overall health index (`health_index`) by plan type (`plan_type`) and report your results.  Should you interpret these as average causal effects?  Explain.
     
     d) How do you interpret the results from parts a-c?
 

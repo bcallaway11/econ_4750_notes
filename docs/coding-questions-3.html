@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.10 Coding Questions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.10 Coding Questions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,10 +373,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.10</span> Coding Questions<a href="coding-questions-3.html#coding-questions-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>For this problem, we will use the data <code>rand_hie</code>. This is data from the RAND health insurance experiment in the 1980s. In the experiment, participants were randomly assigned to get Catastrophic (the least amount of coverage), insurance that came with a Deductible, insurance that came with Cost Sharing (i.e., co-insurance so that an individual pays part of their medical insurance), and Free (so that there is no cost of medical care).</p>
+<p>For this problem, we will be interested in whether or not changing the type of health insurance changed the amount of health care utilization and the health status of individuals.</p>
+<p>We will focus on the difference between the least amount of health insurance (“Catastrophic”) and the most amount of health insurance (“Free”). In particular, you can start this problem by creating a new dataset as follows:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="coding-questions-3.html#cb167-1" aria-hidden="true" tabindex="-1"></a>    rand_hie_subset <span class="ot">&lt;-</span> <span class="fu">subset</span>(rand_hie, plan_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Catastrophic&quot;</span>, <span class="st">&quot;Free&quot;</span>))</span></code></pre></div>
+<p>and use this data to answer the questions below.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Estimate the average difference between total medical expenditure (<code>total_med_expenditure</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
-<li><p>Estimate the average difference between face to face doctors visits (<code>face_to_face_visits</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
-<li><p>Estimate the average difference between the overall health index (<code>health_index</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
+<li><p>Use a regression to estimate the average difference between total medical expenditure (<code>total_med_expenditure</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
+<li><p>Use a regression to estimate the average difference between face to face doctors visits (<code>face_to_face_visits</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
+<li><p>Use a regression to estimate the average difference between the overall health index (<code>health_index</code>) by plan type (<code>plan_type</code>) and report your results. Should you interpret these as average causal effects? Explain.</p></li>
 <li><p>How do you interpret the results from parts a-c?</p></li>
 </ol></li>
 <li><p>For this problem, we will study the causal effect of having more children on women’s labor supply using the data <code>Fertility</code>.</p>
@@ -470,7 +474,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

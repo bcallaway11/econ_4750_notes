@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.5 Data types | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.5 Data types | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-08-17" />
+<meta name="date" content="2022-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -415,8 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-5"><a href="data-types.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -2 -1  0  1  2</span></span>
 <span id="cb20-6"><a href="data-types.html#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="data-types.html#cb20-7" aria-hidden="true" tabindex="-1"></a>five <span class="sc">/</span> <span class="dv">3</span></span>
-<span id="cb20-8"><a href="data-types.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3333333 0.6666667 1.0000000 1.3333333</span></span>
-<span id="cb20-9"><a href="data-types.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] 1.6666667</span></span></code></pre></div>
+<span id="cb20-8"><a href="data-types.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.3333333 0.6666667 1.0000000 1.3333333 1.6666667</span></span></code></pre></div>
 <p>The other interesting case is what happens when you try to apply any of the same mathematical operators to two different vectors.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-types.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just some random numbers</span></span>
 <span id="cb21-2"><a href="data-types.html#cb21-2" aria-hidden="true" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">7</span>)</span>
@@ -431,16 +430,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb21-11"><a href="data-types.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  8 -6 12  4 35</span></span>
 <span id="cb21-12"><a href="data-types.html#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-13"><a href="data-types.html#cb21-13" aria-hidden="true" tabindex="-1"></a>five <span class="sc">/</span> vec2</span>
-<span id="cb21-14"><a href="data-types.html#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  0.1250000 -0.6666667  0.7500000</span></span>
-<span id="cb21-15"><a href="data-types.html#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4]  4.0000000  0.7142857</span></span></code></pre></div>
+<span id="cb21-14"><a href="data-types.html#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  0.1250000 -0.6666667  0.7500000  4.0000000  0.7142857</span></span></code></pre></div>
 <p>You can immediately see what happens here. For example, for <code>five + vec2</code>, the first element of <code>five</code> is added to the first element of <code>vec2</code>, the second element of <code>five</code> is added to the second element of <code>vec2</code> and so on. Similar things happen for each of the other mathematical operations too.</p>
 <p>There’s one other case that might be interesting to consider too. What happens if you try to apply these mathematical operations to two vectors of different lengths? Let’s find out</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-types.html#cb22-1" aria-hidden="true" tabindex="-1"></a>vec3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>)</span>
 <span id="cb22-2"><a href="data-types.html#cb22-2" aria-hidden="true" tabindex="-1"></a>five <span class="sc">+</span> vec3</span>
-<span id="cb22-3"><a href="data-types.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in five + vec3: longer object</span></span>
-<span id="cb22-4"><a href="data-types.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; length is not a multiple of shorter object</span></span>
-<span id="cb22-5"><a href="data-types.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; length</span></span>
-<span id="cb22-6"><a href="data-types.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  3  8  5 10  7</span></span></code></pre></div>
+<span id="cb22-3"><a href="data-types.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in five + vec3: longer object length is not a</span></span>
+<span id="cb22-4"><a href="data-types.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; multiple of shorter object length</span></span>
+<span id="cb22-5"><a href="data-types.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1]  3  8  5 10  7</span></span></code></pre></div>
 <p>You’ll notice that this computes <em>something</em> but it also issues a warning. What happens here is that the result is equal to the first element of <code>five</code> plus the first element of <code>vec3</code>, the second of <code>five</code> plus the second element of <code>vec3</code>, the third element of <code>five</code> plus <em>the first element of <code>vec3</code></em>, the fourth element of <code>five</code> plus <em>the second element of <code>vec3</code></em>, and the fifth element of <code>five</code> plus <em>the first element of <code>vec3</code></em>. What’s happening here is that, since <code>vec3</code> contains fewere elements that <code>five</code>, the elements of <code>vec3</code> are getting <em>recycled</em>. In my experience, this warning often indicates a coding mistake. There are many cases where I want to add the same number to all elements in a vector, and many other cases where I want to add two vectors that have the same length, but I cannot think of any cases where I would want to add two vectors the way that is being carried out here.</p>
 <p>The same sort of things will happen with subtraction, multiplication, and division (feel free to try it out).</p>
 </div>
@@ -500,91 +497,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-types.html#cb31-1" aria-hidden="true" tabindex="-1"></a>firm_data</span></code></pre></div>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-name
-</th>
-<th style="text-align:left;">
-industry
-</th>
-<th style="text-align:left;">
-county
-</th>
-<th style="text-align:right;">
-employees
-</th>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">industry</th>
+<th align="left">county</th>
+<th align="right">employees</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-ABC Manufacturing
-</td>
-<td style="text-align:left;">
-Manufacturing
-</td>
-<td style="text-align:left;">
-Clarke
-</td>
-<td style="text-align:right;">
-531
-</td>
+<tr class="odd">
+<td align="left">ABC Manufacturing</td>
+<td align="left">Manufacturing</td>
+<td align="left">Clarke</td>
+<td align="right">531</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Martin’s Muffins
-</td>
-<td style="text-align:left;">
-Food Services
-</td>
-<td style="text-align:left;">
-Oconee
-</td>
-<td style="text-align:right;">
-6
-</td>
+<tr class="even">
+<td align="left">Martin’s Muffins</td>
+<td align="left">Food Services</td>
+<td align="left">Oconee</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Down Home Appliances
-</td>
-<td style="text-align:left;">
-Manufacturing
-</td>
-<td style="text-align:left;">
-Clarke
-</td>
-<td style="text-align:right;">
-15
-</td>
+<tr class="odd">
+<td align="left">Down Home Appliances</td>
+<td align="left">Manufacturing</td>
+<td align="left">Clarke</td>
+<td align="right">15</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Classic City Widgets
-</td>
-<td style="text-align:left;">
-Manufacturing
-</td>
-<td style="text-align:left;">
-Clarke
-</td>
-<td style="text-align:right;">
-211
-</td>
+<tr class="even">
+<td align="left">Classic City Widgets</td>
+<td align="left">Manufacturing</td>
+<td align="left">Clarke</td>
+<td align="right">211</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Watkinsville Diner
-</td>
-<td style="text-align:left;">
-Food Services
-</td>
-<td style="text-align:left;">
-Oconee
-</td>
-<td style="text-align:right;">
-25
-</td>
+<tr class="odd">
+<td align="left">Watkinsville Diner</td>
+<td align="left">Food Services</td>
+<td align="left">Oconee</td>
+<td align="right">25</td>
 </tr>
 </tbody>
 </table>
@@ -605,8 +554,7 @@ Oconee
 <span id="cb34-2"><a href="data-types.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 157.6</span></span>
 <span id="cb34-3"><a href="data-types.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-4"><a href="data-types.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(firm_data<span class="sc">$</span>employees)</span>
-<span id="cb34-5"><a href="data-types.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.274762 1.791759 2.708050 5.351858</span></span>
-<span id="cb34-6"><a href="data-types.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] 3.218876</span></span></code></pre></div>
+<span id="cb34-5"><a href="data-types.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6.274762 1.791759 2.708050 5.351858 3.218876</span></span></code></pre></div>
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> Notice that the function <code>mean</code> and <code>log</code> behave differently. <code>mean</code> calculates the average over all the elements in the vector <code>firm_data$employees</code> and therefore returns a single number. <code>log</code> calculates the logarithm of each element in the vector <code>firm_data$employees</code> and therefore returns a numeric vector with five elements.</p>
 </div>
@@ -617,10 +565,8 @@ Oconee
 <span id="cb35-2"><a href="data-types.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Manufacturing&quot;</span></span></code></pre></div>
 <p>Sometimes it is also convenient to recover a particular row or column by its position in the data frame. Here is an example of recovering the entire fourth row</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-types.html#cb36-1" aria-hidden="true" tabindex="-1"></a>firm_data[<span class="dv">4</span>,]</span>
-<span id="cb36-2"><a href="data-types.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry</span></span>
-<span id="cb36-3"><a href="data-types.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing</span></span>
-<span id="cb36-4"><a href="data-types.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   county employees</span></span>
-<span id="cb36-5"><a href="data-types.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Clarke       211</span></span></code></pre></div>
+<span id="cb36-2"><a href="data-types.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry county employees</span></span>
+<span id="cb36-3"><a href="data-types.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing Clarke       211</span></span></code></pre></div>
 <p>Notice that you just leave the “column index” (which is the second one) blank</p>
 </div>
 <div class="side-comment">
@@ -644,18 +590,12 @@ Oconee
 <span id="cb39-2"><a href="data-types.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5</span></span></code></pre></div>
 <p>Other times, it is convenient to access them via their position in the list</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="data-types.html#cb40-1" aria-hidden="true" tabindex="-1"></a>unusual_list[[<span class="dv">2</span>]] <span class="co"># notice the double brackets</span></span>
-<span id="cb40-2"><a href="data-types.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry</span></span>
-<span id="cb40-3"><a href="data-types.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    ABC Manufacturing Manufacturing</span></span>
-<span id="cb40-4"><a href="data-types.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Martin&#39;s Muffins Food Services</span></span>
-<span id="cb40-5"><a href="data-types.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Down Home Appliances Manufacturing</span></span>
-<span id="cb40-6"><a href="data-types.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing</span></span>
-<span id="cb40-7"><a href="data-types.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   Watkinsville Diner Food Services</span></span>
-<span id="cb40-8"><a href="data-types.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   county employees</span></span>
-<span id="cb40-9"><a href="data-types.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Clarke       531</span></span>
-<span id="cb40-10"><a href="data-types.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Oconee         6</span></span>
-<span id="cb40-11"><a href="data-types.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Clarke        15</span></span>
-<span id="cb40-12"><a href="data-types.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Clarke       211</span></span>
-<span id="cb40-13"><a href="data-types.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Oconee        25</span></span></code></pre></div>
+<span id="cb40-2"><a href="data-types.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry county employees</span></span>
+<span id="cb40-3"><a href="data-types.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    ABC Manufacturing Manufacturing Clarke       531</span></span>
+<span id="cb40-4"><a href="data-types.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Martin&#39;s Muffins Food Services Oconee         6</span></span>
+<span id="cb40-5"><a href="data-types.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Down Home Appliances Manufacturing Clarke        15</span></span>
+<span id="cb40-6"><a href="data-types.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing Clarke       211</span></span>
+<span id="cb40-7"><a href="data-types.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   Watkinsville Diner Food Services Oconee        25</span></span></code></pre></div>
 </div>
 <div id="matrices" class="section level3 hasAnchor" number="2.5.7">
 <h3><span class="header-section-number">2.5.7</span> Matrices<a href="data-types.html#matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -680,10 +620,9 @@ Oconee
 <p>Oftentimes, we may have to tell R that a variable is a “factor” rather than just a string. Let’s create a variable called <code>industry</code> that contains the industry from <code>firm_data</code> but as a factor.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-types.html#cb43-1" aria-hidden="true" tabindex="-1"></a>industry <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(firm_data<span class="sc">$</span>industry)</span>
 <span id="cb43-2"><a href="data-types.html#cb43-2" aria-hidden="true" tabindex="-1"></a>industry</span>
-<span id="cb43-3"><a href="data-types.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Manufacturing Food Services</span></span>
-<span id="cb43-4"><a href="data-types.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] Manufacturing Manufacturing</span></span>
-<span id="cb43-5"><a href="data-types.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] Food Services</span></span>
-<span id="cb43-6"><a href="data-types.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Food Services Manufacturing</span></span></code></pre></div>
+<span id="cb43-3"><a href="data-types.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Manufacturing Food Services Manufacturing Manufacturing</span></span>
+<span id="cb43-4"><a href="data-types.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] Food Services</span></span>
+<span id="cb43-5"><a href="data-types.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Food Services Manufacturing</span></span></code></pre></div>
 <p>A useful package for working with factor variables is the <code>forcats</code> package.</p>
 </div>
 <div id="understanding-an-object-in-r" class="section level3 hasAnchor" number="2.5.9">
@@ -700,24 +639,18 @@ Oconee
 <span id="cb44-3"><a href="data-types.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># typically would show the first five rows of a data frame,</span></span>
 <span id="cb44-4"><a href="data-types.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># but that is the whole data frame here</span></span>
 <span id="cb44-5"><a href="data-types.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(firm_data) </span>
-<span id="cb44-6"><a href="data-types.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry</span></span>
-<span id="cb44-7"><a href="data-types.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    ABC Manufacturing Manufacturing</span></span>
-<span id="cb44-8"><a href="data-types.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Martin&#39;s Muffins Food Services</span></span>
-<span id="cb44-9"><a href="data-types.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Down Home Appliances Manufacturing</span></span>
-<span id="cb44-10"><a href="data-types.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing</span></span>
-<span id="cb44-11"><a href="data-types.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   Watkinsville Diner Food Services</span></span>
-<span id="cb44-12"><a href="data-types.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   county employees</span></span>
-<span id="cb44-13"><a href="data-types.html#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Clarke       531</span></span>
-<span id="cb44-14"><a href="data-types.html#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Oconee         6</span></span>
-<span id="cb44-15"><a href="data-types.html#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Clarke        15</span></span>
-<span id="cb44-16"><a href="data-types.html#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Clarke       211</span></span>
-<span id="cb44-17"><a href="data-types.html#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Oconee        25</span></span>
-<span id="cb44-18"><a href="data-types.html#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(firm_data)</span>
-<span id="cb44-19"><a href="data-types.html#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    5 obs. of  4 variables:</span></span>
-<span id="cb44-20"><a href="data-types.html#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name     : chr  &quot;ABC Manufacturing&quot; &quot;Martin&#39;s Muffins&quot; &quot;Down Home Appliances&quot; &quot;Classic City Widgets&quot; ...</span></span>
-<span id="cb44-21"><a href="data-types.html#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ industry : chr  &quot;Manufacturing&quot; &quot;Food Services&quot; &quot;Manufacturing&quot; &quot;Manufacturing&quot; ...</span></span>
-<span id="cb44-22"><a href="data-types.html#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ county   : chr  &quot;Clarke&quot; &quot;Oconee&quot; &quot;Clarke&quot; &quot;Clarke&quot; ...</span></span>
-<span id="cb44-23"><a href="data-types.html#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ employees: num  531 6 15 211 25</span></span></code></pre></div>
+<span id="cb44-6"><a href="data-types.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   name      industry county employees</span></span>
+<span id="cb44-7"><a href="data-types.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    ABC Manufacturing Manufacturing Clarke       531</span></span>
+<span id="cb44-8"><a href="data-types.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Martin&#39;s Muffins Food Services Oconee         6</span></span>
+<span id="cb44-9"><a href="data-types.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Down Home Appliances Manufacturing Clarke        15</span></span>
+<span id="cb44-10"><a href="data-types.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Classic City Widgets Manufacturing Clarke       211</span></span>
+<span id="cb44-11"><a href="data-types.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   Watkinsville Diner Food Services Oconee        25</span></span>
+<span id="cb44-12"><a href="data-types.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(firm_data)</span>
+<span id="cb44-13"><a href="data-types.html#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    5 obs. of  4 variables:</span></span>
+<span id="cb44-14"><a href="data-types.html#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name     : chr  &quot;ABC Manufacturing&quot; &quot;Martin&#39;s Muffins&quot; &quot;Down Home Appliances&quot; &quot;Classic City Widgets&quot; ...</span></span>
+<span id="cb44-15"><a href="data-types.html#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ industry : chr  &quot;Manufacturing&quot; &quot;Food Services&quot; &quot;Manufacturing&quot; &quot;Manufacturing&quot; ...</span></span>
+<span id="cb44-16"><a href="data-types.html#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ county   : chr  &quot;Clarke&quot; &quot;Oconee&quot; &quot;Clarke&quot; &quot;Clarke&quot; ...</span></span>
+<span id="cb44-17"><a href="data-types.html#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ employees: num  531 6 15 211 25</span></span></code></pre></div>
 <div class="practice">
 <p><span class="practice">Practice:</span> Try running <code>class</code>, <code>head</code>, and <code>str</code> on the vector <code>five</code> that we created earlier.</p>
 </div>
@@ -789,7 +722,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
