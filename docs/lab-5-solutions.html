@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.9 Lab 5: Solutions | Supplementary Notes and References for ECON 4750</title>
+  <title>6.5 Lab 5: Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.9 Lab 5: Solutions | Supplementary Notes and References for ECON 4750" />
+  <meta property="og:title" content="6.5 Lab 5: Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.9 Lab 5: Solutions | Supplementary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="6.5 Lab 5: Solutions | Supplementary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-11-22" />
+<meta name="date" content="2023-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-5-drunk-driving-laws.html"/>
-<link rel="next" href="coding-questions-3.html"/>
+<link rel="prev" href="lab-5-predicting-diamond-prices.html"/>
+<link rel="next" href="extra-questions-3.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -94,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -203,151 +207,158 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
-<li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
-<li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
-<li class="chapter" data-level="3.1.4" data-path="topics-in-probability.html"><a href="topics-in-probability.html#summation-operator"><i class="fa fa-check"></i><b>3.1.4</b> Summation operator</a></li>
-<li class="chapter" data-level="3.1.5" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.5</b> Properties of pmfs and cdfs</a></li>
-<li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.6</b> Continuous Random Variables</a></li>
-<li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.7</b> Expected Values</a></li>
-<li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.8</b> Variance</a></li>
-<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.9</b> Mean and Variance of Linear Functions</a></li>
-<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
-<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
-<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
-<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
-<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
-<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
-<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
-<li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
+<li class="chapter" data-level="3.1" data-path="data-for-this-chapter.html"><a href="data-for-this-chapter.html"><i class="fa fa-check"></i><b>3.1</b> Data for this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>3.2</b> Random Variables</a></li>
+<li class="chapter" data-level="3.3" data-path="pdfs-pmfs-and-cdfs.html"><a href="pdfs-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.3</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.4" data-path="summation-operator.html"><a href="summation-operator.html"><i class="fa fa-check"></i><b>3.4</b> Summation operator</a></li>
+<li class="chapter" data-level="3.5" data-path="properties-of-pmfs-and-cdfs.html"><a href="properties-of-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.5</b> Properties of pmfs and cdfs</a></li>
+<li class="chapter" data-level="3.6" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html"><i class="fa fa-check"></i><b>3.6</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.7" data-path="expected-values.html"><a href="expected-values.html"><i class="fa fa-check"></i><b>3.7</b> Expected Values</a></li>
+<li class="chapter" data-level="3.8" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>3.8</b> Variance</a></li>
+<li class="chapter" data-level="3.9" data-path="mean-and-variance-of-linear-functions.html"><a href="mean-and-variance-of-linear-functions.html"><i class="fa fa-check"></i><b>3.9</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.10" data-path="multiple-random-variables.html"><a href="multiple-random-variables.html"><i class="fa fa-check"></i><b>3.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.11" data-path="conditional-expectations.html"><a href="conditional-expectations.html"><i class="fa fa-check"></i><b>3.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.12" data-path="law-of-iterated-expectations.html"><a href="law-of-iterated-expectations.html"><i class="fa fa-check"></i><b>3.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.13" data-path="covariance.html"><a href="covariance.html"><i class="fa fa-check"></i><b>3.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.15" data-path="properties-of-expectationsvariances-of-sums-of-rvs.html"><a href="properties-of-expectationsvariances-of-sums-of-rvs.html"><i class="fa fa-check"></i><b>3.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.16" data-path="normal-distribution.html"><a href="normal-distribution.html"><i class="fa fa-check"></i><b>3.16</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.17" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>3.17</b> Coding</a></li>
+<li class="chapter" data-level="3.18" data-path="lab-2-basic-plots.html"><a href="lab-2-basic-plots.html"><i class="fa fa-check"></i><b>3.18</b> Lab 2: Basic Plots</a></li>
+<li class="chapter" data-level="3.19" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="3.20" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.20</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
-<li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.6" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
-<li class="chapter" data-level="3.2.7" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
-<li class="chapter" data-level="3.2.8" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference-hypothesis-testing"><i class="fa fa-check"></i><b>3.2.9</b> Inference / Hypothesis Testing</a></li>
-<li class="chapter" data-level="3.2.10" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#coding-1"><i class="fa fa-check"></i><b>3.2.10</b> Coding</a></li>
+<li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
+<li class="chapter" data-level="4.6" data-path="relative-efficiency.html"><a href="relative-efficiency.html"><i class="fa fa-check"></i><b>4.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="4.7" data-path="mean-squared-error.html"><a href="mean-squared-error.html"><i class="fa fa-check"></i><b>4.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.8" data-path="large-sample-properties-of-estimators.html"><a href="large-sample-properties-of-estimators.html"><i class="fa fa-check"></i><b>4.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="4.9" data-path="consistency.html"><a href="consistency.html"><i class="fa fa-check"></i><b>4.9</b> Consistency</a></li>
+<li class="chapter" data-level="4.10" data-path="asymptotic-normality.html"><a href="asymptotic-normality.html"><i class="fa fa-check"></i><b>4.10</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.11" data-path="inference-hypothesis-testing.html"><a href="inference-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.11</b> Inference / Hypothesis Testing</a></li>
+<li class="chapter" data-level="4.12" data-path="t-statistics.html"><a href="t-statistics.html"><i class="fa fa-check"></i><b>4.12</b> t-statistics</a></li>
+<li class="chapter" data-level="4.13" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.13</b> P-values</a></li>
+<li class="chapter" data-level="4.14" data-path="confidence-interval.html"><a href="confidence-interval.html"><i class="fa fa-check"></i><b>4.14</b> Confidence Interval</a></li>
+<li class="chapter" data-level="4.15" data-path="inference-in-practice.html"><a href="inference-in-practice.html"><i class="fa fa-check"></i><b>4.15</b> Inference in Practice</a></li>
+<li class="chapter" data-level="4.16" data-path="coding-1.html"><a href="coding-1.html"><i class="fa fa-check"></i><b>4.16</b> Coding</a></li>
+<li class="chapter" data-level="4.17" data-path="lab-3-monte-carlo-simulations.html"><a href="lab-3-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>4.17</b> Lab 3: Monte Carlo Simulations</a></li>
+<li class="chapter" data-level="4.18" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.18</b> Lab 3 Solutions</a></li>
+<li class="chapter" data-level="4.19" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.20" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.20</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="lab-2-monte-carlo-simulations.html"><a href="lab-2-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>3.3</b> Lab 2: Monte Carlo Simulations</a></li>
-<li class="chapter" data-level="3.4" data-path="lab-2-solutions.html"><a href="lab-2-solutions.html"><i class="fa fa-check"></i><b>3.4</b> Lab 2 Solutions</a></li>
-<li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
-<li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<li class="chapter" data-level="5" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>5</b> Linear Regression</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
-<li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
-<li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
-<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<li class="chapter" data-level="5.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>5.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="5.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>5.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="5.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.3</b> Computation</a></li>
+<li class="chapter" data-level="5.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>5.4</b> Partial Effects</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
+<li class="chapter" data-level="5.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>5.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<li class="chapter" data-level="5.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>5.5</b> Binary Regressors</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
+<li class="chapter" data-level="5.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>5.5.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<li class="chapter" data-level="5.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>5.6</b> Nonlinear Regression Functions</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
+<li class="chapter" data-level="5.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>5.6.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<li class="chapter" data-level="5.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>5.7</b> Interpreting Interaction Terms</a>
 <ul>
-<li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
+<li class="chapter" data-level="5.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>5.7.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<li class="chapter" data-level="5.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>5.8</b> Elasticities</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
+<li class="chapter" data-level="5.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>5.8.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<li class="chapter" data-level="5.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>5.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="5.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>5.10</b> How to estimate the parameters in a regression model</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
-<li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
+<li class="chapter" data-level="5.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>5.10.1</b> Computation</a></li>
+<li class="chapter" data-level="5.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>5.10.2</b> More than one regressor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<li class="chapter" data-level="5.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5.11</b> Inference</a>
 <ul>
-<li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
+<li class="chapter" data-level="5.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>5.11.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
-<li class="chapter" data-level="4.13" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.13</b> Lab 3: Solutions</a></li>
-<li class="chapter" data-level="4.14" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Coding Questions</a></li>
-<li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
-<li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="lab-4-birthweight-and-smoking.html"><a href="lab-4-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>5.12</b> Lab 4: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="5.13" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.13</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.14" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="5.15" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>5.16</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<li class="chapter" data-level="6" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>6</b> Prediction</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<li class="chapter" data-level="6.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>6.1</b> Measures of Regression Fit</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
-<li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>6.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="6.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>6.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<li class="chapter" data-level="6.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>6.2</b> Model Selection</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
-<li class="chapter" data-level="5.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
-<li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
-<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
+<li class="chapter" data-level="6.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>6.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>6.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>6.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="6.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>6.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="6.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>6.2.5</b> Model Averaging</a></li>
+<li class="chapter" data-level="6.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>6.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<li class="chapter" data-level="6.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>6.3</b> Machine Learning</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
-<li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
-<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
+<li class="chapter" data-level="6.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>6.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="6.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>6.3.2</b> Ridge Regression</a></li>
+<li class="chapter" data-level="6.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>6.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<li class="chapter" data-level="6.4" data-path="lab-5-predicting-diamond-prices.html"><a href="lab-5-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>6.4</b> Lab 5: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="6.5" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.5</b> Lab 5: Solutions</a></li>
+<li class="chapter" data-level="6.6" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.6</b> Extra Questions</a></li>
+<li class="chapter" data-level="6.7" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>6.7</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>7</b> Binary Outcome Models</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
-<li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
-<li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
-<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-10"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
+<li class="chapter" data-level="7.1" data-path="linear-probability-model.html"><a href="linear-probability-model.html"><i class="fa fa-check"></i><b>7.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="7.2" data-path="probit-and-logit.html"><a href="probit-and-logit.html"><i class="fa fa-check"></i><b>7.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="7.3" data-path="average-partial-effects.html"><a href="average-partial-effects.html"><i class="fa fa-check"></i><b>7.3</b> Average Partial Effects</a></li>
+<li class="chapter" data-level="7.4" data-path="lab-6-estimating-binary-outcome-models.html"><a href="lab-6-estimating-binary-outcome-models.html"><i class="fa fa-check"></i><b>7.4</b> Lab 6: Estimating Binary Outcome Models</a></li>
+<li class="chapter" data-level="7.5" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>7.5</b> Coding Questions</a></li>
+<li class="chapter" data-level="7.6" data-path="extra-questions-4.html"><a href="extra-questions-4.html"><i class="fa fa-check"></i><b>7.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.5</b> Lab 4: Predicting Diamond Prices</a></li>
-<li class="chapter" data-level="5.6" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Solutions</a></li>
-<li class="chapter" data-level="5.7" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Coding Questions</a></li>
-<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<li class="chapter" data-level="8" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>8</b> Causal Inference</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
-<li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
-<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a>
+<li class="chapter" data-level="8.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>8.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="8.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>8.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="8.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>8.3</b> Experiments</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>6.3.1</b> Estimating ATT with a Regression</a></li>
-<li class="chapter" data-level="6.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>6.3.2</b> Internal and External Validity</a></li>
-<li class="chapter" data-level="6.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>6.3.3</b> Example: Project STAR</a></li>
+<li class="chapter" data-level="8.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>8.3.1</b> Estimating ATT with a Regression</a></li>
+<li class="chapter" data-level="8.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>8.3.2</b> Internal and External Validity</a></li>
+<li class="chapter" data-level="8.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>8.3.3</b> Example: Project STAR</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<li class="chapter" data-level="8.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>8.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="8.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>8.5</b> Panel Data Approaches</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
-<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
+<li class="chapter" data-level="8.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>8.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="8.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-10"><i class="fa fa-check"></i><b>8.5.2</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a>
+<li class="chapter" data-level="8.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>8.6</b> Instrumental Variables</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
+<li class="chapter" data-level="8.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>8.6.1</b> Example: Return to Education</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a>
+<li class="chapter" data-level="8.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>8.7</b> Regression Discontinuity</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>6.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
+<li class="chapter" data-level="8.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>8.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="lab-5-drunk-driving-laws.html"><a href="lab-5-drunk-driving-laws.html"><i class="fa fa-check"></i><b>6.8</b> Lab 5: Drunk Driving Laws</a></li>
-<li class="chapter" data-level="6.9" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.9</b> Lab 5: Solutions</a></li>
-<li class="chapter" data-level="6.10" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>6.10</b> Coding Questions</a></li>
-<li class="chapter" data-level="6.11" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.11</b> Extra Questions</a></li>
-<li class="chapter" data-level="6.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>6.12</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="8.8" data-path="lab-7-drunk-driving-laws.html"><a href="lab-7-drunk-driving-laws.html"><i class="fa fa-check"></i><b>8.8</b> Lab 7: Drunk Driving Laws</a></li>
+<li class="chapter" data-level="8.9" data-path="lab-7-solutions.html"><a href="lab-7-solutions.html"><i class="fa fa-check"></i><b>8.9</b> Lab 7: Solutions</a></li>
+<li class="chapter" data-level="8.10" data-path="coding-questions-4.html"><a href="coding-questions-4.html"><i class="fa fa-check"></i><b>8.10</b> Coding Questions</a></li>
+<li class="chapter" data-level="8.11" data-path="extra-questions-5.html"><a href="extra-questions-5.html"><i class="fa fa-check"></i><b>8.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="8.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>8.12</b> Answers to Some Extra Questions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -369,376 +380,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-5-solutions" class="section level2 hasAnchor" number="6.9">
-<h2><span class="header-section-number">6.9</span> Lab 5: Solutions<a href="lab-5-solutions.html#lab-5-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lab-5-solutions.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb158-2"><a href="lab-5-solutions.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb158-3"><a href="lab-5-solutions.html#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;tidyr&#39;</span></span>
-<span id="cb158-4"><a href="lab-5-solutions.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:Matrix&#39;:</span></span>
-<span id="cb158-5"><a href="lab-5-solutions.html#cb158-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb158-6"><a href="lab-5-solutions.html#cb158-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     expand, pack, unpack</span></span>
-<span id="cb158-7"><a href="lab-5-solutions.html#cb158-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb158-8"><a href="lab-5-solutions.html#cb158-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb158-9"><a href="lab-5-solutions.html#cb158-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;plm&#39;</span></span>
-<span id="cb158-10"><a href="lab-5-solutions.html#cb158-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
-<span id="cb158-11"><a href="lab-5-solutions.html#cb158-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb158-12"><a href="lab-5-solutions.html#cb158-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     between, lag, lead</span></span>
-<span id="cb158-13"><a href="lab-5-solutions.html#cb158-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-14"><a href="lab-5-solutions.html#cb158-14" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Fatalities, <span class="at">package=</span><span class="st">&quot;AER&quot;</span>)</span>
-<span id="cb158-15"><a href="lab-5-solutions.html#cb158-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-16"><a href="lab-5-solutions.html#cb158-16" aria-hidden="true" tabindex="-1"></a>Fatalities<span class="sc">$</span>afatal_per_million <span class="ot">&lt;-</span> <span class="dv">1000000</span> <span class="sc">*</span> (Fatalities<span class="sc">$</span>afatal <span class="sc">/</span> Fatalities<span class="sc">$</span>pop )</span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lab-5-solutions.html#cb159-1" aria-hidden="true" tabindex="-1"></a>Fatalities88 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1988</span>)</span>
-<span id="cb159-2"><a href="lab-5-solutions.html#cb159-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-3"><a href="lab-5-solutions.html#cb159-3" aria-hidden="true" tabindex="-1"></a>reg88 <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail, <span class="at">data=</span>Fatalities88)</span>
-<span id="cb159-4"><a href="lab-5-solutions.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88)</span>
-<span id="cb159-5"><a href="lab-5-solutions.html#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb159-6"><a href="lab-5-solutions.html#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb159-7"><a href="lab-5-solutions.html#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = afatal_per_million ~ jail, data = Fatalities88)</span></span>
-<span id="cb159-8"><a href="lab-5-solutions.html#cb159-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb159-9"><a href="lab-5-solutions.html#cb159-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb159-10"><a href="lab-5-solutions.html#cb159-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb159-11"><a href="lab-5-solutions.html#cb159-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -36.123 -16.622  -1.469   8.642 112.260 </span></span>
-<span id="cb159-12"><a href="lab-5-solutions.html#cb159-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb159-13"><a href="lab-5-solutions.html#cb159-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb159-14"><a href="lab-5-solutions.html#cb159-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb159-15"><a href="lab-5-solutions.html#cb159-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)   59.496      4.273  13.923   &lt;2e-16 ***</span></span>
-<span id="cb159-16"><a href="lab-5-solutions.html#cb159-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jailyes        9.155      7.829   1.169    0.248    </span></span>
-<span id="cb159-17"><a href="lab-5-solutions.html#cb159-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb159-18"><a href="lab-5-solutions.html#cb159-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb159-19"><a href="lab-5-solutions.html#cb159-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb159-20"><a href="lab-5-solutions.html#cb159-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb159-21"><a href="lab-5-solutions.html#cb159-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 24.55 on 45 degrees of freedom</span></span>
-<span id="cb159-22"><a href="lab-5-solutions.html#cb159-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   (1 observation deleted due to missingness)</span></span>
-<span id="cb159-23"><a href="lab-5-solutions.html#cb159-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.02949,    Adjusted R-squared:  0.007921 </span></span>
-<span id="cb159-24"><a href="lab-5-solutions.html#cb159-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 1.367 on 1 and 45 DF,  p-value: 0.2484</span></span></code></pre></div>
-<p>The estimated coefficient on mandatory jail laws is 9.155. We should interpret this as just the difference between alcohol related fatalities per million in states that had mandatory jail laws in 1988 relative to states that did not have them. We cannot reject that there is no difference between states where the policy is in place relative to those that do not have the policy.</p>
-<ol start="3" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lab-5-solutions.html#cb160-1" aria-hidden="true" tabindex="-1"></a>reg88_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>Fatalities88)</span>
-<span id="cb160-2"><a href="lab-5-solutions.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88_covs)</span>
-<span id="cb160-3"><a href="lab-5-solutions.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb160-4"><a href="lab-5-solutions.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb160-5"><a href="lab-5-solutions.html#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = afatal_per_million ~ jail + unemp + beertax + baptist + </span></span>
-<span id="cb160-6"><a href="lab-5-solutions.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     dry + youngdrivers + miles, data = Fatalities88)</span></span>
-<span id="cb160-7"><a href="lab-5-solutions.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb160-8"><a href="lab-5-solutions.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb160-9"><a href="lab-5-solutions.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb160-10"><a href="lab-5-solutions.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -39.065  -9.907  -1.690   9.673  82.100 </span></span>
-<span id="cb160-11"><a href="lab-5-solutions.html#cb160-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb160-12"><a href="lab-5-solutions.html#cb160-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb160-13"><a href="lab-5-solutions.html#cb160-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
-<span id="cb160-14"><a href="lab-5-solutions.html#cb160-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  -29.373536  32.500240  -0.904   0.3717  </span></span>
-<span id="cb160-15"><a href="lab-5-solutions.html#cb160-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jailyes        3.120574   6.849271   0.456   0.6512  </span></span>
-<span id="cb160-16"><a href="lab-5-solutions.html#cb160-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; unemp          4.815081   1.892369   2.544   0.0150 *</span></span>
-<span id="cb160-17"><a href="lab-5-solutions.html#cb160-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; beertax        2.311850   9.521684   0.243   0.8094  </span></span>
-<span id="cb160-18"><a href="lab-5-solutions.html#cb160-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; baptist        0.661694   0.527228   1.255   0.2169  </span></span>
-<span id="cb160-19"><a href="lab-5-solutions.html#cb160-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dry           -0.026675   0.383956  -0.069   0.9450  </span></span>
-<span id="cb160-20"><a href="lab-5-solutions.html#cb160-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; youngdrivers  -0.092100 142.804244  -0.001   0.9995  </span></span>
-<span id="cb160-21"><a href="lab-5-solutions.html#cb160-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; miles          0.006802   0.002822   2.411   0.0207 *</span></span>
-<span id="cb160-22"><a href="lab-5-solutions.html#cb160-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb160-23"><a href="lab-5-solutions.html#cb160-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb160-24"><a href="lab-5-solutions.html#cb160-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb160-25"><a href="lab-5-solutions.html#cb160-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb160-26"><a href="lab-5-solutions.html#cb160-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 19.41 on 39 degrees of freedom</span></span>
-<span id="cb160-27"><a href="lab-5-solutions.html#cb160-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   (1 observation deleted due to missingness)</span></span>
-<span id="cb160-28"><a href="lab-5-solutions.html#cb160-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.4742, Adjusted R-squared:  0.3798 </span></span>
-<span id="cb160-29"><a href="lab-5-solutions.html#cb160-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 5.024 on 7 and 39 DF,  p-value: 0.0003999</span></span></code></pre></div>
-<p>The estimated coefficient on jail is 3.12. It is somewhat smaller than the previous estimate, though neither is statistically significant. We should interpret this as the partial effect of the mandatory jail policy, that is, that we estimate that mandatory jail laws increase the number of alcohol related fatalities per million by 3.12 on average controlling for the unemployment rate, beer tax, the fraction of southern baptists in the state, the fraction of residents in dry counties, the fraction of young drivers, and the average miles driven in the state. We cannot reject that the partial effect of mandatory jail policies is equal to 0.</p>
-<ol start="4" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lab-5-solutions.html#cb161-1" aria-hidden="true" tabindex="-1"></a>fd_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb161-2"><a href="lab-5-solutions.html#cb161-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">&quot;individual&quot;</span>,</span>
-<span id="cb161-3"><a href="lab-5-solutions.html#cb161-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">&quot;state&quot;</span>, <span class="at">model=</span><span class="st">&quot;fd&quot;</span>,</span>
-<span id="cb161-4"><a href="lab-5-solutions.html#cb161-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
-<span id="cb161-5"><a href="lab-5-solutions.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fd_reg)</span>
-<span id="cb161-6"><a href="lab-5-solutions.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Oneway (individual) effect First-Difference Model</span></span>
-<span id="cb161-7"><a href="lab-5-solutions.html#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb161-8"><a href="lab-5-solutions.html#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb161-9"><a href="lab-5-solutions.html#cb161-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; plm(formula = afatal_per_million ~ jail + as.factor(year), data = Fatalities, </span></span>
-<span id="cb161-10"><a href="lab-5-solutions.html#cb161-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     effect = &quot;individual&quot;, model = &quot;fd&quot;, index = &quot;state&quot;)</span></span>
-<span id="cb161-11"><a href="lab-5-solutions.html#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb161-12"><a href="lab-5-solutions.html#cb161-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Unbalanced Panel: n = 48, T = 6-7, N = 335</span></span>
-<span id="cb161-13"><a href="lab-5-solutions.html#cb161-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Observations used in estimation: 287</span></span>
-<span id="cb161-14"><a href="lab-5-solutions.html#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb161-15"><a href="lab-5-solutions.html#cb161-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb161-16"><a href="lab-5-solutions.html#cb161-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min.   1st Qu.    Median   3rd Qu.      Max. </span></span>
-<span id="cb161-17"><a href="lab-5-solutions.html#cb161-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -51.66677  -5.09887   0.23801   6.28688 119.08976 </span></span>
-<span id="cb161-18"><a href="lab-5-solutions.html#cb161-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb161-19"><a href="lab-5-solutions.html#cb161-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients: (1 dropped because of singularities)</span></span>
-<span id="cb161-20"><a href="lab-5-solutions.html#cb161-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Estimate Std. Error t-value Pr(&gt;|t|)   </span></span>
-<span id="cb161-21"><a href="lab-5-solutions.html#cb161-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)         -2.15376    0.80673 -2.6697 0.008035 **</span></span>
-<span id="cb161-22"><a href="lab-5-solutions.html#cb161-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jailyes              2.60763    5.28351  0.4935 0.622016   </span></span>
-<span id="cb161-23"><a href="lab-5-solutions.html#cb161-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1983 -5.28423    1.82330 -2.8982 0.004050 **</span></span>
-<span id="cb161-24"><a href="lab-5-solutions.html#cb161-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1984 -3.58247    2.29451 -1.5613 0.119577   </span></span>
-<span id="cb161-25"><a href="lab-5-solutions.html#cb161-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1985 -5.60800    2.43517 -2.3029 0.022017 * </span></span>
-<span id="cb161-26"><a href="lab-5-solutions.html#cb161-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1986 -0.74192    2.28988 -0.3240 0.746180   </span></span>
-<span id="cb161-27"><a href="lab-5-solutions.html#cb161-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1987 -2.16244    1.80716 -1.1966 0.232476   </span></span>
-<span id="cb161-28"><a href="lab-5-solutions.html#cb161-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb161-29"><a href="lab-5-solutions.html#cb161-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb161-30"><a href="lab-5-solutions.html#cb161-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb161-31"><a href="lab-5-solutions.html#cb161-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb161-32"><a href="lab-5-solutions.html#cb161-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Total Sum of Squares:    54692</span></span>
-<span id="cb161-33"><a href="lab-5-solutions.html#cb161-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual Sum of Squares: 51620</span></span>
-<span id="cb161-34"><a href="lab-5-solutions.html#cb161-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R-Squared:      0.056171</span></span>
-<span id="cb161-35"><a href="lab-5-solutions.html#cb161-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Adj. R-Squared: 0.035946</span></span>
-<span id="cb161-36"><a href="lab-5-solutions.html#cb161-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2.77733 on 6 and 280 DF, p-value: 0.012223</span></span></code></pre></div>
-<p>We should interpret the estimated coefficient on <code>jail</code> as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after accounting for time invariant variables whose effects do not change over time. Again, we cannot reject that the effect is equal to 0.</p>
-<ol start="5" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lab-5-solutions.html#cb162-1" aria-hidden="true" tabindex="-1"></a>within_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb162-2"><a href="lab-5-solutions.html#cb162-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">&quot;individual&quot;</span>,</span>
-<span id="cb162-3"><a href="lab-5-solutions.html#cb162-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">&quot;state&quot;</span>, <span class="at">model=</span><span class="st">&quot;within&quot;</span>,</span>
-<span id="cb162-4"><a href="lab-5-solutions.html#cb162-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
-<span id="cb162-5"><a href="lab-5-solutions.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg)</span>
-<span id="cb162-6"><a href="lab-5-solutions.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Oneway (individual) effect Within Model</span></span>
-<span id="cb162-7"><a href="lab-5-solutions.html#cb162-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb162-8"><a href="lab-5-solutions.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb162-9"><a href="lab-5-solutions.html#cb162-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; plm(formula = afatal_per_million ~ jail + as.factor(year), data = Fatalities, </span></span>
-<span id="cb162-10"><a href="lab-5-solutions.html#cb162-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     effect = &quot;individual&quot;, model = &quot;within&quot;, index = &quot;state&quot;)</span></span>
-<span id="cb162-11"><a href="lab-5-solutions.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb162-12"><a href="lab-5-solutions.html#cb162-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Unbalanced Panel: n = 48, T = 6-7, N = 335</span></span>
-<span id="cb162-13"><a href="lab-5-solutions.html#cb162-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb162-14"><a href="lab-5-solutions.html#cb162-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb162-15"><a href="lab-5-solutions.html#cb162-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Min.     1st Qu.      Median     3rd Qu.        Max. </span></span>
-<span id="cb162-16"><a href="lab-5-solutions.html#cb162-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -95.1937300  -4.9678238   0.0088078   5.1611249  40.6263546 </span></span>
-<span id="cb162-17"><a href="lab-5-solutions.html#cb162-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb162-18"><a href="lab-5-solutions.html#cb162-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb162-19"><a href="lab-5-solutions.html#cb162-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Estimate Std. Error t-value  Pr(&gt;|t|)</span></span>
-<span id="cb162-20"><a href="lab-5-solutions.html#cb162-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jailyes               8.3327     4.9666  1.6777 0.0945164</span></span>
-<span id="cb162-21"><a href="lab-5-solutions.html#cb162-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1983  -7.9151     2.6936 -2.9384 0.0035734</span></span>
-<span id="cb162-22"><a href="lab-5-solutions.html#cb162-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1984  -8.4863     2.7115 -3.1298 0.0019341</span></span>
-<span id="cb162-23"><a href="lab-5-solutions.html#cb162-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1985 -12.7849     2.7331 -4.6778 4.518e-06</span></span>
-<span id="cb162-24"><a href="lab-5-solutions.html#cb162-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1986 -10.0726     2.7331 -3.6854 0.0002741</span></span>
-<span id="cb162-25"><a href="lab-5-solutions.html#cb162-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1987 -13.5276     2.7115 -4.9890 1.067e-06</span></span>
-<span id="cb162-26"><a href="lab-5-solutions.html#cb162-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1988 -13.6296     2.7279 -4.9964 1.030e-06</span></span>
-<span id="cb162-27"><a href="lab-5-solutions.html#cb162-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        </span></span>
-<span id="cb162-28"><a href="lab-5-solutions.html#cb162-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jailyes             .  </span></span>
-<span id="cb162-29"><a href="lab-5-solutions.html#cb162-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1983 ** </span></span>
-<span id="cb162-30"><a href="lab-5-solutions.html#cb162-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1984 ** </span></span>
-<span id="cb162-31"><a href="lab-5-solutions.html#cb162-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1985 ***</span></span>
-<span id="cb162-32"><a href="lab-5-solutions.html#cb162-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1986 ***</span></span>
-<span id="cb162-33"><a href="lab-5-solutions.html#cb162-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1987 ***</span></span>
-<span id="cb162-34"><a href="lab-5-solutions.html#cb162-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(year)1988 ***</span></span>
-<span id="cb162-35"><a href="lab-5-solutions.html#cb162-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb162-36"><a href="lab-5-solutions.html#cb162-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb162-37"><a href="lab-5-solutions.html#cb162-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb162-38"><a href="lab-5-solutions.html#cb162-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb162-39"><a href="lab-5-solutions.html#cb162-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Total Sum of Squares:    53854</span></span>
-<span id="cb162-40"><a href="lab-5-solutions.html#cb162-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual Sum of Squares: 47607</span></span>
-<span id="cb162-41"><a href="lab-5-solutions.html#cb162-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R-Squared:      0.116</span></span>
-<span id="cb162-42"><a href="lab-5-solutions.html#cb162-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Adj. R-Squared: -0.054487</span></span>
-<span id="cb162-43"><a href="lab-5-solutions.html#cb162-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 5.24882 on 7 and 280 DF, p-value: 1.2051e-05</span></span></code></pre></div>
-<p>The estimated coefficient on <code>jail</code> has the same interpretation as in the previous problem. The estimated effect here is marginally statistically significant.
-6.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="lab-5-solutions.html#cb163-1" aria-hidden="true" tabindex="-1"></a>within_reg_covs <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles,</span>
-<span id="cb163-2"><a href="lab-5-solutions.html#cb163-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">effect=</span><span class="st">&quot;individual&quot;</span>,</span>
-<span id="cb163-3"><a href="lab-5-solutions.html#cb163-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">index=</span><span class="st">&quot;state&quot;</span>, <span class="at">model=</span><span class="st">&quot;within&quot;</span>,</span>
-<span id="cb163-4"><a href="lab-5-solutions.html#cb163-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>Fatalities)</span>
-<span id="cb163-5"><a href="lab-5-solutions.html#cb163-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg_covs)</span>
-<span id="cb163-6"><a href="lab-5-solutions.html#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Oneway (individual) effect Within Model</span></span>
-<span id="cb163-7"><a href="lab-5-solutions.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb163-8"><a href="lab-5-solutions.html#cb163-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb163-9"><a href="lab-5-solutions.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; plm(formula = afatal_per_million ~ jail + unemp + beertax + baptist + </span></span>
-<span id="cb163-10"><a href="lab-5-solutions.html#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     dry + youngdrivers + miles, data = Fatalities, effect = &quot;individual&quot;, </span></span>
-<span id="cb163-11"><a href="lab-5-solutions.html#cb163-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     model = &quot;within&quot;, index = &quot;state&quot;)</span></span>
-<span id="cb163-12"><a href="lab-5-solutions.html#cb163-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb163-13"><a href="lab-5-solutions.html#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Unbalanced Panel: n = 48, T = 6-7, N = 335</span></span>
-<span id="cb163-14"><a href="lab-5-solutions.html#cb163-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb163-15"><a href="lab-5-solutions.html#cb163-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb163-16"><a href="lab-5-solutions.html#cb163-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min.   1st Qu.    Median   3rd Qu.      Max. </span></span>
-<span id="cb163-17"><a href="lab-5-solutions.html#cb163-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -95.62306  -5.69773  -0.56903   4.79219  47.80871 </span></span>
-<span id="cb163-18"><a href="lab-5-solutions.html#cb163-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb163-19"><a href="lab-5-solutions.html#cb163-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb163-20"><a href="lab-5-solutions.html#cb163-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 Estimate  Std. Error t-value  Pr(&gt;|t|)    </span></span>
-<span id="cb163-21"><a href="lab-5-solutions.html#cb163-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jailyes       4.9731e+00  4.9613e+00  1.0024   0.31702    </span></span>
-<span id="cb163-22"><a href="lab-5-solutions.html#cb163-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; unemp        -1.1340e+00  5.6592e-01 -2.0038   0.04605 *  </span></span>
-<span id="cb163-23"><a href="lab-5-solutions.html#cb163-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; beertax      -2.7456e+01  1.5080e+01 -1.8207   0.06972 .  </span></span>
-<span id="cb163-24"><a href="lab-5-solutions.html#cb163-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; baptist       2.5083e+00  4.3324e+00  0.5790   0.56308    </span></span>
-<span id="cb163-25"><a href="lab-5-solutions.html#cb163-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dry           4.3092e-01  1.0870e+00  0.3964   0.69208    </span></span>
-<span id="cb163-26"><a href="lab-5-solutions.html#cb163-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; youngdrivers  2.6357e+02  5.0169e+01  5.2537 2.957e-07 ***</span></span>
-<span id="cb163-27"><a href="lab-5-solutions.html#cb163-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; miles        -6.8899e-04  7.3182e-04 -0.9415   0.34727    </span></span>
-<span id="cb163-28"><a href="lab-5-solutions.html#cb163-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb163-29"><a href="lab-5-solutions.html#cb163-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb163-30"><a href="lab-5-solutions.html#cb163-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb163-31"><a href="lab-5-solutions.html#cb163-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb163-32"><a href="lab-5-solutions.html#cb163-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Total Sum of Squares:    53854</span></span>
-<span id="cb163-33"><a href="lab-5-solutions.html#cb163-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual Sum of Squares: 48083</span></span>
-<span id="cb163-34"><a href="lab-5-solutions.html#cb163-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R-Squared:      0.10717</span></span>
-<span id="cb163-35"><a href="lab-5-solutions.html#cb163-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Adj. R-Squared: -0.065023</span></span>
-<span id="cb163-36"><a href="lab-5-solutions.html#cb163-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 4.80119 on 7 and 280 DF, p-value: 4.0281e-05</span></span></code></pre></div>
-<p>We should interpret the estimated coefficient on <code>jail</code> as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after controlling for the unemployment rate, beer taxes, the fraction of the state that is southern baptist, the fraction of the state that lives in a dry county, the fraction of young drivers in a state, and the average number of miles driven per person in the stata, and accounting for time invariant variables whose effects do not change over time.</p>
-<ol start="7" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lab-5-solutions.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># part a: convert data to two period panel data</span></span>
-<span id="cb164-2"><a href="lab-5-solutions.html#cb164-2" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span> <span class="sc">|</span> year<span class="sc">==</span><span class="dv">1988</span>)</span>
-<span id="cb164-3"><a href="lab-5-solutions.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and drop some missing</span></span>
-<span id="cb164-4"><a href="lab-5-solutions.html#cb164-4" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(two_period, <span class="sc">!</span><span class="fu">is.na</span>(jail))</span>
-<span id="cb164-5"><a href="lab-5-solutions.html#cb164-5" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> BMisc<span class="sc">::</span><span class="fu">makeBalancedPanel</span>(two_period, <span class="st">&quot;state&quot;</span>, <span class="st">&quot;year&quot;</span>)</span>
-<span id="cb164-6"><a href="lab-5-solutions.html#cb164-6" aria-hidden="true" tabindex="-1"></a>two_period<span class="sc">$</span>jail <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(two_period<span class="sc">$</span>jail<span class="sc">==</span><span class="st">&quot;yes&quot;</span>)</span>
-<span id="cb164-7"><a href="lab-5-solutions.html#cb164-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-8"><a href="lab-5-solutions.html#cb164-8" aria-hidden="true" tabindex="-1"></a><span class="co"># part b: convert into wide format</span></span>
-<span id="cb164-9"><a href="lab-5-solutions.html#cb164-9" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(two_period, </span>
-<span id="cb164-10"><a href="lab-5-solutions.html#cb164-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">id_cols=</span><span class="st">&quot;state&quot;</span>, </span>
-<span id="cb164-11"><a href="lab-5-solutions.html#cb164-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from=</span><span class="st">&quot;year&quot;</span>,</span>
-<span id="cb164-12"><a href="lab-5-solutions.html#cb164-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from=</span><span class="fu">c</span>(<span class="st">&quot;jail&quot;</span>, <span class="st">&quot;afatal_per_million&quot;</span>))</span>
-<span id="cb164-13"><a href="lab-5-solutions.html#cb164-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-14"><a href="lab-5-solutions.html#cb164-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add back other covariates from 1982</span></span>
-<span id="cb164-15"><a href="lab-5-solutions.html#cb164-15" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(wide_df, <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span>)[,<span class="fu">c</span>(<span class="st">&quot;unemp&quot;</span>, <span class="st">&quot;beertax&quot;</span>, <span class="st">&quot;baptist&quot;</span>, <span class="st">&quot;dry&quot;</span>, <span class="st">&quot;youngdrivers&quot;</span>, <span class="st">&quot;miles&quot;</span>,<span class="st">&quot;state&quot;</span>)], <span class="at">by=</span><span class="st">&quot;state&quot;</span>)</span>
-<span id="cb164-16"><a href="lab-5-solutions.html#cb164-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-17"><a href="lab-5-solutions.html#cb164-17" aria-hidden="true" tabindex="-1"></a><span class="co"># change in fatal accidents over time</span></span>
-<span id="cb164-18"><a href="lab-5-solutions.html#cb164-18" aria-hidden="true" tabindex="-1"></a>wide_df<span class="sc">$</span>Dafatal_per_million <span class="ot">&lt;-</span> wide_df<span class="sc">$</span>afatal_per_million_1988 <span class="sc">-</span> wide_df<span class="sc">$</span>afatal_per_million_1982</span>
-<span id="cb164-19"><a href="lab-5-solutions.html#cb164-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-20"><a href="lab-5-solutions.html#cb164-20" aria-hidden="true" tabindex="-1"></a><span class="co"># part c: drop already treated states</span></span>
-<span id="cb164-21"><a href="lab-5-solutions.html#cb164-21" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">subset</span>(wide_df, jail_1982<span class="sc">==</span><span class="dv">0</span>)</span></code></pre></div>
-<ol start="8" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="lab-5-solutions.html#cb165-1" aria-hidden="true" tabindex="-1"></a>did <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988, <span class="at">data=</span>wide_df)</span>
-<span id="cb165-2"><a href="lab-5-solutions.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did)</span>
-<span id="cb165-3"><a href="lab-5-solutions.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-4"><a href="lab-5-solutions.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb165-5"><a href="lab-5-solutions.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = Dafatal_per_million ~ jail_1988, data = wide_df)</span></span>
-<span id="cb165-6"><a href="lab-5-solutions.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-7"><a href="lab-5-solutions.html#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb165-8"><a href="lab-5-solutions.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb165-9"><a href="lab-5-solutions.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -55.652 -10.993   5.033  10.405  76.822 </span></span>
-<span id="cb165-10"><a href="lab-5-solutions.html#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-11"><a href="lab-5-solutions.html#cb165-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb165-12"><a href="lab-5-solutions.html#cb165-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)   </span></span>
-<span id="cb165-13"><a href="lab-5-solutions.html#cb165-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)  -12.585      4.242  -2.966  0.00532 **</span></span>
-<span id="cb165-14"><a href="lab-5-solutions.html#cb165-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jail_1988      5.102     11.695   0.436  0.66526   </span></span>
-<span id="cb165-15"><a href="lab-5-solutions.html#cb165-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb165-16"><a href="lab-5-solutions.html#cb165-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb165-17"><a href="lab-5-solutions.html#cb165-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb165-18"><a href="lab-5-solutions.html#cb165-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-19"><a href="lab-5-solutions.html#cb165-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 24.37 on 36 degrees of freedom</span></span>
-<span id="cb165-20"><a href="lab-5-solutions.html#cb165-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.005259,   Adjusted R-squared:  -0.02237 </span></span>
-<span id="cb165-21"><a href="lab-5-solutions.html#cb165-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 0.1903 on 1 and 36 DF,  p-value: 0.6653</span></span>
-<span id="cb165-22"><a href="lab-5-solutions.html#cb165-22" aria-hidden="true" tabindex="-1"></a>did_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
-<span id="cb165-23"><a href="lab-5-solutions.html#cb165-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did_covs)</span>
-<span id="cb165-24"><a href="lab-5-solutions.html#cb165-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-25"><a href="lab-5-solutions.html#cb165-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb165-26"><a href="lab-5-solutions.html#cb165-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = Dafatal_per_million ~ jail_1988 + unemp + beertax + </span></span>
-<span id="cb165-27"><a href="lab-5-solutions.html#cb165-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     baptist + dry + youngdrivers + miles, data = wide_df)</span></span>
-<span id="cb165-28"><a href="lab-5-solutions.html#cb165-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-29"><a href="lab-5-solutions.html#cb165-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb165-30"><a href="lab-5-solutions.html#cb165-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb165-31"><a href="lab-5-solutions.html#cb165-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -38.346 -12.383   1.456   9.092  60.585 </span></span>
-<span id="cb165-32"><a href="lab-5-solutions.html#cb165-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-33"><a href="lab-5-solutions.html#cb165-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb165-34"><a href="lab-5-solutions.html#cb165-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
-<span id="cb165-35"><a href="lab-5-solutions.html#cb165-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)    6.851636  50.643035   0.135   0.8933  </span></span>
-<span id="cb165-36"><a href="lab-5-solutions.html#cb165-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jail_1988     -1.853041  10.834391  -0.171   0.8653  </span></span>
-<span id="cb165-37"><a href="lab-5-solutions.html#cb165-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; unemp          3.725007   1.919862   1.940   0.0618 .</span></span>
-<span id="cb165-38"><a href="lab-5-solutions.html#cb165-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; beertax        8.300778  10.052007   0.826   0.4154  </span></span>
-<span id="cb165-39"><a href="lab-5-solutions.html#cb165-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; baptist        0.527893   0.723263   0.730   0.4711  </span></span>
-<span id="cb165-40"><a href="lab-5-solutions.html#cb165-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dry           -0.955636   0.546475  -1.749   0.0906 .</span></span>
-<span id="cb165-41"><a href="lab-5-solutions.html#cb165-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; youngdrivers  89.432017 234.379768   0.382   0.7055  </span></span>
-<span id="cb165-42"><a href="lab-5-solutions.html#cb165-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; miles         -0.010360   0.005823  -1.779   0.0854 .</span></span>
-<span id="cb165-43"><a href="lab-5-solutions.html#cb165-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb165-44"><a href="lab-5-solutions.html#cb165-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb165-45"><a href="lab-5-solutions.html#cb165-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb165-46"><a href="lab-5-solutions.html#cb165-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb165-47"><a href="lab-5-solutions.html#cb165-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 21.9 on 30 degrees of freedom</span></span>
-<span id="cb165-48"><a href="lab-5-solutions.html#cb165-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.3303, Adjusted R-squared:  0.174 </span></span>
-<span id="cb165-49"><a href="lab-5-solutions.html#cb165-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2.114 on 7 and 30 DF,  p-value: 0.07276</span></span></code></pre></div>
-<p>If we are willing to believe that, in the absence of the policy, that trends in alcohol related fatalities per million people would have followed the same trends over time for treated and untreated states, then we can interpret these as causal effects. These estimates are broadly similar to the previous ones though the second ones (that include additional covariates) are about the only ones where we ever get a negative estimate for the effect of mandatory jail policies. Like the previous estimates, neither of these estimates are statistically different from 0.</p>
-<ol start="9" style="list-style-type: decimal">
-<li></li>
-</ol>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lab-5-solutions.html#cb166-1" aria-hidden="true" tabindex="-1"></a>lag_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982, <span class="at">data=</span>wide_df)</span>
-<span id="cb166-2"><a href="lab-5-solutions.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg)</span>
-<span id="cb166-3"><a href="lab-5-solutions.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-4"><a href="lab-5-solutions.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb166-5"><a href="lab-5-solutions.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982, </span></span>
-<span id="cb166-6"><a href="lab-5-solutions.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = wide_df)</span></span>
-<span id="cb166-7"><a href="lab-5-solutions.html#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-8"><a href="lab-5-solutions.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb166-9"><a href="lab-5-solutions.html#cb166-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb166-10"><a href="lab-5-solutions.html#cb166-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -29.120 -12.663  -0.684   6.873  92.390 </span></span>
-<span id="cb166-11"><a href="lab-5-solutions.html#cb166-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-12"><a href="lab-5-solutions.html#cb166-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb166-13"><a href="lab-5-solutions.html#cb166-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         Estimate Std. Error t value</span></span>
-<span id="cb166-14"><a href="lab-5-solutions.html#cb166-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)              19.0810    10.1089   1.888</span></span>
-<span id="cb166-15"><a href="lab-5-solutions.html#cb166-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jail_1988                 3.4323    10.3171   0.333</span></span>
-<span id="cb166-16"><a href="lab-5-solutions.html#cb166-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; afatal_per_million_1982   0.5607     0.1303   4.303</span></span>
-<span id="cb166-17"><a href="lab-5-solutions.html#cb166-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         Pr(&gt;|t|)    </span></span>
-<span id="cb166-18"><a href="lab-5-solutions.html#cb166-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)             0.067401 .  </span></span>
-<span id="cb166-19"><a href="lab-5-solutions.html#cb166-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jail_1988               0.741363    </span></span>
-<span id="cb166-20"><a href="lab-5-solutions.html#cb166-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; afatal_per_million_1982 0.000129 ***</span></span>
-<span id="cb166-21"><a href="lab-5-solutions.html#cb166-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb166-22"><a href="lab-5-solutions.html#cb166-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb166-23"><a href="lab-5-solutions.html#cb166-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb166-24"><a href="lab-5-solutions.html#cb166-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-25"><a href="lab-5-solutions.html#cb166-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 21.47 on 35 degrees of freedom</span></span>
-<span id="cb166-26"><a href="lab-5-solutions.html#cb166-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.3462, Adjusted R-squared:  0.3088 </span></span>
-<span id="cb166-27"><a href="lab-5-solutions.html#cb166-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 9.266 on 2 and 35 DF,  p-value: 0.0005896</span></span>
-<span id="cb166-28"><a href="lab-5-solutions.html#cb166-28" aria-hidden="true" tabindex="-1"></a>lag_reg_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
-<span id="cb166-29"><a href="lab-5-solutions.html#cb166-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg_covs)</span>
-<span id="cb166-30"><a href="lab-5-solutions.html#cb166-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-31"><a href="lab-5-solutions.html#cb166-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb166-32"><a href="lab-5-solutions.html#cb166-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982 + </span></span>
-<span id="cb166-33"><a href="lab-5-solutions.html#cb166-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     unemp + beertax + baptist + dry + youngdrivers + miles, data = wide_df)</span></span>
-<span id="cb166-34"><a href="lab-5-solutions.html#cb166-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-35"><a href="lab-5-solutions.html#cb166-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb166-36"><a href="lab-5-solutions.html#cb166-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb166-37"><a href="lab-5-solutions.html#cb166-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -27.840  -8.793  -1.364   5.146  71.409 </span></span>
-<span id="cb166-38"><a href="lab-5-solutions.html#cb166-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-39"><a href="lab-5-solutions.html#cb166-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb166-40"><a href="lab-5-solutions.html#cb166-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           Estimate Std. Error t value</span></span>
-<span id="cb166-41"><a href="lab-5-solutions.html#cb166-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)             -17.292595  46.318477  -0.373</span></span>
-<span id="cb166-42"><a href="lab-5-solutions.html#cb166-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jail_1988                 0.817453   9.786782   0.084</span></span>
-<span id="cb166-43"><a href="lab-5-solutions.html#cb166-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; afatal_per_million_1982   0.505371   0.173718   2.909</span></span>
-<span id="cb166-44"><a href="lab-5-solutions.html#cb166-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; unemp                     3.189918   1.736443   1.837</span></span>
-<span id="cb166-45"><a href="lab-5-solutions.html#cb166-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; beertax                   2.885796   9.236174   0.312</span></span>
-<span id="cb166-46"><a href="lab-5-solutions.html#cb166-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; baptist                   0.965785   0.668259   1.445</span></span>
-<span id="cb166-47"><a href="lab-5-solutions.html#cb166-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dry                      -0.567567   0.509915  -1.113</span></span>
-<span id="cb166-48"><a href="lab-5-solutions.html#cb166-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; youngdrivers            120.615853 211.026841   0.572</span></span>
-<span id="cb166-49"><a href="lab-5-solutions.html#cb166-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; miles                    -0.002692   0.005888  -0.457</span></span>
-<span id="cb166-50"><a href="lab-5-solutions.html#cb166-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         Pr(&gt;|t|)   </span></span>
-<span id="cb166-51"><a href="lab-5-solutions.html#cb166-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)              0.71161   </span></span>
-<span id="cb166-52"><a href="lab-5-solutions.html#cb166-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; jail_1988                0.93401   </span></span>
-<span id="cb166-53"><a href="lab-5-solutions.html#cb166-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; afatal_per_million_1982  0.00689 **</span></span>
-<span id="cb166-54"><a href="lab-5-solutions.html#cb166-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; unemp                    0.07647 . </span></span>
-<span id="cb166-55"><a href="lab-5-solutions.html#cb166-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; beertax                  0.75694   </span></span>
-<span id="cb166-56"><a href="lab-5-solutions.html#cb166-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; baptist                  0.15911   </span></span>
-<span id="cb166-57"><a href="lab-5-solutions.html#cb166-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dry                      0.27482   </span></span>
-<span id="cb166-58"><a href="lab-5-solutions.html#cb166-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; youngdrivers             0.57202   </span></span>
-<span id="cb166-59"><a href="lab-5-solutions.html#cb166-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; miles                    0.65087   </span></span>
-<span id="cb166-60"><a href="lab-5-solutions.html#cb166-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb166-61"><a href="lab-5-solutions.html#cb166-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb166-62"><a href="lab-5-solutions.html#cb166-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb166-63"><a href="lab-5-solutions.html#cb166-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb166-64"><a href="lab-5-solutions.html#cb166-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 19.7 on 29 degrees of freedom</span></span>
-<span id="cb166-65"><a href="lab-5-solutions.html#cb166-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.5443, Adjusted R-squared:  0.4186 </span></span>
-<span id="cb166-66"><a href="lab-5-solutions.html#cb166-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 4.329 on 8 and 29 DF,  p-value: 0.001596</span></span></code></pre></div>
-<p>These estimates directly control for alcohol related fatalities per million in the pre-treatment period 1982. These sorts of specifications are less common in economics, but, in my view, it seems like a reasonable approach here. That said, the results are more or less the same as earlier estimates.</p>
-<ol start="10" style="list-style-type: decimal">
-<li>We don’t have very strong evidence that mandatory jail policies reduced the number traffic fatalities. In my view, probably the best specifications for trying to understand the causal effects are the ones in part 7 (particularly, the ones that include covariates there), but I think that the the results in parts 4-9 are also informative. Broadly, these estimates are more or less similar — none of them are statistically significant and most are positive (which is an unexpected sign).</li>
-</ol>
-<p>Before we finish, let me mention a few caveats to these results:</p>
-<ul>
-<li><p>First, I would be very hesitant to interpret these results as definitively saying that mandatory jail policies have no effect on alcohol related traffic fatalities. The main reason to be clear about this is that our standard error are quite large. For example, in the second specification in part 7 (the one I like the most), a 95% confidence interval for our estimate is <span class="math inline">\([-23.1, 19.4]\)</span>. This is a wide confidence interval — the average number of alcohol related traffic fatalities per million across all states and time periods is only 66. So our estimates are basically still compatible with very large reductions in alcohol related traffic fatalities up to large increases in alcohol related traffic fatalities.</p></li>
-<li><p>Let me make one more comment about the sign of our results. Many of our point estimates are positive; as we discussed earlier, it is hard to rationalize harsher punishments <em>increasing</em> alcohol related traffic fatalities. I think the main explanation for these results is just that our estimates are pretty noisy and, therefore, more or less “by chance” we are getting estimates that have an unexpected sign. But there are some other possible explanations that are worth mentioning. For one, there are a number of other policies related to drunk driving that occurred in the 1980s (particularly, related to legal drinking age) but perhaps others. It is not clear how these would interact with our estimates, but they could certainly play some role. Besides that, it seems to me that we have a pretty good set of covariates that enter our models, but there could be important covariates that we are missing. For this reason, some expertise in how to model state-level traffic fatalities is actually a very important skill here (actually probably the key skill here!)</p></li>
-</ul>
+<div id="lab-5-solutions" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Lab 5: Solutions<a href="lab-5-solutions.html#lab-5-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="lab-5-solutions.html#cb139-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_train.RData&quot;</span>)</span>
+<span id="cb139-2"><a href="lab-5-solutions.html#cb139-2" tabindex="-1"></a></span>
+<span id="cb139-3"><a href="lab-5-solutions.html#cb139-3" tabindex="-1"></a><span class="co"># formulas</span></span>
+<span id="cb139-4"><a href="lab-5-solutions.html#cb139-4" tabindex="-1"></a>formla1 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity)</span>
+<span id="cb139-5"><a href="lab-5-solutions.html#cb139-5" tabindex="-1"></a>formla2 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x</span>
+<span id="cb139-6"><a href="lab-5-solutions.html#cb139-6" tabindex="-1"></a>formla3 <span class="ot">&lt;-</span> price <span class="sc">~</span> (carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb139-7"><a href="lab-5-solutions.html#cb139-7" tabindex="-1"></a></span>
+<span id="cb139-8"><a href="lab-5-solutions.html#cb139-8" tabindex="-1"></a><span class="co"># estimate each model</span></span>
+<span id="cb139-9"><a href="lab-5-solutions.html#cb139-9" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla1, <span class="at">data=</span>diamond_train)</span>
+<span id="cb139-10"><a href="lab-5-solutions.html#cb139-10" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla2, <span class="at">data=</span>diamond_train)</span>
+<span id="cb139-11"><a href="lab-5-solutions.html#cb139-11" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla3, <span class="at">data=</span>diamond_train)</span>
+<span id="cb139-12"><a href="lab-5-solutions.html#cb139-12" tabindex="-1"></a></span>
+<span id="cb139-13"><a href="lab-5-solutions.html#cb139-13" tabindex="-1"></a>mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
+<span id="cb139-14"><a href="lab-5-solutions.html#cb139-14" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla, <span class="at">data=</span>diamond_train)</span>
+<span id="cb139-15"><a href="lab-5-solutions.html#cb139-15" tabindex="-1"></a>  r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>r.squared</span>
+<span id="cb139-16"><a href="lab-5-solutions.html#cb139-16" tabindex="-1"></a>  adj.r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb139-17"><a href="lab-5-solutions.html#cb139-17" tabindex="-1"></a></span>
+<span id="cb139-18"><a href="lab-5-solutions.html#cb139-18" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
+<span id="cb139-19"><a href="lab-5-solutions.html#cb139-19" tabindex="-1"></a>  uhat <span class="ot">&lt;-</span> <span class="fu">resid</span>(mod)</span>
+<span id="cb139-20"><a href="lab-5-solutions.html#cb139-20" tabindex="-1"></a>  ssr <span class="ot">&lt;-</span> <span class="fu">sum</span>(uhat<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb139-21"><a href="lab-5-solutions.html#cb139-21" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod))</span>
+<span id="cb139-22"><a href="lab-5-solutions.html#cb139-22" tabindex="-1"></a>  aic <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>k <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
+<span id="cb139-23"><a href="lab-5-solutions.html#cb139-23" tabindex="-1"></a>  bic <span class="ot">&lt;-</span> k<span class="sc">*</span><span class="fu">log</span>(n) <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
+<span id="cb139-24"><a href="lab-5-solutions.html#cb139-24" tabindex="-1"></a></span>
+<span id="cb139-25"><a href="lab-5-solutions.html#cb139-25" tabindex="-1"></a>  <span class="co"># show results</span></span>
+<span id="cb139-26"><a href="lab-5-solutions.html#cb139-26" tabindex="-1"></a>  result <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">tibble</span>(r.squared, adj.r.squared, aic, bic)</span>
+<span id="cb139-27"><a href="lab-5-solutions.html#cb139-27" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb139-28"><a href="lab-5-solutions.html#cb139-28" tabindex="-1"></a>}</span>
+<span id="cb139-29"><a href="lab-5-solutions.html#cb139-29" tabindex="-1"></a></span>
+<span id="cb139-30"><a href="lab-5-solutions.html#cb139-30" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla1)</span>
+<span id="cb139-31"><a href="lab-5-solutions.html#cb139-31" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla2)</span>
+<span id="cb139-32"><a href="lab-5-solutions.html#cb139-32" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla3)</span>
+<span id="cb139-33"><a href="lab-5-solutions.html#cb139-33" tabindex="-1"></a></span>
+<span id="cb139-34"><a href="lab-5-solutions.html#cb139-34" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
+<span id="cb139-35"><a href="lab-5-solutions.html#cb139-35" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span id="cb139-36"><a href="lab-5-solutions.html#cb139-36" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared      aic      bic</span></span>
+<span id="cb139-37"><a href="lab-5-solutions.html#cb139-37" tabindex="-1"></a><span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb139-38"><a href="lab-5-solutions.html#cb139-38" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188. 1104301.</span></span>
+<span id="cb139-39"><a href="lab-5-solutions.html#cb139-39" tabindex="-1"></a><span class="co">#&gt; 2     0.9           0.9   1103499. 1103647.</span></span>
+<span id="cb139-40"><a href="lab-5-solutions.html#cb139-40" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372. 1090328.</span></span>
+<span id="cb139-41"><a href="lab-5-solutions.html#cb139-41" tabindex="-1"></a></span>
+<span id="cb139-42"><a href="lab-5-solutions.html#cb139-42" tabindex="-1"></a><span class="co"># k-fold cross validation</span></span>
+<span id="cb139-43"><a href="lab-5-solutions.html#cb139-43" tabindex="-1"></a></span>
+<span id="cb139-44"><a href="lab-5-solutions.html#cb139-44" tabindex="-1"></a><span class="co"># setup data</span></span>
+<span id="cb139-45"><a href="lab-5-solutions.html#cb139-45" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb139-46"><a href="lab-5-solutions.html#cb139-46" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
+<span id="cb139-47"><a href="lab-5-solutions.html#cb139-47" tabindex="-1"></a>diamond_train<span class="sc">$</span>fold <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb139-48"><a href="lab-5-solutions.html#cb139-48" tabindex="-1"></a>diamond_train<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb139-49"><a href="lab-5-solutions.html#cb139-49" tabindex="-1"></a></span>
+<span id="cb139-50"><a href="lab-5-solutions.html#cb139-50" tabindex="-1"></a>cv_mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
+<span id="cb139-51"><a href="lab-5-solutions.html#cb139-51" tabindex="-1"></a>  u.squared <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb139-52"><a href="lab-5-solutions.html#cb139-52" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb139-53"><a href="lab-5-solutions.html#cb139-53" tabindex="-1"></a>    this.train <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">!=</span> i)</span>
+<span id="cb139-54"><a href="lab-5-solutions.html#cb139-54" tabindex="-1"></a>    this.test <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">==</span> i)</span>
+<span id="cb139-55"><a href="lab-5-solutions.html#cb139-55" tabindex="-1"></a>    this.id <span class="ot">&lt;-</span> this.test<span class="sc">$</span>id</span>
+<span id="cb139-56"><a href="lab-5-solutions.html#cb139-56" tabindex="-1"></a>    cv_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla,</span>
+<span id="cb139-57"><a href="lab-5-solutions.html#cb139-57" tabindex="-1"></a>              <span class="at">data=</span>this.train)</span>
+<span id="cb139-58"><a href="lab-5-solutions.html#cb139-58" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(cv_reg, <span class="at">newdata=</span>this.test)</span>
+<span id="cb139-59"><a href="lab-5-solutions.html#cb139-59" tabindex="-1"></a>    u <span class="ot">&lt;-</span> this.test<span class="sc">$</span>price <span class="sc">-</span> pred</span>
+<span id="cb139-60"><a href="lab-5-solutions.html#cb139-60" tabindex="-1"></a>    u.squared[this.id] <span class="ot">&lt;-</span> u<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb139-61"><a href="lab-5-solutions.html#cb139-61" tabindex="-1"></a>  }</span>
+<span id="cb139-62"><a href="lab-5-solutions.html#cb139-62" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u.squared))</span>
+<span id="cb139-63"><a href="lab-5-solutions.html#cb139-63" tabindex="-1"></a>  <span class="fu">return</span>(cv)</span>
+<span id="cb139-64"><a href="lab-5-solutions.html#cb139-64" tabindex="-1"></a>}</span>
+<span id="cb139-65"><a href="lab-5-solutions.html#cb139-65" tabindex="-1"></a></span>
+<span id="cb139-66"><a href="lab-5-solutions.html#cb139-66" tabindex="-1"></a>cv_res1 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla1)</span>
+<span id="cb139-67"><a href="lab-5-solutions.html#cb139-67" tabindex="-1"></a>cv_res2 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla2)</span>
+<span id="cb139-68"><a href="lab-5-solutions.html#cb139-68" tabindex="-1"></a>cv_res3 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla3)</span>
+<span id="cb139-69"><a href="lab-5-solutions.html#cb139-69" tabindex="-1"></a></span>
+<span id="cb139-70"><a href="lab-5-solutions.html#cb139-70" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res1, <span class="at">cv=</span>cv_res1)</span>
+<span id="cb139-71"><a href="lab-5-solutions.html#cb139-71" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res2, <span class="at">cv=</span>cv_res2)</span>
+<span id="cb139-72"><a href="lab-5-solutions.html#cb139-72" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res3, <span class="at">cv=</span>cv_res3)</span>
+<span id="cb139-73"><a href="lab-5-solutions.html#cb139-73" tabindex="-1"></a></span>
+<span id="cb139-74"><a href="lab-5-solutions.html#cb139-74" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
+<span id="cb139-75"><a href="lab-5-solutions.html#cb139-75" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic       cv</span></span>
+<span id="cb139-76"><a href="lab-5-solutions.html#cb139-76" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301 1366.021</span></span>
+<span id="cb139-77"><a href="lab-5-solutions.html#cb139-77" tabindex="-1"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647 1397.104</span></span>
+<span id="cb139-78"><a href="lab-5-solutions.html#cb139-78" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328 2247.940</span></span>
+<span id="cb139-79"><a href="lab-5-solutions.html#cb139-79" tabindex="-1"></a></span>
+<span id="cb139-80"><a href="lab-5-solutions.html#cb139-80" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
+<span id="cb139-81"><a href="lab-5-solutions.html#cb139-81" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb139-82"><a href="lab-5-solutions.html#cb139-82" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
+<span id="cb139-83"><a href="lab-5-solutions.html#cb139-83" tabindex="-1"></a></span>
+<span id="cb139-84"><a href="lab-5-solutions.html#cb139-84" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
+<span id="cb139-85"><a href="lab-5-solutions.html#cb139-85" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
+<span id="cb139-86"><a href="lab-5-solutions.html#cb139-86" tabindex="-1"></a></span>
+<span id="cb139-87"><a href="lab-5-solutions.html#cb139-87" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
+<span id="cb139-88"><a href="lab-5-solutions.html#cb139-88" tabindex="-1"></a></span>
+<span id="cb139-89"><a href="lab-5-solutions.html#cb139-89" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
+<span id="cb139-90"><a href="lab-5-solutions.html#cb139-90" tabindex="-1"></a></span>
+<span id="cb139-91"><a href="lab-5-solutions.html#cb139-91" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
+<span id="cb139-92"><a href="lab-5-solutions.html#cb139-92" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb139-93"><a href="lab-5-solutions.html#cb139-93" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb139-94"><a href="lab-5-solutions.html#cb139-94" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb139-95"><a href="lab-5-solutions.html#cb139-95" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb139-96"><a href="lab-5-solutions.html#cb139-96" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
+<span id="cb139-97"><a href="lab-5-solutions.html#cb139-97" tabindex="-1"></a></span>
+<span id="cb139-98"><a href="lab-5-solutions.html#cb139-98" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
+<span id="cb139-99"><a href="lab-5-solutions.html#cb139-99" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb139-100"><a href="lab-5-solutions.html#cb139-100" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb139-101"><a href="lab-5-solutions.html#cb139-101" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb139-102"><a href="lab-5-solutions.html#cb139-102" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb139-103"><a href="lab-5-solutions.html#cb139-103" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb139-104"><a href="lab-5-solutions.html#cb139-104" tabindex="-1"></a></span>
+<span id="cb139-105"><a href="lab-5-solutions.html#cb139-105" tabindex="-1"></a><span class="co"># report results</span></span>
+<span id="cb139-106"><a href="lab-5-solutions.html#cb139-106" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
+<span id="cb139-107"><a href="lab-5-solutions.html#cb139-107" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span>
+<span id="cb139-108"><a href="lab-5-solutions.html#cb139-108" tabindex="-1"></a><span class="co">#&gt;      mod1    mod2    mod3  lasso   ridge</span></span>
+<span id="cb139-109"><a href="lab-5-solutions.html#cb139-109" tabindex="-1"></a><span class="co">#&gt; 1 856.014 785.171 616.996 683.36 794.276</span></span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="lab-5-drunk-driving-laws.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="coding-questions-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-5-predicting-diamond-prices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="extra-questions-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -798,7 +558,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

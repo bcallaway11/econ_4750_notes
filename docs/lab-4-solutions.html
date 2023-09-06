@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750</title>
+  <title>5.13 Lab 4: Solutions | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
+  <meta property="og:title" content="5.13 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.6 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="5.13 Lab 4: Solutions | Supplementary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-11-22" />
+<meta name="date" content="2023-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-4-predicting-diamond-prices.html"/>
+<link rel="prev" href="lab-4-birthweight-and-smoking.html"/>
 <link rel="next" href="coding-questions-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -94,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -203,151 +207,158 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
-<li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
-<li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
-<li class="chapter" data-level="3.1.4" data-path="topics-in-probability.html"><a href="topics-in-probability.html#summation-operator"><i class="fa fa-check"></i><b>3.1.4</b> Summation operator</a></li>
-<li class="chapter" data-level="3.1.5" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.5</b> Properties of pmfs and cdfs</a></li>
-<li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.6</b> Continuous Random Variables</a></li>
-<li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.7</b> Expected Values</a></li>
-<li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.8</b> Variance</a></li>
-<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.9</b> Mean and Variance of Linear Functions</a></li>
-<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
-<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
-<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
-<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
-<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
-<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
-<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
-<li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
+<li class="chapter" data-level="3.1" data-path="data-for-this-chapter.html"><a href="data-for-this-chapter.html"><i class="fa fa-check"></i><b>3.1</b> Data for this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>3.2</b> Random Variables</a></li>
+<li class="chapter" data-level="3.3" data-path="pdfs-pmfs-and-cdfs.html"><a href="pdfs-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.3</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.4" data-path="summation-operator.html"><a href="summation-operator.html"><i class="fa fa-check"></i><b>3.4</b> Summation operator</a></li>
+<li class="chapter" data-level="3.5" data-path="properties-of-pmfs-and-cdfs.html"><a href="properties-of-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.5</b> Properties of pmfs and cdfs</a></li>
+<li class="chapter" data-level="3.6" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html"><i class="fa fa-check"></i><b>3.6</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.7" data-path="expected-values.html"><a href="expected-values.html"><i class="fa fa-check"></i><b>3.7</b> Expected Values</a></li>
+<li class="chapter" data-level="3.8" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>3.8</b> Variance</a></li>
+<li class="chapter" data-level="3.9" data-path="mean-and-variance-of-linear-functions.html"><a href="mean-and-variance-of-linear-functions.html"><i class="fa fa-check"></i><b>3.9</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.10" data-path="multiple-random-variables.html"><a href="multiple-random-variables.html"><i class="fa fa-check"></i><b>3.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.11" data-path="conditional-expectations.html"><a href="conditional-expectations.html"><i class="fa fa-check"></i><b>3.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.12" data-path="law-of-iterated-expectations.html"><a href="law-of-iterated-expectations.html"><i class="fa fa-check"></i><b>3.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.13" data-path="covariance.html"><a href="covariance.html"><i class="fa fa-check"></i><b>3.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.15" data-path="properties-of-expectationsvariances-of-sums-of-rvs.html"><a href="properties-of-expectationsvariances-of-sums-of-rvs.html"><i class="fa fa-check"></i><b>3.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.16" data-path="normal-distribution.html"><a href="normal-distribution.html"><i class="fa fa-check"></i><b>3.16</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.17" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>3.17</b> Coding</a></li>
+<li class="chapter" data-level="3.18" data-path="lab-2-basic-plots.html"><a href="lab-2-basic-plots.html"><i class="fa fa-check"></i><b>3.18</b> Lab 2: Basic Plots</a></li>
+<li class="chapter" data-level="3.19" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="3.20" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.20</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
-<li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.6" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
-<li class="chapter" data-level="3.2.7" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
-<li class="chapter" data-level="3.2.8" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference-hypothesis-testing"><i class="fa fa-check"></i><b>3.2.9</b> Inference / Hypothesis Testing</a></li>
-<li class="chapter" data-level="3.2.10" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#coding-1"><i class="fa fa-check"></i><b>3.2.10</b> Coding</a></li>
+<li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
+<li class="chapter" data-level="4.6" data-path="relative-efficiency.html"><a href="relative-efficiency.html"><i class="fa fa-check"></i><b>4.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="4.7" data-path="mean-squared-error.html"><a href="mean-squared-error.html"><i class="fa fa-check"></i><b>4.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.8" data-path="large-sample-properties-of-estimators.html"><a href="large-sample-properties-of-estimators.html"><i class="fa fa-check"></i><b>4.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="4.9" data-path="consistency.html"><a href="consistency.html"><i class="fa fa-check"></i><b>4.9</b> Consistency</a></li>
+<li class="chapter" data-level="4.10" data-path="asymptotic-normality.html"><a href="asymptotic-normality.html"><i class="fa fa-check"></i><b>4.10</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.11" data-path="inference-hypothesis-testing.html"><a href="inference-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.11</b> Inference / Hypothesis Testing</a></li>
+<li class="chapter" data-level="4.12" data-path="t-statistics.html"><a href="t-statistics.html"><i class="fa fa-check"></i><b>4.12</b> t-statistics</a></li>
+<li class="chapter" data-level="4.13" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.13</b> P-values</a></li>
+<li class="chapter" data-level="4.14" data-path="confidence-interval.html"><a href="confidence-interval.html"><i class="fa fa-check"></i><b>4.14</b> Confidence Interval</a></li>
+<li class="chapter" data-level="4.15" data-path="inference-in-practice.html"><a href="inference-in-practice.html"><i class="fa fa-check"></i><b>4.15</b> Inference in Practice</a></li>
+<li class="chapter" data-level="4.16" data-path="coding-1.html"><a href="coding-1.html"><i class="fa fa-check"></i><b>4.16</b> Coding</a></li>
+<li class="chapter" data-level="4.17" data-path="lab-3-monte-carlo-simulations.html"><a href="lab-3-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>4.17</b> Lab 3: Monte Carlo Simulations</a></li>
+<li class="chapter" data-level="4.18" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.18</b> Lab 3 Solutions</a></li>
+<li class="chapter" data-level="4.19" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.20" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.20</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="lab-2-monte-carlo-simulations.html"><a href="lab-2-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>3.3</b> Lab 2: Monte Carlo Simulations</a></li>
-<li class="chapter" data-level="3.4" data-path="lab-2-solutions.html"><a href="lab-2-solutions.html"><i class="fa fa-check"></i><b>3.4</b> Lab 2 Solutions</a></li>
-<li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
-<li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<li class="chapter" data-level="5" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>5</b> Linear Regression</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
-<li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
-<li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
-<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<li class="chapter" data-level="5.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>5.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="5.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>5.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="5.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.3</b> Computation</a></li>
+<li class="chapter" data-level="5.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>5.4</b> Partial Effects</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
+<li class="chapter" data-level="5.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>5.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<li class="chapter" data-level="5.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>5.5</b> Binary Regressors</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
+<li class="chapter" data-level="5.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>5.5.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<li class="chapter" data-level="5.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>5.6</b> Nonlinear Regression Functions</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
+<li class="chapter" data-level="5.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>5.6.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<li class="chapter" data-level="5.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>5.7</b> Interpreting Interaction Terms</a>
 <ul>
-<li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
+<li class="chapter" data-level="5.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>5.7.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<li class="chapter" data-level="5.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>5.8</b> Elasticities</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
+<li class="chapter" data-level="5.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>5.8.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<li class="chapter" data-level="5.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>5.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="5.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>5.10</b> How to estimate the parameters in a regression model</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
-<li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
+<li class="chapter" data-level="5.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>5.10.1</b> Computation</a></li>
+<li class="chapter" data-level="5.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>5.10.2</b> More than one regressor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<li class="chapter" data-level="5.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5.11</b> Inference</a>
 <ul>
-<li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
+<li class="chapter" data-level="5.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>5.11.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
-<li class="chapter" data-level="4.13" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.13</b> Lab 3: Solutions</a></li>
-<li class="chapter" data-level="4.14" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Coding Questions</a></li>
-<li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
-<li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="lab-4-birthweight-and-smoking.html"><a href="lab-4-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>5.12</b> Lab 4: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="5.13" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.13</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.14" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="5.15" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>5.16</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<li class="chapter" data-level="6" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>6</b> Prediction</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<li class="chapter" data-level="6.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>6.1</b> Measures of Regression Fit</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
-<li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>6.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="6.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>6.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<li class="chapter" data-level="6.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>6.2</b> Model Selection</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
-<li class="chapter" data-level="5.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
-<li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
-<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
+<li class="chapter" data-level="6.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>6.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>6.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>6.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="6.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>6.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="6.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>6.2.5</b> Model Averaging</a></li>
+<li class="chapter" data-level="6.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>6.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<li class="chapter" data-level="6.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>6.3</b> Machine Learning</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
-<li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
-<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
+<li class="chapter" data-level="6.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>6.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="6.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>6.3.2</b> Ridge Regression</a></li>
+<li class="chapter" data-level="6.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>6.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<li class="chapter" data-level="6.4" data-path="lab-5-predicting-diamond-prices.html"><a href="lab-5-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>6.4</b> Lab 5: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="6.5" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.5</b> Lab 5: Solutions</a></li>
+<li class="chapter" data-level="6.6" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.6</b> Extra Questions</a></li>
+<li class="chapter" data-level="6.7" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>6.7</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>7</b> Binary Outcome Models</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
-<li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
-<li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
-<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-10"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
+<li class="chapter" data-level="7.1" data-path="linear-probability-model.html"><a href="linear-probability-model.html"><i class="fa fa-check"></i><b>7.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="7.2" data-path="probit-and-logit.html"><a href="probit-and-logit.html"><i class="fa fa-check"></i><b>7.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="7.3" data-path="average-partial-effects.html"><a href="average-partial-effects.html"><i class="fa fa-check"></i><b>7.3</b> Average Partial Effects</a></li>
+<li class="chapter" data-level="7.4" data-path="lab-6-estimating-binary-outcome-models.html"><a href="lab-6-estimating-binary-outcome-models.html"><i class="fa fa-check"></i><b>7.4</b> Lab 6: Estimating Binary Outcome Models</a></li>
+<li class="chapter" data-level="7.5" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>7.5</b> Coding Questions</a></li>
+<li class="chapter" data-level="7.6" data-path="extra-questions-4.html"><a href="extra-questions-4.html"><i class="fa fa-check"></i><b>7.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.5</b> Lab 4: Predicting Diamond Prices</a></li>
-<li class="chapter" data-level="5.6" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Solutions</a></li>
-<li class="chapter" data-level="5.7" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Coding Questions</a></li>
-<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<li class="chapter" data-level="8" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>8</b> Causal Inference</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
-<li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
-<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a>
+<li class="chapter" data-level="8.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>8.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="8.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>8.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="8.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>8.3</b> Experiments</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>6.3.1</b> Estimating ATT with a Regression</a></li>
-<li class="chapter" data-level="6.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>6.3.2</b> Internal and External Validity</a></li>
-<li class="chapter" data-level="6.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>6.3.3</b> Example: Project STAR</a></li>
+<li class="chapter" data-level="8.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>8.3.1</b> Estimating ATT with a Regression</a></li>
+<li class="chapter" data-level="8.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>8.3.2</b> Internal and External Validity</a></li>
+<li class="chapter" data-level="8.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>8.3.3</b> Example: Project STAR</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<li class="chapter" data-level="8.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>8.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="8.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>8.5</b> Panel Data Approaches</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
-<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
+<li class="chapter" data-level="8.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>8.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="8.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-10"><i class="fa fa-check"></i><b>8.5.2</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a>
+<li class="chapter" data-level="8.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>8.6</b> Instrumental Variables</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
+<li class="chapter" data-level="8.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>8.6.1</b> Example: Return to Education</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a>
+<li class="chapter" data-level="8.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>8.7</b> Regression Discontinuity</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>6.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
+<li class="chapter" data-level="8.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>8.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="lab-5-drunk-driving-laws.html"><a href="lab-5-drunk-driving-laws.html"><i class="fa fa-check"></i><b>6.8</b> Lab 5: Drunk Driving Laws</a></li>
-<li class="chapter" data-level="6.9" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.9</b> Lab 5: Solutions</a></li>
-<li class="chapter" data-level="6.10" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>6.10</b> Coding Questions</a></li>
-<li class="chapter" data-level="6.11" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.11</b> Extra Questions</a></li>
-<li class="chapter" data-level="6.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>6.12</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="8.8" data-path="lab-7-drunk-driving-laws.html"><a href="lab-7-drunk-driving-laws.html"><i class="fa fa-check"></i><b>8.8</b> Lab 7: Drunk Driving Laws</a></li>
+<li class="chapter" data-level="8.9" data-path="lab-7-solutions.html"><a href="lab-7-solutions.html"><i class="fa fa-check"></i><b>8.9</b> Lab 7: Solutions</a></li>
+<li class="chapter" data-level="8.10" data-path="coding-questions-4.html"><a href="coding-questions-4.html"><i class="fa fa-check"></i><b>8.10</b> Coding Questions</a></li>
+<li class="chapter" data-level="8.11" data-path="extra-questions-5.html"><a href="extra-questions-5.html"><i class="fa fa-check"></i><b>8.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="8.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>8.12</b> Answers to Some Extra Questions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -369,124 +380,527 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-4-solutions" class="section level2 hasAnchor" number="5.6">
-<h2><span class="header-section-number">5.6</span> Lab 4: Solutions<a href="lab-4-solutions.html#lab-4-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="lab-4-solutions.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_train.RData&quot;</span>)</span>
-<span id="cb146-2"><a href="lab-4-solutions.html#cb146-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-3"><a href="lab-4-solutions.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="co"># formulas</span></span>
-<span id="cb146-4"><a href="lab-4-solutions.html#cb146-4" aria-hidden="true" tabindex="-1"></a>formla1 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity)</span>
-<span id="cb146-5"><a href="lab-4-solutions.html#cb146-5" aria-hidden="true" tabindex="-1"></a>formla2 <span class="ot">&lt;-</span> price <span class="sc">~</span> carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x</span>
-<span id="cb146-6"><a href="lab-4-solutions.html#cb146-6" aria-hidden="true" tabindex="-1"></a>formla3 <span class="ot">&lt;-</span> price <span class="sc">~</span> (carat <span class="sc">+</span> <span class="fu">as.factor</span>(cut) <span class="sc">+</span> <span class="fu">as.factor</span>(clarity) <span class="sc">+</span> depth <span class="sc">+</span> table <span class="sc">+</span> x <span class="sc">+</span> y <span class="sc">+</span> x)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb146-7"><a href="lab-4-solutions.html#cb146-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-8"><a href="lab-4-solutions.html#cb146-8" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate each model</span></span>
-<span id="cb146-9"><a href="lab-4-solutions.html#cb146-9" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla1, <span class="at">data=</span>diamond_train)</span>
-<span id="cb146-10"><a href="lab-4-solutions.html#cb146-10" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla2, <span class="at">data=</span>diamond_train)</span>
-<span id="cb146-11"><a href="lab-4-solutions.html#cb146-11" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla3, <span class="at">data=</span>diamond_train)</span>
-<span id="cb146-12"><a href="lab-4-solutions.html#cb146-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-13"><a href="lab-4-solutions.html#cb146-13" aria-hidden="true" tabindex="-1"></a>mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
-<span id="cb146-14"><a href="lab-4-solutions.html#cb146-14" aria-hidden="true" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla, <span class="at">data=</span>diamond_train)</span>
-<span id="cb146-15"><a href="lab-4-solutions.html#cb146-15" aria-hidden="true" tabindex="-1"></a>  r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>r.squared</span>
-<span id="cb146-16"><a href="lab-4-solutions.html#cb146-16" aria-hidden="true" tabindex="-1"></a>  adj.r.squared <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)<span class="sc">$</span>adj.r.squared</span>
-<span id="cb146-17"><a href="lab-4-solutions.html#cb146-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-18"><a href="lab-4-solutions.html#cb146-18" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
-<span id="cb146-19"><a href="lab-4-solutions.html#cb146-19" aria-hidden="true" tabindex="-1"></a>  uhat <span class="ot">&lt;-</span> <span class="fu">resid</span>(mod)</span>
-<span id="cb146-20"><a href="lab-4-solutions.html#cb146-20" aria-hidden="true" tabindex="-1"></a>  ssr <span class="ot">&lt;-</span> <span class="fu">sum</span>(uhat<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb146-21"><a href="lab-4-solutions.html#cb146-21" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(mod))</span>
-<span id="cb146-22"><a href="lab-4-solutions.html#cb146-22" aria-hidden="true" tabindex="-1"></a>  aic <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>k <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
-<span id="cb146-23"><a href="lab-4-solutions.html#cb146-23" aria-hidden="true" tabindex="-1"></a>  bic <span class="ot">&lt;-</span> k<span class="sc">*</span><span class="fu">log</span>(n) <span class="sc">+</span> n<span class="sc">*</span><span class="fu">log</span>(ssr)</span>
-<span id="cb146-24"><a href="lab-4-solutions.html#cb146-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-25"><a href="lab-4-solutions.html#cb146-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># show results</span></span>
-<span id="cb146-26"><a href="lab-4-solutions.html#cb146-26" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">tibble</span>(r.squared, adj.r.squared, aic, bic)</span>
-<span id="cb146-27"><a href="lab-4-solutions.html#cb146-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb146-28"><a href="lab-4-solutions.html#cb146-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb146-29"><a href="lab-4-solutions.html#cb146-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-30"><a href="lab-4-solutions.html#cb146-30" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla1)</span>
-<span id="cb146-31"><a href="lab-4-solutions.html#cb146-31" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla2)</span>
-<span id="cb146-32"><a href="lab-4-solutions.html#cb146-32" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">mod_sel</span>(formla3)</span>
-<span id="cb146-33"><a href="lab-4-solutions.html#cb146-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-34"><a href="lab-4-solutions.html#cb146-34" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb146-35"><a href="lab-4-solutions.html#cb146-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
-<span id="cb146-36"><a href="lab-4-solutions.html#cb146-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared      aic      bic</span></span>
-<span id="cb146-37"><a href="lab-4-solutions.html#cb146-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb146-38"><a href="lab-4-solutions.html#cb146-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188. 1104301.</span></span>
-<span id="cb146-39"><a href="lab-4-solutions.html#cb146-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.9           0.9   1103499. 1103647.</span></span>
-<span id="cb146-40"><a href="lab-4-solutions.html#cb146-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372. 1090328.</span></span>
-<span id="cb146-41"><a href="lab-4-solutions.html#cb146-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-42"><a href="lab-4-solutions.html#cb146-42" aria-hidden="true" tabindex="-1"></a><span class="co"># k-fold cross validation</span></span>
-<span id="cb146-43"><a href="lab-4-solutions.html#cb146-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-44"><a href="lab-4-solutions.html#cb146-44" aria-hidden="true" tabindex="-1"></a><span class="co"># setup data</span></span>
-<span id="cb146-45"><a href="lab-4-solutions.html#cb146-45" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb146-46"><a href="lab-4-solutions.html#cb146-46" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(diamond_train)</span>
-<span id="cb146-47"><a href="lab-4-solutions.html#cb146-47" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>fold <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb146-48"><a href="lab-4-solutions.html#cb146-48" aria-hidden="true" tabindex="-1"></a>diamond_train<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
-<span id="cb146-49"><a href="lab-4-solutions.html#cb146-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-50"><a href="lab-4-solutions.html#cb146-50" aria-hidden="true" tabindex="-1"></a>cv_mod_sel <span class="ot">&lt;-</span> <span class="cf">function</span>(formla) {</span>
-<span id="cb146-51"><a href="lab-4-solutions.html#cb146-51" aria-hidden="true" tabindex="-1"></a>  u.squared <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
-<span id="cb146-52"><a href="lab-4-solutions.html#cb146-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
-<span id="cb146-53"><a href="lab-4-solutions.html#cb146-53" aria-hidden="true" tabindex="-1"></a>    this.train <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">!=</span> i)</span>
-<span id="cb146-54"><a href="lab-4-solutions.html#cb146-54" aria-hidden="true" tabindex="-1"></a>    this.test <span class="ot">&lt;-</span> <span class="fu">subset</span>(diamond_train, fold <span class="sc">==</span> i)</span>
-<span id="cb146-55"><a href="lab-4-solutions.html#cb146-55" aria-hidden="true" tabindex="-1"></a>    this.id <span class="ot">&lt;-</span> this.test<span class="sc">$</span>id</span>
-<span id="cb146-56"><a href="lab-4-solutions.html#cb146-56" aria-hidden="true" tabindex="-1"></a>    cv_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(formla,</span>
-<span id="cb146-57"><a href="lab-4-solutions.html#cb146-57" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>this.train)</span>
-<span id="cb146-58"><a href="lab-4-solutions.html#cb146-58" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(cv_reg, <span class="at">newdata=</span>this.test)</span>
-<span id="cb146-59"><a href="lab-4-solutions.html#cb146-59" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> this.test<span class="sc">$</span>price <span class="sc">-</span> pred</span>
-<span id="cb146-60"><a href="lab-4-solutions.html#cb146-60" aria-hidden="true" tabindex="-1"></a>    u.squared[this.id] <span class="ot">&lt;-</span> u<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb146-61"><a href="lab-4-solutions.html#cb146-61" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb146-62"><a href="lab-4-solutions.html#cb146-62" aria-hidden="true" tabindex="-1"></a>  cv <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u.squared))</span>
-<span id="cb146-63"><a href="lab-4-solutions.html#cb146-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cv)</span>
-<span id="cb146-64"><a href="lab-4-solutions.html#cb146-64" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb146-65"><a href="lab-4-solutions.html#cb146-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-66"><a href="lab-4-solutions.html#cb146-66" aria-hidden="true" tabindex="-1"></a>cv_res1 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla1)</span>
-<span id="cb146-67"><a href="lab-4-solutions.html#cb146-67" aria-hidden="true" tabindex="-1"></a>cv_res2 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla2)</span>
-<span id="cb146-68"><a href="lab-4-solutions.html#cb146-68" aria-hidden="true" tabindex="-1"></a>cv_res3 <span class="ot">&lt;-</span> <span class="fu">cv_mod_sel</span>(formla3)</span>
-<span id="cb146-69"><a href="lab-4-solutions.html#cb146-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-70"><a href="lab-4-solutions.html#cb146-70" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res1, <span class="at">cv=</span>cv_res1)</span>
-<span id="cb146-71"><a href="lab-4-solutions.html#cb146-71" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res2, <span class="at">cv=</span>cv_res2)</span>
-<span id="cb146-72"><a href="lab-4-solutions.html#cb146-72" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">cbind.data.frame</span>(res3, <span class="at">cv=</span>cv_res3)</span>
-<span id="cb146-73"><a href="lab-4-solutions.html#cb146-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-74"><a href="lab-4-solutions.html#cb146-74" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span>
-<span id="cb146-75"><a href="lab-4-solutions.html#cb146-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   r.squared adj.r.squared     aic     bic       cv</span></span>
-<span id="cb146-76"><a href="lab-4-solutions.html#cb146-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     0.898         0.898 1104188 1104301 1366.021</span></span>
-<span id="cb146-77"><a href="lab-4-solutions.html#cb146-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     0.900         0.900 1103499 1103647 1397.104</span></span>
-<span id="cb146-78"><a href="lab-4-solutions.html#cb146-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     0.928         0.928 1089372 1090328 2247.940</span></span>
-<span id="cb146-79"><a href="lab-4-solutions.html#cb146-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-80"><a href="lab-4-solutions.html#cb146-80" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
-<span id="cb146-81"><a href="lab-4-solutions.html#cb146-81" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb146-82"><a href="lab-4-solutions.html#cb146-82" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnetUtils)</span>
-<span id="cb146-83"><a href="lab-4-solutions.html#cb146-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-84"><a href="lab-4-solutions.html#cb146-84" aria-hidden="true" tabindex="-1"></a>lasso_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">1</span>)</span>
-<span id="cb146-85"><a href="lab-4-solutions.html#cb146-85" aria-hidden="true" tabindex="-1"></a>ridge_res <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(formla3, <span class="at">data=</span>diamond_train, <span class="at">alpha=</span><span class="dv">0</span>)</span>
-<span id="cb146-86"><a href="lab-4-solutions.html#cb146-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-87"><a href="lab-4-solutions.html#cb146-87" aria-hidden="true" tabindex="-1"></a><span class="co"># out of sample predictions</span></span>
-<span id="cb146-88"><a href="lab-4-solutions.html#cb146-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-89"><a href="lab-4-solutions.html#cb146-89" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/diamond_test.RData&quot;</span>)</span>
-<span id="cb146-90"><a href="lab-4-solutions.html#cb146-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-91"><a href="lab-4-solutions.html#cb146-91" aria-hidden="true" tabindex="-1"></a><span class="co"># compute prediction errors with test data</span></span>
-<span id="cb146-92"><a href="lab-4-solutions.html#cb146-92" aria-hidden="true" tabindex="-1"></a>u1 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-93"><a href="lab-4-solutions.html#cb146-93" aria-hidden="true" tabindex="-1"></a>u2 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-94"><a href="lab-4-solutions.html#cb146-94" aria-hidden="true" tabindex="-1"></a>u3 <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-95"><a href="lab-4-solutions.html#cb146-95" aria-hidden="true" tabindex="-1"></a>u_lasso <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(lasso_res, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-96"><a href="lab-4-solutions.html#cb146-96" aria-hidden="true" tabindex="-1"></a>u_ridge <span class="ot">&lt;-</span> diamond_test<span class="sc">$</span>price <span class="sc">-</span> <span class="fu">predict</span>(ridge_res, <span class="at">newdata=</span>diamond_test)</span>
-<span id="cb146-97"><a href="lab-4-solutions.html#cb146-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-98"><a href="lab-4-solutions.html#cb146-98" aria-hidden="true" tabindex="-1"></a><span class="co"># compute root mean squared prediction errors</span></span>
-<span id="cb146-99"><a href="lab-4-solutions.html#cb146-99" aria-hidden="true" tabindex="-1"></a>rmspe1 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u1<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-100"><a href="lab-4-solutions.html#cb146-100" aria-hidden="true" tabindex="-1"></a>rmspe2 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u2<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-101"><a href="lab-4-solutions.html#cb146-101" aria-hidden="true" tabindex="-1"></a>rmspe3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u3<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-102"><a href="lab-4-solutions.html#cb146-102" aria-hidden="true" tabindex="-1"></a>rmspe_lasso <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_lasso<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-103"><a href="lab-4-solutions.html#cb146-103" aria-hidden="true" tabindex="-1"></a>rmspe_ridge <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(u_ridge<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb146-104"><a href="lab-4-solutions.html#cb146-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-105"><a href="lab-4-solutions.html#cb146-105" aria-hidden="true" tabindex="-1"></a><span class="co"># report results</span></span>
-<span id="cb146-106"><a href="lab-4-solutions.html#cb146-106" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
-<span id="cb146-107"><a href="lab-4-solutions.html#cb146-107" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span>
-<span id="cb146-108"><a href="lab-4-solutions.html#cb146-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      mod1    mod2    mod3  lasso   ridge</span></span>
-<span id="cb146-109"><a href="lab-4-solutions.html#cb146-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 856.014 785.171 616.996 683.36 794.276</span></span></code></pre></div>
+<div id="lab-4-solutions" class="section level2 hasAnchor" number="5.13">
+<h2><span class="header-section-number">5.13</span> Lab 4: Solutions<a href="lab-4-solutions.html#lab-4-solutions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="lab-4-solutions.html#cb127-1" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb127-2"><a href="lab-4-solutions.html#cb127-2" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb127-3"><a href="lab-4-solutions.html#cb127-3" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb127-4"><a href="lab-4-solutions.html#cb127-4" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb127-5"><a href="lab-4-solutions.html#cb127-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb127-6"><a href="lab-4-solutions.html#cb127-6" tabindex="-1"></a></span>
+<span id="cb127-7"><a href="lab-4-solutions.html#cb127-7" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb127-8"><a href="lab-4-solutions.html#cb127-8" tabindex="-1"></a>Birthweight_Smoking <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">&quot;data/birthweight_smoking.dta&quot;</span>)</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="lab-4-solutions.html#cb128-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(birthweight <span class="sc">~</span> smoker, <span class="at">data=</span>Birthweight_Smoking)</span>
+<span id="cb128-2"><a href="lab-4-solutions.html#cb128-2" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span>
+<span id="cb128-3"><a href="lab-4-solutions.html#cb128-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb128-4"><a href="lab-4-solutions.html#cb128-4" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb128-5"><a href="lab-4-solutions.html#cb128-5" tabindex="-1"></a><span class="co">#&gt; lm(formula = birthweight ~ smoker, data = Birthweight_Smoking)</span></span>
+<span id="cb128-6"><a href="lab-4-solutions.html#cb128-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb128-7"><a href="lab-4-solutions.html#cb128-7" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb128-8"><a href="lab-4-solutions.html#cb128-8" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb128-9"><a href="lab-4-solutions.html#cb128-9" tabindex="-1"></a><span class="co">#&gt; -3007.06  -313.06    26.94   366.94  2322.94 </span></span>
+<span id="cb128-10"><a href="lab-4-solutions.html#cb128-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb128-11"><a href="lab-4-solutions.html#cb128-11" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb128-12"><a href="lab-4-solutions.html#cb128-12" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb128-13"><a href="lab-4-solutions.html#cb128-13" tabindex="-1"></a><span class="co">#&gt; (Intercept)  3432.06      11.87 289.115   &lt;2e-16 ***</span></span>
+<span id="cb128-14"><a href="lab-4-solutions.html#cb128-14" tabindex="-1"></a><span class="co">#&gt; smoker       -253.23      26.95  -9.396   &lt;2e-16 ***</span></span>
+<span id="cb128-15"><a href="lab-4-solutions.html#cb128-15" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb128-16"><a href="lab-4-solutions.html#cb128-16" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb128-17"><a href="lab-4-solutions.html#cb128-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb128-18"><a href="lab-4-solutions.html#cb128-18" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 583.7 on 2998 degrees of freedom</span></span>
+<span id="cb128-19"><a href="lab-4-solutions.html#cb128-19" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.0286, Adjusted R-squared:  0.02828 </span></span>
+<span id="cb128-20"><a href="lab-4-solutions.html#cb128-20" tabindex="-1"></a><span class="co">#&gt; F-statistic: 88.28 on 1 and 2998 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>We estimate that, on average, smoking reduces an infant’s birthweight by about 250 grams. The estimated effect is strongly statistically significant, and (I am not an expert but) that seems like a large effect of smoking to me.</p>
+<ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="lab-4-solutions.html#cb129-1" tabindex="-1"></a><span class="co"># create smoker factor --- just to make table look nicer</span></span>
+<span id="cb129-2"><a href="lab-4-solutions.html#cb129-2" tabindex="-1"></a>Birthweight_Smoking<span class="sc">$</span>smoker_factor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(Birthweight_Smoking<span class="sc">$</span>smoker<span class="sc">==</span><span class="dv">1</span>, <span class="st">&quot;smoker&quot;</span>, <span class="st">&quot;non-smoker&quot;</span>))</span>
+<span id="cb129-3"><a href="lab-4-solutions.html#cb129-3" tabindex="-1"></a><span class="fu">datasummary_balance</span>(<span class="sc">~</span>smoker_factor, </span>
+<span id="cb129-4"><a href="lab-4-solutions.html#cb129-4" tabindex="-1"></a>                    <span class="at">data=</span>dplyr<span class="sc">::</span><span class="fu">select</span>(Birthweight_Smoking, <span class="sc">-</span>smoker),</span>
+<span id="cb129-5"><a href="lab-4-solutions.html#cb129-5" tabindex="-1"></a>                    <span class="at">fmt=</span><span class="dv">2</span>)</span></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+non-smoker (N=2418)
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+smoker (N=582)
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+Std. Dev.
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+Std. Dev.
+</th>
+<th style="text-align:right;">
+Diff. in Means
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+nprevist
+</td>
+<td style="text-align:right;">
+11.19
+</td>
+<td style="text-align:right;">
+3.50
+</td>
+<td style="text-align:right;">
+10.18
+</td>
+<td style="text-align:right;">
+4.23
+</td>
+<td style="text-align:right;">
+-1.01
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+alcohol
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tripre1
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+<td style="text-align:right;">
+-0.13
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tripre2
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tripre3
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tripre0
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+birthweight
+</td>
+<td style="text-align:right;">
+3432.06
+</td>
+<td style="text-align:right;">
+584.62
+</td>
+<td style="text-align:right;">
+3178.83
+</td>
+<td style="text-align:right;">
+580.01
+</td>
+<td style="text-align:right;">
+-253.23
+</td>
+<td style="text-align:right;">
+26.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unmarried
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+educ
+</td>
+<td style="text-align:right;">
+13.15
+</td>
+<td style="text-align:right;">
+2.21
+</td>
+<td style="text-align:right;">
+11.88
+</td>
+<td style="text-align:right;">
+1.62
+</td>
+<td style="text-align:right;">
+-1.27
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:right;">
+27.27
+</td>
+<td style="text-align:right;">
+5.37
+</td>
+<td style="text-align:right;">
+25.32
+</td>
+<td style="text-align:right;">
+5.06
+</td>
+<td style="text-align:right;">
+-1.95
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+drinks
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+1.23
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+</tr>
+</tbody>
+</table>
+<p>The things that stand out to me are:</p>
+<ul>
+<li><p>Birthweight tends to be notably lower for smokers relative to non-smokers. The difference is about 7.4% lower birthweight for babies whose mothers smoked.</p></li>
+<li><p>That said, smoking is also correlated with a number of other things that could be related to lower birthweights. Mothers who smoke went to fewer pre-natal visits on average, were more likely to be unmarried, were more likely to have drink alcohol during their pregnancy, were more likely to be less educated. They also were, on average, somewhat younger than mothers who did not smoke.</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="lab-4-solutions.html#cb130-1" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(birthweight <span class="sc">~</span> smoker <span class="sc">+</span> educ <span class="sc">+</span> nprevist <span class="sc">+</span> age <span class="sc">+</span> alcohol,</span>
+<span id="cb130-2"><a href="lab-4-solutions.html#cb130-2" tabindex="-1"></a>           <span class="at">data=</span>Birthweight_Smoking)</span>
+<span id="cb130-3"><a href="lab-4-solutions.html#cb130-3" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span>
+<span id="cb130-4"><a href="lab-4-solutions.html#cb130-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb130-5"><a href="lab-4-solutions.html#cb130-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb130-6"><a href="lab-4-solutions.html#cb130-6" tabindex="-1"></a><span class="co">#&gt; lm(formula = birthweight ~ smoker + educ + nprevist + age + alcohol, </span></span>
+<span id="cb130-7"><a href="lab-4-solutions.html#cb130-7" tabindex="-1"></a><span class="co">#&gt;     data = Birthweight_Smoking)</span></span>
+<span id="cb130-8"><a href="lab-4-solutions.html#cb130-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb130-9"><a href="lab-4-solutions.html#cb130-9" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb130-10"><a href="lab-4-solutions.html#cb130-10" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb130-11"><a href="lab-4-solutions.html#cb130-11" tabindex="-1"></a><span class="co">#&gt; -2728.91  -305.26    24.69   359.63  2220.42 </span></span>
+<span id="cb130-12"><a href="lab-4-solutions.html#cb130-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb130-13"><a href="lab-4-solutions.html#cb130-13" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb130-14"><a href="lab-4-solutions.html#cb130-14" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb130-15"><a href="lab-4-solutions.html#cb130-15" tabindex="-1"></a><span class="co">#&gt; (Intercept) 2924.963     74.185  39.428  &lt; 2e-16 ***</span></span>
+<span id="cb130-16"><a href="lab-4-solutions.html#cb130-16" tabindex="-1"></a><span class="co">#&gt; smoker      -206.507     27.367  -7.546 5.93e-14 ***</span></span>
+<span id="cb130-17"><a href="lab-4-solutions.html#cb130-17" tabindex="-1"></a><span class="co">#&gt; educ           5.644      5.532   1.020    0.308    </span></span>
+<span id="cb130-18"><a href="lab-4-solutions.html#cb130-18" tabindex="-1"></a><span class="co">#&gt; nprevist      32.979      2.914  11.318  &lt; 2e-16 ***</span></span>
+<span id="cb130-19"><a href="lab-4-solutions.html#cb130-19" tabindex="-1"></a><span class="co">#&gt; age            2.360      2.178   1.083    0.279    </span></span>
+<span id="cb130-20"><a href="lab-4-solutions.html#cb130-20" tabindex="-1"></a><span class="co">#&gt; alcohol      -39.512     76.365  -0.517    0.605    </span></span>
+<span id="cb130-21"><a href="lab-4-solutions.html#cb130-21" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb130-22"><a href="lab-4-solutions.html#cb130-22" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb130-23"><a href="lab-4-solutions.html#cb130-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb130-24"><a href="lab-4-solutions.html#cb130-24" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 570.3 on 2994 degrees of freedom</span></span>
+<span id="cb130-25"><a href="lab-4-solutions.html#cb130-25" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.07402,    Adjusted R-squared:  0.07247 </span></span>
+<span id="cb130-26"><a href="lab-4-solutions.html#cb130-26" tabindex="-1"></a><span class="co">#&gt; F-statistic: 47.86 on 5 and 2994 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>Here we estimate that smoking reduces an infant’s birthweight by about 200 grams on average holding education, number of pre-natal visits, age, and whether or not the mother consumed alcohol constant. The magnitude of the estimated effect is somewhat smaller than the previous estimate. Due to the discussion in #2 (particularly, that smoking was correlated with a number of other characteristics that are likely associated with lower birthweights), this decrease in the magnitude is not surprising.</p>
+<ol start="4" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="lab-4-solutions.html#cb131-1" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(birthweight <span class="sc">~</span> smoker <span class="sc">+</span> <span class="fu">I</span>(smoker<span class="sc">*</span>age) <span class="sc">+</span> educ <span class="sc">+</span> nprevist <span class="sc">+</span> age <span class="sc">+</span> alcohol,</span>
+<span id="cb131-2"><a href="lab-4-solutions.html#cb131-2" tabindex="-1"></a>           <span class="at">data=</span>Birthweight_Smoking)</span>
+<span id="cb131-3"><a href="lab-4-solutions.html#cb131-3" tabindex="-1"></a><span class="fu">summary</span>(reg4)</span>
+<span id="cb131-4"><a href="lab-4-solutions.html#cb131-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-5"><a href="lab-4-solutions.html#cb131-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb131-6"><a href="lab-4-solutions.html#cb131-6" tabindex="-1"></a><span class="co">#&gt; lm(formula = birthweight ~ smoker + I(smoker * age) + educ + </span></span>
+<span id="cb131-7"><a href="lab-4-solutions.html#cb131-7" tabindex="-1"></a><span class="co">#&gt;     nprevist + age + alcohol, data = Birthweight_Smoking)</span></span>
+<span id="cb131-8"><a href="lab-4-solutions.html#cb131-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-9"><a href="lab-4-solutions.html#cb131-9" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb131-10"><a href="lab-4-solutions.html#cb131-10" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb131-11"><a href="lab-4-solutions.html#cb131-11" tabindex="-1"></a><span class="co">#&gt; -2722.56  -305.12    23.93   363.43  2244.67 </span></span>
+<span id="cb131-12"><a href="lab-4-solutions.html#cb131-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-13"><a href="lab-4-solutions.html#cb131-13" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb131-14"><a href="lab-4-solutions.html#cb131-14" tabindex="-1"></a><span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb131-15"><a href="lab-4-solutions.html#cb131-15" tabindex="-1"></a><span class="co">#&gt; (Intercept)     2853.819     77.104  37.013  &lt; 2e-16 ***</span></span>
+<span id="cb131-16"><a href="lab-4-solutions.html#cb131-16" tabindex="-1"></a><span class="co">#&gt; smoker           231.578    134.854   1.717 0.086036 .  </span></span>
+<span id="cb131-17"><a href="lab-4-solutions.html#cb131-17" tabindex="-1"></a><span class="co">#&gt; I(smoker * age)  -17.145      5.168  -3.317 0.000919 ***</span></span>
+<span id="cb131-18"><a href="lab-4-solutions.html#cb131-18" tabindex="-1"></a><span class="co">#&gt; educ               4.895      5.528   0.885 0.375968    </span></span>
+<span id="cb131-19"><a href="lab-4-solutions.html#cb131-19" tabindex="-1"></a><span class="co">#&gt; nprevist          32.482      2.913  11.151  &lt; 2e-16 ***</span></span>
+<span id="cb131-20"><a href="lab-4-solutions.html#cb131-20" tabindex="-1"></a><span class="co">#&gt; age                5.528      2.375   2.328 0.019999 *  </span></span>
+<span id="cb131-21"><a href="lab-4-solutions.html#cb131-21" tabindex="-1"></a><span class="co">#&gt; alcohol          -22.556     76.409  -0.295 0.767864    </span></span>
+<span id="cb131-22"><a href="lab-4-solutions.html#cb131-22" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb131-23"><a href="lab-4-solutions.html#cb131-23" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb131-24"><a href="lab-4-solutions.html#cb131-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb131-25"><a href="lab-4-solutions.html#cb131-25" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 569.4 on 2993 degrees of freedom</span></span>
+<span id="cb131-26"><a href="lab-4-solutions.html#cb131-26" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.07741,    Adjusted R-squared:  0.07556 </span></span>
+<span id="cb131-27"><a href="lab-4-solutions.html#cb131-27" tabindex="-1"></a><span class="co">#&gt; F-statistic: 41.85 on 6 and 2993 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>We should be careful about the interpretatio here. We have estimated a model like</p>
+<p><span class="math display">\[
+  \mathbb{E}[Birthweight|Smoker, Age, X] = \beta_0 + \beta_1 Smoker + \beta_2 Smoker \cdot Age + \cdots
+\]</span>
+Therefore, the partial effect of smoking is given by</p>
+<p><span class="math display">\[
+  \mathbb{E}[Birthweight | Smoker=1, Age, X] - \mathbb{E}[Birthweight | Smoker=0, Age, X] = \beta_1 + \beta_2 Age
+\]</span>
+Therefore, the partial effect of smoking depends on <span class="math inline">\(Age\)</span>. For example, for <span class="math inline">\(Age=18\)</span>, the partial effect is <span class="math inline">\(\beta_1 + \beta_2 (18)\)</span>. For <span class="math inline">\(Age=25\)</span>, the partial effect is <span class="math inline">\(\beta_1 + \beta_2 (25)\)</span>, and for <span class="math inline">\(Age=35\)</span>, the partial effect is <span class="math inline">\(\beta_1 + \beta_2 (35)\)</span>. Let’s calculate the partial effect at each of those ages.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="lab-4-solutions.html#cb132-1" tabindex="-1"></a>bet1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg4)[<span class="dv">2</span>]</span>
+<span id="cb132-2"><a href="lab-4-solutions.html#cb132-2" tabindex="-1"></a>bet2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg4)[<span class="dv">3</span>]</span>
+<span id="cb132-3"><a href="lab-4-solutions.html#cb132-3" tabindex="-1"></a></span>
+<span id="cb132-4"><a href="lab-4-solutions.html#cb132-4" tabindex="-1"></a>pe_18 <span class="ot">&lt;-</span> bet1 <span class="sc">+</span> bet2<span class="sc">*</span><span class="dv">18</span></span>
+<span id="cb132-5"><a href="lab-4-solutions.html#cb132-5" tabindex="-1"></a>pe_25 <span class="ot">&lt;-</span> bet1 <span class="sc">+</span> bet2<span class="sc">*</span><span class="dv">25</span></span>
+<span id="cb132-6"><a href="lab-4-solutions.html#cb132-6" tabindex="-1"></a>pe_35 <span class="ot">&lt;-</span> bet1 <span class="sc">+</span> bet2<span class="sc">*</span><span class="dv">35</span></span>
+<span id="cb132-7"><a href="lab-4-solutions.html#cb132-7" tabindex="-1"></a></span>
+<span id="cb132-8"><a href="lab-4-solutions.html#cb132-8" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cbind.data.frame</span>(pe_18, pe_25, pe_35),<span class="dv">2</span>)</span>
+<span id="cb132-9"><a href="lab-4-solutions.html#cb132-9" tabindex="-1"></a><span class="co">#&gt;         pe_18   pe_25   pe_35</span></span>
+<span id="cb132-10"><a href="lab-4-solutions.html#cb132-10" tabindex="-1"></a><span class="co">#&gt; smoker -77.04 -197.05 -368.51</span></span></code></pre></div>
+<p>This suggests substantially larger effects of smoking on birthweight for older mothers.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="lab-4-solutions.html#cb133-1" tabindex="-1"></a>reg5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(birthweight <span class="sc">~</span> smoker <span class="sc">+</span> <span class="fu">I</span>(smoker<span class="sc">*</span>alcohol) <span class="sc">+</span> educ <span class="sc">+</span> nprevist <span class="sc">+</span> age <span class="sc">+</span> alcohol,</span>
+<span id="cb133-2"><a href="lab-4-solutions.html#cb133-2" tabindex="-1"></a>           <span class="at">data=</span>Birthweight_Smoking)</span>
+<span id="cb133-3"><a href="lab-4-solutions.html#cb133-3" tabindex="-1"></a><span class="fu">summary</span>(reg5)</span>
+<span id="cb133-4"><a href="lab-4-solutions.html#cb133-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb133-5"><a href="lab-4-solutions.html#cb133-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb133-6"><a href="lab-4-solutions.html#cb133-6" tabindex="-1"></a><span class="co">#&gt; lm(formula = birthweight ~ smoker + I(smoker * alcohol) + educ + </span></span>
+<span id="cb133-7"><a href="lab-4-solutions.html#cb133-7" tabindex="-1"></a><span class="co">#&gt;     nprevist + age + alcohol, data = Birthweight_Smoking)</span></span>
+<span id="cb133-8"><a href="lab-4-solutions.html#cb133-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb133-9"><a href="lab-4-solutions.html#cb133-9" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb133-10"><a href="lab-4-solutions.html#cb133-10" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb133-11"><a href="lab-4-solutions.html#cb133-11" tabindex="-1"></a><span class="co">#&gt; -2728.99  -304.16    24.54   359.92  2222.10 </span></span>
+<span id="cb133-12"><a href="lab-4-solutions.html#cb133-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb133-13"><a href="lab-4-solutions.html#cb133-13" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb133-14"><a href="lab-4-solutions.html#cb133-14" tabindex="-1"></a><span class="co">#&gt;                     Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb133-15"><a href="lab-4-solutions.html#cb133-15" tabindex="-1"></a><span class="co">#&gt; (Intercept)         2924.844     74.185  39.426  &lt; 2e-16 ***</span></span>
+<span id="cb133-16"><a href="lab-4-solutions.html#cb133-16" tabindex="-1"></a><span class="co">#&gt; smoker              -201.852     27.765  -7.270 4.57e-13 ***</span></span>
+<span id="cb133-17"><a href="lab-4-solutions.html#cb133-17" tabindex="-1"></a><span class="co">#&gt; I(smoker * alcohol) -151.860    152.717  -0.994    0.320    </span></span>
+<span id="cb133-18"><a href="lab-4-solutions.html#cb133-18" tabindex="-1"></a><span class="co">#&gt; educ                   5.612      5.532   1.014    0.310    </span></span>
+<span id="cb133-19"><a href="lab-4-solutions.html#cb133-19" tabindex="-1"></a><span class="co">#&gt; nprevist              32.844      2.917  11.260  &lt; 2e-16 ***</span></span>
+<span id="cb133-20"><a href="lab-4-solutions.html#cb133-20" tabindex="-1"></a><span class="co">#&gt; age                    2.403      2.178   1.103    0.270    </span></span>
+<span id="cb133-21"><a href="lab-4-solutions.html#cb133-21" tabindex="-1"></a><span class="co">#&gt; alcohol               39.824    110.440   0.361    0.718    </span></span>
+<span id="cb133-22"><a href="lab-4-solutions.html#cb133-22" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb133-23"><a href="lab-4-solutions.html#cb133-23" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb133-24"><a href="lab-4-solutions.html#cb133-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb133-25"><a href="lab-4-solutions.html#cb133-25" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 570.3 on 2993 degrees of freedom</span></span>
+<span id="cb133-26"><a href="lab-4-solutions.html#cb133-26" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.07432,    Adjusted R-squared:  0.07247 </span></span>
+<span id="cb133-27"><a href="lab-4-solutions.html#cb133-27" tabindex="-1"></a><span class="co">#&gt; F-statistic: 40.05 on 6 and 2993 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>The point estimate suggests that the effect of smoking is larger for women who consume alcohol and smoke than for women who do not drink alcohol. This seems plausible, but our evidence is not very strong here — the estimates are not statistically significant at any conventional significance level (the p-value is equal to 0.32).</p>
+<ol start="6" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="lab-4-solutions.html#cb134-1" tabindex="-1"></a>reg6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(birthweight <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>Birthweight_Smoking)</span>
+<span id="cb134-2"><a href="lab-4-solutions.html#cb134-2" tabindex="-1"></a><span class="fu">summary</span>(reg6)</span>
+<span id="cb134-3"><a href="lab-4-solutions.html#cb134-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb134-4"><a href="lab-4-solutions.html#cb134-4" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb134-5"><a href="lab-4-solutions.html#cb134-5" tabindex="-1"></a><span class="co">#&gt; lm(formula = birthweight ~ age + I(age^2), data = Birthweight_Smoking)</span></span>
+<span id="cb134-6"><a href="lab-4-solutions.html#cb134-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb134-7"><a href="lab-4-solutions.html#cb134-7" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb134-8"><a href="lab-4-solutions.html#cb134-8" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb134-9"><a href="lab-4-solutions.html#cb134-9" tabindex="-1"></a><span class="co">#&gt; -2949.81  -312.81    30.43   371.03  2452.72 </span></span>
+<span id="cb134-10"><a href="lab-4-solutions.html#cb134-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb134-11"><a href="lab-4-solutions.html#cb134-11" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb134-12"><a href="lab-4-solutions.html#cb134-12" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb134-13"><a href="lab-4-solutions.html#cb134-13" tabindex="-1"></a><span class="co">#&gt; (Intercept) 2502.8949   225.6016  11.094  &lt; 2e-16 ***</span></span>
+<span id="cb134-14"><a href="lab-4-solutions.html#cb134-14" tabindex="-1"></a><span class="co">#&gt; age           58.1670    16.9212   3.438 0.000595 ***</span></span>
+<span id="cb134-15"><a href="lab-4-solutions.html#cb134-15" tabindex="-1"></a><span class="co">#&gt; I(age^2)      -0.9099     0.3099  -2.936 0.003353 ** </span></span>
+<span id="cb134-16"><a href="lab-4-solutions.html#cb134-16" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb134-17"><a href="lab-4-solutions.html#cb134-17" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb134-18"><a href="lab-4-solutions.html#cb134-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb134-19"><a href="lab-4-solutions.html#cb134-19" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 589.6 on 2997 degrees of freedom</span></span>
+<span id="cb134-20"><a href="lab-4-solutions.html#cb134-20" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.009261,   Adjusted R-squared:  0.0086 </span></span>
+<span id="cb134-21"><a href="lab-4-solutions.html#cb134-21" tabindex="-1"></a><span class="co">#&gt; F-statistic: 14.01 on 2 and 2997 DF,  p-value: 8.813e-07</span></span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="lab-4-solutions.html#cb135-1" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg6, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">age=</span><span class="fu">seq</span>(<span class="dv">18</span>,<span class="dv">40</span>)))</span>
+<span id="cb135-2"><a href="lab-4-solutions.html#cb135-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">preds=</span>preds, <span class="at">age=</span><span class="fu">seq</span>(<span class="dv">18</span>,<span class="dv">40</span>)), <span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y=</span>preds)) <span class="sc">+</span> </span>
+<span id="cb135-3"><a href="lab-4-solutions.html#cb135-3" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb135-4"><a href="lab-4-solutions.html#cb135-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb135-5"><a href="lab-4-solutions.html#cb135-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb135-6"><a href="lab-4-solutions.html#cb135-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;predicted values&quot;</span>)</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-138-1.png" width="672" />
+The figure suggests that predicted birthweight is increasing in mother’s age up until about age 34 and then decreasing after that.</p>
+<ol start="7" style="list-style-type: decimal">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="lab-4-solutions.html#cb136-1" tabindex="-1"></a>reg7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">I</span>(<span class="fu">log</span>(birthweight)) <span class="sc">~</span> smoker <span class="sc">+</span> educ <span class="sc">+</span> nprevist <span class="sc">+</span> age <span class="sc">+</span> alcohol,</span>
+<span id="cb136-2"><a href="lab-4-solutions.html#cb136-2" tabindex="-1"></a>           <span class="at">data=</span>Birthweight_Smoking)</span>
+<span id="cb136-3"><a href="lab-4-solutions.html#cb136-3" tabindex="-1"></a><span class="fu">summary</span>(reg7)</span>
+<span id="cb136-4"><a href="lab-4-solutions.html#cb136-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb136-5"><a href="lab-4-solutions.html#cb136-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb136-6"><a href="lab-4-solutions.html#cb136-6" tabindex="-1"></a><span class="co">#&gt; lm(formula = I(log(birthweight)) ~ smoker + educ + nprevist + </span></span>
+<span id="cb136-7"><a href="lab-4-solutions.html#cb136-7" tabindex="-1"></a><span class="co">#&gt;     age + alcohol, data = Birthweight_Smoking)</span></span>
+<span id="cb136-8"><a href="lab-4-solutions.html#cb136-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb136-9"><a href="lab-4-solutions.html#cb136-9" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb136-10"><a href="lab-4-solutions.html#cb136-10" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb136-11"><a href="lab-4-solutions.html#cb136-11" tabindex="-1"></a><span class="co">#&gt; -1.96324 -0.07696  0.02435  0.12092  0.50070 </span></span>
+<span id="cb136-12"><a href="lab-4-solutions.html#cb136-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb136-13"><a href="lab-4-solutions.html#cb136-13" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb136-14"><a href="lab-4-solutions.html#cb136-14" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb136-15"><a href="lab-4-solutions.html#cb136-15" tabindex="-1"></a><span class="co">#&gt; (Intercept)  7.9402678  0.0270480 293.562  &lt; 2e-16 ***</span></span>
+<span id="cb136-16"><a href="lab-4-solutions.html#cb136-16" tabindex="-1"></a><span class="co">#&gt; smoker      -0.0635764  0.0099782  -6.372 2.16e-10 ***</span></span>
+<span id="cb136-17"><a href="lab-4-solutions.html#cb136-17" tabindex="-1"></a><span class="co">#&gt; educ         0.0022169  0.0020171   1.099    0.272    </span></span>
+<span id="cb136-18"><a href="lab-4-solutions.html#cb136-18" tabindex="-1"></a><span class="co">#&gt; nprevist     0.0129662  0.0010624  12.205  &lt; 2e-16 ***</span></span>
+<span id="cb136-19"><a href="lab-4-solutions.html#cb136-19" tabindex="-1"></a><span class="co">#&gt; age          0.0003059  0.0007941   0.385    0.700    </span></span>
+<span id="cb136-20"><a href="lab-4-solutions.html#cb136-20" tabindex="-1"></a><span class="co">#&gt; alcohol     -0.0181053  0.0278428  -0.650    0.516    </span></span>
+<span id="cb136-21"><a href="lab-4-solutions.html#cb136-21" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb136-22"><a href="lab-4-solutions.html#cb136-22" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb136-23"><a href="lab-4-solutions.html#cb136-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb136-24"><a href="lab-4-solutions.html#cb136-24" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.2079 on 2994 degrees of freedom</span></span>
+<span id="cb136-25"><a href="lab-4-solutions.html#cb136-25" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.07322,    Adjusted R-squared:  0.07167 </span></span>
+<span id="cb136-26"><a href="lab-4-solutions.html#cb136-26" tabindex="-1"></a><span class="co">#&gt; F-statistic: 47.31 on 5 and 2994 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>The estimated coefficient on <span class="math inline">\(smoker\)</span> says that smoking during pregnancy decreases a baby’s birthweight by 6.3%, on average, holding education, number of pre-natal visits, age of the mother, and whether or not the mother consumed alcohol during the pregnancy constant.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="lab-4-predicting-diamond-prices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-4-birthweight-and-smoking.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="coding-questions-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -547,7 +961,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

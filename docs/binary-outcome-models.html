@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.4 Binary Outcome Models | Supplementary Notes and References for ECON 4750</title>
+  <title>Topic 7 Binary Outcome Models | Supplementary Notes and References for ECON 4750</title>
   <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.4 Binary Outcome Models | Supplementary Notes and References for ECON 4750" />
+  <meta property="og:title" content="Topic 7 Binary Outcome Models | Supplementary Notes and References for ECON 4750" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.4 Binary Outcome Models | Supplementary Notes and References for ECON 4750" />
+  <meta name="twitter:title" content="Topic 7 Binary Outcome Models | Supplementary Notes and References for ECON 4750" />
   
   <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2022-11-22" />
+<meta name="date" content="2023-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="machine-learning.html"/>
-<link rel="next" href="lab-4-predicting-diamond-prices.html"/>
+<link rel="prev" href="answers-to-some-extra-questions-1.html"/>
+<link rel="next" href="linear-probability-model.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -94,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -203,151 +207,158 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
 <li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probability-and-statistics.html"><a href="probability-and-statistics.html"><i class="fa fa-check"></i><b>3</b> Probability and Statistics</a>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html"><i class="fa fa-check"></i><b>3.1</b> Topics in Probability</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="topics-in-probability.html"><a href="topics-in-probability.html#data-for-this-chapter"><i class="fa fa-check"></i><b>3.1.1</b> Data for this chapter</a></li>
-<li class="chapter" data-level="3.1.2" data-path="topics-in-probability.html"><a href="topics-in-probability.html#random-variables"><i class="fa fa-check"></i><b>3.1.2</b> Random Variables</a></li>
-<li class="chapter" data-level="3.1.3" data-path="topics-in-probability.html"><a href="topics-in-probability.html#pdfs-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.3</b> pdfs, pmfs, and cdfs</a></li>
-<li class="chapter" data-level="3.1.4" data-path="topics-in-probability.html"><a href="topics-in-probability.html#summation-operator"><i class="fa fa-check"></i><b>3.1.4</b> Summation operator</a></li>
-<li class="chapter" data-level="3.1.5" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-pmfs-and-cdfs"><i class="fa fa-check"></i><b>3.1.5</b> Properties of pmfs and cdfs</a></li>
-<li class="chapter" data-level="3.1.6" data-path="topics-in-probability.html"><a href="topics-in-probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.1.6</b> Continuous Random Variables</a></li>
-<li class="chapter" data-level="3.1.7" data-path="topics-in-probability.html"><a href="topics-in-probability.html#expected-values"><i class="fa fa-check"></i><b>3.1.7</b> Expected Values</a></li>
-<li class="chapter" data-level="3.1.8" data-path="topics-in-probability.html"><a href="topics-in-probability.html#variance"><i class="fa fa-check"></i><b>3.1.8</b> Variance</a></li>
-<li class="chapter" data-level="3.1.9" data-path="topics-in-probability.html"><a href="topics-in-probability.html#mean-and-variance-of-linear-functions"><i class="fa fa-check"></i><b>3.1.9</b> Mean and Variance of Linear Functions</a></li>
-<li class="chapter" data-level="3.1.10" data-path="topics-in-probability.html"><a href="topics-in-probability.html#multiple-random-variables"><i class="fa fa-check"></i><b>3.1.10</b> Multiple Random Variables</a></li>
-<li class="chapter" data-level="3.1.11" data-path="topics-in-probability.html"><a href="topics-in-probability.html#conditional-expectations"><i class="fa fa-check"></i><b>3.1.11</b> Conditional Expectations</a></li>
-<li class="chapter" data-level="3.1.12" data-path="topics-in-probability.html"><a href="topics-in-probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>3.1.12</b> Law of Iterated Expectations</a></li>
-<li class="chapter" data-level="3.1.13" data-path="topics-in-probability.html"><a href="topics-in-probability.html#covariance"><i class="fa fa-check"></i><b>3.1.13</b> Covariance</a></li>
-<li class="chapter" data-level="3.1.14" data-path="topics-in-probability.html"><a href="topics-in-probability.html#correlation"><i class="fa fa-check"></i><b>3.1.14</b> Correlation</a></li>
-<li class="chapter" data-level="3.1.15" data-path="topics-in-probability.html"><a href="topics-in-probability.html#properties-of-expectationsvariances-of-sums-of-rvs"><i class="fa fa-check"></i><b>3.1.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
-<li class="chapter" data-level="3.1.16" data-path="topics-in-probability.html"><a href="topics-in-probability.html#normal-distribution"><i class="fa fa-check"></i><b>3.1.16</b> Normal Distribution</a></li>
-<li class="chapter" data-level="3.1.17" data-path="topics-in-probability.html"><a href="topics-in-probability.html#coding"><i class="fa fa-check"></i><b>3.1.17</b> Coding</a></li>
+<li class="chapter" data-level="3.1" data-path="data-for-this-chapter.html"><a href="data-for-this-chapter.html"><i class="fa fa-check"></i><b>3.1</b> Data for this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>3.2</b> Random Variables</a></li>
+<li class="chapter" data-level="3.3" data-path="pdfs-pmfs-and-cdfs.html"><a href="pdfs-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.3</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.4" data-path="summation-operator.html"><a href="summation-operator.html"><i class="fa fa-check"></i><b>3.4</b> Summation operator</a></li>
+<li class="chapter" data-level="3.5" data-path="properties-of-pmfs-and-cdfs.html"><a href="properties-of-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.5</b> Properties of pmfs and cdfs</a></li>
+<li class="chapter" data-level="3.6" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html"><i class="fa fa-check"></i><b>3.6</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.7" data-path="expected-values.html"><a href="expected-values.html"><i class="fa fa-check"></i><b>3.7</b> Expected Values</a></li>
+<li class="chapter" data-level="3.8" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>3.8</b> Variance</a></li>
+<li class="chapter" data-level="3.9" data-path="mean-and-variance-of-linear-functions.html"><a href="mean-and-variance-of-linear-functions.html"><i class="fa fa-check"></i><b>3.9</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.10" data-path="multiple-random-variables.html"><a href="multiple-random-variables.html"><i class="fa fa-check"></i><b>3.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.11" data-path="conditional-expectations.html"><a href="conditional-expectations.html"><i class="fa fa-check"></i><b>3.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.12" data-path="law-of-iterated-expectations.html"><a href="law-of-iterated-expectations.html"><i class="fa fa-check"></i><b>3.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.13" data-path="covariance.html"><a href="covariance.html"><i class="fa fa-check"></i><b>3.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.15" data-path="properties-of-expectationsvariances-of-sums-of-rvs.html"><a href="properties-of-expectationsvariances-of-sums-of-rvs.html"><i class="fa fa-check"></i><b>3.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.16" data-path="normal-distribution.html"><a href="normal-distribution.html"><i class="fa fa-check"></i><b>3.16</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.17" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>3.17</b> Coding</a></li>
+<li class="chapter" data-level="3.18" data-path="lab-2-basic-plots.html"><a href="lab-2-basic-plots.html"><i class="fa fa-check"></i><b>3.18</b> Lab 2: Basic Plots</a></li>
+<li class="chapter" data-level="3.19" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="3.20" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.20</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Topics in Statistics</a>
+<li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#simple-random-sample"><i class="fa fa-check"></i><b>3.2.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="3.2.2" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#estimating-mathbbey"><i class="fa fa-check"></i><b>3.2.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
-<li class="chapter" data-level="3.2.3" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-of-bary"><i class="fa fa-check"></i><b>3.2.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.4" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#variance-of-bary"><i class="fa fa-check"></i><b>3.2.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
-<li class="chapter" data-level="3.2.5" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#properties-of-estimators"><i class="fa fa-check"></i><b>3.2.5</b> Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.6" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#relative-efficiency"><i class="fa fa-check"></i><b>3.2.6</b> Relative Efficiency</a></li>
-<li class="chapter" data-level="3.2.7" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#mean-squared-error"><i class="fa fa-check"></i><b>3.2.7</b> Mean Squared Error</a></li>
-<li class="chapter" data-level="3.2.8" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#large-sample-properties-of-estimators"><i class="fa fa-check"></i><b>3.2.8</b> Large Sample Properties of Estimators</a></li>
-<li class="chapter" data-level="3.2.9" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#inference-hypothesis-testing"><i class="fa fa-check"></i><b>3.2.9</b> Inference / Hypothesis Testing</a></li>
-<li class="chapter" data-level="3.2.10" data-path="topics-in-statistics.html"><a href="topics-in-statistics.html#coding-1"><i class="fa fa-check"></i><b>3.2.10</b> Coding</a></li>
+<li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
+<li class="chapter" data-level="4.6" data-path="relative-efficiency.html"><a href="relative-efficiency.html"><i class="fa fa-check"></i><b>4.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="4.7" data-path="mean-squared-error.html"><a href="mean-squared-error.html"><i class="fa fa-check"></i><b>4.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.8" data-path="large-sample-properties-of-estimators.html"><a href="large-sample-properties-of-estimators.html"><i class="fa fa-check"></i><b>4.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="4.9" data-path="consistency.html"><a href="consistency.html"><i class="fa fa-check"></i><b>4.9</b> Consistency</a></li>
+<li class="chapter" data-level="4.10" data-path="asymptotic-normality.html"><a href="asymptotic-normality.html"><i class="fa fa-check"></i><b>4.10</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.11" data-path="inference-hypothesis-testing.html"><a href="inference-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.11</b> Inference / Hypothesis Testing</a></li>
+<li class="chapter" data-level="4.12" data-path="t-statistics.html"><a href="t-statistics.html"><i class="fa fa-check"></i><b>4.12</b> t-statistics</a></li>
+<li class="chapter" data-level="4.13" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.13</b> P-values</a></li>
+<li class="chapter" data-level="4.14" data-path="confidence-interval.html"><a href="confidence-interval.html"><i class="fa fa-check"></i><b>4.14</b> Confidence Interval</a></li>
+<li class="chapter" data-level="4.15" data-path="inference-in-practice.html"><a href="inference-in-practice.html"><i class="fa fa-check"></i><b>4.15</b> Inference in Practice</a></li>
+<li class="chapter" data-level="4.16" data-path="coding-1.html"><a href="coding-1.html"><i class="fa fa-check"></i><b>4.16</b> Coding</a></li>
+<li class="chapter" data-level="4.17" data-path="lab-3-monte-carlo-simulations.html"><a href="lab-3-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>4.17</b> Lab 3: Monte Carlo Simulations</a></li>
+<li class="chapter" data-level="4.18" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.18</b> Lab 3 Solutions</a></li>
+<li class="chapter" data-level="4.19" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.20" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.20</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="lab-2-monte-carlo-simulations.html"><a href="lab-2-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>3.3</b> Lab 2: Monte Carlo Simulations</a></li>
-<li class="chapter" data-level="3.4" data-path="lab-2-solutions.html"><a href="lab-2-solutions.html"><i class="fa fa-check"></i><b>3.4</b> Lab 2 Solutions</a></li>
-<li class="chapter" data-level="3.5" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.5</b> Coding Questions</a></li>
-<li class="chapter" data-level="3.6" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.6</b> Extra Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear Regression</a>
+<li class="chapter" data-level="5" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>5</b> Linear Regression</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>4.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
-<li class="chapter" data-level="4.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>4.2</b> Linear Regression Models</a></li>
-<li class="chapter" data-level="4.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>4.3</b> Computation</a></li>
-<li class="chapter" data-level="4.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>4.4</b> Partial Effects</a>
+<li class="chapter" data-level="5.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>5.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="5.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>5.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="5.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.3</b> Computation</a></li>
+<li class="chapter" data-level="5.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>5.4</b> Partial Effects</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>4.4.1</b> Computation</a></li>
+<li class="chapter" data-level="5.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>5.4.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>4.5</b> Binary Regressors</a>
+<li class="chapter" data-level="5.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>5.5</b> Binary Regressors</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>4.5.1</b> Computation</a></li>
+<li class="chapter" data-level="5.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>5.5.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>4.6</b> Nonlinear Regression Functions</a>
+<li class="chapter" data-level="5.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>5.6</b> Nonlinear Regression Functions</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>4.6.1</b> Computation</a></li>
+<li class="chapter" data-level="5.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>5.6.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>4.7</b> Interpreting Interaction Terms</a>
+<li class="chapter" data-level="5.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>5.7</b> Interpreting Interaction Terms</a>
 <ul>
-<li class="chapter" data-level="4.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>4.7.1</b> Computation</a></li>
+<li class="chapter" data-level="5.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>5.7.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>4.8</b> Elasticities</a>
+<li class="chapter" data-level="5.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>5.8</b> Elasticities</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>4.8.1</b> Computation</a></li>
+<li class="chapter" data-level="5.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>5.8.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>4.9</b> Omitted Variable Bias</a></li>
-<li class="chapter" data-level="4.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>4.10</b> How to estimate the parameters in a regression model</a>
+<li class="chapter" data-level="5.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>5.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="5.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>5.10</b> How to estimate the parameters in a regression model</a>
 <ul>
-<li class="chapter" data-level="4.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>4.10.1</b> Computation</a></li>
-<li class="chapter" data-level="4.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>4.10.2</b> More than one regressor</a></li>
+<li class="chapter" data-level="5.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>5.10.1</b> Computation</a></li>
+<li class="chapter" data-level="5.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>5.10.2</b> More than one regressor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>4.11</b> Inference</a>
+<li class="chapter" data-level="5.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5.11</b> Inference</a>
 <ul>
-<li class="chapter" data-level="4.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>4.11.1</b> Computation</a></li>
+<li class="chapter" data-level="5.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>5.11.1</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="lab-3-birthweight-and-smoking.html"><a href="lab-3-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>4.12</b> Lab 3: Birthweight and Smoking</a></li>
-<li class="chapter" data-level="4.13" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.13</b> Lab 3: Solutions</a></li>
-<li class="chapter" data-level="4.14" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.14</b> Coding Questions</a></li>
-<li class="chapter" data-level="4.15" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.15</b> Extra Questions</a></li>
-<li class="chapter" data-level="4.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>4.16</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="5.12" data-path="lab-4-birthweight-and-smoking.html"><a href="lab-4-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>5.12</b> Lab 4: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="5.13" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.13</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.14" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="5.15" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>5.16</b> Answers to Some Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>5</b> Prediction</a>
+<li class="chapter" data-level="6" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>6</b> Prediction</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>5.1</b> Measures of Regression Fit</a>
+<li class="chapter" data-level="6.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>6.1</b> Measures of Regression Fit</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>5.1.1</b> TSS, ESS, SSR</a></li>
-<li class="chapter" data-level="5.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>5.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>6.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="6.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>6.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>5.2</b> Model Selection</a>
+<li class="chapter" data-level="6.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>6.2</b> Model Selection</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>5.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="5.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>5.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="5.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>5.2.3</b> AIC, BIC</a></li>
-<li class="chapter" data-level="5.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>5.2.4</b> Cross-Validation</a></li>
-<li class="chapter" data-level="5.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>5.2.5</b> Model Averaging</a></li>
-<li class="chapter" data-level="5.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>5.2.6</b> Computation</a></li>
+<li class="chapter" data-level="6.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>6.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>6.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>6.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="6.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>6.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="6.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>6.2.5</b> Model Averaging</a></li>
+<li class="chapter" data-level="6.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>6.2.6</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>5.3</b> Machine Learning</a>
+<li class="chapter" data-level="6.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>6.3</b> Machine Learning</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>5.3.1</b> Lasso</a></li>
-<li class="chapter" data-level="5.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>5.3.2</b> Ridge Regression</a></li>
-<li class="chapter" data-level="5.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>5.3.3</b> Computation</a></li>
+<li class="chapter" data-level="6.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>6.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="6.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>6.3.2</b> Ridge Regression</a></li>
+<li class="chapter" data-level="6.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>6.3.3</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>5.4</b> Binary Outcome Models</a>
+<li class="chapter" data-level="6.4" data-path="lab-5-predicting-diamond-prices.html"><a href="lab-5-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>6.4</b> Lab 5: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="6.5" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.5</b> Lab 5: Solutions</a></li>
+<li class="chapter" data-level="6.6" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.6</b> Extra Questions</a></li>
+<li class="chapter" data-level="6.7" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>6.7</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>7</b> Binary Outcome Models</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#linear-probability-model"><i class="fa fa-check"></i><b>5.4.1</b> Linear Probability Model</a></li>
-<li class="chapter" data-level="5.4.2" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#probit-and-logit"><i class="fa fa-check"></i><b>5.4.2</b> Probit and Logit</a></li>
-<li class="chapter" data-level="5.4.3" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#average-partial-effects"><i class="fa fa-check"></i><b>5.4.3</b> Average Partial Effects</a></li>
-<li class="chapter" data-level="5.4.4" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html#computation-10"><i class="fa fa-check"></i><b>5.4.4</b> Computation</a></li>
+<li class="chapter" data-level="7.1" data-path="linear-probability-model.html"><a href="linear-probability-model.html"><i class="fa fa-check"></i><b>7.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="7.2" data-path="probit-and-logit.html"><a href="probit-and-logit.html"><i class="fa fa-check"></i><b>7.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="7.3" data-path="average-partial-effects.html"><a href="average-partial-effects.html"><i class="fa fa-check"></i><b>7.3</b> Average Partial Effects</a></li>
+<li class="chapter" data-level="7.4" data-path="lab-6-estimating-binary-outcome-models.html"><a href="lab-6-estimating-binary-outcome-models.html"><i class="fa fa-check"></i><b>7.4</b> Lab 6: Estimating Binary Outcome Models</a></li>
+<li class="chapter" data-level="7.5" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>7.5</b> Coding Questions</a></li>
+<li class="chapter" data-level="7.6" data-path="extra-questions-4.html"><a href="extra-questions-4.html"><i class="fa fa-check"></i><b>7.6</b> Extra Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="lab-4-predicting-diamond-prices.html"><a href="lab-4-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>5.5</b> Lab 4: Predicting Diamond Prices</a></li>
-<li class="chapter" data-level="5.6" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.6</b> Lab 4: Solutions</a></li>
-<li class="chapter" data-level="5.7" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.7</b> Coding Questions</a></li>
-<li class="chapter" data-level="5.8" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.8</b> Extra Questions</a></li>
-<li class="chapter" data-level="5.9" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>5.9</b> Answers to Some Extra Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a>
+<li class="chapter" data-level="8" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>8</b> Causal Inference</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>6.1</b> Potential Outcomes</a></li>
-<li class="chapter" data-level="6.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>6.2</b> Parameters of Interest</a></li>
-<li class="chapter" data-level="6.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>6.3</b> Experiments</a>
+<li class="chapter" data-level="8.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>8.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="8.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>8.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="8.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>8.3</b> Experiments</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>6.3.1</b> Estimating ATT with a Regression</a></li>
-<li class="chapter" data-level="6.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>6.3.2</b> Internal and External Validity</a></li>
-<li class="chapter" data-level="6.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>6.3.3</b> Example: Project STAR</a></li>
+<li class="chapter" data-level="8.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>8.3.1</b> Estimating ATT with a Regression</a></li>
+<li class="chapter" data-level="8.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>8.3.2</b> Internal and External Validity</a></li>
+<li class="chapter" data-level="8.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>8.3.3</b> Example: Project STAR</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>6.4</b> Unconfoundedness</a></li>
-<li class="chapter" data-level="6.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>6.5</b> Panel Data Approaches</a>
+<li class="chapter" data-level="8.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>8.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="8.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>8.5</b> Panel Data Approaches</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>6.5.1</b> Difference in differences</a></li>
-<li class="chapter" data-level="6.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-11"><i class="fa fa-check"></i><b>6.5.2</b> Computation</a></li>
+<li class="chapter" data-level="8.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>8.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="8.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-10"><i class="fa fa-check"></i><b>8.5.2</b> Computation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>6.6</b> Instrumental Variables</a>
+<li class="chapter" data-level="8.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>8.6</b> Instrumental Variables</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>6.6.1</b> Example: Return to Education</a></li>
+<li class="chapter" data-level="8.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>8.6.1</b> Example: Return to Education</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>6.7</b> Regression Discontinuity</a>
+<li class="chapter" data-level="8.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>8.7</b> Regression Discontinuity</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>6.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
+<li class="chapter" data-level="8.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>8.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="lab-5-drunk-driving-laws.html"><a href="lab-5-drunk-driving-laws.html"><i class="fa fa-check"></i><b>6.8</b> Lab 5: Drunk Driving Laws</a></li>
-<li class="chapter" data-level="6.9" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.9</b> Lab 5: Solutions</a></li>
-<li class="chapter" data-level="6.10" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>6.10</b> Coding Questions</a></li>
-<li class="chapter" data-level="6.11" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.11</b> Extra Questions</a></li>
-<li class="chapter" data-level="6.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>6.12</b> Answers to Some Extra Questions</a></li>
+<li class="chapter" data-level="8.8" data-path="lab-7-drunk-driving-laws.html"><a href="lab-7-drunk-driving-laws.html"><i class="fa fa-check"></i><b>8.8</b> Lab 7: Drunk Driving Laws</a></li>
+<li class="chapter" data-level="8.9" data-path="lab-7-solutions.html"><a href="lab-7-solutions.html"><i class="fa fa-check"></i><b>8.9</b> Lab 7: Solutions</a></li>
+<li class="chapter" data-level="8.10" data-path="coding-questions-4.html"><a href="coding-questions-4.html"><i class="fa fa-check"></i><b>8.10</b> Coding Questions</a></li>
+<li class="chapter" data-level="8.11" data-path="extra-questions-5.html"><a href="extra-questions-5.html"><i class="fa fa-check"></i><b>8.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="8.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>8.12</b> Answers to Some Extra Questions</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -369,12 +380,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="binary-outcome-models" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Binary Outcome Models<a href="binary-outcome-models.html#binary-outcome-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="binary-outcome-models" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Topic 7</span> Binary Outcome Models<a href="binary-outcome-models.html#binary-outcome-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In addition to referenced material below, please read all of SW Ch. 11</p>
-<div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span> We are not necessarily so interested in prediction (though you can make predictions using the techniques we discuss below), but I find this a good spot to teach about binary outcome models before we conclude the course talking about causality</p>
-</div>
 <p>You may or may not have noticed this, but all the outcomes that we have considered so far have involved a continuous outcome. But lots of economic variables are discrete (we’ll mainly focus on binary outcomes). Examples:</p>
 <ul>
 <li><p>Labor force participation</p></li>
@@ -385,351 +393,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   \mathbb{E}[Y | X_1, X_2, X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
 \]</span>
 still make sense?</p>
+<p>We will see that, in many cases, it is more natural to use a <strong>nonlinear model</strong> when the outcome is binary. And, actually, nonlinear models are fairly common in economics. This section will thus also provide an introduction to estimating (and understanding) nonlinear models. In this section, we will not necessarily be so interested in prediction (though you can make predictions using the techniques we discuss below), but I find this a good spot to teach about binary outcome models (after we talk about prediction mainly emphasizing linear models and before we conclude the course talking about causality).</p>
 <ul>
 <li>Note: we have already included binary regressors and know how to interpret these, so this section is about binary outcomes rather than binary regressors</li>
 </ul>
-<div id="linear-probability-model" class="section level3 hasAnchor" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> Linear Probability Model<a href="binary-outcome-models.html#linear-probability-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>SW 11.1</p>
-<p>Let’s continue to consider</p>
-<p><span class="math display">\[
-  \mathbb{E}[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
-\]</span></p>
-<p>when <span class="math inline">\(Y\)</span> is binary. Of course, you can still run this regression.</p>
-<p>One thing that is helpful to notice before we really get started here is that when <span class="math inline">\(Y\)</span> is binary (so that either <span class="math inline">\(Y=0\)</span> or <span class="math inline">\(Y=1\)</span>)</p>
-<p><span class="math display">\[
-  \begin{aligned}
-  \mathbb{E}[Y] &amp;= \sum_{y \in \mathcal{Y}} y \mathrm{P}(Y=y) \\
-  &amp;= 0 \mathrm{P}(Y=0) + 1 \mathrm{P}(Y=1) \\
-  &amp;= \mathrm{P}(Y=1)
-  \end{aligned}
-\]</span>
-And exactly the same sort of argument implies that, when <span class="math inline">\(Y\)</span> is binary, <span class="math inline">\(\mathbb{E}[Y|X] = \mathrm{P}(Y=1|X)\)</span>. Thus, if we believe the model in the first part of this section, this result implies that</p>
-<p><span class="math display">\[
-  \mathrm{P}(Y=1|X_1,X_2,X_3) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
-\]</span>
-For this reason, the model in this section is called the <strong>linear probabilty model</strong>. Moreover, this further implies that we should interpret</p>
-<p><span class="math display">\[
-  \beta_1 = \frac{\partial \, \mathrm{P}(Y=1|X_1,X_2,X_3)}{\partial \, X_1}
-\]</span>
-as a partial effect. That is, <span class="math inline">\(\beta_1\)</span> is how much the probability that <span class="math inline">\(Y=1\)</span> changes when <span class="math inline">\(X_1\)</span> increases by one unit, holding <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> constant. This is good (and simple), but there are some drawbacks:</p>
-<ol style="list-style-type: decimal">
-<li><p>It’s possible to get non-sensical predictions (predicted probabilities that are less than 0 or greater than 1) with a linear probability model.</p></li>
-<li><p>A related problem is that the linear probability model implies constant partial effects. That is, the effect of a change in one regressor always changes the probability of <span class="math inline">\(Y=1\)</span> (holding other regressors constant) by the same amount. It may not be obvious that this is a disadvantage, but it is.</p></li>
-</ol>
-<div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 5.2  </strong></span>Let <span class="math inline">\(Y=1\)</span> if an individual participates in the labor force. Further let <span class="math inline">\(X_1=1\)</span> if an individual is male and 0 otherwise, <span class="math inline">\(X_2\)</span> denote an individual’s age, and <span class="math inline">\(X_3=1\)</span> for college graduates and 0 otherwise.</p>
-<p>Additionally, suppose that <span class="math inline">\(\beta_0=0.4, \beta_1=0.2, \beta_2=0.01, \beta_3=0.1\)</span>.</p>
-<p>Let’s calculate the probability of being in the labor force for a 40 year old woman who is not a college graduate. This is given by</p>
-<p><span class="math display">\[
-  \mathrm{P}(Y=1 | X_1=0, X_2=40, X_3=0) = 0.4 + (0.01)(40) = 0.8
-\]</span>
-In other words, we’d predict that, given these characteristics, the probability of being in the labor force is 0.8.</p>
-<p>Now, let’s calculate the probability of being in the labor force for a 40 year old man who is a college graduate. This is given by</p>
-<p><span class="math display">\[
-  \mathrm{P}(Y=1|X_1=1, X_2=40, X_3=1) = 0.4 + 0.2 + (0.01)(40) + 0.1 = 1.1
-\]</span>
-We have calculated that the predicted probability of being in the labor force, given these characteristics, is 1.1 — this makes no sense! Our maximum predicted probabilty should be 1.</p>
-<p>The problem of constant partial effect is closely related. Here, labor force participation is increasing in age, but with a binary outcome (by construction) the effect has to die off — for those who are already very likely to participate in the labor force (in this example, older men with a college education, the partial effect of age has to be low because they are already very likely to participate in the labor force).</p>
-</div>
-<p>We can circumvent both of the main problems with the linear probability model by consider <strong>nonlinear models</strong> for binary outcomes. By far the most common are <strong>probit</strong> and <strong>logit</strong>. We will discuss these next.</p>
-</div>
-<div id="probit-and-logit" class="section level3 hasAnchor" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> Probit and Logit<a href="binary-outcome-models.html#probit-and-logit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>SW 11.2, 11.3</p>
-<p>Let’s start this section with probit. A probit model arises from setting</p>
-<p><span class="math display">\[
-  \mathrm{P}(Y=1|X_1,X_2,X_3) = \Phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3)
-\]</span>
-where <span class="math inline">\(\Phi\)</span> is the cdf of a standard normal random variable. This is a nonlinear model due to <span class="math inline">\(\Phi\)</span> making the model nonlinear in parameters.</p>
-<p>Using <span class="math inline">\(\Phi\)</span> (or any cdf) here has a useful property that no matter what value the “index” <span class="math inline">\(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3\)</span> takes on, the cdf is always between 0 and 1. This implies that we cannot get predicted probabilities outside of 0 and 1.</p>
-<p>Thus, this circumvents the problems with the linear probability model. That said, there are some things we have to be careful about. First, as usual, we are interested in partial effects rather than the parameters themselves. But partial effects are more complicated here. Notice that</p>
-<p><span class="math display">\[
-  \begin{aligned}
-  \frac{ \partial \, P(Y=1|X_1,X_2,X_3)}{\partial \, X_1} &amp;= \frac{\partial \, \Phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3)}{\partial \, X_1} \\
-  &amp;= \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1
-  \end{aligned}
-\]</span>
-where <span class="math inline">\(\phi\)</span> is the pdf of a standard normal random variable. And the second equality requires using the chain rule — take the derivative of the “outside” (i.e., <span class="math inline">\(\Phi\)</span>) and then the derivative of the “inside” with respect to <span class="math inline">\(X_1\)</span>. Notice that this partial effect is more complicated that in the case of the linear models that we have mainly considered — it involves <span class="math inline">\(\phi\)</span>, but more importantly it also depends on the values of all the covariates. In other words, the partial effect of <span class="math inline">\(X_1\)</span> can vary across different values of <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>.</p>
-<p><strong>Logit</strong> is conceptually similar to probit, but instead of using <span class="math inline">\(\Phi\)</span>, Logit uses the logistic function <span class="math inline">\(\Lambda(z) = \frac{\exp(z)}{1+\exp(z)}\)</span>. The logistic function has the same important properties as <span class="math inline">\(\Phi\)</span>: (i) <span class="math inline">\(\Lambda(z)\)</span> is increasing in <span class="math inline">\(z\)</span>, (ii) <span class="math inline">\(\Lambda(z) \rightarrow 1\)</span> as <span class="math inline">\(z \rightarrow \infty\)</span>, and (iii) <span class="math inline">\(\Lambda(z) \rightarrow 0\)</span> as <span class="math inline">\(z \rightarrow -\infty\)</span>. Thus, in a logit model,</p>
-<p><span class="math display">\[
-  \begin{aligned}
-  \mathrm{P}(Y=1 | X_1, X_2, X_3) &amp;= \Lambda(\beta_0 + \beta_1 X_1 + \beta_2 + \beta_3 X_3) \\
-  &amp;= \frac{\exp(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3)}{1+\exp(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3)}
-  \end{aligned}
-\]</span></p>
-<p><strong>Estimation</strong></p>
-<p>Because probit and logit models are nonlinear, estimation is more complicated than for the linear regression models that we were studying before. In particular, we cannot write down a formula like <span class="math inline">\(\hat{\beta}_1 = \textrm{something}\)</span>.</p>
-<p>Instead, probit and logit models are typically esetimated through an approach called <strong>maximum likelihood estimation</strong>. Basically, the computer will solve an optimization problem trying to choose the “most likely” values of the parameters given the data that you have. It turns out that this particular optimization problem is actually quite easy for the computer to solve — even though estimating the parameters is more complicated than for linear regression, it will still feel like <code>R</code> can estimate a probit or logit model pretty much instantly.</p>
-</div>
-<div id="average-partial-effects" class="section level3 hasAnchor" number="5.4.3">
-<h3><span class="header-section-number">5.4.3</span> Average Partial Effects<a href="binary-outcome-models.html#average-partial-effects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>One of the complications with Probit and Logit is that it is not so simple to interpret the estimated parameters.</p>
-<p>Remember we are generally interested in partial effects, not the parameters themselves. It just so happens that in many of the linear models that we have considered so far the <span class="math inline">\(\beta\)</span>’s correspond to the partial effect — this means that it is sometimes easy to forget that they are not what we are typically most interested in.</p>
-<p>This is helpful framing for thinking about how to interpret the results from a Probit or Logit model.</p>
-<p>Let’s focus on the Probit model. In that case,
-<span class="math display">\[\begin{align*}
-  \mathrm{P}(Y=1|X_1,X_2,X_3) = \Phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3)
-\end{align*}\]</span>
-where <span class="math inline">\(\Phi\)</span> is the cdf of standard normal random variable.</p>
-<p><em>Continuous Case</em>: When <span class="math inline">\(X_1\)</span> is continuous, the partial effect of <span class="math inline">\(X_1\)</span> is given by
-<span class="math display">\[\begin{align*}
-  \frac{\partial \mathrm{P}(Y=1|X_1,X_2,X_3)}{\partial X_1} = \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1
-\end{align*}\]</span>
-where <span class="math inline">\(\phi\)</span> is the pdf of a standard normal random variable. This is more complicated than the partial effect in the context of a linear model. It depends on <span class="math inline">\(\phi\)</span> (which looks complicated, but you can just use <code>R</code>’s <code>dnorm</code> command to handle that part). More importantly, the partial effect depends on the values of <span class="math inline">\(X_1,X_2,\)</span> and <span class="math inline">\(X_3\)</span>. [As discussed above, this is likely a good thing in the context of a binary outcome model]. Thus, in order to get a partial effect, we need to put in some values for these. If you have particular values of the covariates that you are interested in, you can definitely do that, but my general suggestion is to report the <em>Average Partial Effect</em>:
-<span class="math display">\[\begin{align*}
-  APE &amp;= \mathbb{E}\left[ \frac{\partial \mathrm{P}(Y=1|X_1,X_2,X_3)}{\partial X_1} \right] \\
-  &amp;= \mathbb{E}\left[ \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1 \right]
-\end{align*}\]</span>
-which you can estimate by
-<span class="math display">\[\begin{align*}
-  \widehat{APE} &amp;= \frac{1}{n} \sum_{i=1}^n \phi(\hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3) \hat{\beta}_1
-\end{align*}\]</span>
-which amounts to just computing the partial effect at each value of the covariates in your data and then averaging these partial effects together. This can be a bit cumbersome to do in practice, and it is often convenient to use the <code>R</code> package <code>mfx</code> to compute these sorts of average partial effects for you.</p>
-<p><em>Discrete/Binary Case</em>: When <span class="math inline">\(X_1\)</span> is discrete (let’s say binary, but extention to discrete is straightforward), the partial effect of <span class="math inline">\(X_1\)</span> is
-<span class="math display">\[\begin{align*}
-  &amp; \mathrm{P}(Y=1|X_1=1, X_2, X_3) - \mathrm{P}(Y=1|X_1=0, X_2, X_3) \\
-  &amp;\hspace{100pt} = \Phi(\beta_0 + \beta_1 + \beta_2 X_2 + \beta_3 X_3) - \Phi(\beta_0 + \beta_2 X_2 + \beta_3 X_3)
-\end{align*}\]</span>
-Notice that <span class="math inline">\(\beta_1\)</span> does not show up in the last term. As above, the partial effect depends on the values of <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> which suggests reporting an <span class="math inline">\(APE\)</span> as above (follows the same steps, just replacing the partial effect, as in the continuous case above)</p>
-<ul>
-<li>Extensions to Logit are virtually identical, just replace <span class="math inline">\(\Phi\)</span> with <span class="math inline">\(\Lambda\)</span> and <span class="math inline">\(\phi\)</span> with <span class="math inline">\(\lambda\)</span>.</li>
-</ul>
-<div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span> The parameters from LPM, Probit, and Logit could be quite different (in fact, they are quite different by construction), but APE’s are often very similar.</p>
-</div>
-</div>
-<div id="computation-10" class="section level3 hasAnchor" number="5.4.4">
-<h3><span class="header-section-number">5.4.4</span> Computation<a href="binary-outcome-models.html#computation-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In this section, I’ll demonstrate how to estimate and interpret binary outcome models using the <code>titanic_training</code> data. The outcome for this data is <code>Survived</code> which is a binary variable indicating whether a particular passenger survived the Titanic wreck. We’ll estimate models that also include passenger class (<code>Pclass</code>), passenger’s sex, and passenger’s age.</p>
-<p>The main <code>R</code> function for estimating binary outcome models is the <code>glm</code> function (this stands for “generalized linear model”). The syntax is very similar to the syntax for the <code>lm</code> command, so much of what we do below will feel feel familiar. We’ll also use the <code>probitmfx</code> and <code>logitmfx</code> functions from the <code>mfx</code> package to compute partial effects.</p>
-<p><strong>Linear Probability Model</strong></p>
-<p>We’ll start by estimating a linear probability model.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="binary-outcome-models.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data</span></span>
-<span id="cb139-2"><a href="binary-outcome-models.html#cb139-2" aria-hidden="true" tabindex="-1"></a>titanic_train <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/titanic_training.csv&quot;</span>)</span>
-<span id="cb139-3"><a href="binary-outcome-models.html#cb139-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-4"><a href="binary-outcome-models.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="co"># linear probability model</span></span>
-<span id="cb139-5"><a href="binary-outcome-models.html#cb139-5" aria-hidden="true" tabindex="-1"></a>lpm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> </span>
-<span id="cb139-6"><a href="binary-outcome-models.html#cb139-6" aria-hidden="true" tabindex="-1"></a>            Sex <span class="sc">+</span> Age, </span>
-<span id="cb139-7"><a href="binary-outcome-models.html#cb139-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span>titanic_train)</span>
-<span id="cb139-8"><a href="binary-outcome-models.html#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lpm)</span>
-<span id="cb139-9"><a href="binary-outcome-models.html#cb139-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb139-10"><a href="binary-outcome-models.html#cb139-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb139-11"><a href="binary-outcome-models.html#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = Survived ~ as.factor(Pclass) + Sex + Age, data = titanic_train)</span></span>
-<span id="cb139-12"><a href="binary-outcome-models.html#cb139-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb139-13"><a href="binary-outcome-models.html#cb139-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb139-14"><a href="binary-outcome-models.html#cb139-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
-<span id="cb139-15"><a href="binary-outcome-models.html#cb139-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -1.05638 -0.26294 -0.07656  0.21103  0.98057 </span></span>
-<span id="cb139-16"><a href="binary-outcome-models.html#cb139-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb139-17"><a href="binary-outcome-models.html#cb139-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb139-18"><a href="binary-outcome-models.html#cb139-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb139-19"><a href="binary-outcome-models.html#cb139-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)         1.065516   0.061481  17.331  &lt; 2e-16</span></span>
-<span id="cb139-20"><a href="binary-outcome-models.html#cb139-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.148575   0.050593  -2.937 0.003472</span></span>
-<span id="cb139-21"><a href="binary-outcome-models.html#cb139-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.349809   0.046462  -7.529 2.44e-13</span></span>
-<span id="cb139-22"><a href="binary-outcome-models.html#cb139-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.490605   0.037330 -13.143  &lt; 2e-16</span></span>
-<span id="cb139-23"><a href="binary-outcome-models.html#cb139-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.004570   0.001317  -3.471 0.000564</span></span>
-<span id="cb139-24"><a href="binary-outcome-models.html#cb139-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       </span></span>
-<span id="cb139-25"><a href="binary-outcome-models.html#cb139-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)        ***</span></span>
-<span id="cb139-26"><a href="binary-outcome-models.html#cb139-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 ** </span></span>
-<span id="cb139-27"><a href="binary-outcome-models.html#cb139-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 ***</span></span>
-<span id="cb139-28"><a href="binary-outcome-models.html#cb139-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            ***</span></span>
-<span id="cb139-29"><a href="binary-outcome-models.html#cb139-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                ***</span></span>
-<span id="cb139-30"><a href="binary-outcome-models.html#cb139-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb139-31"><a href="binary-outcome-models.html#cb139-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb139-32"><a href="binary-outcome-models.html#cb139-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb139-33"><a href="binary-outcome-models.html#cb139-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb139-34"><a href="binary-outcome-models.html#cb139-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.3915 on 495 degrees of freedom</span></span>
-<span id="cb139-35"><a href="binary-outcome-models.html#cb139-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.3747, Adjusted R-squared:  0.3696 </span></span>
-<span id="cb139-36"><a href="binary-outcome-models.html#cb139-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; F-statistic: 74.14 on 4 and 495 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
-<p>Let’s quickly interpret a couple of these parameters. Recall that these can all be directly interpreted as partial effects on the probability of surviving the Titanic wreck. For example, these estimates indicate that third class passengers were about 33% less likely to survive on average than first class passengers controlling for passenger’s sex and age.</p>
-<p>The other thing that jumps out is passenger’s sex. These estimates indicate that men were, on average, 49% less likely to survive the Titanic wreck than women after controlling for passenger class, and age.</p>
-<p>Before we move on, let’s compute a couple of predicted probabilities.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="binary-outcome-models.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># young, first class, female</span></span>
-<span id="cb140-2"><a href="binary-outcome-models.html#cb140-2" aria-hidden="true" tabindex="-1"></a>pred_df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pclass=</span><span class="dv">1</span>, <span class="at">Sex=</span><span class="st">&quot;female&quot;</span>, <span class="at">Age=</span><span class="dv">25</span>, <span class="at">Embarked=</span><span class="st">&quot;S&quot;</span>)</span>
-<span id="cb140-3"><a href="binary-outcome-models.html#cb140-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-4"><a href="binary-outcome-models.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="co"># old, third class, male</span></span>
-<span id="cb140-5"><a href="binary-outcome-models.html#cb140-5" aria-hidden="true" tabindex="-1"></a>pred_df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pclass=</span><span class="dv">3</span>, <span class="at">Sex=</span><span class="st">&quot;male&quot;</span>, <span class="at">Age=</span><span class="dv">55</span>, <span class="at">Embarked=</span><span class="st">&quot;S&quot;</span>)</span>
-<span id="cb140-6"><a href="binary-outcome-models.html#cb140-6" aria-hidden="true" tabindex="-1"></a>pred_df <span class="ot">&lt;-</span> <span class="fu">rbind.data.frame</span>(pred_df1, pred_df2)</span>
-<span id="cb140-7"><a href="binary-outcome-models.html#cb140-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">predict</span>(lpm, <span class="at">newdata=</span>pred_df), <span class="dv">3</span>)</span>
-<span id="cb140-8"><a href="binary-outcome-models.html#cb140-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      1      2 </span></span>
-<span id="cb140-9"><a href="binary-outcome-models.html#cb140-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.951 -0.026</span></span></code></pre></div>
-<p>This illustrates that there were very large differences in survival probabilities. It also demonstrates that the linear probability model can deliver non-sensical predictions — we predict the survival probability of a 55 year old, male, third-class passenger to be -3%.</p>
-<p><strong>Estimating Probit and Logit Models</strong></p>
-<p>Let’s estimate Probit and Logit models using the same specifications. First, Probit:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="binary-outcome-models.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probit</span></span>
-<span id="cb141-2"><a href="binary-outcome-models.html#cb141-2" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age <span class="sc">+</span> <span class="fu">as.factor</span>(Embarked), </span>
-<span id="cb141-3"><a href="binary-outcome-models.html#cb141-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;probit&quot;</span>), </span>
-<span id="cb141-4"><a href="binary-outcome-models.html#cb141-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>titanic_train)</span>
-<span id="cb141-5"><a href="binary-outcome-models.html#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(probit)</span>
-<span id="cb141-6"><a href="binary-outcome-models.html#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-7"><a href="binary-outcome-models.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb141-8"><a href="binary-outcome-models.html#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; glm(formula = Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), </span></span>
-<span id="cb141-9"><a href="binary-outcome-models.html#cb141-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     family = binomial(link = &quot;probit&quot;), data = titanic_train)</span></span>
-<span id="cb141-10"><a href="binary-outcome-models.html#cb141-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-11"><a href="binary-outcome-models.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Deviance Residuals: </span></span>
-<span id="cb141-12"><a href="binary-outcome-models.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb141-13"><a href="binary-outcome-models.html#cb141-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.5145  -0.7433  -0.4397   0.6560   2.3799  </span></span>
-<span id="cb141-14"><a href="binary-outcome-models.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-15"><a href="binary-outcome-models.html#cb141-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb141-16"><a href="binary-outcome-models.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate Std. Error z value Pr(&gt;|z|)</span></span>
-<span id="cb141-17"><a href="binary-outcome-models.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)            5.418219 146.954198   0.037  0.97059</span></span>
-<span id="cb141-18"><a href="binary-outcome-models.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -0.445235   0.197398  -2.256  0.02410</span></span>
-<span id="cb141-19"><a href="binary-outcome-models.html#cb141-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -1.145788   0.188508  -6.078 1.22e-09</span></span>
-<span id="cb141-20"><a href="binary-outcome-models.html#cb141-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale               -1.464201   0.136512 -10.726  &lt; 2e-16</span></span>
-<span id="cb141-21"><a href="binary-outcome-models.html#cb141-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -0.015764   0.005009  -3.147  0.00165</span></span>
-<span id="cb141-22"><a href="binary-outcome-models.html#cb141-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C  -3.443295 146.954199  -0.023  0.98131</span></span>
-<span id="cb141-23"><a href="binary-outcome-models.html#cb141-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q  -3.464431 146.954544  -0.024  0.98119</span></span>
-<span id="cb141-24"><a href="binary-outcome-models.html#cb141-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S  -3.662911 146.954180  -0.025  0.98011</span></span>
-<span id="cb141-25"><a href="binary-outcome-models.html#cb141-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         </span></span>
-<span id="cb141-26"><a href="binary-outcome-models.html#cb141-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)             </span></span>
-<span id="cb141-27"><a href="binary-outcome-models.html#cb141-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2   *  </span></span>
-<span id="cb141-28"><a href="binary-outcome-models.html#cb141-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3   ***</span></span>
-<span id="cb141-29"><a href="binary-outcome-models.html#cb141-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale              ***</span></span>
-<span id="cb141-30"><a href="binary-outcome-models.html#cb141-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                  ** </span></span>
-<span id="cb141-31"><a href="binary-outcome-models.html#cb141-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C    </span></span>
-<span id="cb141-32"><a href="binary-outcome-models.html#cb141-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q    </span></span>
-<span id="cb141-33"><a href="binary-outcome-models.html#cb141-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S    </span></span>
-<span id="cb141-34"><a href="binary-outcome-models.html#cb141-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb141-35"><a href="binary-outcome-models.html#cb141-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb141-36"><a href="binary-outcome-models.html#cb141-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb141-37"><a href="binary-outcome-models.html#cb141-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-38"><a href="binary-outcome-models.html#cb141-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb141-39"><a href="binary-outcome-models.html#cb141-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-40"><a href="binary-outcome-models.html#cb141-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Null deviance: 678.28  on 499  degrees of freedom</span></span>
-<span id="cb141-41"><a href="binary-outcome-models.html#cb141-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual deviance: 468.38  on 492  degrees of freedom</span></span>
-<span id="cb141-42"><a href="binary-outcome-models.html#cb141-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AIC: 484.38</span></span>
-<span id="cb141-43"><a href="binary-outcome-models.html#cb141-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb141-44"><a href="binary-outcome-models.html#cb141-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of Fisher Scoring iterations: 12</span></span></code></pre></div>
-<p>Now, Logit:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="binary-outcome-models.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logit</span></span>
-<span id="cb142-2"><a href="binary-outcome-models.html#cb142-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age <span class="sc">+</span> <span class="fu">as.factor</span>(Embarked), </span>
-<span id="cb142-3"><a href="binary-outcome-models.html#cb142-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">&quot;logit&quot;</span>), </span>
-<span id="cb142-4"><a href="binary-outcome-models.html#cb142-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>titanic_train)</span>
-<span id="cb142-5"><a href="binary-outcome-models.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit)</span>
-<span id="cb142-6"><a href="binary-outcome-models.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-7"><a href="binary-outcome-models.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb142-8"><a href="binary-outcome-models.html#cb142-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; glm(formula = Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), </span></span>
-<span id="cb142-9"><a href="binary-outcome-models.html#cb142-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     family = binomial(link = &quot;logit&quot;), data = titanic_train)</span></span>
-<span id="cb142-10"><a href="binary-outcome-models.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-11"><a href="binary-outcome-models.html#cb142-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Deviance Residuals: </span></span>
-<span id="cb142-12"><a href="binary-outcome-models.html#cb142-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></span>
-<span id="cb142-13"><a href="binary-outcome-models.html#cb142-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -2.4680  -0.7289  -0.4336   0.6471   2.3689  </span></span>
-<span id="cb142-14"><a href="binary-outcome-models.html#cb142-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-15"><a href="binary-outcome-models.html#cb142-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb142-16"><a href="binary-outcome-models.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate Std. Error z value Pr(&gt;|z|)</span></span>
-<span id="cb142-17"><a href="binary-outcome-models.html#cb142-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)           14.646649 535.411272   0.027  0.97818</span></span>
-<span id="cb142-18"><a href="binary-outcome-models.html#cb142-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2    -0.793003   0.342058  -2.318  0.02043</span></span>
-<span id="cb142-19"><a href="binary-outcome-models.html#cb142-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3    -2.055828   0.335386  -6.130  8.8e-10</span></span>
-<span id="cb142-20"><a href="binary-outcome-models.html#cb142-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale               -2.461563   0.241113 -10.209  &lt; 2e-16</span></span>
-<span id="cb142-21"><a href="binary-outcome-models.html#cb142-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                   -0.028436   0.008764  -3.245  0.00118</span></span>
-<span id="cb142-22"><a href="binary-outcome-models.html#cb142-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C -11.262004 535.411276  -0.021  0.98322</span></span>
-<span id="cb142-23"><a href="binary-outcome-models.html#cb142-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q -11.229232 535.411568  -0.021  0.98327</span></span>
-<span id="cb142-24"><a href="binary-outcome-models.html#cb142-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S -11.593053 535.411259  -0.022  0.98273</span></span>
-<span id="cb142-25"><a href="binary-outcome-models.html#cb142-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         </span></span>
-<span id="cb142-26"><a href="binary-outcome-models.html#cb142-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)             </span></span>
-<span id="cb142-27"><a href="binary-outcome-models.html#cb142-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2   *  </span></span>
-<span id="cb142-28"><a href="binary-outcome-models.html#cb142-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3   ***</span></span>
-<span id="cb142-29"><a href="binary-outcome-models.html#cb142-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale              ***</span></span>
-<span id="cb142-30"><a href="binary-outcome-models.html#cb142-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                  ** </span></span>
-<span id="cb142-31"><a href="binary-outcome-models.html#cb142-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)C    </span></span>
-<span id="cb142-32"><a href="binary-outcome-models.html#cb142-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)Q    </span></span>
-<span id="cb142-33"><a href="binary-outcome-models.html#cb142-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Embarked)S    </span></span>
-<span id="cb142-34"><a href="binary-outcome-models.html#cb142-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb142-35"><a href="binary-outcome-models.html#cb142-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb142-36"><a href="binary-outcome-models.html#cb142-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb142-37"><a href="binary-outcome-models.html#cb142-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-38"><a href="binary-outcome-models.html#cb142-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span id="cb142-39"><a href="binary-outcome-models.html#cb142-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-40"><a href="binary-outcome-models.html#cb142-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Null deviance: 678.28  on 499  degrees of freedom</span></span>
-<span id="cb142-41"><a href="binary-outcome-models.html#cb142-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residual deviance: 467.01  on 492  degrees of freedom</span></span>
-<span id="cb142-42"><a href="binary-outcome-models.html#cb142-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; AIC: 483.01</span></span>
-<span id="cb142-43"><a href="binary-outcome-models.html#cb142-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb142-44"><a href="binary-outcome-models.html#cb142-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Number of Fisher Scoring iterations: 12</span></span></code></pre></div>
-<p>It’s rather hard to interpret the parameters in both of these models (let’s defer this to the next section). But it is worth mentioning that all of the estimated coefficients have the same sign for the linear probability model, the probit model, and the logit model, and the same set of regressors have statistically significant effects across models (and the t-statistics/p-values are very similar across models).</p>
-<p>Now, let’s calculate the same predicted probabilities as we did for the linear probability model above:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="binary-outcome-models.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for probit</span></span>
-<span id="cb143-2"><a href="binary-outcome-models.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(probit, <span class="at">newdata=</span>pred_df, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
-<span id="cb143-3"><a href="binary-outcome-models.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          1          2 </span></span>
-<span id="cb143-4"><a href="binary-outcome-models.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.91327666 0.04256272</span></span>
-<span id="cb143-5"><a href="binary-outcome-models.html#cb143-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-6"><a href="binary-outcome-models.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="co"># for logit</span></span>
-<span id="cb143-7"><a href="binary-outcome-models.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(logit, <span class="at">newdata=</span>pred_df, <span class="at">type=</span><span class="st">&quot;response&quot;</span>)</span>
-<span id="cb143-8"><a href="binary-outcome-models.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          1          2 </span></span>
-<span id="cb143-9"><a href="binary-outcome-models.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0.91235117 0.04618584</span></span></code></pre></div>
-<p>Before we interpret the result, notice that we add the argument <code>type=response</code> (this indicates that we want to get a predicted probability).</p>
-<p>Here (for both models), we estimate that a 25 year old woman traveling first class has a 91% probability of survival (this is slightly smaller than the prediction from the linear probability model). On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.3% (from probit) or 4.6% (from logit) probability of survival. While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.</p>
-<p><strong>Average Partial Effects</strong></p>
-<p>To conclude this section, let’s calculate average partial effects for each model. First, for probit:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="binary-outcome-models.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
-<span id="cb144-2"><a href="binary-outcome-models.html#cb144-2" aria-hidden="true" tabindex="-1"></a>probit_ape <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
-<span id="cb144-3"><a href="binary-outcome-models.html#cb144-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>titanic_train, </span>
-<span id="cb144-4"><a href="binary-outcome-models.html#cb144-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">atmean=</span><span class="cn">FALSE</span>)</span>
-<span id="cb144-5"><a href="binary-outcome-models.html#cb144-5" aria-hidden="true" tabindex="-1"></a>probit_ape</span>
-<span id="cb144-6"><a href="binary-outcome-models.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb144-7"><a href="binary-outcome-models.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; probitmfx(formula = Survived ~ as.factor(Pclass) + Sex + Age, </span></span>
-<span id="cb144-8"><a href="binary-outcome-models.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = titanic_train, atmean = FALSE)</span></span>
-<span id="cb144-9"><a href="binary-outcome-models.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb144-10"><a href="binary-outcome-models.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Marginal Effects:</span></span>
-<span id="cb144-11"><a href="binary-outcome-models.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         dF/dx  Std. Err.        z     P&gt;|z|</span></span>
-<span id="cb144-12"><a href="binary-outcome-models.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.1303971  0.0424994  -3.0682 0.0021534</span></span>
-<span id="cb144-13"><a href="binary-outcome-models.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.3438262  0.0470404  -7.3092 2.688e-13</span></span>
-<span id="cb144-14"><a href="binary-outcome-models.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.4895845  0.0412840 -11.8590 &lt; 2.2e-16</span></span>
-<span id="cb144-15"><a href="binary-outcome-models.html#cb144-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.0042614  0.0012934  -3.2948 0.0009851</span></span>
-<span id="cb144-16"><a href="binary-outcome-models.html#cb144-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       </span></span>
-<span id="cb144-17"><a href="binary-outcome-models.html#cb144-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 ** </span></span>
-<span id="cb144-18"><a href="binary-outcome-models.html#cb144-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 ***</span></span>
-<span id="cb144-19"><a href="binary-outcome-models.html#cb144-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            ***</span></span>
-<span id="cb144-20"><a href="binary-outcome-models.html#cb144-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                ***</span></span>
-<span id="cb144-21"><a href="binary-outcome-models.html#cb144-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb144-22"><a href="binary-outcome-models.html#cb144-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb144-23"><a href="binary-outcome-models.html#cb144-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb144-24"><a href="binary-outcome-models.html#cb144-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb144-25"><a href="binary-outcome-models.html#cb144-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dF/dx is for discrete change for the following variables:</span></span>
-<span id="cb144-26"><a href="binary-outcome-models.html#cb144-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb144-27"><a href="binary-outcome-models.html#cb144-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;as.factor(Pclass)2&quot; &quot;as.factor(Pclass)3&quot;</span></span>
-<span id="cb144-28"><a href="binary-outcome-models.html#cb144-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Sexmale&quot;</span></span></code></pre></div>
-<p>Now, for logit:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="binary-outcome-models.html#cb145-1" aria-hidden="true" tabindex="-1"></a>logit_ape <span class="ot">&lt;-</span> <span class="fu">logitmfx</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
-<span id="cb145-2"><a href="binary-outcome-models.html#cb145-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>titanic_train, </span>
-<span id="cb145-3"><a href="binary-outcome-models.html#cb145-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">atmean=</span><span class="cn">FALSE</span>)</span>
-<span id="cb145-4"><a href="binary-outcome-models.html#cb145-4" aria-hidden="true" tabindex="-1"></a>logit_ape</span>
-<span id="cb145-5"><a href="binary-outcome-models.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb145-6"><a href="binary-outcome-models.html#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; logitmfx(formula = Survived ~ as.factor(Pclass) + Sex + Age, </span></span>
-<span id="cb145-7"><a href="binary-outcome-models.html#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     data = titanic_train, atmean = FALSE)</span></span>
-<span id="cb145-8"><a href="binary-outcome-models.html#cb145-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb145-9"><a href="binary-outcome-models.html#cb145-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Marginal Effects:</span></span>
-<span id="cb145-10"><a href="binary-outcome-models.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         dF/dx  Std. Err.        z     P&gt;|z|</span></span>
-<span id="cb145-11"><a href="binary-outcome-models.html#cb145-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 -0.1304383  0.0420444  -3.1024  0.001920</span></span>
-<span id="cb145-12"><a href="binary-outcome-models.html#cb145-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 -0.3542499  0.0474154  -7.4712 7.947e-14</span></span>
-<span id="cb145-13"><a href="binary-outcome-models.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            -0.4859890  0.0413167 -11.7625 &lt; 2.2e-16</span></span>
-<span id="cb145-14"><a href="binary-outcome-models.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                -0.0044098  0.0014205  -3.1045  0.001906</span></span>
-<span id="cb145-15"><a href="binary-outcome-models.html#cb145-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       </span></span>
-<span id="cb145-16"><a href="binary-outcome-models.html#cb145-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)2 ** </span></span>
-<span id="cb145-17"><a href="binary-outcome-models.html#cb145-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; as.factor(Pclass)3 ***</span></span>
-<span id="cb145-18"><a href="binary-outcome-models.html#cb145-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sexmale            ***</span></span>
-<span id="cb145-19"><a href="binary-outcome-models.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Age                ** </span></span>
-<span id="cb145-20"><a href="binary-outcome-models.html#cb145-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb145-21"><a href="binary-outcome-models.html#cb145-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb145-22"><a href="binary-outcome-models.html#cb145-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb145-23"><a href="binary-outcome-models.html#cb145-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb145-24"><a href="binary-outcome-models.html#cb145-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; dF/dx is for discrete change for the following variables:</span></span>
-<span id="cb145-25"><a href="binary-outcome-models.html#cb145-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb145-26"><a href="binary-outcome-models.html#cb145-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;as.factor(Pclass)2&quot; &quot;as.factor(Pclass)3&quot;</span></span>
-<span id="cb145-27"><a href="binary-outcome-models.html#cb145-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;Sexmale&quot;</span></span></code></pre></div>
-<p>A couple of things to notice:</p>
-<ul>
-<li><p>The average partial effects are extremely similar across models. For example, across all three models, the average partial effect of being <code>male</code> is to reduce the probability of survival by 49% controlling for the other variables in the model. The other average partial effects are quite similar across models as well.</p></li>
-<li><p>Both <code>probitmfx</code> and <code>logitmfx</code> functions took in an argument for <code>atmean</code>. We set it equal to <code>FALSE</code>. If you set it equal to <code>TRUE</code>, you will compute a different kind of partial effect. You can check <code>?probitmfx</code> or <code>?logitmfx</code> for more details.</p></li>
-</ul>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="machine-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-4-predicting-diamond-prices.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="answers-to-some-extra-questions-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-probability-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -789,7 +464,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -1,7 +1,3 @@
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\var}{\mathrm{var}}
-\newcommand{\cov}{\mathrm{cov}}
-
 # Statistical Programming
 
 We will learn a lot more about statistical programming this semester, but we'll start with a crash course on `R` with the idea of getting you up-and-running.

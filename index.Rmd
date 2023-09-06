@@ -10,8 +10,7 @@ bibliography:
 - packages.bib
 biblio-style: apalike
 link-citations: yes
-description: This is a set of supplementary notes and additional references for ECON
-  4750.
+description: This is a set of supplementary notes and additional references for ECON 4750.
 ---
 
 # Introduction
@@ -24,23 +23,24 @@ description: This is a set of supplementary notes and additional references for 
 \newcommand{\Corr}{\mathrm{corr}}
 \newcommand{\corr}{\mathrm{corr}}
 \renewcommand{\P}{\mathrm{P}}
+\newcommand{\independent}{\perp}
 
 
 ```{r setup, echo=FALSE}
   knitr::opts_chunk$set(comment="#>", collapse=TRUE)
+
+  course_website_link <- "http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/"
 ```
 
-These are a set of detailed course notes for ECON 4750 at UGA.  They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1) textbook that we use in class.
+These are a set of detailed course notes for ECON 4750 at UGA.  They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1) textbook serves as the other main reference for the course.
 
-They are a work in progress, so it is possible that there are some mistakes (if you find any, please let me know).  That said, I hope you will find this to be a useful resource this semester.
+These notes have improved drastically over the course of several years.  However, they are a work in progress and have not been professionally edited or anything like that...so it is possible that there are some mistakes (if you find any, please let me know).  That said, I hope you will find this to be a useful resource this semester.
 
 ## What is this? 
 
-Short answer: I'm not exactly sure, but you can think of this material as being similar to:
+In previous years, I used to provide these notes as supplementary material for the textbook.  Now, I think that there is enough detail here that it can be used as a main reference for the course. And, for example, there are several topics that we will cover in class in substantially more detail than in the textbook. 
 
-* Supplementary Notes --- there are several topics that we will cover in class in substantially more detail than in the textbook.  A big chunk of the material provided here can be seen as additional reference material for topics not covered in depth in the textbook.  
-
-* Quasi-Study Guide --- Another main chunk of the material provided here is a course outline (should be close to the order that we cover in class) along with cross-references to the corresponding section in the textbook.  For some topics here, I provide substantially less detail than the book; this may help you when it comes to studying as it may give you a sense of the material I see as being most important.  In addition, there are additional practice questions (some with answers) provided at the end of each section.
+The material provided here can also be useful as a quasi-study guide.  In particular, the notes cover pretty much exactly what we will be able to cover in a one semester course.  In some ways, covering less material relative to the textbook can (in my view) make things easier for students.  The notes also provide cross-references to the corresponding section in the textbook.  For some topics here, I provide substantially less detail than the book; this may help you when it comes to studying as it may give you a sense of the material I see as being most important.  In addition, there are additional practice questions (some with answers) provided at the end of each section.
 
 ## What is this not?
 
@@ -48,7 +48,7 @@ There are a couple of things that I want to explicitly say that this material is
 
 * A substitute for coming to class --- I will take attendance anyway, but not attending class and relying on this material is not a good plan.  Please do not do this.  
 
-* A substitute for the textbook --- In a number of places, the textbook contains substantially more details than I am able to provide here.  In my experience, it is also useful to have different "voices" that you can refer to (e.g., you may find my explanation unclear but may find the textbook much clearer).
+* A full substitute for the textbook --- In a number of places, the textbook contains substantially more details than I am able to provide here.  In my experience, it is also useful to have different "voices" that you can refer to (e.g., you may find my explanation unclear but may find the textbook much clearer).  The textbook also contains substantially more material than what I provide in these notes.  If there are additional topics in the textbook that we do not cover that you would like to learn about, these should all be understandable for you by the end of this semester.
 
 * Sufficient for making good grades on exams --- I don't suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams.  I think this material should be helpful and perhaps even a good starting point when it comes to studying, but it is not sufficient for making a good grade in the class.
 
@@ -84,7 +84,7 @@ There are tons of free R resources available online.  Here are some that seem pa
 
 I have three high level goals --- that by the end of the semester, students should be able to 
 
-1. Run regressions and be able to interpret them, even complex regressions
+1. Run regressions and be able to interpret them (this includes even complex regressions) and also be able to think through which regression you *ought* to run
 
 2. Use data in order to be able to predict outcomes of interest
 
@@ -105,14 +105,16 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
 ## Data Used in the Course
 
+The following provides the full list of data that we will use this semester.  Some of the links below are to data posted on my website; others point to data hosted externally (if you notice any broken links, please let me know).
+
 
 - `acs`
 
     - Data from the 2019 American Community Survey about Education and Earnings
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
 
 - `Airq`
 
@@ -134,15 +136,15 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Data about bank closures in Mississippi during the Great Depression 
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
 
 - `Birthweight_Smoking`
 
     - Data about infant birthweights and mother's smoking from PA 1989
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
     - Description: [Mark Watson's website](https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf)
 
@@ -158,7 +160,7 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Data about diamond prices.  The full version of this data I got from Kaggle, and then I split it into training and testing data.
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
     - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
 
@@ -166,7 +168,7 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Out of sample version of `diamond_train` data
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
     - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
 
@@ -190,39 +192,39 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Country-level data about fertilizer and crop yields from the year 2000.  See description of `fertilizer_panel` below for more details
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
     
 - `fertilizer_panel`
 
     - Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries.  This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. "Fertilizing growth: Agricultural inputs and their effects in economic development." Journal of Development Economics 127 (2017): 133-152. url: [https://doi.org/10.1016/j.jdeveco.2017.02.007](https://doi.org/10.1016/j.jdeveco.2017.02.007).
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
     
 - `house`
 
     - U.S. House of Representatives elections data from 1946-1998
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
 
 - `intergenerational_mobility`
 
     - Intergenerational mobility data from PSID
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
     
 - `Lead_Mortality`
 
     - Infant mortality and lead pipes in 1900
     
-    - Access: Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: Access: [Course Website](`r course_website_link`)
     
     - Description: [Mark Watson's website](http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf)
 
@@ -230,9 +232,9 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Car accident deaths by age group
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
 
 - `mroz`
 
@@ -246,17 +248,17 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Mutual fund performance data
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
     
 - `rand_hie`
 
     - RAND health insurance experiment
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Access: [Course Website](`r course_website_link`)
     
-    - Description: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/)
+    - Description: [Course Website](`r course_website_link`)
 
 - `Star`
 
@@ -270,7 +272,7 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Passenger level data on surviving Titanic.  This data is a slightly adapted version of the `titanic` data on [Kaggle](https://www.kaggle.com/c/titanic)
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/) 
+    - Access: [Course Website](`r course_website_link`) 
     
     - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
     
@@ -278,9 +280,17 @@ Students ask me all the time "How should I study for your class?"  My advice (an
 
     - Out of sample version of `titanic_training` data
     
-    - Access: [Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2022/) 
+    - Access: [Course Website](`r course_website_link`) 
     
     - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
+    
+- `us_data`
+
+    - Data from the 2019 American Community Survey via IPUMS
+    
+    - Access: [Course Website](`r course_website_link`) 
+    
+    - Description: [Course Website](`r course_website_link`) 
     
 ## First Week of Class
 

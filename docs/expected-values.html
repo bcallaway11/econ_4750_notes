@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.7 Expected Values | Supplementary Notes and References for ECON 4750</title>
+  <meta name="description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.7 Expected Values | Supplementary Notes and References for ECON 4750" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.7 Expected Values | Supplementary Notes and References for ECON 4750" />
+  
+  <meta name="twitter:description" content="This is a set of supplementary notes and additional references for ECON 4750." />
+  
+
+<meta name="author" content="Brantly Callaway" />
+
+
+<meta name="date" content="2023-09-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="continuous-random-variables.html"/>
+<link rel="next" href="variance.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Course Outline/Notes for ECON 4750</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i><b>1.1</b> What is this?</a></li>
+<li class="chapter" data-level="1.2" data-path="what-is-this-not.html"><a href="what-is-this-not.html"><i class="fa fa-check"></i><b>1.2</b> What is this not?</a></li>
+<li class="chapter" data-level="1.3" data-path="why-did-i-write-this.html"><a href="why-did-i-write-this.html"><i class="fa fa-check"></i><b>1.3</b> Why did I write this?</a></li>
+<li class="chapter" data-level="1.4" data-path="additional-references.html"><a href="additional-references.html"><i class="fa fa-check"></i><b>1.4</b> Additional References</a></li>
+<li class="chapter" data-level="1.5" data-path="goals-for-the-course.html"><a href="goals-for-the-course.html"><i class="fa fa-check"></i><b>1.5</b> Goals for the Course</a></li>
+<li class="chapter" data-level="1.6" data-path="studying-for-the-class.html"><a href="studying-for-the-class.html"><i class="fa fa-check"></i><b>1.6</b> Studying for the Class</a></li>
+<li class="chapter" data-level="1.7" data-path="data-used-in-the-course.html"><a href="data-used-in-the-course.html"><i class="fa fa-check"></i><b>1.7</b> Data Used in the Course</a></li>
+<li class="chapter" data-level="1.8" data-path="first-week-of-class.html"><a href="first-week-of-class.html"><i class="fa fa-check"></i><b>1.8</b> First Week of Class</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="statistical-programming.html"><a href="statistical-programming.html"><i class="fa fa-check"></i><b>2</b> Statistical Programming</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="setting-up-r.html"><a href="setting-up-r.html"><i class="fa fa-check"></i><b>2.1</b> Setting up R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="setting-up-r.html"><a href="setting-up-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="setting-up-r.html"><a href="setting-up-r.html#downloading-r"><i class="fa fa-check"></i><b>2.1.2</b> Downloading R</a></li>
+<li class="chapter" data-level="2.1.3" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio"><i class="fa fa-check"></i><b>2.1.3</b> RStudio</a></li>
+<li class="chapter" data-level="2.1.4" data-path="setting-up-r.html"><a href="setting-up-r.html#rstudio-development-environment"><i class="fa fa-check"></i><b>2.1.4</b> RStudio Development Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="installing-r-packages.html"><a href="installing-r-packages.html"><i class="fa fa-check"></i><b>2.2</b> Installing R Packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="installing-r-packages.html"><a href="installing-r-packages.html#a-list-of-useful-r-packages"><i class="fa fa-check"></i><b>2.2.1</b> A list of useful R packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2.3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="r-basics.html"><a href="r-basics.html#objects"><i class="fa fa-check"></i><b>2.3.1</b> Objects</a></li>
+<li class="chapter" data-level="2.3.2" data-path="r-basics.html"><a href="r-basics.html#workspace"><i class="fa fa-check"></i><b>2.3.2</b> Workspace</a></li>
+<li class="chapter" data-level="2.3.3" data-path="r-basics.html"><a href="r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.3.3</b> Importing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>2.4</b> Functions in R</a></li>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2.5</b> Data types</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="data-types.html"><a href="data-types.html#numeric-vectors"><i class="fa fa-check"></i><b>2.5.1</b> Numeric Vectors</a></li>
+<li class="chapter" data-level="2.5.2" data-path="data-types.html"><a href="data-types.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.5.2</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.5.3" data-path="data-types.html"><a href="data-types.html#more-helpful-functions-in-r"><i class="fa fa-check"></i><b>2.5.3</b> More helpful functions in R</a></li>
+<li class="chapter" data-level="2.5.4" data-path="data-types.html"><a href="data-types.html#other-types-of-vectors"><i class="fa fa-check"></i><b>2.5.4</b> Other types of vectors</a></li>
+<li class="chapter" data-level="2.5.5" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>2.5.5</b> Data Frames</a></li>
+<li class="chapter" data-level="2.5.6" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>2.5.6</b> Lists</a></li>
+<li class="chapter" data-level="2.5.7" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>2.5.7</b> Matrices</a></li>
+<li class="chapter" data-level="2.5.8" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.5.8</b> Factors</a></li>
+<li class="chapter" data-level="2.5.9" data-path="data-types.html"><a href="data-types.html#understanding-an-object-in-r"><i class="fa fa-check"></i><b>2.5.9</b> Understanding an object in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="logicals.html"><a href="logicals.html"><i class="fa fa-check"></i><b>2.6</b> Logicals</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="logicals.html"><a href="logicals.html#additional-logical-operators"><i class="fa fa-check"></i><b>2.6.1</b> Additional Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="programming-basics.html"><a href="programming-basics.html"><i class="fa fa-check"></i><b>2.7</b> Programming basics</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="programming-basics.html"><a href="programming-basics.html#writing-functions"><i class="fa fa-check"></i><b>2.7.1</b> Writing functions</a></li>
+<li class="chapter" data-level="2.7.2" data-path="programming-basics.html"><a href="programming-basics.html#ifelse"><i class="fa fa-check"></i><b>2.7.2</b> if/else</a></li>
+<li class="chapter" data-level="2.7.3" data-path="programming-basics.html"><a href="programming-basics.html#for-loops"><i class="fa fa-check"></i><b>2.7.3</b> for loops</a></li>
+<li class="chapter" data-level="2.7.4" data-path="programming-basics.html"><a href="programming-basics.html#vectorization"><i class="fa fa-check"></i><b>2.7.4</b> Vectorization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>2.8</b> Advanced Topics</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="advanced-topics.html"><a href="advanced-topics.html#tidyverse"><i class="fa fa-check"></i><b>2.8.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="2.8.2" data-path="advanced-topics.html"><a href="advanced-topics.html#data-visualization"><i class="fa fa-check"></i><b>2.8.2</b> Data Visualization</a></li>
+<li class="chapter" data-level="2.8.3" data-path="advanced-topics.html"><a href="advanced-topics.html#reproducible-research"><i class="fa fa-check"></i><b>2.8.3</b> Reproducible Research</a></li>
+<li class="chapter" data-level="2.8.4" data-path="advanced-topics.html"><a href="advanced-topics.html#technical-writing-tools"><i class="fa fa-check"></i><b>2.8.4</b> Technical Writing Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="lab-1-introduction-to-r-programming.html"><a href="lab-1-introduction-to-r-programming.html"><i class="fa fa-check"></i><b>2.9</b> Lab 1: Introduction to R Programming</a></li>
+<li class="chapter" data-level="2.10" data-path="lab-1-solutions.html"><a href="lab-1-solutions.html"><i class="fa fa-check"></i><b>2.10</b> Lab 1: Solutions</a></li>
+<li class="chapter" data-level="2.11" data-path="coding-exercises.html"><a href="coding-exercises.html"><i class="fa fa-check"></i><b>2.11</b> Coding Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-for-this-chapter.html"><a href="data-for-this-chapter.html"><i class="fa fa-check"></i><b>3.1</b> Data for this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>3.2</b> Random Variables</a></li>
+<li class="chapter" data-level="3.3" data-path="pdfs-pmfs-and-cdfs.html"><a href="pdfs-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.3</b> pdfs, pmfs, and cdfs</a></li>
+<li class="chapter" data-level="3.4" data-path="summation-operator.html"><a href="summation-operator.html"><i class="fa fa-check"></i><b>3.4</b> Summation operator</a></li>
+<li class="chapter" data-level="3.5" data-path="properties-of-pmfs-and-cdfs.html"><a href="properties-of-pmfs-and-cdfs.html"><i class="fa fa-check"></i><b>3.5</b> Properties of pmfs and cdfs</a></li>
+<li class="chapter" data-level="3.6" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html"><i class="fa fa-check"></i><b>3.6</b> Continuous Random Variables</a></li>
+<li class="chapter" data-level="3.7" data-path="expected-values.html"><a href="expected-values.html"><i class="fa fa-check"></i><b>3.7</b> Expected Values</a></li>
+<li class="chapter" data-level="3.8" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>3.8</b> Variance</a></li>
+<li class="chapter" data-level="3.9" data-path="mean-and-variance-of-linear-functions.html"><a href="mean-and-variance-of-linear-functions.html"><i class="fa fa-check"></i><b>3.9</b> Mean and Variance of Linear Functions</a></li>
+<li class="chapter" data-level="3.10" data-path="multiple-random-variables.html"><a href="multiple-random-variables.html"><i class="fa fa-check"></i><b>3.10</b> Multiple Random Variables</a></li>
+<li class="chapter" data-level="3.11" data-path="conditional-expectations.html"><a href="conditional-expectations.html"><i class="fa fa-check"></i><b>3.11</b> Conditional Expectations</a></li>
+<li class="chapter" data-level="3.12" data-path="law-of-iterated-expectations.html"><a href="law-of-iterated-expectations.html"><i class="fa fa-check"></i><b>3.12</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="3.13" data-path="covariance.html"><a href="covariance.html"><i class="fa fa-check"></i><b>3.13</b> Covariance</a></li>
+<li class="chapter" data-level="3.14" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>3.14</b> Correlation</a></li>
+<li class="chapter" data-level="3.15" data-path="properties-of-expectationsvariances-of-sums-of-rvs.html"><a href="properties-of-expectationsvariances-of-sums-of-rvs.html"><i class="fa fa-check"></i><b>3.15</b> Properties of Expectations/Variances of Sums of RVs</a></li>
+<li class="chapter" data-level="3.16" data-path="normal-distribution.html"><a href="normal-distribution.html"><i class="fa fa-check"></i><b>3.16</b> Normal Distribution</a></li>
+<li class="chapter" data-level="3.17" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>3.17</b> Coding</a></li>
+<li class="chapter" data-level="3.18" data-path="lab-2-basic-plots.html"><a href="lab-2-basic-plots.html"><i class="fa fa-check"></i><b>3.18</b> Lab 2: Basic Plots</a></li>
+<li class="chapter" data-level="3.19" data-path="coding-questions.html"><a href="coding-questions.html"><i class="fa fa-check"></i><b>3.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="3.20" data-path="extra-questions.html"><a href="extra-questions.html"><i class="fa fa-check"></i><b>3.20</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+<li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
+<li class="chapter" data-level="4.6" data-path="relative-efficiency.html"><a href="relative-efficiency.html"><i class="fa fa-check"></i><b>4.6</b> Relative Efficiency</a></li>
+<li class="chapter" data-level="4.7" data-path="mean-squared-error.html"><a href="mean-squared-error.html"><i class="fa fa-check"></i><b>4.7</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="4.8" data-path="large-sample-properties-of-estimators.html"><a href="large-sample-properties-of-estimators.html"><i class="fa fa-check"></i><b>4.8</b> Large Sample Properties of Estimators</a></li>
+<li class="chapter" data-level="4.9" data-path="consistency.html"><a href="consistency.html"><i class="fa fa-check"></i><b>4.9</b> Consistency</a></li>
+<li class="chapter" data-level="4.10" data-path="asymptotic-normality.html"><a href="asymptotic-normality.html"><i class="fa fa-check"></i><b>4.10</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="4.11" data-path="inference-hypothesis-testing.html"><a href="inference-hypothesis-testing.html"><i class="fa fa-check"></i><b>4.11</b> Inference / Hypothesis Testing</a></li>
+<li class="chapter" data-level="4.12" data-path="t-statistics.html"><a href="t-statistics.html"><i class="fa fa-check"></i><b>4.12</b> t-statistics</a></li>
+<li class="chapter" data-level="4.13" data-path="p-values.html"><a href="p-values.html"><i class="fa fa-check"></i><b>4.13</b> P-values</a></li>
+<li class="chapter" data-level="4.14" data-path="confidence-interval.html"><a href="confidence-interval.html"><i class="fa fa-check"></i><b>4.14</b> Confidence Interval</a></li>
+<li class="chapter" data-level="4.15" data-path="inference-in-practice.html"><a href="inference-in-practice.html"><i class="fa fa-check"></i><b>4.15</b> Inference in Practice</a></li>
+<li class="chapter" data-level="4.16" data-path="coding-1.html"><a href="coding-1.html"><i class="fa fa-check"></i><b>4.16</b> Coding</a></li>
+<li class="chapter" data-level="4.17" data-path="lab-3-monte-carlo-simulations.html"><a href="lab-3-monte-carlo-simulations.html"><i class="fa fa-check"></i><b>4.17</b> Lab 3: Monte Carlo Simulations</a></li>
+<li class="chapter" data-level="4.18" data-path="lab-3-solutions.html"><a href="lab-3-solutions.html"><i class="fa fa-check"></i><b>4.18</b> Lab 3 Solutions</a></li>
+<li class="chapter" data-level="4.19" data-path="coding-questions-1.html"><a href="coding-questions-1.html"><i class="fa fa-check"></i><b>4.19</b> Coding Questions</a></li>
+<li class="chapter" data-level="4.20" data-path="extra-questions-1.html"><a href="extra-questions-1.html"><i class="fa fa-check"></i><b>4.20</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>5</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="nonparametric-regression-curse-of-dimensionality.html"><a href="nonparametric-regression-curse-of-dimensionality.html"><i class="fa fa-check"></i><b>5.1</b> Nonparametric Regression / Curse of Dimensionality</a></li>
+<li class="chapter" data-level="5.2" data-path="linear-regression-models.html"><a href="linear-regression-models.html"><i class="fa fa-check"></i><b>5.2</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="5.3" data-path="computation.html"><a href="computation.html"><i class="fa fa-check"></i><b>5.3</b> Computation</a></li>
+<li class="chapter" data-level="5.4" data-path="partial-effects.html"><a href="partial-effects.html"><i class="fa fa-check"></i><b>5.4</b> Partial Effects</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="partial-effects.html"><a href="partial-effects.html#computation-1"><i class="fa fa-check"></i><b>5.4.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="binary-regressors.html"><a href="binary-regressors.html"><i class="fa fa-check"></i><b>5.5</b> Binary Regressors</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="binary-regressors.html"><a href="binary-regressors.html#computation-2"><i class="fa fa-check"></i><b>5.5.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html"><i class="fa fa-check"></i><b>5.6</b> Nonlinear Regression Functions</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="nonlinear-regression-functions.html"><a href="nonlinear-regression-functions.html#computation-3"><i class="fa fa-check"></i><b>5.6.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html"><i class="fa fa-check"></i><b>5.7</b> Interpreting Interaction Terms</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="interpreting-interaction-terms.html"><a href="interpreting-interaction-terms.html#computation-4"><i class="fa fa-check"></i><b>5.7.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="elasticities.html"><a href="elasticities.html"><i class="fa fa-check"></i><b>5.8</b> Elasticities</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="elasticities.html"><a href="elasticities.html#computation-5"><i class="fa fa-check"></i><b>5.8.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="omitted-variable-bias.html"><a href="omitted-variable-bias.html"><i class="fa fa-check"></i><b>5.9</b> Omitted Variable Bias</a></li>
+<li class="chapter" data-level="5.10" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html"><i class="fa fa-check"></i><b>5.10</b> How to estimate the parameters in a regression model</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#computation-6"><i class="fa fa-check"></i><b>5.10.1</b> Computation</a></li>
+<li class="chapter" data-level="5.10.2" data-path="how-to-estimate-the-parameters-in-a-regression-model.html"><a href="how-to-estimate-the-parameters-in-a-regression-model.html#more-than-one-regressor"><i class="fa fa-check"></i><b>5.10.2</b> More than one regressor</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>5.11</b> Inference</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="inference.html"><a href="inference.html#computation-7"><i class="fa fa-check"></i><b>5.11.1</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="lab-4-birthweight-and-smoking.html"><a href="lab-4-birthweight-and-smoking.html"><i class="fa fa-check"></i><b>5.12</b> Lab 4: Birthweight and Smoking</a></li>
+<li class="chapter" data-level="5.13" data-path="lab-4-solutions.html"><a href="lab-4-solutions.html"><i class="fa fa-check"></i><b>5.13</b> Lab 4: Solutions</a></li>
+<li class="chapter" data-level="5.14" data-path="coding-questions-2.html"><a href="coding-questions-2.html"><i class="fa fa-check"></i><b>5.14</b> Coding Questions</a></li>
+<li class="chapter" data-level="5.15" data-path="extra-questions-2.html"><a href="extra-questions-2.html"><i class="fa fa-check"></i><b>5.15</b> Extra Questions</a></li>
+<li class="chapter" data-level="5.16" data-path="answers-to-some-extra-questions.html"><a href="answers-to-some-extra-questions.html"><i class="fa fa-check"></i><b>5.16</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>6</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html"><i class="fa fa-check"></i><b>6.1</b> Measures of Regression Fit</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#tss-ess-ssr"><i class="fa fa-check"></i><b>6.1.1</b> TSS, ESS, SSR</a></li>
+<li class="chapter" data-level="6.1.2" data-path="measures-of-regression-fit.html"><a href="measures-of-regression-fit.html#r2"><i class="fa fa-check"></i><b>6.1.2</b> <span class="math inline">\(R^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="model-selection.html"><a href="model-selection.html"><i class="fa fa-check"></i><b>6.2</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="model-selection.html"><a href="model-selection.html#limitations-of-r2"><i class="fa fa-check"></i><b>6.2.1</b> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="model-selection.html"><a href="model-selection.html#adjusted-r2"><i class="fa fa-check"></i><b>6.2.2</b> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="model-selection.html"><a href="model-selection.html#aic-bic"><i class="fa fa-check"></i><b>6.2.3</b> AIC, BIC</a></li>
+<li class="chapter" data-level="6.2.4" data-path="model-selection.html"><a href="model-selection.html#cross-validation"><i class="fa fa-check"></i><b>6.2.4</b> Cross-Validation</a></li>
+<li class="chapter" data-level="6.2.5" data-path="model-selection.html"><a href="model-selection.html#model-averaging"><i class="fa fa-check"></i><b>6.2.5</b> Model Averaging</a></li>
+<li class="chapter" data-level="6.2.6" data-path="model-selection.html"><a href="model-selection.html#computation-8"><i class="fa fa-check"></i><b>6.2.6</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>6.3</b> Machine Learning</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="machine-learning.html"><a href="machine-learning.html#lasso"><i class="fa fa-check"></i><b>6.3.1</b> Lasso</a></li>
+<li class="chapter" data-level="6.3.2" data-path="machine-learning.html"><a href="machine-learning.html#ridge-regression"><i class="fa fa-check"></i><b>6.3.2</b> Ridge Regression</a></li>
+<li class="chapter" data-level="6.3.3" data-path="machine-learning.html"><a href="machine-learning.html#computation-9"><i class="fa fa-check"></i><b>6.3.3</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lab-5-predicting-diamond-prices.html"><a href="lab-5-predicting-diamond-prices.html"><i class="fa fa-check"></i><b>6.4</b> Lab 5: Predicting Diamond Prices</a></li>
+<li class="chapter" data-level="6.5" data-path="lab-5-solutions.html"><a href="lab-5-solutions.html"><i class="fa fa-check"></i><b>6.5</b> Lab 5: Solutions</a></li>
+<li class="chapter" data-level="6.6" data-path="extra-questions-3.html"><a href="extra-questions-3.html"><i class="fa fa-check"></i><b>6.6</b> Extra Questions</a></li>
+<li class="chapter" data-level="6.7" data-path="answers-to-some-extra-questions-1.html"><a href="answers-to-some-extra-questions-1.html"><i class="fa fa-check"></i><b>6.7</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="binary-outcome-models.html"><a href="binary-outcome-models.html"><i class="fa fa-check"></i><b>7</b> Binary Outcome Models</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="linear-probability-model.html"><a href="linear-probability-model.html"><i class="fa fa-check"></i><b>7.1</b> Linear Probability Model</a></li>
+<li class="chapter" data-level="7.2" data-path="probit-and-logit.html"><a href="probit-and-logit.html"><i class="fa fa-check"></i><b>7.2</b> Probit and Logit</a></li>
+<li class="chapter" data-level="7.3" data-path="average-partial-effects.html"><a href="average-partial-effects.html"><i class="fa fa-check"></i><b>7.3</b> Average Partial Effects</a></li>
+<li class="chapter" data-level="7.4" data-path="lab-6-estimating-binary-outcome-models.html"><a href="lab-6-estimating-binary-outcome-models.html"><i class="fa fa-check"></i><b>7.4</b> Lab 6: Estimating Binary Outcome Models</a></li>
+<li class="chapter" data-level="7.5" data-path="coding-questions-3.html"><a href="coding-questions-3.html"><i class="fa fa-check"></i><b>7.5</b> Coding Questions</a></li>
+<li class="chapter" data-level="7.6" data-path="extra-questions-4.html"><a href="extra-questions-4.html"><i class="fa fa-check"></i><b>7.6</b> Extra Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="causal-inference.html"><a href="causal-inference.html"><i class="fa fa-check"></i><b>8</b> Causal Inference</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="potential-outcomes.html"><a href="potential-outcomes.html"><i class="fa fa-check"></i><b>8.1</b> Potential Outcomes</a></li>
+<li class="chapter" data-level="8.2" data-path="parameters-of-interest.html"><a href="parameters-of-interest.html"><i class="fa fa-check"></i><b>8.2</b> Parameters of Interest</a></li>
+<li class="chapter" data-level="8.3" data-path="experiments.html"><a href="experiments.html"><i class="fa fa-check"></i><b>8.3</b> Experiments</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="experiments.html"><a href="experiments.html#estimating-att-with-a-regression"><i class="fa fa-check"></i><b>8.3.1</b> Estimating ATT with a Regression</a></li>
+<li class="chapter" data-level="8.3.2" data-path="experiments.html"><a href="experiments.html#internal-and-external-validity"><i class="fa fa-check"></i><b>8.3.2</b> Internal and External Validity</a></li>
+<li class="chapter" data-level="8.3.3" data-path="experiments.html"><a href="experiments.html#example-project-star"><i class="fa fa-check"></i><b>8.3.3</b> Example: Project STAR</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="unconfoundedness.html"><a href="unconfoundedness.html"><i class="fa fa-check"></i><b>8.4</b> Unconfoundedness</a></li>
+<li class="chapter" data-level="8.5" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html"><i class="fa fa-check"></i><b>8.5</b> Panel Data Approaches</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#difference-in-differences"><i class="fa fa-check"></i><b>8.5.1</b> Difference in differences</a></li>
+<li class="chapter" data-level="8.5.2" data-path="panel-data-approaches.html"><a href="panel-data-approaches.html#computation-10"><i class="fa fa-check"></i><b>8.5.2</b> Computation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="instrumental-variables.html"><a href="instrumental-variables.html"><i class="fa fa-check"></i><b>8.6</b> Instrumental Variables</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="instrumental-variables.html"><a href="instrumental-variables.html#example-return-to-education"><i class="fa fa-check"></i><b>8.6.1</b> Example: Return to Education</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html"><i class="fa fa-check"></i><b>8.7</b> Regression Discontinuity</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="regression-discontinuity.html"><a href="regression-discontinuity.html#example-causal-effect-of-alcohol-on-driving-deaths"><i class="fa fa-check"></i><b>8.7.1</b> Example: Causal effect of Alcohol on Driving Deaths</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="lab-7-drunk-driving-laws.html"><a href="lab-7-drunk-driving-laws.html"><i class="fa fa-check"></i><b>8.8</b> Lab 7: Drunk Driving Laws</a></li>
+<li class="chapter" data-level="8.9" data-path="lab-7-solutions.html"><a href="lab-7-solutions.html"><i class="fa fa-check"></i><b>8.9</b> Lab 7: Solutions</a></li>
+<li class="chapter" data-level="8.10" data-path="coding-questions-4.html"><a href="coding-questions-4.html"><i class="fa fa-check"></i><b>8.10</b> Coding Questions</a></li>
+<li class="chapter" data-level="8.11" data-path="extra-questions-5.html"><a href="extra-questions-5.html"><i class="fa fa-check"></i><b>8.11</b> Extra Questions</a></li>
+<li class="chapter" data-level="8.12" data-path="answers-to-some-extra-questions-2.html"><a href="answers-to-some-extra-questions-2.html"><i class="fa fa-check"></i><b>8.12</b> Answers to Some Extra Questions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplementary Notes and References for ECON 4750</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="expected-values" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Expected Values<a href="expected-values.html#expected-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SW 2.2</p>
+<p>The <strong>expected value</strong> of some random variable <span class="math inline">\(X\)</span> is its (population) mean and is written as <span class="math inline">\(\mathbb{E}[X]\)</span>. [I tend to write <span class="math inline">\(\mathbb{E}[X]\)</span> for the expected value, but you might also see notation like <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\mu_X\)</span> for the expected value.]</p>
+<p>The expected value of a random variable is a <em>feature</em> of its distribution. In other words, if you know the distribution of a random variable, then you also know its mean.</p>
+<p>The expected value is a measure of <strong>central tendency</strong> (alternative measures of central tendency are the <strong>median</strong> and <strong>mode</strong>).</p>
+<p>Expected values are a main concept in the course (and in statistics/econometrics more generally). I think there are two main reasons for this:</p>
+<ul>
+<li><p>Unlike a cdf, pdf, or pmf, the expected value is a single number. This means that it is easy to report. And, if you only knew one feature (at least a feature that that only involves a single number) of the distribution of some random variable, probably the feature that would be most useful to know would be the mean of the random variable.</p></li>
+<li><p>Besides that, there are some computational reasons (we will see these later) that the mean can be easier to estimate than, say, the median of a random variable</p></li>
+</ul>
+<p>If <span class="math inline">\(X\)</span> is a discrete random variable, then the expected value is defined as</p>
+<p><span class="math display">\[
+  \mathbb{E}[X] = \sum_{x \in \mathcal{X}} x f_X(x)
+\]</span></p>
+<p>If <span class="math inline">\(X\)</span> is a continuous random variable, then the expected value is defined as</p>
+<p><span class="math display">\[
+  \mathbb{E}[X] = \int_{\mathcal{X}} x f_X(x) \, dx
+\]</span>
+Either way, you can think of these as a weighted average of all possible realizations of the random variable <span class="math inline">\(X\)</span> where the weights are given by the probability of <span class="math inline">\(X\)</span> taking that particular value. This may be more clear with an example…</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 3.10  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, its expected value is given by</p>
+<p><span class="math display">\[
+  \begin{aligned}
+  \mathbb{E}[X] &amp;= \sum_{x=1}^6 x f_X(x) \\
+  &amp;= 1\left(\frac{1}{6}\right) + 2\left(\frac{1}{6}\right) + \cdots + 6\left(\frac{1}{6}\right) \\
+  &amp;= 3.5
+  \end{aligned}
+\]</span></p>
+</div>
+<div class="side-comment">
+<p><span class="side-comment">Side-Comment:</span> When we start to consider more realistic/interesting applications, we typically won’t know (or be able to easily figure out) <span class="math inline">\(\mathbb{E}[X]\)</span>. Instead, we’ll try to estimate it using available data. We’ll carefully distinguish between <strong>population quantities</strong> like <span class="math inline">\(\mathbb{E}[X]\)</span> and <strong>sample quantities</strong> like an estimate of <span class="math inline">\(\mathbb{E}[X]\)</span> soon.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="continuous-random-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Detailed Course Notes.pdf", "Detailed Course Notes.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
