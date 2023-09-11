@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-06" />
+<meta name="date" content="2023-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -403,7 +403,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Write a function called <code>fibonacci</code> that takes in a number <code>n</code> and computes the nth element in the Fibonacci sequence. For example <code>fibonacci(5)</code> should return <code>3</code> and <code>fibonacci(8)</code> should return <code>13</code>.</p></li>
 <li><p>Consider an alternative sequence where, starting with the third element, each element is computed as the sum of the previous two elements (the same as with the Fibonacci sequence) but where the first two elements can be arbitrary. Write a function <code>alt_seq(a,b,n)</code> where <code>a</code> is the first element in the sequence, <code>b</code> is the second element in the sequence, and <code>n</code> is which element in the sequence to return. For example, if <span class="math inline">\(a=3\)</span> and <span class="math inline">\(b=7\)</span>, then the sequence would be <span class="math inline">\(3,7,10,17,27,44,71,\ldots\)</span> and <code>alt_seq(a=3,b=7,n=4) = 17</code>.</p></li>
 </ol></li>
-<li><p>Write a function <code>prime</code> that takes <code>n</code> as an argument and returns a vector of all the prime numbers from <span class="math inline">\(1\)</span> to <span class="math inline">\(n\)</span>.</p></li>
+<li><p>This problem involves writing functions related to computing prime numbers. Recall that a prime number is a positive integer whose only (integer) factors are 1 and itself (e.g., <span class="math inline">\(6\)</span> is not prime because it factors into <span class="math inline">\(2\times 3\)</span>, but <span class="math inline">\(5\)</span> is a prime number because its only factors are <span class="math inline">\(1\)</span> and <span class="math inline">\(5\)</span>).</p>
+<p>For this problem, you cannot use any built-in functions in <code>R</code> for computing prime numbers or checking whether or not a number is a prime number. However, a helpful function for this problem is the <em>modulo</em> function, <code>%%</code> discussed earlier in the notes. <strong>Hint:</strong> Notice that <code>6 %% 2 = 0</code> indicates that <code>2</code> is a factor of <code>6</code>; on the other hand, if you divide <span class="math inline">\(5\)</span> by any integer small than itself (except for <span class="math inline">\(1\)</span>), the remainder will always be non-zero.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Write a function <code>is_prime</code> that takes <code>x</code> as an argument and returns <code>TRUE</code> if <code>x</code> is a prime number and returns <code>FALSE</code> if <code>x</code> is not a prime number.</p></li>
+<li><p>Write a function <code>prime</code> that takes <code>n</code> as an argument and returns a vector of all the prime numbers from <span class="math inline">\(1\)</span> to <span class="math inline">\(n\)</span>. If it is helpful, <code>prime</code> can call the function <code>is_prime</code> that you wrote for part (a).</p></li>
+</ol></li>
 <li><p>Base <code>R</code> includes a data frame called <code>iris</code>. This is data about iris flowers (you can read the details by running <code>?iris</code>).</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>How many observations are there in the entire data frame?</p></li>

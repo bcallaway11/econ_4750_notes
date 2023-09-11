@@ -1097,7 +1097,13 @@ today - the_date
   
     b) Consider an alternative sequence where, starting with the third element, each element is computed as the sum of the previous two elements (the same as with the Fibonacci sequence) but where the first two elements can be arbitrary.  Write a function `alt_seq(a,b,n)` where `a` is the first element in the sequence, `b` is the second element in the sequence, and `n` is which element in the sequence to return.  For example, if $a=3$ and $b=7$, then the sequence would be $3,7,10,17,27,44,71,\ldots$ and `alt_seq(a=3,b=7,n=4) = 17`.
  
-4.  Write a function `prime` that takes `n` as an argument and returns a vector of all the prime numbers from $1$ to $n$.
+4.  This problem involves writing functions related to computing prime numbers.  Recall that a prime number is a positive integer whose only (integer) factors are 1 and itself (e.g., $6$ is not prime because it factors into $2\times 3$, but $5$ is a prime number because its only factors are $1$ and $5$).  
+
+    For this problem, you cannot use any built-in functions in `R` for computing prime numbers or checking whether or not a number is a prime number.  However, a helpful function for this problem is the *modulo* function, `%%` discussed earlier in the notes.  **Hint:** Notice that `6 %% 2 = 0` indicates that `2` is a factor of `6`; on the other hand, if you divide $5$ by any integer small than itself (except for $1$), the remainder will always be non-zero.
+
+    a) Write a function `is_prime` that takes `x` as an argument and returns `TRUE` if `x` is a prime number and returns `FALSE` if `x` is not a prime number.  
+
+    b) Write a function `prime` that takes `n` as an argument and returns a vector of all the prime numbers from $1$ to $n$.  If it is helpful, `prime` can call the function `is_prime` that you wrote for part (a).
     
 5. Base `R` includes a data frame called `iris`.  This is data about iris flowers (you can read the details by running `?iris`).
 

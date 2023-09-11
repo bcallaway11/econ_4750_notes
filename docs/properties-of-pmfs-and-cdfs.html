@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-06" />
+<meta name="date" content="2023-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -414,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span id="exm:unlabeled-div-10" class="example"><strong>Example 3.7  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Earlier we showed that <span class="math inline">\(F_X(3) = 1/2\)</span>. We can calculate this by</p>
 <p><span class="math display">\[
   \begin{aligned}
-  F_X(3) &amp;= \sum_{z \in \mathcal{X} \\ z \leq 3} f_X(z) \\
+  F_X(3) &amp;= \sum_{\substack{z \in \mathcal{X} \\ z \leq 3}} f_X(z) \\
   &amp;= \sum_{z=1}^3 f_X(z) \\
   &amp;= f_X(1) + f_X(2) + f_X(3) \\
   &amp;= \frac{1}{6} + \frac{1}{6} + \frac{1}{6} \\

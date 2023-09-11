@@ -140,7 +140,7 @@ As a simple example, suppose that we have three variables (it doesn't matter if 
 $$
   \sum_{i=1}^3 x_i := x_1 + x_2 + x_3
 $$
-Many timess, once we have data, there will be n "observations" and we can add them up by:
+Many times, once we have data, there will be n "observations" and we can add them up by:
 $$
   \sum_{i=1}^n x_i = x_1 + x_2 + \cdots + x_n
 $$
@@ -229,7 +229,7 @@ Suppose that $X$ is the outcome of a roll of a die.  Earlier we showed that $F_X
 
 $$
   \begin{aligned}
-  F_X(3) &= \sum_{z \in \mathcal{X} \\ z \leq 3} f_X(z) \\
+  F_X(3) &= \sum_{\substack{z \in \mathcal{X} \\ z \leq 3}} f_X(z) \\
   &= \sum_{z=1}^3 f_X(z) \\
   &= f_X(1) + f_X(2) + f_X(3) \\
   &= \frac{1}{6} + \frac{1}{6} + \frac{1}{6} \\
@@ -866,7 +866,7 @@ Besides the line plot (using `geom_line`) and the scatter plot (using `geom_poin
 
 2. Use the definition of variance to show that $\Var(bX) = b^2 \Var(X)$ (where $b$ is a constant and $X$ is some random variable).
 
-3. Suppose you are interested in average height of students at UGA.  Let $Y$ denote a student's height; also let $X$ denote a binary variable that is equal to 1 if a student is female.  Suppose that you know that $\E[Y|X=1] = 5\' \ 4\"$ and that $\E[Y|X=0] = 5\' \ 9\"$ (and that $\P(X=1) = 0.5$).
+3. Suppose you are interested in average height of students at UGA.  Let $Y$ denote a student's height; also let $X$ denote a binary variable that is equal to 1 if a student is female.  Suppose that you know that $\E[Y|X=1] = 5' \,4''$ and that $\E[Y|X=0] = 5' \,9''$ (and that $\P(X=1) = 0.5$).
 
     a) What is $\E[Y]$?
     

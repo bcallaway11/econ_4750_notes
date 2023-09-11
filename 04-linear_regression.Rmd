@@ -436,7 +436,7 @@ Economists are often interested in **elasticities**, that is, the percentage cha
 Recall that the definition of percentage change of moving from, say, $x_{old}$ to $x_{new}$ is given by
 
 $$
-  \textrm{% change} = \frac{x_{new} - x_{old}}{x_{old}} \times 100
+  \textrm{\% change} = \frac{x_{new} - x_{old}}{x_{old}} \times 100
 $$
 
 Elasticities are closely connected to natural logarithms; following the most common notation in economics, we'll refer to the natural logarithm using the notation: $\log$.  Further, recall that the derivative of the $\log$ function is given by
@@ -452,7 +452,7 @@ $$
 and, thus, that
 
 $$
-  100 \cdot \Delta \log(x) \approx \textrm{% change}
+  100 \cdot \Delta \log(x) \approx \textrm{\% change}
 $$ 
 where the approximation is better when $x_{new}$ and $x_{old}$ are close to each other.
 

@@ -500,7 +500,7 @@ round(rmspe,3)
   Y &= 9 + 2 X_1 - 3 X_2 - 2 X_3 + 2 X_1^2 + 1 X_2^2 - 4 X_3^2 + 2 X_1 X_2, \qquad R^2 = 0.75, AIC=4018
 \end{align*}
 
-    a) Which model seems to be predicting be\tter?  Explain why.
+    a) Which model seems to be predicting better?  Explain why.
     
     b) Using the model that is predicting better, what would be your prediction for $Y$ when $X_1=10, X_2=1, X_3=5$?  
     
