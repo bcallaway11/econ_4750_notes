@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -383,15 +381,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="extra-questions" class="section level2 hasAnchor" number="3.20">
 <h2><span class="header-section-number">3.20</span> Extra Questions<a href="extra-questions.html#extra-questions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>Suppose that <span class="math inline">\(\mathbb{E}[X] = 10\)</span> and <span class="math inline">\(\mathrm{var}(X) = 2\)</span>. Also, suppose that <span class="math inline">\(Y=5 + 9 X\)</span>.</p>
+<li><p>Suppose that <span class="math inline">\(\E[X] = 10\)</span> and <span class="math inline">\(\var(X) = 2\)</span>. Also, suppose that <span class="math inline">\(Y=5 + 9 X\)</span>.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>What is <span class="math inline">\(\mathbb{E}[Y]\)</span>?</p></li>
-<li><p>What is <span class="math inline">\(\mathrm{var}(Y)\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(\E[Y]\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(\var(Y)\)</span>?</p></li>
 </ol></li>
-<li><p>Use the definition of variance to show that <span class="math inline">\(\mathrm{var}(bX) = b^2 \mathrm{var}(X)\)</span> (where <span class="math inline">\(b\)</span> is a constant and <span class="math inline">\(X\)</span> is some random variable).</p></li>
-<li><p>Suppose you are interested in average height of students at UGA. Let <span class="math inline">\(Y\)</span> denote a student’s height; also let <span class="math inline">\(X\)</span> denote a binary variable that is equal to 1 if a student is female. Suppose that you know that <span class="math inline">\(\mathbb{E}[Y|X=1] = 5&#39; \,4&#39;&#39;\)</span> and that <span class="math inline">\(\mathbb{E}[Y|X=0] = 5&#39; \,9&#39;&#39;\)</span> (and that <span class="math inline">\(\mathrm{P}(X=1) = 0.5\)</span>).</p>
+<li><p>Use the definition of variance to show that <span class="math inline">\(\Var(bX) = b^2 \Var(X)\)</span> (where <span class="math inline">\(b\)</span> is a constant and <span class="math inline">\(X\)</span> is some random variable).</p></li>
+<li><p>Suppose you are interested in average height of students at UGA. Let <span class="math inline">\(Y\)</span> denote a student’s height; also let <span class="math inline">\(X\)</span> denote a binary variable that is equal to 1 if a student is female. Suppose that you know that <span class="math inline">\(\E[Y|X=1] = 5&#39; \,4&#39;&#39;\)</span> and that <span class="math inline">\(\E[Y|X=0] = 5&#39; \,9&#39;&#39;\)</span> (and that <span class="math inline">\(\P(X=1) = 0.5\)</span>).</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>What is <span class="math inline">\(\mathbb{E}[Y]\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(\E[Y]\)</span>?</p></li>
 <li><p>Explain how the answer to part (a) is related to the Law of Iterated Expectations.</p></li>
 </ol></li>
 <li><p>Consider a random variable <span class="math inline">\(X\)</span> with support <span class="math inline">\(\mathcal{X} = \{2,7,13,21\}\)</span>. Suppose that it has the following pmf:</p>

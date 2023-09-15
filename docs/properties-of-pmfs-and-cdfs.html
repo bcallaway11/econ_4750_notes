@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -384,24 +382,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.5</span> Properties of pmfs and cdfs<a href="properties-of-pmfs-and-cdfs.html#properties-of-pmfs-and-cdfs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s define the <strong>support</strong> of a random variable <span class="math inline">\(X\)</span> — this is the set of all possible values that <span class="math inline">\(X\)</span> can possibly take. We’ll use the notation <span class="math inline">\(\mathcal{X}\)</span> to denote the support of <span class="math inline">\(X\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 3.5  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, the support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{1,2,3,4,5,6\}\)</span>. In other words, the only possible values for <span class="math inline">\(X\)</span> are from <span class="math inline">\(1,\ldots,6\)</span>.</p>
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 3.5  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, the support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{1,2,3,4,5,6\}\)</span>. In other words, the only possible values for <span class="math inline">\(X\)</span> are from <span class="math inline">\(1,\ldots,6\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 3.6  </strong></span>Suppose <span class="math inline">\(X\)</span> is the number of years of education that a person has. The support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{0, 1, 2, \ldots, 20\}\)</span>. Perhaps I should have chosen a larger number than 20 to be the maximum possible value that <span class="math inline">\(X\)</span> could take, but you will get the idea — a person’s years of education can be 0 or 1 or 2 or up to some maximum value.</p>
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 3.6  </strong></span>Suppose <span class="math inline">\(X\)</span> is the number of years of education that a person has. The support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{0, 1, 2, \ldots, 20\}\)</span>. Perhaps I should have chosen a larger number than 20 to be the maximum possible value that <span class="math inline">\(X\)</span> could take, but you will get the idea — a person’s years of education can be 0 or 1 or 2 or up to some maximum value.</p>
 </div>
 <p><strong>Properties of pmfs</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>For any <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq f_X(x) \leq 1\)</span></p>
 <p>In words: the probability of <span class="math inline">\(X\)</span> taking some particular value can’t be less than 0 or greater than 1 (neither of those would make any sense)</p></li>
 <li><p><span class="math inline">\(\sum_{x \in \mathcal{X}} f_X(x) = 1\)</span></p>
-<p>In words: if you add up <span class="math inline">\(\mathrm{P}(X=x)\)</span> across all possible values that <span class="math inline">\(X\)</span> could take, they sum to 1.</p></li>
+<p>In words: if you add up <span class="math inline">\(\P(X=x)\)</span> across all possible values that <span class="math inline">\(X\)</span> could take, they sum to 1.</p></li>
 </ol>
 <p><strong>Properties of cdfs for discrete random variables</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>For any <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq F_X(x) \leq 1\)</span></p>
 <p>In words: the probability that <span class="math inline">\(X\)</span> is less than or equal to some particular value <span class="math inline">\(x\)</span> has to be between 0 and 1.</p></li>
 <li><p>If <span class="math inline">\(x_1 &lt; x_2\)</span>, then <span class="math inline">\(F_X(x_1) \leq F_X(x_2)\)</span></p>
-<p>In words: the cdf is increasing in <span class="math inline">\(x\)</span> (e.g., it will always be the case that <span class="math inline">\(\mathrm{P}(X \leq 3) \leq \mathrm{P}(X \leq 4)\)</span>).</p></li>
+<p>In words: the cdf is increasing in <span class="math inline">\(x\)</span> (e.g., it will always be the case that <span class="math inline">\(\P(X \leq 3) \leq \P(X \leq 4)\)</span>).</p></li>
 <li><p><span class="math inline">\(F_X(-\infty)=0\)</span> and <span class="math inline">\(F_X(\infty)=1\)</span></p>
 <p>In words: if you choose small enough values of <span class="math inline">\(x\)</span>, the probability that <span class="math inline">\(X\)</span> will be less than that is 0; similar (but opposite) logic applies for big values of <span class="math inline">\(x\)</span>.</p></li>
 </ol>
@@ -411,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In words: you can “recover” the cdf from the pmf by adding up the pmf across all possible values that the random variable could take that are less than or equal to <span class="math inline">\(x\)</span>. This will be clearer with an example:</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 3.7  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Earlier we showed that <span class="math inline">\(F_X(3) = 1/2\)</span>. We can calculate this by</p>
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 3.7  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Earlier we showed that <span class="math inline">\(F_X(3) = 1/2\)</span>. We can calculate this by</p>
 <p><span class="math display">\[
   \begin{aligned}
   F_X(3) &amp;= \sum_{\substack{z \in \mathcal{X} \\ z \leq 3}} f_X(z) \\

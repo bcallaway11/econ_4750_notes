@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -385,15 +383,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>SW 2.3</p>
 <p>Here are some more properties of expectations and variances when there are multiple random variables. For two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathbb{E}[X+Y] = \mathbb{E}[X] + \mathbb{E}[Y]\)</span></p></li>
-<li><p><span class="math inline">\(\mathrm{var}(X+Y) = \mathrm{var}(X) + \mathrm{var}(Y) + 2\mathrm{cov}(X,Y)\)</span></p></li>
+<li><p><span class="math inline">\(\E[X+Y] = \E[X] + \E[Y]\)</span></p></li>
+<li><p><span class="math inline">\(\Var(X+Y) = \Var(X) + \Var(Y) + 2\Cov(X,Y)\)</span></p></li>
 </ol>
 <p>The first property is probably not surprising — expectations continue to pass through sums. The second property, particularly the covariance term, needs more explanation. To start with, you can just plug <span class="math inline">\(X+Y\)</span> into the definition of variance and (with a few lines of algebra) show that the second property is true. But, for the intuition, let me explain with an example. Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are rolls of two dice, but <em>somehow</em> these dice are positively correlated with each other — i.e., both rolls coming up with high numbers (and low numbers) are more likely than with regular dice. Now, think about what the sum of two dice rolls can be: the smallest possible sum is 2 and other values are possible up to 12. Moreover, the smallest and largest possible sum of the rolls (2 and 12), which are farthest away from the mean value of 7, are relatively uncommon. You have to roll either <span class="math inline">\((1,1)\)</span> or <span class="math inline">\((6,6)\)</span> to get either of these and the probability of each of those rolls is just <span class="math inline">\(1/36\)</span>. However, when the dice are positively correlated, the probability of both rolls being very high or very low becomes more likely — thus, since outcomes far away from the mean become more likely, the variance increases.</p>
 <p>One last comment here is that, when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent (or even just uncorrelated), the formula for the variance does not involve the extra covariance term because it is equal to 0.</p>
 <p>These properties for sums of random variables generalize to the case with more than two random variables. For example, suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are random variables, then</p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathbb{E}\left[ \displaystyle \sum_{i=1}^n Y_i \right] = \displaystyle \sum_{i=1}^n \mathbb{E}[Y_i]\)</span></p></li>
-<li><p>If <span class="math inline">\(Y_i\)</span> are mutually independent, then <span class="math inline">\(\mathrm{var}\left( \displaystyle \sum_{i=1}^n Y_i \right) = \displaystyle \sum_{i=1}^n \mathrm{var}(Y_i)\)</span></p></li>
+<li><p><span class="math inline">\(\E\left[ \displaystyle \sum_{i=1}^n Y_i \right] = \displaystyle \sum_{i=1}^n \E[Y_i]\)</span></p></li>
+<li><p>If <span class="math inline">\(Y_i\)</span> are mutually independent, then <span class="math inline">\(\Var\left( \displaystyle \sum_{i=1}^n Y_i \right) = \displaystyle \sum_{i=1}^n \Var(Y_i)\)</span></p></li>
 </ol>
 <p>Notice that the last line does not involve any covariance terms, but this is only because of the caveat that the <span class="math inline">\(Y_i\)</span> are mutually independent. Otherwise, there would actually be <em>tons</em> of covariance terms that would need to be accounted for.</p>
 </div>

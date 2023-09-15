@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -386,11 +384,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is useful to know about joint pmfs/pdfs/cdfs, but they are often hard to work with in practice. For example, if you have two random variables, visualizing their joint distribution would involve interpreting a 3D plot which is often challenging in practice. If you had more than two random variables, then fully visualizing their joint distribution would not be possible. Therefore, we will typically look at summaries of the joint distribution. Probably the most useful one is the conditional expectation that we study in this section; in fact, we will spend much of the semester trying to estimate conditional expectations.</p>
 <p>For two random variables, <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>, the <strong>conditional expectation</strong> of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span> is the mean value of <span class="math inline">\(Y\)</span> conditional on <span class="math inline">\(X\)</span> taking the particular value <span class="math inline">\(x\)</span>. In math, this is written</p>
 <p><span class="math display">\[
-  \mathbb{E}[Y|X=x]
+  \E[Y|X=x]
 \]</span></p>
 <p>One useful way to think of a conditional expectation is as a <em>function</em> of <span class="math inline">\(x\)</span>. For example, suppose that <span class="math inline">\(Y\)</span> is a person’s yearly income and <span class="math inline">\(X\)</span> is a person’s years of education. Clearly, mean income can change for different values of education.</p>
 <p>Conditional expectations will be a main focus of ours throughout the semester</p>
-<p>An extremely useful property of conditional expectations is that they generalize from the case with two variables to the case with multiple variables. For example, suppose that we have four random variables <span class="math inline">\(Y\)</span>, <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>.</p>
+<p>An extremely useful property of conditional expectations is that they generalize from the case with two variables to the case with multiple variables. For example, suppose that we have four random variables <span class="math inline">\(Y\)</span>, <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>. It makes sense to think about
+<span class="math display">\[
+  \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]
+\]</span>
+which is the expected value of <span class="math inline">\(Y\)</span> conditional on <span class="math inline">\(X_1\)</span> taking the particular value <span class="math inline">\(x_1\)</span>, <span class="math inline">\(X_2\)</span> taking the particular value <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(X_3\)</span> taking the particular value <span class="math inline">\(x_3\)</span>. Just like before, you can think of this as a function, in the sense that changing any of <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and/or <span class="math inline">\(x_3\)</span> gives a new conditional mean.</p>
 </div>
             </section>
 

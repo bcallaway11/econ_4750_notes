@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -385,12 +383,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>SW 2.1</p>
 <p>For continuous random variables, you can define the cdf in exactly the same way as we did for discrete random variables. That is, if <span class="math inline">\(X\)</span> is a continuous random variable,</p>
 <p><span class="math display">\[
-  F_X(x) = \mathrm{P}(X \leq x)
+  F_X(x) = \P(X \leq x)
 \]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 3.8  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The cdf of <span class="math inline">\(X\)</span> looks like</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-84-1.png" alt="cdf of U.S. wage income" width="672" />
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 3.8  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The cdf of <span class="math inline">\(X\)</span> looks like</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-5-1.png" alt="cdf of U.S. wage income" width="672" />
 <p class="caption">
 Figure 3.3: cdf of U.S. wage income
 </p>
@@ -410,27 +408,27 @@ Recall that the slope of the cdf will be larger in places where <span class="mat
 Integration is roughly the continuous version of a summation — thus, this expression is very similar to the expression above for the cdf in terms of the pmf when <span class="math inline">\(X\)</span> is discrete.</p>
 <p><strong>More properties of cdfs</strong></p>
 <ol start="4" style="list-style-type: decimal">
-<li><p><span class="math inline">\(\mathrm{P}(X &gt; x) = 1 - \mathrm{P}(X \leq x) = 1-F_X(x)\)</span></p>
+<li><p><span class="math inline">\(\P(X &gt; x) = 1 - \P(X \leq x) = 1-F_X(x)\)</span></p>
 <p>In words, if you want to calculate the probability that <span class="math inline">\(X\)</span> <em>is greater than</em> some particular value <span class="math inline">\(x\)</span>, you can do that by calculating <span class="math inline">\(1-F_X(x)\)</span>.</p></li>
-<li><p><span class="math inline">\(\mathrm{P}(a \leq X \leq b) = F_X(b) - F_X(a)\)</span></p>
+<li><p><span class="math inline">\(\P(a \leq X \leq b) = F_X(b) - F_X(a)\)</span></p>
 <p>In words: you can also calculate the probability that <span class="math inline">\(X\)</span> falls in some range using the cdf.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 3.9  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The pdf of <span class="math inline">\(X\)</span> looks like</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-85-1.png" alt="pdf of U.S. wage income" width="672" />
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 3.9  </strong></span>Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The pdf of <span class="math inline">\(X\)</span> looks like</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-6-1.png" alt="pdf of U.S. wage income" width="672" />
 <p class="caption">
 Figure 3.4: pdf of U.S. wage income
 </p>
 </div>
 <p>From the figure, we can see that the most common values of yearly income are around $25-30,000 per year. Notice that this corresponds to the steepest part of the cdf from the previous figure. The right tail of the distribution is also long. This means that, while incomes of $150,000+ are not common, there are some individuals who have incomes that high.</p>
 <p>Moreover, we can use the properties of pdfs/cdfs above to calculate some specific probabilities. In particular, we can calculating probabilities by calculating integrals (i.e., regions under the curve) / relating the pdf to the cdf. First, the red region above corresponds to the probability of a person’s income being between $50,000 and $100,000. This is given by <span class="math inline">\(F(100,000) - F(50000)\)</span>. We can compute this in <code>R</code> using the <code>ecdf</code> function. In particular,</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="continuous-random-variables.html#cb79-1" tabindex="-1"></a>incwage_cdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(us_data<span class="sc">$</span>incwage)</span>
-<span id="cb79-2"><a href="continuous-random-variables.html#cb79-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">incwage_cdf</span>(<span class="dv">100000</span>) <span class="sc">-</span> <span class="fu">incwage_cdf</span>(<span class="dv">50000</span>),<span class="dv">3</span>)</span>
-<span id="cb79-3"><a href="continuous-random-variables.html#cb79-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.27</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="continuous-random-variables.html#cb1-1" tabindex="-1"></a>incwage_cdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(us_data<span class="sc">$</span>incwage)</span>
+<span id="cb1-2"><a href="continuous-random-variables.html#cb1-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">incwage_cdf</span>(<span class="dv">100000</span>) <span class="sc">-</span> <span class="fu">incwage_cdf</span>(<span class="dv">50000</span>),<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.27</code></pre>
 <p>The green region in the figure is the probability of a person’s income being above $150,000. Using the above properties of cdfs, we can calculate it as <span class="math inline">\(1-F(150000)\)</span> which is</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="continuous-random-variables.html#cb80-1" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">incwage_cdf</span>(<span class="dv">150000</span>), <span class="dv">3</span>)</span>
-<span id="cb80-2"><a href="continuous-random-variables.html#cb80-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.052</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="continuous-random-variables.html#cb3-1" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">incwage_cdf</span>(<span class="dv">150000</span>), <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.052</code></pre>
 </div>
 </div>
             </section>

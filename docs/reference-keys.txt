@@ -23,6 +23,7 @@ exm:unlabeled-div-18
 exm:unlabeled-div-19
 exm:unlabeled-div-20
 exm:unlabeled-div-21
+exm:unlabeled-div-22
 eq:ovb-y
 eq:foc-bet0
 eq:foc-bet1
@@ -30,8 +31,8 @@ eq:b1
 eq:hr1
 eq:hr2
 eq:V
-exm:unlabeled-div-22
 exm:unlabeled-div-23
+exm:unlabeled-div-24
 introduction
 what-is-this
 what-is-this-not
@@ -192,3 +193,8 @@ lab-7-solutions
 coding-questions-4
 extra-questions-5
 answers-to-some-extra-questions-2
+fig:unnamed-chunk-3
+fig:unnamed-chunk-4
+fig:unnamed-chunk-5
+fig:unnamed-chunk-6
+estimating-ey

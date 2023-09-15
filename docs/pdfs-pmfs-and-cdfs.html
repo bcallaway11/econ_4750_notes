@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -391,19 +389,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>The pmf is somewhat easier to explain, so let’s start there. For some discrete random variable <span class="math inline">\(X\)</span>, its pmf is given by</p>
 <p><span class="math display">\[
-  f_X(x) = \mathrm{P}(X=x)
+  f_X(x) = \P(X=x)
 \]</span>
 That is, the probability that <span class="math inline">\(X\)</span> takes on some particular value <span class="math inline">\(x\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 3.1  </strong></span>Suppose that <span class="math inline">\(X\)</span> denotes the outcome of a roll of a die. Then, <span class="math inline">\(f_X(1)\)</span> is the probability of rolling a one. And, in particular,</p>
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 3.1  </strong></span>Suppose that <span class="math inline">\(X\)</span> denotes the outcome of a roll of a die. Then, <span class="math inline">\(f_X(1)\)</span> is the probability of rolling a one. And, in particular,</p>
 <p><span class="math display">\[
-  f_X(1) = \mathrm{P}(X=1) = \frac{1}{6}
+  f_X(1) = \P(X=1) = \frac{1}{6}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 3.2  </strong></span>Let’s do a bit more realistic example where we look at the pmf of education in the U.S. Suppose that <span class="math inline">\(X\)</span> denotes the years of education that a person has. Then, <span class="math inline">\(f_X(x)\)</span> is the probability that a person has exactly <span class="math inline">\(x\)</span> years of education. We can set <span class="math inline">\(x\)</span> to different values and calculate the probabilities of a person having different amounts of education. That’s what we do in the following figure:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-82-1.png" alt="pmf of U.S. education" width="672" />
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 3.2  </strong></span>Let’s do a bit more realistic example where we look at the pmf of education in the U.S. Suppose that <span class="math inline">\(X\)</span> denotes the years of education that a person has. Then, <span class="math inline">\(f_X(x)\)</span> is the probability that a person has exactly <span class="math inline">\(x\)</span> years of education. We can set <span class="math inline">\(x\)</span> to different values and calculate the probabilities of a person having different amounts of education. That’s what we do in the following figure:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-3-1.png" alt="pmf of U.S. education" width="672" />
 <p class="caption">
 Figure 3.1: pmf of U.S. education
 </p>
@@ -415,19 +413,19 @@ Figure 3.1: pmf of U.S. education
 <li><strong>Cumulative distribution function (cdf)</strong> - The cdf of some random variable <span class="math inline">\(X\)</span> is defined as</li>
 </ul>
 <p><span class="math display">\[
-  F_X(x) = \mathrm{P}(X \leq x)
+  F_X(x) = \P(X \leq x)
 \]</span>
 In words, this cdf is the probability that the random <span class="math inline">\(X\)</span> takes a value less than or equal to <span class="math inline">\(x\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 3.3  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Then, <span class="math inline">\(F_X(3) = \mathrm{P}(X \leq 3)\)</span> is the probability of rolling 3 or lower. Thus,</p>
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 3.3  </strong></span>Suppose <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Then, <span class="math inline">\(F_X(3) = \P(X \leq 3)\)</span> is the probability of rolling 3 or lower. Thus,</p>
 <p><span class="math display">\[
-  F_X(3) = \mathrm{P}(X \leq 3) = \frac{1}{2}
+  F_X(3) = \P(X \leq 3) = \frac{1}{2}
 \]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 3.4  </strong></span>Let’s go back to our example of years of education in the U.S. In this case, <span class="math inline">\(F_X(x)\)</span> is the fraction of the population that has less than <span class="math inline">\(x\)</span> years of education. We can calculate this for different values of <span class="math inline">\(x\)</span>. That’s what we do in the following figure:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
-<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-83-1.png" alt="cdf of U.S. educ" width="672" />
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 3.4  </strong></span>Let’s go back to our example of years of education in the U.S. In this case, <span class="math inline">\(F_X(x)\)</span> is the fraction of the population that has less than <span class="math inline">\(x\)</span> years of education. We can calculate this for different values of <span class="math inline">\(x\)</span>. That’s what we do in the following figure:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-4-1.png" alt="cdf of U.S. educ" width="672" />
 <p class="caption">
 Figure 3.2: cdf of U.S. educ
 </p>

@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -388,7 +388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One idea is to just throw all the data that we have into the model. In many applications, this may not be a good idea. I’ll provide a specific example below.</p>
 <p>Before doing that, I want to distinguish between two concepts. Typically, what we mean we say that a model is good at making predictions is that it is a good at making <strong>out-of-sample</strong> predictions. In other words, some new observation shows up (e.g., a new house comes on the market) with certain characteristics — we would like to be using a model that makes good predictions for this house. This is a distinct concept from <strong>in-sample</strong> fit of the model — how well a model predicts for the data that it is estimated on. In the context of prediction, one very common problem is <strong>over-fitting</strong>. Over-fitting is the problem of getting predictions that are <em>too specific</em> to the particular data that you have, but then that don’t work well for new data.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 6.1  </strong></span>Suppose that you are interested in predicting height of students at UGA. You consider estimating three models</p>
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 6.1  </strong></span>Suppose that you are interested in predicting height of students at UGA. You consider estimating three models</p>
 <p><span class="math display">\[
   \begin{aligned}
     Height &amp;= \beta_0 + \beta_1 Male + U \\

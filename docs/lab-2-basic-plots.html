@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -388,37 +386,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="side-comment">
 <p><span class="side-comment">Side Comment:</span> Base <code>R</code> has several plotting functions (e.g., <code>plot</code>). Check IDS 2.15 for an introduction to these functions. These are generally easier to learn but less beautiful than plots coming from <code>ggplot2</code>.</p>
 </div>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="lab-2-basic-plots.html#cb82-1" tabindex="-1"></a><span class="co"># load ggplot2 package </span></span>
-<span id="cb82-2"><a href="lab-2-basic-plots.html#cb82-2" tabindex="-1"></a><span class="co"># (if you haven&#39;t installed it, you would need to do that first)</span></span>
-<span id="cb82-3"><a href="lab-2-basic-plots.html#cb82-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb82-4"><a href="lab-2-basic-plots.html#cb82-4" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="lab-2-basic-plots.html#cb82-5" tabindex="-1"></a><span class="co"># load dplyr package for &quot;wrangling&quot; data</span></span>
-<span id="cb82-6"><a href="lab-2-basic-plots.html#cb82-6" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="lab-2-basic-plots.html#cb83-1" tabindex="-1"></a><span class="co"># arrange data</span></span>
-<span id="cb83-2"><a href="lab-2-basic-plots.html#cb83-2" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
-<span id="cb83-3"><a href="lab-2-basic-plots.html#cb83-3" tabindex="-1"></a>    <span class="fu">group_by</span>(educ) <span class="sc">%&gt;%</span></span>
-<span id="cb83-4"><a href="lab-2-basic-plots.html#cb83-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">income=</span><span class="fu">mean</span>(incwage))</span>
-<span id="cb83-5"><a href="lab-2-basic-plots.html#cb83-5" tabindex="-1"></a></span>
-<span id="cb83-6"><a href="lab-2-basic-plots.html#cb83-6" tabindex="-1"></a><span class="co"># make the plot</span></span>
-<span id="cb83-7"><a href="lab-2-basic-plots.html#cb83-7" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
-<span id="cb83-8"><a href="lab-2-basic-plots.html#cb83-8" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
-<span id="cb83-9"><a href="lab-2-basic-plots.html#cb83-9" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb83-10"><a href="lab-2-basic-plots.html#cb83-10" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb83-11"><a href="lab-2-basic-plots.html#cb83-11" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="lab-2-basic-plots.html#cb21-1" tabindex="-1"></a><span class="co"># load ggplot2 package </span></span>
+<span id="cb21-2"><a href="lab-2-basic-plots.html#cb21-2" tabindex="-1"></a><span class="co"># (if you haven&#39;t installed it, you would need to do that first)</span></span>
+<span id="cb21-3"><a href="lab-2-basic-plots.html#cb21-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-4"><a href="lab-2-basic-plots.html#cb21-4" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="lab-2-basic-plots.html#cb21-5" tabindex="-1"></a><span class="co"># load dplyr package for &quot;wrangling&quot; data</span></span>
+<span id="cb21-6"><a href="lab-2-basic-plots.html#cb21-6" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="lab-2-basic-plots.html#cb22-1" tabindex="-1"></a><span class="co"># arrange data</span></span>
+<span id="cb22-2"><a href="lab-2-basic-plots.html#cb22-2" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="lab-2-basic-plots.html#cb22-3" tabindex="-1"></a>    <span class="fu">group_by</span>(educ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="lab-2-basic-plots.html#cb22-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">income=</span><span class="fu">mean</span>(incwage))</span>
+<span id="cb22-5"><a href="lab-2-basic-plots.html#cb22-5" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="lab-2-basic-plots.html#cb22-6" tabindex="-1"></a><span class="co"># make the plot</span></span>
+<span id="cb22-7"><a href="lab-2-basic-plots.html#cb22-7" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
+<span id="cb22-8"><a href="lab-2-basic-plots.html#cb22-8" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="lab-2-basic-plots.html#cb22-9" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb22-10"><a href="lab-2-basic-plots.html#cb22-10" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb22-11"><a href="lab-2-basic-plots.html#cb22-11" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Let me explain what’s going on here piece-by-piece. Let’s start with this code</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="lab-2-basic-plots.html#cb84-1" tabindex="-1"></a><span class="co"># arrange data</span></span>
-<span id="cb84-2"><a href="lab-2-basic-plots.html#cb84-2" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
-<span id="cb84-3"><a href="lab-2-basic-plots.html#cb84-3" tabindex="-1"></a>    <span class="fu">group_by</span>(educ) <span class="sc">%&gt;%</span></span>
-<span id="cb84-4"><a href="lab-2-basic-plots.html#cb84-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">income=</span><span class="fu">mean</span>(incwage))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="lab-2-basic-plots.html#cb23-1" tabindex="-1"></a><span class="co"># arrange data</span></span>
+<span id="cb23-2"><a href="lab-2-basic-plots.html#cb23-2" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="lab-2-basic-plots.html#cb23-3" tabindex="-1"></a>    <span class="fu">group_by</span>(educ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="lab-2-basic-plots.html#cb23-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">income=</span><span class="fu">mean</span>(incwage))</span></code></pre></div>
 <p>At a high-level, making plots often involves two steps — first arranging the data in the “appropriate” way (that’s this step) and then actually making the plot.</p>
 <p>This is “tidyverse-style” code too — in my view, it is a little awkward, but it is also common so I think it is worth explaining here a bit.</p>
 <p>First, the <strong>pipe operator</strong>, <code>%&gt;%</code> takes the thing on the left of it and applies the function to the right of it. So, the line <code>us_data %&gt;% group_by(educ)</code> takes <code>us_data</code> and applies the function <code>group_by</code> to it, and what we group by is <code>educ</code>. That creates a new data frame (you could just run that code and see what you get). The next line takes that new data frame and applies the function <code>summarize</code> to it. In this case, <code>summarize</code> creates a new variable called <code>income</code> that is the mean of the column <code>incwage</code> and it is the mean by <code>educ</code> (since we grouped by education in the previous step).</p>
 <p>Take a second and look through what has actually been created here. <code>plot_data</code> is a new data frame, but it only has 18 observations — corresponding to each distinct value of education in the data. It also has two columns, the first one is <code>educ</code> which is the years of education, and the second one is <code>income</code> which is the average income among individuals that have that amount of education.</p>
 <p>An alternative way of writing the exact same code (that seems more natural to me) is</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="lab-2-basic-plots.html#cb85-1" tabindex="-1"></a><span class="co"># arrange data</span></span>
-<span id="cb85-2"><a href="lab-2-basic-plots.html#cb85-2" tabindex="-1"></a>grouped_data <span class="ot">&lt;-</span> <span class="fu">group_by</span>(us_data, educ)</span>
-<span id="cb85-3"><a href="lab-2-basic-plots.html#cb85-3" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">summarize</span>(grouped_data, <span class="at">income=</span><span class="fu">mean</span>(incwage))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="lab-2-basic-plots.html#cb24-1" tabindex="-1"></a><span class="co"># arrange data</span></span>
+<span id="cb24-2"><a href="lab-2-basic-plots.html#cb24-2" tabindex="-1"></a>grouped_data <span class="ot">&lt;-</span> <span class="fu">group_by</span>(us_data, educ)</span>
+<span id="cb24-3"><a href="lab-2-basic-plots.html#cb24-3" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">summarize</span>(grouped_data, <span class="at">income=</span><span class="fu">mean</span>(incwage))</span></code></pre></div>
 <p>If you’re familiar with other programming languages, the second version of the code probably seems more familiar. Either way is fine with me — tidyverse-style seems to be trendy in R programming these days, but (for me) I think the second version is a little easier to understand. You can find long “debates” about these two styles of writing code if you happen to be interested…</p>
 <p>Before moving on, let me mention a few other <code>dplyr</code> functions that you might find useful</p>
 <ul>
@@ -428,12 +426,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>arrange</code> — useful for sorting your data</p></li>
 </ul>
 <p>Next, let’s consider the second part of the code.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="lab-2-basic-plots.html#cb86-1" tabindex="-1"></a><span class="co"># make the plot</span></span>
-<span id="cb86-2"><a href="lab-2-basic-plots.html#cb86-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
-<span id="cb86-3"><a href="lab-2-basic-plots.html#cb86-3" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
-<span id="cb86-4"><a href="lab-2-basic-plots.html#cb86-4" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb86-5"><a href="lab-2-basic-plots.html#cb86-5" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb86-6"><a href="lab-2-basic-plots.html#cb86-6" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="lab-2-basic-plots.html#cb25-1" tabindex="-1"></a><span class="co"># make the plot</span></span>
+<span id="cb25-2"><a href="lab-2-basic-plots.html#cb25-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
+<span id="cb25-3"><a href="lab-2-basic-plots.html#cb25-3" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="lab-2-basic-plots.html#cb25-4" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb25-5"><a href="lab-2-basic-plots.html#cb25-5" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb25-6"><a href="lab-2-basic-plots.html#cb25-6" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p>The main function here is <code>ggplot</code>. It takes in two main arguments: <code>data</code> and <code>mapping</code>. Notice that we set <code>data</code> to be equal to <code>plot_data</code> which is the data frame that we just created. The <code>mapping</code> is set equal to <code>aes(x=educ,y=income)</code>. <code>aes</code> stands for “aesthetic”, and here you are just telling <code>ggplot</code> the names of the columns in the data frame that should be on the x-axis (here: <code>educ</code>) and on the y-axis (here: <code>income</code>) in the plot. Also, notice the <code>+</code> at the end of the line; you can interpret this as saying “keep going” to the next line before executing.</p>
 <p>If we just stopped there, we actually wouldn’t plot anything. We still need to tell <code>ggplot</code> what kind of plot we want to make. That’s where the line <code>geom_line</code> comes in. It tells <code>ggplot</code> that we want to plot a line. Try running the code with just those two lines — you will see that you will get a similar (but not exactly the same) plot.</p>
 <p><code>geom_point</code> adds the dots in the figure. <code>size=3</code> controls the size of the points. I didn’t add this argument originally, but the dots were hard to see so I made them bigger.</p>
@@ -445,15 +443,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>In <code>geom_line</code>, the argument <code>size</code> controls the thickness of the line.</p></li>
 <li><p>The functions <code>ylab</code> and <code>xlab</code> control the labels on the y-axis and x-axis</p></li>
 <li><p>The functions <code>ylim</code> and <code>xlim</code> control the “limits” of the y-axis and x-axis. Here’s how you can use these:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="lab-2-basic-plots.html#cb87-1" tabindex="-1"></a><span class="co"># make the plot</span></span>
-<span id="cb87-2"><a href="lab-2-basic-plots.html#cb87-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
-<span id="cb87-3"><a href="lab-2-basic-plots.html#cb87-3" tabindex="-1"></a>     <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
-<span id="cb87-4"><a href="lab-2-basic-plots.html#cb87-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb87-5"><a href="lab-2-basic-plots.html#cb87-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb87-6"><a href="lab-2-basic-plots.html#cb87-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb87-7"><a href="lab-2-basic-plots.html#cb87-7" tabindex="-1"></a>  ylim<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">150000</span>) <span class="sc">+</span> </span>
-<span id="cb87-8"><a href="lab-2-basic-plots.html#cb87-8" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Income&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb87-9"><a href="lab-2-basic-plots.html#cb87-9" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="lab-2-basic-plots.html#cb26-1" tabindex="-1"></a><span class="co"># make the plot</span></span>
+<span id="cb26-2"><a href="lab-2-basic-plots.html#cb26-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
+<span id="cb26-3"><a href="lab-2-basic-plots.html#cb26-3" tabindex="-1"></a>     <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="lab-2-basic-plots.html#cb26-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb26-5"><a href="lab-2-basic-plots.html#cb26-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb26-6"><a href="lab-2-basic-plots.html#cb26-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb26-7"><a href="lab-2-basic-plots.html#cb26-7" tabindex="-1"></a>  ylim<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">150000</span>) <span class="sc">+</span> </span>
+<span id="cb26-8"><a href="lab-2-basic-plots.html#cb26-8" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Income&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb26-9"><a href="lab-2-basic-plots.html#cb26-9" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>)</span></code></pre></div>
 <p>which will adjust the y-axis and change the labels on each axis.</p></li>
 </ul>
 <p>Besides the line plot (using <code>geom_line</code>) and the scatter plot (using <code>geom_point</code>), probably two other types of plots that I make the most are</p>

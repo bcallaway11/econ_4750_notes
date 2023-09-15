@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-11" />
+<meta name="date" content="2023-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -233,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -397,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
   X \sim N(\mu, \sigma^2)
 \]</span>
-where <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> and <span class="math inline">\(\sigma^2 = \mathrm{var}(X)\)</span>.</p>
+where <span class="math inline">\(\mu = \E[X]\)</span> and <span class="math inline">\(\sigma^2 = \Var(X)\)</span>.</p>
 <p>Importantly, if we know that <span class="math inline">\(X\)</span> follows a normal distribution, its entire distribution is fully characterized by its mean and variance. In other words, if <span class="math inline">\(X\)</span> is normally distributed, and we also know its mean and variance, then we know everything about its distribution. [Notice that this is not generally true — if we did not know the distribution of <span class="math inline">\(X\)</span> but knew its mean and variance, we would know two important features of the distribution of <span class="math inline">\(X\)</span>, but we would not know everything about its distribution.]</p>
 <p>You are probably familiar with the pdf of a normal distribution — it is “bell-shaped”.</p>
-<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<p><img src="Detailed-Course-Notes_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>From the figure, you can see that a normal distribution is unimodal (there is just one “peak”) and symmetric (the pdf is the same if you move the same distance above <span class="math inline">\(\mu\)</span> as when you move the same distance below <span class="math inline">\(\mu\)</span>). This means that, for a random variable that follows a normal distribution, its median and mode are also equal to <span class="math inline">\(\mu\)</span>.</p>
 <p>From the plot of the pdf, we can also tell that, if you make a draw from <span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span>, the most likely values are near the mean. As you move further away from <span class="math inline">\(\mu\)</span>, it becomes less likely (though not impossible) for a draw of <span class="math inline">\(X\)</span> to take that value.</p>
 <p>Recall that we can calculate the probability that <span class="math inline">\(X\)</span> takes on a value in a range by calculating the area under the curve of the pdf. For each shaded region in the figure, there is a 2.5% chance that <span class="math inline">\(X\)</span> falls into that region (so the probability of <span class="math inline">\(X\)</span> falling into either region is 5%). Another way to think about this is that there is a 95% probability that a draw of <span class="math inline">\(X\)</span> will be in the region <span class="math inline">\([\mu-1.96\sigma, \mu+1.96\sigma]\)</span>. Later, we we talk about hypothesis testing, this will be an important property.</p>
