@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-15" />
+<meta name="date" content="2023-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -231,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -381,32 +383,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="coding" class="section level2 hasAnchor" number="3.17">
 <h2><span class="header-section-number">3.17</span> Coding<a href="coding.html#coding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To conclude this section, we’ll use R to compute the features of the joint distribution of income and education that we have discussed above.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="coding.html#cb5-1" tabindex="-1"></a><span class="co"># create vectors of income and educ</span></span>
-<span id="cb5-2"><a href="coding.html#cb5-2" tabindex="-1"></a>income <span class="ot">&lt;-</span> us_data<span class="sc">$</span>incwage</span>
-<span id="cb5-3"><a href="coding.html#cb5-3" tabindex="-1"></a>educ <span class="ot">&lt;-</span> us_data<span class="sc">$</span>educ</span>
-<span id="cb5-4"><a href="coding.html#cb5-4" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="coding.html#cb5-5" tabindex="-1"></a><span class="co"># mean of income</span></span>
-<span id="cb5-6"><a href="coding.html#cb5-6" tabindex="-1"></a><span class="fu">mean</span>(income)</span></code></pre></div>
-<pre><code>## [1] 58605.75</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="coding.html#cb7-1" tabindex="-1"></a><span class="co"># mean of education</span></span>
-<span id="cb7-2"><a href="coding.html#cb7-2" tabindex="-1"></a><span class="fu">mean</span>(educ)</span></code></pre></div>
-<pre><code>## [1] 13.96299</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="coding.html#cb9-1" tabindex="-1"></a><span class="co"># variance</span></span>
-<span id="cb9-2"><a href="coding.html#cb9-2" tabindex="-1"></a><span class="fu">var</span>(income)</span></code></pre></div>
-<pre><code>## [1] 4776264026</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="coding.html#cb11-1" tabindex="-1"></a><span class="fu">var</span>(educ)</span></code></pre></div>
-<pre><code>## [1] 8.345015</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="coding.html#cb13-1" tabindex="-1"></a><span class="co"># standard deviation</span></span>
-<span id="cb13-2"><a href="coding.html#cb13-2" tabindex="-1"></a><span class="fu">sd</span>(income)</span></code></pre></div>
-<pre><code>## [1] 69110.52</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="coding.html#cb15-1" tabindex="-1"></a><span class="fu">sd</span>(educ)</span></code></pre></div>
-<pre><code>## [1] 2.888774</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="coding.html#cb17-1" tabindex="-1"></a><span class="co"># covariance</span></span>
-<span id="cb17-2"><a href="coding.html#cb17-2" tabindex="-1"></a><span class="fu">cov</span>(income,educ)</span></code></pre></div>
-<pre><code>## [1] 63766.72</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="coding.html#cb19-1" tabindex="-1"></a><span class="co"># correlation</span></span>
-<span id="cb19-2"><a href="coding.html#cb19-2" tabindex="-1"></a><span class="fu">cor</span>(income, educ)</span></code></pre></div>
-<pre><code>## [1] 0.3194011</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="coding.html#cb81-1" tabindex="-1"></a><span class="co"># create vectors of income and educ</span></span>
+<span id="cb81-2"><a href="coding.html#cb81-2" tabindex="-1"></a>income <span class="ot">&lt;-</span> us_data<span class="sc">$</span>incwage</span>
+<span id="cb81-3"><a href="coding.html#cb81-3" tabindex="-1"></a>educ <span class="ot">&lt;-</span> us_data<span class="sc">$</span>educ</span>
+<span id="cb81-4"><a href="coding.html#cb81-4" tabindex="-1"></a></span>
+<span id="cb81-5"><a href="coding.html#cb81-5" tabindex="-1"></a><span class="co"># mean of income</span></span>
+<span id="cb81-6"><a href="coding.html#cb81-6" tabindex="-1"></a><span class="fu">mean</span>(income)</span>
+<span id="cb81-7"><a href="coding.html#cb81-7" tabindex="-1"></a><span class="co">#&gt; [1] 58605.75</span></span>
+<span id="cb81-8"><a href="coding.html#cb81-8" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="coding.html#cb81-9" tabindex="-1"></a><span class="co"># mean of education</span></span>
+<span id="cb81-10"><a href="coding.html#cb81-10" tabindex="-1"></a><span class="fu">mean</span>(educ)</span>
+<span id="cb81-11"><a href="coding.html#cb81-11" tabindex="-1"></a><span class="co">#&gt; [1] 13.96299</span></span>
+<span id="cb81-12"><a href="coding.html#cb81-12" tabindex="-1"></a></span>
+<span id="cb81-13"><a href="coding.html#cb81-13" tabindex="-1"></a><span class="co"># variance</span></span>
+<span id="cb81-14"><a href="coding.html#cb81-14" tabindex="-1"></a><span class="fu">var</span>(income)</span>
+<span id="cb81-15"><a href="coding.html#cb81-15" tabindex="-1"></a><span class="co">#&gt; [1] 4776264026</span></span>
+<span id="cb81-16"><a href="coding.html#cb81-16" tabindex="-1"></a><span class="fu">var</span>(educ)</span>
+<span id="cb81-17"><a href="coding.html#cb81-17" tabindex="-1"></a><span class="co">#&gt; [1] 8.345015</span></span>
+<span id="cb81-18"><a href="coding.html#cb81-18" tabindex="-1"></a></span>
+<span id="cb81-19"><a href="coding.html#cb81-19" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb81-20"><a href="coding.html#cb81-20" tabindex="-1"></a><span class="fu">sd</span>(income)</span>
+<span id="cb81-21"><a href="coding.html#cb81-21" tabindex="-1"></a><span class="co">#&gt; [1] 69110.52</span></span>
+<span id="cb81-22"><a href="coding.html#cb81-22" tabindex="-1"></a><span class="fu">sd</span>(educ)</span>
+<span id="cb81-23"><a href="coding.html#cb81-23" tabindex="-1"></a><span class="co">#&gt; [1] 2.888774</span></span>
+<span id="cb81-24"><a href="coding.html#cb81-24" tabindex="-1"></a></span>
+<span id="cb81-25"><a href="coding.html#cb81-25" tabindex="-1"></a><span class="co"># covariance</span></span>
+<span id="cb81-26"><a href="coding.html#cb81-26" tabindex="-1"></a><span class="fu">cov</span>(income,educ)</span>
+<span id="cb81-27"><a href="coding.html#cb81-27" tabindex="-1"></a><span class="co">#&gt; [1] 63766.72</span></span>
+<span id="cb81-28"><a href="coding.html#cb81-28" tabindex="-1"></a></span>
+<span id="cb81-29"><a href="coding.html#cb81-29" tabindex="-1"></a><span class="co"># correlation</span></span>
+<span id="cb81-30"><a href="coding.html#cb81-30" tabindex="-1"></a><span class="fu">cor</span>(income, educ)</span>
+<span id="cb81-31"><a href="coding.html#cb81-31" tabindex="-1"></a><span class="co">#&gt; [1] 0.3194011</span></span></code></pre></div>
 </div>
             </section>
 

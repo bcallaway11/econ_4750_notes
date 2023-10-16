@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-15" />
+<meta name="date" content="2023-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -231,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -384,43 +386,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this part, suppose that <span class="math inline">\(Y=a + bX\)</span> where <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are random variables while <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are fixed constants.</p>
 <p><strong>Properties of Expectations</strong></p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\E[a] = a\)</span> [In words: the expected value of a constant is just the constant. This holds because there is nothing random about <span class="math inline">\(a\)</span> — we just know what it is.]</p></li>
-<li><p><span class="math inline">\(\E[bX] = b\E[X]\)</span> [In words: the expected value of a constant times a random variable is equal to the constant times the expected value of the random variable. We will use this property often this semester.]</p></li>
-<li><p><span class="math inline">\(\E[a + bX] = a + b\E[X]\)</span> [In words: expected values “pass through” sums. We will use this property often this semester.]</p></li>
+<li><p><span class="math inline">\(\mathbb{E}[a] = a\)</span> [In words: the expected value of a constant is just the constant. This holds because there is nothing random about <span class="math inline">\(a\)</span> — we just know what it is.]</p></li>
+<li><p><span class="math inline">\(\mathbb{E}[bX] = b\mathbb{E}[X]\)</span> [In words: the expected value of a constant times a random variable is equal to the constant times the expected value of the random variable. We will use this property often this semester.]</p></li>
+<li><p><span class="math inline">\(\mathbb{E}[a + bX] = a + b\mathbb{E}[X]\)</span> [In words: expected values “pass through” sums. We will use this property often this semester.]</p></li>
 </ol>
 <p>You’ll also notice the similarity between the properties of summations and expectations. This is not a coincidence — it holds because expectations are defined as summations (or very closely related, as integrals).</p>
 <p><strong>Properties of Variance</strong></p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\Var(a) = 0\)</span> [In words: the variance of a constant is equal to 0.]</p></li>
-<li><p><span class="math inline">\(\Var(bX) = b^2 \Var(X)\)</span> [In words: A constant can come out of the variance, but it needs to be squared first.]</p></li>
-<li><p><span class="math inline">\(\Var(a + bX) = \Var(bX) = b^2 \Var(X)\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{var}(a) = 0\)</span> [In words: the variance of a constant is equal to 0.]</p></li>
+<li><p><span class="math inline">\(\mathrm{var}(bX) = b^2 \mathrm{var}(X)\)</span> [In words: A constant can come out of the variance, but it needs to be squared first.]</p></li>
+<li><p><span class="math inline">\(\mathrm{var}(a + bX) = \mathrm{var}(bX) = b^2 \mathrm{var}(X)\)</span></p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 3.11  </strong></span>Later on in the semester, it will sometimes be convenient for us to “standardize” some random variables. We’ll talk more about the reason to do this later, but for now, I’ll just give the typical formula for standardizing a random variable and we’ll see if we can figure out what the mean and variance of the standardized random variable are.</p>
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 3.11  </strong></span>Later on in the semester, it will sometimes be convenient for us to “standardize” some random variables. We’ll talk more about the reason to do this later, but for now, I’ll just give the typical formula for standardizing a random variable and we’ll see if we can figure out what the mean and variance of the standardized random variable are.</p>
 <p><span class="math display">\[
-  Y = \frac{ X - \E[X]}{\sqrt{\Var(X)}}
+  Y = \frac{ X - \mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}}
 \]</span>
 Just to be clear here, we are standardizing the random variable <span class="math inline">\(X\)</span> and calling its standardized version <span class="math inline">\(Y\)</span>. Let’s calculate its mean</p>
 <p><span class="math display">\[
   \begin{aligned}
-    \E[Y] &amp;= \E\left[ \frac{X - \E[X]}{\sqrt{\Var(X)}} \right] \\
-    &amp;= \frac{1}{\sqrt{\Var(X)}} \E\big[ X - \E[X] \big] \\
-    &amp;= \frac{1}{\sqrt{\Var(X)}} \left( \E[X] - \E\big[\E[X]\big] \right) \\
-    &amp;= \frac{1}{\sqrt{\Var(X)}} \left( \E[X] - \E[X] \right) \\
+    \mathbb{E}[Y] &amp;= \mathbb{E}\left[ \frac{X - \mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right] \\
+    &amp;= \frac{1}{\sqrt{\mathrm{var}(X)}} \mathbb{E}\big[ X - \mathbb{E}[X] \big] \\
+    &amp;= \frac{1}{\sqrt{\mathrm{var}(X)}} \left( \mathbb{E}[X] - \mathbb{E}\big[\mathbb{E}[X]\big] \right) \\
+    &amp;= \frac{1}{\sqrt{\mathrm{var}(X)}} \left( \mathbb{E}[X] - \mathbb{E}[X] \right) \\
     &amp;= 0
   \end{aligned}
 \]</span>
-where the first equality just comes from the definition of <span class="math inline">\(Y\)</span>, the second equality holds because <span class="math inline">\(1/\sqrt{\Var(X)}\)</span> is a constant and can therefore come out of the expectation, the third equality holds because the expectation can pass through the difference, the fourth equality holds because <span class="math inline">\(\E[X]\)</span> is a constant and therefore <span class="math inline">\(\E\big[\E[X]\big] = \E[X]\)</span>, and the last equality holds because the term in parentheses is equal to 0. Thus, the mean of <span class="math inline">\(Y\)</span> is equal to 0. Now let’s calculate the variance.</p>
+where the first equality just comes from the definition of <span class="math inline">\(Y\)</span>, the second equality holds because <span class="math inline">\(1/\sqrt{\mathrm{var}(X)}\)</span> is a constant and can therefore come out of the expectation, the third equality holds because the expectation can pass through the difference, the fourth equality holds because <span class="math inline">\(\mathbb{E}[X]\)</span> is a constant and therefore <span class="math inline">\(\mathbb{E}\big[\mathbb{E}[X]\big] = \mathbb{E}[X]\)</span>, and the last equality holds because the term in parentheses is equal to 0. Thus, the mean of <span class="math inline">\(Y\)</span> is equal to 0. Now let’s calculate the variance.</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \Var(Y) &amp;= \Var\left( \frac{X}{\sqrt{\Var(X)}} - \frac{\E[X]}{\sqrt{\Var(X)}} \right) \\
-  &amp;= \Var\left( \frac{X}{\sqrt{\Var(X)}}\right) \\
-  &amp;= \left( \frac{1}{\sqrt{\Var(X)}} \right)^2 \Var(X) \\
-  &amp;= \frac{\Var(X)}{\Var(X)} \\
+  \mathrm{var}(Y) &amp;= \mathrm{var}\left( \frac{X}{\sqrt{\mathrm{var}(X)}} - \frac{\mathbb{E}[X]}{\sqrt{\mathrm{var}(X)}} \right) \\
+  &amp;= \mathrm{var}\left( \frac{X}{\sqrt{\mathrm{var}(X)}}\right) \\
+  &amp;= \left( \frac{1}{\sqrt{\mathrm{var}(X)}} \right)^2 \mathrm{var}(X) \\
+  &amp;= \frac{\mathrm{var}(X)}{\mathrm{var}(X)} \\
   &amp;= 1
   \end{aligned}
 \]</span>
-where the first equality holds by the definition of <span class="math inline">\(Y\)</span>, the second equality holds because the second term is a constant and by Variance Property 3 above, the third equality holds because <span class="math inline">\((1/\sqrt{\Var(X)})\)</span> is a constant and can come out of the variance but needs to be squared, the fourth equality holds by squaring the term on the left, and the last equality holds by cancelling the numerator and denominator.</p>
+where the first equality holds by the definition of <span class="math inline">\(Y\)</span>, the second equality holds because the second term is a constant and by Variance Property 3 above, the third equality holds because <span class="math inline">\((1/\sqrt{\mathrm{var}(X)})\)</span> is a constant and can come out of the variance but needs to be squared, the fourth equality holds by squaring the term on the left, and the last equality holds by cancelling the numerator and denominator.</p>
 <p>Therefore, we have showed that the mean of the standardized random variable is 0 and its variance is 1. This is, in fact, the goal of standardizing a random variable — to transform it so that it has mean 0 and variance 1 and the particular transformation given in this example is one that delivers a new random variable with these properties.</p>
 </div>
 </div>

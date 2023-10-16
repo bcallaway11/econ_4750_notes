@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-15" />
+<meta name="date" content="2023-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -231,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -381,7 +383,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="expected-values" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Expected Values<a href="expected-values.html#expected-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 2.2</p>
-<p>The <strong>expected value</strong> of some random variable <span class="math inline">\(X\)</span> is its (population) mean and is written as <span class="math inline">\(\E[X]\)</span>. [I tend to write <span class="math inline">\(\E[X]\)</span> for the expected value, but you might also see notation like <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\mu_X\)</span> for the expected value.]</p>
+<p>The <strong>expected value</strong> of some random variable <span class="math inline">\(X\)</span> is its (population) mean and is written as <span class="math inline">\(\mathbb{E}[X]\)</span>. [I tend to write <span class="math inline">\(\mathbb{E}[X]\)</span> for the expected value, but you might also see notation like <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\mu_X\)</span> for the expected value.]</p>
 <p>The expected value of a random variable is a <em>feature</em> of its distribution. In other words, if you know the distribution of a random variable, then you also know its mean.</p>
 <p>The expected value is a measure of <strong>central tendency</strong> (alternative measures of central tendency are the <strong>median</strong> and <strong>mode</strong>).</p>
 <p>Expected values are a main concept in the course (and in statistics/econometrics more generally). I think there are two main reasons for this:</p>
@@ -391,25 +393,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>If <span class="math inline">\(X\)</span> is a discrete random variable, then the expected value is defined as</p>
 <p><span class="math display">\[
-  \E[X] = \sum_{x \in \mathcal{X}} x f_X(x)
+  \mathbb{E}[X] = \sum_{x \in \mathcal{X}} x f_X(x)
 \]</span></p>
 <p>If <span class="math inline">\(X\)</span> is a continuous random variable, then the expected value is defined as</p>
 <p><span class="math display">\[
-  \E[X] = \int_{\mathcal{X}} x f_X(x) \, dx
+  \mathbb{E}[X] = \int_{\mathcal{X}} x f_X(x) \, dx
 \]</span>
 Either way, you can think of these as a weighted average of all possible realizations of the random variable <span class="math inline">\(X\)</span> where the weights are given by the probability of <span class="math inline">\(X\)</span> taking that particular value. This may be more clear with an example…</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 3.10  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, its expected value is given by</p>
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 3.10  </strong></span>Suppose that <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, its expected value is given by</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \E[X] &amp;= \sum_{x=1}^6 x f_X(x) \\
+  \mathbb{E}[X] &amp;= \sum_{x=1}^6 x f_X(x) \\
   &amp;= 1\left(\frac{1}{6}\right) + 2\left(\frac{1}{6}\right) + \cdots + 6\left(\frac{1}{6}\right) \\
   &amp;= 3.5
   \end{aligned}
 \]</span></p>
 </div>
 <div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span> When we start to consider more realistic/interesting applications, we typically won’t know (or be able to easily figure out) <span class="math inline">\(\E[X]\)</span>. Instead, we’ll try to estimate it using available data. We’ll carefully distinguish between <strong>population quantities</strong> like <span class="math inline">\(\E[X]\)</span> and <strong>sample quantities</strong> like an estimate of <span class="math inline">\(\E[X]\)</span> soon.</p>
+<p><span class="side-comment">Side-Comment:</span> When we start to consider more realistic/interesting applications, we typically won’t know (or be able to easily figure out) <span class="math inline">\(\mathbb{E}[X]\)</span>. Instead, we’ll try to estimate it using available data. We’ll carefully distinguish between <strong>population quantities</strong> like <span class="math inline">\(\mathbb{E}[X]\)</span> and <strong>sample quantities</strong> like an estimate of <span class="math inline">\(\mathbb{E}[X]\)</span> soon.</p>
 </div>
 </div>
             </section>

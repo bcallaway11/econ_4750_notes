@@ -193,8 +193,3 @@ lab-7-solutions
 coding-questions-4
 extra-questions-5
 answers-to-some-extra-questions-2
-fig:unnamed-chunk-3
-fig:unnamed-chunk-4
-fig:unnamed-chunk-5
-fig:unnamed-chunk-6
-estimating-ey

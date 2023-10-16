@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-15" />
+<meta name="date" content="2023-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -231,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -383,16 +385,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>SW 2.3</p>
 <p>Another important property of conditional expectations is called the <strong>law of iterated expectations</strong>. It says that</p>
 <p><span class="math display">\[
-  \E[Y] = \E\big[ \E[Y|X] \big]
+  \mathbb{E}[Y] = \mathbb{E}\big[ \mathbb{E}[Y|X] \big]
 \]</span>
 In words: The expected value of <span class="math inline">\(Y\)</span> is equal to the expected value (this expectation is with respect to <span class="math inline">\(X\)</span>) of the conditional expectation of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>.</p>
 <p>This may seem like a technical property, but I think the right way to think about the law of iterated expectations is that there is an inherent relationship between unconditional expectations and conditional expectations. In other words, although conditional expectations can vary arbitrarily for different values of <span class="math inline">\(X\)</span>, if you know what the conditional expectations are, the overall expected value of <span class="math inline">\(Y\)</span> is fully determined.</p>
-<p>A simple example is one where <span class="math inline">\(X\)</span> takes only two values. Suppose we are interested in mean birthweight (<span class="math inline">\(Y\)</span>) for children of mother’s who either drank alcohol during their pregnancy (<span class="math inline">\(X=1\)</span>) or who didn’t drink alcohol during their pregnancy (<span class="math inline">\(X=0\)</span>). Suppose the following (just to be clear, these are completely made up numbers), <span class="math inline">\(\E[Y|X=1] = 7\)</span>, <span class="math inline">\(\E[Y|X=0]=8\)</span> <span class="math inline">\(\P(X=1) = 0.1\)</span> and <span class="math inline">\(\P(X=0)=0.9\)</span>. The law of iterated expectation says that
+<p>A simple example is one where <span class="math inline">\(X\)</span> takes only two values. Suppose we are interested in mean birthweight (<span class="math inline">\(Y\)</span>) for children of mother’s who either drank alcohol during their pregnancy (<span class="math inline">\(X=1\)</span>) or who didn’t drink alcohol during their pregnancy (<span class="math inline">\(X=0\)</span>). Suppose the following (just to be clear, these are completely made up numbers), <span class="math inline">\(\mathbb{E}[Y|X=1] = 7\)</span>, <span class="math inline">\(\mathbb{E}[Y|X=0]=8\)</span> <span class="math inline">\(\mathrm{P}(X=1) = 0.1\)</span> and <span class="math inline">\(\mathrm{P}(X=0)=0.9\)</span>. The law of iterated expectation says that
 <span class="math display">\[
   \begin{aligned}
-  \E[Y] &amp;= \E\big[ \E[Y|X] \big] \\
-  &amp;= \sum_{x \in \mathcal{X}} \E[Y|X=x] \P(X=x) \\
-  &amp;= \E[Y|X=0]\P(X=0) + \E[Y|X=1]\P(X=1) \\
+  \mathbb{E}[Y] &amp;= \mathbb{E}\big[ \mathbb{E}[Y|X] \big] \\
+  &amp;= \sum_{x \in \mathcal{X}} \mathbb{E}[Y|X=x] \mathrm{P}(X=x) \\
+  &amp;= \mathbb{E}[Y|X=0]\mathrm{P}(X=0) + \mathbb{E}[Y|X=1]\mathrm{P}(X=1) \\
   &amp;= (8)(0.9) + (7)(0.1) \\
   &amp;= 7.9
   \end{aligned}

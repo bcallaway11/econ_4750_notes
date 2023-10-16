@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-15" />
+<meta name="date" content="2023-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -231,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -381,22 +383,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="variance" class="section level2 hasAnchor" number="3.8">
 <h2><span class="header-section-number">3.8</span> Variance<a href="variance.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SW 2.2</p>
-<p>The next most important feature of the distribution of a random variable is its <strong>variance</strong>. The variance of a random variable <span class="math inline">\(X\)</span> is a measure of its “spread”, and we will denote it <span class="math inline">\(\Var(X)\)</span> [You might also sometimes see the notation <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\sigma_X^2\)</span> for the variance.] The variance is defined as</p>
+<p>The next most important feature of the distribution of a random variable is its <strong>variance</strong>. The variance of a random variable <span class="math inline">\(X\)</span> is a measure of its “spread”, and we will denote it <span class="math inline">\(\mathrm{var}(X)\)</span> [You might also sometimes see the notation <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\sigma_X^2\)</span> for the variance.] The variance is defined as</p>
 <p><span class="math display">\[
-  \Var(X) := \E\left[ (X - \E[X])^2 \right]
+  \mathrm{var}(X) := \mathbb{E}\left[ (X - \mathbb{E}[X])^2 \right]
 \]</span>
 Before we move forward, let’s think about why this is a measure of the spread of a random variable.</p>
 <ul>
-<li><p><span class="math inline">\((X-\E[X])^2\)</span> is a common way to measure the “distance” between <span class="math inline">\(X\)</span> and <span class="math inline">\(\E[X]\)</span>. It is always positive (whether <span class="math inline">\((X - \E[X])\)</span> is positive or negative) which is a good feature for a measure of distance to have. It is also increasing in <span class="math inline">\(|X-\E[X]|\)</span> which also seems a requirement for a reasonable measure of distance.</p></li>
+<li><p><span class="math inline">\((X-\mathbb{E}[X])^2\)</span> is a common way to measure the “distance” between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathbb{E}[X]\)</span>. It is always positive (whether <span class="math inline">\((X - \mathbb{E}[X])\)</span> is positive or negative) which is a good feature for a measure of distance to have. It is also increasing in <span class="math inline">\(|X-\mathbb{E}[X]|\)</span> which also seems a requirement for a reasonable measure of distance.</p></li>
 <li><p>Then, the outer expectation averages the above distance across the distribution of <span class="math inline">\(X\)</span>.</p></li>
 </ul>
-<p>An alternative expression for <span class="math inline">\(\Var(X)\)</span> that is often useful in calculations is</p>
+<p>An alternative expression for <span class="math inline">\(\mathrm{var}(X)\)</span> that is often useful in calculations is</p>
 <p><span class="math display">\[
-  \Var(X) = \E[X^2] - \E[X]^2
+  \mathrm{var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2
 \]</span></p>
 <p>Sometimes, we will also consider the <strong>standard deviation</strong> of a random variable. The standard deviation is defined as</p>
 <p><span class="math display">\[
-  \textrm{sd}(X) := \sqrt{\Var(X)}
+  \textrm{sd}(X) := \sqrt{\mathrm{var}(X)}
 \]</span>
 You might also see the notation <span class="math inline">\(\sigma\)</span> or <span class="math inline">\(\sigma_X\)</span> for the standard deviation.</p>
 <p>The standard deviation is often easier to interpret than the variance because it has the same “units” as <span class="math inline">\(X\)</span>. Variance “units” are squared units of <span class="math inline">\(X\)</span>.</p>

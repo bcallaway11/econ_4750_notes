@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-09-15" />
+<meta name="date" content="2023-10-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -231,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="properties-of-estimators.html"><a href="properties-of-estimators.html"><i class="fa fa-check"></i><b>4</b> Properties of Estimators</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="simple-random-sample.html"><a href="simple-random-sample.html"><i class="fa fa-check"></i><b>4.1</b> Simple Random Sample</a></li>
-<li class="chapter" data-level="4.2" data-path="estimating-ey.html"><a href="estimating-ey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+<li class="chapter" data-level="4.2" data-path="estimating-mathbbey.html"><a href="estimating-mathbbey.html"><i class="fa fa-check"></i><b>4.2</b> Estimating <span class="math inline">\(\mathbb{E}[Y]\)</span></a></li>
 <li class="chapter" data-level="4.3" data-path="mean-of-bary.html"><a href="mean-of-bary.html"><i class="fa fa-check"></i><b>4.3</b> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.4" data-path="variance-of-bary.html"><a href="variance-of-bary.html"><i class="fa fa-check"></i><b>4.4</b> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
 <li class="chapter" data-level="4.5" data-path="properties-of-estimators-1.html"><a href="properties-of-estimators-1.html"><i class="fa fa-check"></i><b>4.5</b> Properties of Estimators</a></li>
@@ -384,16 +386,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Most often in economics, we want to consider two (or more) random variables jointly rather than just a single random variable. For example, mean income is interesting, but mean income as a function of education is more interesting.</p>
 <p>When there is more than one random variable, you can define <strong>joint pmfs</strong>, <strong>joint pdfs</strong>, and <strong>joint cdfs</strong>.</p>
 <p>Let’s quickly go over these for the case where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are two discrete random variables.</p>
-<p><strong>Joint pmf:</strong> <span class="math inline">\(f_{X,Y}(x,y) := \P(X=x, Y=y)\)</span></p>
-<p><strong>Joint cdf:</strong> <span class="math inline">\(F_{X,Y}(x,y) := \P(X \leq x, Y \leq y)\)</span></p>
-<p><strong>Conditional pmf:</strong> <span class="math inline">\(f_{Y|X}(y|x) := \P(Y=y | X=x)\)</span></p>
+<p><strong>Joint pmf:</strong> <span class="math inline">\(f_{X,Y}(x,y) := \mathrm{P}(X=x, Y=y)\)</span></p>
+<p><strong>Joint cdf:</strong> <span class="math inline">\(F_{X,Y}(x,y) := \mathrm{P}(X \leq x, Y \leq y)\)</span></p>
+<p><strong>Conditional pmf:</strong> <span class="math inline">\(f_{Y|X}(y|x) := \mathrm{P}(Y=y | X=x)\)</span></p>
 <p><strong>Properties</strong></p>
 <p>We use the notation that <span class="math inline">\(\mathcal{X}\)</span> denotes the support of <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathcal{Y}\)</span> denotes the support of <span class="math inline">\(Y\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(0 \leq f_{X,Y}(x,y) \leq 1\)</span> for all <span class="math inline">\(x,y\)</span></p>
 <p>In words: the probability of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> taking any particular values can’t be less than 0 or greater than 1 (because these are probabilities)</p></li>
 <li><p><span class="math inline">\(\displaystyle \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} f_{X,Y}(x,y) = 1\)</span></p>
-<p>In words: If you add up <span class="math inline">\(\P(X=x, Y=y)\)</span> across all possible values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, they sum up to 1 (again, this is just a property of probabilities)</p></li>
+<p>In words: If you add up <span class="math inline">\(\mathrm{P}(X=x, Y=y)\)</span> across all possible values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, they sum up to 1 (again, this is just a property of probabilities)</p></li>
 <li><p>If you know the joint pmf, then you can recover the <strong>marginal pmf</strong>, that is,</p>
 <p><span class="math display">\[
 f_Y(y) = \sum_{x \in \mathcal{X}} f_{X,Y}(x,y)
@@ -401,7 +403,7 @@ f_Y(y) = \sum_{x \in \mathcal{X}} f_{X,Y}(x,y)
 <p>This amounts to just adding up the joint pmf across all values of <span class="math inline">\(x\)</span> while holding <span class="math inline">\(y\)</span> fixed. A main takeaway from this property is the following: if you know the joint pmf of two random variables, then it implies that you know the pmf of each random variable individuals. Thus, if you know the joint pmf, it implies that you know more than if you only knew the marginal pmfs.</p></li>
 </ol>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 3.12  </strong></span>Suppose that you roll a die, and based on this roll, you create the following random variables.</p>
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 3.12  </strong></span>Suppose that you roll a die, and based on this roll, you create the following random variables.</p>
 <p><span class="math display">\[
   X = \begin{cases} 0 \quad \textrm{if roll is 3 or lower} \\
   1 \quad \textrm{if roll is greater than 3} \end{cases} \qquad Y = \begin{cases} 0 \quad \textrm{if roll is odd} \\

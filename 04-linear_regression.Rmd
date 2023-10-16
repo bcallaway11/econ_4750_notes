@@ -1167,6 +1167,16 @@ The estimated coefficient on $smoker$ says that smoking during pregnancy decreas
 
 ## Coding Questions
 
+1. For this problem, we will use the data `Caschool`.  This data contains information about test scores for schools from California from the 1998-1999 academic year.  For this problem, we will use the variables `testscr` (average test score in the school), `str` (student teacher ratio in the school), `avginc` (the average income in the school district), and `elpct` (the percent of English learners in the school). 
+
+    a) Run a regression of test scores on student teacher ratio, average income, and English learners percentage.  Report your results.  Which regressors are statistically significant?  How do you know?
+
+    b) What is the average test score across all schools in the data?
+
+    c) What is the predicted average test score for a school with a student teacher ratio of 20, average income of \$30,000, and 10% English learners?  How does this compare to the overall average test score from part (b)?
+    
+    d) What is the predicted average test score for a school with a student teacher ratio of 15, average income of \$30,000, and 10% English learners?  How does this compare to your answer from part (c)?
+
 1. For this problem, we will use the data `intergenerational_mobility`.  
 
     a) Run a regression of child family income ($child\_fincome$) on parents' family income ($parent\_fincome$).  How should you interpret the estimated coefficient on parents' family income?  What is the p-value for the coefficient on parents' family income?  
