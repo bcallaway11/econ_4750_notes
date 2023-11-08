@@ -325,7 +325,15 @@ There are a few things to point out:
 
 - Notice that the CLT does not rely on any distributional assumptions.  We do not need to assume that $Y$ follows a normal distribution and it will apply when $Y$ follows any distribution (up to some  relatively minor technical conditions that we will not worry about).
 
-- It is also quite remarkable.  We usually have the sense that as the sample size gets large that things will converge to something (e.g., LLN saying that sample averages converge to population averages) or that they will diverge (i.e., go off to positive or negative infinity themselves).  The CLT provides an intermediate case --- $\sqrt{n}(\bar{Y} - \E[Y])$ is neither converging to a particular value or diverging to infinity.  Instead, it is *converging in distribution* --- meaning: it is settling down to something that looks like a draw from some distribution rather than converging to a particular number.  In some sense, you can think of this as a "tie" between the part $(\bar{Y}-\E[Y])$ which, by itself, is converging to 0, and $\sqrt{n}$ which, by itself, is diverging to infinity.  In fact, if you multiplied instead by something somewhat smaller, say, $n^{1/3}$, then the term $(\bar{Y}-\E[Y])$ would "win" and the whole expression would converge to 0.  On the other hand, if you multiplied by something somewhat larger, say, $n$, then the $n$ part would "win" and the whole thing would diverge.  $\sqrt{n}$ turns out to be "just right" so that there is essentially a "tie" and this term neither converges to a particular number nor diverges.  
+- It is also quite remarkable.  We usually have the sense that as the sample size gets large that things will converge to something (e.g., LLN saying that sample averages converge to population averages) or that they will diverge (i.e., go off to positive or negative infinity themselves).  The CLT provides an intermediate case --- $\sqrt{n}(\bar{Y} - \E[Y])$ is neither converging to a particular value or diverging to infinity.  Instead, it is *converging in distribution* --- meaning: it is settling down to something that looks like a draw from some distribution rather than converging to a particular number.  
+
+- In some sense, you can think of this "convergence in distribution" as a "tie" between the part $(\bar{Y}-\E[Y])$ which, by itself, is converging to 0, and $\sqrt{n}$ which, by itself, is diverging to infinity.  In particular, notice that
+\begin{align*}
+  \Var\Big( \sqrt{n} (\bar{Y} - \E[Y]) \Big) &= n \times \Var(\bar{Y}) \\
+  &= n \times \frac{\Var(Y)}{n} \\
+  &= \Var(Y)
+\end{align*}
+where this argument just holds by the properties of variance that we have used many times before.  This means that the variance of $\sqrt{n}(\bar{Y}-\E[Y])$ does not go to 0 (which would suggest that the whole term converges to 0) nor does it go to $\infty$ (which would suggest that the term diverges).  Moreover, if you multiplied $(\bar{Y}-E[Y])$ instead by something somewhat smaller, say, $n^{1/3}$, then the term $(\bar{Y}-\E[Y])$ would "win" and the whole expression would converge to 0 (to see this, try calculating $\Var\Big(n^{1/3}(\bar{Y} - \E[Y]\Big)$).  On the other hand, if you multiplied by something somewhat larger, say, $n$, then the $n$ part would "win" and the whole thing would diverge (to see this, try calculating $\Var\Big(n(\bar{Y}-\E[Y])\Big)$).  $\sqrt{n}$ turns out to be "just right" so that there is essentially a "tie" and this term neither converges to a particular number nor diverges.  
 
 - A very common question for students is: "how large does $n$ need to be for the central limit theorem to apply?"  Unfortunately, there is a not a great answer to this (though some textbooks have sometimes given explicit numbers here).  Here is a basic explanation for why it is hard to give a definite number.  Suppose $Y$ follows a normal distribution, then it will not take many observations for the normal approximation to hold.  On the other hand, if $Y$ were to come from a discrete distribution or just a generally complicated distribution, then it might take many more observations for the normal approximation to hold.
 
@@ -563,7 +571,7 @@ This clearly exceeds 1.96 (or any common critical value) which implies that we w
 
 ```{r}
 # calculate p-value
-p_val <- pnorm(-abs(t_stat))
+p_val <- 2*pnorm(-abs(t_stat))
 ```
 
 The p-value is essentially equal to 0.  This is expected given the value of the t-statistic that we calculated earlier.

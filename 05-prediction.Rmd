@@ -519,7 +519,7 @@ round(rmspe,3)
 
 ## Answers to Some Extra Questions
 
-**Answer to Question 3**
+**Answer to Question 4**
 
 a) The first model appears to be predicting better because the AIC is lower. [Also, notice that $R^2$ is higher in the second model, but this is by construction because it includes extra terms relative to the first model which implies that it will fit at least as well in-sample as the first model, but may be suffering from over-fitting.]
 
@@ -529,7 +529,7 @@ b)
       &= 18
     \end{align*}
 
-**Answer to Question 6**
+**Answer to Question 7**
 
 a) The tuning parameter is often chosen via cross validation.  It makes sense to choose it this way because this is effectively choosing a value of $\lambda$ that is making good pseudo-out-of-sample predictions.  As we will see below, if you make bad choices of $\lambda$, that could result in very poor predictions.
 

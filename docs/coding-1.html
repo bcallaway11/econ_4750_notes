@@ -23,7 +23,7 @@
 <meta name="author" content="Brantly Callaway" />
 
 
-<meta name="date" content="2023-10-16" />
+<meta name="date" content="2023-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -403,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb89-18"><a href="coding-1.html#cb89-18" tabindex="-1"></a><span class="co">#&gt; [1] 12.97742</span></span></code></pre></div>
 <p>This clearly exceeds 1.96 (or any common critical value) which implies that we would reject the null hypothesis that mean income is equal to $50,000.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="coding-1.html#cb90-1" tabindex="-1"></a><span class="co"># calculate p-value</span></span>
-<span id="cb90-2"><a href="coding-1.html#cb90-2" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span></code></pre></div>
+<span id="cb90-2"><a href="coding-1.html#cb90-2" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span></code></pre></div>
 <p>The p-value is essentially equal to 0. This is expected given the value of the t-statistic that we calculated earlier.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="coding-1.html#cb91-1" tabindex="-1"></a><span class="co"># 95% confidence interval</span></span>
 <span id="cb91-2"><a href="coding-1.html#cb91-2" tabindex="-1"></a>ci_L <span class="ot">&lt;-</span> ybar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
