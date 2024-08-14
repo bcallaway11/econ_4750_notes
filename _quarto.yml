@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Detailed Course Notes for ECON 4750"
+  author: "Brantly Callaway"
+  chapters:
+    - index.qmd
+    - 01-statistical_programming.qmd
+    - 02-probability.qmd
+    - 03-estimators.qmd
+    - 04-linear_regression.qmd
+    - 05-prediction.qmd
+    - 06-binary_outcomes.qmd
+    - 07-causal_inference.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+    pdf-engine: pdflatex
+
+
+

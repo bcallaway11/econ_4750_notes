@@ -1,0 +1,26 @@
+{
+  "index.qmd": {
+    "index.html": "c3be3290"
+  },
+  "01-statistical_programming.qmd": {
+    "01-statistical_programming.html": "fc045680"
+  },
+  "02-probability.qmd": {
+    "02-probability.html": "b0261c70"
+  },
+  "03-estimators.qmd": {
+    "03-estimators.html": "b4249ff3"
+  },
+  "04-linear_regression.qmd": {
+    "04-linear_regression.html": "90ac8800"
+  },
+  "05-prediction.qmd": {
+    "05-prediction.html": "5bc900f4"
+  },
+  "06-binary_outcomes.qmd": {
+    "06-binary_outcomes.html": "68c81935"
+  },
+  "07-causal_inference.qmd": {
+    "07-causal_inference.html": "0b4e6217"
+  }
+}

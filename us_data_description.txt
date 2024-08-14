@@ -1,0 +1,15 @@
+Description of `us_data`
+
+Source: This is data that comes from the 2019 American Community Survery via IPUMS.
+
+The data consists of 1,429,018 observations.
+
+The following variables are included:
+
+- sex -- 1 for male, 2 for female
+- age -- age in years
+- race -- 1 white, 2 black/African American, 3 American Indian or Alaska Native, more details here https://usa.ipums.org/usa-action/variables/RACE#codes_section
+- hispan -- Hispanic origin, 0 not Hispanic, more details here https://usa.ipums.org/usa-action/variables/HISPAN#codes_section
+- empstat -- employment status, 1 for employed, 2 for unemployed, 3 for not in labor force, more details here https://usa.ipums.org/usa-action/variables/EMPSTAT#codes_section
+- incwage -- wage and salary income
+- educ -- years of education
