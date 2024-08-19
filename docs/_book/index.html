@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brantly Callaway">
+
+<title>Detailed Course Notes for ECON 4750</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-statistical_programming.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Detailed Course Notes for ECON 4750</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-statistical_programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistical Programming</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-estimators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Properties of Estimators</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prediction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-causal_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Causal Inference</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#what-is-this" id="toc-what-is-this" class="nav-link" data-scroll-target="#what-is-this"><span class="header-section-number">1.1</span> What is this?</a></li>
+  <li><a href="#what-is-this-not" id="toc-what-is-this-not" class="nav-link" data-scroll-target="#what-is-this-not"><span class="header-section-number">1.2</span> What is this not?</a></li>
+  <li><a href="#why-did-i-write-this" id="toc-why-did-i-write-this" class="nav-link" data-scroll-target="#why-did-i-write-this"><span class="header-section-number">1.3</span> Why did I write this?</a></li>
+  <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references"><span class="header-section-number">1.4</span> Additional References</a></li>
+  <li><a href="#goals-for-the-course" id="toc-goals-for-the-course" class="nav-link" data-scroll-target="#goals-for-the-course"><span class="header-section-number">1.5</span> Goals for the Course</a></li>
+  <li><a href="#studying-for-the-class" id="toc-studying-for-the-class" class="nav-link" data-scroll-target="#studying-for-the-class"><span class="header-section-number">1.6</span> Studying for the Class</a></li>
+  <li><a href="#data-used-in-the-course" id="toc-data-used-in-the-course" class="nav-link" data-scroll-target="#data-used-in-the-course"><span class="header-section-number">1.7</span> Data Used in the Course</a></li>
+  <li><a href="#first-week-of-class" id="toc-first-week-of-class" class="nav-link" data-scroll-target="#first-week-of-class"><span class="header-section-number">1.8</span> First Week of Class</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Detailed Course Notes for ECON 4750</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brantly Callaway </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>These are a set of detailed course notes for ECON 4750 at UGA. They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the <a href="https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&amp;keywords=stock+and+watson&amp;qid=1618424276&amp;s=books&amp;sr=1-1">Stock and Watson</a> textbook serves as the other main reference for the course.</p>
+<p>These notes have improved drastically over the course of several years. However, they are a work in progress and have not been professionally edited or anything like that…so it is possible that there are some mistakes (if you find any, please let me know). That said, I hope you will find this to be a useful resource this semester.</p>
+<section id="what-is-this" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-this"><span class="header-section-number">1.1</span> What is this?</h2>
+<p>In previous years, I used to provide these notes as supplementary material for the textbook. Now, I think that there is enough detail here that it can be used as a main reference for the course. And, for example, there are several topics that we will cover in class in substantially more detail than in the textbook.</p>
+<p>The material provided here can also be useful as a quasi-study guide. In particular, the notes cover pretty much exactly what we will be able to cover in a one semester course. In some ways, covering less material relative to the textbook can (in my view) make things easier for students. The notes also provide cross-references to the corresponding section in the textbook. For some topics here, I provide substantially less detail than the book; this may help you when it comes to studying as it may give you a sense of the material I see as being most important. In addition, there are additional practice questions (some with answers) provided at the end of each section.</p>
+</section>
+<section id="what-is-this-not" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-this-not"><span class="header-section-number">1.2</span> What is this not?</h2>
+<p>There are a couple of things that I want to explicitly say that this material is not. These include:</p>
+<ul>
+<li><p>A substitute for coming to class — I will take attendance anyway, but not attending class and relying on this material is not a good plan. Please do not do this.</p></li>
+<li><p>A full substitute for the textbook — In a number of places, the textbook contains substantially more details than I am able to provide here. In my experience, it is also useful to have different “voices” that you can refer to (e.g., you may find my explanation unclear but may find the textbook much clearer). The textbook also contains substantially more material than what I provide in these notes. If there are additional topics in the textbook that we do not cover that you would like to learn about, these should all be understandable for you by the end of this semester.</p></li>
+<li><p>Sufficient for making good grades on exams — I don’t suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams. I think this material should be helpful and perhaps even a good starting point when it comes to studying, but it is not sufficient for making a good grade in the class.</p></li>
+</ul>
+</section>
+<section id="why-did-i-write-this" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="why-did-i-write-this"><span class="header-section-number">1.3</span> Why did I write this?</h2>
+<p>I have a strong opinion about the best order to teach the material in ECON 4750. And, although, there are a number of advanced undergraduate textbooks in Econometrics that I like and reference as I teach the course, none of them go in the same order that I would like to teach. Therefore, I think one way that I can both go in the order that I want to during the semester without confusing you (the student) too much is to provide a detailed set of references to material that we are covering throughout the semester.</p>
+<p>The book that I strongly suggest for the course is <a href="https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&amp;keywords=stock+and+watson&amp;qid=1618424276&amp;s=books&amp;sr=1-1">Stock and Watson</a>. <!--I think this is a really great book, but, unfortunately, it is quite expensive --- at the moment, it costs \$172 on Amazon.  My longer term goal for these notes is to make it possible to, say, buy an older edition of this sort of textbook while still being able to follow the course, do the homework problems, etc.  At the moment, I am not there yet; I don't think it is possible to complete the course without buying the textbook, but hopefully, this will be available over the coming years.  For this reason too, I also sincerely welcome and appreciate comments or suggestions about these notes.--> By the end of the semester, we will have covered in much detail the first 14 chapters of the textbook (and some topics we will have covered in substantially more detail than in the textbook). If I had more time, the next topic that I would cover in this course would be Time Series Econometrics. I used to cover this material in the current course, but I have found that I am happier with the tradeoff of understanding slightly fewer topics better relative to covering more topics but at a faster pace. Time series is especially important for students who are interested in macroeconomics or finance. Fortunately, we offer a time series econometrics course, and, if you take it, you should be well prepared for it coming out of this course.</p>
+</section>
+<section id="additional-references" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="additional-references"><span class="header-section-number">1.4</span> Additional References</h2>
+<p>These are all free to download; they are not main textbooks but I sometimes consult them for the class and could potentially be useful for you to consult in the future:</p>
+<ol type="1">
+<li><p>For R programming: <a href="https://www.econometrics-with-r.org/">Introduction to Econometrics</a> with R, by Cristoph Hanck, Martin Arnold, Alexander Gerber, and Martin Schmelzer</p></li>
+<li><p>For prediction/machine learning: <a href="https://faculty.marshall.usc.edu/gareth-james/ISL/">An Introduction to Statistical Learning</a>, by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani</p></li>
+<li><p>For causal inference: <a href="http://scunning.com/mixtape.html">Causal Inference: The Mixtape</a>, by Scott Cunningham</p></li>
+</ol>
+<p><strong>Additional R References:</strong></p>
+<p>There are tons of free R resources available online. Here are some that seem particularly useful to me.</p>
+<ol type="1">
+<li><p>Manageable Introduction: <a href="https://sjspielman.github.io/datascience_for_biologists/tutorials/introduction_to_R.html">Introduction to R and RStudio</a>, by Stephanie Spielman</p></li>
+<li><p>Full length book: <a href="(https://rafalab.github.io/dsbook/)">Introduction to Data Science: Data Analysis and Prediction Algorithms with R</a>, by Rafael Irizarry (this is way more than you will need for this course, but I suggest checking out Chapters 1, 2, 3, and 5, and there’s plenty more that you might find interesting).</p></li>
+<li><p>Full length book: <a href="https://stat545.com/">STAT 545: Data Wrangling, exploration, and analysis with R</a>, by Jenny Bryan</p></li>
+</ol>
+</section>
+<section id="goals-for-the-course" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="goals-for-the-course"><span class="header-section-number">1.5</span> Goals for the Course</h2>
+<p>I have three high level goals — that by the end of the semester, students should be able to</p>
+<ol type="1">
+<li><p>Run regressions and be able to interpret them (this includes even complex regressions) and also be able to think through which regression you <em>ought</em> to run</p></li>
+<li><p>Use data in order to be able to predict outcomes of interest</p></li>
+<li><p>Be able to think clearly about when statistical results can be interpreted as causal effects.</p></li>
+</ol>
+<p>In order to make progress towards these three goals, we also will need to learn about two additional topics:</p>
+<ul>
+<li><p>Statistical Programming</p></li>
+<li><p>Probability and Statistics</p></li>
+</ul>
+<p>We’ll start the course off talking about these two topics. Perhaps this will be review material for some of you, but I have found that it is worth it to spend several weeks getting everyone on the same page with respect to these topics.</p>
+</section>
+<section id="studying-for-the-class" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="studying-for-the-class"><span class="header-section-number">1.6</span> Studying for the Class</h2>
+<p>Students ask me all the time “How should I study for your class?” My advice (and I think this applies to most classes, not just my class) is for you to start by studying the notes from class. The things that I have discussed in class are the things that I think are most important for you learn in this sort of class and are the material that will be covered on the exam. That said, it may sometimes be the case that you do not fully understand a lecture or the notes that you took from a lecture when you are studying (this certainly applied to me when I was a student). If there are places that you do not understand what the notes mean, then I think that is the time when you should find the relevant portion of the textbook (or supplementary notes provided here) in order to “supplement” what the notes say.</p>
+</section>
+<section id="data-used-in-the-course" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="data-used-in-the-course"><span class="header-section-number">1.7</span> Data Used in the Course</h2>
+<p>The following provides the full list of data that we will use this semester. Some of the links below are to data posted on my website; others point to data hosted externally (if you notice any broken links, please let me know).</p>
+<ul>
+<li><p><code>acs</code></p>
+<ul>
+<li><p>Data from the 2019 American Community Survey about Education and Earnings</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>Airq</code></p>
+<ul>
+<li><p>Data about air quality in California counties in 1972.</p></li>
+<li><p>Access: `data(Airq, package=“Ecdat”)</p></li>
+<li><p>Description: <code>?Ecdat::Airq</code></p></li>
+</ul></li>
+<li><p><code>AJR</code></p>
+<ul>
+<li><p>Data about GDP, institutions, and settler mortality</p></li>
+<li><p>Access: `data(AJR, package=“hdm”)</p></li>
+<li><p>Description: <code>?hdm::AJR</code></p></li>
+</ul></li>
+<li><p><code>banks</code></p>
+<ul>
+<li><p>Data about bank closures in Mississippi during the Great Depression</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>Birthweight_Smoking</code></p>
+<ul>
+<li><p>Data about infant birthweights and mother’s smoking from PA 1989</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf">Mark Watson’s website</a></p></li>
+</ul></li>
+<li><p><code>Caschool</code></p>
+<ul>
+<li><p>School-level test score data from California in 1998-1999</p></li>
+<li><p>Access: <code>data(Caschool, package="Ecdat")</code></p></li>
+<li><p>Description: <code>?Ecdat::Caschool</code></p></li>
+</ul></li>
+<li><p><code>diamond_train</code></p>
+<ul>
+<li><p>Data about diamond prices. The full version of this data I got from Kaggle, and then I split it into training and testing data.</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: A description of each column in the data is available under the <code>Description</code> tab on <a href="https://www.kaggle.com/shivam2503/diamonds/">Kaggle</a></p></li>
+</ul></li>
+<li><p><code>diamond_test</code></p>
+<ul>
+<li><p>Out of sample version of <code>diamond_train</code> data</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: A description of each column in the data is available under the <code>Description</code> tab on <a href="https://www.kaggle.com/shivam2503/diamonds/">Kaggle</a></p></li>
+</ul></li>
+<li><p><code>Fair</code></p>
+<ul>
+<li><p>Individual-level data about affairs in the United States</p></li>
+<li><p>Access: <code>data(Fair, package="Ecdat")</code></p></li>
+<li><p>Description: <code>?Ecdat::Fair</code></p></li>
+</ul></li>
+<li><p><code>Fatalities</code></p>
+<ul>
+<li><p>State-level panel data about drunk driving laws and traffic fatalities</p></li>
+<li><p>Access: `data(Fatality, package=“AER”)</p></li>
+<li><p>Description: <code>?AER::Fatality</code></p></li>
+</ul></li>
+<li><p><code>fertilizer_2000</code></p>
+<ul>
+<li><p>Country-level data about fertilizer and crop yields from the year 2000. See description of <code>fertilizer_panel</code> below for more details</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>fertilizer_panel</code></p>
+<ul>
+<li><p>Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries. This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. “Fertilizing growth: Agricultural inputs and their effects in economic development.” Journal of Development Economics 127 (2017): 133-152. url: <a href="https://doi.org/10.1016/j.jdeveco.2017.02.007">https://doi.org/10.1016/j.jdeveco.2017.02.007</a>.</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>house</code></p>
+<ul>
+<li><p>U.S. House of Representatives elections data from 1946-1998</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>intergenerational_mobility</code></p>
+<ul>
+<li><p>Intergenerational mobility data from PSID</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>Lead_Mortality</code></p>
+<ul>
+<li><p>Infant mortality and lead pipes in 1900</p></li>
+<li><p>Access: Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf">Mark Watson’s website</a></p></li>
+</ul></li>
+<li><p><code>mlda</code></p>
+<ul>
+<li><p>Car accident deaths by age group</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>mroz</code></p>
+<ul>
+<li><p>Labor force particpation of married women</p></li>
+<li><p>Access: <code>data(mroz, package="wooldridge")</code></p></li>
+<li><p>Description: <code>?wooldridge::mroz</code></p></li>
+</ul></li>
+<li><p><code>mutual_funds</code></p>
+<ul>
+<li><p>Mutual fund performance data</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>rand_hie</code></p>
+<ul>
+<li><p>RAND health insurance experiment</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+<li><p><code>Star</code></p>
+<ul>
+<li><p>Data from Project STAR that randomly assigned some students to smaller class sizes</p></li>
+<li><p>Access: `data(Star, package=“Ecdat”)</p></li>
+<li><p>Description: <code>?Ecdat::Star</code></p></li>
+</ul></li>
+<li><p><code>titanic_training</code></p>
+<ul>
+<li><p>Passenger level data on surviving Titanic. This data is a slightly adapted version of the <code>titanic</code> data on <a href="https://www.kaggle.com/c/titanic">Kaggle</a></p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a></p></li>
+</ul></li>
+<li><p><code>titanic_testing</code></p>
+<ul>
+<li><p>Out of sample version of <code>titanic_training</code> data</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a></p></li>
+</ul></li>
+<li><p><code>us_data</code></p>
+<ul>
+<li><p>Data from the 2019 American Community Survey via IPUMS</p></li>
+<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
+</ul></li>
+</ul>
+</section>
+<section id="first-week-of-class" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="first-week-of-class"><span class="header-section-number">1.8</span> First Week of Class</h2>
+<p>Related Reading: SW All of Chapter 1</p>
+<p>In the first few classes, we will talk at very high level about the objectives of Econometrics.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./01-statistical_programming.html" class="pagination-link" aria-label="Statistical Programming">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistical Programming</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
