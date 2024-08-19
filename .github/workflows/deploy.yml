@@ -15,7 +15,7 @@ jobs:
     - name: Build Site
       run: |
         # Rename _book to docs
-        mv _book docs
+        mv _book/* docs/
 
     - name: Commit and Push Changes
       run: |
