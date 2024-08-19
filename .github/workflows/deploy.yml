@@ -14,6 +14,10 @@ jobs:
 
     - name: Build Site
       run: |
+        # Remove existing docs folder
+        rm -rf docs
+        # Add empty docs folder
+        mkdir -p docs
         # Rename _book to docs
         mv _book/* docs/
 

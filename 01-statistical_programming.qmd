@@ -27,9 +27,11 @@ It is easy to share code across platforms: Linux, Windows, Mac.  Besides that, i
 
 There is a large community, and lots of available, helpful resources.
   
-  * First place to look if you don't know how to do something: DuckDuckGo (or...err...Google)!
+* ChatGPT
+
+* Your favorite search engine
   
-  * StackOverflow
+* StackOverflow
 	
 	
 ### Downloading R
