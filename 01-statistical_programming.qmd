@@ -2,7 +2,7 @@
 
 We will learn a lot more about statistical programming this semester, but we'll start with a crash course on `R` with the idea of getting you up-and-running.
 
-I listed a few references in the Introduction, but this section will mostly follow the discussion in [Introduction to Data Science: Data Analysis and Prediction Algorithms with R](https://rafalab.github.io/dsbook/), by Rafael Irizarry.  I'll abbreviate this reference as IDS throughout this section.
+I listed a few references in the Introduction, but this section will mostly follow the discussion in [Introduction to Data Science: Data Wrangling and Visualization with R](https://rafalab.dfci.harvard.edu/dsbook-part-1/), by Rafael Irizarry.  I'll abbreviate this reference as IDS throughout this section.
 
 IDS is not specifically geared towards Econometrics, but I think it is a really fantastic book and resource.  In this section, I cover what I think are the most important basics of R programming and additionally point you to the references for the material that I cover in class. But I would strongly recommend reading all of the first 5 chapters of IDS over the next couple of weeks.  We will basically only cover the first 5 chapters in our class, but the course should set you up so that the remaining 35 chapters of the book can serve as helpful reference material throughout the rest of the semester.
 
