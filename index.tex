@@ -8639,6 +8639,11 @@ to our particular data.
 We'll start this chapter by learning about measures of how well a
 regression fits the data. Consider the following figure
 
+\begin{verbatim}
+Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).
+\end{verbatim}
+
 \includegraphics[width=0.5\textwidth,height=\textheight]{05-prediction_files/figure-pdf/unnamed-chunk-1-1.pdf}
 
 \includegraphics[width=0.5\textwidth,height=\textheight]{05-prediction_files/figure-pdf/unnamed-chunk-1-2.pdf}
@@ -9379,9 +9384,9 @@ observations) and then see how well we can predict data from the
 
 \begin{verbatim}
   r.squared adj.r.squared     aic     bic       cv
-1     0.898         0.898 1104188 1104301 1365.830
-2     0.900         0.900 1103499 1103647 1371.729
-3     0.928         0.928 1089372 1090328 2160.344
+1     0.898         0.898 1104188 1104301 1366.144
+2     0.900         0.900 1103499 1103647 1369.834
+3     0.928         0.928 1089372 1090328 2119.841
 \end{verbatim}
 
 \begin{Shaded}
@@ -9418,8 +9423,8 @@ observations) and then see how well we can predict data from the
 \end{Shaded}
 
 \begin{verbatim}
-     mod1    mod2    mod3   lasso   ridge
-1 856.014 785.171 616.996 659.187 794.276
+     mod1    mod2    mod3  lasso   ridge
+1 856.014 785.171 616.996 683.36 794.276
 \end{verbatim}
 
 \section{Extra Questions}\label{extra-questions-3}
