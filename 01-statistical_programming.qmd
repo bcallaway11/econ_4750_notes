@@ -48,11 +48,11 @@ Related Reading: IDS 1.4
 
 When you first open Rstudio, it will look something like this
 
-<img src="open_rstudio.png">
+![](open_rstudio.png)
 
 Typically, we will write **scripts**, basically just as a way to save the code that we have written.  Go to `File -> New File -> R Script`.  This will open up a new pane, and your screen should look something like this
 
-<img src="rstudio_script.png">
+![](rstudio_script.png)
 
 Let's look around here.  The top left pane is called the "Source Pane".  It is where you can write an R script.  Try typing
 ```{r, eval=FALSE}
@@ -201,7 +201,7 @@ Related Reading: IDS 2.2
 
 Before we move on, I just want to show you what my workspace looks like now.
 
-<img src="rstudio_environment.png">
+![](rstudio_environment.png)
 
 As we talked about above, you can see the code in my script in the Source pane in the top left.  You can also see the code that I actually ran in the Console pane on the bottom left.  
 

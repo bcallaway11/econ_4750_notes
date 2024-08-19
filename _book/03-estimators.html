@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Properties of Estimators – Detailed Course Notes for ECON 4750</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-linear_regression.html" rel="next">
+<link href="./02-probability.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-estimators.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Properties of Estimators</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Detailed Course Notes for ECON 4750</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-statistical_programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistical Programming</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-estimators.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Properties of Estimators</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Prediction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-causal_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Causal Inference</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link active" data-scroll-target="#simple-random-sample"><span class="header-section-number">4.1</span> Simple Random Sample</a></li>
+  <li><a href="#estimating-ey" id="toc-estimating-ey" class="nav-link" data-scroll-target="#estimating-ey"><span class="header-section-number">4.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+  <li><a href="#mean-of-bary" id="toc-mean-of-bary" class="nav-link" data-scroll-target="#mean-of-bary"><span class="header-section-number">4.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#variance-of-bary" id="toc-variance-of-bary" class="nav-link" data-scroll-target="#variance-of-bary"><span class="header-section-number">4.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#properties-of-estimators" id="toc-properties-of-estimators" class="nav-link" data-scroll-target="#properties-of-estimators"><span class="header-section-number">4.5</span> Properties of Estimators</a></li>
+  <li><a href="#relative-efficiency" id="toc-relative-efficiency" class="nav-link" data-scroll-target="#relative-efficiency"><span class="header-section-number">4.6</span> Relative Efficiency</a></li>
+  <li><a href="#mean-squared-error" id="toc-mean-squared-error" class="nav-link" data-scroll-target="#mean-squared-error"><span class="header-section-number">4.7</span> Mean Squared Error</a></li>
+  <li><a href="#large-sample-properties-of-estimators" id="toc-large-sample-properties-of-estimators" class="nav-link" data-scroll-target="#large-sample-properties-of-estimators"><span class="header-section-number">4.8</span> Large Sample Properties of Estimators</a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">4.9</span> Consistency</a></li>
+  <li><a href="#asymptotic-normality" id="toc-asymptotic-normality" class="nav-link" data-scroll-target="#asymptotic-normality"><span class="header-section-number">4.10</span> Asymptotic Normality</a></li>
+  <li><a href="#inference-hypothesis-testing" id="toc-inference-hypothesis-testing" class="nav-link" data-scroll-target="#inference-hypothesis-testing"><span class="header-section-number">4.11</span> Inference / Hypothesis Testing</a></li>
+  <li><a href="#t-statistics" id="toc-t-statistics" class="nav-link" data-scroll-target="#t-statistics"><span class="header-section-number">4.12</span> t-statistics</a></li>
+  <li><a href="#p-values" id="toc-p-values" class="nav-link" data-scroll-target="#p-values"><span class="header-section-number">4.13</span> P-values</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval"><span class="header-section-number">4.14</span> Confidence Interval</a></li>
+  <li><a href="#inference-in-practice" id="toc-inference-in-practice" class="nav-link" data-scroll-target="#inference-in-practice"><span class="header-section-number">4.15</span> Inference in Practice</a></li>
+  <li><a href="#coding" id="toc-coding" class="nav-link" data-scroll-target="#coding"><span class="header-section-number">4.16</span> Coding</a></li>
+  <li><a href="#lab-3-monte-carlo-simulations" id="toc-lab-3-monte-carlo-simulations" class="nav-link" data-scroll-target="#lab-3-monte-carlo-simulations"><span class="header-section-number">4.17</span> Lab 3: Monte Carlo Simulations</a></li>
+  <li><a href="#lab-3-solutions" id="toc-lab-3-solutions" class="nav-link" data-scroll-target="#lab-3-solutions"><span class="header-section-number">4.18</span> Lab 3 Solutions</a></li>
+  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">4.19</span> Coding Questions</a></li>
+  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">4.20</span> Extra Questions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Properties of Estimators</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>So far, we have been talking about <strong>population quantities</strong> such as <span class="math inline">\(f_{Y|X}\)</span> (conditional pdf/pmf), <span class="math inline">\(\E[Y]\)</span> (expected value of <span class="math inline">\(Y\)</span>), or <span class="math inline">\(\E[Y|X]\)</span> (expected value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>).</p>
+<p>In practice, most often we do not know what these population quantities are equal to (with the exception of some trivial cases like flipping a coin or rolling a die).</p>
+<p>A fundamental challenge is that it is uncommon that we observe the entire population.</p>
+<p>Instead, we will take the approach that we have access to a <strong>sample</strong> of data from the original population. We’ll use the sample to try to <strong>estimate</strong> whatever population quantities we are interested in as well as develop the tools to <strong>conduct inference</strong>, paying particular interest to questions like: how precisely can we estimate particular population quantities of interest?</p>
+<p>The topics considered in this section fall broadly under the topic of <strong>statistics</strong> (a reasonable definition of statistics is that it is the set of tools to learn about population quantities using data). Some of this material may be familiar from courses that you have taken before, but this section provides a fairly advanced discussion of these issues with a particular eye towards (i) inference issues that are important econometrics and (ii) prediction problems. Many of the tools that we cover in this section will be used throughout the rest of the course.</p>
+<section id="simple-random-sample" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="simple-random-sample"><span class="header-section-number">4.1</span> Simple Random Sample</h2>
+<p>SW 2.5</p>
+<p>Let’s start by talking about how the data that we have access to is collected. There are several possibilities here, but let us start with the most straightforward case (which is also a very common case) called a <strong>simple random sample</strong>.</p>
+<p>In math: <span class="math inline">\(\{Y_i\}_{i=1}^n\)</span> is called a simple random sample if <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent random variables with a common probability distribution <span class="math inline">\(f_Y\)</span>. The two key conditions here are (i) independence and (ii) from a common distribution. For this reason, you may sometimes see a random sample called an iid sample which stands for independent and identically distributed.</p>
+<p>In words: We have access to <span class="math inline">\(n\)</span> observations that are drawn at random from some underlying population and each observation is equally likely to be drawn.</p>
+</section>
+<section id="estimating-ey" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="estimating-ey"><span class="header-section-number">4.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></h2>
+<p>SW 2.5, 3.1</p>
+<p>Let’s start with trying to estimate <span class="math inline">\(\E[Y]\)</span> as this is probably the simplest, non-trivial thing that we can estimate.</p>
+<p>A natural way to estimate population quantities is with their sample analogue. This is called the <strong>analogy principle</strong>. This is perhaps technical jargon, but it is the way you would immediately think to estimate <span class="math inline">\(\E[Y]\)</span>:</p>
+<p><span class="math display">\[
+  \hat{\E}[Y] = \frac{1}{n} \sum_{i=1}^n Y_i = \bar{Y}
+\]</span> In this course, we will typically put a “hat” on estimated quantities. The expression <span class="math inline">\(\displaystyle \frac{1}{n}\sum_{i=1}^n Y_i\)</span> is just the average value of <span class="math inline">\(Y\)</span> in our sample. Since we will calculate a ton of averages like this one over the course of the rest of the semester, it’s also convenient to give it a shorthand notation, which is what <span class="math inline">\(\bar{Y}\)</span> means — it is just the sample average of <span class="math inline">\(Y\)</span>.</p>
+<p>One thing that is important to be clear about at this point is that, in general, <span class="math inline">\(\E[Y] \neq \bar{Y}\)</span>. <span class="math inline">\(\E[Y]\)</span> is a population quantity while <span class="math inline">\(\bar{Y}\)</span> is a sample quantity. We will hope (and provide some related conditions/discussions below) that <span class="math inline">\(\bar{Y}\)</span> would be close to <span class="math inline">\(\E[Y]\)</span>, but, in general, they will not be exactly the same.</p>
+</section>
+<section id="mean-of-bary" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="mean-of-bary"><span class="header-section-number">4.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h2>
+<p>SW 2.5, 3.1</p>
+<p>Another important thing to notice about <span class="math inline">\(\bar{Y}\)</span> is that it is a random variable (as it is the average of random variables). This is in sharp contrast to <span class="math inline">\(\E[Y]\)</span> which is non-random.</p>
+<p>One related thought experiment is the following: if we could repeatedly collect new samples of size <span class="math inline">\(n\)</span> from the same population and each time were able to estimate <span class="math inline">\(\bar{Y}\)</span>, these estimates would be different from each other.</p>
+<p>In fact, this means that <span class="math inline">\(\bar{Y}\)</span> has a distribution. The distribution of a statistic, like <span class="math inline">\(\bar{Y}\)</span>, is called its <strong>sampling distribution</strong>. We’d like to know about the features of the sampling distribution. Let’s start with its mean. That is, let’s calculate</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \E[\bar{Y}] &amp;= \E\left[ \frac{1}{n} \sum_{i=1}^n Y_i \right] \\
+    &amp;= \frac{1}{n} \E\left[ \sum_{i=1}^n Y_i \right] \\
+    &amp;= \frac{1}{n} \sum_{i=1}^n \E[Y_i] \\
+    &amp;= \frac{1}{n} \sum_{i=1}^n \E[Y] \\
+    &amp;= \frac{1}{n} n \E[Y] \\
+    &amp;= \E[Y]
+  \end{aligned}
+\]</span> Let’s think carefully about each step here — the arguments rely heavily on the properties of expectations and summations that we have learned earlier. The first equality holds from the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can therefore come out of the expectation. The third equality holds because the expectation can pass through the sum. The fourth equality holds because <span class="math inline">\(Y_i\)</span> are all from the same distribution which implies that they all of the same mean and that it is equal to <span class="math inline">\(\E[Y]\)</span>. The fifth equality holds because <span class="math inline">\(\E[Y]\)</span> is a constant and we add it up <span class="math inline">\(n\)</span> times. And the last equality just cancels the <span class="math inline">\(n\)</span> in the numerator with the <span class="math inline">\(n\)</span> in the denominator.</p>
+<p>Before moving on, let me make an additional comment:</p>
+<ul>
+<li>The fourth equality might be a little confusing. Certainly it is not saying that all the <span class="math inline">\(Y_i\)</span>’s are equal to each other. Rather, they come from the same distribution. For example, if you roll a die <span class="math inline">\(n\)</span> times, you get different outcomes on different rolls, but they are all from the same distribution so that the population expectation of each roll is always 3.5, but you get different realizations on different particular rolls. Another example is if <span class="math inline">\(Y\)</span> is a person’s income. Again, we are not saying that everyone has the same income, but just that we are thinking of income as being a draw from some distribution — sometimes you get a draw of a person with a very high income; other times you get a draw of a person with a low income, but <span class="math inline">\(\E[Y]\)</span> is a feature of the underlying distribution itself where these draws come from.</li>
+</ul>
+<p>How should interpret the above result? It says that, <span class="math inline">\(\E[\bar{Y}] = \E[Y]\)</span>. This doesn’t mean that <span class="math inline">\(\bar{Y}\)</span> itself is equal to <span class="math inline">\(\E[Y]\)</span>. Rather, it means that, if we could repeatedly obtain (a huge number of times) new samples of size <span class="math inline">\(n\)</span> and compute <span class="math inline">\(\bar{Y}\)</span> each time, the average of <span class="math inline">\(\bar{Y}\)</span> across repeated samples would be equal to <span class="math inline">\(\E[Y]\)</span>.</p>
+</section>
+<section id="variance-of-bary" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="variance-of-bary"><span class="header-section-number">4.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h2>
+<p>SW 2.5, 3.1</p>
+<p>Next, let’s calculate the variance of <span class="math inline">\(\bar{Y}\)</span>. As before, we are continuing with the thought experiment of being able to repeatedly draw new samples of size <span class="math inline">\(n\)</span>, and, therefore, we call this variance the <strong>sampling variance</strong>.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \Var(\bar{Y}) &amp;= \Var\left(\frac{1}{n} \sum_{i=1}^n Y_i\right) \\
+    &amp;= \frac{1}{n^2} \Var\left(\sum_{i=1}^n Y_i\right) \\
+    &amp;= \frac{1}{n^2} \left( \sum_{i=1}^n \Var(Y_i) + \textrm{lots of covariance terms} \right) \\
+    &amp;= \frac{1}{n^2} \left( \sum_{i=1}^n \Var(Y_i) \right) \\
+    &amp;= \frac{1}{n^2} \sum_{i=1}^n \Var(Y) \\
+    &amp;= \frac{1}{n^2} n \Var(Y) \\
+    &amp;= \frac{\Var(Y)}{n}
+  \end{aligned}
+\]</span> Let’s go carefully through each step — these arguments rely heavily on the properties of variance that we talked about earlier. The first equality holds by the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can come out of the variance after squaring it. The third equality holds because the variance of the sum of random variables is equal to the sum of the variances plus all the covariances between the random variables. In the fourth equality, all of the covariance terms go away — this holds because of random sampling which implies that the <span class="math inline">\(Y_i\)</span> are all independent which implies that their covariances are equal to 0. The fifth equality holds because all <span class="math inline">\(Y_i\)</span> are identically distributed so their variances are all the same and equal to <span class="math inline">\(\Var(Y)\)</span>. The sixth equality holds by adding up <span class="math inline">\(\Var(Y)\)</span> <span class="math inline">\(n\)</span> times. The last equality holds by canceling the <span class="math inline">\(n\)</span> in the numerator with one of the <span class="math inline">\(n\)</span>’s in the denominator.</p>
+<p>Interestingly, the variance of <span class="math inline">\(\bar{Y}\)</span> depends not just on <span class="math inline">\(\Var(Y)\)</span> but also on <span class="math inline">\(n\)</span> — the number of observations in the sample. Notice that <span class="math inline">\(n\)</span> is in the denominator, so the variance of <span class="math inline">\(\bar{Y}\)</span> will be lower for large values of <span class="math inline">\(n\)</span>. Here is an example that may be helpful for understanding this. Suppose that you are rolling a die. If <span class="math inline">\(n=1\)</span>, then clearly, the variance of <span class="math inline">\(\bar{Y}\)</span> is just equal to the variance of <span class="math inline">\(Y\)</span> — sometimes you roll extreme values like <span class="math inline">\(1\)</span> or <span class="math inline">\(6\)</span>. Now, when you increase <span class="math inline">\(n\)</span>, say, to 10, then these extreme values of <span class="math inline">\(\bar{Y}\)</span> are substantially less common. For <span class="math inline">\(\bar{Y}\)</span> to be equal to <span class="math inline">\(6\)</span> in this case, you’d need to roll 10 <span class="math inline">\(6\)</span>’s in a row. This illustrates that the sampling variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in <span class="math inline">\(n\)</span>. If this is not perfectly clear, we will look at some data soon, and I think that should confirm to you that the variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in the sample size.</p>
+</section>
+<section id="properties-of-estimators" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="properties-of-estimators"><span class="header-section-number">4.5</span> Properties of Estimators</h2>
+<p>SW 2.5, 3.1</p>
+<p>Suppose we are interested in some population parameter <span class="math inline">\(\theta\)</span> — we’ll write this pretty generically now, but it could be <span class="math inline">\(\E[Y]\)</span> or <span class="math inline">\(\E[Y|X]\)</span> or really any other population quantity that you’d like to estimate.</p>
+<p>Also, suppose that we have access to a random sample of size <span class="math inline">\(n\)</span> and we have some estimate of <span class="math inline">\(\theta\)</span> that we’ll call <span class="math inline">\(\hat{\theta}\)</span>.</p>
+<p>As before, we are going to consider the repeated sampling thought experiment where we imagine that we could repeatedly obtain new samples of size <span class="math inline">\(n\)</span> and with each new sample calculate a new <span class="math inline">\(\hat{\theta}\)</span>. Under this thought experiment, <span class="math inline">\(\hat{\theta}\)</span> would have a sampling distribution. One possibility for what it could look like is the following</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this case, values of <span class="math inline">\(\hat{\theta}\)</span> are more common around 3 and 4, but it is not highly unusual to get a value of <span class="math inline">\(\hat{\theta}\)</span> that is around 1 or 2 or 5 or 6 either.</p>
+<p>The first property of an estimator that we will take about is called <strong>unbiasedness</strong>. An estimator <span class="math inline">\(\hat{\theta}\)</span> is said to be unbiased if <span class="math inline">\(\E[\hat{\theta}] = \theta\)</span>. Alternatively, we can define the <strong>bias</strong> of an estimator as</p>
+<p><span class="math display">\[
+  \textrm{Bias}(\hat{\theta}) = \E[\hat{\theta}] - \theta
+\]</span> For example, if <span class="math inline">\(\textrm{Bias}(\hat{\theta}) &gt; 0\)</span>, it means that, on average (in the repeated sampling thought experiment), our estimates of <span class="math inline">\(\theta\)</span> would be greater than the actual value of <span class="math inline">\(\theta\)</span>.</p>
+<p>In general, unbiasedness is a good property for an estimator to have. That being said, we can come up with examples of not-very-good unbiased estimators and good biased estimators, but all-else-equal, it is better for an estimator to be unbiased.</p>
+<p>The next property of estimators that we will talk about is their <strong>sampling variance</strong>. This is just <span class="math inline">\(\Var(\hat{\theta})\)</span>. In general, we would like estimators with low (or 0) bias and low sampling variance. Let me give an example</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is a helpful figure for thinking about the properties of estimators. In this case, <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased (because their means are <span class="math inline">\(\theta\)</span>) while <span class="math inline">\(\hat{\theta}_3\)</span> is biased — it’s mean is greater than <span class="math inline">\(\theta\)</span>. On the other hand the sampling variance of <span class="math inline">\(\hat{\theta}_2\)</span> and <span class="math inline">\(\hat{\theta}_3\)</span> are about the same and both substantially smaller than for <span class="math inline">\(\hat{\theta}_1\)</span>. Clearly, <span class="math inline">\(\hat{\theta}_2\)</span> is the best estimator of <span class="math inline">\(\theta\)</span> out of the three. But which is the second best? It is not clear. <span class="math inline">\(\hat{\theta}_3\)</span> systematically over-estimates <span class="math inline">\(\theta\)</span>, but since the variance is relatively small, the misses are systematic but tend to be relatively small. On the other hand, <span class="math inline">\(\hat{\theta}_1\)</span> is, on average, equal to <span class="math inline">\(\theta\)</span>, but sometimes the estimate of <span class="math inline">\(\theta\)</span> could be quite poor due to the large sampling variance.</p>
+</section>
+<section id="relative-efficiency" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="relative-efficiency"><span class="header-section-number">4.6</span> Relative Efficiency</h2>
+<p>SW 3.1</p>
+<p>If <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are two unbiased estimators of <span class="math inline">\(\theta\)</span>, then <span class="math inline">\(\hat{\theta}_1\)</span> is <strong>more efficient</strong> than <span class="math inline">\(\hat{\theta}_2\)</span> if <span class="math inline">\(\Var(\hat{\theta}_1) &lt; \Var(\hat{\theta}_2)\)</span>.</p>
+<p>Relative efficiency gives us a way to rank unbiased estimators.</p>
+</section>
+<section id="mean-squared-error" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="mean-squared-error"><span class="header-section-number">4.7</span> Mean Squared Error</h2>
+<p>More generally, two estimators can be compared by their <strong>mean squared error</strong> which is defined as</p>
+<p><span class="math display">\[
+  \textrm{MSE}(\hat{\theta}) := \E\left[ (\hat{\theta} - \theta)^2\right]
+\]</span></p>
+<p>The mean squared error of <span class="math inline">\(\hat{\theta}\)</span> is the average “distance” between <span class="math inline">\(\hat{\theta}\)</span> and <span class="math inline">\(\theta\)</span> in the thought experiment of having repeated samples of size <span class="math inline">\(n\)</span>.</p>
+<p>Another equivalent expression for the mean squared error is</p>
+<p><span class="math display">\[
+  \textrm{MSE}(\hat{\theta}) = \textrm{Bias}(\hat{\theta})^2 + \Var(\hat{\theta})
+\]</span> In other words, if we can figure out the bias and variance of <span class="math inline">\(\hat{\theta}\)</span>, then we can recover mean squared error.</p>
+<div class="side-comment">
+<p><span class="side-comment">Side-Comment:</span> I think it is worth quickly explaining where the second expression for <span class="math inline">\(\textrm{MSE}(\hat{\theta})\)</span> comes from. Starting from the definition of <span class="math inline">\(\textrm{MSE}(\hat{\theta})\)</span>,</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \textrm{MSE}(\hat{\theta}) &amp;= \E\left[ (\hat{\theta} - \theta)^2\right] \\
+    &amp;= \E\left[ \left( (\hat{\theta} - \E[\hat{\theta}]) + (\E[\hat{\theta}] - \theta)\right)^2 \right] \\
+    &amp;= \E\left[ (\hat{\theta} - \E[\hat{\theta}])^2 \right] + \E\left[ (\E[\hat{\theta}] - \theta)^2\right] + 2 \E\left[ (\hat{\theta} - \E[\hat{\theta}])(\E[\hat{\theta}] - \theta) \right] \\
+    &amp;= \Var(\hat{\theta}) + \textrm{Bias}(\hat{\theta})^2
+  \end{aligned}
+\]</span> where the first equality is just the definition of <span class="math inline">\(\textrm{MSE}(\hat{\theta})\)</span>, the second equality adds and subtracts <span class="math inline">\(\E[\hat{\theta}]\)</span>, the third equality squares everything in parentheses from the previous line and pushes the expectation through the sum. For the last equality, the first term in the previous line corresponds to the definition of <span class="math inline">\(\Var(\hat{\theta})\)</span>; for the second term, recall that <span class="math inline">\(\textrm{Bias}(\hat{\theta}) = \E[\hat{\theta}-\theta]\)</span> (and this is non-random so the outside expectation just goes away); the last term is equal to 0 which just holds by the properties of expectations after noticing that <span class="math inline">\((\E[\hat{\theta}] - \theta)\)</span> is non-random and can therefore come out of the expectation.</p>
+</div>
+<p>Generally, we would like to choose estimators that have low mean squared error (this essentially means that they have low bias and variance). Moreover, mean squared error gives us a way to compare estimators that are potentially biased. [Also, notice that for unbiased estimators, comparing mean squared errors of different estimators just compares their variance (because the bias term is equal to 0), so this is a <em>generalization</em> of relative efficiency from the previous section.]</p>
+<div class="example">
+<p>Let’s compare three estimators of <span class="math inline">\(\E[Y]\)</span> based on their mean squared error. Let’s consider the three following estimators</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \hat{\mu} &amp;:= \frac{1}{n} \sum_{i=1}^n Y_i \\
+    \hat{\mu}_1 &amp;:= Y_1 \\
+    \hat{\mu}_\lambda &amp;:= \lambda \bar{Y} \quad \textrm{for some } \lambda &gt; 0
+  \end{aligned}
+\]</span> <span class="math inline">\(\hat{\mu}\)</span> is just the sample average of <span class="math inline">\(Y\)</span>’s that we have already discussed. <span class="math inline">\(\hat{\mu}_1\)</span> is the (somewhat strange) estimator of <span class="math inline">\(\E[Y]\)</span> that just uses the first observation in the data (regardless of the sample size). <span class="math inline">\(\hat{\mu}_\lambda\)</span> is an estimator of <span class="math inline">\(\E[Y]\)</span> that multiplies <span class="math inline">\(\bar{Y}\)</span> by some positive constant <span class="math inline">\(\lambda\)</span>.</p>
+<p>To calculate the mean squared error of each of these estimators, let’s calculate their means and their variances.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \E[\hat{\mu}] &amp;= \E[Y] \\
+    \E[\hat{\mu}_1] &amp;= \E[Y_1] = \E[Y] \\
+    \E[\hat{\mu}_\lambda] &amp;= \lambda \E[\bar{Y}] = \lambda \E[Y]
+  \end{aligned}
+\]</span> This means that <span class="math inline">\(\hat{\mu}\)</span> and <span class="math inline">\(\hat{\mu}_1\)</span> are both unbiased. <span class="math inline">\(\hat{\mu}_\lambda\)</span> is biased (unless <span class="math inline">\(\lambda=1\)</span> though this is a relatively uninteresting case as it would mean that <span class="math inline">\(\hat{\mu}_\lambda\)</span> is exactly the same as <span class="math inline">\(\hat{\mu}\)</span>) with <span class="math inline">\(\textrm{Bias}(\hat{\mu}_\lambda) = (\lambda - 1) \E[Y]\)</span>.</p>
+<p>Next, let’s calculate the variance for each estimator</p>
+<p><span class="math display">\[
+  \begin{aligned}
+  \Var(\hat{\mu}) &amp;= \frac{\Var(Y)}{n} \\
+  \Var(\hat{\mu}_1) &amp;= \Var(Y_1) = \Var(Y) \\
+  \Var(\hat{\mu}_\lambda) &amp;= \lambda^2 \Var(\bar{Y}) = \lambda^2 \frac{\Var(Y)}{n}
+  \end{aligned}
+\]</span> This means that we can now calculate mean squared error for each estimator.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \textrm{MSE}(\hat{\mu}) &amp;= \frac{\Var{Y}}{n} \\
+    \textrm{MSE}(\hat{\mu}_1) &amp;= \Var(Y) \\
+    \textrm{MSE}(\hat{\mu}_\lambda) &amp;= (\lambda-1)^2\E[Y]^2 + \lambda^2 \frac{\Var(Y)}{n}
+  \end{aligned}
+\]</span> The first thing to notice is that <span class="math inline">\(\hat{\mu}\)</span> <em>dominates</em> <span class="math inline">\(\hat{\mu}_1\)</span> (where dominates means that there isn’t any scenario where you could make a reasonable case that <span class="math inline">\(\hat{\mu}_1\)</span> is a better estimator) because its MSE is strictly lower (they tie only if <span class="math inline">\(n=1\)</span> when they become the same estimator). This is probably not surprising — <span class="math inline">\(\hat{\mu}_1\)</span> just throws away a lot of potentially useful information.</p>
+<p>The more interesting case is <span class="math inline">\(\hat{\mu}_\lambda\)</span>. The first term is the bias term — it is greater than the bias from <span class="math inline">\(\hat{\mu}\)</span> or <span class="math inline">\(\hat{\mu}_1\)</span> because the bias of both of these is equal to 0. However, relative to <span class="math inline">\(\hat{\mu}\)</span>, the variance of <span class="math inline">\(\hat{\mu}_\lambda\)</span> can be smaller when <span class="math inline">\(\lambda\)</span> is less than 1. In fact, you can show that there are estimators that have smaller mean squared error than <span class="math inline">\(\hat{\mu}\)</span> by choosing a <span class="math inline">\(\lambda\)</span> that is smaller than (usually just slightly smaller than) 1. This sort of estimator would be biased, but are able to compensate introducing some bias by having smaller variance. For now, we won’t talk much about this sort of estimator (and stick to <span class="math inline">\(\bar{Y}\)</span>), but this sort of estimator has the “flavor” of modern machine learning estimators that typically introduce some bias while reducing variance. One last comment: if you were to make a “bad” choice of <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(\hat{\mu}_\lambda\)</span> could have higher mean squared error than even <span class="math inline">\(\hat{\mu}_1\)</span>, so if you wanted to proceed this way, you’d have to choose <span class="math inline">\(\lambda\)</span> with some care.</p>
+</div>
+</section>
+<section id="large-sample-properties-of-estimators" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="large-sample-properties-of-estimators"><span class="header-section-number">4.8</span> Large Sample Properties of Estimators</h2>
+<p>SW 2.6</p>
+<p>Statistics/Econometrics often relies on “large sample” (meaning: the number of observations, <span class="math inline">\(n\)</span>, is large) properties of estimators.</p>
+<p>Intuition: We generally expect that estimators that use a large number of observations will perform better than in the case with only a few observations.</p>
+<p>The second goal of this section will be to introduce an approach to conduct hypothesis testing. In particular, we may have some theory and want a way to test whether or not the data that we have “is consistent with” the theory or not. These arguments typically involve either making strong assumptions or having a large sample — we’ll mainly study the large sample case as I think this is more useful.</p>
+</section>
+<section id="consistency" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="consistency"><span class="header-section-number">4.9</span> Consistency</h2>
+<p>An estimator <span class="math inline">\(\hat{\theta}\)</span> of <span class="math inline">\(\theta\)</span> is said to be <strong>consistent</strong> if <span class="math inline">\(\hat{\theta}\)</span> gets close to <span class="math inline">\(\theta\)</span> for large values of <span class="math inline">\(n\)</span>.</p>
+<p>The main tool for studying consistency is the <strong>law of large numbers</strong>. The law of large numbers says that sample averages converge to population averages as the sample size gets large. In math, this is</p>
+<p><span class="math display">\[
+  \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \E[Y] \quad \textrm{as } n \rightarrow \infty
+\]</span> In my view, the law of large numbers is very intuitive. If you have a large sample and calculate a sample average, it should be close to the population average.</p>
+<div class="example">
+<p>Let’s consider the same three estimators as before and whether or not they are consistent. First, the LLN implies that</p>
+<p><span class="math display">\[
+  \hat{\mu} = \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \E[Y]
+\]</span> This implies that <span class="math inline">\(\hat{\mu}\)</span> is consistent. Next,</p>
+<p><span class="math display">\[
+  \hat{\mu}_1 = Y_1
+\]</span> doesn’t change depending on the size of the sample (you just use the first observation), so this is not consistent. This is an example of an unbiased estimator that is not consistent. Next,</p>
+<p><span class="math display">\[
+  \hat{\mu}_\lambda = \lambda \bar{Y} \rightarrow \lambda \E[Y] \neq \E[Y]
+\]</span> which implies that (as long as <span class="math inline">\(\lambda\)</span> doesn’t change with <span class="math inline">\(n\)</span>), <span class="math inline">\(\hat{\mu}_{\lambda}\)</span> is not consistent. Let’s give one more example. Consider the estimator</p>
+<p><span class="math display">\[
+  \hat{\mu}_c := \bar{Y} + \frac{c}{n}
+\]</span> where <span class="math inline">\(c\)</span> is some constant (this is a strange estimate of <span class="math inline">\(\E[Y]\)</span> where we take <span class="math inline">\(\bar{Y}\)</span> and add a constant divided by the sample size). In this case,</p>
+<p><span class="math display">\[
+  \hat{\mu}_c \rightarrow \E[Y] + 0 = \E[Y]
+\]</span></p>
+<p>which implies that it is consistent. It is interesting to note that</p>
+<p><span class="math display">\[
+  \E[\hat{\mu}_c] = \E[Y] + \frac{c}{n}
+\]</span> which implies that it is biased. This is an example of a biased estimator that is consistent.</p>
+</div>
+</section>
+<section id="asymptotic-normality" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="asymptotic-normality"><span class="header-section-number">4.10</span> Asymptotic Normality</h2>
+<p>The next large sample property that we’ll talk about is <strong>asymptotic normality</strong>. This is a hard one to wrap your mind around, but I’ll try to explain as clearly as possible. We’ll start by talking about what it is, and then we’ll move to why it’s useful.</p>
+<p>Most of the estimators that we will talk about this semester have the following property</p>
+<p><span class="math display">\[
+  \sqrt{n}\left( \hat{\theta} - \theta \right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span> In words, what this says is that we can learn something about the sampling distribution of <span class="math inline">\(\hat{\theta}\)</span> as long as we have a large enough sample. More specifically, if <span class="math inline">\(\hat{\theta}\)</span> is asymptotically normal, it means that if we take <span class="math inline">\(\hat{\theta}\)</span> subtract the true value of the parameter <span class="math inline">\(\theta\)</span> (this is often referred to as “centering”) and multiply by <span class="math inline">\(\sqrt{n}\)</span>, then that object (as long as the sample size is large enough) will <em>seem like</em> a draw from a normal distribution with mean 0 and variance <span class="math inline">\(V\)</span>. Since we know lots about normal distributions, we’ll be able to exploit this in very useful ways in the next section.</p>
+<p>An equivalent, alternative expression that is sometimes useful is</p>
+<p><span class="math display">\[
+  \frac{\sqrt{n}\left( \hat{\theta} - \theta\right)}{\sqrt{V}} \rightarrow N(0,1) \quad \textrm{as } n \rightarrow \infty
+\]</span></p>
+<p>To establish asymptotic normality of a particular estimator, the main tool is the <strong>central limit theorem</strong>. The central limit theorem (sometimes abbreviated CLT) says that</p>
+<p><span class="math display">\[
+  \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Y_i - \E[Y]\right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span> where <span class="math inline">\(V = \Var(Y)\)</span>.</p>
+<p>In words, the CLT says that if you take the difference between <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(\E[Y]\)</span> (which, by the LLN converges to 0 as <span class="math inline">\(n \rightarrow \infty\)</span>) and “scale it up” by <span class="math inline">\(\sqrt{n}\)</span> (which goes to <span class="math inline">\(\infty\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>), then <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y])\)</span> will act like a draw from a normal distribution with variance <span class="math inline">\(\Var(Y)\)</span>.</p>
+<p>There are a few things to point out:</p>
+<ul>
+<li><p>Just to start with, this is not nearly as “natural” a result as the LLN. The LLN basically makes perfect sense. For me, I know how to prove the CLT (though we are not going to do it in class), but I don’t think that I would have ever been able to come up with this on my own.</p></li>
+<li><p>Notice that the CLT does not rely on any distributional assumptions. We do not need to assume that <span class="math inline">\(Y\)</span> follows a normal distribution and it will apply when <span class="math inline">\(Y\)</span> follows any distribution (up to some relatively minor technical conditions that we will not worry about).</p></li>
+<li><p>It is also quite remarkable. We usually have the sense that as the sample size gets large that things will converge to something (e.g., LLN saying that sample averages converge to population averages) or that they will diverge (i.e., go off to positive or negative infinity themselves). The CLT provides an intermediate case — <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y])\)</span> is neither converging to a particular value or diverging to infinity. Instead, it is <em>converging in distribution</em> — meaning: it is settling down to something that looks like a draw from some distribution rather than converging to a particular number.</p></li>
+<li><p>In some sense, you can think of this “convergence in distribution” as a “tie” between the part <span class="math inline">\((\bar{Y}-\E[Y])\)</span> which, by itself, is converging to 0, and <span class="math inline">\(\sqrt{n}\)</span> which, by itself, is diverging to infinity. In particular, notice that <span class="math display">\[\begin{align*}
+\Var\Big( \sqrt{n} (\bar{Y} - \E[Y]) \Big) &amp;= n \times \Var(\bar{Y}) \\
+&amp;= n \times \frac{\Var(Y)}{n} \\
+&amp;= \Var(Y)
+\end{align*}\]</span> where this argument just holds by the properties of variance that we have used many times before. This means that the variance of <span class="math inline">\(\sqrt{n}(\bar{Y}-\E[Y])\)</span> does not go to 0 (which would suggest that the whole term converges to 0) nor does it go to <span class="math inline">\(\infty\)</span> (which would suggest that the term diverges). Moreover, if you multiplied <span class="math inline">\((\bar{Y}-E[Y])\)</span> instead by something somewhat smaller, say, <span class="math inline">\(n^{1/3}\)</span>, then the term <span class="math inline">\((\bar{Y}-\E[Y])\)</span> would “win” and the whole expression would converge to 0 (to see this, try calculating <span class="math inline">\(\Var\Big(n^{1/3}(\bar{Y} - \E[Y]\Big)\)</span>). On the other hand, if you multiplied by something somewhat larger, say, <span class="math inline">\(n\)</span>, then the <span class="math inline">\(n\)</span> part would “win” and the whole thing would diverge (to see this, try calculating <span class="math inline">\(\Var\Big(n(\bar{Y}-\E[Y])\Big)\)</span>). <span class="math inline">\(\sqrt{n}\)</span> turns out to be “just right” so that there is essentially a “tie” and this term neither converges to a particular number nor diverges.</p></li>
+<li><p>A very common question for students is: “how large does <span class="math inline">\(n\)</span> need to be for the central limit theorem to apply?” Unfortunately, there is a not a great answer to this (though some textbooks have sometimes given explicit numbers here). Here is a basic explanation for why it is hard to give a definite number. Suppose <span class="math inline">\(Y\)</span> follows a normal distribution, then it will not take many observations for the normal approximation to hold. On the other hand, if <span class="math inline">\(Y\)</span> were to come from a discrete distribution or just a generally complicated distribution, then it might take many more observations for the normal approximation to hold.</p></li>
+</ul>
+<p>All that to say, I know that the CLT is hard to understand, but the flip-side of that is that it really is a fascinating result. We’ll see how its useful next.</p>
+</section>
+<section id="inference-hypothesis-testing" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="inference-hypothesis-testing"><span class="header-section-number">4.11</span> Inference / Hypothesis Testing</h2>
+<p>SW 3.2, 3.3</p>
+<p>Often in statistics/econometrics, we have some theory that we would like to test. Pretty soon, we will be interested in testing a theory like: some economic policy had no effect on some outcome of interest.</p>
+<p>In this section, we’ll focus on the relatively simple case of conducting inference on <span class="math inline">\(\E[Y]\)</span>, but very similar arguments will apply when we try to start estimating more complicated things soon. Because we’re just focusing on <span class="math inline">\(\E[Y]\)</span>, the examples in this section may be a somewhat trivial/uninteresting, but I want us to learn some mechanics, and then we’ll be able to apply these in more complicated situations.</p>
+<p>Let’s start with defining some terms.</p>
+<p><strong>Null Hypothesis</strong> This is the hypothesis (or theory) that we want to test. We’ll often write it in the following way</p>
+<p><span class="math display">\[
+  H_0 : \E[Y] = \mu_0
+\]</span> where <span class="math inline">\(\mu_0\)</span> is some actual number (e.g., 0 or 10 or just whatever coincides with the theory you want to test).</p>
+<p><strong>Alternative Hypothesis</strong> This is what is true if <span class="math inline">\(H_0\)</span> is not. There are other possibilities, but I think the only alternative hypothesis that we will consider this semester is</p>
+<p><span class="math display">\[
+  H_1 : \E[Y] \neq \mu_0
+\]</span> i.e., that <span class="math inline">\(\E[Y]\)</span> is not equal to the particular value <span class="math inline">\(\mu_0\)</span>.</p>
+<p>The key conceptual issue is that, even if the null hypothesis is true, because we estimate <span class="math inline">\(\E[Y]\)</span> with a sample, it will generally be the case that <span class="math inline">\(\bar{Y} \neq \mu_0\)</span>. This is just the nature of trying to estimate things with a sample.</p>
+<p>What we are going to go for is essentially trying to tell the difference (or at least be able to weigh the evidence) regarding whether the difference between <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(\mu_0\)</span> can be fully explained by sampling variation or that the difference is “too big” to be explained by sampling variation. Things will start to get “mathy” in this section, but I think it is helpful to just hold this high-level idea in your head as we go along.</p>
+<p>Next, let’s define the <strong>standard error</strong> of an estimator. Suppose that we know that our estimator is asymptotically normal so that</p>
+<p><span class="math display">\[
+  \sqrt{n}(\hat{\theta} - \theta) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span> Then, we define the standard error of <span class="math inline">\(\hat{\theta}\)</span> as</p>
+<p><span class="math display">\[
+  \textrm{s.e.}(\hat{\theta}) := \frac{\sqrt{\hat{V}}}{\sqrt{n}}
+\]</span> which is just the square root of the estimate of the asymptotic variance <span class="math inline">\(V\)</span> divided by the square root of the sample size. For example, in the case where we are trying to estimate <span class="math inline">\(\E[Y]\)</span>, recall that, by the CLT, <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y]) \rightarrow N(0,V)\)</span> where <span class="math inline">\(V=\Var(Y)\)</span>, so that</p>
+<p><span class="math display">\[
+  \textrm{s.e.}(\bar{Y}) = \frac{\sqrt{\widehat{\Var}(Y)}}{\sqrt{n}}
+\]</span> where <span class="math inline">\(\widehat{\Var}(Y)\)</span> is just an estimate of the variance of <span class="math inline">\(Y\)</span>, i.e., just run <code>var(Y)</code> in <code>R</code>.</p>
+<p>Over the next few sections, we are going to consider several different way to conduct inference (i.e., weigh the evidence) about some theory (i.e., the null hypothesis) using the data that we have. For all of the approaches that we consider below, the key ingredients are going to an estimate of the parameter of interest (e.g., <span class="math inline">\(\bar{Y}\)</span>), the value of <span class="math inline">\(\mu_0\)</span> coming from the null hypothesis, and the standard error of the estimator.</p>
+</section>
+<section id="t-statistics" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="t-statistics"><span class="header-section-number">4.12</span> t-statistics</h2>
+<p>A <strong>t-statistic</strong> is given by</p>
+<p><span class="math display">\[
+  t = \frac{\sqrt{n} (\bar{Y} - \mu_0)}{\sqrt{\hat{V}}}
+\]</span> Alternatively (from the definition of standard error), we can write</p>
+<p><span class="math display">\[
+  t = \frac{(\bar{Y} - \mu_0)}{\textrm{s.e.}(\bar{Y})}
+\]</span> though I’ll tend to use the first expression, just because I think it makes the arguments below slightly more clear.</p>
+<p>Notice that <span class="math inline">\(t\)</span> is something that we can calculate with our available data. <span class="math inline">\(\sqrt{n}\)</span> is the square root of the sample size, <span class="math inline">\(\bar{Y}\)</span> is the sample average of <span class="math inline">\(Y\)</span>, <span class="math inline">\(\mu_0\)</span> is a number (that we have picked) coming from the null hypothesis, and <span class="math inline">\(\hat{V}\)</span> is the sample variance of <span class="math inline">\(Y\)</span> (e.g., computed with <code>var(Y)</code> in <code>R</code>).</p>
+<p>Now, here is the interesting thing about t-statistics. If the null hypothesis is true, then</p>
+<p><span class="math display">\[
+  t = \frac{\sqrt{n} (\bar{Y} - \E[Y])}{\sqrt{\hat{V}}} \approx \frac{\sqrt{n} (\bar{Y} - \E[Y])}{\sqrt{V}}
+\]</span></p>
+<p>where we have substituted in <span class="math inline">\(\E[Y]\)</span> for <span class="math inline">\(\mu_0\)</span> (due to <span class="math inline">\(H_0\)</span> being true) and then replaced <span class="math inline">\(\hat{V}\)</span> with <span class="math inline">\(V\)</span> (which holds under the law of large numbers). This is something that we can apply the CLT to, and, in particular, if <span class="math inline">\(H_0\)</span> holds, then <span class="math display">\[
+  t \rightarrow N(0,1)
+\]</span> That is, if <span class="math inline">\(H_0\)</span> is true, then <span class="math inline">\(t\)</span> should look like a draw from a normal distribution.</p>
+<p>Now, let’s think about what happens when the null hypothesis isn’t true. Then, we can write</p>
+<p><span class="math display">\[
+  t = \frac{\sqrt{n} (\bar{Y} - \mu_0)}{\sqrt{\hat{V}}}
+\]</span> which is just the definition of <span class="math inline">\(t\)</span>, but something different will happen here. In order for <span class="math inline">\(t\)</span> to follow a normal distribution, we need <span class="math inline">\((\bar{Y} - \mu_0)\)</span> to converge to 0. But <span class="math inline">\(\bar{Y}\)</span> converges to <span class="math inline">\(\E[Y]\)</span>, and if the null hypothesis does not hold, then <span class="math inline">\(\E[Y] \neq \mu_0\)</span> which implies that <span class="math inline">\((\bar{Y} - \mu_0) \rightarrow (\E[Y] - \mu_0) \neq 0\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>. It’s still the case that <span class="math inline">\(\sqrt{n} \rightarrow \infty\)</span>. Thus, if <span class="math inline">\(H_0\)</span> is not true, then <span class="math inline">\(t\)</span> will diverge (recall: this means that it will either go to positive infinity or negative infinity depending on the sign of <span class="math inline">\((\E[Y] - \mu_0)\)</span>).</p>
+<p>This gives us a very good way to start to think about whether or not the data is compatible with our theory. For example, suppose that you calculate <span class="math inline">\(t\)</span> (using your data and under your null hypothesis) and that it is equal to 1. 1 is not an “unusual” looking draw from a standard normal distribution — this suggests that you at least do not have strong evidence from data against your theory. Alternatively, suppose that you calculate that <span class="math inline">\(t=-24\)</span>. While its technically possible that you could draw <span class="math inline">\(-24\)</span> from a standard normal distribution — it is exceedingly unlikely. We would interpret this as strong evidence against the null hypothesis, and it should probably lead you to “reject” the null hypothesis.</p>
+<p>We have talked about some clear cases, but what about the “close calls”? Suppose you calculate that <span class="math inline">\(t=2\)</span>. Under the null hypothesis, there is about a 4.6% chance of getting a t-statistic at least this large (in absolute value). So…if <span class="math inline">\(H_0\)</span> is true, this is a fairly unusual t-statistic, but it is not extremely unusual. What should you do?</p>
+<p>Before we decide what to do, let’s introduce a little more terminology regarding what could go wrong with hypothesis testing. There are two ways that we could go wrong:</p>
+<p><strong>Type I Error</strong> — This would be to reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true</p>
+<p><strong>Type II Error</strong> — This would be to fail to reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is false</p>
+<p>Clearly, there is a tradeoff here. If you are really concerned with type I errors, you can be very cautious about rejecting <span class="math inline">\(H_0\)</span>. If you are very concerned about type II errors, you could aggressively reject <span class="math inline">\(H_0\)</span>. The traditional approach to trading these off in statistics is to pre-specify a <strong>significance level</strong> indicating what percentage of the time you are willing to commit a type I error. Usually the significance level is denoted by <span class="math inline">\(\alpha\)</span> and the most common choice of <span class="math inline">\(\alpha\)</span> is 0.05 and other common choices are <span class="math inline">\(\alpha=0.1\)</span> or <span class="math inline">\(\alpha=0.01\)</span>. Then, good statistical tests try to make as few type II errors as possible subject to the constraint on the rate of type I errors.</p>
+<p>Often, once you have specified a significance level, it comes with a <strong>critical value</strong>. The critical value is the value of a test statistic for which the test just rejects <span class="math inline">\(H_0\)</span>.</p>
+<p>In practice, this leads to the following decision rule:</p>
+<ul>
+<li><p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; c_{1-\alpha}\)</span> where <span class="math inline">\(c_{1-\alpha}\)</span> is the critical value corresponding to the significance level <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &lt; c_{1-\alpha}\)</span></p></li>
+</ul>
+<p>In our case, since <span class="math inline">\(t\)</span> follows a normal distribution under <span class="math inline">\(H_0\)</span>, the corresponding critical value (when <span class="math inline">\(\alpha=0.05\)</span>) is 1.96. In particular, recall what the pdf of a standard normal random variable looks like</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The sum of the two blue, shaded areas is 0.05. In other words, under <span class="math inline">\(H_0\)</span>, there is a 5% chance that, by chance, <span class="math inline">\(t\)</span> would fall in the shaded areas. If you want to change the significance level, it would result in a corresponding change in the critical value so that the area in the new shaded region would adjust too. For example, if you set the significance level to be <span class="math inline">\(\alpha=0.1\)</span>, then you would need to adjust the critical value to be 1.64, and if you set <span class="math inline">\(\alpha=0.01\)</span>, then you would need to adjust the critical value to be 2.58.</p>
+</section>
+<section id="p-values" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="p-values"><span class="header-section-number">4.13</span> P-values</h2>
+<p>Choosing a significance level is somewhat arbitrary. What did we choose 5%?</p>
+<p>Perhaps more importantly, we are essentially throwing away a lot of information if we are to reduce the information from standard errors/t-statistics to a binary “reject” or “fail to reject”.</p>
+<p>One alternative is to report a <strong>p-value</strong>. A p-value is the probability of observing a t-statistic as “extreme” as we did if <span class="math inline">\(H_0\)</span> were true.</p>
+<p>Here is an example of how to calculate a p-value. Suppose we calculate <span class="math inline">\(t=1.85\)</span>. Then,</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Then, under <span class="math inline">\(H_0\)</span>, the probability of getting a t-statistic “as extreme” as 1.85 corresponds to the area of the two shaded regions above. In other words, we need to to compute</p>
+<p><span class="math display">\[
+  \textrm{p-value} = \P(Z \leq -1.85) + \P(Z \geq 1.85)
+\]</span> where <span class="math inline">\(Z \sim N(0,1)\)</span>. One thing that is helpful to notice here is that, a standard normal random variable is symmetric. This means that <span class="math inline">\(\P(Z \leq -1.85) = \P(Z \geq 1.85)\)</span>. We also typically denote the cdf of a standard normal random variable with the symbol <span class="math inline">\(\Phi\)</span>. Thus,</p>
+<p><span class="math display">\[
+  \textrm{p-value} = 2 \Phi(-1.85)
+\]</span> I don’t know what this is off the top of my head, but it is easy to compute from a table or using <code>R</code>. In <code>R</code>, you can use the function <code>pnorm</code> — here, the p-value is given by <code>2*pnorm(-1.85)</code> which is equal to 0.064.</p>
+<p>More generally, if you calculate a t-statistic, <span class="math inline">\(t\)</span>, using your data and under <span class="math inline">\(H_0\)</span>, then,</p>
+<p><span class="math display">\[
+  \textrm{p-value} = 2 \Phi(-|t|)
+\]</span></p>
+</section>
+<section id="confidence-interval" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="confidence-interval"><span class="header-section-number">4.14</span> Confidence Interval</h2>
+<p>Another idea is to report a <span class="math inline">\((1-\alpha)\%\)</span> (e.g., 95%) confidence interval.</p>
+<p>The interpretation of a confidence interval is a bit subtle. It is this: if we collected a large number of samples, and computed a confidence interval each time, 95% of these would contain the true value. This is subtly different than: there is a 95% probability that <span class="math inline">\(\theta\)</span> (the population parameter of interest) falls within the confidence interval — this second interpretation doesn’t make sense because <span class="math inline">\(\theta\)</span> is non-random.</p>
+<p>A 95% confidence interval is given by</p>
+<p><span class="math display">\[
+  CI_{95\%} = \left[\hat{\theta} - 1.96 \ \textrm{s.e.}(\hat{\theta}), \hat{\theta} + 1.96 \  \textrm{s.e.}(\hat{\theta})\right]
+\]</span></p>
+<p>For the particular case where we are interested in <span class="math inline">\(\E[Y]\)</span>, this becomes</p>
+<p><span class="math display">\[
+  CI_{95\%} = \left[ \bar{Y} - 1.96 \ \textrm{s.e.}(\bar{Y}), \bar{Y} + 1.96 \ \textrm{s.e.}(\bar{Y}) \right]
+\]</span></p>
+</section>
+<section id="inference-in-practice" class="level2" data-number="4.15">
+<h2 data-number="4.15" class="anchored" data-anchor-id="inference-in-practice"><span class="header-section-number">4.15</span> Inference in Practice</h2>
+<p>I have covered the main approaches to inference in this section. I’d like to make a couple of concluding comments. First, all of the approaches discussed here (standard errors, t-statistics, p-values, and confidence intervals) are very closely related (in some sense, they are just alternative ways to report the same information). They all rely heavily on establishing asymptotic normality of the estimate of the parameter of interest — in fact, this is why we were interested in asymptotic normality in the first place. My sense is that the most common thing to report (at least in economics) is an estimate of the parameter of interest (e.g., <span class="math inline">\(\hat{\theta}\)</span> or <span class="math inline">\(\bar{Y}\)</span>) along with its standard error. If you know this information, you (or your reader) can easily compute any of the other expressions that we’ve considered in this section.</p>
+<p>Another important thing to mention is that there is often a distinction between <strong>statistical significance</strong> and <strong>economic significance</strong>.</p>
+<p>In the next chapter, we’ll start to think about the <em>effect</em> of one variable on another (e.g., the effect of some economic policy on some outcome of interest). By far the most common null hypothesis in this case is that “the effect” is equal to 0. However, in economics/social sciences/business applications, there probably aren’t too many cases where (i) it would be interesting enough to consider the effect of one variable on another (ii) while simultaneously the effect is literally equal to 0. Since, all else equal, standard errors get smaller with more observations, as datasets in economics tend to get larger over time, we tend to find more statistically significant effects. This doesn’t mean that effects are getting bigger or more important — just that we are able to detect smaller and smaller effects if we have enough data. And most questions in economics involve more than just answering the binary question: does variable <span class="math inline">\(X\)</span> have any effect at all on variable <span class="math inline">\(Y\)</span>? For example, if you are trying to evaluate the effect of some economic policy, it is usually more helpful to think in terms of a cost-benefit analysis — what are the benefits or the policy relative to the costs and these sorts of comparisons inherently involve thinking about magnitudes of effects.</p>
+<p>A more succinct way to say all this is: the effect of one variable on another can be both “statistically significant” and “economically” small at the same time. Alternatively, if you do not have much data or the data is very “noisy”, it may be possible that there are relatively large effects, but that the estimates are not statistically significant (i.e., you are not able to detect them very well with the data that you have). Therefore, it is important to not become too fixated on statistical significance and to additionally think carefully about the magnitudes of estimates.</p>
+</section>
+<section id="coding" class="level2" data-number="4.16">
+<h2 data-number="4.16" class="anchored" data-anchor-id="coding"><span class="header-section-number">4.16</span> Coding</h2>
+<p>In this section, we’ll use the <code>acs</code> data to calculate an estimate of average wage/salary income among employed individuals in the United States. We’ll test the null hypothesis that the mean income in the United States is $50,000 as well as report the standard error of our estimate of mean income, as well as corresponding p-values, t-statistics, and 95% confidence interval. Finally, we’ll report a table of summary statistics using the <code>modelsummary</code> package separately by college graduates relative to non-college graduates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/acs.RData"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># estimate of mean income</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(acs<span class="sc">$</span>incwage)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ybar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59263.46</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate standard error</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">var</span>(acs<span class="sc">$</span>incwage)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(acs)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(V) <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 713.8138</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate t-statistic</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> (ybar <span class="sc">-</span> <span class="dv">50000</span>) <span class="sc">/</span> se</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>t_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.97742</code></pre>
+</div>
+</div>
+<p>This clearly exceeds 1.96 (or any common critical value) which implies that we would reject the null hypothesis that mean income is equal to $50,000.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate p-value</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(t_stat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The p-value is essentially equal to 0. This is expected given the value of the t-statistic that we calculated earlier.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 95% confidence interval</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ci_L <span class="ot">&lt;-</span> ybar <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ci_U <span class="ot">&lt;-</span> ybar <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>se</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">"["</span>,<span class="fu">round</span>(ci_L,<span class="dv">1</span>),<span class="st">","</span>,<span class="fu">round</span>(ci_U,<span class="dv">1</span>),<span class="st">"]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "[57864.4,60662.5]"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
+  backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
+
+Revert to `kableExtra` for one session:
+
+  options(modelsummary_factory_default = 'kableExtra')
+  options(modelsummary_factory_latex = 'kableExtra')
+  options(modelsummary_factory_html = 'kableExtra')
+
+Silence this message forever:
+
+  config_modelsummary(startup_message = FALSE)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a factor variable for going to college</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(acs<span class="sc">$</span>educ <span class="sc">&gt;=</span> <span class="dv">16</span>, <span class="st">"college"</span>, <span class="st">"non-college"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(acs<span class="sc">$</span>col)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(acs<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>incwage <span class="ot">&lt;-</span> acs<span class="sc">$</span>incwage<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(<span class="sc">~</span> col, <span class="at">data=</span>dplyr<span class="sc">::</span><span class="fu">select</span>(acs, incwage, female, age, col),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fmt=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+ 
+
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_s1uondduoiejmrzzrba1</title>
+    <style>
+.table td.tinytable_css_kfwsuzcpnj3vl4ebpdz1, .table th.tinytable_css_kfwsuzcpnj3vl4ebpdz1 {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_uuig3jgxgaqzsz6c4oiu, .table th.tinytable_css_uuig3jgxgaqzsz6c4oiu {    text-align: center; }
+.table td.tinytable_css_7ovh03qftu1lf7xwvkm8, .table th.tinytable_css_7ovh03qftu1lf7xwvkm8 {    border-bottom: solid 0.05em #d3d8dc; }
+.table td.tinytable_css_88a1dwu0c0fioh0daw33, .table th.tinytable_css_88a1dwu0c0fioh0daw33 {    text-align: left; }
+.table td.tinytable_css_kwca7mi502dsntcwpgs2, .table th.tinytable_css_kwca7mi502dsntcwpgs2 {    text-align: right; }
+.table td.tinytable_css_9scfa5til173nlkganel, .table th.tinytable_css_9scfa5til173nlkganel {    text-align: right; }
+.table td.tinytable_css_uwqwkh88vieimfhftulc, .table th.tinytable_css_uwqwkh88vieimfhftulc {    text-align: right; }
+.table td.tinytable_css_mn4rnu5kd0tmg5jt7m86, .table th.tinytable_css_mn4rnu5kd0tmg5jt7m86 {    text-align: right; }
+.table td.tinytable_css_zi7r1osjyrucdvprxw4o, .table th.tinytable_css_zi7r1osjyrucdvprxw4o {    text-align: right; }
+.table td.tinytable_css_cgpjng8vxg13xv91crew, .table th.tinytable_css_cgpjng8vxg13xv91crew {    text-align: right; }
+.table td.tinytable_css_0dhb2fi4lnzyv8x86y4f, .table th.tinytable_css_0dhb2fi4lnzyv8x86y4f {    text-align: center; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  
+
+  
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_s1uondduoiejmrzzrba1" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+<tr>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="2">college (N=3871)</th>
+<th scope="col" align="center" colspan="2">non-college (N=6129)</th>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="1"> </th>
+</tr>
+        
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">Mean</th>
+                <th scope="col">Std. Dev.</th>
+                <th scope="col">Mean</th>
+                <th scope="col">Std. Dev.</th>
+                <th scope="col">Diff. in Means</th>
+                <th scope="col">Std. Error</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>incwage</td>
+                  <td>89.69</td>
+                  <td>96.15</td>
+                  <td>40.05</td>
+                  <td>39.01</td>
+                  <td>-49.65</td>
+                  <td>1.62</td>
+                </tr>
+                <tr>
+                  <td>female </td>
+                  <td>0.51 </td>
+                  <td>0.50 </td>
+                  <td>0.46 </td>
+                  <td>0.50 </td>
+                  <td>-0.04 </td>
+                  <td>0.01</td>
+                </tr>
+                <tr>
+                  <td>age    </td>
+                  <td>44.38</td>
+                  <td>13.43</td>
+                  <td>42.80</td>
+                  <td>15.71</td>
+                  <td>-1.58 </td>
+                  <td>0.29</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_1p2lxn70ongrnw6a64i4(i, j, css_id) {
+        var table = document.getElementById("tinytable_s1uondduoiejmrzzrba1");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_s1uondduoiejmrzzrba1');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_1p2lxn70ongrnw6a64i4(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_s1uondduoiejmrzzrba1");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 0, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 1, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 2, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 3, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 4, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 5, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 6, 'tinytable_css_kfwsuzcpnj3vl4ebpdz1') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 0, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 1, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 2, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 3, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 4, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 5, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 6, 'tinytable_css_uuig3jgxgaqzsz6c4oiu') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 1, 'tinytable_css_7ovh03qftu1lf7xwvkm8') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 2, 'tinytable_css_7ovh03qftu1lf7xwvkm8') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 0, 'tinytable_css_88a1dwu0c0fioh0daw33') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 0, 'tinytable_css_88a1dwu0c0fioh0daw33') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 0, 'tinytable_css_88a1dwu0c0fioh0daw33') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 0, 'tinytable_css_88a1dwu0c0fioh0daw33') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 0, 'tinytable_css_88a1dwu0c0fioh0daw33') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 1, 'tinytable_css_kwca7mi502dsntcwpgs2') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 1, 'tinytable_css_kwca7mi502dsntcwpgs2') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 1, 'tinytable_css_kwca7mi502dsntcwpgs2') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 1, 'tinytable_css_kwca7mi502dsntcwpgs2') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 1, 'tinytable_css_kwca7mi502dsntcwpgs2') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 2, 'tinytable_css_9scfa5til173nlkganel') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 2, 'tinytable_css_9scfa5til173nlkganel') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 2, 'tinytable_css_9scfa5til173nlkganel') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 2, 'tinytable_css_9scfa5til173nlkganel') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 2, 'tinytable_css_9scfa5til173nlkganel') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 3, 'tinytable_css_uwqwkh88vieimfhftulc') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 3, 'tinytable_css_uwqwkh88vieimfhftulc') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 3, 'tinytable_css_uwqwkh88vieimfhftulc') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 3, 'tinytable_css_uwqwkh88vieimfhftulc') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 3, 'tinytable_css_uwqwkh88vieimfhftulc') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 4, 'tinytable_css_mn4rnu5kd0tmg5jt7m86') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 4, 'tinytable_css_mn4rnu5kd0tmg5jt7m86') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 4, 'tinytable_css_mn4rnu5kd0tmg5jt7m86') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 4, 'tinytable_css_mn4rnu5kd0tmg5jt7m86') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 4, 'tinytable_css_mn4rnu5kd0tmg5jt7m86') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 5, 'tinytable_css_zi7r1osjyrucdvprxw4o') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 5, 'tinytable_css_zi7r1osjyrucdvprxw4o') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 5, 'tinytable_css_zi7r1osjyrucdvprxw4o') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 5, 'tinytable_css_zi7r1osjyrucdvprxw4o') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 5, 'tinytable_css_zi7r1osjyrucdvprxw4o') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 6, 'tinytable_css_cgpjng8vxg13xv91crew') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(1, 6, 'tinytable_css_cgpjng8vxg13xv91crew') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(2, 6, 'tinytable_css_cgpjng8vxg13xv91crew') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(3, 6, 'tinytable_css_cgpjng8vxg13xv91crew') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(4, 6, 'tinytable_css_cgpjng8vxg13xv91crew') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 0, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 1, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 2, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 3, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 4, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 5, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+window.addEventListener('load', function () { styleCell_tinytable_1p2lxn70ongrnw6a64i4(0, 6, 'tinytable_css_0dhb2fi4lnzyv8x86y4f') })
+    </script>
+
+  
+
+
+</div>
+</div>
+</section>
+<section id="lab-3-monte-carlo-simulations" class="level2" data-number="4.17">
+<h2 data-number="4.17" class="anchored" data-anchor-id="lab-3-monte-carlo-simulations"><span class="header-section-number">4.17</span> Lab 3: Monte Carlo Simulations</h2>
+<p>In this lab, we will study the theoretical properties of the estimators that we have been discussing in this chapter.</p>
+<p><strong>Monte Carlo simulations</strong> are a useful way to study/understand the properties of an estimation procedure. The basic idea is that, instead of using real data, we are going to use simulated data where we control the data generating process. This will be useful for two reasons. First, we will <em>know</em> what <strong>the truth</strong> is and compare results coming from our estimation procedure to the truth. Second, because we are simulating data, we can actually carry out our thought experiment of repeatedly drawing a sample of some particular size.</p>
+<p>For this lab, we are going to make simulated coin flips.</p>
+<ol type="1">
+<li><p>Write a function called <code>flip</code> that takes in an argument <code>p</code> where <code>p</code> stands for the probability of flipping a heads (you can code this as a <code>1</code> and <code>0</code> for tails) and outputs either <code>1</code> or <code>0</code>. Run the code</p>
+<pre><code>flip(0.5)</code></pre>
+<p><strong>Hint:</strong> It may be helpful to use the <code>R</code> function <code>sample</code>.</p></li>
+<li><p>Write a function called <code>generate_sample</code> that takes in the arguments <code>n</code> and <code>p</code> and generates a sample of <code>n</code> coin flips where the probability of flipping heads is <code>p</code>. Run the code</p>
+<pre><code>generate_sample(10,0.5)</code></pre></li>
+<li><p>Next, over 1000 Monte Carlo simulations (i.e., do the following 1000 times),</p>
+<ol type="i">
+<li><p>generate a new sample with 10 observations</p></li>
+<li><p>calculate an estimate of <span class="math inline">\(p\)</span></p></li>
+</ol>
+<p>(<strong>Hint:</strong> you can estimate <span class="math inline">\(p\)</span> by just calculating the average number of heads flipped in a particular simulation)</p>
+<ol start="3" type="i">
+<li><p>a t-statistic for the null hypothesis that <span class="math inline">\(p=0.5\)</span></p></li>
+<li><p>and record whether or not you reject the null hypothesis that <span class="math inline">\(p=0.5\)</span> in that simulation</p></li>
+</ol></li>
+</ol>
+<p>Then, using all 1000 Monte Carlo simulations, report (i) an estimate of the bias of your estimator, (ii) an estimate of the variance of your estimator, (iii) an estimate of the mean squared error of your estimator, (iv) plot a histogram of the t-statistics across iterations, and (v) report the fraction of times that you reject <span class="math inline">\(H_0\)</span>.</p>
+<ol start="4" type="1">
+<li><p>Same as #3, but with 50 observations in each simulation. What differences do you notice?</p></li>
+<li><p>Same as #3, but with 50 observations and test <span class="math inline">\(H_0:p=0.6\)</span>. What differences do you notice?</p></li>
+<li><p>Same as #3, but with 50 observations and test <span class="math inline">\(H_0:p=0.9\)</span>. What differences do you notice?</p></li>
+<li><p>Same as #3, but with 1000 observations and test <span class="math inline">\(H_0:p=0.6\)</span>. What differences do you notice?</p></li>
+<li><p>Same as #3, but now set <span class="math inline">\(p=0.95\)</span> (so that this is an unfair coin that flips heads 95% of the time) and with 10 observations and test <span class="math inline">\(H_0:p=0.95\)</span>. What differences do you notice?</p></li>
+<li><p>Same as #8, but with 50 observations. What differences do you notice?</p></li>
+<li><p>Same as #8, but with 1000 observations. What differences do you notice?</p></li>
+</ol>
+<p><strong>Hint:</strong> Since problems 3-10 ask you to do roughly the same thing over and over, it is probably useful to try to write a function to do all of these but with arguments that allow you to change the number of observations per simulation, the true value of <span class="math inline">\(p\)</span>, and the null hypothesis that you are testing.</p>
+</section>
+<section id="lab-3-solutions" class="level2" data-number="4.18">
+<h2 data-number="4.18" class="anchored" data-anchor-id="lab-3-solutions"><span class="header-section-number">4.18</span> Lab 3 Solutions</h2>
+<ol type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to flip a coin with probability p</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>p,p)))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># test out flip function</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate a sample of size n</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>generate_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(n,p) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    Y[i] <span class="ot">&lt;-</span> <span class="fu">flip</span>(p)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  Y</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test out generate_sample function</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_sample</span>(<span class="dv">10</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 1 1 1 1 1 0 0 0 1</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carry out monte carlo simulations</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>nsims <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># need to pick large number of monte carlo simulations</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compute bias</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>bias</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0064</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02670575</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute mean squared error</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02674671</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> p</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>rej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.124</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># since we are going to do this over and over, let's write a function to do it</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mc_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, p, H0) {</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute bias</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute sampling variance</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute mean squared error</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  hist_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span> </span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>  rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print results</span></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"bias: "</span>, <span class="fu">round</span>(bias,<span class="dv">4</span>)))</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"var : "</span>, <span class="fu">round</span>(var,<span class="dv">4</span>)))</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"mse : "</span>, <span class="fu">round</span>(mse,<span class="dv">4</span>)))</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(hist_plot)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"rej : "</span>, <span class="fu">round</span>(rej,<span class="dv">4</span>)))</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: 0.0015"
+[1] "var : 0.0054"
+[1] "mse : 0.0054"</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 0.082"</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: -0.0019"
+[1] "var : 0.0047"
+[1] "mse : 0.0047"</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 0.342"</code></pre>
+</div>
+</div>
+<ol start="6" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: 0.0013"
+[1] "var : 0.005"
+[1] "mse : 0.005"</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 1"</code></pre>
+</div>
+</div>
+<ol start="7" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: 4e-04"
+[1] "var : 2e-04"
+[1] "mse : 2e-04"</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 1"</code></pre>
+</div>
+</div>
+<ol start="8" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">10</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: -0.0055"
+[1] "var : 0.0051"
+[1] "mse : 0.0051"</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 565 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 0.565"</code></pre>
+</div>
+</div>
+<ol start="9" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: -0.0011"
+[1] "var : 9e-04"
+[1] "mse : 9e-04"</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 60 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 0.065"</code></pre>
+</div>
+</div>
+<ol start="10" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "bias: 1e-04"
+[1] "var : 0"
+[1] "mse : 0"</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-estimators_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rej : 0.067"</code></pre>
+</div>
+</div>
+</section>
+<section id="coding-questions" class="level2" data-number="4.19">
+<h2 data-number="4.19" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">4.19</span> Coding Questions</h2>
+<ol type="1">
+<li><p>For this question, we’ll use the data <code>Airq</code>. The variable <code>rain</code> contains the amount of rainfall in the county in a year (in inches). For this question, we’ll be interested in testing whether or not the mean rainfall across counties in California is 25 inches.</p>
+<ol type="a">
+<li><p>Estimate the mean rainfall across counties.</p></li>
+<li><p>Calculate the standard error of your estimate of rainfall.</p></li>
+<li><p>Calculate a t-statistic for <span class="math inline">\(H_0 : \E[Y] = 25\)</span> where <span class="math inline">\(Y\)</span> denotes rainfall. Do you reject <span class="math inline">\(H_0\)</span> at a 5% significance level? Explain.</p></li>
+<li><p>Calculate a p-value for <span class="math inline">\(H_0: \E[Y] = 25\)</span>. How should you interpret this?</p></li>
+<li><p>Calculate a 95% confidence interval for average rainfall.</p></li>
+<li><p>Use the <code>datasummary_balance</code> function from the <code>modelsummary</code> package to report average air quality, value added, rain, population density, and average income, separately by whether or not the county is located in a coastal area.</p></li>
+</ol></li>
+</ol>
+</section>
+<section id="extra-questions" class="level2" data-number="4.20">
+<h2 data-number="4.20" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">4.20</span> Extra Questions</h2>
+<ol type="1">
+<li><p>What is the difference between consistency and unbiasedness?</p></li>
+<li><p>Suppose you have an estimator that is unbiased. Will it necessarily be consistent? If not, provide an example of an unbiased estimator that is not consistent.</p></li>
+<li><p>Suppose you have an estimator that is consistent. Will it necessarily be unbiased? If not, provide an example of a consistent estimator that is not unbiased.</p></li>
+<li><p>The Central Limit Theorem says that, <span class="math inline">\(\sqrt{n}\left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right) \rightarrow N(0,V)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span> where <span class="math inline">\(V = \var(Y)\)</span>.</p>
+<ol type="a">
+<li><p>What happens to <span class="math inline">\(n \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>? Explain.</p></li>
+<li><p>What happens to <span class="math inline">\(n^{1/3} \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>? Explain.</p></li>
+</ol></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-probability.html" class="pagination-link" aria-label="Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-linear_regression.html" class="pagination-link" aria-label="Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
