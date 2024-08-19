@@ -333,6 +333,7 @@ five + 1
 1 + five
 ```
 
+
 Similar things will happen with the other mathematical operations above.  Here are some more examples:
 ```{r}
 five * 3
