@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Finite Sample Properties – Detailed Course Notes for ECON 4750</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-asymptotic_properties.html" rel="next">
+<link href="./04-expectations.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="4750_style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-finite_sample_properties.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Detailed Course Notes for ECON 4750</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Start</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Statistical Programming</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Probability</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Properties of Estimators</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Regression</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Advanced Topics</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Prediction</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Causal Inference</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-unconfoundedness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-quasi_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Quasi-Experiments</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link active" data-scroll-target="#simple-random-sample"><span class="header-section-number">6.1</span> Simple Random Sample</a></li>
+  <li><a href="#estimating-ey" id="toc-estimating-ey" class="nav-link" data-scroll-target="#estimating-ey"><span class="header-section-number">6.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+  <li><a href="#mean-of-bary" id="toc-mean-of-bary" class="nav-link" data-scroll-target="#mean-of-bary"><span class="header-section-number">6.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#variance-of-bary" id="toc-variance-of-bary" class="nav-link" data-scroll-target="#variance-of-bary"><span class="header-section-number">6.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#properties-of-estimators" id="toc-properties-of-estimators" class="nav-link" data-scroll-target="#properties-of-estimators"><span class="header-section-number">6.5</span> Properties of Estimators</a></li>
+  <li><a href="#relative-efficiency" id="toc-relative-efficiency" class="nav-link" data-scroll-target="#relative-efficiency"><span class="header-section-number">6.6</span> Relative Efficiency</a></li>
+  <li><a href="#mean-squared-error" id="toc-mean-squared-error" class="nav-link" data-scroll-target="#mean-squared-error"><span class="header-section-number">6.7</span> Mean Squared Error</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="math display">\[
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
+\]</span></p>
+<p>So far, we have been talking about <strong>population quantities</strong> such as <span class="math inline">\(f_{Y|X}\)</span> (conditional pdf/pmf), <span class="math inline">\(\E[Y]\)</span> (expected value of <span class="math inline">\(Y\)</span>), or <span class="math inline">\(\E[Y|X]\)</span> (expected value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>).</p>
+<p>In practice, most often we do not know what these population quantities are equal to (with the exception of some trivial cases like flipping a coin or rolling a die).</p>
+<p>A fundamental challenge is that it is uncommon that we observe the entire population.</p>
+<p>Instead, we will take the approach that we have access to a <strong>sample</strong> of data from the original population. We’ll use the sample to try to <strong>estimate</strong> whatever population quantities we are interested in as well as develop the tools to <strong>conduct inference</strong>, paying particular interest to questions like: how precisely can we estimate particular population quantities of interest?</p>
+<p>The topics considered in this section fall broadly under the topic of <strong>statistics</strong> (a reasonable definition of statistics is that it is the set of tools to learn about population quantities using data). Some of this material may be familiar from courses that you have taken before, but this section provides a fairly advanced discussion of these issues with a particular eye towards (i) inference issues that are important econometrics and (ii) prediction problems. Many of the tools that we cover in this section will be used throughout the rest of the course.</p>
+<section id="simple-random-sample" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="simple-random-sample"><span class="header-section-number">6.1</span> Simple Random Sample</h2>
+<p>SW 2.5</p>
+<p>Let’s start by talking about how the data that we have access to is collected. There are several possibilities here, but let us start with the most straightforward case (which is also a very common case) called a <strong>simple random sample</strong>.</p>
+<p>In math: <span class="math inline">\(\{Y_i\}_{i=1}^n\)</span> is called a simple random sample if <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent random variables with a common probability distribution <span class="math inline">\(f_Y\)</span>. The two key conditions here are (i) independence and (ii) from a common distribution. For this reason, you may sometimes see a random sample called an iid sample which stands for independent and identically distributed.</p>
+<p>In words: We have access to <span class="math inline">\(n\)</span> observations that are drawn at random from some underlying population and each observation is equally likely to be drawn.</p>
+</section>
+<section id="estimating-ey" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="estimating-ey"><span class="header-section-number">6.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></h2>
+<p>SW 2.5, 3.1</p>
+<p>Let’s start with trying to estimate <span class="math inline">\(\E[Y]\)</span> as this is probably the simplest, non-trivial thing that we can estimate.</p>
+<p>A natural way to estimate population quantities is with their sample analogue. This is called the <strong>analogy principle</strong>. This is perhaps technical jargon, but it is the way you would immediately think to estimate <span class="math inline">\(\E[Y]\)</span>:</p>
+<p><span class="math display">\[
+  \hat{\E}[Y] = \frac{1}{n} \sum_{i=1}^n Y_i = \bar{Y}
+\]</span> In this course, we will typically put a “hat” on estimated quantities. The expression <span class="math inline">\(\displaystyle \frac{1}{n}\sum_{i=1}^n Y_i\)</span> is just the average value of <span class="math inline">\(Y\)</span> in our sample. Since we will calculate a ton of averages like this one over the course of the rest of the semester, it’s also convenient to give it a shorthand notation, which is what <span class="math inline">\(\bar{Y}\)</span> means — it is just the sample average of <span class="math inline">\(Y\)</span>.</p>
+<p>One thing that is important to be clear about at this point is that, in general, <span class="math inline">\(\E[Y] \neq \bar{Y}\)</span>. <span class="math inline">\(\E[Y]\)</span> is a population quantity while <span class="math inline">\(\bar{Y}\)</span> is a sample quantity. We will hope (and provide some related conditions/discussions below) that <span class="math inline">\(\bar{Y}\)</span> would be close to <span class="math inline">\(\E[Y]\)</span>, but, in general, they will not be exactly the same.</p>
+</section>
+<section id="mean-of-bary" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="mean-of-bary"><span class="header-section-number">6.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h2>
+<p>SW 2.5, 3.1</p>
+<p>Another important thing to notice about <span class="math inline">\(\bar{Y}\)</span> is that it is a random variable (as it is the average of random variables). This is in sharp contrast to <span class="math inline">\(\E[Y]\)</span> which is non-random.</p>
+<p>One related thought experiment is the following: if we could repeatedly collect new samples of size <span class="math inline">\(n\)</span> from the same population and each time were able to estimate <span class="math inline">\(\bar{Y}\)</span>, these estimates would be different from each other.</p>
+<p>In fact, this means that <span class="math inline">\(\bar{Y}\)</span> has a distribution. The distribution of a statistic, like <span class="math inline">\(\bar{Y}\)</span>, is called its <strong>sampling distribution</strong>. We’d like to know about the features of the sampling distribution. Let’s start with its mean. That is, let’s calculate</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \E[\bar{Y}] &amp;= \E\left[ \frac{1}{n} \sum_{i=1}^n Y_i \right] \\
+    &amp;= \frac{1}{n} \E\left[ \sum_{i=1}^n Y_i \right] \\
+    &amp;= \frac{1}{n} \sum_{i=1}^n \E[Y_i] \\
+    &amp;= \frac{1}{n} \sum_{i=1}^n \E[Y] \\
+    &amp;= \frac{1}{n} n \E[Y] \\
+    &amp;= \E[Y]
+  \end{aligned}
+\]</span> Let’s think carefully about each step here — the arguments rely heavily on the properties of expectations and summations that we have learned earlier. The first equality holds from the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can therefore come out of the expectation. The third equality holds because the expectation can pass through the sum. The fourth equality holds because <span class="math inline">\(Y_i\)</span> are all from the same distribution which implies that they all of the same mean and that it is equal to <span class="math inline">\(\E[Y]\)</span>. The fifth equality holds because <span class="math inline">\(\E[Y]\)</span> is a constant and we add it up <span class="math inline">\(n\)</span> times. And the last equality just cancels the <span class="math inline">\(n\)</span> in the numerator with the <span class="math inline">\(n\)</span> in the denominator.</p>
+<p>Before moving on, let me make an additional comment:</p>
+<ul>
+<li>The fourth equality might be a little confusing. Certainly it is not saying that all the <span class="math inline">\(Y_i\)</span>’s are equal to each other. Rather, they come from the same distribution. For example, if you roll a die <span class="math inline">\(n\)</span> times, you get different outcomes on different rolls, but they are all from the same distribution so that the population expectation of each roll is always 3.5, but you get different realizations on different particular rolls. Another example is if <span class="math inline">\(Y\)</span> is a person’s income. Again, we are not saying that everyone has the same income, but just that we are thinking of income as being a draw from some distribution — sometimes you get a draw of a person with a very high income; other times you get a draw of a person with a low income, but <span class="math inline">\(\E[Y]\)</span> is a feature of the underlying distribution itself where these draws come from.</li>
+</ul>
+<p>How should interpret the above result? It says that, <span class="math inline">\(\E[\bar{Y}] = \E[Y]\)</span>. This doesn’t mean that <span class="math inline">\(\bar{Y}\)</span> itself is equal to <span class="math inline">\(\E[Y]\)</span>. Rather, it means that, if we could repeatedly obtain (a huge number of times) new samples of size <span class="math inline">\(n\)</span> and compute <span class="math inline">\(\bar{Y}\)</span> each time, the average of <span class="math inline">\(\bar{Y}\)</span> across repeated samples would be equal to <span class="math inline">\(\E[Y]\)</span>.</p>
+</section>
+<section id="variance-of-bary" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="variance-of-bary"><span class="header-section-number">6.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h2>
+<p>SW 2.5, 3.1</p>
+<p>Next, let’s calculate the variance of <span class="math inline">\(\bar{Y}\)</span>. As before, we are continuing with the thought experiment of being able to repeatedly draw new samples of size <span class="math inline">\(n\)</span>, and, therefore, we call this variance the <strong>sampling variance</strong>.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \Var(\bar{Y}) &amp;= \Var\left(\frac{1}{n} \sum_{i=1}^n Y_i\right) \\
+    &amp;= \frac{1}{n^2} \Var\left(\sum_{i=1}^n Y_i\right) \\
+    &amp;= \frac{1}{n^2} \left( \sum_{i=1}^n \Var(Y_i) + \textrm{lots of covariance terms} \right) \\
+    &amp;= \frac{1}{n^2} \left( \sum_{i=1}^n \Var(Y_i) \right) \\
+    &amp;= \frac{1}{n^2} \sum_{i=1}^n \Var(Y) \\
+    &amp;= \frac{1}{n^2} n \Var(Y) \\
+    &amp;= \frac{\Var(Y)}{n}
+  \end{aligned}
+\]</span> Let’s go carefully through each step — these arguments rely heavily on the properties of variance that we talked about earlier. The first equality holds by the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can come out of the variance after squaring it. The third equality holds because the variance of the sum of random variables is equal to the sum of the variances plus all the covariances between the random variables. In the fourth equality, all of the covariance terms go away — this holds because of random sampling which implies that the <span class="math inline">\(Y_i\)</span> are all independent which implies that their covariances are equal to 0. The fifth equality holds because all <span class="math inline">\(Y_i\)</span> are identically distributed so their variances are all the same and equal to <span class="math inline">\(\Var(Y)\)</span>. The sixth equality holds by adding up <span class="math inline">\(\Var(Y)\)</span> <span class="math inline">\(n\)</span> times. The last equality holds by canceling the <span class="math inline">\(n\)</span> in the numerator with one of the <span class="math inline">\(n\)</span>’s in the denominator.</p>
+<p>Interestingly, the variance of <span class="math inline">\(\bar{Y}\)</span> depends not just on <span class="math inline">\(\Var(Y)\)</span> but also on <span class="math inline">\(n\)</span> — the number of observations in the sample. Notice that <span class="math inline">\(n\)</span> is in the denominator, so the variance of <span class="math inline">\(\bar{Y}\)</span> will be lower for large values of <span class="math inline">\(n\)</span>. Here is an example that may be helpful for understanding this. Suppose that you are rolling a die. If <span class="math inline">\(n=1\)</span>, then clearly, the variance of <span class="math inline">\(\bar{Y}\)</span> is just equal to the variance of <span class="math inline">\(Y\)</span> — sometimes you roll extreme values like <span class="math inline">\(1\)</span> or <span class="math inline">\(6\)</span>. Now, when you increase <span class="math inline">\(n\)</span>, say, to 10, then these extreme values of <span class="math inline">\(\bar{Y}\)</span> are substantially less common. For <span class="math inline">\(\bar{Y}\)</span> to be equal to <span class="math inline">\(6\)</span> in this case, you’d need to roll 10 <span class="math inline">\(6\)</span>’s in a row. This illustrates that the sampling variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in <span class="math inline">\(n\)</span>. If this is not perfectly clear, we will look at some data soon, and I think that should confirm to you that the variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in the sample size.</p>
+</section>
+<section id="properties-of-estimators" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="properties-of-estimators"><span class="header-section-number">6.5</span> Properties of Estimators</h2>
+<p>SW 2.5, 3.1</p>
+<p>Suppose we are interested in some population parameter <span class="math inline">\(\theta\)</span> — we’ll write this pretty generically now, but it could be <span class="math inline">\(\E[Y]\)</span> or <span class="math inline">\(\E[Y|X]\)</span> or really any other population quantity that you’d like to estimate.</p>
+<p>Also, suppose that we have access to a random sample of size <span class="math inline">\(n\)</span> and we have some estimate of <span class="math inline">\(\theta\)</span> that we’ll call <span class="math inline">\(\hat{\theta}\)</span>.</p>
+<p>As before, we are going to consider the repeated sampling thought experiment where we imagine that we could repeatedly obtain new samples of size <span class="math inline">\(n\)</span> and with each new sample calculate a new <span class="math inline">\(\hat{\theta}\)</span>. Under this thought experiment, <span class="math inline">\(\hat{\theta}\)</span> would have a sampling distribution. One possibility for what it could look like is the following</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-finite_sample_properties_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this case, values of <span class="math inline">\(\hat{\theta}\)</span> are more common around 3 and 4, but it is not highly unusual to get a value of <span class="math inline">\(\hat{\theta}\)</span> that is around 1 or 2 or 5 or 6 either.</p>
+<p>The first property of an estimator that we will take about is called <strong>unbiasedness</strong>. An estimator <span class="math inline">\(\hat{\theta}\)</span> is said to be unbiased if <span class="math inline">\(\E[\hat{\theta}] = \theta\)</span>. Alternatively, we can define the <strong>bias</strong> of an estimator as</p>
+<p><span class="math display">\[
+  \textrm{Bias}(\hat{\theta}) = \E[\hat{\theta}] - \theta
+\]</span> For example, if <span class="math inline">\(\textrm{Bias}(\hat{\theta}) &gt; 0\)</span>, it means that, on average (in the repeated sampling thought experiment), our estimates of <span class="math inline">\(\theta\)</span> would be greater than the actual value of <span class="math inline">\(\theta\)</span>.</p>
+<p>In general, unbiasedness is a good property for an estimator to have. That being said, we can come up with examples of not-very-good unbiased estimators and good biased estimators, but all-else-equal, it is better for an estimator to be unbiased.</p>
+<p>The next property of estimators that we will talk about is their <strong>sampling variance</strong>. This is just <span class="math inline">\(\Var(\hat{\theta})\)</span>. In general, we would like estimators with low (or 0) bias and low sampling variance. Let me give an example</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-finite_sample_properties_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is a helpful figure for thinking about the properties of estimators. In this case, <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased (because their means are <span class="math inline">\(\theta\)</span>) while <span class="math inline">\(\hat{\theta}_3\)</span> is biased — it’s mean is greater than <span class="math inline">\(\theta\)</span>. On the other hand the sampling variance of <span class="math inline">\(\hat{\theta}_2\)</span> and <span class="math inline">\(\hat{\theta}_3\)</span> are about the same and both substantially smaller than for <span class="math inline">\(\hat{\theta}_1\)</span>. Clearly, <span class="math inline">\(\hat{\theta}_2\)</span> is the best estimator of <span class="math inline">\(\theta\)</span> out of the three. But which is the second best? It is not clear. <span class="math inline">\(\hat{\theta}_3\)</span> systematically over-estimates <span class="math inline">\(\theta\)</span>, but since the variance is relatively small, the misses are systematic but tend to be relatively small. On the other hand, <span class="math inline">\(\hat{\theta}_1\)</span> is, on average, equal to <span class="math inline">\(\theta\)</span>, but sometimes the estimate of <span class="math inline">\(\theta\)</span> could be quite poor due to the large sampling variance.</p>
+</section>
+<section id="relative-efficiency" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="relative-efficiency"><span class="header-section-number">6.6</span> Relative Efficiency</h2>
+<p>SW 3.1</p>
+<p>If <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are two unbiased estimators of <span class="math inline">\(\theta\)</span>, then <span class="math inline">\(\hat{\theta}_1\)</span> is <strong>more efficient</strong> than <span class="math inline">\(\hat{\theta}_2\)</span> if <span class="math inline">\(\Var(\hat{\theta}_1) &lt; \Var(\hat{\theta}_2)\)</span>.</p>
+<p>Relative efficiency gives us a way to rank unbiased estimators.</p>
+</section>
+<section id="mean-squared-error" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="mean-squared-error"><span class="header-section-number">6.7</span> Mean Squared Error</h2>
+<p>More generally, two estimators can be compared by their <strong>mean squared error</strong> which is defined as</p>
+<p><span class="math display">\[
+  \textrm{MSE}(\hat{\theta}) := \E\left[ (\hat{\theta} - \theta)^2\right]
+\]</span></p>
+<p>The mean squared error of <span class="math inline">\(\hat{\theta}\)</span> is the average “distance” between <span class="math inline">\(\hat{\theta}\)</span> and <span class="math inline">\(\theta\)</span> in the thought experiment of having repeated samples of size <span class="math inline">\(n\)</span>.</p>
+<p>Another equivalent expression for the mean squared error is</p>
+<p><span class="math display">\[
+  \textrm{MSE}(\hat{\theta}) = \textrm{Bias}(\hat{\theta})^2 + \Var(\hat{\theta})
+\]</span> In other words, if we can figure out the bias and variance of <span class="math inline">\(\hat{\theta}\)</span>, then we can recover mean squared error.</p>
+<div class="side-comment">
+<p><span class="side-comment">Side-Comment:</span> I think it is worth quickly explaining where the second expression for <span class="math inline">\(\textrm{MSE}(\hat{\theta})\)</span> comes from. Starting from the definition of <span class="math inline">\(\textrm{MSE}(\hat{\theta})\)</span>,</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \textrm{MSE}(\hat{\theta}) &amp;= \E\left[ (\hat{\theta} - \theta)^2\right] \\
+    &amp;= \E\left[ \left( (\hat{\theta} - \E[\hat{\theta}]) + (\E[\hat{\theta}] - \theta)\right)^2 \right] \\
+    &amp;= \E\left[ (\hat{\theta} - \E[\hat{\theta}])^2 \right] + \E\left[ (\E[\hat{\theta}] - \theta)^2\right] + 2 \E\left[ (\hat{\theta} - \E[\hat{\theta}])(\E[\hat{\theta}] - \theta) \right] \\
+    &amp;= \Var(\hat{\theta}) + \textrm{Bias}(\hat{\theta})^2
+  \end{aligned}
+\]</span> where the first equality is just the definition of <span class="math inline">\(\textrm{MSE}(\hat{\theta})\)</span>, the second equality adds and subtracts <span class="math inline">\(\E[\hat{\theta}]\)</span>, the third equality squares everything in parentheses from the previous line and pushes the expectation through the sum. For the last equality, the first term in the previous line corresponds to the definition of <span class="math inline">\(\Var(\hat{\theta})\)</span>; for the second term, recall that <span class="math inline">\(\textrm{Bias}(\hat{\theta}) = \E[\hat{\theta}-\theta]\)</span> (and this is non-random so the outside expectation just goes away); the last term is equal to 0 which just holds by the properties of expectations after noticing that <span class="math inline">\((\E[\hat{\theta}] - \theta)\)</span> is non-random and can therefore come out of the expectation.</p>
+</div>
+<p>Generally, we would like to choose estimators that have low mean squared error (this essentially means that they have low bias and variance). Moreover, mean squared error gives us a way to compare estimators that are potentially biased. [Also, notice that for unbiased estimators, comparing mean squared errors of different estimators just compares their variance (because the bias term is equal to 0), so this is a <em>generalization</em> of relative efficiency from the previous section.]</p>
+<div class="example">
+<p><span class="example">Example: </span>Let’s compare three estimators of <span class="math inline">\(\E[Y]\)</span> based on their mean squared error. Let’s consider the three following estimators</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \hat{\mu} &amp;:= \frac{1}{n} \sum_{i=1}^n Y_i \\
+    \hat{\mu}_1 &amp;:= Y_1 \\
+    \hat{\mu}_\lambda &amp;:= \lambda \bar{Y} \quad \textrm{for some } \lambda &gt; 0
+  \end{aligned}
+\]</span> <span class="math inline">\(\hat{\mu}\)</span> is just the sample average of <span class="math inline">\(Y\)</span>’s that we have already discussed. <span class="math inline">\(\hat{\mu}_1\)</span> is the (somewhat strange) estimator of <span class="math inline">\(\E[Y]\)</span> that just uses the first observation in the data (regardless of the sample size). <span class="math inline">\(\hat{\mu}_\lambda\)</span> is an estimator of <span class="math inline">\(\E[Y]\)</span> that multiplies <span class="math inline">\(\bar{Y}\)</span> by some positive constant <span class="math inline">\(\lambda\)</span>.</p>
+<p>To calculate the mean squared error of each of these estimators, let’s calculate their means and their variances.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \E[\hat{\mu}] &amp;= \E[Y] \\
+    \E[\hat{\mu}_1] &amp;= \E[Y_1] = \E[Y] \\
+    \E[\hat{\mu}_\lambda] &amp;= \lambda \E[\bar{Y}] = \lambda \E[Y]
+  \end{aligned}
+\]</span> This means that <span class="math inline">\(\hat{\mu}\)</span> and <span class="math inline">\(\hat{\mu}_1\)</span> are both unbiased. <span class="math inline">\(\hat{\mu}_\lambda\)</span> is biased (unless <span class="math inline">\(\lambda=1\)</span> though this is a relatively uninteresting case as it would mean that <span class="math inline">\(\hat{\mu}_\lambda\)</span> is exactly the same as <span class="math inline">\(\hat{\mu}\)</span>) with <span class="math inline">\(\textrm{Bias}(\hat{\mu}_\lambda) = (\lambda - 1) \E[Y]\)</span>.</p>
+<p>Next, let’s calculate the variance for each estimator</p>
+<p><span class="math display">\[
+  \begin{aligned}
+  \Var(\hat{\mu}) &amp;= \frac{\Var(Y)}{n} \\
+  \Var(\hat{\mu}_1) &amp;= \Var(Y_1) = \Var(Y) \\
+  \Var(\hat{\mu}_\lambda) &amp;= \lambda^2 \Var(\bar{Y}) = \lambda^2 \frac{\Var(Y)}{n}
+  \end{aligned}
+\]</span> This means that we can now calculate mean squared error for each estimator.</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \textrm{MSE}(\hat{\mu}) &amp;= \frac{\Var{Y}}{n} \\
+    \textrm{MSE}(\hat{\mu}_1) &amp;= \Var(Y) \\
+    \textrm{MSE}(\hat{\mu}_\lambda) &amp;= (\lambda-1)^2\E[Y]^2 + \lambda^2 \frac{\Var(Y)}{n}
+  \end{aligned}
+\]</span> The first thing to notice is that <span class="math inline">\(\hat{\mu}\)</span> <em>dominates</em> <span class="math inline">\(\hat{\mu}_1\)</span> (where dominates means that there isn’t any scenario where you could make a reasonable case that <span class="math inline">\(\hat{\mu}_1\)</span> is a better estimator) because its MSE is strictly lower (they tie only if <span class="math inline">\(n=1\)</span> when they become the same estimator). This is probably not surprising — <span class="math inline">\(\hat{\mu}_1\)</span> just throws away a lot of potentially useful information.</p>
+<p>The more interesting case is <span class="math inline">\(\hat{\mu}_\lambda\)</span>. The first term is the bias term — it is greater than the bias from <span class="math inline">\(\hat{\mu}\)</span> or <span class="math inline">\(\hat{\mu}_1\)</span> because the bias of both of these is equal to 0. However, relative to <span class="math inline">\(\hat{\mu}\)</span>, the variance of <span class="math inline">\(\hat{\mu}_\lambda\)</span> can be smaller when <span class="math inline">\(\lambda\)</span> is less than 1. In fact, you can show that there are estimators that have smaller mean squared error than <span class="math inline">\(\hat{\mu}\)</span> by choosing a <span class="math inline">\(\lambda\)</span> that is smaller than (usually just slightly smaller than) 1. This sort of estimator would be biased, but are able to compensate introducing some bias by having smaller variance. For now, we won’t talk much about this sort of estimator (and stick to <span class="math inline">\(\bar{Y}\)</span>), but this sort of estimator has the “flavor” of modern machine learning estimators that typically introduce some bias while reducing variance. One last comment: if you were to make a “bad” choice of <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(\hat{\mu}_\lambda\)</span> could have higher mean squared error than even <span class="math inline">\(\hat{\mu}_1\)</span>, so if you wanted to proceed this way, you’d have to choose <span class="math inline">\(\lambda\)</span> with some care.</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-expectations.html" class="pagination-link" aria-label="Expectation, Variance, and More">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-asymptotic_properties.html" class="pagination-link" aria-label="Asymptotic Properties">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
