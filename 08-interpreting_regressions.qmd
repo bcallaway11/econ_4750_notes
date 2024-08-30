@@ -1,0 +1,637 @@
+# Interpreting Regressions
+
+{{< include latex-commands.txt >}}
+
+In this chapter, our interest will shift to conditional expectations, such as $\E[Y|X_1,X_2,X_3]$ (I'll write $X_1$, $X_2$, and $X_3$ in a lot of examples in this chapter, but you can think of there being an arbitrary number of $X$'s).
+
+I'll refer to $Y$ as the **outcome**.  You might also sometimes heae it called the **dependent variable**.
+
+I'll refer to the $X$'s as either **covariates** or **regressors** or **characteristics**.  You might also hear them called **independent variables** sometimes.
+
+Before we start to get into the details, let us first discuss why we're interested in conditional expectations.  First, if we are interested in *making predictions*, it will often be the case that the "best" prediction that one can make is the conditional expectation.  This should make sense to you --- if you want to make a reasonable prediction about what the outcome will be for a new observation that has characteristics $x_1$, $x_2$, and $x_3$, a good way to do it would be to predict that their outcome would be the same as the mean outcome in the population among those that have the same characteristics; that is, $\E[Y|X_1=x_1, X_2=x_2, X_3=x_3]$.
+
+Next, in economics, we are often interested in how much some outcome of interest changes when a particular covariate changes, holding other covariates constants.  To give some examples, we might be interested in the average return of actively managed mutual funds relative to passively managed mutual funds conditional on investing in assets in the same class (e.g., large cap stocks or international bonds).  As another example, we might be interested in the effect of an increase in the amount of fertilizer on average crop yield but while holding constant the temperature and precipitation.
+
+How much the outcome, $Y$, changes on average when one of the covariates, $X_1$, changes by 1 unit and holding other covariates constant is what we'll call the **partial effect** of $X_1$ on $Y$.  Suppose $X_1$ is binary, then it is given by
+
+$$
+  PE(x_2,x_3) = \E[Y | X_1=1, X_2=x_2, X_3=x_3] - \E[Y | X_1=0,X_2=x_2,X_3=x_3]
+$$
+Notice that the partial effect can depend on $x_2$ and $x_3$.  For example, it could be that the effect of active management relative to passive management could be different across different asset classes.
+
+Slightly more generally, if $X_1$ is discrete, so that it can take on several different discrete values, then we define the partial effect as
+
+$$
+  PE(x_1,x_2,x_3) = \E[Y | X_1=x_1+1, X_2=x_2, X_3=x_3] - \E[Y | X_1=x_1,X_2=x_2,X_3=x_3]
+$$
+which now can depend on $x_1$, $x_2$, and $x_3$.  This is the average effect of going from $X_1=x_1$ to $X_1=x_1+1$ holding $x_2$ and $x_3$ constant.  
+
+Finally, consider the case where we are interested in the partial effect of $X_1$ which is continuous (for example, the partial effect of fertilizer input on crop yield).  In this case the  partial effect is given by the *partial derivative* of $\E[Y|X_1,X_2,X_3]$ with respect to $X_1$.
+
+$$
+  PE(x_1,x_2,x_3) = \frac{\partial \, \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]}{\partial \, x_1}
+$$
+This partial derivative is analogous to what we have been doing before --- we are making a small change of $X_1$ while holding $X_2$ and $X_3$ constant at $x_2$ and $x_3$.
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> This is probably the part of the class where we will jump around in the book the most this semester.  
+
+The pedagogical approach of the textbook is to introduce the notion of causality very early and to emphasize the requirements on linear regression models in order to deliver causality, while increasing the complexity of the models over several chapters.
+
+This is totally reasonable, but I prefer to start by teaching the mechanics of regressions: how to compute them, how to interpret them (even if you are not able to meet the requirements of causality), and how to use them to make predictions.  Then, we'll have a serious discussion about causality over the last few weeks of the semester.  
+
+In practice, this means we'll cover parts Chapters 4-8 in the textbook now, and then we'll circle back to some of the issues covered in these chapters again towards the end of the semester.  
+
+:::
+
+## Nonparametric Regression / Curse of Dimensionality
+
+If you knew nothing about regressions, it would seem natural to try to estimate $\E[Y|X_1=x_1,X_2=x_2,X_3=x_3]$ by just calculating the average of $Y$ among observations that have values of the regressors equal to $x_1$, $x_2$, and $x_3$ (if these are discrete) or that are, in some sense, close to $x_1$, $x_2$, and $x_3$ (if these are continuous).
+
+This is actually a pretty attractive idea.
+
+However, you run into the issue that it is practically challenging to do this when the number of regressors starts to get large (i.e., if you have 10 regressors, generally, you would need tons of data to be able to find a suitable number of observations that are "close" to any particular value of the regressors).  
+
+Let me give a more concrete example.  Suppose that you were trying to estimate mean house price as a function of a house's characteristics.  If the only characteristic of the house that you knew was the number of bedrooms, then it would be pretty easy to just calculate the average house price among houses with 2, 3, 4, etc. bedrooms.  Now suppose that you knew both the number of bedrooms and the number of square feet.  In this case, if we wanted to estimate mean house prices as a function of these characteristics, we would need to find houses that have the same number of bedrooms and (at least) a similar number of square feet.  This starts to "slice" the data that you have more thinly.  If you continue with this idea (suppose that you want to estimate mean house price as a function of number of bedrooms, number of bathrooms, number of square feet, what year the house was built in, whether or not it has a basement, what zip code it is located in, etc.) then you will start to stretch your data extremely thin to the point that you may have very few relevant observations (or perhaps no relevant observations) for particular values of the characteristics.  
+
+This issue is called the "curse of dimensionality".
+
+We will focus on linear models for $\E[Y|X_1,X_2,X_3]$ largely to get around the curse of dimensionality.
+
+::: {.side-comment}
+
+This idea of using observations that are very close in terms of characteristics in order to estimate a conditional expectation is called **nonparametric** econometrics/statistics. You can take entire courses (typically graduate-level) on this topic if you were interested. The reason that it is is called nonparametric is that it doesn't involve making any functional form assumptions (like linearity) but the cost is that it would typically require many more observations (due to the curse of dimensionality).
+
+:::
+
+## Linear Regression Models
+
+SW 4.1
+
+In order to get around the curse of dimensionality that we discussed in the previous section, we will often an impose a **linear model** for the conditional expectation.  For example,
+
+$$
+  \E[Y|X] = \beta_0 + \beta_1 X
+$$
+or
+
+$$
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
+$$
+If we know the values of $\beta_0$, $\beta_1$, $\beta_2$, and $\beta_3$, then it is straighforward for us to make predictions.  In particular, suppose that we want to predict the outcome for a new observation with characteristics $x_1$, $x_2$, and $x_3$.  Our prediction would be
+
+$$
+  \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3
+$$
+
+::: {.example}
+
+<span class="example">Example: </span>Suppose that you are studying intergenerational income mobility and that you are interested in predicting a child's income whose parents' income was \$50,000 and whose mother had 12 years of education.  Let $Y$ denote child's income, $X_1$ denote parents' income, and $X_2$ denote mother's education.  Further, suppose that $\E[Y|X_1,X_2] = 20,000 + 0.5 X_1 + 1000 X_2$.  
+
+In this case, you would predict child's income to be
+
+$$
+  20,000 + 0.5 (50,000) + 1000(12) = 57,000
+$$
+:::
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span>
+
+The above model can be equivalently written as
+\begin{align*}
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}
+where $U$ is called the **error term** and satisfies $\E[U|X_1,X_2,X_3] = 0$.  There will be a few times where this formulation will be useful for us.
+
+:::
+
+## Computation
+
+Even if we know that $\E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3$, in general, we do not know the values of the population parameters (the $\beta$'s).  This is analogous to the framework in the previous chapter where we were interested in 
+the population parameter $\E[Y]$ and estimated it by $\bar{Y}$.
+
+In this section, we'll discuss how to estimate $(\beta_0,\beta_1,\beta_2,\beta_3)$ using `R`.  We'll refer to the estimated values of the parameters as $(\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3)$.  As in the previous section, it will not be the case that the estimated $\hat{\beta}$'s are exactly equal to the population $\beta$'s.  Later on in this chapter, we will establish properties like consistency (so that, as long as we have a large sample, the estimated $\hat{\beta}$'s should be "close" to the population $\beta$'s) and asymptotic normality (so that we can conduct inference).
+
+Also later on in this chapter, we'll talk about how `R` itself actually makes these computations.
+
+The main function in `R` for estimating linear regressions is the `lm` function (`lm` stands for linear model).  The key things to specify for running a regression in `R` are a `formula` argument which tells `lm` which variables are the outcome and which variables are the regressors and a `data` argument which tells the `lm` command what data we are using to estimate the regression.  Let's give an example using the `mtcars` data.
+
+```{r}
+reg <- lm(mpg ~ hp + wt, data=mtcars)
+```
+
+What this line of code does is to run a regression.  The formula is `mpg ~ hp + wt`.  In other words `mpg` (standing for miles per gallon) is the outcome, and we are running a regression on `hp` (horse power) and `wt` (weight).  The `~` symbol is a "tilde".  In order to add regressors, we separate them with a `+`.  The second argument `data=mtcars` says to use the `mtcars` data.  All of the variables in the formula need to correspond to column names in the data.  We saved the results of the regression in a variable called `reg`.  It's most common to report the results of the regression using the `summary` command.
+
+```{r}
+summary(reg)
+```
+The main thing that this reports is the estimated parameters.  Our estimate of the "Intercept" (i.e., this is $\hat{\beta}_0$) is in the first row of the table; our estimate is `37.227`.  The estimated coefficient on `hp` is `-0.0318`, and the estimated coefficient on `wt` is `-3.878`.  
+
+You can also see standard errors for each estimated parameter, a t-statistic, and a p-value in the other columns.  We will talk about these in more detail in the next section.  
+
+For now, we'll also ignore the information provided at the bottom of the summary.
+
+Now that we have estimated the parameters, we can use these to predict $mpg$ given a value of $hp$ and $wt$.  For example, suppose that you wanted to predict the $mpg$ of a 2500 pound car (note: weight in $mtcars$ is in 1000s of pounds) and 120 horsepower car, you could compute
+
+$$
+  37.227 - 0.0318(120) - 3.878(2.5) = 23.716
+$$
+Alternatively, there is a built-in function in `R` called `predict` that can be used to generate predicted values.  We just need to specify the values that we would like to get predicted values for by passing in a data frame with the relevant columns though the `newdata` argument.  For example,
+
+```{r}
+pred <- predict(reg, newdata=data.frame(hp=120,wt=2.5))
+round(pred,3)
+```
+
+
+
+:::  {.side-comment}
+
+A popular alternative to `R`'s `lm` function is the `lm_robust` function from the `estimatr` package.  This provides different standard errors from the default standard errors provided by `lm` that are, at least in most applications in economics, typically a better choice --- we'll have a further discussion on this topic when we talk about inference later on in this chapter.
+
+:::
+
+
+
+## Partial Effects
+
+As we discussed in the beginning of this chapter, besides predicting outcomes, a second main goal for us is to think about partial effects of a regressor on the outcome.  We'll consider partial effects over the next few sections.
+
+In the model, 
+\begin{align*}
+  \E[Y | X_1, X_2, X_3]  &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
+\end{align*}
+
+If $X_1$ is continuous, then 
+\begin{align*}
+  \beta_1 = \frac{\partial \E[Y|X_1,X_2,X_3]}{\partial X_1}
+\end{align*}
+
+Thus, $\beta_1$ is the partial effect of $X_1$ on $Y$.    In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on average, when $X_1$ increases by one unit holding $X_2$ and $X_3$ constant.  *Make sure to get this interpretation right!*
+
+
+::: {.example}
+
+<span class="example">Example: </span>Continuing the same example as above about intergenerational income mobility and where $Y$ denotes child's income, $X_1$ denotes parents' income, $X_2$ denotes mother's education, and 
+
+$$
+  \E[Y|X_1,X_2] = 20,000 + 0.5 X_1 + 1000 X_2
+$$
+The partial effect of parents' income on child's income is 0.5.  This means that, for every one dollar increase in parents' income, child's income is 0.5 dollars higher on average holding mother's education constant.
+
+:::
+
+### Computation
+
+Let's run the same regression as in the previous section, but think about partial effects in this case.
+
+```{r}
+reg1 <- lm(mpg ~ hp + wt, data=mtcars)
+summary(reg1)
+```
+
+The partial effect of horsepower on miles per gallon is -0.032.  In other words, we estimate that if horsepower increases by one then, on average, miles per gallon decreases by 0.032 holding weight constant.  
+
+The t-statistic and p-value are computed for the null hypothesis that the corresponding coefficient is equal to 0.  For example, for `hp` the t-statistic is equal to `-3.519` which is greater than 1.96 and indicates that the partial effect of `hp` is statistically significant at a 5% significance level.  The corresponding p-value for `hp` is `0.0145` indicating that there is only about a 1.5% chance of getting a t-statistic this extreme if the partial effect of `hp` were actually 0 (i.e., under $H_0 : \beta_1=0$).
+
+::: {.practice}
+
+<span class="practice">Practice: </span>What is the partial effect of `wt` in the previous example?  Provide a careful interpretation.  Is the partial effect of `wt` statistically significant?  Explain.  What is the p-value for `wt`?  How do you interpret the p-value?
+
+:::
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> One horsepower is a very small increase in horsepower, so it might be a good idea to multiply the coefficient by some larger number, say 50.  In this case, we could say that we estimate that if horsepower increases by 50 then, on average, miles per gallon decreases by 1.59 ($=50 \times 0.03177$) holding weight constant.  From the above discussion, we know that this effect is statistically different from 0.  That said, it is not clear to me if we should interpret this as a large partial effect; I do not know too much about cars, but a 50 horsepower increase seems rather large while a 1.59 decrease in miles per gallon seems relatively small (at least to me).
+
+:::
+
+## Binary Regressors
+
+SW 5.3
+
+Let's continue with the same model as above
+
+$$
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
+$$
+
+If $X_1$ is discrete (let's say binary):
+\begin{align*}
+  \beta_1 = \E[Y|X_1=1,X_2,X_3] - \E[Y|X_1=0,X_2,X_3]
+\end{align*}
+$\beta_1$ is still the partial effect of $X_1$ on $Y$ and should be interpreted as how much $Y$ increases, on average, when $X_1$ changes from 0 to 1, holding $X_2$ and $X_3$ constant.
+
+If $X_1$ can take more than just the values 0 and 1, but is still discrete (an example is a person's years of education), then 
+
+$$
+  \beta_1 = \E[Y | X_1=x_1+1, X_2, X_3] - \E[Y|X_1=x_1, X_2, X_3]
+$$
+which holds for any possible value that $X_1$ could take, so that $\beta_1$ is the effect of a 1 unit increase in $X_1$ on $Y$, on average, holding constant $X_2$ and $X_3$.
+
+::: {.example}
+
+<span class="example">Example: </span>Suppose that you work for an airline and you are interested in predicting the number of passengers for a Saturday morning flight from Atlanta to Memphis.  Let $Y$ denote the number of passengers, $X_1$ be equal to 1 for a morning flight and 0 otherwise, and let $X_2$ be equal to 1 for a weekday flight and 0 otherwise.  Further suppose that $\E[Y|X_1,X_2] = 80 + 20 X_1 - 15 X_2$.  
+
+In this case, you would predict,
+
+$$
+  80 + 20 (1) - 15 (0) = 100
+$$
+passengers on the flight.
+
+In addition, the partial effect of being morning flight is equal to 20.  This indicates that, on average, morning flights have 20 more passengers than non-morning flights holding whether or not the flight occurs on a weekday constant.
+
+:::
+
+### Computation
+
+In order to include a binary or discrete covariate in a regression in `R` is straightforward.  The following regression uses the `mtcars` data and adds a binary regressor, `am`, indicating whether or not a car has an automatic transmission.
+
+```{r}
+reg2 <- lm(mpg ~ hp + wt + am, data=mtcars)
+summary(reg2)
+```
+
+In this example, cars that had an automatic transmission got about 2 more miles per gallon than cars that had an automatic transmission on average, holding horsepower and weight constant (though the p-value is only 0.14).
+
+
+
+## Nonlinear Regression Functions
+
+SW 8.1, 8.2
+
+Also, please read all of SW Ch. 8
+
+So far, the the partial effects that we have been interested in have corresponded to a particular parameter in the regression, usually $\beta_1$.  I think this can sometimes be a source of confusion as, at least in my view, we are not typically interested in the parameters for their own sake, but rather are interested in partial effects.  It just so happens that in some leading cases, they coincide.
+
+In addition, while the $\beta$'s in the sort of models we have considered so far are easy to interpret, in some cases, it might be *restrictive* to think that the partial effects are the same across different values of the covariates.
+
+In this section, we'll see the first of several cases where partial effects do not coincide with a particular parameter.
+
+Suppose that
+
+$$ 
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_1^2 + \beta_3 X_2 + \beta_4 X_3
+$$
+
+Let's start with making predictions using this model.  If you know the values of $\beta_0,\beta_1,\beta_2,\beta_3,$ and $\beta_4$, then to get a prediction, you would still just plug in the values of the regressors that you'd like to get a prediction for (including $x_1^2$).  
+
+Next, in this model, the partial effect of $X_1$ is given by
+
+$$
+  \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + 2\beta_2 X_1
+$$
+In other words, the partial effect of $X_1$ depends on the value that $X_1$ takes.  
+
+In this case, it is sometimes useful to report the partial effect for some different values of $X_1$.  In other cases, it is useful to report the **average partial effect** (APE) which is the mean of the partial effects across the distribution of the covariates. In this case, the APE is given by
+
+$$
+  APE = \beta_1 + 2 \beta_2 \E[X_1]
+$$
+and, once you have estimated the regression, you can compute an estimate of $APE$ by
+
+$$
+  \widehat{APE} = \hat{\beta}_1 + 2 \hat{\beta}_2 \bar{X}_1
+$$
+
+::: {.example}
+
+<span class="example">Example: </span>Let's continue our example on intergenerational income mobility where $Y$ denotes child's income, $X_1$ denotes parents' income, and $X_2$ denotes mother's education.  Now, suppose that
+
+$$
+  \E[Y|X_1,X_2] = 15,000 + 0.7 X_1 - 0.000002 X_1^2 + 800 X_2
+$$
+Then, predicted child's income when parents' income is equal to \$50,000 is given by
+
+$$
+  15,000 + 0.7 (50,000) - 0.000002 (50,000)^2 + 800 (12) = 54,600
+$$
+In addition, the partial effect of parents' income is given by
+
+$$
+  0.7 - 0.000004 X_1 
+$$
+Let's compute a few different partial effects for different values of parents' income
+
+| $X_1$ | PE |
+|:-------------:|:-------------:|
+| 20,000 | 0.62 |
+| 50,000 | 0.50 | 
+| 100,000 | 0.30 | 
+
+which indicates that the partial effect of parents' income is decreasing --- i.e., the effect of additional parents' income is largest for children whose parents have the lowest income and gets smaller for those whose parents have high incomes.
+
+Finally, if you wanted to compute the $APE$, you would just plug in $\E[X_1]$ (or $\bar{X}_1$) into the expression for the partial effect.
+
+:::
+
+### Computation
+
+Including a quadratic (or other higher order term) in `R` is relatively straightforward.  Let's just do an example.
+
+```{r}
+reg3 <- lm(mpg ~ hp + I(hp^2), data=mtcars)
+summary(reg3)
+```
+The only thing that is new here is `I(hp^2)`.  The `I` function stands for inhibit (you can read the documentation using `?I`).  For us, this is not too important.  You can understand it like this: there is no variable names `hp^2` in the data, but if we put the name of a variable that is in the data (here: `hp`) then we can apply a function to it (here: squaring it) before including it as a regressor.
+
+Interestingly, here it seems there are nonlinear effects of horsepower on miles per gallon.  Let's just quickly report the estimated partial effects for a few different values of horsepower.
+
+```{r}
+hp_vec <- c(100,200,300)
+# there might be a native function in r
+# to compute these partial effects; I just
+# don't know it.
+pe <- function(hp) {
+  # partial effect is b1 + 2b2*hp
+  pes <- coef(reg3)[2] + 2*coef(reg3)[3]*hp
+  # print using a data frame
+  data.frame(hp=hp, pe=round(pes,3))
+}
+pe(hp_vec)
+```
+which suggests that the partial effect of horsepower on miles per gallon is large (though negative) at small values of horsepower and decreasing up to essentially no effect at larger values of horsepower.
+
+## Interpreting Interaction Terms
+
+SW 8.3
+
+Another way to allow for partial effects that vary across different values of the regressors is to include **interaction terms**.
+
+Consider the following regression model
+
+$$
+  \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \beta_4 X_3
+$$
+
+The term $X_1 X_2$ is called the interaction term.  In this model, the partial effect of $X_1$ is given by
+
+$$
+  \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + \beta_3 X_2
+$$
+
+In this model, the effect of $X_1$ varies with $X_2$.  As in the previous section, you could report the partial effect for different values of $X_2$ or consider $APE = \beta_1 + \beta_3 \E[X_2]$.
+
+There are a couple of other things worth pointing out for interaction terms
+
+- It is very common for one of the interaction terms, say, $X_2$ to be a binary variable.  This gives a way to easily test if the effect of $X_1$ is the same across the two "groups" defined by $X_2$.  For example, suppose you wanted to check if the partial effect of education was the same for men and women.  You could run a regression like
+
+    $$
+      Wage = \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \cdot Female + U
+    $$
+
+    From the previous discussion, the partial effect of education is given by
+
+    $$
+      \beta_1 + \beta_3 Female
+    $$
+
+    Thus, the partial effect education for men is given by $\beta_1$, and the partial effect of education for women is given by $\beta_1 + \beta_3$.  Thus, if you want to test if the partial effect of education differs for men and women, you can just test if $\beta_3=0$.  If $\beta_3>0$, it suggests a higher partial effect of education for women, and if $\beta_3 < 0$, it suggests a lower partial effect of education for women.
+
+- Another interesting case is when $X_1$ and $X_2$ are both binary.  In this case, a model that includes an interaction term is called a **saturated model**.  It is called this because it is actually nonparametric.  In particular, notice that in the model $\E[Y|X_1,X_2] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2$,
+
+    $$
+    \begin{aligned}
+      \E[Y|X_1=0,X_2=0] &= \beta_0 \\
+      \E[Y|X_1=1,X_2=0] &= \beta_0 + \beta_1 \\
+      \E[Y|X_1=0,X_2=1] &= \beta_0 + \beta_2 \\
+      \E[Y|X_1=1,X_2=1] &= \beta_0 + \beta_1 + \beta_2 + \beta_3
+    \end{aligned}
+    $$
+    
+    This exhausts all possible combinations of the regressors and means that you can recover each possible value of the conditional expectation from the parameters of the model.
+    
+    It would be possible to write down a saturated model in cases with more than two binary regressors (or even discrete regressors) --- you would just need to include more interaction terms.  The key thing is that there be no continuous regressors.  That said, as you start to add more and more discrete regressors and their interactions, you will effectively start to run into the curse of dimensionality issues that we discussed earlier.
+    
+    As an example, consider our earlier example of flights from Atlanta to Memphis where $Y$ denoted the number of passengers, $X_1$ was equal to 1 for a a morning flight and 0 otherwise, and $X_2$ was equal to one for a weekday flight and 0 otherwise.  Suppose that $\E[Y|X_1,X_2] = 90 - 15 X_1 - 5 X_2 + 25 X_1 X_2$.  Then, 
+    
+    $$
+    \begin{aligned}
+      \E[Y|X_1=0,X_2=0] &= 90 \quad & \textrm{non-morning, weekend} \\
+      \E[Y|X_1=1,X_2=0] &= 90 - 15 = 75 \quad & \textrm{morning, weekend} \\
+      \E[Y|X_1=0,X_2=1] &= 90 - 5 = 85 \quad  & \textrm{non-morning, weekday} \\
+      \E[Y|X_1=1,X_2=1] &= 90 - 15 - 5 + 25 = 100 \quad & \textrm{morning, weekend}
+    \end{aligned}
+    $$
+
+### Computation
+
+Including interaction terms in regressions in `R` is straightforward.  Using the `mtcars` data, we can do it as follows
+
+```{r}
+reg4 <- lm(mpg ~ hp + wt + am + hp*am, data=mtcars)
+summary(reg4)
+```
+
+The interaction term in the results is in the row that starts with `hp:am`.  These estimates suggest that, while horsepower does seem to decrease miles per gallon controlling for weight and whether or not the car has an automatic transmission, the effect of horsepower does not seem to vary much by whether or not the car has an automatic transmission (at least not in a big enough way that we can detect it with the data that we have).  
+
+## Elasticities
+
+SW 8.2
+
+Economists are often interested in **elasticities**, that is, the percentage change in $Y$ when $X$ changes by 1%.
+
+Recall that the definition of percentage change of moving from, say, $x_{old}$ to $x_{new}$ is given by
+
+$$
+  \textrm{\% change} = \frac{x_{new} - x_{old}}{x_{old}} \times 100
+$$
+
+Elasticities are closely connected to natural logarithms; following the most common notation in economics, we'll refer to the natural logarithm using the notation: $\log$.  Further, recall that the derivative of the $\log$ function is given by
+
+$$
+  \frac{d \, \log(x)}{d \, x} = \frac{1}{x} \implies d\, \log(x) = \frac{d \, x}{x}
+$$
+which further implies that
+
+$$
+  \Delta \log(x) := \log(x_{new}) - \log(x_{old}) \approx \frac{x_{new} - x_{old}}{x_{old}}
+$$
+and, thus, that
+
+$$
+  100 \cdot \Delta \log(x) \approx \textrm{\% change}
+$$ 
+where the approximation is better when $x_{new}$ and $x_{old}$ are close to each other.
+
+Now, we'll use these properties of logarithms in order to interpret several linear models 
+
+- For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as "on average" and "holding other regressors constant" (if there are other regressors in the model).
+
+- **Log-Log** Model
+
+    $$
+    \log(Y) = \beta_0 + \beta_1 \log(X)
+    $$
+    
+    In this case, 
+    
+    $$
+    \begin{aligned}
+    \beta_1 &= \frac{ d \, \log(Y) }{d \, \log(X)} \\
+    &= \frac{ d \, \log(Y) \cdot 100 }{d \, \log(X) \cdot 100} \\
+    &\approx \frac{ \% \Delta Y}{ \% \Delta X}
+    \end{aligned}
+    $$
+    
+    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the average percentage change in the outcome when the regressor changes by 1%.  The log-log model is sometimes called a **constant elasticity** model.
+    
+- **Log-Level** model
+
+    $$
+    \log(Y) = \beta_0 + \beta_1 X
+    $$
+    
+    In this case, 
+    
+    $$
+    \begin{aligned}
+    \beta_1 &= \frac{ d \, \log(Y) }{d \, X} \\
+    \implies 100 \beta_1 &= \frac{ d \, \log(Y) \cdot 100 }{d \, X} \\
+    \implies 100 \beta_1 &\approx \frac{ \% \Delta Y}{ d \, X}
+    \end{aligned}
+    $$
+    
+    Thus, in a regression of the log of an outcome on the *level* of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the average percentage change in the outcome when the regressor changes by 1 unit.
+    
+- **Level-Log** model
+
+    $$
+      Y = \beta_0 + \beta_1 \log(X)
+    $$
+    
+    In this case,
+    
+    $$
+      \begin{aligned}
+      \beta_1 &= \frac{d\, Y}{d \, \log(X)} \\
+      \implies \frac{\beta_1}{100} &= \frac{d \, Y}{d \, \log(X) \cdot 100} \\
+      \implies \frac{\beta_1}{100} &\approx \frac{d \, Y}{\% \Delta X}
+      \end{aligned}
+    $$
+    
+    Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the average change in the outcome when the regressor changes by 1%.
+    
+::: {.example}
+  
+<span class="example">Example: </span>Let's continue the same example on intergenerational income mobility where $Y$ denotes child's income, $X_1$ denotes parents' income and $X_2$ denotes mother's education.  We'll consider how to interpret several different models.
+
+$$
+  \log(Y) = 8.8 + 0.4 \log(X_1) + 0.008 X_2 + U
+$$
+In this model, we estimate that, on average, when parents' income increases by 1%, child's income increases by 0.4% holding mother's education constant.
+
+Next, consider, 
+$$
+  \log(Y) = 8.9 + 0.00004 X_1 + 0.007 X_2 + U
+$$
+In this model, we estimate that, on average, when parents' income increases by \$1, child's income increases by 0.004% (alternatively, when parents' income increase by \$1000, child's income increases by 4%) holding mother's education constant.
+
+Finally, consider
+
+$$
+  Y = -1,680,000 + 160,000 \log(X_1) + 900 X_2 + U
+$$
+In this case, we estimate that, on average, when parents' income increases by 1%, child's income increases by \$1,600 holding mother's education constant.
+
+:::
+
+### Computation
+
+Estimating models that include logarithms in `R` is straightforward.  
+
+```{r}
+reg5 <- lm(log(mpg) ~ log(hp) + wt, data=mtcars) 
+reg6 <- lm(log(mpg) ~ hp + wt, data=mtcars) 
+reg7 <- lm(mpg ~ log(hp) + wt, data=mtcars)
+```
+
+Let's show the results all at once using the `modelsummary` function from the `modelsummary` package.
+
+```{r message=FALSE}
+library(modelsummary)
+
+model_list <- list(reg5, reg6, reg7)
+modelsummary(model_list)
+```
+- In the first model, we estimate that, on average, a 1% increase in horsepower decreases miles per gallon by 0.266% holding weight constant.  
+
+- In the second model, we estimate that, on average,  a 1 unit increase in horsepower decreases miles per gallon by 0.2% holding weight constant.  
+
+- In the third model, we estimate that, on average, a 1% increase in horsepower decreases miles per gallon by .059 holding weight constant.
+  
+
+
+## Omitted Variable Bias
+
+SW 6.1
+
+Suppose that we are interested in the following regression model
+
+$$
+  \E[Y|X_1, X_2, Q] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q
+$$
+and, in particular, we are interested in the the partial effect
+
+$$
+  \frac{ \partial \, \E[Y|X_1,X_2,Q]}{\partial \, X_1} = \beta_1
+$$
+But we are faced with the issue that we do not observe $Q$ (which implies that we cannot control for it in the regression)
+
+Recall that we can equivalently write
+
+$$
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U (\#eq:ovb-y)
+$$
+where $\E[U|X_1,X_2,Q]=0$.  
+
+Now, for simplicity, suppose that
+
+$$
+  \E[Q | X_1, X_2] = \gamma_0 + \gamma_1 X_1 + \gamma_2 X_2
+$$
+
+Now, let's consider the idea of just running a regression of $Y$ on $X_1$ and $X_2$ (and just not including $Q$); in other words, consider the regression
+$$
+  \E[Y|X_1,X_2] = \delta_0 + \delta_1 X_1 + \delta_2 X_2
+$$
+We are interested in the question of whether or not we can recover $\beta_1$ if we do this.  If we consider this "feasible" regression, notice if we plug in the expression for $Y$ from Equation \@ref(eq:ovb-y),
+
+$$
+  \begin{aligned}
+  \E[Y|X_1,X_2] &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 \E[Q|X_1,X_2] \\
+  &= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (\gamma_0 + \gamma_1 X_1 + \gamma_2 X_2) \\
+  &= \underbrace{(\beta_0 + \beta_3 \gamma_0)}_{\delta_0} + \underbrace{(\beta_1 + \beta_3 \gamma_1)}_{\delta_1} X_1 + \underbrace{(\beta_2 + \beta_3 \gamma_2)}_{\delta_2} X_2
+  \end{aligned}
+$$
+
+In other words, if we run the feasible regression of $Y$ on $X_1$ and $X_2$, $\delta_1$ (the coefficient on $X_1$) is not equal to $\beta_1$; rather, it is equal to $(\beta_1 + \beta_3 \gamma_1)$.  
+
+That you are not generally able to recover $\beta_1$ in this case is called **omitted variable bias**
+
+There are two cases where you will recover $\delta_1 = \beta_1$ though which occur when $\beta_3 \gamma_1 = 0$:
+
+- $\beta_3=0$.  This would be the case where $Q$ has no effect on $Y$
+
+- $\gamma_1=0$.  This would be the case where $X_1$ and $Q$ are uncorrelated after controlling for $X_2$.
+
+Interestingly, there may be some case where you can "sign" the bias; i.e., figure out if $\beta_3 \gamma_1$ is positive or negative.  For example, you might have theoretical reasons to suspect that $\gamma_1 > 0$ and $\beta_3 > 0$.  In this case,
+
+$$
+  \delta_1 = \beta_1 + \textrm{something positive}
+$$
+which implies that $\delta_1$ (i.e., running a regression that ignores $Q$) would cause us to tend to over-estimate $\beta_1$.  
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span>
+
+* The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet.  The same issues arise if we just say that we have some *regression of interest* but are unable to estimate it because some covariates are unobserved.  
+
+* The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the "causal effect", but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.
+
+:::

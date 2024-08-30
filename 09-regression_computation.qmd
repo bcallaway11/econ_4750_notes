@@ -1,0 +1,225 @@
+# Computation
+
+{{< include latex-commands.txt >}}
+
+## How to estimate the parameters in a regression model
+
+SW 4.2, 6.3
+
+Let's start with the simple linear regression model (i.e., where there is just one regressor):
+
+$$
+  Y = \beta_0 + \beta_1 X + U
+$$
+with $\E[U|X]=0$.  This model holds for every observation in the data, so we can write
+
+$$
+  Y_i = \beta_0 + \beta_1 X_i + U_i
+$$
+The question for this section is: How can we estimate $\beta_0$ and $\beta_1$?  First, notice that, any choice that we make for an estimate of $\beta_0$ of $\beta_1$ amounts to picking a line.  Our strategy will be to estimate $\beta_0$ and $\beta_1$ by choosing values of them that result in the "best fit" of a line to the available data.
+
+This begs the question: How do you choose the line that best fits the data?  Let me give you an example
+
+```{r echo=FALSE, message=FALSE}
+library(ggplot2)
+
+set.seed(1234)
+bet0 <- 2
+bet1 <- 1
+n <- 25
+X <- rexp(n)
+Y <- bet0 + bet1*X + rnorm(n, sd=.5)
+p <- ggplot(data=data.frame(X=X,Y=Y), aes(x=X,y=Y)) + 
+  geom_point() +
+  geom_abline(slope=1,intercept=2,color="blue") +
+  geom_abline(slope=-1.5,intercept=3,color="green") +
+  geom_abline(intercept=6, slope=0.5, color="red") +
+  ylim(c(-3,8)) + 
+  theme_bw()
+```
+
+![](ols_lines.jpg)
+
+It's clear from the figure that the blue line "fits better" than the green line or the red line.  If you take a second and think about the reason why this is the case, you will notice that the reason why you know that it fits better is because the points *tend to be closer* to the blue line than to the red line or the green line. 
+
+In the figure, I drew three additional lines that are labeled $U_i^b$, $U_i^g$, and $U_i^r$ which are just the difference between the blue line, the green line, and the red line and the corresponding data point in the figure.  That is,
+
+
+$$
+  \begin{aligned}
+  U_i^b &= Y_i - b_0^b - b_1^b X_i \\
+  U_i^g &= Y_i - b_0^g - b_1^g X_i \\
+  U_i^r &= Y_i - b_0^r - b_1^r X_i
+  \end{aligned}
+$$
+where, for example, $b_0^b$ and $b_1^b$ are the intercept and slope of the blue line, $b_0^g$ and $b_1^g$ are the intercept and slope of the green line, etc.  Clearly, the blue line fits this data point than the others, but we need to deal with a couple of issues to formalize this thinking.  First, $U_i^b$ and $U_i^r$ are both less than 0 (because both of those lines sit above the data point) indicating that we can't just choose the line where $U_i$ is the smallest --- for this point, that strategy would result in us liking the red line the most.  Instead, we need a measure of distance that turns negative values of $U_i$ into positive values and is larger for big negative values of $U_i$ too.  We'll use the same quadratic distance that we've used before to deal with this issue; that is, we'll define the distance between a line and the point as ${U_i^b}^2$ for the blue line, ${U_i^g}^2$ and ${U_i^r}^2$ for the green and red lines.  
+
+Second, the above discussion computes the distance between the line and the data for a single point.  We want to extend this argument to all the data points.  And we can do that by computing the average distance between the line and the points across all points.  That is given by
+
+$$
+  \frac{1}{n}\sum_{i=1}^n {U_i^b}^2, \quad \frac{1}{n}\sum_{i=1}^n {U_i^g}^2, \quad \frac{1}{n}\sum_{i=1}^n {U_i^r}^2
+$$
+for the blue line, green line, and red line.  These are actually numbers that we can compute.  
+
+
+```{r}
+# intercept and slope of each line
+# (I just picked these)
+int_blue <- 2
+slope_blue <- 1
+int_green <- 3
+slope_green <- -1.5
+int_red <- 6
+slope_red <- 0.5
+
+# compute "errors"
+Ub <- Y - int_blue - slope_blue*X
+Ug <- Y - int_green - slope_green*X
+Ur <- Y - int_red - slope_red*X
+
+# compute distances
+dist_blue <- mean(Ub^2)
+dist_green <- mean(Ug^2)
+dist_red <- mean(Ur^2)
+
+# report distances
+round(data.frame(dist_blue, dist_green, dist_red), 3)
+```
+
+This corroborates our earlier intuition --- the blue line appears to fit the data much better than the other two lines.  
+
+It turns out that we can use the same sort of idea as above to choose not just among three possible lines to fit the data, but to choose among *all possible lines*.  More generally than we have been doing, let's write
+
+$$
+  Y_i = b_0 + b_1 X_i + U_i(b_0,b_1)
+$$
+In other words, for any values of $b_0$ and $b_1$ that we would like to plug in (say like for the green line or red line in the figure above), we can define $U_i(b_0,b_1)$ to be whatever is leftover between the line and the actual data.
+
+We can choose the line (by choosing values of $b_0$ and $b_1$) that minimizes the average distance between the line and the points.  In other words, we will set
+
+$$
+  \begin{aligned}
+  (\hat{\beta}_0, \hat{\beta}_1) &= \underset{b_0,b_1}{\textrm{argmin}} \frac{1}{n} \sum_{i=1}^n U_i(b_0,b_1)^2 \\
+  &= \underset{b_0,b_1}{\textrm{argmin}} \frac{1}{n} \sum_{i=1}^n (Y_i - b_0 - b_1 X_i)^2
+  \end{aligned}
+$$
+This is a complicated looking mathematical expression, but I think the intuition is pretty easy to understand.  It says that we want to find the values of $b_0$ and $b_1$ that make the distance between the points and the line as small as possible on average.  Whatever these values are, that is what we are going to set $\hat{\beta}_0$ and $\hat{\beta}_1$ --- our estimates of $\beta_0$ and $\beta_1$ --- to be.
+
+How can you do this?  One idea is to do it numerically --- you could try out a ton of different combinations of $b_0$ and $b_1$ and pick which one fits the best.  Your computer could probably actually do this, but it would become quite a hard problem as we added more and more regressors.  
+
+It turns out that we can actually find a solution for the values of $b_0$ and $b_1$ that minimize the above expression using calculus.
+
+You probably recall how to minimize a function.  You take its derivative, set it equal to 0, and solve that equation.  [It's actually a little more complicated than that because you need to ensure that you're finding a minimum rather than a maximum, but the above equation is actually quadratic, so it will have a minimum.]
+
+That's all that we will do here --- just the thing we need to take the derivative of looks complicated.  Actually, the $\frac{1}{n}$ and $\sum$ terms will just hang around.  For the rest though, we need to use the *chain rule*; that is, we need to take the derivative of the outside and then multiply by the derivative of the inside.  We also need to take the derivative both with respect to $b_0$ and with respect to $b_1$.
+
+Let's start by taking the derivative with respect to $b_0$ and setting it equal to 0.
+
+$$
+  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 (\#eq:foc-bet0)
+$$
+where the $2$ comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of $-b_0$ on the inside.  I also replaced $b_0$ and $b_1$ here since $\hat{\beta}_0$ and $\hat{\beta}_1$ are the values that will solve this equation.
+
+Next, let's take the derivative with respect to $b_1$:
+$$
+  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 (\#eq:foc-bet1)
+$$  
+where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and $X_i$ at the end come from taking the derivative of the inside with respect to $b_1$.  
+
+All we have to do now is to solve these Equations \@ref(eq:foc-bet0) and \@ref(eq:foc-bet1) for $\hat{\beta}_0$ and $\hat{\beta}_1$.  Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is.  Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.
+
+Starting with the first equation, 
+
+$$
+  \begin{aligned}
+  & \phantom{\implies} -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) &= 0 \\
+  & \implies \frac{1}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) &= 0 \\
+  & \implies \bar{Y} - \hat{\beta}_0 - \hat{\beta}_1 \bar{X} &= 0 \\
+  & \implies \boxed{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}} 
+  \end{aligned} 
+$$
+where the second line holds by dividing both sides by $-2$, the third line holds by pushing the summation through the sums/differences and simplifying terms, and the last line holds by rearranging to solve for $\hat{\beta}_0$.
+
+
+Now, let's use the above result and Equation \@ref(eq:foc-bet1) to solve for $\hat{\beta}_1$.
+
+$$
+  \begin{aligned}
+  & \phantom{\implies} -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1) X_i &= 0 \\
+  & \implies  \frac{1}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1) X_i) X_i &= 0 \\
+  & \implies  \frac{1}{n} \sum_{i=1}^n (Y_i - (\bar{Y} - \hat{\beta}_1 \bar{X}) - \hat{\beta}_1 X_i) X_i &= 0 \\
+  & \implies  \frac{1}{n} \sum_{i=1}^n X_i Y_i - \bar{Y} \frac{1}{n} \sum_{i=1}^n X_i + \hat{\beta}_1 \bar{X} \frac{1}{n} \sum_{i=1}^n X_i - \hat{\beta}_1 \frac{1}{n} \sum_{i=1}^n X_i^2 &= 0  \\
+\end{aligned}
+$$
+Let me explain each line and then we will keep going.  The second line holds because the $-2$ can just be canceled on each side, the third line holds by plugging in the expression we derived for $\hat{\beta}_0$ above, and the last line holds by splitting up the summation and bringing out terms that do not change across $i$.  Let's keep going
+
+$$
+\begin{aligned}
+  \implies  \frac{1}{n} \sum_{i=1}^n X_i Y_i - \bar{X}\bar{Y} &= \hat{\beta}_1\left(\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar{X}^2 \right) \\
+  \implies  \hat{\beta}_1 &= \frac{\frac{1}{n} \sum_{i=1}^n X_i Y_i - \bar{X}\bar{Y}}{\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar{X}^2} \\
+  \implies  & \boxed{\hat{\beta}_1 = \frac{\widehat{\Cov}(X,Y)}{\widehat{\Var}(X)}}
+  \end{aligned}
+$$
+where the first line holds by using the definition of $\bar{X}$ and moving some terms to the other side.  The second equality holds by dividing both sides by $\left(\frac{1}{n} \displaystyle \sum_{i=1}^n X_i^2 - \bar{X}^2 \right)$, and the last equality holds by the definition of sample covariance and variance.
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> I'd like to point out one more time that our estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ are generally not exactly equal to $\beta_0$ and $\beta_1$.  The figure earlier in this section was generated using simulated data where I set $\beta_0=2$ and $\beta_1=1$.  However, we estimate $\hat{\beta}_0 = 1.75$ and $\hat{\beta}_1 = 0.95$ using the simulated data in that figure.  These lines are close to each other, but not exactly the same.
+
+Further, recall that we defined the **error term** $U_i$ from
+
+$$
+  Y_i = \beta_0 + \beta_1 X_i + U_i
+$$
+which is the difference between individual $i$'s outcome and the *population* regression line.  
+
+Similarly, we define the **residual** $\hat{U}_i$ as
+
+$$
+  Y_i = \hat{\beta}_0 + \hat{\beta}_1 X_i + \hat{U}_i
+$$
+so that $\hat{U}_i$ is the difference between individual $i$'s outcome and the estimated regression line.  Moreover, since generally $\beta_0 \neq \hat{\beta}_0$ and $\beta_1 \neq \hat{\beta}_1$, generally $U_i \neq \hat{U}_i$.
+
+
+:::
+
+### Computation
+
+Before moving on, let's just confirm that the formulas that we derived are actually what `R` uses in order to estimates the parameters in a regression.
+
+```{r}
+# using lm
+reg8 <- lm(mpg ~ hp, data=mtcars)
+summary(reg8)
+
+# using our formulas
+bet1 <- cov(mtcars$mpg, mtcars$hp) / var(mtcars$hp)
+
+bet0 <- mean(mtcars$mpg) - bet1*mean(mtcars$hp)
+
+# print results
+data.frame(bet0=bet0, bet1=bet1)
+```
+
+and they are identical.
+
+
+## More than one regressor
+
+Now, let's suppose that you want to estimate a more complicated regressions like
+
+$$
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+$$
+
+or, even more generally,
+
+$$
+  Y = \beta_0 + \beta_1 X_1 + \cdots + \beta_k X_k + U
+$$
+We can still choose the line that best fits the data by solving
+
+$$
+  (\hat{\beta}_0, \hat{\beta}_1, \ldots, \hat{\beta}_k) = \underset{b_0,b_1,\ldots,b_k}{\textrm{argmin}} \frac{1}{n} \sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i} - \cdots - b_k X_{ki})^2
+$$
+To do it, we would need to take the derivative with respect to $b_0, b_1, \ldots, b_k$.  This will give a system of equations with $(k+1)$ equations and $(k+1)$ unknowns.  You can solve this --- it actually is quite easy / very similar to what we just did if you know just a little bit of linear algebra, but this is beyond the scope of our course --- and it is quite easy for the computer to solve.

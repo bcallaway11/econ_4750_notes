@@ -1,0 +1,19 @@
+$$
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
+$$

@@ -4,24 +4,54 @@ project:
 book:
   title: "Detailed Course Notes for ECON 4750"
   author: "Brantly Callaway"
+  sidebar:
+    style: floating
   chapters:
+    - part: "Start"
     - index.qmd
-    - 01-statistical_programming.qmd
-    - 02-probability.qmd
-    - 03-estimators.qmd
-    - 04-linear_regression.qmd
-    - 05-prediction.qmd
-    - 06-binary_outcomes.qmd
-    - 07-causal_inference.qmd
+    - part: "Statistical Programming"
+    - 01-introduction_to_R.qmd
+    - 02-programming_in_R.qmd
+    - part: "Probability"
+    - 03-random_variables.qmd
+    - 04-expectations.qmd
+    - part: "Properties of Estimators"
+    - 05-finite_sample_properties.qmd
+    - 06-asymptotic_properties.qmd
+    - 07-inference.qmd
+    - part: "Regression"
+    - 08-interpreting_regressions.qmd
+    - 09-regression_computation.qmd
+    - 10-regression_inference.qmd
+    - part: "Advanced Topics"
+    - 11-binary_outcomes.qmd
+    - part: "Prediction"
+    - 12-model_selection.qmd
+    - 13-machine_learning.qmd
+    - part: "Causal Inference"
+    - 14-causal_inference_concepts.qmd
+    - 15-experiments.qmd
+    - 16-unconfoundedness.qmd
+    - 17-quasi_experiments.qmd
 
 bibliography: references.bib
 
+execute:
+  # Code that runs before each document
+  code: |
+    source("setup_hooks.R")
+
 format:
   html:
-    theme: cosmo
+    theme: [united, 4750_theme.scss]
+    css: 4750_style.css
+    includes:
+      in-header: preamble.tex
   pdf:
     documentclass: scrreprt
     pdf-engine: pdflatex
+    includes:
+      in-header: preamble.tex
 
 
 

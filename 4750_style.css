@@ -1,0 +1,60 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+
+p code {
+  white-space: inherit;
+}
+
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+
+pre code {
+  white-space: inherit;
+}
+
+div.example {
+  border: 3px solid #ccc;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+span.example {
+  font-weight: bold;
+  color: darkorange;
+} 
+
+
+div.side-comment {
+  border: 3px solid #ccc;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+span.side-comment {
+  font-weight: bold;
+  color: indigo;
+}
+
+div.practice {
+  border: 3px solid #ccc;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+span.practice {
+  font-weight: bold;
+  color: teal;
+}
+
+.sidebar-item-section {
+  font-weight: bold;
+  color: #BA0C2F;
+  margin-top: 25px;
+}

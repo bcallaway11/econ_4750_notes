@@ -1,0 +1,299 @@
+# Machine Learning
+
+{{< include latex-commands.txt >}}
+
+## Machine Learning
+
+SW 14.1, 14.2, 14.6
+
+Some extra resources on estimating Lasso and Ridge regressions in R:
+
+* [glmnet tutorial](https://www.statology.org/lasso-regression-in-r/)
+
+* [glmnetUtils vignette](https://cran.r-project.org/web/packages/glmnetUtils/vignettes/intro.html)
+
+"Big" Data typically means one of two things:
+
+1. $n$ --- the number of observations is extremely large
+
+2. $k$ --- the number of regressors is very large
+
+$n$ being large is more of a computer science problem.  That said, there are economists who think about these issues, but I think it is still the case that it is relatively uncommon for an economist to have *so much* data that they have trouble computing their estimators.
+
+We'll focus on the second issue --- where $k$ is large.  A main reason that this may occur in applications is that we may be unsure of the functional form for $\E[Y|X_1,X_2,X_3]$.  Should it include higher order terms like $X_1^2$ or $X_1^3$?  Should it include interactions like $X_1 X_2$.  Once you start proceeding this way, even if you only have 5-10 actual covariates, $k$ can become quite large.
+
+As in the case of the mean, perhaps we can improve predictions by introducing some bias while simultaneously decreasing the variance of our predictions.  
+
+Let's suppose that we have some function that can take in regressors and makes predictions of the outcome; we'll call this function $\hat{f}$ (where the "hat" indicates that we'll typically estimate this function).  An example would just be a regression where, for example, $\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3$.  One way to evaluate how well $\hat{f}$ makes predictions is by considering its **mean squared prediction error**:
+
+$$
+  MSPE := \E\left[ (Y - \hat{f}(X))^2 \right]
+$$
+$MSPE$ quantifies the mean "distance" between our predictions and actual outcomes.
+
+Recall that, if we could just pick any function to minimize $MSPE$, we would set $\hat{f}(X) = \E[Y|X]$, but generally we do not just know what $\E[Y|X]$ is.  We can "decompose" MSPE into several underlying conditions
+
+$$
+  \begin{aligned}
+  MSPE &= \E\left[ \left( (Y - \E[Y|X]) - (\hat{f}(X) - \E[\hat{f}(X)|X]) - (\E[\hat{f}(X)|X] - \E[Y|X]) \right)^2 \right] \\
+  &= \E\left[ (Y-\E[Y|X])^2 \right] + \E\left[ (\hat{f}(X) - \E[\hat{f}(X)|X])^2\right] + \E\left[ (\E[\hat{f}(X)|X] - \E[Y|X])^2 \right] \\
+  &= \Var(U) + \E[\Var(\hat{f}(X)|X)] + \E\left[\textrm{Bias}(\hat{f}(X))^2\right]
+  \end{aligned}
+$$
+where, to understand this decomposition, the first equality just adds and subtracts $\E[Y|X]$ and $\E[\hat{f}(X)|X]$.  The second equality squares the long expression from the first equality and cancels some terms.  The third equality holds where $U := Y-\E[Y|X]$, by the definition of (conditional) variance, and we call the last bias because it is the difference between the mean of our prediction function $\hat{f}$ and $\E[Y|X]$.
+
+You can think of the term $\Var(U)$ as being irreducible prediction error --- even if we knew $\E[Y|X]$, we wouldn't get every prediction exactly right.  But the other two terms come from having to estimate $\hat{f}$.  The term $\E[\Var(\hat{f}(X)X)]$ is the average variance of our predictions across different values of $X$.  The term $\E\left[\textrm{Bias}(\hat{f}(X))^2\right]$ is the squared bias of our predictions averaged across different values of $X$.  Many machine learning estimators have the property of being biased (so that the last term is not equal to 0),  but having reduced variance relative to OLS estimators.
+
+To do this, we'll estimate the parameters of the model in a similar way to what we have done before except that we'll add a **penalty** term that gets larger as parameter estimates move further away from 0.  In particular, we consider estimates of the form
+
+$$
+  (\hat{\beta}_1, \hat{\beta}_2, \ldots, \hat{\beta}_k) = \underset{b_1,\ldots,b_k}{\textrm{argmin}} \sum_{i=1}^n  (Y_i - b_1 X_{1i} - \cdots - b_k X_{ki})^2 + \textrm{penalty}
+$$
+
+Lasso and ridge regression, which are the two approaches to machine learning that we will talk about below, amount to different choices of the penalty term.
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> Generally, you should "standardize" the regressors before implementing Lasso or Ridge regression.  The `glmnet` package does this for you by default.
+
+:::
+
+### Lasso
+
+SW 14.3
+
+For Lasso, the penalty term is given by
+
+$$
+  \lambda \sum_{j=1}^k |b_j|
+$$
+The absolute value on each of the $b_j$ terms means that the penalty function gets larger for larger values of any $b_j$.  Since we are trying to minimize the objective function, this means that there is a "cost" to choosing a larger value of $b_j$ relative to OLS.  Thus, Lasso estimates tend to be "shrunk" towards 0.
+
+$\lambda$ is called a **tuning parameter** --- larger values of $\lambda$ imply that the penalty term is more important.  Notice that, if you send $\lambda \rightarrow \infty$, then the penalty term will be so large that you would set all the parameters to be equal to 0.  On the other hand, if you set $\lambda=0$, then you will get the OLS estimates (because there will be no penalty in this case).  In general, it is hard to know what is the "right" value for $\lambda$, and it is typically chosen using cross validation (this will be done automatically for you using the `glmnet` package).
+
+
+### Ridge Regression
+
+SW 14.4
+
+For Ridge, the penalty term is given by
+
+$$
+  \lambda \sum_{j=1}^k b_j^2
+$$
+Much of the discussion from Lasso applies here.  The only difference is that the form of the penalty is different here: $b_j^2$ instead of $|b_j|$.  Relative to the Lasso penalty, the Ridge penalty "dislikes more" very large values of $b_j$.
+
+**Comparing Lasso and Ridge**
+
+- Both **shrink** the estimated parameters towards 0.  This tends to introduce bias into our predictions but comes with the benefit of reducing the variance of the predictions.
+
+- Interestingly, both Lasso and Ridge can be implemented when $k > n$ (i.e., if you have more regressors than observations).   This is in contrast to to OLS, where the parameters cannot be estimated in this case.
+
+- Both are generally not very computationally intensive.  For ridge regression, we can in fact derive an explicit expression for the estimated $\beta$'s.  We cannot do this with Lasso; a full discussion of how Lasso actually estimates the parameters is beyond the scope of our course, but, suffice it to say, that you can generally compute Lasso estimates quickly.
+
+- Lasso also performs "model selection" --- that is, if you use the Lasso, many of the estimated parameters will be set equal to 0.  This can sometimes be an advantage.  Ridge (like OLS) will generally produce non-zero estimates of all parameters in the model.
+
+### Computation
+
+Computing Lasso and Ridge regressions is somewhat more complicated than most other things that we have computed this semester.  The main `R` package for Lasso and Ridge regressions is the `glmnet` package.  For some reason, the syntax of the package is somewhat different from, for example, the `lm` command.  In my view, it is often easier to use the `glmnetUtils` package, which seems to be just a wrapper for `glmnet` but with functions that are analogous to `lm`.
+
+I'm just going to sketch here how you would use these functions to estimate a Lasso or Ridge regression.  In the lab later on in this chapter, we'll do a more concrete example.  Suppose that you have access to a training dataset called `train` and a testing dataset called `test`, you can use the `glmnetUtils` package in the following way:
+```{r eval=FALSE}
+library(glmnetUtils)
+lasso_model <- cv.glmnet(Y ~ X1 + X2 + X3, data=train, use.model.frame=TRUE) # or whatever formula you want to use
+coef(lasso_model) # if you are interested in estimated coefficients
+predict(lasso_model, newdata=test) # get predictions
+
+ridge_model <- cv.glmnet(Y ~ X1 + X2 + X3, 
+                         data=train, 
+                         alpha=0,
+                         use.model.frame=TRUE)
+coef(ridge_model)
+predict(ridge_model, newdata=test)
+```
+
+It's worth making a couple of comments about this
+
+&bull; In terms of code, the only difference between the Lasso and Ridge, is that for Ridge, we added the extra argument `alpha=0`.  The default value of `alpha` is 1, and that leads to a Lasso regression (which is why didn't need to specify it for our Lasso estimates).  If you are interested, you can read more details about this in the documentation for `glmnet` using `?glmnet`.
+
+&bull; Generally, if you are going to use Lasso or Ridge, then you would have many more regressors to include than just `X1 + X2 + X3`.  One common way that you get more regressors is when you start to thinking about including higher order terms or interaction terms.  One way to do this quickly is to use the `poly` function inside the formula.  For example,
+
+```{r eval=FALSE}
+lasso_model2 <- cv.glmnet(Y ~ poly(X1, X2, X3, degree=2, raw=TRUE), 
+                          data=train, 
+                          use.model.frame=TRUE)
+```
+   
+would include all interactions between $X_1$, $X_2$ and $X_3$ as well as squared terms for each; if you wanted to include more interactions and cubic terms, you could specify `degree=3`.
+
+
+## Lab 6: Predicting Diamond Prices
+
+For this lab, we will try our hand at predicted diamond prices.  We will use the data set `diamond_train` (which contains around 40,000 observations) and then see how well we can predict data from the `diamond_test` data.
+
+1. Estimate a model for $price$ on $carat$, $cut$, and $clarity$.  Report $R^2$, $\bar{R}^2$, $AIC$, and $BIC$ for this model.
+
+2. Estimate a model for $price$ on $carat$, $cut$, $clarity$, $depth$, $table$, $x$, $y$, and $z$.  Report $R^2$, $\bar{R}^2$, $AIC$, and $BIC$ for this model.
+
+3. Choose any model that you would like for $price$ and report $R^2$, $\bar{R}^2$, $AIC$, and $BIC$ for this model.  We'll see if your model can predict better than either of the first two.
+
+4. Use 10-fold cross validation to report an estimate of mean squared prediction error for each of the models from 1-3.
+
+5. Based on your responses to parts 1-4, which model do you think will predict the best?
+
+6. Use `diamond_test` to calculate (out-of-sample) mean squared prediction error for each of the three models from 1-3.  Which model performs the best out-of-sample?  How does this compare to your answer from 5.
+
+7. Use the Lasso and Ridge regression on `diamond_train` data.  Evaluate the predictions from each of these models by computing (out-of-sample) mean squared prediction error.  How well did these models predict relative to each other and relative the models from 1-3.
+
+## Lab 6: Solutions
+
+```{r message=FALSE}
+load("data/diamond_train.RData")
+
+# formulas
+formla1 <- price ~ carat + as.factor(cut) + as.factor(clarity)
+formla2 <- price ~ carat + as.factor(cut) + as.factor(clarity) + depth + table + x + y + x
+formla3 <- price ~ (carat + as.factor(cut) + as.factor(clarity) + depth + table + x + y + x)^2
+
+# estimate each model
+mod1 <- lm(formla1, data=diamond_train)
+mod2 <- lm(formla2, data=diamond_train)
+mod3 <- lm(formla3, data=diamond_train)
+
+mod_sel <- function(formla) {
+  mod <- lm(formla, data=diamond_train)
+  r.squared <- summary(mod)$r.squared
+  adj.r.squared <- summary(mod)$adj.r.squared
+
+  n <- nrow(diamond_train)
+  uhat <- resid(mod)
+  ssr <- sum(uhat^2)
+  k <- length(coef(mod))
+  aic <- 2*k + n*log(ssr)
+  bic <- k*log(n) + n*log(ssr)
+
+  # show results
+  result <- tidyr::tibble(r.squared, adj.r.squared, aic, bic)
+  return(result)
+}
+
+res1 <- mod_sel(formla1)
+res2 <- mod_sel(formla2)
+res3 <- mod_sel(formla3)
+
+round(rbind.data.frame(res1, res2, res3),3)
+
+# k-fold cross validation
+
+# setup data
+k <- 10
+n <- nrow(diamond_train)
+diamond_train$fold <- sample(1:k, size=n, replace=TRUE)
+diamond_train$id <- 1:n
+
+cv_mod_sel <- function(formla) {
+  u.squared <- rep(NA, n)
+  for (i in 1:k) {
+    this.train <- subset(diamond_train, fold != i)
+    this.test <- subset(diamond_train, fold == i)
+    this.id <- this.test$id
+    cv_reg <- lm(formla,
+              data=this.train)
+    pred <- predict(cv_reg, newdata=this.test)
+    u <- this.test$price - pred
+    u.squared[this.id] <- u^2
+  }
+  cv <- sqrt(mean(u.squared))
+  return(cv)
+}
+
+cv_res1 <- cv_mod_sel(formla1)
+cv_res2 <- cv_mod_sel(formla2)
+cv_res3 <- cv_mod_sel(formla3)
+
+res1 <- cbind.data.frame(res1, cv=cv_res1)
+res2 <- cbind.data.frame(res2, cv=cv_res2)
+res3 <- cbind.data.frame(res3, cv=cv_res3)
+
+round(rbind.data.frame(res1, res2, res3),3)
+
+# lasso and ridge
+library(glmnet)
+library(glmnetUtils)
+
+lasso_res <- cv.glmnet(formla3, data=diamond_train, alpha=1)
+ridge_res <- cv.glmnet(formla3, data=diamond_train, alpha=0)
+
+# out of sample predictions
+
+load("data/diamond_test.RData")
+
+# compute prediction errors with test data
+u1 <- diamond_test$price - predict(mod1, newdata=diamond_test)
+u2 <- diamond_test$price - predict(mod2, newdata=diamond_test)
+u3 <- diamond_test$price - predict(mod3, newdata=diamond_test)
+u_lasso <- diamond_test$price - predict(lasso_res, newdata=diamond_test)
+u_ridge <- diamond_test$price - predict(ridge_res, newdata=diamond_test)
+
+# compute root mean squared prediction errors
+rmspe1 <- sqrt(mean(u1^2))
+rmspe2 <- sqrt(mean(u2^2))
+rmspe3 <- sqrt(mean(u3^2))
+rmspe_lasso <- sqrt(mean(u_lasso^2))
+rmspe_ridge <- sqrt(mean(u_ridge^2))
+
+# report results
+rmspe <- data.frame(mod1=rmspe1, mod2=rmspe2, mod3=rmspe3, lasso=rmspe_lasso, ridge=rmspe_ridge)
+round(rmspe,3)
+```
+
+## Extra Questions
+
+1. What are some drawbacks of using $R^2$ as a model selection tool?
+
+2. For AIC and BIC, we choose the model that minimizes these (rather than maximizes them).  Why?
+
+3. Does AIC or BIC tend to pick "more complicated" models?  What is the reason for this?
+
+4. Suppose you are interested in predicting some outcome $Y$ and have access to covariates $X_1$, $X_2$, and $X_3$.  You estimate the following two models
+\begin{align*}
+  Y &= 30 + 4 X_1 - 2 X_2 - 10 X_3, \qquad R^2=0.5, AIC=3421 \\
+  Y &= 9 + 2 X_1 - 3 X_2 - 2 X_3 + 2 X_1^2 + 1 X_2^2 - 4 X_3^2 + 2 X_1 X_2, \qquad R^2 = 0.75, AIC=4018
+\end{align*}
+
+    a) Which model seems to be predicting better?  Explain why.
+    
+    b) Using the model that is predicting better, what would be your prediction for $Y$ when $X_1=10, X_2=1, X_3=5$?  
+    
+5. In Lasso and Ridge regressions, it is common to "standardize" the regressors before estimating the model (e.g., the `glmnet` does this automatically for you).  What is the reason for doing this?
+
+6. In Lasso and Ridge regressions, the penalty term lead to "shrinking" the estimated parameters in the model towards 0.  This tends to introduce bias while reducing variance.  Why can introducing bias while reducing variance potentially lead to better predictions?  Does this argument always apply or just apply in some cases?  Explain.
+
+7.  In Lasso and Ridge regressions, the penalty term depends on the tuning parameter $\lambda$.  
+
+    a) How is this tuning parameter often chosen in practice?  Why does it make sense to choose it in this way?
+        
+    b) What would happen to the estimated coefficients when $\lambda=0$?
+    
+    c) What would happen to the estimated coefficients as $\lambda \rightarrow \infty$?
+    
+
+## Answers to Some Extra Questions
+
+**Answer to Question 4**
+
+a) The first model appears to be predicting better because the AIC is lower. [Also, notice that $R^2$ is higher in the second model, but this is by construction because it includes extra terms relative to the first model which implies that it will fit at least as well in-sample as the first model, but may be suffering from over-fitting.]
+
+b) 
+    \begin{align*}
+      \hat{Y} &= 30 + 4 (10) - 2 (1) - 10 (5) \\
+      &= 18
+    \end{align*}
+
+**Answer to Question 7**
+
+a) The tuning parameter is often chosen via cross validation.  It makes sense to choose it this way because this is effectively choosing a value of $\lambda$ that is making good pseudo-out-of-sample predictions.  As we will see below, if you make bad choices of $\lambda$, that could result in very poor predictions.
+
+b) When $\lambda=0$, there would effectively be no penalty term and, therefore, the estimated parameters would coincide with the OLS estimates.
+
+c) When $\lambda \rightarrow \infty$, the penalty term would overwhelm the term corresponding to minimizing SSR.  This would result in setting all the estimated parameters to be equal to 0.  This extreme approach is likely to lead to very poor predictions.

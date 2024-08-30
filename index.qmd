@@ -1,16 +1,5 @@
 # Introduction
 
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\var}{\mathrm{var}}
-\newcommand{\cov}{\mathrm{cov}}
-\newcommand{\Var}{\mathrm{var}}
-\newcommand{\Cov}{\mathrm{cov}}
-\newcommand{\Corr}{\mathrm{corr}}
-\newcommand{\corr}{\mathrm{corr}}
-\renewcommand{\P}{\mathrm{P}}
-\newcommand{\independent}{\perp}
-
-
 ```{r setup, echo=FALSE}
   knitr::opts_chunk$set(comment="#>", collapse=TRUE)
 

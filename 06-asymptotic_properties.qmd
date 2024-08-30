@@ -1,0 +1,109 @@
+# Asymptotic Properties
+
+{{< include latex-commands.txt >}}
+
+## Large Sample Properties of Estimators
+
+SW 2.6
+
+Statistics/Econometrics often relies on "large sample" (meaning: the number of observations, $n$, is large) properties of estimators.
+
+Intuition: We generally expect that estimators that use a large number of observations will perform better than in the case with only a few observations.
+
+The second goal of this section will be to introduce an approach to conduct hypothesis testing.  In particular, we may have some theory and want a way to test whether or not the data that we have "is consistent with" the theory or not.  These arguments typically involve either making strong assumptions or having a large sample --- we'll mainly study the large sample case as I think this is more useful.
+
+
+## Consistency
+
+An estimator $\hat{\theta}$ of $\theta$ is said to be **consistent** if $\hat{\theta}$ gets close to $\theta$ for large values of $n$.
+
+The main tool for studying consistency is the **law of large numbers**.  The law of large numbers says that sample averages converge to population averages as the sample size gets large.  In math, this is
+
+$$
+  \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \E[Y] \quad \textrm{as } n \rightarrow \infty
+$$
+In my view, the law of large numbers is very intuitive.  If you have a large sample and calculate a sample average, it should be close to the population average.
+
+::: {.example}
+
+<span class="example">Example: </span>Let's consider the same three estimators as before and whether or not they are consistent.  First, the LLN implies that
+
+$$
+  \hat{\mu} = \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \E[Y]
+$$
+This implies that $\hat{\mu}$ is consistent.  Next,
+
+$$
+  \hat{\mu}_1 = Y_1
+$$
+doesn't change depending on the size of the sample (you just use the first observation), so this is not consistent.  This is an example of an unbiased estimator that is not consistent.  Next,
+
+$$
+  \hat{\mu}_\lambda = \lambda \bar{Y} \rightarrow \lambda \E[Y] \neq \E[Y]
+$$
+which implies that (as long as $\lambda$ doesn't change with $n$), $\hat{\mu}_{\lambda}$ is not consistent.  Let's give one more example.  Consider the estimator
+
+$$
+  \hat{\mu}_c := \bar{Y} + \frac{c}{n}
+$$
+where $c$ is some constant (this is a strange estimate of $\E[Y]$ where we take $\bar{Y}$ and add a constant divided by the sample size).  In this case,
+
+$$
+  \hat{\mu}_c \rightarrow \E[Y] + 0 = \E[Y]
+$$
+
+which implies that it is consistent.  It is interesting to note that 
+
+$$
+  \E[\hat{\mu}_c] = \E[Y] + \frac{c}{n}
+$$
+which implies that it is biased.  This is an example of a biased estimator that is consistent.
+
+:::
+
+
+## Asymptotic Normality
+
+The next large sample property that we'll talk about is **asymptotic normality**.  This is a hard one to wrap your mind around, but I'll try to explain as clearly as possible.  We'll start by talking about what it is, and then we'll move to why it's useful.
+
+Most of the estimators that we will talk about this semester have the following property
+
+$$
+  \sqrt{n}\left( \hat{\theta} - \theta \right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+$$
+In words, what this says is that we can learn something about the sampling distribution of $\hat{\theta}$ as long as we have a large enough sample.  More specifically, if $\hat{\theta}$ is asymptotically normal, it means that if we take $\hat{\theta}$ subtract the true value of the parameter $\theta$ (this is often referred to as "centering") and multiply by $\sqrt{n}$, then that object (as long as the sample size is large enough) will *seem like* a draw from a normal distribution with mean 0 and variance $V$.  Since we know lots about normal distributions, we'll be able to exploit this in very useful ways in the next section.
+
+An equivalent, alternative expression that is sometimes useful is 
+
+$$
+  \frac{\sqrt{n}\left( \hat{\theta} - \theta\right)}{\sqrt{V}} \rightarrow N(0,1) \quad \textrm{as } n \rightarrow \infty
+$$
+
+To establish asymptotic normality of a particular estimator, the main tool is the **central limit theorem**.  The central limit theorem (sometimes abbreviated CLT) says that
+
+$$
+  \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Y_i - \E[Y]\right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+$$
+where $V = \Var(Y)$.  
+
+In words, the CLT says that if you take the difference between $\bar{Y}$ and $\E[Y]$ (which, by the LLN converges to 0 as $n \rightarrow \infty$) and "scale it up" by $\sqrt{n}$ (which goes to $\infty$ as $n \rightarrow \infty$), then $\sqrt{n}(\bar{Y} - \E[Y])$ will act like a draw from a normal distribution with variance $\Var(Y)$.
+
+There are a few things to point out:
+
+- Just to start with, this is not nearly as "natural" a result as the LLN.  The LLN basically makes perfect sense.  For me, I know how to prove the CLT (though we are not going to do it in class), but I don't think that I would have ever been able to come up with this on my own.
+
+- Notice that the CLT does not rely on any distributional assumptions.  We do not need to assume that $Y$ follows a normal distribution and it will apply when $Y$ follows any distribution (up to some  relatively minor technical conditions that we will not worry about).
+
+- It is also quite remarkable.  We usually have the sense that as the sample size gets large that things will converge to something (e.g., LLN saying that sample averages converge to population averages) or that they will diverge (i.e., go off to positive or negative infinity themselves).  The CLT provides an intermediate case --- $\sqrt{n}(\bar{Y} - \E[Y])$ is neither converging to a particular value or diverging to infinity.  Instead, it is *converging in distribution* --- meaning: it is settling down to something that looks like a draw from some distribution rather than converging to a particular number.  
+
+- In some sense, you can think of this "convergence in distribution" as a "tie" between the part $(\bar{Y}-\E[Y])$ which, by itself, is converging to 0, and $\sqrt{n}$ which, by itself, is diverging to infinity.  In particular, notice that
+\begin{align*}
+  \Var\Big( \sqrt{n} (\bar{Y} - \E[Y]) \Big) &= n \times \Var(\bar{Y}) \\
+  &= n \times \frac{\Var(Y)}{n} \\
+  &= \Var(Y)
+\end{align*}
+where this argument just holds by the properties of variance that we have used many times before.  This means that the variance of $\sqrt{n}(\bar{Y}-\E[Y])$ does not go to 0 (which would suggest that the whole term converges to 0) nor does it go to $\infty$ (which would suggest that the term diverges).  Moreover, if you multiplied $(\bar{Y}-E[Y])$ instead by something somewhat smaller, say, $n^{1/3}$, then the term $(\bar{Y}-\E[Y])$ would "win" and the whole expression would converge to 0 (to see this, try calculating $\Var\Big(n^{1/3}(\bar{Y} - \E[Y]\Big)$).  On the other hand, if you multiplied by something somewhat larger, say, $n$, then the $n$ part would "win" and the whole thing would diverge (to see this, try calculating $\Var\Big(n(\bar{Y}-\E[Y])\Big)$).  $\sqrt{n}$ turns out to be "just right" so that there is essentially a "tie" and this term neither converges to a particular number nor diverges.  
+
+- A very common question for students is: "how large does $n$ need to be for the central limit theorem to apply?"  Unfortunately, there is a not a great answer to this (though some textbooks have sometimes given explicit numbers here).  Here is a basic explanation for why it is hard to give a definite number.  Suppose $Y$ follows a normal distribution, then it will not take many observations for the normal approximation to hold.  On the other hand, if $Y$ were to come from a discrete distribution or just a generally complicated distribution, then it might take many more observations for the normal approximation to hold.
+
+All that to say, I know that the CLT is hard to understand, but the flip-side of that is that it really is a fascinating result.  We'll see how its useful next.

@@ -1,0 +1,137 @@
+# Experiments
+
+{{< include latex-commands.txt >}}
+
+An experiment is often called the "gold standard" for causal inference.  In particular, here, we are thinking about the case where participation in the treatment is randomly assigned --- something like: people who show up to possibly participate in the treatment, someone flips a coin, and if the coin comes up heads then the person participates in the treatment or, if tails, they do not participate in the treatment.
+
+Random assignment means that participating in the treatment is independent of potential outcomes, by construction.  We can write this in math as
+\begin{align*}
+  (Y(1), Y(0)) \independent D
+\end{align*}
+For our purposes, this also implies that
+\begin{align*}
+  \E[Y(0)|D=1] = \E[Y(0)|D=0] = \E[Y|D=0]
+\end{align*}
+In other words, under random assignment, the average untreated potential among the treated group is equal to the average untreated potential outcome among the untreated group (this is the first equality).  This is helpful because untreated potential outcomes are observed for those in the untreated group (this is the second equality).
+
+Thus, under random assignment,
+\begin{align*}
+  ATT = \E[Y|D=1] - \E[Y|D=0]
+\end{align*}
+In other words, the $ATT$ is just the difference in (population) average outcomes among the treated group relative to average outcomes among the untreated group.
+
+The natural way to estimate the ATT under random assignment is
+\begin{align*}
+  \widehat{ATT} = \bar{Y}_{D=1} - \bar{Y}_{D=0}
+\end{align*}
+i.e., as we have done many times before, in order to estimate the parameter of interest, we just replace population averages with sample averages.
+
+## Estimating ATT with a Regression
+
+It is also often convenient to introduce a regression based estimator of the ATT.  This is primarily convenient as it will allow us to leverage all the things we already know about regressions, and, particularly, we it will immediately provide us with standard errors, t-statistics, etc. 
+
+In order to do this, let's introduce the following assumption:
+
+**Treatment Effect Homogeneity**: $Y_i(1) - Y_i(0) = \alpha$ (and $\alpha$ does not vary across individuals).  
+
+This is a potentially quite unrealistic assumption; I'll make some additional comments about it below, but, for now, let's just go with it.
+
+Notice that we can also write
+\begin{align*}
+  Y_i(0) = \beta_0 + U_i
+\end{align*}
+where $\E[U|D=0] = \E[U|D=1] = 0$ (this holds under random assignment since random assignment implies that treated and untreated individuals do not have systematically different untreated potential outcomes)
+
+Recalling the definition of the observed outcome, notice that
+\begin{align*}
+  Y_i &= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &= \alpha D_i + \beta_0 + U_i
+\end{align*}
+where the second equality just involves re-arranging terms, and the third equality holds under treatment effect homogeneity and using the expression for $Y_i(0)$ in the previous equation. 
+
+This suggests running a regression of the observed $Y_i$ on $D_i$ and interpreting the estimated version of $\alpha$ as an estimate of the causal effect of participating in the treatment (and you can pick up standard errors, etc. from the regression output) --- this is very convenient.
+
+The previous discussion invoked the extra condition of treatment effect homogeneity.  I want to point out some things related to this now.  In the above regression model, we can alternatively (and equivalently) write it as
+\begin{align*}
+  \E[Y|D] = \beta_0 + \alpha D
+\end{align*}
+Now plug in particular values for $D$:
+\begin{align*}
+  \E[Y|D=0] = \beta_0 \qquad \textrm{and} \qquad \E[Y|D=1] = \beta_0 + \alpha
+\end{align*}
+Subtracting the second equation from the first implies that
+\begin{align*}
+  \alpha = \E[Y|D=1] - \E[Y|D=0]
+\end{align*}
+but notice that this is exactly what the $ATT$ is equal to under random assignment.  Thus, it is worth pointing out that, although we imposed the assumption of treatment effect homogeneity to arrive at the regression equation, our regression is "robust" to treatment effect heterogeneity.
+
+## Internal and External Validity
+
+SW 13.2
+
+Although experiments, when they are available, are considered the gold standard of causal inference, there are some ways they can go wrong.
+
+An experiment is said to be **internally valid** if inferences about causal effects are valid for the population being studied.
+
+An experiment is said to be **externally valid** if inferences about causal effects can be generalized from the study setting to other populations/time periods/settings.
+
+Generally, its easier for an experiment to be internally valid than externally valid, but there are a number of "threats" to both internal and external validity.
+
+Threats to internal validity:
+
+- Failure to randomize --- individuals weren't actually randomized into the treatment.  This seems trivial, but some famous examples include experiments that assigned treatment participation by the first letter of a person's last name.  It turns out that this can be correlated with a number of other things (violating the random assignment assumption)
+
+    - As a side-comment, random treatment assignment implies that treatment should be uncorrelated with other covariates (e.g., race, sex, etc.) and this can be used as a way to check if the treatment was really randomly assigned.
+    
+- Failure to follow treatment protocol --- Individuals assigned to participate in the treatment don't participate or vice versa.
+
+    - This is actually a pretty common problem.  A leading example would be in the context of an experimental drug where patients who were assigned the placebo somehow to convince the doctor to give them the real drug.
+    
+- Attrition --- subjects non-randomly drop out of the sample
+
+- Placebo effects --- Participating in an experiment can cause changes in behavior/outcomes.
+
+    - This is a main reason that medical experiments are often "double-blind"
+    
+- Small sample sizes --- Experiments can be expensive to run and therefore often include only a small number of observations, and, therefore, may be less able to detect small effects of a treatment
+
+- Experiments can sometimes be unethical
+
+    - The 2019 Nobel prize in economics was awarded for experiments in developing countries.  Some of these experiments were somewhat controversial (e.g., randomly assigning some schools extra resources and randomly giving glasses to some students but not others).
+    
+Threats to External Validity:
+
+- Nonrepresentative samples --- The population that is willing to participate in an experiment many be substantially different from the overall population.
+
+    - A closely related problem is that the economic environment may change across time and/or space which means that effects of some treatment might be different in different time periods or locations
+    
+- Nonrepresentative program/policy --- The policy in an experiment may be different from other policies being considered
+
+    - For example, the Perry Preschool Project was an experiment that provided intensive pre-school program that seems to have had large and long-lasting effects on participants.  It is not clear if these results should apply to less intensive programs like Head Start.
+    
+- General equilibrium effects --- Expanding policies may alter the "state of the world" in a way that an experiment wouldn't (e.g., the effects of a local minimum wage change could be different from a country-wide minimum wage change)
+
+
+## Example: Project STAR
+
+Project STAR was a an experiment in Tennessee in 1980s on the effects of smaller class sizes on student performance where students and teachers were randomly assigned to be in a small class, a regular class, or a regular class with an aide.  In this example, we'll study the causal effect of being in a small class on reading test scores.
+
+```{r}
+data("Star", package="Ecdat")
+
+# limit data to small class or regular class
+# this drops the other category of regular class size with an aide
+Star <- subset(Star, classk %in% c("small.class", "regular"))
+
+# regression for reading scores
+reading <- lm(log(treadssk) ~ classk, data=Star)
+summary(reading)
+```
+You'll notice that this is a very simple analysis, but that we have access to an experiment means that we do need to do anything complicated --- we can just use a regression to compare the differences between test scores of students in small classes relative to large tests.  These results say that small class sizes increase reading test scores of students by about 1.3%.
+
+Let me also make a few comments about internal and external validity.
+
+- I don't have too much to say about internal validity.  As far as I know, Project STAR is considered internally valid, but it would be worth reading more about it in order to confirm that.
+
+- Thinking about external validity though is quite interesting.  For one thing, this experiment is quite old.  Are the results still valid now?  It is not clear; one could imagine that better teaching technologies now could possibly make having a small class less important.  Another thing that is interesting is that this experiment was for very young students (I think students in kindergarten).  Do these results imply that, say, high school or college students would also benefit from smaller class sizes?  Again, this is not clear.  It is a relevant piece of information, but it also would require a seemingly large amount of extrapolation to say that these results should inform policy decisions about class sizes in the present day and for different age groups.

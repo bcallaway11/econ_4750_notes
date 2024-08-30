@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Random Variables – Detailed Course Notes for ECON 4750</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-expectations.html" rel="next">
+<link href="./02-programming_in_R.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="4750_style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-random_variables.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Detailed Course Notes for ECON 4750</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Start</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Statistical Programming</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Probability</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Properties of Estimators</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Regression</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Advanced Topics</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Prediction</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Causal Inference</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-unconfoundedness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-quasi_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Quasi-Experiments</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-for-this-chapter" id="toc-data-for-this-chapter" class="nav-link active" data-scroll-target="#data-for-this-chapter"><span class="header-section-number">4.1</span> Data for this chapter</a></li>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">4.2</span> Random Variables</a></li>
+  <li><a href="#pdfs-pmfs-and-cdfs" id="toc-pdfs-pmfs-and-cdfs" class="nav-link" data-scroll-target="#pdfs-pmfs-and-cdfs"><span class="header-section-number">4.3</span> pdfs, pmfs, and cdfs</a></li>
+  <li><a href="#summation-operator" id="toc-summation-operator" class="nav-link" data-scroll-target="#summation-operator"><span class="header-section-number">4.4</span> Summation operator</a></li>
+  <li><a href="#properties-of-pmfs-and-cdfs" id="toc-properties-of-pmfs-and-cdfs" class="nav-link" data-scroll-target="#properties-of-pmfs-and-cdfs"><span class="header-section-number">4.5</span> Properties of pmfs and cdfs</a></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"><span class="header-section-number">4.6</span> Continuous Random Variables</a></li>
+  <li><a href="#multiple-random-variables" id="toc-multiple-random-variables" class="nav-link" data-scroll-target="#multiple-random-variables"><span class="header-section-number">4.7</span> Multiple Random Variables</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="math display">\[
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
+\]</span></p>
+<p>This section contains our crash course review of topics in probability. The discussion mostly follows Chapter 2 in the Stock and Watson textbook, and I have cross-listed the relevant sections in the textbook here.</p>
+<p>At a very high level, probability is the set of mathematical tools that allow us to think about <strong>random</strong> events.</p>
+<p>Just to be clear, random means <em>uncertain</em>, not 50:50.</p>
+<p>A simple example of a random event is the outcome from rolling a die.</p>
+<p>Eventually, we will treat data as being random draws from some population. Examples of things that we will treat as random draws are things like a person’s hair color, height, income, etc. We will think of all of these as being random draws because <em>ex ante</em> we don’t know what they will be.</p>
+<section id="data-for-this-chapter" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="data-for-this-chapter"><span class="header-section-number">4.1</span> Data for this chapter</h2>
+<p>For this chapter, we’ll use data from the U.S. Census Bureau from 2019. It is not quite a full census, but we’ll treat it as the population throughout this chapter.</p>
+</section>
+<section id="random-variables" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">4.2</span> Random Variables</h2>
+<p>SW 2.1</p>
+<p>A <strong>random variable</strong> is a numerical summary of some random event.</p>
+<p>Some examples:</p>
+<ul>
+<li><p>Outcome of roll of a die</p></li>
+<li><p>A person’s height in inches</p></li>
+<li><p>A firm’s profits in a particular year</p></li>
+<li><p>Creating a random variable sometime involves “coding” non-numeric outcomes, e.g., setting <code>hair=1</code> if a person’s hair color is black, <code>hair=2</code> if a person’s hair is blonde, etc.</p></li>
+</ul>
+<p>We’ll generally classify random variables into one of two categories</p>
+<ul>
+<li><p><strong>Discrete</strong> — A random variable that takes on discrete values such as 0, 1, 2</p></li>
+<li><p><strong>Continuous</strong> — Takes on a continuum of values</p></li>
+</ul>
+<p>These are broad categories because a lot of random variables in economics sit in between these two.</p>
+</section>
+<section id="pdfs-pmfs-and-cdfs" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="pdfs-pmfs-and-cdfs"><span class="header-section-number">4.3</span> pdfs, pmfs, and cdfs</h2>
+<p>SW 2.1</p>
+<p>The <strong>distribution</strong> of a random variable describes how likely it is take on certain values.</p>
+<p>A random variable’s distribution is fully summarized by its:</p>
+<ul>
+<li><p><strong>probability mass function (pmf)</strong> if the random variable is discrete</p></li>
+<li><p><strong>probability density function (pdf)</strong> if the random variable is continuous</p></li>
+</ul>
+<p>The pmf is somewhat easier to explain, so let’s start there. For some discrete random variable <span class="math inline">\(X\)</span>, its pmf is given by</p>
+<p><span class="math display">\[
+  f_X(x) = \P(X=x)
+\]</span> That is, the probability that <span class="math inline">\(X\)</span> takes on some particular value <span class="math inline">\(x\)</span>.</p>
+<div class="example">
+<p><span class="example">Example: </span> Suppose that <span class="math inline">\(X\)</span> denotes the outcome of a roll of a die. Then, <span class="math inline">\(f_X(1)\)</span> is the probability of rolling a one. And, in particular,</p>
+<p><span class="math display">\[
+  f_X(1) = \P(X=1) = \frac{1}{6}
+\]</span></p>
+</div>
+<div class="example">
+<p><span class="example">Example: </span> Let’s do a bit more realistic example where we look at the pmf of education in the U.S. Suppose that <span class="math inline">\(X\)</span> denotes the years of education that a person has. Then, <span class="math inline">\(f_X(x)\)</span> is the probability that a person has exactly <span class="math inline">\(x\)</span> years of education. We can set <span class="math inline">\(x\)</span> to different values and calculate the probabilities of a person having different amounts of education. That’s what we do in the following figure:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03-random_variables_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>pmf of U.S. education</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>There are some things that are perhaps worth pointing out here. The most common amount of education in the U.S. appears to be exactly 12 years — corresponding to graduating from high school; about 32% of the population has that level of education. The next most common number of years of education is 16 — corresponding to graduating from college; about 24% of individuals have this level of education. Other relatively common values of education are 13 years (14% of individuals) and 18 (13% of individuals). About 1% of individuals report 0 years of education. It’s not clear to me whether or not that is actually true or reflects some individuals mis-reporting their education.</p>
+</div>
+<p>Before going back to the pdf, let me describe another way to fully summarize the distribution of a random variable.</p>
+<ul>
+<li><strong>Cumulative distribution function (cdf)</strong> - The cdf of some random variable <span class="math inline">\(X\)</span> is defined as</li>
+</ul>
+<p><span class="math display">\[
+  F_X(x) = \P(X \leq x)
+\]</span> In words, this cdf is the probability that the random <span class="math inline">\(X\)</span> takes a value less than or equal to <span class="math inline">\(x\)</span>.</p>
+<div class="example">
+<p><span class="example">Example: </span> Suppose <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Then, <span class="math inline">\(F_X(3) = \P(X \leq 3)\)</span> is the probability of rolling 3 or lower. Thus,</p>
+<p><span class="math display">\[
+  F_X(3) = \P(X \leq 3) = \frac{1}{2}
+\]</span></p>
+</div>
+<div class="example">
+<p><span class="example">Example: </span> Let’s go back to our example of years of education in the U.S. In this case, <span class="math inline">\(F_X(x)\)</span> is the fraction of the population that has less than <span class="math inline">\(x\)</span> years of education. We can calculate this for different values of <span class="math inline">\(x\)</span>. That’s what we do in the following figure:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03-random_variables_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>cdf of U.S. educ</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>You can see that the cdf is increasing in the years of education. And there are big “jumps” in the cdf at values of years of education that are common such as 12 and 16.</p>
+</div>
+<p>We’ll go over some properties of pmfs and cdfs momentarily (perhaps you can already deduce some of them from the above figures), but before we do that, we need to go over some (perhaps new) tools.</p>
+</section>
+<section id="summation-operator" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="summation-operator"><span class="header-section-number">4.4</span> Summation operator</h2>
+<p>It will be convenient for us to have a notation that allows us to add up many numbers/variables at the same time. To do this, we’ll introduce the <span class="math inline">\(\sum\)</span> operation.</p>
+<p>As a simple example, suppose that we have three variables (it doesn’t matter if they are random or not): <span class="math inline">\(x_1,x_2,x_3\)</span> and we want to add them up. Then, we can write <span class="math display">\[
+  \sum_{i=1}^3 x_i := x_1 + x_2 + x_3
+\]</span> Many times, once we have data, there will be n “observations” and we can add them up by: <span class="math display">\[
+  \sum_{i=1}^n x_i = x_1 + x_2 + \cdots + x_n
+\]</span> <strong>Properties:</strong></p>
+<ol type="1">
+<li><p>For any constant <span class="math inline">\(c\)</span>,</p>
+<p><span class="math display">\[
+\sum_{i=1}^n c = n \cdot c
+\]</span></p>
+<p>[This is just the definition of multiplication]</p></li>
+<li><p>For any constant c,</p>
+<p><span class="math display">\[
+   \sum_{i=1}^n c x_i = c \sum_{i=1}^n x_i
+\]</span></p>
+<p>In words: constants can be moved out of the summation.</p>
+<p>We will use the property often throughout the semester.</p>
+<p>As an example,</p>
+<p><span class="math display">\[
+   \begin{aligned}
+   \sum_{i=1}^3 7 x_i &amp;= 7x_1 + 7x_2 + 7x_3 \\
+   &amp;= 7(x_1 + x_2 + x_3) \\
+   &amp;= 7 \sum_{i=1}^3 x_i
+   \end{aligned}
+\]</span></p>
+<p>where the first line is just the definition of the summation, the second equality factors out the 7, and the last equality writes the part about adding up the <span class="math inline">\(x\)</span>’s using summation notation.</p></li>
+</ol>
+</section>
+<section id="properties-of-pmfs-and-cdfs" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="properties-of-pmfs-and-cdfs"><span class="header-section-number">4.5</span> Properties of pmfs and cdfs</h2>
+<p>Let’s define the <strong>support</strong> of a random variable <span class="math inline">\(X\)</span> — this is the set of all possible values that <span class="math inline">\(X\)</span> can possibly take. We’ll use the notation <span class="math inline">\(\mathcal{X}\)</span> to denote the support of <span class="math inline">\(X\)</span>.</p>
+<div class="example">
+<p><span class="example">Example: </span>Suppose <span class="math inline">\(X\)</span> is the outcome from a roll of a die. Then, the support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{1,2,3,4,5,6\}\)</span>. In other words, the only possible values for <span class="math inline">\(X\)</span> are from <span class="math inline">\(1,\ldots,6\)</span>.</p>
+</div>
+<div class="example">
+<p><span class="example">Example: </span>Suppose <span class="math inline">\(X\)</span> is the number of years of education that a person has. The support of <span class="math inline">\(X\)</span> is given by <span class="math inline">\(\mathcal{X} = \{0, 1, 2, \ldots, 20\}\)</span>. Perhaps I should have chosen a larger number than 20 to be the maximum possible value that <span class="math inline">\(X\)</span> could take, but you will get the idea — a person’s years of education can be 0 or 1 or 2 or up to some maximum value.</p>
+</div>
+<p><strong>Properties of pmfs</strong></p>
+<ol type="1">
+<li><p>For any <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq f_X(x) \leq 1\)</span></p>
+<p>In words: the probability of <span class="math inline">\(X\)</span> taking some particular value can’t be less than 0 or greater than 1 (neither of those would make any sense)</p></li>
+<li><p><span class="math inline">\(\sum_{x \in \mathcal{X}} f_X(x) = 1\)</span></p>
+<p>In words: if you add up <span class="math inline">\(\P(X=x)\)</span> across all possible values that <span class="math inline">\(X\)</span> could take, they sum to 1.</p></li>
+</ol>
+<p><strong>Properties of cdfs for discrete random variables</strong></p>
+<ol type="1">
+<li><p>For any <span class="math inline">\(x\)</span>, <span class="math inline">\(0 \leq F_X(x) \leq 1\)</span></p>
+<p>In words: the probability that <span class="math inline">\(X\)</span> is less than or equal to some particular value <span class="math inline">\(x\)</span> has to be between 0 and 1.</p></li>
+<li><p>If <span class="math inline">\(x_1 &lt; x_2\)</span>, then <span class="math inline">\(F_X(x_1) \leq F_X(x_2)\)</span></p>
+<p>In words: the cdf is increasing in <span class="math inline">\(x\)</span> (e.g., it will always be the case that <span class="math inline">\(\P(X \leq 3) \leq \P(X \leq 4)\)</span>).</p></li>
+<li><p><span class="math inline">\(F_X(-\infty)=0\)</span> and <span class="math inline">\(F_X(\infty)=1\)</span></p>
+<p>In words: if you choose small enough values of <span class="math inline">\(x\)</span>, the probability that <span class="math inline">\(X\)</span> will be less than that is 0; similar (but opposite) logic applies for big values of <span class="math inline">\(x\)</span>.</p></li>
+</ol>
+<p><strong>Connection between pmfs and cdfs</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\(F_X(x) = \displaystyle \sum_{z \in \mathcal{X} \\ z \leq x} f_X(z)\)</span></p>
+<p>In words: you can “recover” the cdf from the pmf by adding up the pmf across all possible values that the random variable could take that are less than or equal to <span class="math inline">\(x\)</span>. This will be clearer with an example:</p></li>
+</ol>
+<div class="example">
+<p><span class="example">Example: </span>Suppose that <span class="math inline">\(X\)</span> is the outcome of a roll of a die. Earlier we showed that <span class="math inline">\(F_X(3) = 1/2\)</span>. We can calculate this by</p>
+<p><span class="math display">\[
+  \begin{aligned}
+  F_X(3) &amp;= \sum_{\substack{z \in \mathcal{X} \\ z \leq 3}} f_X(z) \\
+  &amp;= \sum_{z=1}^3 f_X(z) \\
+  &amp;= f_X(1) + f_X(2) + f_X(3) \\
+  &amp;= \frac{1}{6} + \frac{1}{6} + \frac{1}{6} \\
+  &amp;= \frac{1}{2}
+  \end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="continuous-random-variables" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="continuous-random-variables"><span class="header-section-number">4.6</span> Continuous Random Variables</h2>
+<p>SW 2.1</p>
+<p>For continuous random variables, you can define the cdf in exactly the same way as we did for discrete random variables. That is, if <span class="math inline">\(X\)</span> is a continuous random variable,</p>
+<p><span class="math display">\[
+  F_X(x) = \P(X \leq x)
+\]</span></p>
+<div class="example">
+<p><span class="example">Example: </span> Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The cdf of <span class="math inline">\(X\)</span> looks like</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03-random_variables_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>cdf of U.S. wage income</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>From the figure, we can see that about 24% of working individuals in the U.S. each $20,000 or less per year, 61% of working individuals earn $50,000 or less, and 88% earn $100,000 or less.</p>
+</div>
+<p>It’s trickier to define an analogue to the pmf for a continuous random variable (in fact, this is the main reason for our separate treatment of discrete and continuous random variables). For example, suppose <span class="math inline">\(X\)</span> denotes the length of a phone conversation. As long as we can measure time finely enough, the probability that a phone conversation lasts exactly 1189.23975381 seconds (this is about 20 minutes) is 0. Instead, for a continuous random variable, we’ll define its probability density function (pdf) as the derivative of its cdf, that is,</p>
+<p><span class="math display">\[
+  f_X(x) := \frac{d \, F_X(x)}{d \, x}
+\]</span> Recall that the slope of the cdf will be larger in places where <span class="math inline">\(F_X(x)\)</span> is “steeper”.</p>
+<p>Regions where the pdf is larger correspond to more likely values of <span class="math inline">\(X\)</span> — in this sense the pdf is very similar to the pmf.</p>
+<p>We can also write the cdf as an integral over the pdf. That is,</p>
+<p><span class="math display">\[
+  F_X(x) = \int_{-\infty}^x f_X(z) \, dz
+\]</span> Integration is roughly the continuous version of a summation — thus, this expression is very similar to the expression above for the cdf in terms of the pmf when <span class="math inline">\(X\)</span> is discrete.</p>
+<p><strong>More properties of cdfs</strong></p>
+<ol start="4" type="1">
+<li><p><span class="math inline">\(\P(X &gt; x) = 1 - \P(X \leq x) = 1-F_X(x)\)</span></p>
+<p>In words, if you want to calculate the probability that <span class="math inline">\(X\)</span> <em>is greater than</em> some particular value <span class="math inline">\(x\)</span>, you can do that by calculating <span class="math inline">\(1-F_X(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(\P(a \leq X \leq b) = F_X(b) - F_X(a)\)</span></p>
+<p>In words: you can also calculate the probability that <span class="math inline">\(X\)</span> falls in some range using the cdf.</p></li>
+</ol>
+<div class="example">
+<p><span class="example">Example: </span> Suppose <span class="math inline">\(X\)</span> denotes an individual’s yearly wage income. The pdf of <span class="math inline">\(X\)</span> looks like</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03-random_variables_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>pdf of U.S. wage income</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>From the figure, we can see that the most common values of yearly income are around $25-30,000 per year. Notice that this corresponds to the steepest part of the cdf from the previous figure. The right tail of the distribution is also long. This means that, while incomes of $150,000+ are not common, there are some individuals who have incomes that high.</p>
+<p>Moreover, we can use the properties of pdfs/cdfs above to calculate some specific probabilities. In particular, we can calculating probabilities by calculating integrals (i.e., regions under the curve) / relating the pdf to the cdf. First, the red region above corresponds to the probability of a person’s income being between $50,000 and $100,000. This is given by <span class="math inline">\(F(100,000) - F(50000)\)</span>. We can compute this in <code>R</code> using the <code>ecdf</code> function. In particular,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>incwage_cdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(us_data<span class="sc">$</span>incwage)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">incwage_cdf</span>(<span class="dv">100000</span>) <span class="sc">-</span> <span class="fu">incwage_cdf</span>(<span class="dv">50000</span>),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.27</code></pre>
+</div>
+</div>
+<p>The green region in the figure is the probability of a person’s income being above $150,000. Using the above properties of cdfs, we can calculate it as <span class="math inline">\(1-F(150000)\)</span> which is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">incwage_cdf</span>(<span class="dv">150000</span>), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.052</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-random-variables" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="multiple-random-variables"><span class="header-section-number">4.7</span> Multiple Random Variables</h2>
+<p>SW 2.3</p>
+<p>Most often in economics, we want to consider two (or more) random variables jointly rather than just a single random variable. For example, mean income is interesting, but mean income as a function of education is more interesting.</p>
+<p>When there is more than one random variable, you can define <strong>joint pmfs</strong>, <strong>joint pdfs</strong>, and <strong>joint cdfs</strong>.</p>
+<p>Let’s quickly go over these for the case where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are two discrete random variables.</p>
+<p><strong>Joint pmf:</strong> <span class="math inline">\(f_{X,Y}(x,y) := \P(X=x, Y=y)\)</span></p>
+<p><strong>Joint cdf:</strong> <span class="math inline">\(F_{X,Y}(x,y) := \P(X \leq x, Y \leq y)\)</span></p>
+<p><strong>Conditional pmf:</strong> <span class="math inline">\(f_{Y|X}(y|x) := \P(Y=y | X=x)\)</span></p>
+<p><strong>Properties</strong></p>
+<p>We use the notation that <span class="math inline">\(\mathcal{X}\)</span> denotes the support of <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathcal{Y}\)</span> denotes the support of <span class="math inline">\(Y\)</span>.</p>
+<ol type="1">
+<li><p><span class="math inline">\(0 \leq f_{X,Y}(x,y) \leq 1\)</span> for all <span class="math inline">\(x,y\)</span></p>
+<p>In words: the probability of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> taking any particular values can’t be less than 0 or greater than 1 (because these are probabilities)</p></li>
+<li><p><span class="math inline">\(\displaystyle \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} f_{X,Y}(x,y) = 1\)</span></p>
+<p>In words: If you add up <span class="math inline">\(\P(X=x, Y=y)\)</span> across all possible values of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, they sum up to 1 (again, this is just a property of probabilities)</p></li>
+<li><p>If you know the joint pmf, then you can recover the <strong>marginal pmf</strong>, that is,</p>
+<p><span class="math display">\[
+f_Y(y) = \sum_{x \in \mathcal{X}} f_{X,Y}(x,y)
+\]</span></p>
+<p>This amounts to just adding up the joint pmf across all values of <span class="math inline">\(x\)</span> while holding <span class="math inline">\(y\)</span> fixed. A main takeaway from this property is the following: if you know the joint pmf of two random variables, then it implies that you know the pmf of each random variable individuals. Thus, if you know the joint pmf, it implies that you know more than if you only knew the marginal pmfs.</p></li>
+</ol>
+<div class="example">
+<p><span class="example">Example: </span>Suppose that you roll a die, and based on this roll, you create the following random variables.</p>
+<p><span class="math display">\[
+  X = \begin{cases} 0 \quad \textrm{if roll is 3 or lower} \\
+  1 \quad \textrm{if roll is greater than 3} \end{cases} \qquad Y = \begin{cases} 0 \quad \textrm{if roll is odd} \\
+  1 \quad \textrm{if roll is even} \end{cases}
+\]</span></p>
+<p>Let’s consider what values <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> take for different rolls:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>roll</strong></th>
+<th style="text-align: center;"><strong>X</strong></th>
+<th style="text-align: center;"><strong>Y</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Thus,</p>
+<p><span class="math display">\[
+\begin{aligned}
+  f_{X,Y}(0, 0) = \frac{2}{6} \qquad \qquad f_{X,Y}(0,1) = \frac{1}{6} \\
+  f_{X,Y}(1, 0) = \frac{1}{6} \qquad \qquad f_{X,Y}(1,1) = \frac{2}{6}
+\end{aligned}
+\]</span> and you can immediately see that the first two properties hold here. For the third property, suppose that we want to calculate <span class="math inline">\(f_Y(1)\)</span> (i.e., the probability that we roll an even number). The property says that we can calculate it <span class="math display">\[
+  \begin{aligned}
+  f_Y(1) &amp;= \sum_{x=0}^1 f_{X,Y}(x,1) \\
+  &amp;= f_{X,Y}(0,1) + f_{X,Y}(1,1) = \frac{1}{6} + \frac{2}{6} = \frac{1}{2}
+  \end{aligned}
+\]</span> which, as we know, is the right answer.</p>
+</div>
+<p><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <strong>independent</strong> if <span class="math inline">\(f_{Y|X}(y|x) = f_Y(y)\)</span>. In other words, if knowing the value of <span class="math inline">\(X\)</span> doesn’t provide any information about the distribution <span class="math inline">\(Y\)</span>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-programming_in_R.html" class="pagination-link" aria-label="Programming in R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-expectations.html" class="pagination-link" aria-label="Expectation, Variance, and More">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

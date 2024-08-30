@@ -1,0 +1,37 @@
+\usepackage{amsmath,amssymb,setspace}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\renewcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+    \def\independenT#1#2{\mathrel{\setbox0\hbox{$#1#2$}%
+    \copy0\kern-\wd0\mkern4mu\box0}}
+\newcommand{\N}{\mathcal{N}}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+\newtcolorbox{discussionbox}[1][]{sharp corners, enhanced, colback=white, attach title to upper,#1}
+\usepackage{bm}
+\newenvironment{definition}{\bigskip \noindent \textbf{Definition.} }{\bigskip}
+\newenvironment{proposition}{\bigskip  \noindent \textbf{Proposition:} }{\bigskip}
+\newenvironment{theorem}[1]{\bigskip  \noindent \textbf{#1:} }{\bigskip}
+\newenvironment{property}{\bigskip  \noindent \textbf{Property.} }{\bigskip}
+\newenvironment{proof}{\bigskip \noindent \textit{Proof:} }{\bigskip}
+\newenvironment{example}{\begin{discussionbox} {\color{teal} \textbf{Example:}}}{\end{discussionbox}}
+\newenvironment{sidecomment}{\begin{discussionbox} {\color{purple} \textbf{Side-Comment:}}}{\end{discussionbox}}
+\newenvironment{solution}{\begin{mdframed}[linewidth=0pt] \bigskip \bigskip \textbf{Solution:}  }
+{\bigskip \bigskip \bigskip \end{mdframed}}
+\newenvironment{rubric}{\begin{mdframed}[linewidth=0pt] \bigskip \bigskip \textbf{Rubric:}  }
+{\bigskip \bigskip \bigskip \end{mdframed}}

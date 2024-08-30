@@ -1,0 +1,103 @@
+# Concepts
+
+{{< include latex-commands.txt >}}
+
+For the remainder of the semester, we will talk about methods for understanding the **causal effect** of one variable on another.  
+
+Let's start with an example.  Suppose we were interested in understanding the causal effect of attending college on earnings.  We know a lot about calculating averages, so let's consider calculating average earnings of those who went to college and comparing that to the average earnings of those who didn't go to college.  Let's use the data that we used all the way back in Chapter 2 to make this calculation.
+
+```{r}
+load("us_data.RData")
+
+col_earnings <- mean(subset(us_data, educ >= 16)$incwage)
+non_col_earnings <- mean(subset(us_data, educ < 16)$incwage)
+
+round(data.frame(col_earnings, 
+                 non_col_earnings, 
+                 diff=(col_earnings-non_col_earnings)),3)
+```
+This seems to be a huge difference.  We are used to calling this difference a partial effect of going to college, but should we call it *the causal effect* or an average causal effect across individuals?  Probably no.  The main reason is that earnings of individuals who went to college may have been different from individuals that didn't go to college even if no one went to college.  Another way to say this is that there are a number of other things besides college that affect a person's earnings (age, race, IQ, "ability", "hardworking-ness", luck, etc.).  If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.
+
+Before we move on, let me give some more examples of causal questions that may be of interest to economists:
+
+- Causal effects of economic policies
+
+    - What was the causal effect of a country raising its interest rate on GDP or employment?
+    
+    - What was the causal effect of a change in the minimum wage on employment?
+    
+    - What was the causal effect of changing voter ID laws on the number of ballots cast?
+    
+- Causal effects of individual/firm choices
+    
+    - What was the causal effect of a price increase on quantity demanded?
+    
+    - What was the causal effect of changing a product attribute on some outcome of interest (e.g., changing the font type on clicks on Google ads)?
+    
+    - What was the causal effect of a new cholesterol medication on cholesterol levels?
+    
+    - What was the causal effect of a job training program on wages?
+
+You could easily come up with many others too.  A large fraction of the questions that researchers in economics try to address are ultimately about sorting out these sorts of causal effects.
+
+For terminology, we'll refer to the variable that we are interested in understanding its causal effect (going to college in the earlier example) as the **treatment**.  For simplicity, we will mostly focus on the case where the treatment is binary.  We will use $D_i$ to denote the treatment, so that $D_i=1$ if individual $i$ participates in the treatment and $D_i=0$ if individual $i$ does not participate in the treatment.
+
+Example: SW 13.3
+
+## Potential Outcomes
+
+SW 13.1
+
+A powerful tool for thinking about causal effects is **counterfactual reasoning**.  For individuals that participate in the treatment, we observe what their outcome is given that they participated in the treatment.  But we don't observe what their outcome would have been if they had not participated in the treatment.  For example, among those that went to college, we don't observe what their earnings would have been if they had not gone to college.  For those that don't participate in the treatment, we face the opposite problem --- we don't observe what their outcome would have been if they had participated in the treatment.  
+
+We'll relate causal inference to the problem of trying to figure out what outcomes individuals that participated in the treatment would have experienced if they had *not* participated in the treatment (at least on average) and/or figuring out what outcomes individuals that did not participated in the treatment would have experienced if they *had* participated in the treatment.
+
+To do this, let's introduce somewhat more formal notation/terminology.
+
+**Treated potential outcome**: $Y_i(1)$, the outcome an individual *would experience* if they participated in the treatment
+
+**Untreated potential outcome**: $Y_i(0)$, the outcome an individual *would experience* if they did not participate in the treatment
+
+For individuals that participate in the treatment, we observe $Y_i(1)$ (but not $Y_i(0)$).  For individuals that do not participate in the treatment, we observe $Y_i(0)$ (but not $Y_i(1)$).  Another way to write this is that the observed outcome, $Y_i$ is given by
+\begin{align*}
+  Y_i = D_i Y_i(1) + (1-D_i) Y_i(0)
+\end{align*}
+
+We can think about the individual-level effect of participating in the treatment:
+\begin{align*}
+  TE_i = Y_i(1) - Y_i(0)
+\end{align*}
+
+Considering the difference between treated and untreated potential outcomes is a very natural (and, I think, helpful) way to think about causality.  The causal effect of the treatment is the difference between the outcome that an individual would experience if they participate in the treatment relative to what they would experience if they did not participate in the treatment.
+
+This notation also makes it clear that we are allowing for **treatment effect heterogenity** --- the effect of participating in the treatment can vary across different individuals.
+
+That said, most researchers essentially give up on trying to figure out individual level treatment effects.  It is not so much that these are not interesting, more it is just that these are very hard to figure out.  Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person's earnings.  I went to college, so I know what my $Y(1)$ is, but I don't know what my $Y(0)$ is --- and, I'd even have a hard time coming with a good guess as to what it might be. 
+
+
+## Parameters of Interest
+
+Instead of going for individual-level effects of participating in the treatment, most researchers instead go for more aggregated parameters.  The two most common ones are the Average Treatment Effect (ATE) and Average Treatment Effect on the Treated (ATT).
+
+\begin{align*}
+  ATE = \E[Y(1) - Y(0)] \qquad \textrm{and} \qquad ATT = \E[Y(1)-Y(0) | D=1]
+\end{align*}
+$ATE$ is the difference between treated potential outcomes and untreated potential outcomes, on average, and for the entire population.  $ATT$ is the difference between treated and untreated potential outcomes, on average, conditional on being in the treated group.
+
+We will mostly focus on $ATT$.
+
+It is worth considering the challenges for learning about $ATT$.  In particular, notice that we can write
+\begin{align*}
+  ATT = \E[Y(1)|D=1] - \E[Y(0)|D=1]
+\end{align*}
+and consider these term separately
+
+* $\E[Y(1)|D=1]$ is the average treated potential outcome among the treated group.  But we observe treated potential outcomes for the treated group $\implies \E[Y(1)|D=1] = \E[Y|D=1]$.  In other words, if we want to estimate this component of the $ATT$, we can just look right at the data and compute the average outcome experienced by individuals in the treated group.
+
+* $\E[Y(0)|D=1]$ is the average untreated potential outcome among the treated group.  This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group.  But, in order to learn about the $ATT$, we will have to *somehow* deal with this term.  I will provide a number of strategies below, but it is important to remember that this is a major challenge, and their may not be a good solution.
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> I think it is also worth clearly pointing out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer.  In economics jargon, this amounts to an **identification problem** --- in other words, there may be competing theories of the world which the available data is not able to distinguish among.  I probably do not emphasize this issue enough in our class, but it is something that you should remember --- there may be a large number of causal questions that we'd be interested in answering, but where it is not possible to answer them (at least given the information that we have available).
+
+:::
