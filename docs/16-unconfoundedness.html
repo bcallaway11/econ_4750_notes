@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Brantly Callaway">
 
-<title>Detailed Course Notes for ECON 4750</title>
+<title>17&nbsp; Unconfoundedness – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-introduction_to_R.html" rel="next">
+<link href="./17-quasi_experiments.html" rel="next">
+<link href="./15-experiments.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="4750_style.css">
 </head>
@@ -82,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-unconfoundedness.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -237,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-unconfoundedness.html" class="sidebar-item-text sidebar-link">
+  <a href="./16-unconfoundedness.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></span></a>
   </div>
 </li>
@@ -252,43 +281,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#what-is-this" id="toc-what-is-this" class="nav-link" data-scroll-target="#what-is-this"><span class="header-section-number">1.1</span> What is this?</a></li>
-  <li><a href="#what-is-this-not" id="toc-what-is-this-not" class="nav-link" data-scroll-target="#what-is-this-not"><span class="header-section-number">1.2</span> What is this not?</a></li>
-  <li><a href="#why-did-i-write-this" id="toc-why-did-i-write-this" class="nav-link" data-scroll-target="#why-did-i-write-this"><span class="header-section-number">1.3</span> Why did I write this?</a></li>
-  <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references"><span class="header-section-number">1.4</span> Additional References</a></li>
-  <li><a href="#goals-for-the-course" id="toc-goals-for-the-course" class="nav-link" data-scroll-target="#goals-for-the-course"><span class="header-section-number">1.5</span> Goals for the Course</a></li>
-  <li><a href="#studying-for-the-class" id="toc-studying-for-the-class" class="nav-link" data-scroll-target="#studying-for-the-class"><span class="header-section-number">1.6</span> Studying for the Class</a></li>
-  <li><a href="#data-used-in-the-course" id="toc-data-used-in-the-course" class="nav-link" data-scroll-target="#data-used-in-the-course"><span class="header-section-number">1.7</span> Data Used in the Course</a></li>
-  <li><a href="#first-week-of-class" id="toc-first-week-of-class" class="nav-link" data-scroll-target="#first-week-of-class"><span class="header-section-number">1.8</span> First Week of Class</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Detailed Course Notes for ECON 4750</h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Brantly Callaway </p>
-          </div>
-  </div>
     
   
     
@@ -299,216 +306,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>These are a set of detailed course notes for ECON 4750 at UGA. They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the <a href="https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&amp;keywords=stock+and+watson&amp;qid=1618424276&amp;s=books&amp;sr=1-1">Stock and Watson</a> textbook serves as the other main reference for the course.</p>
-<p>These notes have improved drastically over the course of several years. However, they are a work in progress and have not been professionally edited or anything like that…so it is possible that there are some mistakes (if you find any, please let me know). That said, I hope you will find this to be a useful resource this semester.</p>
-<section id="what-is-this" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-this"><span class="header-section-number">1.1</span> What is this?</h2>
-<p>In previous years, I used to provide these notes as supplementary material for the textbook. Now, I think that there is enough detail here that it can be used as a main reference for the course. And, for example, there are several topics that we will cover in class in substantially more detail than in the textbook.</p>
-<p>The material provided here can also be useful as a quasi-study guide. In particular, the notes cover pretty much exactly what we will be able to cover in a one semester course. In some ways, covering less material relative to the textbook can (in my view) make things easier for students. The notes also provide cross-references to the corresponding section in the textbook. For some topics here, I provide substantially less detail than the book; this may help you when it comes to studying as it may give you a sense of the material I see as being most important. In addition, there are additional practice questions (some with answers) provided at the end of each section.</p>
-</section>
-<section id="what-is-this-not" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-this-not"><span class="header-section-number">1.2</span> What is this not?</h2>
-<p>There are a couple of things that I want to explicitly say that this material is not. These include:</p>
+<p><span class="math display">\[
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
+\]</span></p>
+<p>SW 6.8, SW Ch. 9</p>
+<p>Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we’d be interested in studying. For example, it’s hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of.</p>
+<p>For the remainder of this chapter, we’ll discuss common approaches to causal inference when the treatment is not randomly assigned. We’ll start with what is probably the most common approach: <strong>unconfoundedness</strong>.</p>
+<p><strong>Unconfoundedness Assumption</strong>: <span class="math display">\[\begin{align*}
+  (Y(1),Y(0)) \independent D | X
+\end{align*}\]</span> You can think of this as saying that, among individuals with the same covariates <span class="math inline">\(X\)</span>, they have the same distributions of potential outcomes regardless of whether or not they participate in the treatment. Note that the distribution of <span class="math inline">\(X\)</span> is still allowed to be different between the treated and untreated groups. In other words, after you condition on covariates, there is nothing special (in terms of the distributions of potential outcomes) about the group that participates in the treatment relative to the group that doesn’t participate in the treatment.</p>
 <ul>
-<li><p>A substitute for coming to class — I will take attendance anyway, but not attending class and relying on this material is not a good plan. Please do not do this.</p></li>
-<li><p>A full substitute for the textbook — In a number of places, the textbook contains substantially more details than I am able to provide here. In my experience, it is also useful to have different “voices” that you can refer to (e.g., you may find my explanation unclear but may find the textbook much clearer). The textbook also contains substantially more material than what I provide in these notes. If there are additional topics in the textbook that we do not cover that you would like to learn about, these should all be understandable for you by the end of this semester.</p></li>
-<li><p>Sufficient for making good grades on exams — I don’t suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams. I think this material should be helpful and perhaps even a good starting point when it comes to studying, but it is not sufficient for making a good grade in the class.</p></li>
+<li>This is potentially a strong assumption. In order to believe this assumption, you need to believe that untreated individuals with the same characteristics can deliver, on average, the outcome that individuals in the treated group would have experienced if they had not participated in the treatment. In math, you can write this as <span class="math display">\[\begin{align*}
+    \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
+  \end{align*}\]</span></li>
 </ul>
-</section>
-<section id="why-did-i-write-this" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="why-did-i-write-this"><span class="header-section-number">1.3</span> Why did I write this?</h2>
-<p>I have a strong opinion about the best order to teach the material in ECON 4750. And, although, there are a number of advanced undergraduate textbooks in Econometrics that I like and reference as I teach the course, none of them go in the same order that I would like to teach. Therefore, I think one way that I can both go in the order that I want to during the semester without confusing you (the student) too much is to provide a detailed set of references to material that we are covering throughout the semester.</p>
-<p>The book that I strongly suggest for the course is <a href="https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&amp;keywords=stock+and+watson&amp;qid=1618424276&amp;s=books&amp;sr=1-1">Stock and Watson</a>. <!--I think this is a really great book, but, unfortunately, it is quite expensive --- at the moment, it costs \$172 on Amazon.  My longer term goal for these notes is to make it possible to, say, buy an older edition of this sort of textbook while still being able to follow the course, do the homework problems, etc.  At the moment, I am not there yet; I don't think it is possible to complete the course without buying the textbook, but hopefully, this will be available over the coming years.  For this reason too, I also sincerely welcome and appreciate comments or suggestions about these notes.--> By the end of the semester, we will have covered in much detail the first 14 chapters of the textbook (and some topics we will have covered in substantially more detail than in the textbook). If I had more time, the next topic that I would cover in this course would be Time Series Econometrics. I used to cover this material in the current course, but I have found that I am happier with the tradeoff of understanding slightly fewer topics better relative to covering more topics but at a faster pace. Time series is especially important for students who are interested in macroeconomics or finance. Fortunately, we offer a time series econometrics course, and, if you take it, you should be well prepared for it coming out of this course.</p>
-</section>
-<section id="additional-references" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="additional-references"><span class="header-section-number">1.4</span> Additional References</h2>
-<p>These are all free to download; they are not main textbooks but I sometimes consult them for the class and could potentially be useful for you to consult in the future:</p>
-<ol type="1">
-<li><p>For R programming: <a href="https://www.econometrics-with-r.org/">Introduction to Econometrics</a> with R, by Cristoph Hanck, Martin Arnold, Alexander Gerber, and Martin Schmelzer</p></li>
-<li><p>For prediction/machine learning: <a href="https://faculty.marshall.usc.edu/gareth-james/ISL/">An Introduction to Statistical Learning</a>, by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani</p></li>
-<li><p>For causal inference: <a href="http://scunning.com/mixtape.html">Causal Inference: The Mixtape</a>, by Scott Cunningham</p></li>
-</ol>
-<p><strong>Additional R References:</strong></p>
-<p>There are tons of free R resources available online. Here are some that seem particularly useful to me.</p>
-<ol type="1">
-<li><p>Manageable Introduction: <a href="https://sjspielman.github.io/datascience_for_biologists/tutorials/introduction_to_R.html">Introduction to R and RStudio</a>, by Stephanie Spielman</p></li>
-<li><p>Full length book: <a href="(https://rafalab.github.io/dsbook/)">Introduction to Data Science: Data Analysis and Prediction Algorithms with R</a>, by Rafael Irizarry (this is way more than you will need for this course, but I suggest checking out Chapters 1, 2, 3, and 5, and there’s plenty more that you might find interesting).</p></li>
-<li><p>Full length book: <a href="https://stat545.com/">STAT 545: Data Wrangling, exploration, and analysis with R</a>, by Jenny Bryan</p></li>
-</ol>
-</section>
-<section id="goals-for-the-course" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="goals-for-the-course"><span class="header-section-number">1.5</span> Goals for the Course</h2>
-<p>I have three high level goals — that by the end of the semester, students should be able to</p>
-<ol type="1">
-<li><p>Run regressions and be able to interpret them (this includes even complex regressions) and also be able to think through which regression you <em>ought</em> to run</p></li>
-<li><p>Use data in order to be able to predict outcomes of interest</p></li>
-<li><p>Be able to think clearly about when statistical results can be interpreted as causal effects.</p></li>
-</ol>
-<p>In order to make progress towards these three goals, we also will need to learn about two additional topics:</p>
-<ul>
-<li><p>Statistical Programming</p></li>
-<li><p>Probability and Statistics</p></li>
-</ul>
-<p>We’ll start the course off talking about these two topics. Perhaps this will be review material for some of you, but I have found that it is worth it to spend several weeks getting everyone on the same page with respect to these topics.</p>
-</section>
-<section id="studying-for-the-class" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="studying-for-the-class"><span class="header-section-number">1.6</span> Studying for the Class</h2>
-<p>Students ask me all the time “How should I study for your class?” My advice (and I think this applies to most classes, not just my class) is for you to start by studying the notes from class. The things that I have discussed in class are the things that I think are most important for you learn in this sort of class and are the material that will be covered on the exam. That said, it may sometimes be the case that you do not fully understand a lecture or the notes that you took from a lecture when you are studying (this certainly applied to me when I was a student). If there are places that you do not understand what the notes mean, then I think that is the time when you should find the relevant portion of the textbook (or supplementary notes provided here) in order to “supplement” what the notes say.</p>
-</section>
-<section id="data-used-in-the-course" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="data-used-in-the-course"><span class="header-section-number">1.7</span> Data Used in the Course</h2>
-<p>The following provides the full list of data that we will use this semester. Some of the links below are to data posted on my website; others point to data hosted externally (if you notice any broken links, please let me know).</p>
-<ul>
-<li><p><code>acs</code></p>
-<ul>
-<li><p>Data from the 2019 American Community Survey about Education and Earnings</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Airq</code></p>
-<ul>
-<li><p>Data about air quality in California counties in 1972.</p></li>
-<li><p>Access: `data(Airq, package=“Ecdat”)</p></li>
-<li><p>Description: <code>?Ecdat::Airq</code></p></li>
-</ul></li>
-<li><p><code>AJR</code></p>
-<ul>
-<li><p>Data about GDP, institutions, and settler mortality</p></li>
-<li><p>Access: `data(AJR, package=“hdm”)</p></li>
-<li><p>Description: <code>?hdm::AJR</code></p></li>
-</ul></li>
-<li><p><code>banks</code></p>
-<ul>
-<li><p>Data about bank closures in Mississippi during the Great Depression</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Birthweight_Smoking</code></p>
-<ul>
-<li><p>Data about infant birthweights and mother’s smoking from PA 1989</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf">Mark Watson’s website</a></p></li>
-</ul></li>
-<li><p><code>Caschool</code></p>
-<ul>
-<li><p>School-level test score data from California in 1998-1999</p></li>
-<li><p>Access: <code>data(Caschool, package="Ecdat")</code></p></li>
-<li><p>Description: <code>?Ecdat::Caschool</code></p></li>
-</ul></li>
-<li><p><code>diamond_train</code></p>
-<ul>
-<li><p>Data about diamond prices. The full version of this data I got from Kaggle, and then I split it into training and testing data.</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: A description of each column in the data is available under the <code>Description</code> tab on <a href="https://www.kaggle.com/shivam2503/diamonds/">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>diamond_test</code></p>
-<ul>
-<li><p>Out of sample version of <code>diamond_train</code> data</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: A description of each column in the data is available under the <code>Description</code> tab on <a href="https://www.kaggle.com/shivam2503/diamonds/">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>Fair</code></p>
-<ul>
-<li><p>Individual-level data about affairs in the United States</p></li>
-<li><p>Access: <code>data(Fair, package="Ecdat")</code></p></li>
-<li><p>Description: <code>?Ecdat::Fair</code></p></li>
-</ul></li>
-<li><p><code>Fatalities</code></p>
-<ul>
-<li><p>State-level panel data about drunk driving laws and traffic fatalities</p></li>
-<li><p>Access: `data(Fatality, package=“AER”)</p></li>
-<li><p>Description: <code>?AER::Fatality</code></p></li>
-</ul></li>
-<li><p><code>fertilizer_2000</code></p>
-<ul>
-<li><p>Country-level data about fertilizer and crop yields from the year 2000. See description of <code>fertilizer_panel</code> below for more details</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>fertilizer_panel</code></p>
-<ul>
-<li><p>Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries. This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. “Fertilizing growth: Agricultural inputs and their effects in economic development.” Journal of Development Economics 127 (2017): 133-152. url: <a href="https://doi.org/10.1016/j.jdeveco.2017.02.007">https://doi.org/10.1016/j.jdeveco.2017.02.007</a>.</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>house</code></p>
-<ul>
-<li><p>U.S. House of Representatives elections data from 1946-1998</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>intergenerational_mobility</code></p>
-<ul>
-<li><p>Intergenerational mobility data from PSID</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Lead_Mortality</code></p>
-<ul>
-<li><p>Infant mortality and lead pipes in 1900</p></li>
-<li><p>Access: Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf">Mark Watson’s website</a></p></li>
-</ul></li>
-<li><p><code>mlda</code></p>
-<ul>
-<li><p>Car accident deaths by age group</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>mroz</code></p>
-<ul>
-<li><p>Labor force particpation of married women</p></li>
-<li><p>Access: <code>data(mroz, package="wooldridge")</code></p></li>
-<li><p>Description: <code>?wooldridge::mroz</code></p></li>
-</ul></li>
-<li><p><code>mutual_funds</code></p>
-<ul>
-<li><p>Mutual fund performance data</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>rand_hie</code></p>
-<ul>
-<li><p>RAND health insurance experiment</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Star</code></p>
-<ul>
-<li><p>Data from Project STAR that randomly assigned some students to smaller class sizes</p></li>
-<li><p>Access: `data(Star, package=“Ecdat”)</p></li>
-<li><p>Description: <code>?Ecdat::Star</code></p></li>
-</ul></li>
-<li><p><code>titanic_training</code></p>
-<ul>
-<li><p>Passenger level data on surviving Titanic. This data is a slightly adapted version of the <code>titanic</code> data on <a href="https://www.kaggle.com/c/titanic">Kaggle</a></p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>titanic_testing</code></p>
-<ul>
-<li><p>Out of sample version of <code>titanic_training</code> data</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>us_data</code></p>
-<ul>
-<li><p>Data from the 2019 American Community Survey via IPUMS</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/">Course Website</a></p></li>
-</ul></li>
-</ul>
-</section>
-<section id="first-week-of-class" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="first-week-of-class"><span class="header-section-number">1.8</span> First Week of Class</h2>
-<p>Related Reading: SW All of Chapter 1</p>
-<p>In the first few classes, we will talk at very high level about the objectives of Econometrics.</p>
+<p>If you are willing to believe this assumption, then you can recover the <span class="math inline">\(ATT\)</span>. There are a few different ways that you could implement this. Probably the most common (and convenient) way is to link this condition to a regression (just like we did in the previous section on experiments).</p>
+<p>To do this, let’s continue to make the treatment effect homogeneity assumption as above. In addition, let’s assume a linear model for untreated potential outcomes <span class="math display">\[\begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}\]</span> and unconfoundedness implies that <span class="math inline">\(\E[U|X_1,X_2,X_3,D] = 0\)</span> (the conditioning on <span class="math inline">\(D\)</span> is the unconfoundedness part). Now, recalling the definition of the observed outcome, we can write <span class="math display">\[\begin{align*}
+  Y_i &amp;= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &amp;= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &amp;= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
+\end{align*}\]</span> which suggests running the regression of observed <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1,X_2,X_3,\)</span> and <span class="math inline">\(D\)</span> and interpreting the estimate of <span class="math inline">\(\alpha\)</span> as the causal effect of participating in the treatment. In practice, this will be very similar to what we have done before — so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.</p>
+<p>As a final comment, the assumption of treatment effect homogeneity is not quite so innocuous here. It turns out that you can show that, in the presence of treatment effect heterogeneity, <span class="math inline">\(\alpha\)</span> will be equal to a weighted average of individual treatment effects, but the weights can sometimes be “strange”. There are methods that are robust to treatment effect heterogeneity (they are beyond the scope of the current class, but they are not “way” more difficult than what we are doing here). That said, in my experience, the regression estimators (under treatment effect homogeneity) tend to deliver similar estimates to alternative estimators that are robust to treatment effect heterogeneity at least in the setup considered in this section.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -933,10 +771,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./15-experiments.html" class="pagination-link" aria-label="Experiments">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-introduction_to_R.html" class="pagination-link" aria-label="Introduction to R">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./17-quasi_experiments.html" class="pagination-link" aria-label="Quasi-Experiments">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Quasi-Experiments</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
