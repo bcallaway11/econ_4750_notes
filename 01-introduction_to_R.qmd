@@ -1,6 +1,6 @@
 # Introduction to R
 
-{{< include latex-commands.txt >}}
+{{< include_if_html >}}
 
 We will learn a lot more about statistical programming this semester, but we'll start with a crash course on `R` with the idea of getting you up-and-running.
 

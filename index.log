@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.14)  28 AUG 2024 16:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.9.29)  11 OCT 2024 10:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **index.tex
 (./index.tex
 LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-07-20>
+L3 programming layer <2024-09-10>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/koma-script/scrreprt.cls
 Document Class: scrreprt 2023/07/07 v3.41 KOMA-Script document class (report)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/koma-script/scrkbase.sty
@@ -328,7 +328,7 @@ Package: longtable 2024-04-26 v4.20 Multi-page Table package (DPC)
 \c@LT@chunks=\count292
 \LT@p@ftn=\toks27
 )
-Class scrreprt Info: longtable captions redefined on input line 112.
+Class scrreprt Info: longtable captions redefined on input line 98.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen157
@@ -387,151 +387,6 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
 )
 \Gin@req@height=\dimen175
 \Gin@req@width=\dimen176
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count300
-\float@exts=\toks30
-\float@box=\box66
-\@float@everytoks=\toks31
-\@floatcapt=\box67
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/tabularray/tabularray.sty (/usr
-/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-07-20 L3 programming layer (loader) 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count301
-\l__pdf_internal_box=\box68
-))
-Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
-\l__tblr_a_int=\count302
-\l__tblr_c_int=\count303
-\l__tblr_r_int=\count304
-\l__tblr_d_dim=\dimen177
-\l__tblr_h_dim=\dimen178
-\l__tblr_o_dim=\dimen179
-\l__tblr_p_dim=\dimen180
-\l__tblr_q_dim=\dimen181
-\l__tblr_r_dim=\dimen182
-\l__tblr_s_dim=\dimen183
-\l__tblr_t_dim=\dimen184
-\l__tblr_v_dim=\dimen185
-\l__tblr_w_dim=\dimen186
-\l__tblr_a_box=\box69
-\l__tblr_b_box=\box70
-\l__tblr_c_box=\box71
-\l__tblr_d_box=\box72
-\g__tblr_table_count_int=\count305
-\c@rownum=\count306
-\c@colnum=\count307
-\c@rowcount=\count308
-\c@colcount=\count309
-\abovesep=\dimen187
-\belowsep=\dimen188
-\leftsep=\dimen189
-\rightsep=\dimen190
-\g_tblr_level_int=\count310
-\g__tblr_data_row_key_count_int=\count311
-\g__tblr_data_column_key_count_int=\count312
-\g__tblr_data_cell_key_count_int=\count313
-\g__tblr_array_int=\count314
-\l__tblr_key_count_int=\count315
-\l__tblr_key_quotient_int=\count316
-\l__tblr_key_quotient_two_int=\count317
-\l__tblr_key_remainder_int=\count318
-\g__tblr_data_str_value_count_int=\count319
-\rulewidth=\dimen191
-\l__tblr_strut_dp_dim=\dimen192
-\l__tblr_strut_ht_dim=\dimen193
-\g__tblr_cell_wd_dim=\dimen194
-\g__tblr_cell_ht_dim=\dimen195
-\g__tblr_cell_head_dim=\dimen196
-\g__tblr_cell_foot_dim=\dimen197
-\l__column_target_dim=\dimen198
-\l__tblr_caption_box=\box73
-\l__tblr_caption_left_box=\box74
-\l__tblr_row_head_box=\box75
-\l__tblr_row_foot_box=\box76
-\l__tblr_row_head_foot_dim=\dimen199
-\tablewidth=\dimen256
-\l__tblr_table_firsthead_box=\box77
-\l__tblr_table_middlehead_box=\box78
-\l__tblr_table_lasthead_box=\box79
-\l__tblr_table_firstfoot_box=\box80
-\l__tblr_table_middlefoot_box=\box81
-\l__tblr_table_lastfoot_box=\box82
-\l__tblr_remain_height_dim=\dimen257
-\l__tblr_long_from_int=\count320
-\l__tblr_long_to_int=\count321
-\l__tblr_curr_i_int=\count322
-\l__tblr_prev_i_int=\count323
-\l__tblr_table_page_int=\count324
-\l__tblr_table_head_box=\box83
-\l__tblr_table_foot_box=\box84
-\l__tblr_table_head_foot_dim=\dimen258
-\l__tblr_table_head_body_foot_dim=\dimen259
-\l__tblr_table_box=\box85
-\l__tblr_table_hlines_box=\box86
-\l__tblr_hline_box=\box87
-\l__tblr_row_box=\box88
-\l__tblr_col_o_wd_dim=\dimen260
-\l__tblr_col_b_wd_dim=\dimen261
-\l__tblr_hline_leftskip_dim=\dimen262
-\l__tblr_hline_rightskip_dim=\dimen263
-\l__tblr_row_ht_dim=\dimen264
-\l__tblr_row_dp_dim=\dimen265
-\l__tblr_row_abovesep_dim=\dimen266
-\l__tblr_row_belowsep_dim=\dimen267
-\l__tblr_row_vlines_box=\box89
-\l__tblr_vline_box=\box90
-\l__tblr_cell_box=\box91
-\l__row_upper_dim=\dimen268
-\l__row_lower_dim=\dimen269
-\l__row_vpace_dim=\dimen270
-\l__tblr_vline_aboveskip_dim=\dimen271
-\l__tblr_vline_belowskip_dim=\dimen272
-\l__tblr_cell_wd_dim=\dimen273
-\l__tblr_cell_ht_dim=\dimen274
-\l__tblr_diag_box=\box92
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box93
-\UL@hyphenbox=\box94
-\UL@skip=\skip80
-\UL@hook=\toks32
-\UL@height=\dimen275
-\UL@pe=\count325
-\UL@pixel=\dimen276
-\ULC@box=\box95
-Package: ulem 2019/11/18
-\ULdepth=\dimen277
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
-Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count326
-\l__siunitx_number_exponent_fixed_int=\count327
-\l__siunitx_number_min_decimal_int=\count328
-\l__siunitx_number_min_integer_int=\count329
-\l__siunitx_number_round_precision_int=\count330
-\l__siunitx_number_lower_threshold_int=\count331
-\l__siunitx_number_upper_threshold_int=\count332
-\l__siunitx_number_group_first_int=\count333
-\l__siunitx_number_group_size_int=\count334
-\l__siunitx_number_group_minimum_int=\count335
-\l__siunitx_angle_tmp_dim=\dimen278
-\l__siunitx_angle_marker_box=\box96
-\l__siunitx_angle_unit_box=\box97
-\l__siunitx_compound_count_int=\count336
-\l__siunitx_table_tmp_box=\box98
-\l__siunitx_table_tmp_dim=\dimen279
-\l__siunitx_table_column_width_dim=\dimen280
-\l__siunitx_table_integer_box=\box99
-\l__siunitx_table_decimal_box=\box100
-\l__siunitx_table_uncert_box=\box101
-\l__siunitx_table_before_box=\box102
-\l__siunitx_table_after_box=\box103
-\l__siunitx_table_before_dim=\dimen281
-\l__siunitx_table_carry_dim=\dimen282
-\l__siunitx_unit_tmp_int=\count337
-\l__siunitx_unit_position_int=\count338
-\l__siunitx_unit_total_int=\count339
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -566,14 +421,14 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count340
+\c@section@level=\count300
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen283
-\Hy@linkcounter=\count341
-\Hy@pagecounter=\count342
+\@linkdim=\dimen177
+\Hy@linkcounter=\count301
+\Hy@pagecounter=\count302
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -581,7 +436,7 @@ Now handling font encoding PD1 ...
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count343
+\Hy@SavedSpaceFactor=\count303
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -595,22 +450,22 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count344
+\c@Hy@tempcnt=\count304
 (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen284
+\XeTeXLinkMargin=\dimen178
 (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count345
-\Field@Width=\dimen285
-\Fld@charsize=\dimen286
+\Fld@menulength=\count305
+\Field@Width=\dimen179
+\Fld@charsize=\dimen180
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -622,9 +477,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count346
-\c@Item=\count347
-\c@Hfootnote=\count348
+\Hy@abspage=\count306
+\c@Item=\count307
+\c@Hfootnote=\count308
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -634,8 +489,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count349
-\c@bookmark@seq@number=\count350
+\Fld@listcount=\count309
+\c@bookmark@seq@number=\count310
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
@@ -646,100 +501,110 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip81
+\Hy@SectionHShift=\skip80
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
-\BKM@id=\count351
+\BKM@id=\count311
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen287
-\captionmargin=\dimen288
-\caption@leftmargin=\dimen289
-\caption@rightmargin=\dimen290
-\caption@width=\dimen291
-\caption@indent=\dimen292
-\caption@parindent=\dimen293
-\caption@hangindent=\dimen294
+\caption@tempdima=\dimen181
+\captionmargin=\dimen182
+\caption@leftmargin=\dimen183
+\caption@rightmargin=\dimen184
+\caption@width=\dimen185
+\caption@indent=\dimen186
+\caption@parindent=\dimen187
+\caption@hangindent=\dimen188
 Package caption Info: KOMA-Script document class detected.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption-koma.sto
 File: caption-koma.sto 2023/09/08 v2.0e Adaption of the caption package to the 
 KOMA-Script document classes (AR)
 ))
-\c@caption@flags=\count352
-\c@continuedfloat=\count353
-Package caption Info: float package is loaded.
+\c@caption@flags=\count312
+\c@continuedfloat=\count313
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: KOMA-Script scrextend package detected.
-\caption@addmargin@hsize=\dimen295
-\caption@addmargin@linewidth=\dimen296
+\caption@addmargin@hsize=\dimen189
+\caption@addmargin@linewidth=\dimen190
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count314
+\float@exts=\toks30
+\float@box=\box66
+\@float@everytoks=\toks31
+\@floatcapt=\box67
 )
-\@float@every@codelisting=\toks33
-\c@codelisting=\count354
+\@float@every@codelisting=\toks32
+\c@codelisting=\count315
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count355
+\c@subfigure=\count316
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count356
+\c@subtable=\count317
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 205.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 21
-2.
+Package hyperref Info: Option `colorlinks' set `true' on input line 181.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 18
+7.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count318
+\l__pdf_internal_box=\box68
 )
 No file index.aux.
 \openout1 = `index.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 212.
-LaTeX Font Info:    ... okay on input line 212.
-Package scrbase Info: activating english \abstractname on input line 212.
-Package scrbase Info: activating english \partname on input line 212.
-Package scrbase Info: activating english \chaptername on input line 212.
-Package scrbase Info: activating english \appendixname on input line 212.
-Package scrbase Info: activating english \figurename on input line 212.
-Package scrbase Info: activating english \tablename on input line 212.
-Package scrbase Info: activating english \contentsname on input line 212.
-Package scrbase Info: activating english \listfigurename on input line 212.
-Package scrbase Info: activating english \listtablename on input line 212.
-Package scrbase Info: activating english \bibname on input line 212.
-Package scrbase Info: activating english \indexname on input line 212.
-LaTeX Info: Redefining \microtypecontext on input line 212.
-Package microtype Info: Applying patch `item' on input line 212.
-Package microtype Info: Applying patch `toc' on input line 212.
-Package microtype Info: Applying patch `eqnum' on input line 212.
-Package microtype Info: Applying patch `footnote' on input line 212.
-Package microtype Info: Applying patch `verbatim' on input line 212.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 187.
+LaTeX Font Info:    ... okay on input line 187.
+Package scrbase Info: activating english \abstractname on input line 187.
+Package scrbase Info: activating english \partname on input line 187.
+Package scrbase Info: activating english \chaptername on input line 187.
+Package scrbase Info: activating english \appendixname on input line 187.
+Package scrbase Info: activating english \figurename on input line 187.
+Package scrbase Info: activating english \tablename on input line 187.
+Package scrbase Info: activating english \contentsname on input line 187.
+Package scrbase Info: activating english \listfigurename on input line 187.
+Package scrbase Info: activating english \listtablename on input line 187.
+Package scrbase Info: activating english \bibname on input line 187.
+Package scrbase Info: activating english \indexname on input line 187.
+LaTeX Info: Redefining \microtypecontext on input line 187.
+Package microtype Info: Applying patch `item' on input line 187.
+Package microtype Info: Applying patch `toc' on input line 187.
+Package microtype Info: Applying patch `eqnum' on input line 187.
+Package microtype Info: Applying patch `footnote' on input line 187.
+Package microtype Info: Applying patch `verbatim' on input line 187.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 212.
+LaTeX Info: Redefining \showhyphens on input line 187.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -748,17 +613,17 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 ) (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count357
-\scratchdimen=\dimen297
-\scratchbox=\box104
-\nofMPsegments=\count358
-\nofMParguments=\count359
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count360
-\MPscratchDim=\dimen298
-\MPnumerator=\count361
-\makeMPintoPDFobject=\count362
-\everyMPtoPDFconversion=\toks35
+\scratchcounter=\count319
+\scratchdimen=\dimen191
+\scratchbox=\box69
+\nofMPsegments=\count320
+\nofMParguments=\count321
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count322
+\MPscratchDim=\dimen192
+\MPnumerator=\count323
+\makeMPintoPDFobject=\count324
+\everyMPtoPDFconversion=\toks34
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -766,16 +631,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/ninecolors/ninecolors.sty
-Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
-(/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2024-05-08 L3 Experimental document command parser
 ))
-Package hyperref Info: Link coloring ON on input line 212.
+Package hyperref Info: Link coloring ON on input line 187.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 2
-14.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
+89.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -783,40 +645,40 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-14.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+89.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-14.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+89.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-214.
+189.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-214.
+189.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 214.
+(Font)              <14.4> on input line 189.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 214.
+(Font)              <10> on input line 189.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 214.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 214
+(Font)              <7> on input line 189.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 189
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 214
+LaTeX Font Info:    Trying to load font information for U+msb on input line 189
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -830,8 +692,8 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-Package tocbasic Info: character protrusion at toc deactivated on input line 21
-9.
+Package tocbasic Info: character protrusion at toc deactivated on input line 19
+4.
 No file index.toc.
 \tf@toc=\write4
 \openout4 = `index.toc'.
@@ -858,7 +720,7 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              deprecated \float@addtolist interface.
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-64.
+38.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -870,8 +732,8 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 [4]
 
 [5]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
-14.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
+86.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -880,11 +742,11 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 [7]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 574.
+(Font)              <10.95> on input line 554.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 574.
+(Font)              <8> on input line 554.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 574.
+(Font)              <6> on input line 554.
 
 
 [8]
@@ -895,7 +757,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 part I.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 749.
+(scrkbase)              on input line 729.
 
 
 [11
@@ -904,355 +766,25 @@ Package scrkbase Info: You've told me to use the font selection of the element
 part II.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 751.
+(scrkbase)              on input line 731.
 
 
 [12
 
 ]
 chapter 2.
-
-
-[13
-
-]
-
-[14]
-<open_rstudio.png, id=143, 1300.86pt x 745.78625pt>
-File: open_rstudio.png Graphic file (type png)
-<use open_rstudio.png>
-Package pdftex.def Info: open_rstudio.png  used on input line 873.
-(pdftex.def)             Requested size: 446.75269pt x 256.12442pt.
-
-Overfull \hbox (10.94264pt too wide) in paragraph at lines 873--874
-[][] 
- []
-
-<rstudio_script.png, id=145, 1300.86pt x 745.78625pt>
-File: rstudio_script.png Graphic file (type png)
-<use rstudio_script.png>
-Package pdftex.def Info: rstudio_script.png  used on input line 881.
-(pdftex.def)             Requested size: 446.75269pt x 256.12442pt.
-
-Overfull \hbox (10.94264pt too wide) in paragraph at lines 881--882
-[][] 
- []
-
-
-
-[15 <./open_rstudio.png>]
-
-[16 <./rstudio_script.png>]
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-978.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-
-[17]
-
-[18]
-
-[19{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
-<rstudio_environment.png, id=176, 1300.86pt x 745.78625pt>
-File: rstudio_environment.png Graphic file (type png)
-<use rstudio_environment.png>
-Package pdftex.def Info: rstudio_environment.png  used on input line 1141.
-(pdftex.def)             Requested size: 446.75269pt x 256.12442pt.
-
-Overfull \hbox (10.94264pt too wide) in paragraph at lines 1141--1142
-[][] 
- []
-
-
-
-[20{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./rst
-udio_environment.png>]
-Underfull \hbox (badness 1264) in paragraph at lines 1172--1176
-[]\T1/lmr/m/n/10.95 (+20) On the course web-site, I posted three files \T1/lmtt
-/m/n/10.95 firm.data.csv\T1/lmr/m/n/10.95 (+20) , \T1/lmtt/m/n/10.95 firm_data.
-RData\T1/lmr/m/n/10.95 (+20) , and
- []
-
-<set_wd.png, id=184, 1850.915pt x 1175.39125pt>
-File: set_wd.png Graphic file (type png)
-<use set_wd.png>
-Package pdftex.def Info: set_wd.png  used on input line 1190.
-(pdftex.def)             Requested size: 446.74228pt x 283.69588pt.
-
-Overfull \hbox (10.93224pt too wide) in paragraph at lines 1190--1191
-[][] 
- []
-
-
-
-[21]
-<set_wd2.png, id=190, 1857.94125pt x 1177.39874pt>
-File: set_wd2.png Graphic file (type png)
-<use set_wd2.png>
-Package pdftex.def Info: set_wd2.png  used on input line 1201.
-(pdftex.def)             Requested size: 446.76552pt x 283.12044pt.
-
-Overfull \hbox (10.95547pt too wide) in paragraph at lines 1201--1202
-[][] 
- []
-
-
-
-[22 <./set_wd.png>]
-<set_wd3.png, id=196, 1857.94125pt x 1177.39874pt>
-File: set_wd3.png Graphic file (type png)
-<use set_wd3.png>
-Package pdftex.def Info: set_wd3.png  used on input line 1212.
-(pdftex.def)             Requested size: 446.76552pt x 283.12044pt.
-
-Overfull \hbox (10.95547pt too wide) in paragraph at lines 1212--1213
-[][] 
- []
-
-
-
-[23 <./set_wd2.png>]
-<import_data.png, id=202, 1857.94125pt x 1177.39874pt>
-File: import_data.png Graphic file (type png)
-<use import_data.png>
-Package pdftex.def Info: import_data.png  used on input line 1226.
-(pdftex.def)             Requested size: 446.76552pt x 283.12044pt.
-
-Overfull \hbox (10.95547pt too wide) in paragraph at lines 1226--1227
-[][] 
- []
-
-
-
-[24 <./set_wd3.png>]
-<import_data2.png, id=208, 1857.94125pt x 1177.39874pt>
-File: import_data2.png Graphic file (type png)
-<use import_data2.png>
-Package pdftex.def Info: import_data2.png  used on input line 1235.
-(pdftex.def)             Requested size: 446.76552pt x 283.12044pt.
-
-Overfull \hbox (10.95547pt too wide) in paragraph at lines 1235--1236
-[][] 
- []
-
-
-
-[25 <./import_data.png>]
-
-[26 <./import_data2.png>]
-
-[27]
-chapter 3.
-
-
-[28
-
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
-
-[29]
-
-[30]
-
-[31]
-
-[32]
-
-[33]
-
-[34]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 3.1 on input line 1809.
-
-
-
-[35]
-
-[36]
-
-[37]
-
-[38]
-Overfull \hbox (168.35445pt too wide) in paragraph at lines 2121--2121
-[] \T1/lmtt/m/n/10.95 $ name     : chr  "ABC Manufacturing" "Martin's Muffins" 
-"Down Home Appliances" "Classic City Widgets" ...[] 
- []
-
-
-Overfull \hbox (47.63104pt too wide) in paragraph at lines 2121--2121
-[] \T1/lmtt/m/n/10.95 $ industry : chr  "Manufacturing" "Food Services" "Manufa
-cturing" "Manufacturing" ...[] 
- []
-
-
-
-[39]
-
-[40]
-
-[41]
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2332.
-
-
-[42]
-
-[43]
-Overfull \hbox (18.88737pt too wide) in paragraph at lines 2463--2463
-[]\T1/lmtt/m/n/10.95 Error in quadratic_solver(b = 4, c = 3): argument "a" is m
-issing, with no default[] 
- []
-
-
-
-[44]
-
-[45]
-
-[46]
-
-[47]
-<quarto_setup.png, id=333, 2503.3525pt x 1419.3025pt>
-File: quarto_setup.png Graphic file (type png)
-<use quarto_setup.png>
-Package pdftex.def Info: quarto_setup.png  used on input line 2734.
-(pdftex.def)             Requested size: 446.72601pt x 253.2761pt.
-
-Overfull \hbox (10.91597pt too wide) in paragraph at lines 2734--2735
-[][] 
- []
-
-
-
-[48]
-<quarto_file.png, id=339, 2503.3525pt x 1419.3025pt>
-File: quarto_file.png Graphic file (type png)
-<use quarto_file.png>
-Package pdftex.def Info: quarto_file.png  used on input line 2743.
-(pdftex.def)             Requested size: 446.72601pt x 253.2761pt.
-
-Overfull \hbox (10.91597pt too wide) in paragraph at lines 2743--2744
-[][] 
- []
-
-
-
-[49 <./quarto_setup.png>]
-
-[50 <./quarto_file.png>]
-
-[51]
-
-[52]
-
-[53]
-
-[54]
-
-[55]
-
-[56]
-
-[57]
-
-[58]
-
-[59]
-Underfull \hbox (badness 10000) in paragraph at lines 3355--3359
-
- []
-
-
-
-[60]
-
-[61]
-part III.
-Package scrkbase Info: You've told me to use the font selection of the element
-(scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 3463.
-
-
-[62
-
-]
-chapter 4.
-
-
-[63
-
-]
-<03-random_variables_files/figure-pdf/unnamed-chunk-3-1.pdf, id=459, 387.4475pt
- x 240.9pt>
-File: 03-random_variables_files/figure-pdf/unnamed-chunk-3-1.pdf Graphic file (
-type pdf)
-<use 03-random_variables_files/figure-pdf/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: 03-random_variables_files/figure-pdf/unnamed-chunk-3-1
-.pdf  used on input line 3595.
-(pdftex.def)             Requested size: 387.45245pt x 240.90306pt.
-
-
-[64]
-
-[65 <./03-random_variables_files/figure-pdf/unnamed-chunk-3-1.pdf>]
-<03-random_variables_files/figure-pdf/unnamed-chunk-4-1.pdf, id=477, 387.4475pt
- x 240.9pt>
-File: 03-random_variables_files/figure-pdf/unnamed-chunk-4-1.pdf Graphic file (
-type pdf)
-<use 03-random_variables_files/figure-pdf/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: 03-random_variables_files/figure-pdf/unnamed-chunk-4-1
-.pdf  used on input line 3644.
-(pdftex.def)             Requested size: 387.45245pt x 240.90306pt.
-
-
-[66{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./03-
-random_variables_files/figure-pdf/unnamed-chunk-4-1.pdf>]
-
-[67]
-
-[68]
-<03-random_variables_files/figure-pdf/unnamed-chunk-5-1.pdf, id=511, 387.4475pt
- x 242.9075pt>
-File: 03-random_variables_files/figure-pdf/unnamed-chunk-5-1.pdf Graphic file (
-type pdf)
-<use 03-random_variables_files/figure-pdf/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: 03-random_variables_files/figure-pdf/unnamed-chunk-5-1
-.pdf  used on input line 3810.
-(pdftex.def)             Requested size: 387.44655pt x 242.90689pt.
-
-
-[69]
-
-[70 <./03-random_variables_files/figure-pdf/unnamed-chunk-5-1.pdf>]
-<03-random_variables_files/figure-pdf/unnamed-chunk-6-1.pdf, id=529, 387.4475pt
- x 242.9075pt>
-File: 03-random_variables_files/figure-pdf/unnamed-chunk-6-1.pdf Graphic file (
-type pdf)
-<use 03-random_variables_files/figure-pdf/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: 03-random_variables_files/figure-pdf/unnamed-chunk-6-1
-.pdf  used on input line 3870.
-(pdftex.def)             Requested size: 387.44655pt x 242.90689pt.
-
-
-[71 <./03-random_variables_files/figure-pdf/unnamed-chunk-6-1.pdf>]
-
-[72]
-
-[73]
-
-[74]
-chapter 5.
-! Undefined control sequence.
-l.4054 (population) mean and is written as \(\E
-                                               [X]\). {[}I tend to write 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.737 {{< include_
+                  if_html >}} 
 Here is how much of TeX's memory you used:
- 24733 strings out of 475496
- 489039 string characters out of 5775984
- 1948957 words of memory out of 5000000
- 46691 multiletter control sequences out of 15000+600000
- 630343 words of font info for 191 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 108i,13n,107p,10900b,1120s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 19000 strings out of 475413
+ 331441 string characters out of 5772975
+ 925856 words of memory out of 5000000
+ 41277 multiletter control sequences out of 15000+600000
+ 615780 words of font info for 132 fonts, out of 8000000 for 9000
+ 62 hyphenation exceptions out of 8191
+ 108i,7n,107p,10900b,668s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

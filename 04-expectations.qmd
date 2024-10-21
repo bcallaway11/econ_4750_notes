@@ -19,7 +19,7 @@ The **expected value** of some random variable $X$ is its (population) mean and 
 
 The expected value of a random variable is a *feature* of its distribution.  In other words, if you know the distribution of a random variable, then you also know its mean.
 
-The expected value is a measure of **central tendency** (alternative measures of central tendency are the **median** and **mode**).  
+The expected value is a measure of **central tendency** (alternative measures of central tendency are the **median** and **mode**).
 
 Expected values are a main concept in the course (and in statistics/econometrics more generally).  I think there are two main reasons for this:
 
@@ -88,7 +88,7 @@ $$
 $$
 You might also see the notation $\sigma$ or $\sigma_X$ for the standard deviation.
 
-The standard deviation is often easier to interpret than the variance because it has the same "units" as $X$.  Variance "units" are squared units of $X$.  
+The standard deviation is often easier to interpret than the variance because it has the same "units" as $X$.  Variance "units" are squared units of $X$.
 
 That said, variances more often show up in formulas/derivations this semester.
 
@@ -97,7 +97,7 @@ That said, variances more often show up in formulas/derivations this semester.
 
 SW 2.2
 
-For this part, suppose that $Y=a + bX$ where $Y$ and $X$ are random variables while $a$ and $b$ are fixed constants.  
+For this part, suppose that $Y=a + bX$ where $Y$ and $X$ are random variables while $a$ and $b$ are fixed constants.
 
 **Properties of Expectations**
 
@@ -121,7 +121,7 @@ You'll also notice the similarity between the properties of summations and expec
 
 <span class="example">Example: </span>Later on in the semester, it will sometimes be convenient for us to "standardize" some random variables.  We'll talk more about the reason to do this later, but for now, I'll just give the typical formula for standardizing a random variable and we'll see if we can figure out what the mean and variance of the standardized random variable are.
 
-$$ 
+$$
   Y = \frac{ X - \E[X]}{\sqrt{\Var(X)}}
 $$
 Just to be clear here, we are standardizing the random variable $X$ and calling its standardized version $Y$.  Let's calculate its mean
@@ -171,7 +171,7 @@ One useful way to think of a conditional expectation is as a *function* of $x$. 
 
 Conditional expectations will be a main focus of ours throughout the semester
 
-An extremely useful property of conditional expectations is that they generalize from the case with two variables to the case with multiple variables.  For example, suppose that we have four random variables $Y$, $X_1$, $X_2$, and $X_3$.  It makes sense to think about 
+An extremely useful property of conditional expectations is that they generalize from the case with two variables to the case with multiple variables.  For example, suppose that we have four random variables $Y$, $X_1$, $X_2$, and $X_3$.  It makes sense to think about
 $$
   \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]
 $$
@@ -214,7 +214,7 @@ The **covariance** between two random variables $X$ and $Y$ is a masure of the e
 $$
   \Cov(X,Y) := \E[(X-\E[X])(Y-\E[Y])]
 $$
-A natural first question to ask is: why does this measure how $X$ and $Y$ move together.  Notice that covariance can be positive or negative.  It will tend to be negative if big values of $X$ (so that $X$ is above its mean) tend to happen at the same time as big values of $Y$ (so that $Y$ is above its mean) while small values of $X$ (so that $X$ is below its mean) tend to happen at the same time as small values of $Y$ (so that $Y$ is below its mean).  
+A natural first question to ask is: why does this measure how $X$ and $Y$ move together.  Notice that covariance can be positive or negative.  It will tend to be negative if big values of $X$ (so that $X$ is above its mean) tend to happen at the same time as big values of $Y$ (so that $Y$ is above its mean) while small values of $X$ (so that $X$ is below its mean) tend to happen at the same time as small values of $Y$ (so that $Y$ is below its mean).
 
 An alternative and useful expression for covariance is
 $$
@@ -277,14 +277,14 @@ You probably learned about a lot of particular distributions of random variables
 
 - others
 
-SW discusses a number of these distributions, and I recommend that you read/review those distributions.  For us, the most important distribution is the Normal distribution [we'll see why a few classes from now].  
+SW discusses a number of these distributions, and I recommend that you read/review those distributions.  For us, the most important distribution is the Normal distribution [we'll see why a few classes from now].
 
 If a random variable $X$ follows a **normal distribution** with mean $\mu$ and variance $\sigma^2$, we write
 
 $$
   X \sim N(\mu, \sigma^2)
 $$
-where $\mu = \E[X]$ and $\sigma^2 = \Var(X)$.  
+where $\mu = \E[X]$ and $\sigma^2 = \Var(X)$.
 
 Importantly, if we know that $X$ follows a normal distribution, its entire distribution is fully characterized by its mean and variance.  In other words, if $X$ is normally distributed, and we also know its mean and variance, then we know everything about its distribution. [Notice that this is not generally true --- if we did not know the distribution of $X$ but knew its mean and variance, we would know two important features of the distribution of $X$, but we would not know everything about its distribution.]
 
@@ -293,25 +293,25 @@ You are probably familiar with the pdf of a normal distribution --- it is "bell-
 ```{r echo=FALSE}
 x <- seq(-3, 3, length.out=1000)
 plot_df <- data.frame(x=x)
-ggplot(plot_df, aes(x=x)) + 
+ggplot(plot_df, aes(x=x)) +
     stat_function(fun=dnorm,
                   geom="line") +
     stat_function(fun=dnorm,
                   geom="area",
                   fill="steelblue",
                   xlim=c(1.96,3),
-                  alpha=.2) + 
+                  alpha=.2) +
     stat_function(fun=dnorm,
                   geom="area",
                   fill="steelblue",
                   xlim=c(-3,-1.96),
                   alpha=.2) +
-    theme_bw() + 
-    scale_x_continuous(breaks=c(-1.96,0,1.96), labels=c(expression(mu*"-1.96"*sigma), expression(mu), expression(mu*"+1.96"*sigma))) + 
+    theme_bw() +
+    scale_x_continuous(breaks=c(-1.96,0,1.96), labels=c(expression(mu*"-1.96"*sigma), expression(mu), expression(mu*"+1.96"*sigma))) +
     ylab("density")
 ```
 
-From the figure, you can see that a normal distribution is unimodal (there is just one "peak") and symmetric (the pdf is the same if you move the same distance above $\mu$ as when you move the same distance below $\mu$).  This means that, for a random variable that follows a normal distribution, its median and mode are also equal to $\mu$.  
+From the figure, you can see that a normal distribution is unimodal (there is just one "peak") and symmetric (the pdf is the same if you move the same distance above $\mu$ as when you move the same distance below $\mu$).  This means that, for a random variable that follows a normal distribution, its median and mode are also equal to $\mu$.
 
 From the plot of the pdf, we can also tell that, if you make a draw from $X \sim N(\mu,\sigma^2)$, the most likely values are near the mean.  As you move further away from $\mu$, it becomes less likely (though not impossible) for a draw of $X$ to take that value.
 
@@ -371,7 +371,7 @@ To start with, I'll introduce you to R's `ggplot2` package.  This is one of the 
 :::
 
 ```{r eval=FALSE}
-# load ggplot2 package 
+# load ggplot2 package
 # (if you haven't installed it, you would need to do that first)
 library(ggplot2)
 
@@ -388,8 +388,8 @@ plot_data <- us_data %>%
 # make the plot
 ggplot(data=plot_data,
        mapping=aes(x=educ,y=income)) +
-    geom_line() + 
-    geom_point(size=3) + 
+    geom_line() +
+    geom_point(size=3) +
     theme_bw()
 ```
 
@@ -402,9 +402,9 @@ plot_data <- us_data %>%
 ```
 At a high-level, making plots often involves two steps --- first arranging the data in the "appropriate" way (that's this step) and then actually making the plot.
 
-This is "tidyverse-style" code too --- in my view, it is a little awkward, but it is also common so I think it is worth explaining here a bit.  
+This is "tidyverse-style" code too --- in my view, it is a little awkward, but it is also common so I think it is worth explaining here a bit.
 
-First, the **pipe operator**, `%>%` takes the thing on the left of it and applies the function to the right of it.  So, the line `us_data %>% group_by(educ)` takes `us_data` and applies the function `group_by` to it, and what we group by is `educ`.  That creates a new data frame (you could just run that code and see what you get).  The next line takes that new data frame and applies the function `summarize` to it.  In this case, `summarize` creates a new variable called `income` that is the mean of the column `incwage` and it is the mean by `educ` (since we grouped by education in the previous step).  
+First, the **pipe operator**, `%>%` takes the thing on the left of it and applies the function to the right of it.  So, the line `us_data %>% group_by(educ)` takes `us_data` and applies the function `group_by` to it, and what we group by is `educ`.  That creates a new data frame (you could just run that code and see what you get).  The next line takes that new data frame and applies the function `summarize` to it.  In this case, `summarize` creates a new variable called `income` that is the mean of the column `incwage` and it is the mean by `educ` (since we grouped by education in the previous step).
 
 Take a second and look through what has actually been created here.  `plot_data` is a new data frame, but it only has 18 observations --- corresponding to each distinct value of education in the data.  It also has two columns, the first one is `educ` which is the years of education, and the second one is `income` which is the average income among individuals that have that amount of education.
 
@@ -431,8 +431,8 @@ Next, let's consider the second part of the code.
 # make the plot
 ggplot(data=plot_data,
        mapping=aes(x=educ,y=income)) +
-    geom_line() + 
-    geom_point(size=3) + 
+    geom_line() +
+    geom_point(size=3) +
     theme_bw()
 ```
 The main function here is `ggplot`.  It takes in two main arguments: `data` and `mapping`.  Notice that we set `data` to be equal to `plot_data` which is the data frame that we just created.  The `mapping` is set equal to `aes(x=educ,y=income)`.  `aes` stands for "aesthetic", and here you are just telling `ggplot` the names of the columns in the data frame that should be on the x-axis (here: `educ`) and on the y-axis (here: `income`) in the plot.  Also, notice the `+` at the end of the line; you can interpret this as saying "keep going" to the next line before executing.
@@ -441,7 +441,7 @@ If we just stopped there, we actually wouldn't plot anything.  We still need to 
 
 `geom_point` adds the dots in the figure.  `size=3` controls the size of the points.  I didn't add this argument originally, but the dots were hard to see so I made them bigger.
 
-`theme_bw` changes the color scheme of the plot.  It stands for "theme black white".  
+`theme_bw` changes the color scheme of the plot.  It stands for "theme black white".
 
 There is a ton of flexibility with `ggplot` --- way more than I could list here.  But let me give you some extras that I tend to use quite frequently.
 
@@ -459,15 +459,15 @@ There is a ton of flexibility with `ggplot` --- way more than I could list here.
   # make the plot
   ggplot(data=plot_data,
        mapping=aes(x=educ,y=income)) +
-    geom_line() + 
-    geom_point(size=3) + 
-    theme_bw() + 
-    ylim=c(0,150000) + 
-    ylab("Income") + 
+    geom_line() +
+    geom_point(size=3) +
+    theme_bw() +
+    ylim=c(0,150000) +
+    ylab("Income") +
     xlab("Education")
   ```
-  which will adjust the y-axis and change the labels on each axis.      
-  
+  which will adjust the y-axis and change the labels on each axis.
+
 Besides the line plot (using `geom_line`) and the scatter plot (using `geom_point`), probably two other types of plots that I make the most are
 
 - Histogram (using `geom_histogram`) --- this is how I made the plot of the pmf of education earlier in this chapter
@@ -476,6 +476,17 @@ Besides the line plot (using `geom_line`) and the scatter plot (using `geom_poin
 
 - If you're interested, here is a to a large number of different types of plots that are available using `ggplot`: [http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
+## In Case You're Interested: Chebyshev's Inequality
+
+As discussed above, the standard deviation is a measure of the spread of a random variable that is in units that are easy to understand.  But what exactly does it tell us about the spread of a random variable?  One way to think about the spread of a random variable is to think about the probability that a random variable will take a value within a certain range.  For example, when we talked about the normal distribution, we said that there is a 95\% chance that a draw of a normally distributed random variable will be within 1.96 standard deviations of the mean.  This is a very specific statement about the spread of a random variable.
+
+But the claim that there is a 95\% chance that a random variable will be within 1.96 standard deviations of its mean only holds for normally distributed random variables.  **Chebyshev's Inequality** provides a way to relate the standard deviation of a random variable to the probability that it will take a value within a certain range, for any random variable (i.e., the variable can follow essentially any distribution).  Chebyshev's Inequality says that, for any random variable $X$ and any $k > 0$,
+\begin{align*}
+  \P\Big(\big|X - \E[X]\big| \geq k \cdot \sd(X) \Big) \leq \frac{1}{k^2}
+\end{align*}
+This holds for any $k$, so let's pick an interesting value and be a bit more specific.  Suppose that $k=2$.  Then, Chebyshev's Inequality says that the probability that a random variable will be more than 2 standard deviations away from its mean is less than or equal to $1/4$.  Let's compare this to the case where we know that $X$ follows a normal distribution.  In that case, there's a 95\% chance that $X$ will be within (essentially) 2 standard deviations of its mean; if we don't know that $X$ follows a normal distribution, then we can't make as strong a statement, but we can say that at least 75\% of the time, $X$ will be within 2 standard deviations of its mean.  You can try other values of $k$ too.
+
+I am not going to provide a proof of Chebyshev's Inequality.  However, it is not that complicated.  It follows from another result called Markov's Inequality, where the idea is basically that, if you know the mean of a random variable, it limits the probability that a random variable can take an extreme value.  Chebyshev's Inequality extends this idea to the case where you know the mean and standard deviation of a random variable.
 
 
 ## Coding Questions
@@ -488,16 +499,16 @@ Besides the line plot (using `geom_line`) and the scatter plot (using `geom_poin
    ```
 
    Use the `ggplot2` package to plot a histogram of `x`.
- 
+
 2. For this question, we'll use the data `fertilizer_2000`.  A scatter plot is a useful way to visualize 2-dimensional data.  Use the `ggplot2` package to make a scatter plot with crop yield (`avyield`) on the y-axis and fertilizer (`avfert`) on the x-axis.  Label the y-axis "Crop Yield" and the x-axis "Fertilizer".  Do you notice any pattern from the scatter plot?
 
 
 ## Extra Questions
 
-1. Suppose that $\E[X] = 10$ and $\var(X) = 2$.  Also, suppose that $Y=5 + 9 X$.  
+1. Suppose that $\E[X] = 10$ and $\var(X) = 2$.  Also, suppose that $Y=5 + 9 X$.
 
     a) What is $\E[Y]$?
-    
+
     b) What is $\var(Y)$?
 
 2. Use the definition of variance to show that $\Var(bX) = b^2 \Var(X)$ (where $b$ is a constant and $X$ is some random variable).
@@ -505,7 +516,7 @@ Besides the line plot (using `geom_line`) and the scatter plot (using `geom_poin
 3. Suppose you are interested in average height of students at UGA.  Let $Y$ denote a student's height; also let $X$ denote a binary variable that is equal to 1 if a student is female.  Suppose that you know that $\E[Y|X=1] = 5' \,4''$ and that $\E[Y|X=0] = 5' \,9''$ (and that $\P(X=1) = 0.5$).
 
     a) What is $\E[Y]$?
-    
+
     b) Explain how the answer to part (a) is related to the Law of Iterated Expectations.
 
 4. Consider a random variable $X$ with support $\mathcal{X} = \{2,7,13,21\}$.  Suppose that it has the following pmf:
@@ -518,12 +529,12 @@ Besides the line plot (using `geom_line`) and the scatter plot (using `geom_poin
         f_X(21) &= ??
       \end{aligned}
     $$
-    
+
     a) What is $f_X(21)$?  How do you know?
-    
+
     b) What is the expected value of $X$? [Show your calculation.]
-    
+
     c) What is the variance of $X$? [Show your calculation.]
-    
+
     d) Calculate $F_X(x)$ for $x=1$, $x=7$, $x=8$, and $x=25$.
 

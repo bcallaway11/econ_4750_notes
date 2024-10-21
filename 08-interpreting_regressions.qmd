@@ -585,8 +585,8 @@ But we are faced with the issue that we do not observe $Q$ (which implies that w
 Recall that we can equivalently write
 
 $$
-  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U (\#eq:ovb-y)
-$$
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U 
+$$ {#eq-ovb-y}
 where $\E[U|X_1,X_2,Q]=0$.  
 
 Now, for simplicity, suppose that
@@ -599,7 +599,7 @@ Now, let's consider the idea of just running a regression of $Y$ on $X_1$ and $X
 $$
   \E[Y|X_1,X_2] = \delta_0 + \delta_1 X_1 + \delta_2 X_2
 $$
-We are interested in the question of whether or not we can recover $\beta_1$ if we do this.  If we consider this "feasible" regression, notice if we plug in the expression for $Y$ from Equation \@ref(eq:ovb-y),
+We are interested in the question of whether or not we can recover $\beta_1$ if we do this.  If we consider this "feasible" regression, notice if we plug in the expression for $Y$ from @eq-ovb-y,
 
 $$
   \begin{aligned}

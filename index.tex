@@ -43,28 +43,14 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
-\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}{
-    \@ifstar
-      \xxxParagraphStar
-      \xxxParagraphNoStar
-  }
-  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
-  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}{
-    \@ifstar
-      \xxxSubParagraphStar
-      \xxxSubParagraphNoStar
-  }
-  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
-  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-\makeatother
 
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -84,7 +70,7 @@
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
@@ -94,7 +80,7 @@
 \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
 \newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
 \newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
 \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
@@ -132,15 +118,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\usepackage{float}
-\usepackage{tabularray}
-\usepackage[normalem]{ulem}
-\usepackage{graphicx}
-\UseTblrLibrary{booktabs}
-\UseTblrLibrary{siunitx}
-\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
-\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
-\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
@@ -186,7 +163,6 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -204,7 +180,6 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-
 \title{Detailed Course Notes for ECON 4750}
 \author{Brantly Callaway}
 \date{}
@@ -218,7 +193,6 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-
 \bookmarksetup{startatroot}
 
 \chapter{Introduction}\label{introduction}
@@ -409,6 +383,12 @@ semester. Some of the links below are to data posted on my website;
 others point to data hosted externally (if you notice any broken links,
 please let me know).
 
+Note: some of the datasets below require installing an \texttt{R}
+package. For example, to access the \texttt{Airq} data, you need to
+install the \texttt{Ecdat} package first (i.e., by running
+\texttt{install.packages("Ecdat")}) and then run
+\texttt{data(Airq,\ package="Ecdat")}.
+
 \begin{itemize}
 \item
   \texttt{acs}
@@ -433,7 +413,7 @@ please let me know).
   \item
     Data about air quality in California counties in 1972.
   \item
-    Access: `data(Airq, package=``Ecdat'')
+    Access: \texttt{data(Airq,\ package="Ecdat")}
   \item
     Description: \texttt{?Ecdat::Airq}
   \end{itemize}
@@ -444,7 +424,7 @@ please let me know).
   \item
     Data about GDP, institutions, and settler mortality
   \item
-    Access: `data(AJR, package=``hdm'')
+    Access: \texttt{data(AJR,\ package="hdm")}
   \item
     Description: \texttt{?hdm::AJR}
   \end{itemize}
@@ -539,7 +519,7 @@ please let me know).
     State-level panel data about drunk driving laws and traffic
     fatalities
   \item
-    Access: `data(Fatality, package=``AER'')
+    Access: \texttt{data(Fatality,\ package="AER")}
   \item
     Description: \texttt{?AER::Fatality}
   \end{itemize}
@@ -690,7 +670,7 @@ please let me know).
     Data from Project STAR that randomly assigned some students to
     smaller class sizes
   \item
-    Access: `data(Star, package=``Ecdat'')
+    Access: \texttt{data(Star,\ package="Ecdat")}
   \item
     Description: \texttt{?Ecdat::Star}
   \end{itemize}
@@ -754,29 +734,7 @@ objectives of Econometrics.
 
 \chapter{Introduction to R}\label{introduction-to-r}
 
-{{< if = "html" >}}
-
-\[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
-\let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
-\]
-
-{{< /if  >}}
+{{< include_if_html >}}
 
 We will learn a lot more about statistical programming this semester,
 but we'll start with a crash course on \texttt{R} with the idea of
@@ -1279,29 +1237,25 @@ we'll talk about in detail later on in this chapter) called
 
 \chapter{Programming in R}\label{programming-in-r}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Functions in R}\label{functions-in-r}
 
@@ -3466,29 +3420,25 @@ Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
 
 \chapter{Random Variables}\label{random-variables}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 This section contains our crash course review of topics in probability.
 The discussion mostly follows Chapter 2 in the Stock and Watson
@@ -4022,29 +3972,25 @@ doesn't provide any information about the distribution \(Y\).
 \chapter{Expectation, Variance, and
 More}\label{expectation-variance-and-more}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Expected Values}\label{expected-values}
 
@@ -4215,7 +4161,7 @@ reason to do this later, but for now, I'll just give the typical formula
 for standardizing a random variable and we'll see if we can figure out
 what the mean and variance of the standardized random variable are.
 
-\[ 
+\[
   Y = \frac{ X - \E[X]}{\sqrt{\Var(X)}}
 \] Just to be clear here, we are standardizing the random variable \(X\)
 and calling its standardized version \(Y\). Let's calculate its mean
@@ -4646,7 +4592,7 @@ from \texttt{ggplot2}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# load ggplot2 package }
+\CommentTok{\# load ggplot2 package}
 \CommentTok{\# (if you haven\textquotesingle{}t installed it, you would need to do that first)}
 \FunctionTok{library}\NormalTok{(ggplot2)}
 
@@ -4665,8 +4611,8 @@ from \texttt{ggplot2}.
 \CommentTok{\# make the plot}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{plot\_data,}
        \AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{educ,}\AttributeTok{y=}\NormalTok{income)) }\SpecialCharTok{+}
-    \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+} 
-    \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -4753,8 +4699,8 @@ Next, let's consider the second part of the code.
 \CommentTok{\# make the plot}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{plot\_data,}
        \AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{educ,}\AttributeTok{y=}\NormalTok{income)) }\SpecialCharTok{+}
-    \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+} 
-    \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -4814,11 +4760,11 @@ quite frequently.
 \CommentTok{\# make the plot}
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{plot\_data,}
      \AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{educ,}\AttributeTok{y=}\NormalTok{income)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} 
-  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+} 
-\NormalTok{  ylim}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{150000}\NormalTok{) }\SpecialCharTok{+} 
-  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Income"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+\NormalTok{  ylim}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{150000}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Income"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{xlab}\NormalTok{(}\StringTok{"Education"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -4844,6 +4790,40 @@ make the most are
   of plots that are available using \texttt{ggplot}:
   \url{http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html}
 \end{itemize}
+
+\section{In Case You're Interested: Chebyshev's
+Inequality}\label{in-case-youre-interested-chebyshevs-inequality}
+
+As discussed above, the standard deviation is a measure of the spread of
+a random variable that is in units that are easy to understand. But what
+exactly does it tell us about the spread of a random variable? One way
+to think about the spread of a random variable is to think about the
+probability that a random variable will take a value within a certain
+range. For example, when we talked about the normal distribution, we
+said that there is a 95\% chance that a draw of a normally distributed
+random variable will be within 1.96 standard deviations of the mean.
+This is a very specific statement about the spread of a random variable.
+
+But the claim that there is a 95\% chance that a random variable will be
+within 1.96 standard deviations of its mean only holds for normally
+distributed random variables. \textbf{Chebyshev's Inequality} provides a
+way to relate the standard deviation of a random variable to the
+probability that it will take a value within a certain range, for any
+random variable (i.e., the variable can follow essentially any
+distribution). Chebyshev's Inequality says that, for any random variable
+\(X\) and any \(k > 0\), \begin{align*}
+  \P\Big(\big|X - \E[X]\big| \geq k \cdot \sd(X) \Big) \leq \frac{1}{k^2}
+\end{align*} This holds for any \(k\), so let's pick an interesting
+value and be a bit more specific. Suppose that \(k=2\). Then,
+Chebyshev's Inequality says that the probability that a random variable
+will be more than 2 standard deviations away from its mean is less than
+or equal to \(1/4\). Let's compare this to the case where we know that
+\(X\) follows a normal distribution. In that case, there's a 95\% chance
+that \(X\) will be within (essentially) 2 standard deviations of its
+mean; if we don't know that \(X\) follows a normal distribution, then we
+can't make as strong a statement, but we can say that at least 75\% of
+the time, \(X\) will be within 2 standard deviations of its mean. You
+can try other values of \(k\) too.
 
 \section{Coding Questions}\label{coding-questions}
 
@@ -4936,29 +4916,25 @@ make the most are
 
 \chapter{Finite Sample Properties}\label{finite-sample-properties}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 So far, we have been talking about \textbf{population quantities} such
 as \(f_{Y|X}\) (conditional pdf/pmf), \(\E[Y]\) (expected value of
@@ -5359,29 +5335,25 @@ some care.
 
 \chapter{Asymptotic Properties}\label{asymptotic-properties}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Large Sample Properties of
 Estimators}\label{large-sample-properties-of-estimators}
@@ -5566,29 +5538,25 @@ how its useful next.
 
 \chapter{Inference}\label{inference}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Inference / Hypothesis
 Testing}\label{inference-hypothesis-testing}
@@ -6220,7 +6188,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
- [1] 0 1 1 1 1 0 0 1 1 1
+ [1] 1 0 0 1 0 0 0 0 0 0
 \end{verbatim}
 
 \begin{enumerate}
@@ -6252,7 +6220,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.0065
+[1] -0.0086
 \end{verbatim}
 
 \begin{Shaded}
@@ -6264,7 +6232,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.02589364
+[1] 0.02575179
 \end{verbatim}
 
 \begin{Shaded}
@@ -6276,7 +6244,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.02593589
+[1] 0.02582575
 \end{verbatim}
 
 \begin{Shaded}
@@ -6290,7 +6258,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-Warning: Removed 4 rows containing non-finite outside the scale range
+Warning: Removed 1 row containing non-finite outside the scale range
 (`stat_bin()`).
 \end{verbatim}
 
@@ -6304,7 +6272,7 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.118
+[1] 0.114
 \end{verbatim}
 
 \begin{enumerate}
@@ -6355,15 +6323,15 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -2e-04"
-[1] "var : 0.0049"
-[1] "mse : 0.0049"
+[1] "bias: 0.0028"
+[1] "var : 0.0052"
+[1] "mse : 0.0053"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-11-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.061"
+[1] "rej : 0.071"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6380,7 +6348,7 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 0.0041"
+[1] "bias: -0.0018"
 [1] "var : 0.005"
 [1] "mse : 0.005"
 \end{verbatim}
@@ -6388,7 +6356,7 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.31"
+[1] "rej : 0.362"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6405,9 +6373,9 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -8e-04"
-[1] "var : 0.0047"
-[1] "mse : 0.0047"
+[1] "bias: 0.004"
+[1] "var : 0.0048"
+[1] "mse : 0.0048"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-13-1.pdf}
@@ -6430,9 +6398,9 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 1e-04"
-[1] "var : 2e-04"
-[1] "mse : 2e-04"
+[1] "bias: -5e-04"
+[1] "var : 3e-04"
+[1] "mse : 3e-04"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-14-1.pdf}
@@ -6455,20 +6423,20 @@ Warning: Removed 4 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 1e-04"
-[1] "var : 0.0045"
-[1] "mse : 0.0045"
+[1] "bias: 0.002"
+[1] "var : 0.0044"
+[1] "mse : 0.0044"
 \end{verbatim}
 
 \begin{verbatim}
-Warning: Removed 591 rows containing non-finite outside the scale range
+Warning: Removed 606 rows containing non-finite outside the scale range
 (`stat_bin()`).
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-15-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.591"
+[1] "rej : 0.607"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6485,20 +6453,20 @@ Warning: Removed 591 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 6e-04"
+[1] "bias: -5e-04"
 [1] "var : 9e-04"
 [1] "mse : 9e-04"
 \end{verbatim}
 
 \begin{verbatim}
-Warning: Removed 78 rows containing non-finite outside the scale range
+Warning: Removed 70 rows containing non-finite outside the scale range
 (`stat_bin()`).
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-16-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.082"
+[1] "rej : 0.073"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6515,7 +6483,7 @@ Warning: Removed 78 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -1e-04"
+[1] "bias: -2e-04"
 [1] "var : 0"
 [1] "mse : 0"
 \end{verbatim}
@@ -6523,7 +6491,7 @@ Warning: Removed 78 rows containing non-finite outside the scale range
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-17-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.058"
+[1] "rej : 0.054"
 \end{verbatim}
 
 \section{Coding Questions}\label{coding-questions-1}
@@ -6597,29 +6565,25 @@ Warning: Removed 78 rows containing non-finite outside the scale range
 
 \chapter{Interpreting Regressions}\label{interpreting-regressions}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 In this chapter, our interest will shift to conditional expectations,
 such as \(\E[Y|X_1,X_2,X_3]\) (I'll write \(X_1\), \(X_2\), and \(X_3\)
@@ -7715,29 +7679,25 @@ ignores \(Q\)) would cause us to tend to over-estimate \(\beta_1\).
 
 \chapter{Computation}\label{computation-6}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{How to estimate the parameters in a regression
 model}\label{how-to-estimate-the-parameters-in-a-regression-model}
@@ -8068,29 +8028,25 @@ course --- and it is quite easy for the computer to solve.
 
 \chapter{Inference}\label{inference-1}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Inference}\label{inference-2}
 
@@ -9059,29 +9015,25 @@ where
 
 \chapter{Binary Outcome Models}\label{binary-outcome-models}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 In addition to referenced material below, please read all of SW Ch. 11
 
@@ -9724,29 +9676,25 @@ A couple of things to notice:
 
 \chapter{Model Selection}\label{model-selection}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 In this part of the class, we'll learn how to use regressions and
 ``machine learning'' in order to predict outcomes of interest using
@@ -10155,29 +10103,25 @@ code where it may not be clear exactly what it is doing.
 
 \chapter{Machine Learning}\label{machine-learning}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Machine Learning}\label{machine-learning-1}
 
@@ -10535,9 +10479,9 @@ observations) and then see how well we can predict data from the
 
 \begin{verbatim}
   r.squared adj.r.squared     aic     bic       cv
-1     0.898         0.898 1104188 1104301 1365.913
-2     0.900         0.900 1103499 1103647 1370.713
-3     0.928         0.928 1089372 1090328 2136.550
+1     0.898         0.898 1104188 1104301 1365.944
+2     0.900         0.900 1103499 1103647 1400.933
+3     0.928         0.928 1089372 1090328 2223.032
 \end{verbatim}
 
 \begin{Shaded}
@@ -10575,7 +10519,7 @@ observations) and then see how well we can predict data from the
 
 \begin{verbatim}
      mod1    mod2    mod3   lasso   ridge
-1 856.014 785.171 616.996 665.088 794.276
+1 856.014 785.171 616.996 671.448 794.276
 \end{verbatim}
 
 \section{Extra Questions}\label{extra-questions-4}
@@ -10681,29 +10625,25 @@ Questions}\label{answers-to-some-extra-questions-1}
 
 \chapter{Concepts}\label{concepts}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 For the remainder of the semester, we will talk about methods for
 understanding the \textbf{causal effect} of one variable on another.
@@ -10916,29 +10856,25 @@ them (at least given the information that we have available).
 
 \chapter{Experiments}\label{experiments}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 An experiment is often called the ``gold standard'' for causal
 inference. In particular, here, we are thinking about the case where
@@ -11214,29 +11150,25 @@ Let me also make a few comments about internal and external validity.
 
 \chapter{Unconfoundedness}\label{unconfoundedness}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 SW 6.8, SW Ch. 9
 
@@ -11318,29 +11250,25 @@ the setup considered in this section.
 
 \chapter{Quasi-Experiments}\label{quasi-experiments}
 
-{{< if = "html" >}}
-
 \[
-\providecommand{\E}{\mathbb{E}}
-\providecommand{\P}{\textrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
 \let\L\relax
-\providecommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\providecommand{\F}{\textrm{F}}
-\providecommand{\var}{\textrm{var}}
-\providecommand{\cov}{\textrm{cov}}
-\providecommand{\corr}{\textrm{corr}}
-\providecommand{\Var}{\mathrm{Var}}
-\providecommand{\Cov}{\mathrm{Cov}}
-\providecommand{\Corr}{\mathrm{Corr}}
-\providecommand{\sd}{\mathrm{sd}}
-\providecommand{\se}{\mathrm{s.e.}}
-\providecommand{\T}{T}
-\providecommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\providecommand\independent{\perp \!\!\! \perp}
-\providecommand{\N}{\mathcal{N}}
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
 \]
-
-{{< /if  >}}
 
 \section{Panel Data Approaches}\label{panel-data-approaches}
 
@@ -13009,7 +12937,6 @@ therefore likely to be incorrect --- or at least would require extra
 assumptions and/or justifications. Interpreting them as an \(ATT\)
 (i.e., as the effect among those who participated in the treatment) is
 still perfectly reasonable though.
-
 
 
 

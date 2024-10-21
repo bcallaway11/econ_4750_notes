@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -331,8 +331,9 @@ window.Quarto = {
   <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">5.9</span> Normal Distribution</a></li>
   <li><a href="#coding" id="toc-coding" class="nav-link" data-scroll-target="#coding"><span class="header-section-number">5.10</span> Coding</a></li>
   <li><a href="#lab-2-basic-plots" id="toc-lab-2-basic-plots" class="nav-link" data-scroll-target="#lab-2-basic-plots"><span class="header-section-number">5.11</span> Lab 2: Basic Plots</a></li>
-  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">5.12</span> Coding Questions</a></li>
-  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">5.13</span> Extra Questions</a></li>
+  <li><a href="#in-case-youre-interested-chebyshevs-inequality" id="toc-in-case-youre-interested-chebyshevs-inequality" class="nav-link" data-scroll-target="#in-case-youre-interested-chebyshevs-inequality"><span class="header-section-number">5.12</span> In Case You’re Interested: Chebyshev’s Inequality</a></li>
+  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">5.13</span> Coding Questions</a></li>
+  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">5.14</span> Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -639,7 +640,7 @@ window.Quarto = {
 <p><span class="side-comment">Side Comment:</span> Base <code>R</code> has several plotting functions (e.g., <code>plot</code>). Check IDS 2.15 for an introduction to these functions. These are generally easier to learn but less beautiful than plots coming from <code>ggplot2</code>.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load ggplot2 package </span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load ggplot2 package</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (if you haven't installed it, you would need to do that first)</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -655,8 +656,8 @@ window.Quarto = {
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># make the plot</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -696,8 +697,8 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make the plot</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The main function here is <code>ggplot</code>. It takes in two main arguments: <code>data</code> and <code>mapping</code>. Notice that we set <code>data</code> to be equal to <code>plot_data</code> which is the data frame that we just created. The <code>mapping</code> is set equal to <code>aes(x=educ,y=income)</code>. <code>aes</code> stands for “aesthetic”, and here you are just telling <code>ggplot</code> the names of the columns in the data frame that should be on the x-axis (here: <code>educ</code>) and on the y-axis (here: <code>income</code>) in the plot. Also, notice the <code>+</code> at the end of the line; you can interpret this as saying “keep going” to the next line before executing.</p>
@@ -715,11 +716,11 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make the plot</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>plot_data,</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>educ,<span class="at">y=</span>income)) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  ylim<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">150000</span>) <span class="sc">+</span> </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Income"</span>) <span class="sc">+</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  ylim<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">150000</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Income"</span>) <span class="sc">+</span></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Education"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>which will adjust the y-axis and change the labels on each axis.</p></li>
@@ -731,8 +732,16 @@ window.Quarto = {
 <li><p>If you’re interested, here is a to a large number of different types of plots that are available using <code>ggplot</code>: <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
 </ul>
 </section>
-<section id="coding-questions" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">5.12</span> Coding Questions</h2>
+<section id="in-case-youre-interested-chebyshevs-inequality" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="in-case-youre-interested-chebyshevs-inequality"><span class="header-section-number">5.12</span> In Case You’re Interested: Chebyshev’s Inequality</h2>
+<p>As discussed above, the standard deviation is a measure of the spread of a random variable that is in units that are easy to understand. But what exactly does it tell us about the spread of a random variable? One way to think about the spread of a random variable is to think about the probability that a random variable will take a value within a certain range. For example, when we talked about the normal distribution, we said that there is a 95% chance that a draw of a normally distributed random variable will be within 1.96 standard deviations of the mean. This is a very specific statement about the spread of a random variable.</p>
+<p>But the claim that there is a 95% chance that a random variable will be within 1.96 standard deviations of its mean only holds for normally distributed random variables. <strong>Chebyshev’s Inequality</strong> provides a way to relate the standard deviation of a random variable to the probability that it will take a value within a certain range, for any random variable (i.e., the variable can follow essentially any distribution). Chebyshev’s Inequality says that, for any random variable <span class="math inline">\(X\)</span> and any <span class="math inline">\(k &gt; 0\)</span>, <span class="math display">\[\begin{align*}
+  \P\Big(\big|X - \E[X]\big| \geq k \cdot \sd(X) \Big) \leq \frac{1}{k^2}
+\end{align*}\]</span> This holds for any <span class="math inline">\(k\)</span>, so let’s pick an interesting value and be a bit more specific. Suppose that <span class="math inline">\(k=2\)</span>. Then, Chebyshev’s Inequality says that the probability that a random variable will be more than 2 standard deviations away from its mean is less than or equal to <span class="math inline">\(1/4\)</span>. Let’s compare this to the case where we know that <span class="math inline">\(X\)</span> follows a normal distribution. In that case, there’s a 95% chance that <span class="math inline">\(X\)</span> will be within (essentially) 2 standard deviations of its mean; if we don’t know that <span class="math inline">\(X\)</span> follows a normal distribution, then we can’t make as strong a statement, but we can say that at least 75% of the time, <span class="math inline">\(X\)</span> will be within 2 standard deviations of its mean. You can try other values of <span class="math inline">\(k\)</span> too.</p>
+<p>I am not going to provide a proof of Chebyshev’s Inequality. However, it is not that complicated. It follows from another result called Markov’s Inequality, where the idea is basically that, if you know the mean of a random variable, it limits the probability that a random variable can take an extreme value. Chebyshev’s Inequality extends this idea to the case where you know the mean and standard deviation of a random variable.</p>
+</section>
+<section id="coding-questions" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">5.13</span> Coding Questions</h2>
 <ol type="1">
 <li><p>Run the following code to create the data that we will use in the problem</p>
 <div class="cell">
@@ -743,8 +752,8 @@ window.Quarto = {
 <li><p>For this question, we’ll use the data <code>fertilizer_2000</code>. A scatter plot is a useful way to visualize 2-dimensional data. Use the <code>ggplot2</code> package to make a scatter plot with crop yield (<code>avyield</code>) on the y-axis and fertilizer (<code>avfert</code>) on the x-axis. Label the y-axis “Crop Yield” and the x-axis “Fertilizer”. Do you notice any pattern from the scatter plot?</p></li>
 </ol>
 </section>
-<section id="extra-questions" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">5.13</span> Extra Questions</h2>
+<section id="extra-questions" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">5.14</span> Extra Questions</h2>
 <ol type="1">
 <li><p>Suppose that <span class="math inline">\(\E[X] = 10\)</span> and <span class="math inline">\(\var(X) = 2\)</span>. Also, suppose that <span class="math inline">\(Y=5 + 9 X\)</span>.</p>
 <ol type="a">

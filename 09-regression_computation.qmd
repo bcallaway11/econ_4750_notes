@@ -116,17 +116,17 @@ That's all that we will do here --- just the thing we need to take the derivativ
 Let's start by taking the derivative with respect to $b_0$ and setting it equal to 0.
 
 $$
-  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 (\#eq:foc-bet0)
-$$
+  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 
+$$ {#eq-foc-bet0}
 where the $2$ comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of $-b_0$ on the inside.  I also replaced $b_0$ and $b_1$ here since $\hat{\beta}_0$ and $\hat{\beta}_1$ are the values that will solve this equation.
 
 Next, let's take the derivative with respect to $b_1$:
 $$
-  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 (\#eq:foc-bet1)
-$$  
+  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 
+$$  {#eq-foc-bet1}
 where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and $X_i$ at the end come from taking the derivative of the inside with respect to $b_1$.  
 
-All we have to do now is to solve these Equations \@ref(eq:foc-bet0) and \@ref(eq:foc-bet1) for $\hat{\beta}_0$ and $\hat{\beta}_1$.  Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is.  Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.
+All we have to do now is to solve @eq-foc-bet0 and @eq-foc-bet1 for $\hat{\beta}_0$ and $\hat{\beta}_1$.  Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is.  Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.
 
 Starting with the first equation, 
 
@@ -141,7 +141,7 @@ $$
 where the second line holds by dividing both sides by $-2$, the third line holds by pushing the summation through the sums/differences and simplifying terms, and the last line holds by rearranging to solve for $\hat{\beta}_0$.
 
 
-Now, let's use the above result and Equation \@ref(eq:foc-bet1) to solve for $\hat{\beta}_1$.
+Now, let's use the above result and @eq-foc-bet1 to solve for $\hat{\beta}_1$.
 
 $$
   \begin{aligned}

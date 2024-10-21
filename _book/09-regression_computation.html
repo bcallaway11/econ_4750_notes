@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -438,14 +438,13 @@ window.Quarto = {
 <p>You probably recall how to minimize a function. You take its derivative, set it equal to 0, and solve that equation. [It’s actually a little more complicated than that because you need to ensure that you’re finding a minimum rather than a maximum, but the above equation is actually quadratic, so it will have a minimum.]</p>
 <p>That’s all that we will do here — just the thing we need to take the derivative of looks complicated. Actually, the <span class="math inline">\(\frac{1}{n}\)</span> and <span class="math inline">\(\sum\)</span> terms will just hang around. For the rest though, we need to use the <em>chain rule</em>; that is, we need to take the derivative of the outside and then multiply by the derivative of the inside. We also need to take the derivative both with respect to <span class="math inline">\(b_0\)</span> and with respect to <span class="math inline">\(b_1\)</span>.</p>
 <p>Let’s start by taking the derivative with respect to <span class="math inline">\(b_0\)</span> and setting it equal to 0.</p>
-<p><span class="math display">\[
-  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 (\#eq:foc-bet0)
-\]</span> where the <span class="math inline">\(2\)</span> comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of <span class="math inline">\(-b_0\)</span> on the inside. I also replaced <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> here since <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the values that will solve this equation.</p>
-<p>Next, let’s take the derivative with respect to <span class="math inline">\(b_1\)</span>: <span class="math display">\[
-  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 (\#eq:foc-bet1)
-\]</span><br>
-where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and <span class="math inline">\(X_i\)</span> at the end come from taking the derivative of the inside with respect to <span class="math inline">\(b_1\)</span>.</p>
-<p>All we have to do now is to solve these Equations @ref(eq:foc-bet0) and @ref(eq:foc-bet1) for <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is. Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.</p>
+<p><span id="eq-foc-bet0"><span class="math display">\[
+  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0
+\tag{10.1}\]</span></span> where the <span class="math inline">\(2\)</span> comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of <span class="math inline">\(-b_0\)</span> on the inside. I also replaced <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> here since <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the values that will solve this equation.</p>
+<p>Next, let’s take the derivative with respect to <span class="math inline">\(b_1\)</span>: <span id="eq-foc-bet1"><span class="math display">\[
+  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0
+\tag{10.2}\]</span></span> where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and <span class="math inline">\(X_i\)</span> at the end come from taking the derivative of the inside with respect to <span class="math inline">\(b_1\)</span>.</p>
+<p>All we have to do now is to solve <a href="#eq-foc-bet0" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> for <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is. Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.</p>
 <p>Starting with the first equation,</p>
 <p><span class="math display">\[
   \begin{aligned}
@@ -455,7 +454,7 @@ where the 2 comes from taking the derivative of the squared part, and the negati
   &amp; \implies \boxed{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}}
   \end{aligned}
 \]</span> where the second line holds by dividing both sides by <span class="math inline">\(-2\)</span>, the third line holds by pushing the summation through the sums/differences and simplifying terms, and the last line holds by rearranging to solve for <span class="math inline">\(\hat{\beta}_0\)</span>.</p>
-<p>Now, let’s use the above result and Equation @ref(eq:foc-bet1) to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+<p>Now, let’s use the above result and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
 <p><span class="math display">\[
   \begin{aligned}
   &amp; \phantom{\implies} -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1) X_i &amp;= 0 \\

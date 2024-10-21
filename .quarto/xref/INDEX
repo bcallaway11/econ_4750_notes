@@ -1,56 +1,56 @@
 {
   "index.qmd": {
-    "index.html": "7669186e"
+    "index.html": "d7ce10d1"
   },
   "01-introduction_to_R.qmd": {
-    "01-introduction_to_R.html": "8d521b6a"
+    "01-introduction_to_R.html": "8b295165"
   },
   "02-programming_in_R.qmd": {
-    "02-programming_in_R.html": "404a0442"
+    "02-programming_in_R.html": "32c435bf"
   },
   "03-random_variables.qmd": {
-    "03-random_variables.html": "51736f2c"
+    "03-random_variables.html": "3956c7de"
   },
   "04-expectations.qmd": {
-    "04-expectations.html": "184fbe25"
+    "04-expectations.html": "e32c2352"
   },
   "05-finite_sample_properties.qmd": {
-    "05-finite_sample_properties.html": "d508a96c"
+    "05-finite_sample_properties.html": "c98cfe21"
   },
   "06-asymptotic_properties.qmd": {
-    "06-asymptotic_properties.html": "4f65119f"
+    "06-asymptotic_properties.html": "7488f63c"
   },
   "07-inference.qmd": {
-    "07-inference.html": "7bd0fbef"
+    "07-inference.html": "25d6520e"
   },
   "08-interpreting_regressions.qmd": {
-    "08-interpreting_regressions.html": "74e65de7"
+    "08-interpreting_regressions.html": "51bafc73"
   },
   "09-regression_computation.qmd": {
-    "09-regression_computation.html": "802435db"
+    "09-regression_computation.html": "57ee2d68"
   },
   "10-regression_inference.qmd": {
-    "10-regression_inference.html": "8baf57fb"
+    "10-regression_inference.html": "1a5d0fde"
   },
   "11-binary_outcomes.qmd": {
-    "11-binary_outcomes.html": "d68a3b94"
+    "11-binary_outcomes.html": "96085631"
   },
   "12-model_selection.qmd": {
-    "12-model_selection.html": "671d6b9e"
+    "12-model_selection.html": "60d2f646"
   },
   "13-machine_learning.qmd": {
-    "13-machine_learning.html": "f27f6104"
+    "13-machine_learning.html": "1403808a"
   },
   "14-causal_inference_concepts.qmd": {
-    "14-causal_inference_concepts.html": "8acb377e"
+    "14-causal_inference_concepts.html": "502840b9"
   },
   "15-experiments.qmd": {
-    "15-experiments.html": "d2f5a591"
+    "15-experiments.html": "fd0178fd"
   },
   "16-unconfoundedness.qmd": {
-    "16-unconfoundedness.html": "55335cad"
+    "16-unconfoundedness.html": "102b6f73"
   },
   "17-quasi_experiments.qmd": {
-    "17-quasi_experiments.html": "85582628"
+    "17-quasi_experiments.html": "5982742d"
   }
 }

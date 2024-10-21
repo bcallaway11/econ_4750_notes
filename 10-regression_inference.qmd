@@ -25,9 +25,9 @@ and discuss how to use this result to conduct inference.
 Let's start by showing why this result holds.
 
 To start with, recall that
-\begin{align}
-  \hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} (\#eq:b1)
-\end{align}
+$$
+\hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} 
+$$ {#eq-b1}
 
 Before providing a main result, let's start with noting the following:
 
@@ -42,25 +42,25 @@ Notice that
 where the first equality just pulls $\bar{Y}$ out of the summation (it is a constant with respect to the summation), the second equality pushes the summation through the difference, the first part of the third equality holds by the definition of $\bar{X}$ and the second part holds because it is an average of a constant.
 
 This implies that
-\begin{align}
-  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) (\#eq:hr1)
-\end{align}
+$$
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) 
+$$ {#eq-hr1}
 and very similar arguments (basically the same arguments in reverse) also imply that
-\begin{align}
-  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big) (\#eq:hr2)
-\end{align}
-We use both \@ref(eq:hr1) and \@ref(eq:hr2) below.
+$$
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big)
+$$ {#eq-hr2}
+We use both @eq-hr1 and @eq-hr2 below.
 
 \vspace{100pt}
 
-Next, consider the numerator in \@ref(eq:b1)
+Next, consider the numerator in @eq-b1
 \begin{align*}
   \widehat{\cov}(X,Y) &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
   &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
   &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
   &= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
 \end{align*}
-where the first equality holds by the definition of sample covariance, the second equality holds by \@ref(eq:hr1), the third equality plugs in for $Y_i$, and the last equality combines terms and passes the summation through the additions/subtractions.
+where the first equality holds by the definition of sample covariance, the second equality holds by @eq-hr1, the third equality plugs in for $Y_i$, and the last equality combines terms and passes the summation through the additions/subtractions.
 
 
 Now, let's consider each of these in turn.
@@ -76,11 +76,11 @@ For (B), notice that
   \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i &= \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) (X_i - \bar{X}) \\
   &= \beta_1 \widehat{\var}(X)
 \end{align*}
-where the first equality holds by \@ref(eq:hr2) and the second equality holds by the definition of sample variance.
+where the first equality holds by @eq-hr2 and the second equality holds by the definition of sample variance.
 
 For (C), well, we'll just carry that one around for now.
 
-Plugging in the expressions for (A), (B), and (C) back into Equation \@ref(eq:b1) implies that
+Plugging in the expressions for (A), (B), and (C) back into Equation @eq-b1 implies that
 \begin{align*}
   \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
 \end{align*}
@@ -104,16 +104,18 @@ $\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)$ where 
   \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
 \end{align*}
 where 
-\begin{align}
+$$
+\begin{aligned}
   V &= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
-  &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] (\#eq:V)
-\end{align}
+  &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] 
+\end{aligned}
+$$ {#eq-V}
 which is what we were aiming for.  
 
 Given this result, all our previous work on standard errors, t-statistics, p-values, and confidence intervals applies. First, let me mention the way that you would estimate $V$ (same as always, just replace the population quantities with corresponding sample quantities).
 
 $$
-  \hat{V} = \frac{ \frac{1}{n} \displaystyle \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
+  \hat{V} = \frac{ \displaystyle \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
 $$
 
 where $\hat{U}_i$ are the residuals.
@@ -400,7 +402,7 @@ with $\E[U|Education, Experience, Female] = 0$.  How do you interpret $\beta_1$ 
 
 5. A common extra condition (though somewhat old-fashioned) is to impose *homoskedasticity*.  Homoskedasticity says that $\E[U^2|X] = \sigma^2$ (i.e., the variance of the error term does not change across different values of $X$).
 
-    a) Under homoskedasticity, the expression for $V$ in \@ref(eq:V) simplifies.  Provide a new expression for $V$ under homoskedasticity.  **Hint:** you will need to use the law of iterated expectations.
+    a) Under homoskedasticity, the expression for $V$ in @eq-V simplifies.  Provide a new expression for $V$ under homoskedasticity.  **Hint:** you will need to use the law of iterated expectations.
     
     b) Using this expression for $V$, explain how to calculate standard errors for an estimate of $\beta_1$ in a simple linear regression.
     
@@ -410,51 +412,3 @@ with $\E[U|Education, Experience, Female] = 0$.  How do you interpret $\beta_1$ 
     
     e) Explain how to construct a 95\% confidence interval for $\beta_1$ under homoskedasticity.
     
-## Answers to Some Extra Questions
-
-**Answer to Question 2**
-
-$\beta_1$ is how much $Earnings$ increase on average when $Education$ increases by one year holding $Experience$ and $Female$ constant.
-
-**Answer to Question 3**
-
-a) Run the regression
-    \begin{align*}
-        Earnings &= \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \times Female + U
-    \end{align*}
-    and test (e.g., calculate a t-statistic and check if it is greater than 1.96 in absolute value) if $\beta_3=0$.
-
-b) You can run the following regression:
-   \begin{align*}
-      Earnings &= \beta_0 + \beta_1 Education + \beta_2 Female \\
-      & \hspace{25pt} + \beta_3 Education \times Female + \beta_4 Experience + U
-   \end{align*}
-   Here, you would still be interested in $\beta_3$.  If you thought that the return to experience varied for men and women, you might also include an interaction term involving $Experience$ and $Female$. 
-
-**Partial Answer to Question 5**
-
-a) Starting from \@ref(eq:V)
-
-  \begin{align*}
-    V &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2} \right] \\
-    &= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 U^2] \\
-    &= \frac{1}{\var(X)^2} \E\big[(X-\E[X])^2 \E[U^2|X] \big] \\
-    &= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 \sigma^2 ] \\
-    &= \frac{\sigma^2}{\var(X)^2} \E[(X-\E[X])^2] \\
-    &= \frac{\sigma^2}{\var(X)^2} \var(X) \\
-    &= \frac{\sigma^2}{\var(X)}
-  \end{align*}
-
-  where 
-
-  * the second equality holds because $\var(X)^2$ is non-random and can come out of the expectation, 
-    
-  * the third equality uses the law of iterated expectations, 
-    
-  * the fourth equality holds by the condition of homoskedasticity, 
-    
-  * the fifth equality holds because $\sigma^2$ is non-random and can come out of the expectation, 
-    
-  * the sixth equality holds by the definition of variance, and 
-    
-  * the last equality holds by canceling $\var(X)$ in the numerator with one of the $\var(X)$'s in the denominator.

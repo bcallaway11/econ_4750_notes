@@ -47,6 +47,8 @@ format:
     css: 4750_style.css
     includes:
       in-header: preamble.tex
+    filters:
+      - include_if_html.lua
   pdf:
     documentclass: scrreprt
     pdf-engine: pdflatex
