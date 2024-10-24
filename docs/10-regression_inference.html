@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Inference – Detailed Course Notes for ECON 4750</title>
+<title>Detailed Course Notes for ECON 4750 - 11&nbsp; Inference</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +142,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-regression_inference.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -328,7 +328,6 @@ window.Quarto = {
   <li><a href="#lab-4-solutions" id="toc-lab-4-solutions" class="nav-link" data-scroll-target="#lab-4-solutions"><span class="header-section-number">11.3</span> Lab 4: Solutions</a></li>
   <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">11.4</span> Coding Questions</a></li>
   <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">11.5</span> Extra Questions</a></li>
-  <li><a href="#answers-to-some-extra-questions" id="toc-answers-to-some-extra-questions" class="nav-link" data-scroll-target="#answers-to-some-extra-questions"><span class="header-section-number">11.6</span> Answers to Some Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -385,9 +384,9 @@ window.Quarto = {
   V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
 \end{align*}\]</span> and discuss how to use this result to conduct inference.</p>
 <p>Let’s start by showing why this result holds.</p>
-<p>To start with, recall that <span class="math display">\[\begin{align}
-  \hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} (\#eq:b1)
-\end{align}\]</span></p>
+<p>To start with, recall that <span id="eq-b1"><span class="math display">\[
+\hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)}
+\tag{11.1}\]</span></span></p>
 <p>Before providing a main result, let’s start with noting the following:</p>
 <p><em>Helpful Intermediate Result 1</em> Notice that <span class="math display">\[\begin{align*}
   \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})\bar{Y}\Big) &amp;= \bar{Y} \frac{1}{n}\sum_{i=1}^n \Big( X_i-\bar{X} \Big) \\
@@ -395,17 +394,17 @@ window.Quarto = {
   &amp;= \bar{Y} \Big(\bar{X} - \bar{X} \Big) \\
   &amp;= 0
 \end{align*}\]</span> where the first equality just pulls <span class="math inline">\(\bar{Y}\)</span> out of the summation (it is a constant with respect to the summation), the second equality pushes the summation through the difference, the first part of the third equality holds by the definition of <span class="math inline">\(\bar{X}\)</span> and the second part holds because it is an average of a constant.</p>
-<p>This implies that <span class="math display">\[\begin{align}
-  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) (\#eq:hr1)
-\end{align}\]</span> and very similar arguments (basically the same arguments in reverse) also imply that <span class="math display">\[\begin{align}
-  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big) (\#eq:hr2)
-\end{align}\]</span> We use both @ref(eq:hr1) and @ref(eq:hr2) below.</p>
-<p>Next, consider the numerator in @ref(eq:b1) <span class="math display">\[\begin{align*}
+<p>This implies that <span id="eq-hr1"><span class="math display">\[
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big)
+\tag{11.2}\]</span></span> and very similar arguments (basically the same arguments in reverse) also imply that <span id="eq-hr2"><span class="math display">\[
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big)
+\tag{11.3}\]</span></span> We use both <a href="#eq-hr1" class="quarto-xref">Equation&nbsp;<span>11.2</span></a> and <a href="#eq-hr2" class="quarto-xref">Equation&nbsp;<span>11.3</span></a> below.</p>
+<p>Next, consider the numerator in <a href="#eq-b1" class="quarto-xref">Equation&nbsp;<span>11.1</span></a> <span class="math display">\[\begin{align*}
   \widehat{\cov}(X,Y) &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
   &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
   &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
   &amp;= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
-\end{align*}\]</span> where the first equality holds by the definition of sample covariance, the second equality holds by @ref(eq:hr1), the third equality plugs in for <span class="math inline">\(Y_i\)</span>, and the last equality combines terms and passes the summation through the additions/subtractions.</p>
+\end{align*}\]</span> where the first equality holds by the definition of sample covariance, the second equality holds by <a href="#eq-hr1" class="quarto-xref">Equation&nbsp;<span>11.2</span></a>, the third equality plugs in for <span class="math inline">\(Y_i\)</span>, and the last equality combines terms and passes the summation through the additions/subtractions.</p>
 <p>Now, let’s consider each of these in turn.</p>
 <p>For (A), <span class="math display">\[\begin{align*}
   \frac{1}{n} \sum_{i=1}^n X_i = \bar{X} \qquad \textrm{and} \qquad \frac{1}{n} \sum_{i=1}^n \bar{X} = \bar{X}
@@ -413,9 +412,9 @@ window.Quarto = {
 <p>For (B), notice that <span class="math display">\[\begin{align*}
   \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i &amp;= \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) (X_i - \bar{X}) \\
   &amp;= \beta_1 \widehat{\var}(X)
-\end{align*}\]</span> where the first equality holds by @ref(eq:hr2) and the second equality holds by the definition of sample variance.</p>
+\end{align*}\]</span> where the first equality holds by <a href="#eq-hr2" class="quarto-xref">Equation&nbsp;<span>11.3</span></a> and the second equality holds by the definition of sample variance.</p>
 <p>For (C), well, we’ll just carry that one around for now.</p>
-<p>Plugging in the expressions for (A), (B), and (C) back into Equation @ref(eq:b1) implies that <span class="math display">\[\begin{align*}
+<p>Plugging in the expressions for (A), (B), and (C) back into Equation <a href="#eq-b1" class="quarto-xref">Equation&nbsp;<span>11.1</span></a> implies that <span class="math display">\[\begin{align*}
   \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
 \end{align*}\]</span> Next, re-arranging terms and multiplying both sides by <span class="math inline">\(\sqrt{n}\)</span> implies that <span class="math display">\[\begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) &amp;= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}\right) \\
@@ -428,13 +427,15 @@ window.Quarto = {
   &amp;= 0
 \end{align*}\]</span> where the only challenging line here is the third one holds from the Law of Iterated Expectations. This means that we can apply the central limit theorem, and in particular, <span class="math inline">\(\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)\)</span> where <span class="math inline">\(V=\var(Z) = \E[Z^2]\)</span> (where the 2nd equality here holds because <span class="math inline">\(Z\)</span> has mean 0). Now, just substituting back in for <span class="math inline">\(Z\)</span> implies that <span class="math display">\[\begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
-\end{align*}\]</span> where <span class="math display">\[\begin{align}
+\end{align*}\]</span> where <span id="eq-V"><span class="math display">\[
+\begin{aligned}
   V &amp;= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
-  &amp;= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] (\#eq:V)
-\end{align}\]</span> which is what we were aiming for.</p>
+  &amp;= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right]
+\end{aligned}
+\tag{11.4}\]</span></span> which is what we were aiming for.</p>
 <p>Given this result, all our previous work on standard errors, t-statistics, p-values, and confidence intervals applies. First, let me mention the way that you would estimate <span class="math inline">\(V\)</span> (same as always, just replace the population quantities with corresponding sample quantities).</p>
 <p><span class="math display">\[
-  \hat{V} = \frac{ \frac{1}{n} \displaystyle \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
+  \hat{V} = \frac{ \displaystyle \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
 \]</span></p>
 <p>where <span class="math inline">\(\hat{U}_i\)</span> are the residuals.</p>
 <p>Now, standard errors are just the same as before (the only difference is that <span class="math inline">\(\hat{V}\)</span> itself has changed)</p>
@@ -595,42 +596,153 @@ F-statistic: 88.28 on 1 and 2998 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data=</span>dplyr<span class="sc">::</span><span class="fu">select</span>(Birthweight_Smoking, <span class="sc">-</span>smoker),</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fmt=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
- 
+<!-- preamble start -->
 
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_9b230shqfbprzno4u1gp</title>
-    <style>
-.table td.tinytable_css_evgvaj06rpk0nnnm7ehm, .table th.tinytable_css_evgvaj06rpk0nnnm7ehm {    border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_46zv5aa8r8g9bhskolo5, .table th.tinytable_css_46zv5aa8r8g9bhskolo5 {    text-align: center; }
-.table td.tinytable_css_5t2q6bvaa39w34ipqrat, .table th.tinytable_css_5t2q6bvaa39w34ipqrat {    border-bottom: solid 0.05em #d3d8dc; }
-.table td.tinytable_css_1c7zi3dsc73ikl98k5wb, .table th.tinytable_css_1c7zi3dsc73ikl98k5wb {    text-align: left; }
-.table td.tinytable_css_xzb3la69sb30nrxnisyq, .table th.tinytable_css_xzb3la69sb30nrxnisyq {    text-align: right; }
-.table td.tinytable_css_ss0bs2ncc7kvvge6f31w, .table th.tinytable_css_ss0bs2ncc7kvvge6f31w {    text-align: right; }
-.table td.tinytable_css_hf9cbba449ur11dj7uxt, .table th.tinytable_css_hf9cbba449ur11dj7uxt {    text-align: right; }
-.table td.tinytable_css_5m3h4r2ff6en1szrnzsh, .table th.tinytable_css_5m3h4r2ff6en1szrnzsh {    text-align: right; }
-.table td.tinytable_css_6466645hv7u7o5wd9ccc, .table th.tinytable_css_6466645hv7u7o5wd9ccc {    text-align: right; }
-.table td.tinytable_css_zbutkhirhlb3iyhhxl4g, .table th.tinytable_css_zbutkhirhlb3iyhhxl4g {    text-align: right; }
-.table td.tinytable_css_w0c9v2futv4hnrb7ky47, .table th.tinytable_css_w0c9v2futv4hnrb7ky47 {    text-align: center; }
-    </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
+      function styleCell_gkxggeou2gc0pdtfjdtc(i, j, css_id) {
+        var table = document.getElementById("tinytable_gkxggeou2gc0pdtfjdtc");
+        table.rows[i].cells[j].classList.add(css_id);
       }
-    };
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_gkxggeou2gc0pdtfjdtc');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_gkxggeou2gc0pdtfjdtc(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_gkxggeou2gc0pdtfjdtc");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 0, 'tinytable_css_id3d1zh6y4yx7861dtqmf8') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 1, 'tinytable_css_idjzpmcaj7bgake319tty7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 2, 'tinytable_css_idjzpmcaj7bgake319tty7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 3, 'tinytable_css_idaqwydh9c3c29z3oefevx') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 4, 'tinytable_css_idaqwydh9c3c29z3oefevx') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 5, 'tinytable_css_idaqwydh9c3c29z3oefevx') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(0, 6, 'tinytable_css_idaqwydh9c3c29z3oefevx') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 0, 'tinytable_css_idvh9tes83y4v3odz78uhq') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 1, 'tinytable_css_idggmd2896c34r5o554v2e') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 2, 'tinytable_css_idggmd2896c34r5o554v2e') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 3, 'tinytable_css_idggmd2896c34r5o554v2e') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 4, 'tinytable_css_idggmd2896c34r5o554v2e') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 5, 'tinytable_css_idggmd2896c34r5o554v2e') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(1, 6, 'tinytable_css_idggmd2896c34r5o554v2e') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(2, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(3, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(4, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(5, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(6, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(7, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(8, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(9, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(10, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(11, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 0, 'tinytable_css_iddqrhnti6g7cc3j377xv4') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 1, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 2, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 3, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 4, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 5, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
+window.addEventListener('load', function () { styleCell_gkxggeou2gc0pdtfjdtc(12, 6, 'tinytable_css_idk0mdaiz5ptgc290e5gi7') })
     </script>
-  
 
-  
+    <style>
+    .table td.tinytable_css_id3d1zh6y4yx7861dtqmf8, .table th.tinytable_css_id3d1zh6y4yx7861dtqmf8 {  text-align: center;  text-align: left; }
+    .table td.tinytable_css_idjzpmcaj7bgake319tty7, .table th.tinytable_css_idjzpmcaj7bgake319tty7 {  text-align: center;  text-align: right;  border-bottom: solid 0.05em #d3d8dc; }
+    .table td.tinytable_css_idaqwydh9c3c29z3oefevx, .table th.tinytable_css_idaqwydh9c3c29z3oefevx {  text-align: center;  text-align: right; }
+    .table td.tinytable_css_idvh9tes83y4v3odz78uhq, .table th.tinytable_css_idvh9tes83y4v3odz78uhq {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idggmd2896c34r5o554v2e, .table th.tinytable_css_idggmd2896c34r5o554v2e {  text-align: right;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_iddqrhnti6g7cc3j377xv4, .table th.tinytable_css_iddqrhnti6g7cc3j377xv4 {  text-align: left; }
+    .table td.tinytable_css_idk0mdaiz5ptgc290e5gi7, .table th.tinytable_css_idk0mdaiz5ptgc290e5gi7 {  text-align: right; }
+    </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_9b230shqfbprzno4u1gp" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_gkxggeou2gc0pdtfjdtc" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
 <tr>
 <th scope="col" align="center" colspan="1"> </th>
@@ -754,168 +866,7 @@ F-statistic: 88.28 on 1 and 2998 DF,  p-value: &lt; 2.2e-16</code></pre>
         </tbody>
       </table>
     </div>
-
-    <script>
-      function styleCell_tinytable_8brt1p7kyt8q0z5578t0(i, j, css_id) {
-        var table = document.getElementById("tinytable_9b230shqfbprzno4u1gp");
-        table.rows[i].cells[j].classList.add(css_id);
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_9b230shqfbprzno4u1gp');
-        var newRow = table.insertRow(i);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_tinytable_8brt1p7kyt8q0z5578t0(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_9b230shqfbprzno4u1gp");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
-        for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
-            }
-          }
-        }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
-      }
-
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 0, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 1, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 2, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 3, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 4, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 5, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 6, 'tinytable_css_evgvaj06rpk0nnnm7ehm') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 0, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 1, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 2, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 3, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 4, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 5, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 6, 'tinytable_css_46zv5aa8r8g9bhskolo5') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 1, 'tinytable_css_5t2q6bvaa39w34ipqrat') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 2, 'tinytable_css_5t2q6bvaa39w34ipqrat') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 0, 'tinytable_css_1c7zi3dsc73ikl98k5wb') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 1, 'tinytable_css_xzb3la69sb30nrxnisyq') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 2, 'tinytable_css_ss0bs2ncc7kvvge6f31w') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 3, 'tinytable_css_hf9cbba449ur11dj7uxt') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 4, 'tinytable_css_5m3h4r2ff6en1szrnzsh') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 5, 'tinytable_css_6466645hv7u7o5wd9ccc') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(1, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(2, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(3, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(4, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(5, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(6, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(7, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(8, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(9, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(10, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(11, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(12, 6, 'tinytable_css_zbutkhirhlb3iyhhxl4g') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 0, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 1, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 2, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 3, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 4, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 5, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-window.addEventListener('load', function () { styleCell_tinytable_8brt1p7kyt8q0z5578t0(0, 6, 'tinytable_css_w0c9v2futv4hnrb7ky47') })
-    </script>
-
-  
-
-
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <p>The things that stand out to me are:</p>
@@ -1183,50 +1134,13 @@ F-statistic: 47.31 on 5 and 2994 DF,  p-value: &lt; 2.2e-16</code></pre>
 \end{align*}\]</span> with <span class="math inline">\(\E[U|Education, Experience, Female] = 0\)</span>. How do you interpret <span class="math inline">\(\beta_1\)</span> here?</p></li>
 <li><p>A common extra condition (though somewhat old-fashioned) is to impose <em>homoskedasticity</em>. Homoskedasticity says that <span class="math inline">\(\E[U^2|X] = \sigma^2\)</span> (i.e., the variance of the error term does not change across different values of <span class="math inline">\(X\)</span>).</p>
 <ol type="a">
-<li><p>Under homoskedasticity, the expression for <span class="math inline">\(V\)</span> in @ref(eq:V) simplifies. Provide a new expression for <span class="math inline">\(V\)</span> under homoskedasticity. <strong>Hint:</strong> you will need to use the law of iterated expectations.</p></li>
+<li><p>Under homoskedasticity, the expression for <span class="math inline">\(V\)</span> in <a href="#eq-V" class="quarto-xref">Equation&nbsp;<span>11.4</span></a> simplifies. Provide a new expression for <span class="math inline">\(V\)</span> under homoskedasticity. <strong>Hint:</strong> you will need to use the law of iterated expectations.</p></li>
 <li><p>Using this expression for <span class="math inline">\(V\)</span>, explain how to calculate standard errors for an estimate of <span class="math inline">\(\beta_1\)</span> in a simple linear regression.</p></li>
 <li><p>Explain how to construct a t-statistic for testing <span class="math inline">\(H_0: \beta_1=0\)</span> under homoskedasticity.</p></li>
 <li><p>Explain how to contruct a p-value for <span class="math inline">\(\beta_1\)</span> under homoskedasticity.</p></li>
 <li><p>Explain how to construct a 95% confidence interval for <span class="math inline">\(\beta_1\)</span> under homoskedasticity.</p></li>
 </ol></li>
 </ol>
-</section>
-<section id="answers-to-some-extra-questions" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="answers-to-some-extra-questions"><span class="header-section-number">11.6</span> Answers to Some Extra Questions</h2>
-<p><strong>Answer to Question 2</strong></p>
-<p><span class="math inline">\(\beta_1\)</span> is how much <span class="math inline">\(Earnings\)</span> increase on average when <span class="math inline">\(Education\)</span> increases by one year holding <span class="math inline">\(Experience\)</span> and <span class="math inline">\(Female\)</span> constant.</p>
-<p><strong>Answer to Question 3</strong></p>
-<ol type="a">
-<li><p>Run the regression <span class="math display">\[\begin{align*}
-     Earnings &amp;= \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \times Female + U
-\end{align*}\]</span> and test (e.g., calculate a t-statistic and check if it is greater than 1.96 in absolute value) if <span class="math inline">\(\beta_3=0\)</span>.</p></li>
-<li><p>You can run the following regression: <span class="math display">\[\begin{align*}
-   Earnings &amp;= \beta_0 + \beta_1 Education + \beta_2 Female \\
-   &amp; \hspace{25pt} + \beta_3 Education \times Female + \beta_4 Experience + U
-\end{align*}\]</span> Here, you would still be interested in <span class="math inline">\(\beta_3\)</span>. If you thought that the return to experience varied for men and women, you might also include an interaction term involving <span class="math inline">\(Experience\)</span> and <span class="math inline">\(Female\)</span>.</p></li>
-</ol>
-<p><strong>Partial Answer to Question 5</strong></p>
-<ol type="a">
-<li>Starting from @ref(eq:V)</li>
-</ol>
-<p><span class="math display">\[\begin{align*}
-    V &amp;= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2} \right] \\
-    &amp;= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 U^2] \\
-    &amp;= \frac{1}{\var(X)^2} \E\big[(X-\E[X])^2 \E[U^2|X] \big] \\
-    &amp;= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 \sigma^2 ] \\
-    &amp;= \frac{\sigma^2}{\var(X)^2} \E[(X-\E[X])^2] \\
-    &amp;= \frac{\sigma^2}{\var(X)^2} \var(X) \\
-    &amp;= \frac{\sigma^2}{\var(X)}
-  \end{align*}\]</span></p>
-<p>where</p>
-<ul>
-<li><p>the second equality holds because <span class="math inline">\(\var(X)^2\)</span> is non-random and can come out of the expectation,</p></li>
-<li><p>the third equality uses the law of iterated expectations,</p></li>
-<li><p>the fourth equality holds by the condition of homoskedasticity,</p></li>
-<li><p>the fifth equality holds because <span class="math inline">\(\sigma^2\)</span> is non-random and can come out of the expectation,</p></li>
-<li><p>the sixth equality holds by the definition of variance, and</p></li>
-<li><p>the last equality holds by canceling <span class="math inline">\(\var(X)\)</span> in the numerator with one of the <span class="math inline">\(\var(X)\)</span>’s in the denominator.</p></li>
-</ul>
 
 
 </section>
@@ -1267,7 +1181,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1299,47 +1224,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1374,11 +1259,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1654,12 +1535,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./09-regression_computation.html" class="pagination-link" aria-label="Computation">
+      <a href="./09-regression_computation.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./11-binary_outcomes.html" class="pagination-link" aria-label="Binary Outcome Models">
+      <a href="./11-binary_outcomes.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Binary Outcome Models</span>">
         <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

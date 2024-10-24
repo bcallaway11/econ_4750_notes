@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Computation – Detailed Course Notes for ECON 4750</title>
+<title>Detailed Course Notes for ECON 4750 - 10&nbsp; Computation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +142,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-regression_computation.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -438,14 +438,13 @@ window.Quarto = {
 <p>You probably recall how to minimize a function. You take its derivative, set it equal to 0, and solve that equation. [It’s actually a little more complicated than that because you need to ensure that you’re finding a minimum rather than a maximum, but the above equation is actually quadratic, so it will have a minimum.]</p>
 <p>That’s all that we will do here — just the thing we need to take the derivative of looks complicated. Actually, the <span class="math inline">\(\frac{1}{n}\)</span> and <span class="math inline">\(\sum\)</span> terms will just hang around. For the rest though, we need to use the <em>chain rule</em>; that is, we need to take the derivative of the outside and then multiply by the derivative of the inside. We also need to take the derivative both with respect to <span class="math inline">\(b_0\)</span> and with respect to <span class="math inline">\(b_1\)</span>.</p>
 <p>Let’s start by taking the derivative with respect to <span class="math inline">\(b_0\)</span> and setting it equal to 0.</p>
-<p><span class="math display">\[
-  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 (\#eq:foc-bet0)
-\]</span> where the <span class="math inline">\(2\)</span> comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of <span class="math inline">\(-b_0\)</span> on the inside. I also replaced <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> here since <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the values that will solve this equation.</p>
-<p>Next, let’s take the derivative with respect to <span class="math inline">\(b_1\)</span>: <span class="math display">\[
-  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 (\#eq:foc-bet1)
-\]</span><br>
-where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and <span class="math inline">\(X_i\)</span> at the end come from taking the derivative of the inside with respect to <span class="math inline">\(b_1\)</span>.</p>
-<p>All we have to do now is to solve these Equations @ref(eq:foc-bet0) and @ref(eq:foc-bet1) for <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is. Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.</p>
+<p><span id="eq-foc-bet0"><span class="math display">\[
+  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0
+\tag{10.1}\]</span></span> where the <span class="math inline">\(2\)</span> comes from taking the deriviative of the squared part and the negative sign at the beginning comes from taking the derivative of <span class="math inline">\(-b_0\)</span> on the inside. I also replaced <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> here since <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the values that will solve this equation.</p>
+<p>Next, let’s take the derivative with respect to <span class="math inline">\(b_1\)</span>: <span id="eq-foc-bet1"><span class="math display">\[
+  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0
+\tag{10.2}\]</span></span> where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and <span class="math inline">\(X_i\)</span> at the end come from taking the derivative of the inside with respect to <span class="math inline">\(b_1\)</span>.</p>
+<p>All we have to do now is to solve <a href="#eq-foc-bet0" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> for <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is. Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.</p>
 <p>Starting with the first equation,</p>
 <p><span class="math display">\[
   \begin{aligned}
@@ -455,7 +454,7 @@ where the 2 comes from taking the derivative of the squared part, and the negati
   &amp; \implies \boxed{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}}
   \end{aligned}
 \]</span> where the second line holds by dividing both sides by <span class="math inline">\(-2\)</span>, the third line holds by pushing the summation through the sums/differences and simplifying terms, and the last line holds by rearranging to solve for <span class="math inline">\(\hat{\beta}_0\)</span>.</p>
-<p>Now, let’s use the above result and Equation @ref(eq:foc-bet1) to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+<p>Now, let’s use the above result and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
 <p><span class="math display">\[
   \begin{aligned}
   &amp; \phantom{\implies} -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1) X_i &amp;= 0 \\
@@ -577,7 +576,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -609,47 +619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -684,11 +654,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -964,12 +930,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./08-interpreting_regressions.html" class="pagination-link" aria-label="Interpreting Regressions">
+      <a href="./08-interpreting_regressions.html" class="pagination-link  aria-label=" &lt;span="" regressions&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-regression_inference.html" class="pagination-link" aria-label="Inference">
+      <a href="./10-regression_inference.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>Inference</span>">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
