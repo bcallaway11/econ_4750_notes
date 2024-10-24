@@ -537,53 +537,25 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
-  backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
-
-Revert to `kableExtra` for one session:
-
-  options(modelsummary_factory_default = 'kableExtra')
-  options(modelsummary_factory_latex = 'kableExtra')
-  options(modelsummary_factory_html = 'kableExtra')
-
-Silence this message forever:
-
-  config_modelsummary(startup_message = FALSE)</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a factor variable for going to college</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(acs<span class="sc">$</span>educ <span class="sc">&gt;=</span> <span class="dv">16</span>, <span class="st">"college"</span>, <span class="st">"non-college"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(acs<span class="sc">$</span>col)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(acs<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>incwage <span class="ot">&lt;-</span> acs<span class="sc">$</span>incwage<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(<span class="sc">~</span> col, <span class="at">data=</span>dplyr<span class="sc">::</span><span class="fu">select</span>(acs, incwage, female, age, col),</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fmt=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a factor variable for going to college</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(acs<span class="sc">$</span>educ <span class="sc">&gt;=</span> <span class="dv">16</span>, <span class="st">"college"</span>, <span class="st">"non-college"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>col <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(acs<span class="sc">$</span>col)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(acs<span class="sc">$</span>sex<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>acs<span class="sc">$</span>incwage <span class="ot">&lt;-</span> acs<span class="sc">$</span>incwage<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(<span class="sc">~</span> col, <span class="at">data=</span>dplyr<span class="sc">::</span><span class="fu">select</span>(acs, incwage, female, age, col),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">fmt=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <!-- preamble start -->
 
     <script>
-      function styleCell_x5b21bt6izm5zpnjpcky(i, j, css_id) {
-        var table = document.getElementById("tinytable_x5b21bt6izm5zpnjpcky");
+      function styleCell_9dp1p1dbxq0ekfhgekhc(i, j, css_id) {
+        var table = document.getElementById("tinytable_9dp1p1dbxq0ekfhgekhc");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_x5b21bt6izm5zpnjpcky');
+        var table = document.getElementById('tinytable_9dp1p1dbxq0ekfhgekhc');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -591,8 +563,8 @@ Attaching package: 'dplyr'</code></pre>
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_x5b21bt6izm5zpnjpcky(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_x5b21bt6izm5zpnjpcky");
+      function spanCell_9dp1p1dbxq0ekfhgekhc(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_9dp1p1dbxq0ekfhgekhc");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -618,54 +590,54 @@ Attaching package: 'dplyr'</code></pre>
         targetCell.rowSpan = rowspan;
         targetCell.colSpan = colspan;
       }
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 0, 'tinytable_css_idznzpkwotyrzs64qvvikd') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 1, 'tinytable_css_idcnzyj6dqgmc2oxvkzgkt') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 2, 'tinytable_css_idcnzyj6dqgmc2oxvkzgkt') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 3, 'tinytable_css_idrpebqqtvsus0vg1cvy20') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 4, 'tinytable_css_idrpebqqtvsus0vg1cvy20') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 5, 'tinytable_css_idrpebqqtvsus0vg1cvy20') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(0, 6, 'tinytable_css_idrpebqqtvsus0vg1cvy20') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 0, 'tinytable_css_idqtq1y1u4qn6f4zno9dj2') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 1, 'tinytable_css_id7du0f8j8xusvnollei8u') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 2, 'tinytable_css_id7du0f8j8xusvnollei8u') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 3, 'tinytable_css_id7du0f8j8xusvnollei8u') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 4, 'tinytable_css_id7du0f8j8xusvnollei8u') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 5, 'tinytable_css_id7du0f8j8xusvnollei8u') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(1, 6, 'tinytable_css_id7du0f8j8xusvnollei8u') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 0, 'tinytable_css_id2e2ghdpberevbvyzrw76') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 1, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 2, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 3, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 4, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 5, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(2, 6, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 0, 'tinytable_css_id2e2ghdpberevbvyzrw76') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 1, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 2, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 3, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 4, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 5, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(3, 6, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 0, 'tinytable_css_id2e2ghdpberevbvyzrw76') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 1, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 2, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 3, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 4, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 5, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
-window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 6, 'tinytable_css_iddnjhn237emjdecrrmzwu') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 0, 'tinytable_css_idof8x05kookm81xh7vglh') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 1, 'tinytable_css_idw2eqis2tpto2t24hbs03') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 2, 'tinytable_css_idw2eqis2tpto2t24hbs03') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 3, 'tinytable_css_idpcjnj7754ptvz4lpggry') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 4, 'tinytable_css_idpcjnj7754ptvz4lpggry') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 5, 'tinytable_css_idpcjnj7754ptvz4lpggry') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(0, 6, 'tinytable_css_idpcjnj7754ptvz4lpggry') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 0, 'tinytable_css_ids3siu8gg43q9dd4xil1d') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 1, 'tinytable_css_idmsjmxwny7lxq6zpx6wyi') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 2, 'tinytable_css_idmsjmxwny7lxq6zpx6wyi') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 3, 'tinytable_css_idmsjmxwny7lxq6zpx6wyi') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 4, 'tinytable_css_idmsjmxwny7lxq6zpx6wyi') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 5, 'tinytable_css_idmsjmxwny7lxq6zpx6wyi') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(1, 6, 'tinytable_css_idmsjmxwny7lxq6zpx6wyi') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 0, 'tinytable_css_idqjy8pz2ntwm1ftzs4hva') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 1, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 2, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 3, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 4, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 5, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(2, 6, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 0, 'tinytable_css_idqjy8pz2ntwm1ftzs4hva') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 1, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 2, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 3, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 4, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 5, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(3, 6, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 0, 'tinytable_css_idqjy8pz2ntwm1ftzs4hva') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 1, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 2, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 3, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 4, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 5, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
+window.addEventListener('load', function () { styleCell_9dp1p1dbxq0ekfhgekhc(4, 6, 'tinytable_css_idpgxg72hcnksgr5f8ma18') })
     </script>
 
     <style>
-    .table td.tinytable_css_idznzpkwotyrzs64qvvikd, .table th.tinytable_css_idznzpkwotyrzs64qvvikd {  text-align: center;  text-align: left; }
-    .table td.tinytable_css_idcnzyj6dqgmc2oxvkzgkt, .table th.tinytable_css_idcnzyj6dqgmc2oxvkzgkt {  text-align: center;  text-align: right;  border-bottom: solid 0.05em #d3d8dc; }
-    .table td.tinytable_css_idrpebqqtvsus0vg1cvy20, .table th.tinytable_css_idrpebqqtvsus0vg1cvy20 {  text-align: center;  text-align: right; }
-    .table td.tinytable_css_idqtq1y1u4qn6f4zno9dj2, .table th.tinytable_css_idqtq1y1u4qn6f4zno9dj2 {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_id7du0f8j8xusvnollei8u, .table th.tinytable_css_id7du0f8j8xusvnollei8u {  text-align: right;  border-bottom: solid 0.1em #d3d8dc; }
-    .table td.tinytable_css_id2e2ghdpberevbvyzrw76, .table th.tinytable_css_id2e2ghdpberevbvyzrw76 {  text-align: left; }
-    .table td.tinytable_css_iddnjhn237emjdecrrmzwu, .table th.tinytable_css_iddnjhn237emjdecrrmzwu {  text-align: right; }
+    .table td.tinytable_css_idof8x05kookm81xh7vglh, .table th.tinytable_css_idof8x05kookm81xh7vglh {  text-align: center;  text-align: left; }
+    .table td.tinytable_css_idw2eqis2tpto2t24hbs03, .table th.tinytable_css_idw2eqis2tpto2t24hbs03 {  text-align: center;  text-align: right;  border-bottom: solid 0.05em #d3d8dc; }
+    .table td.tinytable_css_idpcjnj7754ptvz4lpggry, .table th.tinytable_css_idpcjnj7754ptvz4lpggry {  text-align: center;  text-align: right; }
+    .table td.tinytable_css_ids3siu8gg43q9dd4xil1d, .table th.tinytable_css_ids3siu8gg43q9dd4xil1d {  text-align: left;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idmsjmxwny7lxq6zpx6wyi, .table th.tinytable_css_idmsjmxwny7lxq6zpx6wyi {  text-align: right;  border-bottom: solid 0.1em #d3d8dc; }
+    .table td.tinytable_css_idqjy8pz2ntwm1ftzs4hva, .table th.tinytable_css_idqjy8pz2ntwm1ftzs4hva {  text-align: left; }
+    .table td.tinytable_css_idpgxg72hcnksgr5f8ma18, .table th.tinytable_css_idpgxg72hcnksgr5f8ma18 {  text-align: right; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_x5b21bt6izm5zpnjpcky" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_9dp1p1dbxq0ekfhgekhc" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
 <tr>
 <th scope="col" align="center" colspan="1"> </th>
@@ -761,78 +733,78 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to flip a coin with probability p</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>p,p)))</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># test out flip function</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to flip a coin with probability p</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cf">function</span>(p) {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">-</span>p,p)))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># test out flip function</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">flip</span>(<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 0</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate a sample of size n</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>generate_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(n,p) {</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    Y[i] <span class="ot">&lt;-</span> <span class="fu">flip</span>(p)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  Y</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test out generate_sample function</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_sample</span>(<span class="dv">10</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate a sample of size n</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>generate_sample <span class="ot">&lt;-</span> <span class="cf">function</span>(n,p) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    Y[i] <span class="ot">&lt;-</span> <span class="fu">flip</span>(p)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  Y</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test out generate_sample function</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_sample</span>(<span class="dv">10</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 1 0 1 1 1 1 0 0 0</code></pre>
+<pre><code> [1] 0 0 1 1 0 0 1 1 1 0</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carry out monte carlo simulations</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>nsims <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># need to pick large number of monte carlo simulations</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compute bias</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>bias</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carry out monte carlo simulations</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>nsims <span class="ot">&lt;-</span> <span class="dv">1000</span>  <span class="co"># need to pick large number of monte carlo simulations</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># compute bias</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>bias</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8e-04</code></pre>
+<pre><code>[1] 0.002</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0235429</code></pre>
+<pre><code>[1] 0.0249009</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute mean squared error</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute mean squared error</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02354354</code></pre>
+<pre><code>[1] 0.0249049</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> p</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> p</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing non-finite outside the scale range
+<pre><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -842,55 +814,55 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>rej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>rej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1</code></pre>
+<pre><code>[1] 0.115</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># since we are going to do this over and over, let's write a function to do it</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mc_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, p, H0) {</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute bias</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute sampling variance</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute mean squared error</span></span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  hist_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span> </span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>  rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print results</span></span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"bias: "</span>, <span class="fu">round</span>(bias,<span class="dv">4</span>)))</span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"var : "</span>, <span class="fu">round</span>(var,<span class="dv">4</span>)))</span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"mse : "</span>, <span class="fu">round</span>(mse,<span class="dv">4</span>)))</span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(hist_plot)</span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"rej : "</span>, <span class="fu">round</span>(rej,<span class="dv">4</span>)))</span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># since we are going to do this over and over, let's write a function to do it</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mc_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(n, p, H0) {</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  mc_est <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimation results</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  mc_var <span class="ot">&lt;-</span> <span class="fu">c</span>()  <span class="co"># vector to hold estimated variance</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsims) {</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="ot">&lt;-</span> <span class="fu">generate_sample</span>(n,p)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    mc_est[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(Y)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    mc_var[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(Y)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute bias</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute sampling variance</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute mean squared error</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>  hist_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">t=</span>t), <span class="fu">aes</span>(<span class="at">x=</span>t)) <span class="sc">+</span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print results</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"bias: "</span>, <span class="fu">round</span>(bias,<span class="dv">4</span>)))</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"var : "</span>, <span class="fu">round</span>(var,<span class="dv">4</span>)))</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"mse : "</span>, <span class="fu">round</span>(mse,<span class="dv">4</span>)))</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(hist_plot)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"rej : "</span>, <span class="fu">round</span>(rej,<span class="dv">4</span>)))</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 0.0055"
-[1] "var : 0.0045"
-[1] "mse : 0.0046"</code></pre>
+<pre><code>[1] "bias: -9e-04"
+[1] "var : 0.0049"
+[1] "mse : 0.0049"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -900,18 +872,18 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.053"</code></pre>
+<pre><code>[1] "rej : 0.062"</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 1e-04"
-[1] "var : 0.0049"
-[1] "mse : 0.0049"</code></pre>
+<pre><code>[1] "bias: -0.002"
+[1] "var : 0.0048"
+[1] "mse : 0.0048"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -921,18 +893,18 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.338"</code></pre>
+<pre><code>[1] "rej : 0.34"</code></pre>
 </div>
 </div>
 <ol start="6" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: -0.0018"
-[1] "var : 0.005"
-[1] "mse : 0.005"</code></pre>
+<pre><code>[1] "bias: -0.0047"
+[1] "var : 0.0047"
+[1] "mse : 0.0047"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -949,11 +921,11 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 0"
-[1] "var : 3e-04"
-[1] "mse : 3e-04"</code></pre>
+<pre><code>[1] "bias: 1e-04"
+[1] "var : 2e-04"
+[1] "mse : 2e-04"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -970,14 +942,14 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">10</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">10</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: -0.0016"
-[1] "var : 0.0049"
-[1] "mse : 0.0049"</code></pre>
+<pre><code>[1] "bias: 0.0019"
+[1] "var : 0.0047"
+[1] "mse : 0.0047"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 591 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 617 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -988,21 +960,21 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.593"</code></pre>
+<pre><code>[1] "rej : 0.619"</code></pre>
 </div>
 </div>
 <ol start="9" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 7e-04"
-[1] "var : 9e-04"
-[1] "mse : 9e-04"</code></pre>
+<pre><code>[1] "bias: 5e-04"
+[1] "var : 0.001"
+[1] "mse : 0.001"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 71 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 68 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -1013,16 +985,16 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.075"</code></pre>
+<pre><code>[1] "rej : 0.072"</code></pre>
 </div>
 </div>
 <ol start="10" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 0"
+<pre><code>[1] "bias: -1e-04"
 [1] "var : 0"
 [1] "mse : 0"</code></pre>
 </div>
@@ -1034,7 +1006,7 @@ window.addEventListener('load', function () { styleCell_x5b21bt6izm5zpnjpcky(4, 
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.053"</code></pre>
+<pre><code>[1] "rej : 0.043"</code></pre>
 </div>
 </div>
 </section>

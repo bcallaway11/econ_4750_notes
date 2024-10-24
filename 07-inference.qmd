@@ -102,7 +102,7 @@ Before we decide what to do, let's introduce a little more terminology regarding
 
 Clearly, there is a tradeoff here.  If you are really concerned with type I errors, you can be very cautious about rejecting $H_0$.  If you are very concerned about type II errors, you could aggressively reject $H_0$.  The traditional approach to trading these off in statistics is to pre-specify a **significance level** indicating what percentage of the time you are willing to commit a type I error.  Usually the significance level is denoted by $\alpha$ and the most common choice of $\alpha$ is 0.05 and other common choices are $\alpha=0.1$ or $\alpha=0.01$.  Then, good statistical tests try to make as few type II errors as possible subject to the constraint on the rate of type I errors.
 
-Often, once you have specified a significance level, it comes with a **critical value**.  The critical value is the value of a test statistic for which the test just rejects $H_0$.  
+Often, once you have specified a significance level, it comes with a **critical value**.  The critical value is the value of a test statistic for which the test just rejects $H_0$.
 
 In practice, this leads to the following decision rule:
 
@@ -115,21 +115,21 @@ In our case, since $t$ follows a normal distribution under $H_0$, the correspond
 ```{r echo=FALSE}
 x <- seq(-3, 3, length.out=1000)
 plot_df <- data.frame(x=x)
-ggplot(plot_df, aes(x=x)) + 
+ggplot(plot_df, aes(x=x)) +
     stat_function(fun=dnorm,
                   geom="line") +
     stat_function(fun=dnorm,
                   geom="area",
                   fill="steelblue",
                   xlim=c(1.96,3),
-                  alpha=.2) + 
+                  alpha=.2) +
     stat_function(fun=dnorm,
                   geom="area",
                   fill="steelblue",
                   xlim=c(-3,-1.96),
                   alpha=.2) +
-    theme_bw() + 
-    scale_x_continuous(breaks=c(-1.96,0,1.96)) + 
+    theme_bw() +
+    scale_x_continuous(breaks=c(-1.96,0,1.96)) +
     ylab("density")
 ```
 
@@ -137,32 +137,32 @@ The sum of the two blue, shaded areas is 0.05.  In other words, under $H_0$, the
 
 ## P-values
 
-Choosing a significance level is somewhat arbitrary.  What did we choose 5\%?  
+Choosing a significance level is somewhat arbitrary.  What did we choose 5\%?
 
-Perhaps more importantly, we are essentially throwing away a lot of information if we are to reduce the information from standard errors/t-statistics to a binary "reject" or "fail to reject".  
+Perhaps more importantly, we are essentially throwing away a lot of information if we are to reduce the information from standard errors/t-statistics to a binary "reject" or "fail to reject".
 
-One alternative is to report a **p-value**.  A p-value is the probability of observing a t-statistic as "extreme" as we did if $H_0$ were true.  
+One alternative is to report a **p-value**.  A p-value is the probability of observing a t-statistic as "extreme" as we did if $H_0$ were true.
 
 Here is an example of how to calculate a p-value.  Suppose we calculate $t=1.85$.  Then,
 
 ```{r echo=FALSE}
 x <- seq(-3, 3, length.out=1000)
 plot_df <- data.frame(x=x)
-ggplot(plot_df, aes(x=x)) + 
+ggplot(plot_df, aes(x=x)) +
     stat_function(fun=dnorm,
                   geom="line") +
     stat_function(fun=dnorm,
                   geom="area",
                   fill="purple",
                   xlim=c(1.85,3),
-                  alpha=.2) + 
+                  alpha=.2) +
     stat_function(fun=dnorm,
                   geom="area",
                   fill="purple",
                   xlim=c(-3,-1.85),
                   alpha=.2) +
-    theme_bw() + 
-    scale_x_continuous(breaks=c(-1.96,0,1.96)) + 
+    theme_bw() +
+    scale_x_continuous(breaks=c(-1.96,0,1.96)) +
     ylab("density")
 ```
 
@@ -178,7 +178,7 @@ $$
 $$
 I don't know what this is off the top of my head, but it is easy to compute from a table or using `R`.  In `R`, you can use the function `pnorm` --- here, the p-value is given by `2*pnorm(-1.85)` which is equal to `r round(2*pnorm(-1.85),3)`.
 
-More generally, if you calculate a t-statistic, $t$, using your data and under $H_0$, then, 
+More generally, if you calculate a t-statistic, $t$, using your data and under $H_0$, then,
 
 $$
   \textrm{p-value} = 2 \Phi(-|t|)
@@ -190,7 +190,7 @@ Another idea is to report a $(1-\alpha)\%$ (e.g., 95%) confidence interval.
 
 The interpretation of a confidence interval is a bit subtle.  It is this: if we collected a large number of samples, and computed a confidence interval each time, 95% of these would contain the true value.  This is subtly different than: there is a 95% probability that $\theta$ (the population parameter of interest) falls within the confidence interval --- this second interpretation doesn't make sense because $\theta$ is non-random.
 
-A 95% confidence interval is given  by 
+A 95% confidence interval is given  by
 
 $$
   CI_{95\%} = \left[\hat{\theta} - 1.96 \ \textrm{s.e.}(\hat{\theta}), \hat{\theta} + 1.96 \  \textrm{s.e.}(\hat{\theta})\right]
@@ -206,7 +206,7 @@ $$
 
 I have covered the main approaches to inference in this section.  I'd like to make a couple of concluding comments.  First, all of the approaches discussed here (standard errors, t-statistics, p-values, and confidence intervals) are very closely related (in some sense, they are just alternative ways to report the same information).  They all rely heavily on establishing asymptotic normality of the estimate of the parameter of interest --- in fact, this is why we were interested in asymptotic normality in the first place.  My sense is that the most common thing to report (at least in economics) is an estimate of the parameter of interest (e.g., $\hat{\theta}$ or $\bar{Y}$) along with its standard error.  If you know this information, you (or your reader) can easily compute any of the other expressions that we've considered in this section.
 
-Another important thing to mention is that there is often a distinction between **statistical significance** and **economic significance**.  
+Another important thing to mention is that there is often a distinction between **statistical significance** and **economic significance**.
 
 In the next chapter, we'll start to think about the *effect* of one variable on another (e.g., the effect of some economic policy on some outcome of interest).  By far the most common null hypothesis in this case is that "the effect" is equal to 0.  However, in economics/social sciences/business applications, there probably aren't too many cases where (i) it would be interesting enough to consider the effect of one variable on another (ii) while simultaneously the effect is literally equal to 0.  Since, all else equal, standard errors get smaller with more observations, as datasets in economics tend to get larger over time, we tend to find more statistically significant effects.  This doesn't mean that effects are getting bigger or more important --- just that we are able to detect smaller and smaller effects if we have enough data.  And most questions in economics involve more than just answering the binary question: does variable $X$ have any effect at all on variable $Y$?  For example, if you are trying to evaluate the effect of some economic policy, it is usually more helpful to think in terms of a cost-benefit analysis --- what are the benefits or the policy relative to the costs and these sorts of comparisons inherently involve thinking about magnitudes of effects.
 
@@ -214,7 +214,7 @@ A more succinct way to say all this is: the effect of one variable on another ca
 
 
 
-## Coding 
+## Coding
 
 In this section, we'll use the `acs` data to calculate an estimate of average wage/salary income among employed individuals in the United States.  We'll test the null hypothesis that the mean income in the United States is \$50,000 as well as report the standard error of our estimate of mean income, as well as corresponding p-values, t-statistics, and 95% confidence interval.  Finally, we'll report a table of summary statistics using the `modelsummary` package separately by college graduates relative to non-college graduates.
 
@@ -252,6 +252,7 @@ ci_U <- ybar + 1.96*se
 paste0("[",round(ci_L,1),",",round(ci_U,1),"]")
 ```
 ```{r}
+#| message: false
 library(modelsummary)
 library(dplyr)
 # create a factor variable for going to college
@@ -272,13 +273,13 @@ In this lab, we will study the theoretical properties of the estimators that we 
 
 For this lab, we are going to make simulated coin flips.
 
-1. Write a function called `flip` that takes in an argument `p` where `p` stands for the probability of flipping a heads (you can code this as a `1` and `0` for tails) and outputs either `1` or `0`.  Run the code 
+1. Write a function called `flip` that takes in an argument `p` where `p` stands for the probability of flipping a heads (you can code this as a `1` and `0` for tails) and outputs either `1` or `0`.  Run the code
 
     ```
     flip(0.5)
     ```
 
-    **Hint:** It may be helpful to use the `R` function `sample`.  
+    **Hint:** It may be helpful to use the `R` function `sample`.
 
 2. Write a function called `generate_sample` that takes in the arguments `n` and `p` and generates a sample of `n` coin flips where the probability of flipping heads is `p`.  Run the code
 
@@ -286,20 +287,20 @@ For this lab, we are going to make simulated coin flips.
     generate_sample(10,0.5)
     ```
 
-3. Next, over 1000 Monte Carlo simulations (i.e., do the following 1000 times), 
+3. Next, over 1000 Monte Carlo simulations (i.e., do the following 1000 times),
 
     (i) generate a new sample with 10 observations
-    
-    (ii) calculate an estimate of $p$ 
-    
+
+    (ii) calculate an estimate of $p$
+
     (**Hint:** you can estimate $p$ by just calculating the average number of heads flipped in a particular simulation)
-    
+
     (iii) a t-statistic for the null hypothesis that $p=0.5$
-    
+
     (iv) and record whether or not you reject the null hypothesis that $p=0.5$ in that simulation
-    
-  Then, using all 1000 Monte Carlo simulations, report (i) an estimate of the bias of your estimator, (ii) an estimate of the variance of your estimator, (iii) an estimate of the mean squared error of your estimator, (iv) plot a histogram of the t-statistics across iterations, and (v) report the fraction of times that you reject $H_0$.  
-  
+
+  Then, using all 1000 Monte Carlo simulations, report (i) an estimate of the bias of your estimator, (ii) an estimate of the variance of your estimator, (iii) an estimate of the mean squared error of your estimator, (iv) plot a histogram of the t-statistics across iterations, and (v) report the fraction of times that you reject $H_0$.
+
 4. Same as #3, but with 50 observations in each simulation.  What differences do you notice?
 
 5. Same as #3, but with 50 observations and test $H_0:p=0.6$.  What differences do you notice?
@@ -318,7 +319,7 @@ For this lab, we are going to make simulated coin flips.
 
 ## Lab 3 Solutions
 
-1. 
+1.
 ```{r}
 # function to flip a coin with probability p
 flip <- function(p) {
@@ -329,7 +330,7 @@ flip <- function(p) {
 flip(0.5)
 ```
 
-2. 
+2.
 ```{r}
 # function to generate a sample of size n
 generate_sample <- function(n,p) {
@@ -344,7 +345,7 @@ generate_sample <- function(n,p) {
 generate_sample(10,0.5)
 ```
 
-3. 
+3.
 ```{r}
 # carry out monte carlo simulations
 n <- 10
@@ -381,7 +382,7 @@ rej <- mean(1*(abs(t) >= 1.96))
 rej
 ```
 
-4. 
+4.
 ```{r}
 # since we are going to do this over and over, let's write a function to do it
 mc_sim <- function(n, p, H0) {
@@ -402,14 +403,14 @@ mc_sim <- function(n, p, H0) {
 
   # compute mean squared error
   mse <- bias^2 + var
-  
+
   t <- sqrt(n)*(mc_est - H0) / sqrt(mc_var)
   hist_plot <- ggplot(data.frame(t=t), aes(x=t)) +
-    geom_histogram(bins=30) + 
+    geom_histogram(bins=30) +
     theme_bw()
 
   rej <- mean(1*(abs(t) >= 1.96))
-  
+
   # print results
   print(paste0("bias: ", round(bias,4)))
   print(paste0("var : ", round(var,4)))
@@ -455,17 +456,17 @@ mc_sim(1000, 0.95, 0.95)
 1. For this question, we'll use the data `Airq`.  The variable `rain` contains the amount of rainfall in the county in a year (in inches).  For this question, we'll be interested in testing whether or not the mean rainfall across counties in California is 25 inches.
 
     a) Estimate the mean rainfall across counties.
-  
+
     b) Calculate the standard error of your estimate of rainfall.
-  
+
     c) Calculate a t-statistic for $H_0 : \E[Y] = 25$ where $Y$ denotes rainfall.  Do you reject $H_0$ at a 5% significance level?  Explain.
-  
+
     d) Calculate a p-value for $H_0: \E[Y] = 25$.  How should you interpret this?
-  
+
     e) Calculate a 95% confidence interval for average rainfall.
-  
+
     f) Use the `datasummary_balance` function from the `modelsummary` package to report average air quality, value added, rain, population density, and average income, separately by whether or not the county is located in a coastal area.
-    
+
 ## Extra Questions
 
 1. What is the difference between consistency and unbiasedness?
@@ -477,5 +478,5 @@ mc_sim(1000, 0.95, 0.95)
 4. The Central Limit Theorem says that, $\sqrt{n}\left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right) \rightarrow N(0,V)$ as $n \rightarrow \infty$ where $V = \var(Y)$.
 
     a) What happens to $n \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right)$ as $n \rightarrow \infty$?  Explain.
-    
+
     b) What happens to $n^{1/3} \left(\frac{1}{n} \sum_{i=1}^n (Y_i - \E[Y])\right)$ as $n \rightarrow \infty$?  Explain.
