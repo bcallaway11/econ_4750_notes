@@ -329,7 +329,6 @@ window.Quarto = {
   <li><a href="#lab-6-predicting-diamond-prices" id="toc-lab-6-predicting-diamond-prices" class="nav-link" data-scroll-target="#lab-6-predicting-diamond-prices"><span class="header-section-number">14.2</span> Lab 6: Predicting Diamond Prices</a></li>
   <li><a href="#lab-6-solutions" id="toc-lab-6-solutions" class="nav-link" data-scroll-target="#lab-6-solutions"><span class="header-section-number">14.3</span> Lab 6: Solutions</a></li>
   <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">14.4</span> Extra Questions</a></li>
-  <li><a href="#answers-to-some-extra-questions" id="toc-answers-to-some-extra-questions" class="nav-link" data-scroll-target="#answers-to-some-extra-questions"><span class="header-section-number">14.5</span> Answers to Some Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -445,8 +444,8 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lasso_model) <span class="co"># if you are interested in estimated coefficients</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lasso_model, <span class="at">newdata=</span>test) <span class="co"># get predictions</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ridge_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>train, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ridge_model <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>train,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">alpha=</span><span class="dv">0</span>,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">use.model.frame=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(ridge_model)</span>
@@ -456,8 +455,8 @@ window.Quarto = {
 <p>• In terms of code, the only difference between the Lasso and Ridge, is that for Ridge, we added the extra argument <code>alpha=0</code>. The default value of <code>alpha</code> is 1, and that leads to a Lasso regression (which is why didn’t need to specify it for our Lasso estimates). If you are interested, you can read more details about this in the documentation for <code>glmnet</code> using <code>?glmnet</code>.</p>
 <p>• Generally, if you are going to use Lasso or Ridge, then you would have many more regressors to include than just <code>X1 + X2 + X3</code>. One common way that you get more regressors is when you start to thinking about including higher order terms or interaction terms. One way to do this quickly is to use the <code>poly</code> function inside the formula. For example,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lasso_model2 <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> <span class="fu">poly</span>(X1, X2, X3, <span class="at">degree=</span><span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data=</span>train, </span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lasso_model2 <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(Y <span class="sc">~</span> <span class="fu">poly</span>(X1, X2, X3, <span class="at">degree=</span><span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data=</span>train,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">use.model.frame=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>would include all interactions between <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> as well as squared terms for each; if you wanted to include more interactions and cubic terms, you could specify <code>degree=3</code>.</p>
@@ -556,9 +555,9 @@ window.Quarto = {
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  r.squared adj.r.squared     aic     bic       cv
-1     0.898         0.898 1104188 1104301 1366.191
-2     0.900         0.900 1103499 1103647 1370.162
-3     0.928         0.928 1089372 1090328 2115.375</code></pre>
+1     0.898         0.898 1104188 1104301 1365.851
+2     0.900         0.900 1103499 1103647 1370.082
+3     0.928         0.928 1089372 1090328 2173.133</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
@@ -589,8 +588,8 @@ window.Quarto = {
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     mod1    mod2    mod3  lasso   ridge
-1 856.014 785.171 616.996 683.36 809.086</code></pre>
+<pre><code>     mod1    mod2    mod3   lasso   ridge
+1 856.014 785.171 616.996 665.088 794.276</code></pre>
 </div>
 </div>
 </section>
@@ -616,23 +615,6 @@ window.Quarto = {
 <li><p>What would happen to the estimated coefficients when <span class="math inline">\(\lambda=0\)</span>?</p></li>
 <li><p>What would happen to the estimated coefficients as <span class="math inline">\(\lambda \rightarrow \infty\)</span>?</p></li>
 </ol></li>
-</ol>
-</section>
-<section id="answers-to-some-extra-questions" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="answers-to-some-extra-questions"><span class="header-section-number">14.5</span> Answers to Some Extra Questions</h2>
-<p><strong>Answer to Question 4</strong></p>
-<ol type="a">
-<li><p>The first model appears to be predicting better because the AIC is lower. [Also, notice that <span class="math inline">\(R^2\)</span> is higher in the second model, but this is by construction because it includes extra terms relative to the first model which implies that it will fit at least as well in-sample as the first model, but may be suffering from over-fitting.]</p></li>
-<li><p><span class="math display">\[\begin{align*}
-   \hat{Y} &amp;= 30 + 4 (10) - 2 (1) - 10 (5) \\
-   &amp;= 18
-\end{align*}\]</span></p></li>
-</ol>
-<p><strong>Answer to Question 7</strong></p>
-<ol type="a">
-<li><p>The tuning parameter is often chosen via cross validation. It makes sense to choose it this way because this is effectively choosing a value of <span class="math inline">\(\lambda\)</span> that is making good pseudo-out-of-sample predictions. As we will see below, if you make bad choices of <span class="math inline">\(\lambda\)</span>, that could result in very poor predictions.</p></li>
-<li><p>When <span class="math inline">\(\lambda=0\)</span>, there would effectively be no penalty term and, therefore, the estimated parameters would coincide with the OLS estimates.</p></li>
-<li><p>When <span class="math inline">\(\lambda \rightarrow \infty\)</span>, the penalty term would overwhelm the term corresponding to minimizing SSR. This would result in setting all the estimated parameters to be equal to 0. This extreme approach is likely to lead to very poor predictions.</p></li>
 </ol>
 
 

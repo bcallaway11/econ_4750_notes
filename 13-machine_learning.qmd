@@ -22,7 +22,7 @@ $n$ being large is more of a computer science problem.  That said, there are eco
 
 We'll focus on the second issue --- where $k$ is large.  A main reason that this may occur in applications is that we may be unsure of the functional form for $\E[Y|X_1,X_2,X_3]$.  Should it include higher order terms like $X_1^2$ or $X_1^3$?  Should it include interactions like $X_1 X_2$.  Once you start proceeding this way, even if you only have 5-10 actual covariates, $k$ can become quite large.
 
-As in the case of the mean, perhaps we can improve predictions by introducing some bias while simultaneously decreasing the variance of our predictions.  
+As in the case of the mean, perhaps we can improve predictions by introducing some bias while simultaneously decreasing the variance of our predictions.
 
 Let's suppose that we have some function that can take in regressors and makes predictions of the outcome; we'll call this function $\hat{f}$ (where the "hat" indicates that we'll typically estimate this function).  An example would just be a regression where, for example, $\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3$.  One way to evaluate how well $\hat{f}$ makes predictions is by considering its **mean squared prediction error**:
 
@@ -104,8 +104,8 @@ lasso_model <- cv.glmnet(Y ~ X1 + X2 + X3, data=train, use.model.frame=TRUE) # o
 coef(lasso_model) # if you are interested in estimated coefficients
 predict(lasso_model, newdata=test) # get predictions
 
-ridge_model <- cv.glmnet(Y ~ X1 + X2 + X3, 
-                         data=train, 
+ridge_model <- cv.glmnet(Y ~ X1 + X2 + X3,
+                         data=train,
                          alpha=0,
                          use.model.frame=TRUE)
 coef(ridge_model)
@@ -119,11 +119,11 @@ It's worth making a couple of comments about this
 &bull; Generally, if you are going to use Lasso or Ridge, then you would have many more regressors to include than just `X1 + X2 + X3`.  One common way that you get more regressors is when you start to thinking about including higher order terms or interaction terms.  One way to do this quickly is to use the `poly` function inside the formula.  For example,
 
 ```{r eval=FALSE}
-lasso_model2 <- cv.glmnet(Y ~ poly(X1, X2, X3, degree=2, raw=TRUE), 
-                          data=train, 
+lasso_model2 <- cv.glmnet(Y ~ poly(X1, X2, X3, degree=2, raw=TRUE),
+                          data=train,
                           use.model.frame=TRUE)
 ```
-   
+
 would include all interactions between $X_1$, $X_2$ and $X_3$ as well as squared terms for each; if you wanted to include more interactions and cubic terms, you could specify `degree=3`.
 
 
@@ -262,38 +262,19 @@ round(rmspe,3)
 \end{align*}
 
     a) Which model seems to be predicting better?  Explain why.
-    
-    b) Using the model that is predicting better, what would be your prediction for $Y$ when $X_1=10, X_2=1, X_3=5$?  
-    
+
+    b) Using the model that is predicting better, what would be your prediction for $Y$ when $X_1=10, X_2=1, X_3=5$?
+
 5. In Lasso and Ridge regressions, it is common to "standardize" the regressors before estimating the model (e.g., the `glmnet` does this automatically for you).  What is the reason for doing this?
 
 6. In Lasso and Ridge regressions, the penalty term lead to "shrinking" the estimated parameters in the model towards 0.  This tends to introduce bias while reducing variance.  Why can introducing bias while reducing variance potentially lead to better predictions?  Does this argument always apply or just apply in some cases?  Explain.
 
-7.  In Lasso and Ridge regressions, the penalty term depends on the tuning parameter $\lambda$.  
+7.  In Lasso and Ridge regressions, the penalty term depends on the tuning parameter $\lambda$.
 
     a) How is this tuning parameter often chosen in practice?  Why does it make sense to choose it in this way?
-        
+
     b) What would happen to the estimated coefficients when $\lambda=0$?
-    
+
     c) What would happen to the estimated coefficients as $\lambda \rightarrow \infty$?
-    
 
-## Answers to Some Extra Questions
 
-**Answer to Question 4**
-
-a) The first model appears to be predicting better because the AIC is lower. [Also, notice that $R^2$ is higher in the second model, but this is by construction because it includes extra terms relative to the first model which implies that it will fit at least as well in-sample as the first model, but may be suffering from over-fitting.]
-
-b) 
-    \begin{align*}
-      \hat{Y} &= 30 + 4 (10) - 2 (1) - 10 (5) \\
-      &= 18
-    \end{align*}
-
-**Answer to Question 7**
-
-a) The tuning parameter is often chosen via cross validation.  It makes sense to choose it this way because this is effectively choosing a value of $\lambda$ that is making good pseudo-out-of-sample predictions.  As we will see below, if you make bad choices of $\lambda$, that could result in very poor predictions.
-
-b) When $\lambda=0$, there would effectively be no penalty term and, therefore, the estimated parameters would coincide with the OLS estimates.
-
-c) When $\lambda \rightarrow \infty$, the penalty term would overwhelm the term corresponding to minimizing SSR.  This would result in setting all the estimated parameters to be equal to 0.  This extreme approach is likely to lead to very poor predictions.
