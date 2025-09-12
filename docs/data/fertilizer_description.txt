@@ -1,0 +1,22 @@
+Description of `fertilizer_2000` and `fertilizer_panel`
+
+Source: McArthur, John W., and Gordon C. McCord. "Fertilizing growth: Agricultural inputs and their effects in economic development." Journal of development economics 127 (2017): 133-152. url: https://doi.org/10.1016/j.jdeveco.2017.02.007
+
+`fertilizer_panel` contains balanced panel data from 1965-2000 (in five year intervals for 68 developing countries)
+
+`fertilizer_2000` contains the same data but only for the year 2000
+
+The following variables are included:
+
+wbcode -- World Bank country code
+country -- Country name
+year -- year
+region_wb -- World Bank region code
+avyield -- cereal yield (wheat, rice, maize, barley, oats, rye millet, sorghum, buckwheat and mixed grains), units are tons per hectare (a hectare is about 2.5 acres)
+avfert -- fertilizer, tons per hectare
+prec -- average monthly precipitation (in millimeters)
+avirrig -- percentage of farmland (?) that is irrigated
+yr_sch -- average years of schooling
+avgdppc -- per capita gdp
+av_ag_lab_share -- labor share in agriculture
+

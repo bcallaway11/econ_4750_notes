@@ -1,0 +1,53 @@
+Description of `mutual_funds`
+
+Source: https://www.kaggle.com/stefanoleone992/mutual-funds-and-etfs
+
+The data contains 17,007 observations of mutual fund returns and characteristics.  I downloaded this data from Kaggle which was scraped from Yahoo finance in November 2020.  I shrunk the number of columns in the original data from 118 to 45 and only kept observations for which all 45 data columns were available.  There are some reports on Kaggle of some of the data not being correct --- this is likely a byproduct of scraping the data.
+
+The following variables are included:
+
+fund_symbol -- mutual fund symbol
+fund_extended_name -- full name
+fund_family -- company that runs mutual fund
+net_asset_value -- net asset value
+fund_return_3years -- 3 year fund return
+fund_return_10years -- 10 year fund return 
+investment_type -- type of investment: blend, growth, or value
+investment_strategy -- longer description of investment strategy
+inception_date -- start data of mutual fund
+rating -- I think Morningstar rating (out of 5)
+return_rating -- I think Morningstar return rating (out of 5)
+risk_rating -- I think Morningstar risk rating (out of 5)
+size_type -- whether the fund tends to invest in large, medium, or small 
+fund_net_annual_expense_ratio -- fund expense ratio
+category_net_annual_expense_ratio -- category expense ratio
+category -- category of the mutual fund (there are 103 different categories in the data)
+category_return_3years -- 3 year category return
+category_return_10years -- 10 year category return
+asset_cash -- percentage of fund assets in cash
+asset_stocks -- percentage of fund assets in stocks
+asset_bonds -- percentage of fund assets in bonds
+fund_alpha_3years -- 3 year fund alpha
+fund_alpha_10years -- 10 year fund alpha
+category_alpha_3years -- 3 year category alpha
+category_alpha_10years -- 10 year category alpha
+fund_beta_3years -- 3 year fund beta
+fund_beta_10years -- 10 year fund beta
+category_beta_3years -- 3 year category beta
+category_beta_10years -- 10 year category beta
+fund_r_squared_3years -- 3 year fund r-squared
+fund_r_squared_10years -- 10 year fund r-squared
+category_r_squared_3years -- 3 year category r-squared
+category_r_squared_10years -- 10 year fund r-squared
+fund_standard_deviation_3years -- 3 year fund standard deviation
+fund_standard_deviation_10years -- 10 year fund standard deviation
+category_standard_deviation_3years -- 3 year category standard deviation
+category_standard_deviation_10years -- 10 year category standard deviation
+fund_sharpe_ratio_3years -- 3 year fund sharpe ratio
+fund_sharpe_ratio_10years -- 10 year fund sharpe ratio
+category_sharpe_ratio_3years -- 3 year category sharpe ratio
+category_sharpe_ratio_10years -- 10 year category sharpe ratio
+fund_treynor_ratio_3years -- 3 year fund treynor ratio
+fund_treynor_ratio_10years -- 10 year fund treynor ratio
+category_treynor_ratio_3years -- 3 year category treynor ratio
+category_treynor_ratio_10years -- 10 year category treynor ratio
