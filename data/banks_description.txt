@@ -1,0 +1,11 @@
+Description of `banks`
+
+Source: This is a modified version of data from [https://jrnold.github.io/masteringmetrics/](https://jrnold.github.io/masteringmetrics/) for Mastering Metrics.  The original version is from Richardson, Gary, and William Troost. "Monetary intervention mitigated banking panics during the great depression: quasi-experimental evidence from a federal reserve district border, 1929–1933." Journal of Political Economy 117.6 (2009): 1031-1073.
+
+The data consists of 6 observations for the number of banks in Mississippi separately for Atlanta's and St. Louis's Federal Reserve District
+
+The following variables are included:
+
+- date --- the date
+- nbanks_dist6 --- the number of banks in District 6 (Atlanta)
+- nbanks_dist8 --- the number of banks in District 8 (St. Louis)

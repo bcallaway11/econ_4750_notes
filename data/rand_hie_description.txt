@@ -1,0 +1,18 @@
+Description of `rand_hie`
+
+Source: This is a modified (mainly simplified) version of data from [https://jrnold.github.io/masteringmetrics/](https://jrnold.github.io/masteringmetrics/) for Mastering Metrics.  The original data comes from the RAND Health Insurance Experiment.
+
+The data consists of 3,351 observations.
+
+The following variables are included:
+
+- id -- individual identifier
+- total_med_expenditure -- average total medical expenditure (appears to include amounts charged to insurance)
+- plan_type -- type of health insurance (catastophic, deductbile, cost sharing, or free)
+- face_to_face_visits -- average number of face to face doctor visits
+- hospital_admissions -- average number of hospital admissions
+- age -- age
+- sex -- sex
+- cholesterol -- cholesterol
+- health_index -- an aggregated health index
+- blood_pressure -- blood pressure
