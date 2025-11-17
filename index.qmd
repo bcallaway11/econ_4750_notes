@@ -3,7 +3,7 @@
 ```{r setup, echo=FALSE}
   knitr::opts_chunk$set(comment="#>", collapse=TRUE)
 
-  course_website_link <- "http://bcallaway11.github.io/Courses/ECON_4750_Fall_2024/"
+  course_website_link <- "http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/"
 ```
 
 These are a set of detailed course notes for ECON 4750 at UGA.  They largely come from my personal notes that I have used to teach this course in previous years, which, in turn, are largely based on the [Stock and Watson](https://www.amazon.com/Introduction-Econometrics-4th-Pearson-Economics/dp/0134461991/ref=sr_1_1?dchild=1&keywords=stock+and+watson&qid=1618424276&s=books&sr=1-1) textbook serves as the other main reference for the course.
