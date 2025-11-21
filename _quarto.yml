@@ -31,10 +31,10 @@ book:
     - part: "Causal Inference"
     - 14-causal_inference_concepts.qmd
     - 15-experiments.qmd
-    - 16-unconfoundedness.qmd
-    - 17-quasi_experiments.qmd
+    - 16-natural_experiments.qmd
+    - 17-observational_data.qmd
 
-bibliography: references.bib
+bibliography: refs.bib
 
 execute:
   # Code that runs before each document

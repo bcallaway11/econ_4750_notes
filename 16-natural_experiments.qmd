@@ -1,0 +1,420 @@
+# Natural Experiments
+
+{{< include latex-commands.txt >}}
+
+As discussed in the previous chapter, for a variety of reasons, it is often the case that it is infeasible to run an experiment to learn about the causal effect of some treatment of interest. In this chapter, we begin a discussion about common approaches to causal inference when an experiment is not available.  In this chapter, we will consider approaches that are based on having access to a **natural experiment**.  These are not actual experiments in the sense that the researcher randomly assigned the treatment, but rather that something happens that results in the treatment being randomly assigned---typically it is not random assignment for everyone, but rather random assignment for some subgroup.
+
+## Instrumental Variables
+
+ The most common and important natural experiment arises from having an **instrumental variable** (often abbreviated IV).  A instrumental variable often arises when "something weird" happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes.  This results in the treatment being effectively randomly assigned for some subgroup.  
+
+Let me give you some examples:
+
+- This is not as popular of a topic as it used to be, but many economists used to be interested in the causal effect of military service on earnings.  This is challenging because individuals "self-select" into the military (i.e., individuals don't just randomly choose to join the military, and, while there may be many dimensions of choosing to join the military, probably one dimension is what a person expects the effect to be on their future earnings).
+
+    - A famous example of an instrumental variable in this case is an individual's Vietname draft lottery number.  Here, the idea is that a randomly generated lottery number (by construction) doesn't have any direct effect on earnings, but it does affect the chances that someone participates in the military.  This is therefore a natural experiment and could serve the role of an instrumental variable.
+
+- For studying the effect of education on on earnings, researchers have used the day of birth as an instrument for years of education.  The idea is that compulsory school laws are set up so that individuals can leave school when they reach a certain age (e.g., 16).  But this means that, among students that want to drop out as early as they can, students who have an "early" birthday (usually around October) will have spent less time in school than students who have a "late" birthday (usually around July) at any particular age.  This is a kind of natural experiment --- comparing earnings of students who drop out at 16 for those who have early birthdays relative to late birthdays.
+
+::: {.side-comment}
+
+<span class="side-comment">Side Comment: </span> Instrumental variables has a strong claim for being the main contribution of econometrics to statistics.  It dates back to the work of Philip Wright in the 1920s on supply and demand estimation in agricultural markets -- it is more difficult than you might at first think to estimate supply and demand curves.  And I think that it is fair to say that a lot of approaches to causal inference can be considered as a variation of instrumental variables.  @cunningham-2021 has a good and interesting discussion of the history of instrumental variables in economics.
+
+:::
+
+
+
+### Setup
+
+We will continue to denote the outcome by $Y$ and consider the case with a binary treatment $D$.  We will also consider the case with a binary instrument $Z$.  In the military service example, $Y$ is a person's earnings, $D$ indicates whether they served in the military, and $Z$ indicates whether they were drafted.  Our interest is in learning about the causal effect of $D$ on $Y$, exploiting that $Z$ affects the probability of being treated and is effectively randomly assigned.
+
+**Potential Outcomes and Potential Treatments**
+
+We will continue to use the notation $Y(1)$ and $Y(0)$ to denote the potential outcomes.  Each person has potential treatment status depending on the instrument: $D_i(0)$ represents treatment status if not drafted, and $D_i(1)$ represents treatment status if drafted. Similarly, each person has potential outcomes $Y_i(0)$ and $Y_i(1)$ corresponding to earnings if they don't serve versus if they do serve.
+
+### Latent Types
+
+Based on the pair $(D_i(0), D_i(1))$, every individual falls into one of four latent types ("latent" just means unobserved, so here we mean that every unit is one of four types, but we do not observe which type they are):
+
+1. **Always-takers** have $D_i(0) = 1$ and $D_i(1) = 1$ --- they serve regardless of draft status.
+
+2. **Never-takers** have $D_i(0) = 0$ and $D_i(1) = 0$ --- they never serve.
+
+3. **Compliers** have $D_i(0) = 0$ and $D_i(1) = 1$ --- they serve only if drafted.
+
+4. **Defiers** have $D_i(0) = 1$ and $D_i(1) = 0$ --- they do the opposite of what the draft tells them.
+
+There are a couple of things that are worth pointing out about these types.  First, among these types, only compliers and defiers respond to the instrument.  Always-takers and never-takers have treatment status that is unaffected by the instrument.  Second, defiers are somewhat strange type --- for example, it seems very strange that one would serve in the military when not drafted, but avoid service when drafted.  To be clear, what I mean by "strange", is that we would not expect there to be many (or any) defiers in the military service example.  That it is strange/uncommon to be a defier will be important below.
+
+### Four IV Assumptions
+
+In order to recover a causal effect using an instrumental variable, we are going to make the following four assumptions.  The first two essentially just formalize our discussion above.  The second two could be strong in particular applications.
+
+1. **Relevance** requires that $\P(D(1)=1) > \P(D(0)=1)$, meaning the instrument actually affects whether or not units get treated.
+
+2. **Independence** requires that $Z \independent (Y(0), Y(1), D(0), D(1))$, meaning the instrument is as-good-as randomly assigned.
+
+3. **Exclusion Restriction** requires that $Y_i(D_i(z),z) = Y_i(D_i(z))$, meaning the instrument affects the outcome only through its effect on treatment.
+
+4. **Monotonicity** requires that $D_i(1) \geq D_i(0)$ for all $i$, which rules out defiers.
+
+The relevance condition just says that the instrumental variable affects the probability of being treated.  It rules out things like using a random number generator to draw $Z_i$ as this would not affect the treatment status.  Usually this is a very mild assumption, and we can check it simply by checking whether the probability of being treated is higher when $Z=1$ than when $Z=0$ using our sample.
+
+The independence assumption says that the instrument is as-good-as randomly assigned.  The way we have defined a natural experiment (like in the military service example) essentially applies that this assumption holds.  That being said, this assumpton does rule out just picking some variable that you happen to observe in the data and using it as an instrument.  For example, suppose you were considering using whether or not someone comes from a poor family as an instrument for military service.  This would likely satisfy the relevance condition, but it would likely violate independence because family income is likely correlated with unobserved determinants of earnings.
+
+The exclusion restriction says that the instrument only affects the outcome through its effect on treatment.  For many applications where the instrument is effectively randomly assigned, this is the assumption that is most likely to be violated.  In the military service example, this assumption could be violated if the draft lottery affects outcomes through channels other than military service itself.  This could happen if there were people who go to college if they are drafted (as a way to avoid military service) but would not go to college if they are not drafted.  In this case, the draft lottery would affect earnings through education choices, violating the exclusion restriction.
+
+Finally, monotonicity rules out defiers.  As we discussed above, in many applications are the most strange latent type.  Still, this assumption says that there are none at all (not just that it's rare).  To me, this assumption seems plausible in the military service example, but there are some applications where it could have more bite.
+
+### Identification
+
+The Wald estimator (equivalent to 2SLS in this simple binary case) is defined as:
+
+$$\text{IV estimate} = \frac{E[Y_i|Z_i=1] - E[Y_i|Z_i=0]}{E[D_i|Z_i=1] - E[D_i|Z_i=0]} = \frac{\text{Reduced Form}}{\text{First Stage}}$$
+
+We now rewrite both the numerator and denominator using potential outcomes notation. For the numerator, the independence assumption implies that $E[Y_i|Z_i=1] = E[Y_i(D_i(1))|Z_i=1] = E[Y_i(D_i(1))]$.
+
+Similarly, $E[Y_i|Z_i=0] = E[Y_i(D_i(0))]$. Therefore, the numerator becomes $E[Y_i(D_i(1))] - E[Y_i(D_i(0))]$. The denominator is simply $E[D_i(1)] - E[D_i(0)]$.
+
+To understand what these expectations represent, we decompose them by type.
+
+For the numerator, consider each group's contribution. Never-takers have $Y_i(D_i(1)) = Y_i(0)$ and $Y_i(D_i(0)) = Y_i(0)$, so they contribute zero to the difference.
+
+Always-takers have $Y_i(D_i(1)) = Y_i(1)$ and $Y_i(D_i(0)) = Y_i(1)$, so they also contribute zero. Compliers have $Y_i(D_i(1)) = Y_i(1)$ and $Y_i(D_i(0)) = Y_i(0)$, so they contribute their individual treatment effect $Y_i(1) - Y_i(0)$. Defiers don't exist by monotonicity.
+
+Let $\pi_c$ denote the proportion of compliers in the population. Then the numerator equals $\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]$.
+
+For the denominator, never-takers contribute $D_i(1) - D_i(0) = 0 - 0 = 0$, always-takers contribute $D_i(1) - D_i(0) = 1 - 1 = 0$, and compliers contribute $D_i(1) - D_i(0) = 1 - 0 = 1$. Therefore, the denominator equals $\pi_c$.
+
+Combining these results, we have:
+
+$$\text{IV estimate} = \frac{\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]}{\pi_c} = E[Y_i(1) - Y_i(0) | \text{complier}]$$
+
+This is the Local Average Treatment Effect (LATE): the average treatment effect for compliers.
+
+### Interpretation and Heterogeneity
+
+The LATE theorem tells us that instrumental variables identifies the effect of military service for those who serve because of the draft - the compliers. Crucially, we do not learn about the treatment effect for volunteers (always-takers), who may be positively selected, or for those who would avoid service even if drafted (never-takers), who may have high outside options.
+
+This highlights the fundamental issue of treatment effect heterogeneity. If the effect of military service differs across these groups - and there are strong reasons to believe it would - then the IV estimate will not equal the average treatment effect (ATE) in the population. The IV estimate gives us a credible causal estimate, but only for a specific subpopulation. This trade-off between internal validity and external validity is central to interpreting instrumental variables estimates.
+
+## Regression Discontinuity Designs
+
+SW 13.4
+
+The final type of natural experiment that we will talk about is called **regression discontinuity** (often abbreviated RD or RDD for "regression discontinuity design").  The sort of natural experiment is available when there is a **running variable** with a threshold (i.e., cutoff) where individuals above the threshold are treated while individuals below the threshold are not treated.  These sorts of thresholds/cutoffs are fairly common.
+
+Here are some examples:
+
+* Cutoffs that make students eligible for a scholarship (e.g., the Hope scholarship)
+
+* Rules about maximum numbers of students allowed in a classroom in a particular school district
+
+* Very close political elections
+
+* Very close union elections
+
+* Thresholds in tax laws
+
+Then, the idea is to compare outcomes among individuals that "barely" were treated relative to those that "barely" weren't treated.  By construction, this often has properties that are similar to an actual experiment as those that are just above the cutoff should have observed and unobserved characteristics that are the same as those just below the cutoff.
+
+In some sense, RD is a special case of instrumental variables; however, discontinuities are common enough in economics that it is worth considering these approaches specifically.
+
+Let's explain the intuition for RD in the context of a particular example. Suppose that you are interested in how financial aid (a treatment) affects college completion.  Policies like the Hope scholarship provide financial aid to students whose high school GPA is above a certain cutoff (e.g., 3.0).  Students with GPAs just above 3.0 receive the treatment, while students with GPAs just below 3.0 do not. In the terminology of regression discontinuity, the student's GPA is called a **running variable**, which we will denote by $R_i$.  The cutoff is denoted by $c$ (in this case, $c = 3.0$). Treatment status $D_i$ is determined by whether the running variable exceeds the cutoff: $D_i = 1$ if $R_i \geq c$ and $D_i = 0$ if $R_i < c$.  We will end up comparing the average college completion rates for students with GPAs just above 3.0 to those with GPAs just below 3.0, and argue below that this comparison identifies the causal effect of financial aid on college completion for students at the cutoff.
+
+### Key Assumption: Continuity
+
+The RD design relies on a **continuity assumption** about potential outcomes. In particular, we assume that
+\begin{align*}
+  \E[Y(1) | R = r] \text{ and } \E[Y(0) | R = r] \text{ are continuous in } r
+\end{align*}
+In particular, we need this assumption to hold at the cutoff $c$. Below is a plot that illustrates the continuity assumption for untreated potential outcomes, $\E[Y(0)|R=r]$.  You can see that this function is continuous everywhere.
+
+In the context of our financial aid example where college completion is the outcome, this function says that, absent any financial aid, the expected college completion rate is increasing in GPA, but there are not any sudden jumps in college completion rates.
+
+You should probably think of continuity as being a mild assumption (with one main possible caveat that we will discuss below).  In our example, students with GPAs of 2.99 and 3.01 are likely very similar in terms of their underlying ability and motivation, so we would expect their college completion rates to be similar absent financial aid.
+
+
+```{r continuity_plot_continuous, echo=TRUE, fig.cap="Illustration of continuity: E[Y(0)|R=r] smooth at cutoff"}
+#| echo: false
+#| warning: false
+#| message: false
+set.seed(123)
+library(ggplot2)
+library(dplyr)
+
+c <- 3
+r_grid <- seq(c - 1, c + 1, length.out = 400)
+f_cont <- 2 + 0.5 * r_grid + sin(2 * r_grid) / 4
+df_cont <- tibble(R = r_grid, EY0 = f_cont)
+
+ggplot(df_cont, aes(R, EY0)) +
+  geom_line(color = "steelblue", linewidth = 1) +
+  geom_vline(xintercept = c, linetype = "dashed", color = "grey40") +
+  labs(title = "Continuity Holds",
+    x = "R", y = expression(E*'['*Y(0)~'|'~R==r*']')) +
+  theme_bw()
+```
+
+```{r continuity_plot_violation, echo=TRUE, fig.cap="Violation: jump in E[Y(0)|R=r] at cutoff (vertical segment removed)"}
+#| echo: false
+
+# Discontinuous version with a jump
+jump_size <- 1
+f_disc <- f_cont + ifelse(r_grid >= c, jump_size, 0)
+
+df_disc_below <- tibble(R = r_grid[r_grid < c], EY0 = f_disc[r_grid < c])
+df_disc_above <- tibble(R = r_grid[r_grid >= c], EY0 = f_disc[r_grid >= c])
+
+ggplot() +
+  geom_line(data = df_disc_below, aes(R, EY0), color = "firebrick", linewidth = 1) +
+  geom_line(data = df_disc_above, aes(R, EY0), color = "firebrick", linewidth = 1) +
+  geom_vline(xintercept = c, linetype = "dashed", color = "grey40") +
+  labs(title = "Continuity Violated (Jump)",
+    x = "R", y = expression(E*'['*Y(0)~'|'~R==r*']')) +
+  theme_bw()
+```
+
+Next, let's consider a plot where the continuity assumption is violated.  This second plot shows a clear violation: a jump at the cutoff.  In many applications, such a jump seems implausible.  However, there is one leading case where a jump can occur: when individuals can **manipulate** the value of their running variable.  For example, suppose that some students are highly motivated and strategically select courses to boost their GPA if they have a GPA near the cutoff (presumably this kind of motivation could also increase college completion rates).  This could lead to a ``pile-up'' of highly motivated students just above the cutoff, leading to a jump in the underlying potential outcomes at the cutoff.
+
+Manipulation is a concern in RD designs especially when the running variable is something that individuals can, at least to some extent, control---like GPA in the example above.  A different classic RD design involves studying the effect of legal drinking age on mortality, where the running variable is age in years (with a cutoff at age 21).  Individuals cannot manipulate their birth date to turn 21 sooner, so manipulation is much less of a concern in this type of application.
+
+### Identification
+
+Next, let's work through what we can learn about the causal effect of the treatment when we have access to a discontinuity.  To start with, let us think about what the observed data would look like if the treatment caused outcomes to increase on average.
+
+```{r rd_identification_positive, echo=FALSE, fig.cap="RD Identification: Positive Treatment Effect"}
+#| warning: false
+#| message: false
+
+# Potential outcomes - positive, non-parallel treatment effect
+f_y0 <- 2 + 0.5 * r_grid + sin(2 * r_grid) / 4
+# Non-parallel: effect varies with R
+treatment_effect <- 0.8 + 0.3 * (r_grid - c)
+f_y1 <- f_y0 + treatment_effect
+
+# Create separate datasets for observed and unobserved portions
+df_y0_obs <- tibble(R = r_grid[r_grid < c], Y = f_y0[r_grid < c], type = "Y(0)", observed = TRUE)
+df_y0_unobs <- tibble(R = r_grid[r_grid >= c], Y = f_y0[r_grid >= c], type = "Y(0)", observed = FALSE)
+df_y1_obs <- tibble(R = r_grid[r_grid >= c], Y = f_y1[r_grid >= c], type = "Y(1)", observed = TRUE)
+df_y1_unobs <- tibble(R = r_grid[r_grid < c], Y = f_y1[r_grid < c], type = "Y(1)", observed = FALSE)
+
+df_all <- bind_rows(df_y0_obs, df_y0_unobs, df_y1_obs, df_y1_unobs)
+
+ggplot(df_all, aes(x = R, y = Y, color = type, linetype = observed)) +
+  geom_line(linewidth = 1) +
+  geom_vline(xintercept = c, linetype = "dotted", color = "grey40") +
+  scale_linetype_manual(values = c("TRUE" = "solid", "FALSE" = "dashed"),
+                        labels = c("TRUE" = "Observed", "FALSE" = "Unobserved")) +
+  scale_color_manual(values = c("Y(0)" = "steelblue", "Y(1)" = "darkgreen"),
+                     labels = c("Y(0)" = expression(E*'['*Y(0)~'|'~R==r*']'),
+                                "Y(1)" = expression(E*'['*Y(1)~'|'~R==r*']'))) +
+  labs(x = "Running Variable R", y = "Expected Outcome",
+       color = "Potential Outcome", linetype = "Status",
+       title = "Positive Treatment Effect") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+Recall that we observe treated potential outcomes for $R_i \geq c$ and untreated potential outcomes for $R_i < c$.  This coresponds to the solid lines in the plots above.  The dashed lines correspond to the unobserved counterfactual potential outcomes.  Importantly, notice that there is a discontinuity in the observed outcomes at the cutoff.
+
+Next, let's consider what the same plot would look like if there were no treatment effect.
+
+```{r rd_identification_null, echo=FALSE, fig.cap="RD Identification: No Treatment Effect"}
+#| warning: false
+#| message: false
+library(ggplot2)
+library(dplyr)
+
+c <- 3
+r_grid <- seq(c - 1, c + 1, length.out = 400)
+
+# Potential outcomes - same function (no treatment effect)
+f_y0 <- 2 + 0.5 * r_grid + sin(2 * r_grid) / 4
+f_y1 <- f_y0  # No treatment effect
+
+# Create separate datasets for observed and unobserved portions
+df_y0_obs <- tibble(R = r_grid[r_grid < c], Y = f_y0[r_grid < c], type = "Y(0)", observed = TRUE)
+df_y0_unobs <- tibble(R = r_grid[r_grid >= c], Y = f_y0[r_grid >= c], type = "Y(0)", observed = FALSE)
+df_y1_obs <- tibble(R = r_grid[r_grid >= c], Y = f_y1[r_grid >= c], type = "Y(1)", observed = TRUE)
+df_y1_unobs <- tibble(R = r_grid[r_grid < c], Y = f_y1[r_grid < c], type = "Y(1)", observed = FALSE)
+
+df_all <- bind_rows(df_y0_obs, df_y0_unobs, df_y1_obs, df_y1_unobs)
+
+ggplot(df_all, aes(x = R, y = Y, color = type, linetype = observed)) +
+  geom_line(linewidth = 1) +
+  geom_vline(xintercept = c, linetype = "dotted", color = "grey40") +
+  scale_linetype_manual(values = c("TRUE" = "solid", "FALSE" = "dashed"),
+                        labels = c("TRUE" = "Observed", "FALSE" = "Unobserved")) +
+  scale_color_manual(values = c("Y(0)" = "steelblue", "Y(1)" = "darkgreen"),
+                     labels = c("Y(0)" = expression(E*'['*Y(0)~'|'~R==r*']'),
+                                "Y(1)" = expression(E*'['*Y(1)~'|'~R==r*']'))) +
+  labs(x = "Running Variable R", y = "Expected Outcome",
+       color = "Potential Outcome", linetype = "Status",
+       title = "No Treatment Effect (ATE = 0)") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+In this plot, which may be a bit hard to interpret because the lines are on top of each other, the main thing to notice is that there is no discontinuity at the cutoff.
+
+The discussion above suggests that we can learn about the causal effect of the treatment by "zooming in" on the cutoff and checking for a discontinuity (as well as checking the magnitude of the discontinuity).
+
+In particular, consider
+\begin{align*}
+  \tau^{RD} := \lim_{r \downarrow c} \E[Y | R = r] &- \lim_{r \uparrow c} \E[Y | R = r]
+\end{align*}
+$\tau^{RD}$ comes from comparing the expected outcomes just above and just below the cutoff.  Notice that
+\begin{align*}
+  \tau^{RD} &= \lim_{r \downarrow c} \E[Y | R = r] - \lim_{r \uparrow c} \E[Y | R = r] \\
+  &= \lim_{r \downarrow c} \E[Y(1) | R = r] - \lim_{r \uparrow c} \E[Y(0) | R = r] \\
+  &= \E[Y(1) | R = c] - \E[Y(0) | R = c] \\
+  &= \E[Y(1) - Y(0) | R = c]
+\end{align*}
+where the second equality holds by writing the observed outcomes in terms of potential outcomes, and the third equality (which is the key step) holds by the continuity assumption.  The result is that $\tau^{RD} = \E[Y(1) - Y(0) | R = c]$, which is a local average average treatment effect for individuals at the cutoff.
+
+Intuitively, you can think of regression discontinuity as delivering a local experiment where individuals just above and just below the cutoff are effectively randomly assigned to treatment and control groups.
+
+### Estimation
+
+From the discussion above, it may be unclear how to estimate $\tau^{RD}$ in practice.  In particular, it is not clear how to deal with the limits in the definition of $\tau^{RD}$.  In fact, I think RD is the first and only time this semester where we won't directly use the analogy principle to estimate a parameter of interest (due to the limits).  To deal with the limits, instead of using all of the data, we will only use data that is "close" to the cutoff.  In particular, we will only use data where $R_i$ is in the interval $[c - h, c + h]$ for some bandwidth parameter $h > 0$---this bandwidth parameter basically determines what we mean by close.  Once we have decided on $h$, if you are a little clever, you can estimate $\tau^{RD}$ from a regression.  In particular, you can run the following regression using only data in that interval:
+\begin{align*}
+  Y_i = \beta_0 + \beta_1 (R_i-c) + \big(\beta_2 + \beta_3 (R_i-c)\big) D_i + U_i
+\end{align*}
+This is a regression where we (1) "center" at c, and (2) we allow for the intercept and slope coefficients to be different on each side of the cutoff.  In particular, $\hat{\beta}_2$ is our estimate of $\tau^{RD}$.  
+
+### Example with Simulated Data
+
+To illustrate how RD estimation works in practice, let me show you an example with simulated data roughly in line with the financial aid example that we have been discussing.
+```{r rd_simulation}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+library(dplyr)
+
+set.seed(456)
+
+# Simulation parameters
+c <- 3  # cutoff
+n <- 500  # sample size
+
+# Generate running variable
+R <- runif(n, c - 1.5, c + 1.5)
+
+# Treatment indicator
+D <- ifelse(R >= c, 1, 0)
+
+# Generate potential outcomes (same DGP as before)
+r_grid <- R
+f_y0 <- 2 + 0.5 * r_grid + sin(2 * r_grid) / 4
+treatment_effect <- 0.8 + 0.3 * (r_grid - c)
+f_y1 <- f_y0 + treatment_effect
+
+# Observed outcome (with noise)
+Y <- D * f_y1 + (1 - D) * f_y0 + rnorm(n, 0, 0.3)
+
+# Create dataframe
+rd_data <- tibble(R = R, D = D, Y = Y)
+
+# Plot raw data
+ggplot(rd_data, aes(x = R, y = Y, color = as.factor(D))) +
+  geom_point(alpha = 0.5) +
+  geom_vline(xintercept = c, linetype = "dashed", color = "black") +
+  scale_color_manual(values = c("0" = "steelblue", "1" = "darkgreen"),
+                     labels = c("0" = "Untreated", "1" = "Treated")) +
+  labs(x = "Running Variable R", y = "Outcome Y",
+       color = "Treatment Status",
+       title = "Simulated RD Data") +
+  theme_bw()
+```
+
+Now let's estimate the treatment effect using a bandwidth of $h = 0.5$ (meaning we only use observations within 0.5 units of the cutoff on either side).
+
+```{r rd_estimation, echo=TRUE}
+# Choose bandwidth
+h <- 0.5
+
+# Restrict to observations within bandwidth
+rd_data_bw <- rd_data %>% filter(abs(R - c) <= h)
+
+# Estimate RD regression
+rd_reg <- lm(Y ~ D + I(R - c) + D:I(R - c), data = rd_data_bw)
+summary(rd_reg)
+```
+
+The estimated treatment effect is `r round(coef(rd_reg)["D"], 3)`, which we can compare to the true treatment effect at the cutoff of $0.8 + 0.3 \times 0 = 0.8$. 
+
+What we've done with this regression is, effectively, to have run separate regression for the treated and untreated groups within the bandwidth, allowing for linear trends in $R$.  The intercept shift at the cutoff (the coefficient on $D$) gives us our estimate of the treatment effect.
+
+```{r rd_viz}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Get predicted values
+rd_data_bw$preds <- predict(rd_reg)
+
+# Create plot showing fitted lines
+ggplot(rd_data_bw, aes(x = R, y = Y, color = as.factor(D))) +
+  geom_point(alpha = 0.5) +
+  geom_line(aes(y = preds), linewidth = 1.2) +
+  geom_vline(xintercept = c, linetype = "dashed", color = "black") +
+  scale_color_manual(values = c("0" = "steelblue", "1" = "darkgreen"),
+                     labels = c("0" = "Untreated", "1" = "Treated")) +
+  labs(x = "Running Variable R", y = "Outcome Y",
+       color = "Treatment Status",
+       title = paste0("RD Estimation with Bandwidth h = ", h),
+       subtitle = paste0("Estimated Treatment Effect: ", round(coef(rd_reg)["D"], 3))) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+The plot shows the fitted regression lines for treated and untreated observations within the bandwidth. The vertical gap between the two lines at the cutoff (the intercept shift) is our estimate of the treatment effect.
+
+Finally, notice that we're only using observations close to the cutoff (those within the bandwidth).  We can zoom out to see all the data, and, in particular, notice that we are dropping a lot of data that is far from the cutoff---this typical in RD applications where the focus is local to the cutoff.
+
+```{r rd_viz_full}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Add prediction indicator
+rd_data <- rd_data %>%
+  mutate(in_bandwidth = abs(R - c) <= h)
+
+# Get predictions for observations in bandwidth
+rd_data_with_preds <- rd_data %>%
+  filter(in_bandwidth) %>%
+  mutate(preds = predict(rd_reg))
+
+ggplot(rd_data, aes(x = R, y = Y)) +
+  # All data points
+  geom_point(aes(color = as.factor(D), alpha = in_bandwidth), size = 2) +
+  # Fitted lines for observations in bandwidth
+  geom_line(data = rd_data_with_preds, aes(y = preds, color = as.factor(D)),
+            linewidth = 1.2) +
+  # Cutoff line
+  geom_vline(xintercept = c, linetype = "dashed", color = "black") +
+  # Bandwidth region
+  annotate("rect", xmin = c - h, xmax = c + h, ymin = -Inf, ymax = Inf,
+           alpha = 0.1, fill = "gray") +
+  scale_color_manual(values = c("0" = "steelblue", "1" = "darkgreen"),
+                     labels = c("0" = "Untreated", "1" = "Treated")) +
+  scale_alpha_manual(values = c("TRUE" = 1, "FALSE" = 0.2),
+                     guide = "none") +
+  labs(x = "Running Variable R", y = "Outcome Y",
+       color = "Treatment Status",
+       title = "RD Estimation: All Data with Bandwidth Highlighted",
+       subtitle = paste0("Gray region: bandwidth h = ", h)) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+This visualization shows all the data but highlights the observations within the bandwidth (which appear more opaque) and shows the fitted regression lines. The shaded gray region indicates the bandwidth around the cutoff. This makes it clear that we're only using local information near the cutoff to estimate the treatment effect.
+
+
+
+
+
+## References

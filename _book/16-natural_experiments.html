@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>17&nbsp; Natural Experiments – Detailed Course Notes for ECON 4750</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./17-observational_data.html" rel="next">
+<link href="./15-experiments.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="4750_style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-natural_experiments.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Detailed Course Notes for ECON 4750</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Start</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Statistical Programming</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Probability</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Properties of Estimators</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Regression</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Advanced Topics</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Prediction</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Causal Inference</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instrumental-variables" id="toc-instrumental-variables" class="nav-link active" data-scroll-target="#instrumental-variables"><span class="header-section-number">17.1</span> Instrumental Variables</a>
+  <ul class="collapse">
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">17.1.1</span> Setup</a></li>
+  <li><a href="#latent-types" id="toc-latent-types" class="nav-link" data-scroll-target="#latent-types"><span class="header-section-number">17.1.2</span> Latent Types</a></li>
+  <li><a href="#four-iv-assumptions" id="toc-four-iv-assumptions" class="nav-link" data-scroll-target="#four-iv-assumptions"><span class="header-section-number">17.1.3</span> Four IV Assumptions</a></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">17.1.4</span> Identification</a></li>
+  <li><a href="#interpretation-and-heterogeneity" id="toc-interpretation-and-heterogeneity" class="nav-link" data-scroll-target="#interpretation-and-heterogeneity"><span class="header-section-number">17.1.5</span> Interpretation and Heterogeneity</a></li>
+  </ul></li>
+  <li><a href="#regression-discontinuity-designs" id="toc-regression-discontinuity-designs" class="nav-link" data-scroll-target="#regression-discontinuity-designs"><span class="header-section-number">17.2</span> Regression Discontinuity Designs</a>
+  <ul class="collapse">
+  <li><a href="#key-assumption-continuity" id="toc-key-assumption-continuity" class="nav-link" data-scroll-target="#key-assumption-continuity"><span class="header-section-number">17.2.1</span> Key Assumption: Continuity</a></li>
+  <li><a href="#identification-1" id="toc-identification-1" class="nav-link" data-scroll-target="#identification-1"><span class="header-section-number">17.2.2</span> Identification</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">17.2.3</span> Estimation</a></li>
+  <li><a href="#example-with-simulated-data" id="toc-example-with-simulated-data" class="nav-link" data-scroll-target="#example-with-simulated-data"><span class="header-section-number">17.2.4</span> Example with Simulated Data</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">17.3</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="math display">\[
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
+\]</span></p>
+<p>As discussed in the previous chapter, for a variety of reasons, it is often the case that it is infeasible to run an experiment to learn about the causal effect of some treatment of interest. In this chapter, we begin a discussion about common approaches to causal inference when an experiment is not available. In this chapter, we will consider approaches that are based on having access to a <strong>natural experiment</strong>. These are not actual experiments in the sense that the researcher randomly assigned the treatment, but rather that something happens that results in the treatment being randomly assigned—typically it is not random assignment for everyone, but rather random assignment for some subgroup.</p>
+<section id="instrumental-variables" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="instrumental-variables"><span class="header-section-number">17.1</span> Instrumental Variables</h2>
+<p>The most common and important natural experiment arises from having an <strong>instrumental variable</strong> (often abbreviated IV). A instrumental variable often arises when “something weird” happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes. This results in the treatment being effectively randomly assigned for some subgroup.</p>
+<p>Let me give you some examples:</p>
+<ul>
+<li><p>This is not as popular of a topic as it used to be, but many economists used to be interested in the causal effect of military service on earnings. This is challenging because individuals “self-select” into the military (i.e., individuals don’t just randomly choose to join the military, and, while there may be many dimensions of choosing to join the military, probably one dimension is what a person expects the effect to be on their future earnings).</p>
+<ul>
+<li>A famous example of an instrumental variable in this case is an individual’s Vietname draft lottery number. Here, the idea is that a randomly generated lottery number (by construction) doesn’t have any direct effect on earnings, but it does affect the chances that someone participates in the military. This is therefore a natural experiment and could serve the role of an instrumental variable.</li>
+</ul></li>
+<li><p>For studying the effect of education on on earnings, researchers have used the day of birth as an instrument for years of education. The idea is that compulsory school laws are set up so that individuals can leave school when they reach a certain age (e.g., 16). But this means that, among students that want to drop out as early as they can, students who have an “early” birthday (usually around October) will have spent less time in school than students who have a “late” birthday (usually around July) at any particular age. This is a kind of natural experiment — comparing earnings of students who drop out at 16 for those who have early birthdays relative to late birthdays.</p></li>
+</ul>
+<div class="side-comment">
+<p><span class="side-comment">Side Comment: </span> Instrumental variables has a strong claim for being the main contribution of econometrics to statistics. It dates back to the work of Philip Wright in the 1920s on supply and demand estimation in agricultural markets – it is more difficult than you might at first think to estimate supply and demand curves. And I think that it is fair to say that a lot of approaches to causal inference can be considered as a variation of instrumental variables. <span class="citation" data-cites="cunningham-2021">Cunningham (<a href="#ref-cunningham-2021" role="doc-biblioref">2021</a>)</span> has a good and interesting discussion of the history of instrumental variables in economics.</p>
+</div>
+<section id="setup" class="level3" data-number="17.1.1">
+<h3 data-number="17.1.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">17.1.1</span> Setup</h3>
+<p>We will continue to denote the outcome by <span class="math inline">\(Y\)</span> and consider the case with a binary treatment <span class="math inline">\(D\)</span>. We will also consider the case with a binary instrument <span class="math inline">\(Z\)</span>. In the military service example, <span class="math inline">\(Y\)</span> is a person’s earnings, <span class="math inline">\(D\)</span> indicates whether they served in the military, and <span class="math inline">\(Z\)</span> indicates whether they were drafted. Our interest is in learning about the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>, exploiting that <span class="math inline">\(Z\)</span> affects the probability of being treated and is effectively randomly assigned.</p>
+<p><strong>Potential Outcomes and Potential Treatments</strong></p>
+<p>We will continue to use the notation <span class="math inline">\(Y(1)\)</span> and <span class="math inline">\(Y(0)\)</span> to denote the potential outcomes. Each person has potential treatment status depending on the instrument: <span class="math inline">\(D_i(0)\)</span> represents treatment status if not drafted, and <span class="math inline">\(D_i(1)\)</span> represents treatment status if drafted. Similarly, each person has potential outcomes <span class="math inline">\(Y_i(0)\)</span> and <span class="math inline">\(Y_i(1)\)</span> corresponding to earnings if they don’t serve versus if they do serve.</p>
+</section>
+<section id="latent-types" class="level3" data-number="17.1.2">
+<h3 data-number="17.1.2" class="anchored" data-anchor-id="latent-types"><span class="header-section-number">17.1.2</span> Latent Types</h3>
+<p>Based on the pair <span class="math inline">\((D_i(0), D_i(1))\)</span>, every individual falls into one of four latent types (“latent” just means unobserved, so here we mean that every unit is one of four types, but we do not observe which type they are):</p>
+<ol type="1">
+<li><p><strong>Always-takers</strong> have <span class="math inline">\(D_i(0) = 1\)</span> and <span class="math inline">\(D_i(1) = 1\)</span> — they serve regardless of draft status.</p></li>
+<li><p><strong>Never-takers</strong> have <span class="math inline">\(D_i(0) = 0\)</span> and <span class="math inline">\(D_i(1) = 0\)</span> — they never serve.</p></li>
+<li><p><strong>Compliers</strong> have <span class="math inline">\(D_i(0) = 0\)</span> and <span class="math inline">\(D_i(1) = 1\)</span> — they serve only if drafted.</p></li>
+<li><p><strong>Defiers</strong> have <span class="math inline">\(D_i(0) = 1\)</span> and <span class="math inline">\(D_i(1) = 0\)</span> — they do the opposite of what the draft tells them.</p></li>
+</ol>
+<p>There are a couple of things that are worth pointing out about these types. First, among these types, only compliers and defiers respond to the instrument. Always-takers and never-takers have treatment status that is unaffected by the instrument. Second, defiers are somewhat strange type — for example, it seems very strange that one would serve in the military when not drafted, but avoid service when drafted. To be clear, what I mean by “strange”, is that we would not expect there to be many (or any) defiers in the military service example. That it is strange/uncommon to be a defier will be important below.</p>
+</section>
+<section id="four-iv-assumptions" class="level3" data-number="17.1.3">
+<h3 data-number="17.1.3" class="anchored" data-anchor-id="four-iv-assumptions"><span class="header-section-number">17.1.3</span> Four IV Assumptions</h3>
+<p>In order to recover a causal effect using an instrumental variable, we are going to make the following four assumptions. The first two essentially just formalize our discussion above. The second two could be strong in particular applications.</p>
+<ol type="1">
+<li><p><strong>Relevance</strong> requires that <span class="math inline">\(\P(D(1)=1) &gt; \P(D(0)=1)\)</span>, meaning the instrument actually affects whether or not units get treated.</p></li>
+<li><p><strong>Independence</strong> requires that <span class="math inline">\(Z \independent (Y(0), Y(1), D(0), D(1))\)</span>, meaning the instrument is as-good-as randomly assigned.</p></li>
+<li><p><strong>Exclusion Restriction</strong> requires that <span class="math inline">\(Y_i(D_i(z),z) = Y_i(D_i(z))\)</span>, meaning the instrument affects the outcome only through its effect on treatment.</p></li>
+<li><p><strong>Monotonicity</strong> requires that <span class="math inline">\(D_i(1) \geq D_i(0)\)</span> for all <span class="math inline">\(i\)</span>, which rules out defiers.</p></li>
+</ol>
+<p>The relevance condition just says that the instrumental variable affects the probability of being treated. It rules out things like using a random number generator to draw <span class="math inline">\(Z_i\)</span> as this would not affect the treatment status. Usually this is a very mild assumption, and we can check it simply by checking whether the probability of being treated is higher when <span class="math inline">\(Z=1\)</span> than when <span class="math inline">\(Z=0\)</span> using our sample.</p>
+<p>The independence assumption says that the instrument is as-good-as randomly assigned. The way we have defined a natural experiment (like in the military service example) essentially applies that this assumption holds. That being said, this assumpton does rule out just picking some variable that you happen to observe in the data and using it as an instrument. For example, suppose you were considering using whether or not someone comes from a poor family as an instrument for military service. This would likely satisfy the relevance condition, but it would likely violate independence because family income is likely correlated with unobserved determinants of earnings.</p>
+<p>The exclusion restriction says that the instrument only affects the outcome through its effect on treatment. For many applications where the instrument is effectively randomly assigned, this is the assumption that is most likely to be violated. In the military service example, this assumption could be violated if the draft lottery affects outcomes through channels other than military service itself. This could happen if there were people who go to college if they are drafted (as a way to avoid military service) but would not go to college if they are not drafted. In this case, the draft lottery would affect earnings through education choices, violating the exclusion restriction.</p>
+<p>Finally, monotonicity rules out defiers. As we discussed above, in many applications are the most strange latent type. Still, this assumption says that there are none at all (not just that it’s rare). To me, this assumption seems plausible in the military service example, but there are some applications where it could have more bite.</p>
+</section>
+<section id="identification" class="level3" data-number="17.1.4">
+<h3 data-number="17.1.4" class="anchored" data-anchor-id="identification"><span class="header-section-number">17.1.4</span> Identification</h3>
+<p>The Wald estimator (equivalent to 2SLS in this simple binary case) is defined as:</p>
+<p><span class="math display">\[\text{IV estimate} = \frac{E[Y_i|Z_i=1] - E[Y_i|Z_i=0]}{E[D_i|Z_i=1] - E[D_i|Z_i=0]} = \frac{\text{Reduced Form}}{\text{First Stage}}\]</span></p>
+<p>We now rewrite both the numerator and denominator using potential outcomes notation. For the numerator, the independence assumption implies that <span class="math inline">\(E[Y_i|Z_i=1] = E[Y_i(D_i(1))|Z_i=1] = E[Y_i(D_i(1))]\)</span>.</p>
+<p>Similarly, <span class="math inline">\(E[Y_i|Z_i=0] = E[Y_i(D_i(0))]\)</span>. Therefore, the numerator becomes <span class="math inline">\(E[Y_i(D_i(1))] - E[Y_i(D_i(0))]\)</span>. The denominator is simply <span class="math inline">\(E[D_i(1)] - E[D_i(0)]\)</span>.</p>
+<p>To understand what these expectations represent, we decompose them by type.</p>
+<p>For the numerator, consider each group’s contribution. Never-takers have <span class="math inline">\(Y_i(D_i(1)) = Y_i(0)\)</span> and <span class="math inline">\(Y_i(D_i(0)) = Y_i(0)\)</span>, so they contribute zero to the difference.</p>
+<p>Always-takers have <span class="math inline">\(Y_i(D_i(1)) = Y_i(1)\)</span> and <span class="math inline">\(Y_i(D_i(0)) = Y_i(1)\)</span>, so they also contribute zero. Compliers have <span class="math inline">\(Y_i(D_i(1)) = Y_i(1)\)</span> and <span class="math inline">\(Y_i(D_i(0)) = Y_i(0)\)</span>, so they contribute their individual treatment effect <span class="math inline">\(Y_i(1) - Y_i(0)\)</span>. Defiers don’t exist by monotonicity.</p>
+<p>Let <span class="math inline">\(\pi_c\)</span> denote the proportion of compliers in the population. Then the numerator equals <span class="math inline">\(\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]\)</span>.</p>
+<p>For the denominator, never-takers contribute <span class="math inline">\(D_i(1) - D_i(0) = 0 - 0 = 0\)</span>, always-takers contribute <span class="math inline">\(D_i(1) - D_i(0) = 1 - 1 = 0\)</span>, and compliers contribute <span class="math inline">\(D_i(1) - D_i(0) = 1 - 0 = 1\)</span>. Therefore, the denominator equals <span class="math inline">\(\pi_c\)</span>.</p>
+<p>Combining these results, we have:</p>
+<p><span class="math display">\[\text{IV estimate} = \frac{\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]}{\pi_c} = E[Y_i(1) - Y_i(0) | \text{complier}]\]</span></p>
+<p>This is the Local Average Treatment Effect (LATE): the average treatment effect for compliers.</p>
+</section>
+<section id="interpretation-and-heterogeneity" class="level3" data-number="17.1.5">
+<h3 data-number="17.1.5" class="anchored" data-anchor-id="interpretation-and-heterogeneity"><span class="header-section-number">17.1.5</span> Interpretation and Heterogeneity</h3>
+<p>The LATE theorem tells us that instrumental variables identifies the effect of military service for those who serve because of the draft - the compliers. Crucially, we do not learn about the treatment effect for volunteers (always-takers), who may be positively selected, or for those who would avoid service even if drafted (never-takers), who may have high outside options.</p>
+<p>This highlights the fundamental issue of treatment effect heterogeneity. If the effect of military service differs across these groups - and there are strong reasons to believe it would - then the IV estimate will not equal the average treatment effect (ATE) in the population. The IV estimate gives us a credible causal estimate, but only for a specific subpopulation. This trade-off between internal validity and external validity is central to interpreting instrumental variables estimates.</p>
+</section>
+</section>
+<section id="regression-discontinuity-designs" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="regression-discontinuity-designs"><span class="header-section-number">17.2</span> Regression Discontinuity Designs</h2>
+<p>SW 13.4</p>
+<p>The final type of natural experiment that we will talk about is called <strong>regression discontinuity</strong> (often abbreviated RD or RDD for “regression discontinuity design”). The sort of natural experiment is available when there is a <strong>running variable</strong> with a threshold (i.e., cutoff) where individuals above the threshold are treated while individuals below the threshold are not treated. These sorts of thresholds/cutoffs are fairly common.</p>
+<p>Here are some examples:</p>
+<ul>
+<li><p>Cutoffs that make students eligible for a scholarship (e.g., the Hope scholarship)</p></li>
+<li><p>Rules about maximum numbers of students allowed in a classroom in a particular school district</p></li>
+<li><p>Very close political elections</p></li>
+<li><p>Very close union elections</p></li>
+<li><p>Thresholds in tax laws</p></li>
+</ul>
+<p>Then, the idea is to compare outcomes among individuals that “barely” were treated relative to those that “barely” weren’t treated. By construction, this often has properties that are similar to an actual experiment as those that are just above the cutoff should have observed and unobserved characteristics that are the same as those just below the cutoff.</p>
+<p>In some sense, RD is a special case of instrumental variables; however, discontinuities are common enough in economics that it is worth considering these approaches specifically.</p>
+<p>Let’s explain the intuition for RD in the context of a particular example. Suppose that you are interested in how financial aid (a treatment) affects college completion. Policies like the Hope scholarship provide financial aid to students whose high school GPA is above a certain cutoff (e.g., 3.0). Students with GPAs just above 3.0 receive the treatment, while students with GPAs just below 3.0 do not. In the terminology of regression discontinuity, the student’s GPA is called a <strong>running variable</strong>, which we will denote by <span class="math inline">\(R_i\)</span>. The cutoff is denoted by <span class="math inline">\(c\)</span> (in this case, <span class="math inline">\(c = 3.0\)</span>). Treatment status <span class="math inline">\(D_i\)</span> is determined by whether the running variable exceeds the cutoff: <span class="math inline">\(D_i = 1\)</span> if <span class="math inline">\(R_i \geq c\)</span> and <span class="math inline">\(D_i = 0\)</span> if <span class="math inline">\(R_i &lt; c\)</span>. We will end up comparing the average college completion rates for students with GPAs just above 3.0 to those with GPAs just below 3.0, and argue below that this comparison identifies the causal effect of financial aid on college completion for students at the cutoff.</p>
+<section id="key-assumption-continuity" class="level3" data-number="17.2.1">
+<h3 data-number="17.2.1" class="anchored" data-anchor-id="key-assumption-continuity"><span class="header-section-number">17.2.1</span> Key Assumption: Continuity</h3>
+<p>The RD design relies on a <strong>continuity assumption</strong> about potential outcomes. In particular, we assume that <span class="math display">\[\begin{align*}
+  \E[Y(1) | R = r] \text{ and } \E[Y(0) | R = r] \text{ are continuous in } r
+\end{align*}\]</span> In particular, we need this assumption to hold at the cutoff <span class="math inline">\(c\)</span>. Below is a plot that illustrates the continuity assumption for untreated potential outcomes, <span class="math inline">\(\E[Y(0)|R=r]\)</span>. You can see that this function is continuous everywhere.</p>
+<p>In the context of our financial aid example where college completion is the outcome, this function says that, absent any financial aid, the expected college completion rate is increasing in GPA, but there are not any sudden jumps in college completion rates.</p>
+<p>You should probably think of continuity as being a mild assumption (with one main possible caveat that we will discuss below). In our example, students with GPAs of 2.99 and 3.01 are likely very similar in terms of their underlying ability and motivation, so we would expect their college completion rates to be similar absent financial aid.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/continuity_plot_continuous-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Illustration of continuity: E[Y(0)|R=r] smooth at cutoff</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/continuity_plot_violation-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Violation: jump in E[Y(0)|R=r] at cutoff (vertical segment removed)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, let’s consider a plot where the continuity assumption is violated. This second plot shows a clear violation: a jump at the cutoff. In many applications, such a jump seems implausible. However, there is one leading case where a jump can occur: when individuals can <strong>manipulate</strong> the value of their running variable. For example, suppose that some students are highly motivated and strategically select courses to boost their GPA if they have a GPA near the cutoff (presumably this kind of motivation could also increase college completion rates). This could lead to a ``pile-up’’ of highly motivated students just above the cutoff, leading to a jump in the underlying potential outcomes at the cutoff.</p>
+<p>Manipulation is a concern in RD designs especially when the running variable is something that individuals can, at least to some extent, control—like GPA in the example above. A different classic RD design involves studying the effect of legal drinking age on mortality, where the running variable is age in years (with a cutoff at age 21). Individuals cannot manipulate their birth date to turn 21 sooner, so manipulation is much less of a concern in this type of application.</p>
+</section>
+<section id="identification-1" class="level3" data-number="17.2.2">
+<h3 data-number="17.2.2" class="anchored" data-anchor-id="identification-1"><span class="header-section-number">17.2.2</span> Identification</h3>
+<p>Next, let’s work through what we can learn about the causal effect of the treatment when we have access to a discontinuity. To start with, let us think about what the observed data would look like if the treatment caused outcomes to increase on average.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/rd_identification_positive-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>RD Identification: Positive Treatment Effect</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Recall that we observe treated potential outcomes for <span class="math inline">\(R_i \geq c\)</span> and untreated potential outcomes for <span class="math inline">\(R_i &lt; c\)</span>. This coresponds to the solid lines in the plots above. The dashed lines correspond to the unobserved counterfactual potential outcomes. Importantly, notice that there is a discontinuity in the observed outcomes at the cutoff.</p>
+<p>Next, let’s consider what the same plot would look like if there were no treatment effect.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/rd_identification_null-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>RD Identification: No Treatment Effect</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In this plot, which may be a bit hard to interpret because the lines are on top of each other, the main thing to notice is that there is no discontinuity at the cutoff.</p>
+<p>The discussion above suggests that we can learn about the causal effect of the treatment by “zooming in” on the cutoff and checking for a discontinuity (as well as checking the magnitude of the discontinuity).</p>
+<p>In particular, consider <span class="math display">\[\begin{align*}
+  \tau^{RD} := \lim_{r \downarrow c} \E[Y | R = r] &amp;- \lim_{r \uparrow c} \E[Y | R = r]
+\end{align*}\]</span> <span class="math inline">\(\tau^{RD}\)</span> comes from comparing the expected outcomes just above and just below the cutoff. Notice that <span class="math display">\[\begin{align*}
+  \tau^{RD} &amp;= \lim_{r \downarrow c} \E[Y | R = r] - \lim_{r \uparrow c} \E[Y | R = r] \\
+  &amp;= \lim_{r \downarrow c} \E[Y(1) | R = r] - \lim_{r \uparrow c} \E[Y(0) | R = r] \\
+  &amp;= \E[Y(1) | R = c] - \E[Y(0) | R = c] \\
+  &amp;= \E[Y(1) - Y(0) | R = c]
+\end{align*}\]</span> where the second equality holds by writing the observed outcomes in terms of potential outcomes, and the third equality (which is the key step) holds by the continuity assumption. The result is that <span class="math inline">\(\tau^{RD} = \E[Y(1) - Y(0) | R = c]\)</span>, which is a local average average treatment effect for individuals at the cutoff.</p>
+<p>Intuitively, you can think of regression discontinuity as delivering a local experiment where individuals just above and just below the cutoff are effectively randomly assigned to treatment and control groups.</p>
+</section>
+<section id="estimation" class="level3" data-number="17.2.3">
+<h3 data-number="17.2.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">17.2.3</span> Estimation</h3>
+<p>From the discussion above, it may be unclear how to estimate <span class="math inline">\(\tau^{RD}\)</span> in practice. In particular, it is not clear how to deal with the limits in the definition of <span class="math inline">\(\tau^{RD}\)</span>. In fact, I think RD is the first and only time this semester where we won’t directly use the analogy principle to estimate a parameter of interest (due to the limits). To deal with the limits, instead of using all of the data, we will only use data that is “close” to the cutoff. In particular, we will only use data where <span class="math inline">\(R_i\)</span> is in the interval <span class="math inline">\([c - h, c + h]\)</span> for some bandwidth parameter <span class="math inline">\(h &gt; 0\)</span>—this bandwidth parameter basically determines what we mean by close. Once we have decided on <span class="math inline">\(h\)</span>, if you are a little clever, you can estimate <span class="math inline">\(\tau^{RD}\)</span> from a regression. In particular, you can run the following regression using only data in that interval: <span class="math display">\[\begin{align*}
+  Y_i = \beta_0 + \beta_1 (R_i-c) + \big(\beta_2 + \beta_3 (R_i-c)\big) D_i + U_i
+\end{align*}\]</span> This is a regression where we (1) “center” at c, and (2) we allow for the intercept and slope coefficients to be different on each side of the cutoff. In particular, <span class="math inline">\(\hat{\beta}_2\)</span> is our estimate of <span class="math inline">\(\tau^{RD}\)</span>.</p>
+</section>
+<section id="example-with-simulated-data" class="level3" data-number="17.2.4">
+<h3 data-number="17.2.4" class="anchored" data-anchor-id="example-with-simulated-data"><span class="header-section-number">17.2.4</span> Example with Simulated Data</h3>
+<p>To illustrate how RD estimation works in practice, let me show you an example with simulated data roughly in line with the financial aid example that we have been discussing.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/rd_simulation-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let’s estimate the treatment effect using a bandwidth of <span class="math inline">\(h = 0.5\)</span> (meaning we only use observations within 0.5 units of the cutoff on either side).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose bandwidth</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Restrict to observations within bandwidth</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rd_data_bw <span class="ot">&lt;-</span> rd_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(R <span class="sc">-</span> c) <span class="sc">&lt;=</span> h)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate RD regression</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> D <span class="sc">+</span> <span class="fu">I</span>(R <span class="sc">-</span> c) <span class="sc">+</span> D<span class="sc">:</span><span class="fu">I</span>(R <span class="sc">-</span> c), <span class="at">data =</span> rd_data_bw)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Y ~ D + I(R - c) + D:I(R - c), data = rd_data_bw)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.92775 -0.18555 -0.02267  0.20556  0.74318 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.46402    0.07083  48.909  &lt; 2e-16 ***
+D            0.75128    0.09851   7.626  2.7e-12 ***
+I(R - c)     0.92051    0.24634   3.737 0.000266 ***
+D:I(R - c)   0.69026    0.34369   2.008 0.046421 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.3017 on 148 degrees of freedom
+Multiple R-squared:  0.8522,    Adjusted R-squared:  0.8492 
+F-statistic: 284.4 on 3 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The estimated treatment effect is 0.751, which we can compare to the true treatment effect at the cutoff of <span class="math inline">\(0.8 + 0.3 \times 0 = 0.8\)</span>.</p>
+<p>What we’ve done with this regression is, effectively, to have run separate regression for the treated and untreated groups within the bandwidth, allowing for linear trends in <span class="math inline">\(R\)</span>. The intercept shift at the cutoff (the coefficient on <span class="math inline">\(D\)</span>) gives us our estimate of the treatment effect.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/rd_viz-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plot shows the fitted regression lines for treated and untreated observations within the bandwidth. The vertical gap between the two lines at the cutoff (the intercept shift) is our estimate of the treatment effect.</p>
+<p>Finally, notice that we’re only using observations close to the cutoff (those within the bandwidth). We can zoom out to see all the data, and, in particular, notice that we are dropping a lot of data that is far from the cutoff—this typical in RD applications where the focus is local to the cutoff.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="16-natural_experiments_files/figure-html/rd_viz_full-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This visualization shows all the data but highlights the observations within the bandwidth (which appear more opaque) and shows the fitted regression lines. The shaded gray region indicates the bandwidth around the cutoff. This makes it clear that we’re only using local information near the cutoff to estimate the treatment effect.</p>
+</section>
+</section>
+<section id="references" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="references"><span class="header-section-number">17.3</span> References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cunningham-2021" class="csl-entry" role="listitem">
+Cunningham, Scott. 2021. <em>Causal Inference: The Mixtape</em>. Yale University Press.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./15-experiments.html" class="pagination-link" aria-label="Experiments">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./17-observational_data.html" class="pagination-link" aria-label="Causal Inference with Observational Data">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

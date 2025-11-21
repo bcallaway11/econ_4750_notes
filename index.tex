@@ -117,6 +117,39 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -399,11 +432,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     Earnings
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -436,11 +469,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     Data about bank closures in Mississippi during the Great Depression
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -451,7 +484,7 @@ install the \texttt{Ecdat} package first (i.e., by running
     Data about infant birthweights and mother's smoking from PA 1989
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
@@ -478,7 +511,7 @@ install the \texttt{Ecdat} package first (i.e., by running
     Kaggle, and then I split it into training and testing data.
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description: A description of each column in the data is available
@@ -493,7 +526,7 @@ install the \texttt{Ecdat} package first (i.e., by running
     Out of sample version of \texttt{diamond\_train} data
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description: A description of each column in the data is available
@@ -533,11 +566,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     details
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -554,11 +587,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     \url{https://doi.org/10.1016/j.jdeveco.2017.02.007}.
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -569,11 +602,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     U.S. House of Representatives elections data from 1946-1998
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -584,11 +617,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     Intergenerational mobility data from PSID
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -599,7 +632,7 @@ install the \texttt{Ecdat} package first (i.e., by running
     Infant mortality and lead pipes in 1900
   \item
     Access: Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
@@ -614,11 +647,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     Car accident deaths by age group
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -640,11 +673,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     Mutual fund performance data
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -655,11 +688,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     RAND health insurance experiment
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \item
@@ -684,7 +717,7 @@ install the \texttt{Ecdat} package first (i.e., by running
     \href{https://www.kaggle.com/c/titanic}{Kaggle}
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description: \href{https://www.kaggle.com/c/titanic/data}{Kaggle}
@@ -697,7 +730,7 @@ install the \texttt{Ecdat} package first (i.e., by running
     Out of sample version of \texttt{titanic\_training} data
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description: \href{https://www.kaggle.com/c/titanic/data}{Kaggle}
@@ -710,11 +743,11 @@ install the \texttt{Ecdat} package first (i.e., by running
     Data from the 2019 American Community Survey via IPUMS
   \item
     Access:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \item
     Description:
-    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2023/}{Course
+    \href{http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/}{Course
     Website}
   \end{itemize}
 \end{itemize}
@@ -4825,6 +4858,14 @@ can't make as strong a statement, but we can say that at least 75\% of
 the time, \(X\) will be within 2 standard deviations of its mean. You
 can try other values of \(k\) too.
 
+I am not going to provide a proof of Chebyshev's Inequality. However, it
+is not that complicated. It follows from another result called Markov's
+Inequality, where the idea is basically that, if you know the mean of a
+random variable, it limits the probability that a random variable can
+take an extreme value. Chebyshev's Inequality extends this idea to the
+case where you know the mean and standard deviation of a random
+variable.
+
 \section{Coding Questions}\label{coding-questions}
 
 \begin{enumerate}
@@ -5955,49 +5996,7 @@ of the t-statistic that we calculated earlier.
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(modelsummary)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-`modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
-  backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
-
-Revert to `kableExtra` for one session:
-
-  options(modelsummary_factory_default = 'kableExtra')
-  options(modelsummary_factory_latex = 'kableExtra')
-  options(modelsummary_factory_html = 'kableExtra')
-
-Silence this message forever:
-
-  config_modelsummary(startup_message = FALSE)
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-
-Attaching package: 'dplyr'
-\end{verbatim}
-
-\begin{verbatim}
-The following objects are masked from 'package:stats':
-
-    filter, lag
-\end{verbatim}
-
-\begin{verbatim}
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# create a factor variable for going to college}
 \NormalTok{acs}\SpecialCharTok{$}\NormalTok{col }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(acs}\SpecialCharTok{$}\NormalTok{educ }\SpecialCharTok{\textgreater{}=} \DecValTok{16}\NormalTok{, }\StringTok{"college"}\NormalTok{, }\StringTok{"non{-}college"}\NormalTok{)}
 \NormalTok{acs}\SpecialCharTok{$}\NormalTok{col }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(acs}\SpecialCharTok{$}\NormalTok{col)}
@@ -6014,24 +6013,31 @@ The following objects are masked from 'package:base':
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-column{1}={halign=l,},
-column{2}={halign=r,},
-column{3}={halign=r,},
-column{4}={halign=r,},
-column{5}={halign=r,},
-column{6}={halign=r,},
-column{7}={halign=r,},
-row{1}={halign=c,},
+hline{3}={1-7}{solid, black, 0.05em},
+hline{2}={2,4}{solid, black, 0.05em, l=-0.5},
+hline{2}={3,5}{solid, black, 0.05em, r=-0.5},
+hline{1}={1-7}{solid, black, 0.1em},
+hline{6}={1-7}{solid, black, 0.1em},
+cell{1}{1}={}{halign=c},
+cell{1}{2}={c=2}{halign=c},
+cell{1}{3}={}{halign=c},
+cell{1}{4}={c=2}{halign=c},
+cell{1}{5}={}{halign=c},
+cell{1}{6}={}{halign=c},
+cell{1}{7}={}{halign=c},
+cell{2-5}{1}={}{halign=l},
+cell{2-5}{2}={}{halign=r},
+cell{2-5}{3}={}{halign=r},
+cell{2-5}{4}={}{halign=r},
+cell{2-5}{5}={}{halign=r},
+cell{2-5}{6}={}{halign=r},
+cell{2-5}{7}={}{halign=r},
 }                     %% tabularray inner close
-\toprule
-& college (N=3871) &  & non-college (N=6129) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
-& Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
+& college (N=3871) &  & non-college (N=6129) &  &  &  \\
+& Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\
 incwage & \num{89.69} & \num{96.15} & \num{40.05} & \num{39.01} & \num{-49.65} & \num{1.62} \\
-female  & \num{0.51}  & \num{0.50}  & \num{0.46}  & \num{0.50}  & \num{-0.04}  & \num{0.01} \\
-age     & \num{44.38} & \num{13.43} & \num{42.80} & \num{15.71} & \num{-1.58}  & \num{0.29} \\
-\bottomrule
+female & \num{0.51} & \num{0.50} & \num{0.46} & \num{0.50} & \num{-0.04} & \num{0.01} \\
+age & \num{44.38} & \num{13.43} & \num{42.80} & \num{15.71} & \num{-1.58} & \num{0.29} \\
 \end{tblr}
 \end{table}
 
@@ -6188,7 +6194,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
- [1] 1 0 0 1 0 0 0 0 0 0
+ [1] 0 0 1 0 0 1 0 1 1 0
 \end{verbatim}
 
 \begin{enumerate}
@@ -6220,7 +6226,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-[1] -0.0086
+[1] 0.001
 \end{verbatim}
 
 \begin{Shaded}
@@ -6232,7 +6238,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.02575179
+[1] 0.02628529
 \end{verbatim}
 
 \begin{Shaded}
@@ -6244,7 +6250,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.02582575
+[1] 0.02628629
 \end{verbatim}
 
 \begin{Shaded}
@@ -6258,7 +6264,7 @@ hypothesis that you are testing.
 \end{Shaded}
 
 \begin{verbatim}
-Warning: Removed 1 row containing non-finite outside the scale range
+Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 \end{verbatim}
 
@@ -6272,7 +6278,7 @@ Warning: Removed 1 row containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] 0.114
+[1] 0.117
 \end{verbatim}
 
 \begin{enumerate}
@@ -6303,14 +6309,14 @@ Warning: Removed 1 row containing non-finite outside the scale range
 
   \CommentTok{\# compute mean squared error}
 \NormalTok{  mse }\OtherTok{\textless{}{-}}\NormalTok{ bias}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ var}
-  
+
 \NormalTok{  t }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(n)}\SpecialCharTok{*}\NormalTok{(mc\_est }\SpecialCharTok{{-}}\NormalTok{ H0) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(mc\_var)}
 \NormalTok{  hist\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{t=}\NormalTok{t), }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{t)) }\SpecialCharTok{+}
-    \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins=}\DecValTok{30}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{bins=}\DecValTok{30}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{theme\_bw}\NormalTok{()}
 
 \NormalTok{  rej }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\DecValTok{1}\SpecialCharTok{*}\NormalTok{(}\FunctionTok{abs}\NormalTok{(t) }\SpecialCharTok{\textgreater{}=} \FloatTok{1.96}\NormalTok{))}
-  
+
   \CommentTok{\# print results}
   \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"bias: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(bias,}\DecValTok{4}\NormalTok{)))}
   \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"var : "}\NormalTok{, }\FunctionTok{round}\NormalTok{(var,}\DecValTok{4}\NormalTok{)))}
@@ -6323,15 +6329,15 @@ Warning: Removed 1 row containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 0.0028"
-[1] "var : 0.0052"
-[1] "mse : 0.0053"
+[1] "bias: -0.0011"
+[1] "var : 0.0051"
+[1] "mse : 0.0051"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-11-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.071"
+[1] "rej : 0.066"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6348,15 +6354,15 @@ Warning: Removed 1 row containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -0.0018"
-[1] "var : 0.005"
-[1] "mse : 0.005"
+[1] "bias: -2e-04"
+[1] "var : 0.0048"
+[1] "mse : 0.0048"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.362"
+[1] "rej : 0.334"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6373,9 +6379,9 @@ Warning: Removed 1 row containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 0.004"
-[1] "var : 0.0048"
-[1] "mse : 0.0048"
+[1] "bias: 8e-04"
+[1] "var : 0.0049"
+[1] "mse : 0.0049"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-13-1.pdf}
@@ -6398,9 +6404,9 @@ Warning: Removed 1 row containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -5e-04"
-[1] "var : 3e-04"
-[1] "mse : 3e-04"
+[1] "bias: -3e-04"
+[1] "var : 2e-04"
+[1] "mse : 2e-04"
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-14-1.pdf}
@@ -6423,20 +6429,20 @@ Warning: Removed 1 row containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: 0.002"
-[1] "var : 0.0044"
-[1] "mse : 0.0044"
+[1] "bias: -0.0013"
+[1] "var : 0.0049"
+[1] "mse : 0.0049"
 \end{verbatim}
 
 \begin{verbatim}
-Warning: Removed 606 rows containing non-finite outside the scale range
+Warning: Removed 591 rows containing non-finite outside the scale range
 (`stat_bin()`).
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-15-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.607"
+[1] "rej : 0.595"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6453,20 +6459,20 @@ Warning: Removed 606 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -5e-04"
+[1] "bias: 0.001"
 [1] "var : 9e-04"
 [1] "mse : 9e-04"
 \end{verbatim}
 
 \begin{verbatim}
-Warning: Removed 70 rows containing non-finite outside the scale range
+Warning: Removed 85 rows containing non-finite outside the scale range
 (`stat_bin()`).
 \end{verbatim}
 
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-16-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.073"
+[1] "rej : 0.088"
 \end{verbatim}
 
 \begin{enumerate}
@@ -6483,7 +6489,7 @@ Warning: Removed 70 rows containing non-finite outside the scale range
 \end{Shaded}
 
 \begin{verbatim}
-[1] "bias: -2e-04"
+[1] "bias: 0"
 [1] "var : 0"
 [1] "mse : 0"
 \end{verbatim}
@@ -6491,7 +6497,7 @@ Warning: Removed 70 rows containing non-finite outside the scale range
 \includegraphics{07-inference_files/figure-pdf/unnamed-chunk-17-1.pdf}
 
 \begin{verbatim}
-[1] "rej : 0.054"
+[1] "rej : 0.055"
 \end{verbatim}
 
 \section{Coding Questions}\label{coding-questions-1}
@@ -7542,31 +7548,30 @@ function from the \texttt{modelsummary} package.
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]},
-column{1}={halign=l,},
-column{2}={halign=c,},
-column{3}={halign=c,},
-column{4}={halign=c,},
-hline{10}={1,2,3,4}{solid, 0.05em, black},
+hline{2}={1-4}{solid, black, 0.05em},
+hline{10}={1-4}{solid, black, 0.05em},
+hline{1}={1-4}{solid, black, 0.1em},
+hline{18}={1-4}{solid, black, 0.1em},
+column{2-4}={}{halign=c},
+column{1}={}{halign=l},
 }                     %% tabularray inner close
-\toprule
-& (1) & (2) & (3) \\ \midrule %% TinyTableHeader
-(Intercept) & \num{4.832}   & \num{3.829}   & \num{59.571}  \\
+& (1) & (2) & (3) \\
+(Intercept) & \num{4.832} & \num{3.829} & \num{59.571} \\
 & (\num{0.222}) & (\num{0.069}) & (\num{4.977}) \\
-log(hp)     & \num{-0.266}  &                & \num{-5.922}  \\
-& (\num{0.056}) &                & (\num{1.266}) \\
-wt          & \num{-0.179}  & \num{-0.201}  & \num{-3.286}  \\
+log(hp) & \num{-0.266} &  & \num{-5.922} \\
+& (\num{0.056}) &  & (\num{1.266}) \\
+wt & \num{-0.179} & \num{-0.201} & \num{-3.286} \\
 & (\num{0.027}) & (\num{0.027}) & (\num{0.615}) \\
-hp          &                & \num{-0.002}  &                \\
-&                & (\num{0.000}) &                \\
-Num.Obs.    & \num{32}      & \num{32}      & \num{32}      \\
-R2          & \num{0.885}   & \num{0.869}   & \num{0.859}   \\
-R2 Adj.     & \num{0.877}   & \num{0.860}   & \num{0.849}   \\
-AIC         & \num{140.3}   & \num{144.5}   & \num{150.0}   \\
-BIC         & \num{146.1}   & \num{150.4}   & \num{155.9}   \\
-Log.Lik.    & \num{28.501}  & \num{26.395}  & \num{-71.017} \\
-F           & \num{111.812} & \num{96.232}  & \num{88.442}  \\
-RMSE        & \num{0.10}    & \num{0.11}    & \num{2.23}    \\
-\bottomrule
+hp &  & \num{-0.002} &  \\
+&  & (\num{0.000}) &  \\
+Num.Obs. & \num{32} & \num{32} & \num{32} \\
+R2 & \num{0.885} & \num{0.869} & \num{0.859} \\
+R2 Adj. & \num{0.877} & \num{0.860} & \num{0.849} \\
+AIC & \num{140.3} & \num{144.5} & \num{150.0} \\
+BIC & \num{146.1} & \num{150.4} & \num{155.9} \\
+Log.Lik. & \num{28.501} & \num{26.395} & \num{-71.017} \\
+F & \num{111.812} & \num{96.232} & \num{88.442} \\
+RMSE & \num{0.10} & \num{0.11} & \num{2.23} \\
 \end{tblr}
 \end{table}
 
@@ -7601,9 +7606,9 @@ implies that we cannot control for it in the regression)
 
 Recall that we can equivalently write
 
-\[
-  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U (\#eq:ovb-y)
-\] where \(\E[U|X_1,X_2,Q]=0\).
+\begin{equation}\phantomsection\label{eq-ovb-y}{
+  Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U 
+}\end{equation} where \(\E[U|X_1,X_2,Q]=0\).
 
 Now, for simplicity, suppose that
 
@@ -7617,8 +7622,8 @@ consider the regression \[
   \E[Y|X_1,X_2] = \delta_0 + \delta_1 X_1 + \delta_2 X_2
 \] We are interested in the question of whether or not we can recover
 \(\beta_1\) if we do this. If we consider this ``feasible'' regression,
-notice if we plug in the expression for \(Y\) from Equation
-@ref(eq:ovb-y),
+notice if we plug in the expression for \(Y\) from
+Equation~\ref{eq-ovb-y},
 
 \[
   \begin{aligned}
@@ -7856,24 +7861,25 @@ respect to \(b_1\).
 Let's start by taking the derivative with respect to \(b_0\) and setting
 it equal to 0.
 
-\[
-  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 (\#eq:foc-bet0)
-\] where the \(2\) comes from taking the deriviative of the squared part
-and the negative sign at the beginning comes from taking the derivative
-of \(-b_0\) on the inside. I also replaced \(b_0\) and \(b_1\) here
-since \(\hat{\beta}_0\) and \(\hat{\beta}_1\) are the values that will
-solve this equation.
+\begin{equation}\phantomsection\label{eq-foc-bet0}{
+  -\frac{2}{n}\sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) = 0 
+}\end{equation} where the \(2\) comes from taking the deriviative of the
+squared part and the negative sign at the beginning comes from taking
+the derivative of \(-b_0\) on the inside. I also replaced \(b_0\) and
+\(b_1\) here since \(\hat{\beta}_0\) and \(\hat{\beta}_1\) are the
+values that will solve this equation.
 
-Next, let's take the derivative with respect to \(b_1\): \[
-  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 (\#eq:foc-bet1)
-\]\\
-where the 2 comes from taking the derivative of the squared part, and
-the negative sign at the beginning and \(X_i\) at the end come from
-taking the derivative of the inside with respect to \(b_1\).
+Next, let's take the derivative with respect to \(b_1\):
+\begin{equation}\phantomsection\label{eq-foc-bet1}{
+  -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0 
+}\end{equation} where the 2 comes from taking the derivative of the
+squared part, and the negative sign at the beginning and \(X_i\) at the
+end come from taking the derivative of the inside with respect to
+\(b_1\).
 
-All we have to do now is to solve these Equations @ref(eq:foc-bet0) and
-@ref(eq:foc-bet1) for \(\hat{\beta}_0\) and \(\hat{\beta}_1\). Before we
-do it, let me just mention that we are about to do some fairly
+All we have to do now is to solve Equation~\ref{eq-foc-bet0} and
+Equation~\ref{eq-foc-bet1} for \(\hat{\beta}_0\) and \(\hat{\beta}_1\).
+Before we do it, let me just mention that we are about to do some fairly
 challenging algebra, but that is all it is. Conceptually, it is just the
 same as solving a system of two equations with two unknowns that you
 probably did at some point in high school.
@@ -7892,7 +7898,7 @@ third line holds by pushing the summation through the sums/differences
 and simplifying terms, and the last line holds by rearranging to solve
 for \(\hat{\beta}_0\).
 
-Now, let's use the above result and Equation @ref(eq:foc-bet1) to solve
+Now, let's use the above result and Equation~\ref{eq-foc-bet1} to solve
 for \(\hat{\beta}_1\).
 
 \[
@@ -8072,9 +8078,9 @@ We are going to show that, in the simple linear regression model,
 
 Let's start by showing why this result holds.
 
-To start with, recall that \begin{align}
-  \hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} (\#eq:b1)
-\end{align}
+To start with, recall that \begin{equation}\phantomsection\label{eq-b1}{
+\hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} 
+}\end{equation}
 
 Before providing a main result, let's start with noting the following:
 
@@ -8089,24 +8095,26 @@ equality pushes the summation through the difference, the first part of
 the third equality holds by the definition of \(\bar{X}\) and the second
 part holds because it is an average of a constant.
 
-This implies that \begin{align}
-  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) (\#eq:hr1)
-\end{align} and very similar arguments (basically the same arguments in
-reverse) also imply that \begin{align}
-  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big) (\#eq:hr2)
-\end{align} We use both @ref(eq:hr1) and @ref(eq:hr2) below.
+This implies that \begin{equation}\phantomsection\label{eq-hr1}{
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(Y_i - \bar{Y})\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})Y_i\Big) 
+}\end{equation} and very similar arguments (basically the same arguments
+in reverse) also imply that
+\begin{equation}\phantomsection\label{eq-hr2}{
+  \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})X_i\Big) = \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})(X_i - \bar{X})\Big)
+}\end{equation} We use both Equation~\ref{eq-hr1} and
+Equation~\ref{eq-hr2} below.
 
 \vspace{100pt}
 
-Next, consider the numerator in @ref(eq:b1) \begin{align*}
+Next, consider the numerator in Equation~\ref{eq-b1} \begin{align*}
   \widehat{\cov}(X,Y) &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
   &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
   &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
   &= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
 \end{align*} where the first equality holds by the definition of sample
-covariance, the second equality holds by @ref(eq:hr1), the third
-equality plugs in for \(Y_i\), and the last equality combines terms and
-passes the summation through the additions/subtractions.
+covariance, the second equality holds by Equation~\ref{eq-hr1}, the
+third equality plugs in for \(Y_i\), and the last equality combines
+terms and passes the summation through the additions/subtractions.
 
 Now, let's consider each of these in turn.
 
@@ -8117,13 +8125,13 @@ For (A), \begin{align*}
 For (B), notice that \begin{align*}
   \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i &= \beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) (X_i - \bar{X}) \\
   &= \beta_1 \widehat{\var}(X)
-\end{align*} where the first equality holds by @ref(eq:hr2) and the
-second equality holds by the definition of sample variance.
+\end{align*} where the first equality holds by Equation~\ref{eq-hr2} and
+the second equality holds by the definition of sample variance.
 
 For (C), well, we'll just carry that one around for now.
 
 Plugging in the expressions for (A), (B), and (C) back into Equation
-@ref(eq:b1) implies that \begin{align*}
+Equation~\ref{eq-b1} implies that \begin{align*}
   \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
 \end{align*} Next, re-arranging terms and multiplying both sides by
 \(\sqrt{n}\) implies that \begin{align*}
@@ -8156,10 +8164,12 @@ where \(V=\var(Z) = \E[Z^2]\) (where the 2nd equality here holds because
 \(Z\) has mean 0). Now, just substituting back in for \(Z\) implies that
 \begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
-\end{align*} where \begin{align}
+\end{align*} where \begin{equation}\phantomsection\label{eq-V}{
+\begin{aligned}
   V &= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
-  &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] (\#eq:V)
-\end{align} which is what we were aiming for.
+  &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] 
+\end{aligned}
+}\end{equation} which is what we were aiming for.
 
 Given this result, all our previous work on standard errors,
 t-statistics, p-values, and confidence intervals applies. First, let me
@@ -8167,7 +8177,7 @@ mention the way that you would estimate \(V\) (same as always, just
 replace the population quantities with corresponding sample quantities).
 
 \[
-  \hat{V} = \frac{ \frac{1}{n} \displaystyle \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
+  \hat{V} = \frac{ \displaystyle \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
 \]
 
 where \(\hat{U}_i\) are the residuals.
@@ -8425,32 +8435,39 @@ of smoking to me.
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
-cell{1}{2}={c=2,}{halign=c,},
-cell{1}{4}={c=2,}{halign=c,},
-column{1}={halign=l,},
-column{2}={halign=r,},
-column{3}={halign=r,},
-column{4}={halign=r,},
-column{5}={halign=r,},
-column{6}={halign=r,},
-column{7}={halign=r,},
-row{1}={halign=c,},
+hline{3}={1-7}{solid, black, 0.05em},
+hline{2}={2,4}{solid, black, 0.05em, l=-0.5},
+hline{2}={3,5}{solid, black, 0.05em, r=-0.5},
+hline{1}={1-7}{solid, black, 0.1em},
+hline{14}={1-7}{solid, black, 0.1em},
+cell{1}{1}={}{halign=c},
+cell{1}{2}={c=2}{halign=c},
+cell{1}{3}={}{halign=c},
+cell{1}{4}={c=2}{halign=c},
+cell{1}{5}={}{halign=c},
+cell{1}{6}={}{halign=c},
+cell{1}{7}={}{halign=c},
+cell{2-13}{1}={}{halign=l},
+cell{2-13}{2}={}{halign=r},
+cell{2-13}{3}={}{halign=r},
+cell{2-13}{4}={}{halign=r},
+cell{2-13}{5}={}{halign=r},
+cell{2-13}{6}={}{halign=r},
+cell{2-13}{7}={}{halign=r},
 }                     %% tabularray inner close
-\toprule
-& non-smoker (N=2418) &  & smoker (N=582) &  &  &  \\ \cmidrule[lr]{2-3}\cmidrule[lr]{4-5}
-& Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\ \midrule %% TinyTableHeader
-nprevist    & \num{11.19}   & \num{3.50}   & \num{10.18}   & \num{4.23}   & \num{-1.01}   & \num{0.19}  \\
-alcohol     & \num{0.01}    & \num{0.11}   & \num{0.05}    & \num{0.22}   & \num{0.04}    & \num{0.01}  \\
-tripre1     & \num{0.83}    & \num{0.38}   & \num{0.70}    & \num{0.46}   & \num{-0.13}   & \num{0.02}  \\
-tripre2     & \num{0.14}    & \num{0.34}   & \num{0.22}    & \num{0.41}   & \num{0.08}    & \num{0.02}  \\
-tripre3     & \num{0.03}    & \num{0.16}   & \num{0.06}    & \num{0.24}   & \num{0.04}    & \num{0.01}  \\
-tripre0     & \num{0.01}    & \num{0.08}   & \num{0.02}    & \num{0.15}   & \num{0.02}    & \num{0.01}  \\
+& non-smoker (N=2418) &  & smoker (N=582) &  &  &  \\
+& Mean & Std. Dev. & Mean & Std. Dev. & Diff. in Means & Std. Error \\
+nprevist & \num{11.19} & \num{3.50} & \num{10.18} & \num{4.23} & \num{-1.01} & \num{0.19} \\
+alcohol & \num{0.01} & \num{0.11} & \num{0.05} & \num{0.22} & \num{0.04} & \num{0.01} \\
+tripre1 & \num{0.83} & \num{0.38} & \num{0.70} & \num{0.46} & \num{-0.13} & \num{0.02} \\
+tripre2 & \num{0.14} & \num{0.34} & \num{0.22} & \num{0.41} & \num{0.08} & \num{0.02} \\
+tripre3 & \num{0.03} & \num{0.16} & \num{0.06} & \num{0.24} & \num{0.04} & \num{0.01} \\
+tripre0 & \num{0.01} & \num{0.08} & \num{0.02} & \num{0.15} & \num{0.02} & \num{0.01} \\
 birthweight & \num{3432.06} & \num{584.62} & \num{3178.83} & \num{580.01} & \num{-253.23} & \num{26.82} \\
-unmarried   & \num{0.18}    & \num{0.38}   & \num{0.43}    & \num{0.50}   & \num{0.25}    & \num{0.02}  \\
-educ        & \num{13.15}   & \num{2.21}   & \num{11.88}   & \num{1.62}   & \num{-1.27}   & \num{0.08}  \\
-age         & \num{27.27}   & \num{5.37}   & \num{25.32}   & \num{5.06}   & \num{-1.95}   & \num{0.24}  \\
-drinks      & \num{0.03}    & \num{0.47}   & \num{0.19}    & \num{1.23}   & \num{0.16}    & \num{0.05}  \\
-\bottomrule
+unmarried & \num{0.18} & \num{0.38} & \num{0.43} & \num{0.50} & \num{0.25} & \num{0.02} \\
+educ & \num{13.15} & \num{2.21} & \num{11.88} & \num{1.62} & \num{-1.27} & \num{0.08} \\
+age & \num{27.27} & \num{5.37} & \num{25.32} & \num{5.06} & \num{-1.95} & \num{0.24} \\
+drinks & \num{0.03} & \num{0.47} & \num{0.19} & \num{1.23} & \num{0.16} & \num{0.05} \\
 \end{tblr}
 \end{table}
 
@@ -8923,10 +8940,10 @@ not the mother consumed alcohol during the pregnancy constant.
   \begin{enumerate}
   \def\labelenumii{\alph{enumii})}
   \item
-    Under homoskedasticity, the expression for \(V\) in @ref(eq:V)
-    simplifies. Provide a new expression for \(V\) under
-    homoskedasticity. \textbf{Hint:} you will need to use the law of
-    iterated expectations.
+    Under homoskedasticity, the expression for \(V\) in
+    Equation~\ref{eq-V} simplifies. Provide a new expression for \(V\)
+    under homoskedasticity. \textbf{Hint:} you will need to use the law
+    of iterated expectations.
   \item
     Using this expression for \(V\), explain how to calculate standard
     errors for an estimate of \(\beta_1\) in a simple linear regression.
@@ -8941,73 +8958,6 @@ not the mother consumed alcohol during the pregnancy constant.
     under homoskedasticity.
   \end{enumerate}
 \end{enumerate}
-
-\section{Answers to Some Extra
-Questions}\label{answers-to-some-extra-questions}
-
-\textbf{Answer to Question 2}
-
-\(\beta_1\) is how much \(Earnings\) increase on average when
-\(Education\) increases by one year holding \(Experience\) and
-\(Female\) constant.
-
-\textbf{Answer to Question 3}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\item
-  Run the regression \begin{align*}
-       Earnings &= \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \times Female + U
-   \end{align*} and test (e.g., calculate a t-statistic and check if it
-  is greater than 1.96 in absolute value) if \(\beta_3=0\).
-\item
-  You can run the following regression: \begin{align*}
-     Earnings &= \beta_0 + \beta_1 Education + \beta_2 Female \\
-     & \hspace{25pt} + \beta_3 Education \times Female + \beta_4 Experience + U
-  \end{align*} Here, you would still be interested in \(\beta_3\). If
-  you thought that the return to experience varied for men and women,
-  you might also include an interaction term involving \(Experience\)
-  and \(Female\).
-\end{enumerate}
-
-\textbf{Partial Answer to Question 5}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\tightlist
-\item
-  Starting from @ref(eq:V)
-\end{enumerate}
-
-\begin{align*}
-    V &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2} \right] \\
-    &= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 U^2] \\
-    &= \frac{1}{\var(X)^2} \E\big[(X-\E[X])^2 \E[U^2|X] \big] \\
-    &= \frac{1}{\var(X)^2} \E[(X-\E[X])^2 \sigma^2 ] \\
-    &= \frac{\sigma^2}{\var(X)^2} \E[(X-\E[X])^2] \\
-    &= \frac{\sigma^2}{\var(X)^2} \var(X) \\
-    &= \frac{\sigma^2}{\var(X)}
-  \end{align*}
-
-where
-
-\begin{itemize}
-\item
-  the second equality holds because \(\var(X)^2\) is non-random and can
-  come out of the expectation,
-\item
-  the third equality uses the law of iterated expectations,
-\item
-  the fourth equality holds by the condition of homoskedasticity,
-\item
-  the fifth equality holds because \(\sigma^2\) is non-random and can
-  come out of the expectation,
-\item
-  the sixth equality holds by the definition of variance, and
-\item
-  the last equality holds by canceling \(\var(X)\) in the numerator with
-  one of the \(\var(X)\)'s in the denominator.
-\end{itemize}
 
 \part{Advanced Topics}
 
@@ -10312,8 +10262,8 @@ following way:
 \FunctionTok{coef}\NormalTok{(lasso\_model) }\CommentTok{\# if you are interested in estimated coefficients}
 \FunctionTok{predict}\NormalTok{(lasso\_model, }\AttributeTok{newdata=}\NormalTok{test) }\CommentTok{\# get predictions}
 
-\NormalTok{ridge\_model }\OtherTok{\textless{}{-}} \FunctionTok{cv.glmnet}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+}\NormalTok{ X3, }
-                         \AttributeTok{data=}\NormalTok{train, }
+\NormalTok{ridge\_model }\OtherTok{\textless{}{-}} \FunctionTok{cv.glmnet}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+}\NormalTok{ X3,}
+                         \AttributeTok{data=}\NormalTok{train,}
                          \AttributeTok{alpha=}\DecValTok{0}\NormalTok{,}
                          \AttributeTok{use.model.frame=}\ConstantTok{TRUE}\NormalTok{)}
 \FunctionTok{coef}\NormalTok{(ridge\_model)}
@@ -10339,8 +10289,8 @@ For example,
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lasso\_model2 }\OtherTok{\textless{}{-}} \FunctionTok{cv.glmnet}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}} \FunctionTok{poly}\NormalTok{(X1, X2, X3, }\AttributeTok{degree=}\DecValTok{2}\NormalTok{, }\AttributeTok{raw=}\ConstantTok{TRUE}\NormalTok{), }
-                          \AttributeTok{data=}\NormalTok{train, }
+\NormalTok{lasso\_model2 }\OtherTok{\textless{}{-}} \FunctionTok{cv.glmnet}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}} \FunctionTok{poly}\NormalTok{(X1, X2, X3, }\AttributeTok{degree=}\DecValTok{2}\NormalTok{, }\AttributeTok{raw=}\ConstantTok{TRUE}\NormalTok{),}
+                          \AttributeTok{data=}\NormalTok{train,}
                           \AttributeTok{use.model.frame=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -10479,9 +10429,9 @@ observations) and then see how well we can predict data from the
 
 \begin{verbatim}
   r.squared adj.r.squared     aic     bic       cv
-1     0.898         0.898 1104188 1104301 1365.944
-2     0.900         0.900 1103499 1103647 1400.933
-3     0.928         0.928 1089372 1090328 2223.032
+1     0.898         0.898 1104188 1104301 1365.869
+2     0.900         0.900 1103499 1103647 1370.001
+3     0.928         0.928 1089372 1090328 2148.081
 \end{verbatim}
 
 \begin{Shaded}
@@ -10519,7 +10469,7 @@ observations) and then see how well we can predict data from the
 
 \begin{verbatim}
      mod1    mod2    mod3   lasso   ridge
-1 856.014 785.171 616.996 671.448 794.276
+1 856.014 785.171 616.996 665.088 794.276
 \end{verbatim}
 
 \section{Extra Questions}\label{extra-questions-4}
@@ -10575,48 +10525,6 @@ observations) and then see how well we can predict data from the
     What would happen to the estimated coefficients as
     \(\lambda \rightarrow \infty\)?
   \end{enumerate}
-\end{enumerate}
-
-\section{Answers to Some Extra
-Questions}\label{answers-to-some-extra-questions-1}
-
-\textbf{Answer to Question 4}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\item
-  The first model appears to be predicting better because the AIC is
-  lower. {[}Also, notice that \(R^2\) is higher in the second model, but
-  this is by construction because it includes extra terms relative to
-  the first model which implies that it will fit at least as well
-  in-sample as the first model, but may be suffering from
-  over-fitting.{]}
-\item
-  \begin{align*}
-     \hat{Y} &= 30 + 4 (10) - 2 (1) - 10 (5) \\
-     &= 18
-   \end{align*}
-\end{enumerate}
-
-\textbf{Answer to Question 7}
-
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
-\item
-  The tuning parameter is often chosen via cross validation. It makes
-  sense to choose it this way because this is effectively choosing a
-  value of \(\lambda\) that is making good pseudo-out-of-sample
-  predictions. As we will see below, if you make bad choices of
-  \(\lambda\), that could result in very poor predictions.
-\item
-  When \(\lambda=0\), there would effectively be no penalty term and,
-  therefore, the estimated parameters would coincide with the OLS
-  estimates.
-\item
-  When \(\lambda \rightarrow \infty\), the penalty term would overwhelm
-  the term corresponding to minimizing SSR. This would result in setting
-  all the estimated parameters to be equal to 0. This extreme approach
-  is likely to lead to very poor predictions.
 \end{enumerate}
 
 \part{Causal Inference}
@@ -11148,7 +11056,7 @@ Let me also make a few comments about internal and external validity.
 
 \bookmarksetup{startatroot}
 
-\chapter{Unconfoundedness}\label{unconfoundedness}
+\chapter{Natural Experiments}\label{natural-experiments}
 
 \[
 \newcommand{\E}{\mathbb{E}}
@@ -11170,411 +11078,22 @@ Let me also make a few comments about internal and external validity.
 \newcommand{\N}{\mathcal{N}}
 \]
 
-SW 6.8, SW Ch. 9
+\section{Introduction to Instrumental
+Variables}\label{introduction-to-instrumental-variables}
 
-Unfortunately, we rarely have access to experimental data in
-applications or the ability to run experiments to evaluate causal
-effects programs/policies that we'd be interested in studying. For
-example, it's hard to imagine convincing a large number of countries to
-randomly assign their interest rate, minimum wage, or immigration
-policies though these are all policies that economists would be
-interested in thinking about the causal effect of.
-
-For the remainder of this chapter, we'll discuss common approaches to
-causal inference when the treatment is not randomly assigned. We'll
-start with what is probably the most common approach:
-\textbf{unconfoundedness}.
-
-\textbf{Unconfoundedness Assumption}: \begin{align*}
-  (Y(1),Y(0)) \independent D | X
-\end{align*} You can think of this as saying that, among individuals
-with the same covariates \(X\), they have the same distributions of
-potential outcomes regardless of whether or not they participate in the
-treatment. Note that the distribution of \(X\) is still allowed to be
-different between the treated and untreated groups. In other words,
-after you condition on covariates, there is nothing special (in terms of
-the distributions of potential outcomes) about the group that
-participates in the treatment relative to the group that doesn't
-participate in the treatment.
-
-\begin{itemize}
-\tightlist
-\item
-  This is potentially a strong assumption. In order to believe this
-  assumption, you need to believe that untreated individuals with the
-  same characteristics can deliver, on average, the outcome that
-  individuals in the treated group would have experienced if they had
-  not participated in the treatment. In math, you can write this as
-  \begin{align*}
-      \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
-    \end{align*}
-\end{itemize}
-
-If you are willing to believe this assumption, then you can recover the
-\(ATT\). There are a few different ways that you could implement this.
-Probably the most common (and convenient) way is to link this condition
-to a regression (just like we did in the previous section on
-experiments).
-
-To do this, let's continue to make the treatment effect homogeneity
-assumption as above. In addition, let's assume a linear model for
-untreated potential outcomes \begin{align*}
-  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
-\end{align*} and unconfoundedness implies that
-\(\E[U|X_1,X_2,X_3,D] = 0\) (the conditioning on \(D\) is the
-unconfoundedness part). Now, recalling the definition of the observed
-outcome, we can write \begin{align*}
-  Y_i &= D_i Y_i(1) + (1-D_i) Y_i(0) \\
-  &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
-  &= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
-\end{align*} which suggests running the regression of observed \(Y\) on
-\(X_1,X_2,X_3,\) and \(D\) and interpreting the estimate of \(\alpha\)
-as the causal effect of participating in the treatment. In practice,
-this will be very similar to what we have done before --- so the process
-would not be hard, but convincing someone (or even yourself) that
-unconfoundedness holds will be the bigger issue here.
-
-As a final comment, the assumption of treatment effect homogeneity is
-not quite so innocuous here. It turns out that you can show that, in the
-presence of treatment effect heterogeneity, \(\alpha\) will be equal to
-a weighted average of individual treatment effects, but the weights can
-sometimes be ``strange''. There are methods that are robust to treatment
-effect heterogeneity (they are beyond the scope of the current class,
-but they are not ``way'' more difficult than what we are doing here).
-That said, in my experience, the regression estimators (under treatment
-effect homogeneity) tend to deliver similar estimates to alternative
-estimators that are robust to treatment effect heterogeneity at least in
-the setup considered in this section.
-
-\bookmarksetup{startatroot}
-
-\chapter{Quasi-Experiments}\label{quasi-experiments}
-
-\[
-\newcommand{\E}{\mathbb{E}}
-\renewcommand{\P}{\textrm{P}}
-\let\L\relax
-\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
-\newcommand{\F}{\textrm{F}}
-\newcommand{\var}{\textrm{var}}
-\newcommand{\cov}{\textrm{cov}}
-\newcommand{\corr}{\textrm{corr}}
-\newcommand{\Var}{\mathrm{Var}}
-\newcommand{\Cov}{\mathrm{Cov}}
-\newcommand{\Corr}{\mathrm{Corr}}
-\newcommand{\sd}{\mathrm{sd}}
-\newcommand{\se}{\mathrm{s.e.}}
-\newcommand{\T}{T}
-\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
-\newcommand\independent{\perp \!\!\! \perp}
-\newcommand{\N}{\mathcal{N}}
-\]
-
-\section{Panel Data Approaches}\label{panel-data-approaches}
-
-SW All of Ch. 10 and 13.4
-
-In the previous section, we invoked the assumption of unconfoundedness
-and were in the setup where \(X\) was fully observed. But suppose
-instead that you thought this alternative version of unconfoundedness
-held \begin{align*}
-  (Y(1),Y(0)) \independent D | (X,W)
-\end{align*} where \(X\) were observed random variables, but \(W\) were
-not observed. Following exactly the same argument as in the previous
-section, this would lead to a regression like \begin{align*}
-  Y_i = \alpha D_i + \beta_0 + \beta_1 X_i + \beta_2 W_i + U_i
-\end{align*} (I'm just including one \(X\) and one \(W\) for simplicity,
-but you can easily imagine the case where there are more.) If \(W\) were
-observed, then we could just run this regression, but since \(W\) is not
-observed, we run into the problem of omitted variable bias (i.e., if we
-just ignore \(W\), we won't be estimating the causal effect \(\alpha\))
-
-In this section, we'll consider the case where a researcher has access
-to a different type of data called \textbf{panel data}. Panel data is
-data that follows the same individual (or firm, etc.) over time. In this
-case, it is often helpful to index variables by time. For example,
-\(Y_{it}\) is the outcome for individual \(i\) in time period \(t\).
-\(X_{it}\) is the value of a regressor for individual \(i\) in time
-period \(t\) and \(D_{it}\) is the value of the treatment for individual
-\(i\) in time period \(t\). If some variable doesn't vary over time
-(e.g., a regressor like race), we won't use a \(t\) subscript.
-
-Panel data potentially gives us a way around the problem of not
-observing some variables that we would like to condition on in the
-model. This is particularly likely to be the case when \(W\) does not
-vary over time. Let's start with there are exactly two time periods of
-panel data. In that case, we can write \begin{align*}
-  Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
-\end{align*} where we consider the case where \(D\) and \(X\) both
-change over time. Then, defining \(\Delta Y_{it} = Y_{it} - Y_{it-1}\)
-(and using similar notation for other variables), notice that
-\begin{align*}
-  \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-\end{align*} which, importantly, no longer involves the unobserved
-\(W_i\) and suggests running the above regression and interpreting the
-estimated version of \(\alpha\) as an estimate of the causal effect of
-participating in the treatment.
-
-\begin{itemize}
-\item
-  \textbf{Time fixed effects} --- The previous regression did not
-  include an intercept. It is common in applied work to allow for the
-  intercept to vary over time (i.e., so that \(\beta_0 = \beta_{0,t}\))
-  which allows for ``aggregate shocks'' such as recessions or common
-  trends in outcomes over time. In practice, this amounts to just
-  including an intercept in the previous regression, for example,
-
-  \[
-      \Delta Y_{it} = \underbrace{\theta_t} + \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it} 
-    \]
-\end{itemize}
-
-Often, there may be many omitted, time invariant variables. In practice,
-these are usually just lumped into a single \textbf{individual fixed
-effect} --- even if there are many time invariant, unobserved variables,
-we can difference them all out at the same time \begin{align*}
-  Y_{it} &= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
-  &= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it} 
-\end{align*} and we can follow the same strategies as above.
-
-Another case that is common in practice is when there are more than two
-time periods. This case is similar to the previous one except there are
-multiple ways to eliminate the unobserved fixed effect. The two most
-common are the
-
-\begin{itemize}
-\item
-  \textbf{Within estimator}
-
-  To motivate this approach, notice that, if, for each individual, we
-  average their outcomes over time, the we get \begin{align*}
-      \bar{Y}_i = \alpha \bar{D}_i + \beta_1 \bar{X}_i + (\textrm{time fixed effects}) + \bar{U}_i
-    \end{align*} (where I have just written ``time fixed effects'' to
-  indicate that these are transformed version of original fixed but
-  still show up here.) Subtracting this equation from the expression for
-  \(Y_{it}\) gives \begin{align*}
-      Y_{it} - \bar{Y}_i = \alpha (D_{it} - \bar{D}_i) + \beta_1 (X_{it} - \bar{X}_i) + (\textrm{time fixed effects}) + U_{it} - \bar{U}_i
-    \end{align*}
-
-  This is a feasible regression to estimate (everything is observed
-  here). This is called a within estimator because the terms
-  \(\bar{Y}_i\), \(\bar{D}_i\), and \(\bar{X}_i\) are the
-  within-individual averages-over-time of the corresponding variable.
-\item
-  \textbf{First differences}
-
-  Another approach to eliminating the unobserved fixed effects is to
-  directly consider \(\Delta Y_{it}\):
-
-  \begin{align*}
-      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-    \end{align*}
-
-  This is the same expression as we had before for the two period case.
-  Only here you would include observations from all available time
-  periods on \(\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}\) in the
-  regression.
-\end{itemize}
-
-It's worth mentioning the cases where a fixed effects strategy can break
-down:
-
-\begin{itemize}
-\item
-  Unobserved variables vary over time
-
-  \[
-      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 \underbrace{W_{it}} + U_{it}
-    \] In this case,
-
-  \[
-      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \beta_2 \underbrace{\Delta W_{it}} + \Delta U_{it}
-    \]
-
-  which still involves the unobserved \(W_{it}\), and implies that the
-  fixed effects regression will contain omitted variable bias.
-\item
-  The effect of unobserved variables varies over time
-
-  \[
-      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \underbrace{\beta_{2,t}} W_i + U_{it}
-    \] In this case,
-
-  \[
-      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \underbrace{(\beta_{2,t} - \beta_{2,t-1})} W_i + \Delta U_{it}
-    \]
-
-  which still involves the unobserved \(W_i\) (even though it doesn't
-  vary over time) and, therefore, the fixed effects regressions we have
-  been considering will contain omitted variable bias.
-\end{itemize}
-
-Also, the assumption of treatment effect homogeneity can potentially
-matter a lot in this context. This will particularly be the case when
-(i) individuals can become treated at different points in time, and (ii)
-there are treatment effect dynamics (so that the effect of participating
-in the treatment can vary over time) --- both of these are realistic in
-many applications. This is a main research area of mine and one I am
-happy to talk way more about.
-
-\subsection{Difference in differences}\label{difference-in-differences}
-
-The panel data approaches that we have been talking about so far are
-closely related to a \textbf{natural-experiment} type of strategy called
-\textbf{difference in differences} (DID).
-
-One important difference relative to the previous approach is that DID
-is typically implemented when some units (these are often states or
-particular locations) implement a policy at some time period while
-others do not; and, in particular, we observe some periods before any
-units participate in the treatment.
-
-Let's think about the case with exactly two time periods: \(t\) and
-\(t-1\). In this case, we'll suppose that the outcomes that we observe
-are \begin{align*}
-  Y_{it} &= D_i Y_{it}(1) + (1-D_i) Y_{it}(0) \\
-  Y_{it-1} &= Y_{it-1}(0)
-\end{align*} In other words, in the second period, we observe treated
-potential outcomes for treated units and untreated potential outcomes
-for untreated units (this is just like the cross-sectional case above).
-But in the first period, we observe untreated potential outcomes for all
-units --- because no one is treated yet.
-
-DID is often motivated by an assumption called the parallel trends
-assumption:
-
-\textbf{Parallel Trends Assumption} \begin{align*}
-\E[\Delta Y_t(0) | D=1] = \E[\Delta Y_t(0) | D=0]
-\end{align*} This says that the \emph{path} of outcomes that individuals
-in the treated group would have experienced if they had not been treated
-is the same as the path of outcomes that individual in the untreated
-group actually experienced.
-
-As before, we continue to be interested in \begin{align*}
-  ATT = \E[Y_t(1) - Y_t(0) | D=1]
-\end{align*} Recall that the key identification challenge if for
-\(\E[Y_t(0)|D=1]\) here, and notice that \begin{align*}
-  \E[Y_t(0) | D=1] &= \E[\Delta Y_t(0) | D=1] + \E[Y_{t-1}(0) | D=1] \\
-  &= \E[\Delta Y_t(0) | D=0] + \E[Y_{t-1}(0)|D=1] \\
-  &= \E[\Delta Y_t | D=0] + \E[Y_{t-1}|D=1]
-\end{align*} where the first equality adds and subtracts
-\(\E[Y_{t-1}(0)|D=1]\), the second equality uses the parallel trends
-assumption, and the last equality holds because all the potential
-outcomes in the previous line are actually observed outcome. Plugging
-this expression into the one for \(ATT\) yields: \begin{align*}
-  ATT = \E[\Delta Y_t | D=1] - \E[\Delta Y_t | D=0]
-\end{align*} In other words, under parallel trends, the \(ATT\) can be
-recovered by comparing the path of outcomes that treated units
-experienced relative to the path of outcomes that untreated units
-experienced (the latter of which is the path of outcomes that treated
-units would have experienced if they had not participated in the
-treatment).
-
-As above, it is often convenient to estimate \(ATT\) using a regression.
-In fact, you can show that (in the case with two periods), \(\alpha\) in
-the following regression is equal to the \(ATT\): \begin{align*}
-  Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
-\end{align*} where \(\E[v_t | D] = 0\).
-
-\subsection{Computation}\label{computation-11}
-
-The lab in this chapter uses panel data to think about causal effects,
-so I won't provide an extended discussion here but rather just mention
-the syntax for a few panel data estimators. Let's suppose that you had a
-data frame that, for the first few rows, looked like (this is totally
-made up data)
-
-\begin{verbatim}
-  id year         Y       X1 X2
-1  1 2019  87.92934 495.4021  1
-2  1 2020 102.77429 495.6269  1
-3  1 2021 110.84441 495.4844  0
-4  2 2019  76.54302 492.8797  1
-5  2 2020 104.29125 496.1825  1
-6  2 2021 105.06056 492.0129  1
-\end{verbatim}
-
-This is what panel data typically looks like --- here, we are following
-a single individual (who is distinguished by their \texttt{id} variable)
-over three years (from 2019-2021), there is an outcome \texttt{Y} and
-potential regressors \texttt{X1} and \texttt{X2}.
-
-There are several packages in \texttt{R} for estimating the fixed
-effects models that we have been considering. I mainly use \texttt{plm}
-(for ``panel linear models''), so I'll show you that one and then
-mention one more.
-
-For \texttt{plm}, if you want to estimate a fixed effects model in first
-differences, you would use the \texttt{plm} command with the following
-sort of syntax
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(plm)}
-\FunctionTok{plm}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(year), }
-    \AttributeTok{data=}\NormalTok{name\_of\_data,}
-    \AttributeTok{effect=}\StringTok{"individual"}\NormalTok{,}
-    \AttributeTok{model=}\StringTok{"fd"}\NormalTok{,}
-    \AttributeTok{index=}\StringTok{"id"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-We include here \texttt{as.factor(year)} to include time fixed effects,
-\texttt{effect="individual"} means to include an individual fixed
-effect, \texttt{model="fd"} says to estimate the model in first
-differences, and \texttt{index="id"} means that the individual
-identifier is in the column ``id''.
-
-The code for estimating the model using a within transformation is very
-similar:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plm}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(year), }
-    \AttributeTok{data=}\NormalTok{name\_of\_data,}
-    \AttributeTok{effect=}\StringTok{"individual"}\NormalTok{,}
-    \AttributeTok{model=}\StringTok{"within"}\NormalTok{,}
-    \AttributeTok{index=}\StringTok{"id"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-The only difference is that \texttt{model="fd"} has been replaced with
-\texttt{model="within"}.
-
-Let me also just mention that the \texttt{estimatr} package can estimate
-a fixed effects model using a within transformation. The code for this
-case would look like
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(estimatr)}
-
-\FunctionTok{lm\_robust}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(year), }
-          \AttributeTok{data=}\NormalTok{name\_of\_data,}
-          \AttributeTok{fixed\_effects=}\SpecialCharTok{\textasciitilde{}}\NormalTok{id)}
-\end{Highlighting}
-\end{Shaded}
-
-I think the advantage of using this approach is that it seems
-straightforward to get the heteroskedasticity robust standard errors (or
-cluster-robust standard errors) that are popular in economics (as we
-have done before for heteroskedasticity robust standard errors for a
-regression with just cross sectional data). But I am not sure how (or if
-it is possible) to use \texttt{estimatr} to estimate the fixed effects
-model in first differences.
-
-\section{Instrumental Variables}\label{instrumental-variables}
-
-SW all of chapter 12
-
-In the previous section, I used the word \textbf{natural experiment} but
-didn't really define it. When an actual experiment is not actually
-available, a very common strategy used by researchers interested in
-causal effects is to consider natural experiments --- these are not
-actual experiments, but more like the case where ``something weird''
-happens that makes some individuals more likely to participate in the
-treatment without otherwise affecting their outcomes. This ``something
-weird'' is called an \textbf{instrumental variable}.
+As discussed in the previous chapter, for a variety of reasons, it is
+often the case that it is infeasible to run an experiment to learn about
+the causal effect of some treatment of interest. In this chapter, we
+begin a discussion about common approaches to causal inference when an
+experiment is not available. In this chapter, we will consider
+approaches that are based on having access to a \textbf{natural
+experiment}. These are not actual experiments in the sense that the
+researcher randomly assigned the treatment, but instead arise when
+``something weird'' happens that makes some individuals more likely to
+participate in the treatment without otherwise affecting their outcomes.
+This results in the treatment being effectively randomly assigned for
+some subgroup. This ``something weird'' is called an
+\textbf{instrumental variable}.
 
 Let me give you some examples:
 
@@ -11610,6 +11129,436 @@ Let me give you some examples:
   of natural experiment --- comparing earnings of students who drop out
   at 16 for those who have early birthdays relative to late birthdays.
 \end{itemize}
+
+{Side Comment: } Instrumental variables has a strong claim for being the
+main contribution of econometrics to statistics. It dates back to the
+work of Philip Wright in the 1920s on supply and demand estimation in
+agricultural markets -- it is more difficult than you might at first
+think to estimate supply and demand curves. And I think that it is fair
+to say that a lot of approaches to causal inference can be considered as
+a variation of instrumental variables. Cunningham (2021) has a good and
+interesting discussion of the history of instrumental variables in
+economics.
+
+\section{Setup}\label{setup}
+
+We will continue to denote the outcome by \(Y\) and consider the case
+with a binary treatment \(D\). We will also consider the case with a
+binary instrument \(Z\). In the military service example, \(Y\) is a
+person's earnings, \(D\) indicates whether they served in the military,
+and \(Z\) indicates whether they were drafted. Our interest is in
+learning about the causal effect of \(D\) on \(Y\), exploiting that
+\(Z\) affects the probability of being treated and is effectively
+randomly assigned.
+
+\subsection{Potential Outcomes and Potential
+Treatments}\label{potential-outcomes-and-potential-treatments}
+
+We will continue to use the notation \(Y(1)\) and \(Y(0)\) to denote the
+potential outcomes. Each person has potential treatment status depending
+on the instrument: \(D_i(0)\) represents treatment status if not
+drafted, and \(D_i(1)\) represents treatment status if drafted.
+Similarly, each person has potential outcomes \(Y_i(0)\) and \(Y_i(1)\)
+corresponding to earnings if they don't serve versus if they do serve.
+
+Based on the pair \((D_i(0), D_i(1))\), every individual falls into one
+of four types:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Compliers} have \(D_i(0) = 0\) and \(D_i(1) = 1\) - they serve
+  only if drafted.
+\item
+  \textbf{Always-takers} have \(D_i(0) = 1\) and \(D_i(1) = 1\) - they
+  serve regardless of draft status.
+\item
+  \textbf{Never-takers} have \(D_i(0) = 0\) and \(D_i(1) = 0\) - they
+  never serve.
+\item
+  Finally, \textbf{defiers} would have \(D_i(0) = 1\) and \(D_i(1) = 0\)
+  - they do the opposite of what the draft tells them.
+\end{enumerate}
+
+\subsection{The Four Assumptions}\label{the-four-assumptions}
+
+We require four assumptions for the LATE theorem.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{relevance} requires that \(E[D_i(1)] > E[D_i(0)]\), meaning
+  the instrument actually affects treatment on average.
+\item
+  \textbf{independence} requires that
+  \(Z_i \perp (Y_i(0), Y_i(1), D_i(0), D_i(1))\), meaning the instrument
+  is as-good-as randomly assigned.
+\item
+  the \textbf{exclusion restriction} requires that
+  \(Y_i(D_i,z) = Y_i(D_i)\), meaning the instrument affects the outcome
+  only through its effect on treatment.
+\end{enumerate}
+
+The most important threat to exclusion in the Vietnam draft lottery
+context involves educational deferments. Men could avoid the draft by
+enrolling in college and maintaining student status. This creates a
+problem: even if a man with a low lottery number doesn't ultimately
+serve (because he obtained a deferment), he might have enrolled in
+college specifically to avoid military service.
+
+This means the lottery can affect education directly, not just through
+actual military service. Since education affects earnings, we have two
+pathways:
+
+\[Z_i \to D_i \to Y_i \quad \text{(allowed pathway through service)}\]
+\[Z_i \to \text{Education}_i \to Y_i \quad \text{(violates exclusion - bypasses service)}\]
+
+Consider a concrete example: John receives a low lottery number (high
+draft risk) and enrolls in college to get a deferment. He never serves
+in the military, so \(D_i = 0\). But his college enrollment was caused
+by the lottery, and college affects his earnings. The lottery has
+affected his outcome through a channel other than military service
+itself.
+
+This is a violation of the exclusion restriction because the instrument
+(lottery number) has a direct effect on outcomes (through education)
+that doesn't operate through the treatment (military service). When we
+compute the IV estimate, we're attributing all of the earnings effects
+to military service, but some of it is actually coming from education
+choices induced by the lottery.
+
+Angrist and Krueger investigated this concern empirically and found that
+the lottery had relatively small effects on overall educational
+attainment, suggesting this channel is not quantitatively large. But
+this required careful investigation - the exclusion restriction is an
+assumption about economics and behavior, not guaranteed by the random
+assignment of lottery numbers. Even a perfectly randomized instrument
+can violate exclusion if there are multiple causal pathways from the
+instrument to the outcome.RetryClaude can make mistakes. Please
+double-check responses. Sonnet 4.5
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \textbf{monotonicity} requires that \(D_i(1) \geq D_i(0)\) for all
+  \(i\), which rules out defiers.
+\end{enumerate}
+
+The monotonicity assumption is crucial and has a natural interpretation
+in our draft lottery example: being drafted doesn't make you less likely
+to serve. Defiers don't make sense in this context.
+
+\subsection{The Proof}\label{the-proof}
+
+The Wald estimator (equivalent to 2SLS in this simple binary case) is
+defined as:
+
+\[\text{IV estimate} = \frac{E[Y_i|Z_i=1] - E[Y_i|Z_i=0]}{E[D_i|Z_i=1] - E[D_i|Z_i=0]} = \frac{\text{Reduced Form}}{\text{First Stage}}\]
+
+We now rewrite both the numerator and denominator using potential
+outcomes notation. For the numerator, the independence assumption
+implies that \(E[Y_i|Z_i=1] = E[Y_i(D_i(1))|Z_i=1] = E[Y_i(D_i(1))]\).
+
+Similarly, \(E[Y_i|Z_i=0] = E[Y_i(D_i(0))]\). Therefore, the numerator
+becomes \(E[Y_i(D_i(1))] - E[Y_i(D_i(0))]\). The denominator is simply
+\(E[D_i(1)] - E[D_i(0)]\).
+
+To understand what these expectations represent, we decompose them by
+type.
+
+For the numerator, consider each group's contribution. Never-takers have
+\(Y_i(D_i(1)) = Y_i(0)\) and \(Y_i(D_i(0)) = Y_i(0)\), so they
+contribute zero to the difference.
+
+Always-takers have \(Y_i(D_i(1)) = Y_i(1)\) and
+\(Y_i(D_i(0)) = Y_i(1)\), so they also contribute zero. Compliers have
+\(Y_i(D_i(1)) = Y_i(1)\) and \(Y_i(D_i(0)) = Y_i(0)\), so they
+contribute their individual treatment effect \(Y_i(1) - Y_i(0)\).
+Defiers don't exist by monotonicity.
+
+Let \(\pi_c\) denote the proportion of compliers in the population. Then
+the numerator equals
+\(\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]\).
+
+For the denominator, never-takers contribute
+\(D_i(1) - D_i(0) = 0 - 0 = 0\), always-takers contribute
+\(D_i(1) - D_i(0) = 1 - 1 = 0\), and compliers contribute
+\(D_i(1) - D_i(0) = 1 - 0 = 1\). Therefore, the denominator equals
+\(\pi_c\).
+
+Combining these results, we have:
+
+\[\text{IV estimate} = \frac{\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]}{\pi_c} = E[Y_i(1) - Y_i(0) | \text{complier}]\]
+
+This is the Local Average Treatment Effect (LATE): the average treatment
+effect for compliers.
+
+\subsection{Interpretation and
+Heterogeneity}\label{interpretation-and-heterogeneity}
+
+The LATE theorem tells us that instrumental variables identifies the
+effect of military service for those who serve because of the draft -
+the compliers. Crucially, we do not learn about the treatment effect for
+volunteers (always-takers), who may be positively selected, or for those
+who would avoid service even if drafted (never-takers), who may have
+high outside options.
+
+This highlights the fundamental issue of treatment effect heterogeneity.
+If the effect of military service differs across these groups - and
+there are strong reasons to believe it would - then the IV estimate will
+not equal the average treatment effect (ATE) in the population. The IV
+estimate gives us a credible causal estimate, but only for a specific
+subpopulation. This trade-off between internal validity and external
+validity is central to interpreting instrumental variables estimates.
+
+\section{Regression Discontinuity
+Designs}\label{regression-discontinuity-designs}
+
+Our next type of natural experiment is \textbf{regression discontinuity}
+(often abbreviated RD or RDD for ``regression discontinuity design'\,').
+In some sense, RD is a special case of instrumental variables; however,
+discontinuities are common enough in economics that it is worth
+considering these approaches specifically.
+
+The basic idea of regression discontinuity is to exploit
+``discontinuities'\,' in treatment assignment rules based on a running
+variable. For examples, suppose that you are interested in how financial
+aid (a treatment) affects college completion. Policies like the Hope
+scholarship provide financial aid to students whose GPA is above a
+certain cutoff (e.g., 3.0). Students with GPAs just above 3.0 receive
+the treatment, while students with GPAs just below 3.0 do not. In the
+terminology of regression discontinuity, the student's GPA is called a
+\textbf{running variable}, which we will denote by \(R_i\). The cutoff
+is denoted by \(c\) (in this case, \(c = 3.0\)). Treatment status
+\(D_i\) is determined by whether the running variable exceeds the
+cutoff: \(D_i = 1\) if \(R_i \geq c\) and \(D_i = 0\) if \(R_i < c\).
+
+The key insight is that individuals just above and just below a cutoff
+are likely to be similar on average, creating a local randomized
+experiment at the threshold. This suggests that, by comparing outcomes
+for students just above and just below the cutoff, we could hope to
+estimate the causal effect of financial aid.
+
+\subsection{Key Assumption: Continuity}\label{key-assumption-continuity}
+
+The RD design relies on a \textbf{continuity assumption} about potential
+outcomes. In particular, we assume that \begin{align*}
+  \E[Y(1) | R = r] \text{ and } \E[Y(0) | R = r] \text{ are continuous in } r
+\end{align*}
+
+\subsection{Visualizing the Continuity
+Assumption}\label{visualizing-the-continuity-assumption}
+
+Below are two illustrative plots for the untreated potential outcome
+conditional expectation function, (E{[}Y(0)\mid R=r{]}). The first plot
+shows a case where the continuity assumption holds (the function varies
+smoothly through the cutoff). The second plot shows a clear violation: a
+jump at the cutoff even though treatment status changes there ---
+indicating that the RD design would mistakenly attribute part of this
+structural jump to the treatment effect.
+
+\begin{verbatim}
+
+Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:stats':
+
+    filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{16-natural_experiments_files/figure-pdf/continuity_plot_continuous-1.pdf}
+
+}
+
+\caption{Illustration of continuity: E{[}Y(0)\textbar R=r{]} smooth at
+cutoff}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \includegraphics{16-natural_experiments_files/figure-pdf/continuity_plot_violation-1.pdf}
+
+}
+
+\caption{Violation: jump in E{[}Y(0)\textbar R=r{]} at cutoff (vertical
+segment removed)}
+
+\end{figure}%
+
+The jump in the second (red) curve at the cutoff would invalidate the
+standard RD identification argument because (\lim\emph{\{r \uparrow c\}
+E{[}Y(0)\textbar R=r{]} \neq \lim}\{r \downarrow c\}
+E{[}Y(0)\textbar R=r{]}), so we could not substitute the limit from just
+below the cutoff for the counterfactual just above.
+
+Formally, we assume that the conditional expectation functions of both
+potential outcomes are continuous at the cutoff:
+
+\[\lim_{r \downarrow c} E[Y_i(0) | R_i = r] = \lim_{r \uparrow c} E[Y_i(0) | R_i = r] = E[Y_i(0) | R_i = c]\]
+
+\[\lim_{r \downarrow c} E[Y_i(1) | R_i = r] = \lim_{r \uparrow c} E[Y_i(1) | R_i = r] = E[Y_i(1) | R_i = c]\]
+
+In words: the expected potential outcome under control (no legal access)
+varies smoothly through the cutoff, and the expected potential outcome
+under treatment (legal access) also varies smoothly through the cutoff.
+There are no jumps in the underlying potential outcomes at exactly age
+21.
+
+This is a strong but plausible assumption. It says that mortality risk
+in the absence of legal drinking, \(E[Y_i(0)|R_i = r]\), doesn't
+suddenly jump when someone turns 21. Similarly, mortality risk if
+someone had legal access, \(E[Y_i(1)|R_i = r]\), doesn't jump for
+reasons unrelated to the policy. The only thing that jumps at 21 is the
+treatment status itself.
+
+\subsection{Identification Under
+Continuity}\label{identification-under-continuity}
+
+To see how continuity delivers identification, observe that just below
+the cutoff, everyone is untreated, so we observe:
+
+\[\lim_{r \uparrow c} E[Y_i | R_i = r] = \lim_{r \uparrow c} E[Y_i(0) | R_i = r]\]
+
+Just above the cutoff, everyone is treated, so we observe:
+
+\[\lim_{r \downarrow c} E[Y_i | R_i = r] = \lim_{r \downarrow c} E[Y_i(1) | R_i = r]\]
+
+The RD estimand is the difference:
+
+\[\tau_{RD} = \lim_{r \downarrow c} E[Y_i | R_i = r] - \lim_{r \uparrow c} E[Y_i | R_i = r]\]
+
+\[= \lim_{r \downarrow c} E[Y_i(1) | R_i = r] - \lim_{r \uparrow c} E[Y_i(0) | R_i = r]\]
+
+Now apply the continuity assumption. Since \(E[Y_i(1)|R_i = r]\) is
+continuous at \(c\):
+
+\[\lim_{r \downarrow c} E[Y_i(1) | R_i = r] = E[Y_i(1) | R_i = c]\]
+
+And since \(E[Y_i(0)|R_i = r]\) is continuous at \(c\):
+
+\[\lim_{r \uparrow c} E[Y_i(0) | R_i = r] = E[Y_i(0) | R_i = c]\]
+
+Therefore:
+
+\[\tau_{RD} = E[Y_i(1) | R_i = c] - E[Y_i(0) | R_i = c] = E[Y_i(1) - Y_i(0) | R_i = c]\]
+
+This is the average treatment effect for individuals at the cutoff. The
+continuity assumption allows us to ``borrow'' the control group from
+just below the cutoff to stand in for what would have happened to those
+just above the cutoff in the absence of treatment.
+
+\subsection{Threats to Continuity}\label{threats-to-continuity}
+
+The continuity assumption can fail in several ways. First, if
+individuals can precisely manipulate their value of the running
+variable, then the populations just above and just below the cutoff may
+differ systematically. For example, if students can retake a test to
+barely pass a threshold, high-ability students might bunch just above
+the cutoff while low-ability students remain below it. This would create
+a discontinuity in underlying ability at the threshold, violating
+continuity.
+
+In our drinking age example, manipulation is implausible - individuals
+cannot change their birth date to turn 21 sooner. However, other
+policies might change discontinuously at age 21 (voting, certain
+contracts, rental car eligibility), which could create discontinuities
+in \(E[Y_i(0)|R_i = r]\) or \(E[Y_i(1)|R_i = r]\) for reasons unrelated
+to alcohol access. We must argue that these other channels are either
+absent or empirically small.
+
+\subsection{The Connection to LATE}\label{the-connection-to-late}
+
+The RD design identifies a \textbf{local} treatment effect in a similar
+spirit to LATE, though the sense of ``local'' differs. While LATE is
+local to compliers (a particular subpopulation defined by how they
+respond to the instrument), the RD estimate is local to the cutoff value
+(a particular point along the running variable).
+
+This parallel becomes even clearer in fuzzy RD designs, where treatment
+probability jumps at the cutoff but not from 0 to 1. For instance, not
+everyone over 21 drinks alcohol, and some people under 21 obtain alcohol
+illegally. In this case, let \(P_i\) denote actual alcohol consumption.
+The fuzzy RD estimator is:
+
+\[\tau_{FRD} = \frac{\lim_{r \downarrow c} E[Y_i | R_i = r] - \lim_{r \uparrow c} E[Y_i | R_i = r]}{\lim_{r \downarrow c} E[P_i | R_i = r] - \lim_{r \uparrow c} E[P_i | R_i = r]}\]
+
+This is exactly a Wald estimator, where the cutoff serves as an
+instrument for actual treatment! The fuzzy RD identifies a LATE: the
+average treatment effect for compliers at the cutoff - those who drink
+because they can legally do so at 21, but wouldn't drink if they were
+just under 21.
+
+The continuity assumption in fuzzy RD must apply to potential outcomes
+as a function of actual treatment \(P_i\), not the instrument (being
+over 21). We need \(E[Y_i(p)|R_i = r]\) to be continuous at \(c\) for
+all treatment levels \(p\). This is analogous to the exclusion
+restriction in IV: the running variable (age) affects outcomes only
+through its effect on actual treatment (drinking).
+
+\subsection{Treatment Effect Heterogeneity and External
+Validity}\label{treatment-effect-heterogeneity-and-external-validity}
+
+Just as LATE doesn't generally equal the average treatment effect when
+effects vary across compliers and non-compliers, the RD estimate doesn't
+generally equal the ATE when treatment effects vary along the running
+variable. The effect of alcohol access on mortality at exactly age 21
+may differ from the effect at age 25 or age 18.
+
+Why might effects be heterogeneous along age? Younger drinkers may have
+less experience with alcohol, be more prone to risk-taking behavior, or
+face different social contexts. The mortality effect of legal access at
+21 may be larger than it would be at 30. Formally, the treatment effect
+function \(\tau(r) = E[Y_i(1) - Y_i(0)|R_i = r]\) need not be constant.
+RD identifies \(\tau(c)\), while the ATE is \(E[\tau(R_i)]\).
+
+This creates the same internal validity versus external validity
+trade-off we saw with instrumental variables. The RD design provides a
+very credible causal estimate by exploiting a sharp, visible
+discontinuity that's difficult to manipulate. The as-if randomization at
+the threshold gives us strong internal validity. However, we're only
+learning about the treatment effect at one specific point, limiting
+external validity.
+
+\subsection{Practical Implications for
+Interpretation}\label{practical-implications-for-interpretation}
+
+When interpreting RD estimates of drunk driving laws, we should be clear
+about what we're learning: the effect of legal alcohol access for
+individuals right around their 21st birthday. If policymakers want to
+know whether changing the drinking age to 18 or 25 would have similar
+effects, the RD estimate may not directly answer that question. The
+effect could be larger for younger, less experienced drinkers, or
+smaller for more mature individuals.
+
+Similarly, the complier interpretation in fuzzy RD matters for external
+validity. We're identifying effects for marginal individuals - those
+whose drinking behavior changes at the legal threshold - not for
+everyone who drinks. Individuals who drink heavily regardless of
+legality (always-takers) or abstain regardless (never-takers) don't
+contribute to our estimate, just as in the IV case.
+
+Both IV and RD designs share this fundamental feature: they trade broad
+generalizability for credible causal identification at a specific
+margin. Understanding treatment effect heterogeneity helps us recognize
+both the power and the limitations of these natural experiment
+approaches.
+
+\section{Instrumental Variables}\label{instrumental-variables}
+
+SW all of chapter 12
 
 Let's formalize these arguments. Using the same arguments as before,
 suppose we have a regression that we'd like to run
@@ -11688,32 +11637,13 @@ community college rather than a university.
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ivreg)}
 \FunctionTok{library}\NormalTok{(modelsummary)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-`modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
-  backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
-
-Revert to `kableExtra` for one session:
-
-  options(modelsummary_factory_default = 'kableExtra')
-  options(modelsummary_factory_latex = 'kableExtra')
-  options(modelsummary_factory_html = 'kableExtra')
-
-Silence this message forever:
-
-  config_modelsummary(startup_message = FALSE)
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(}\StringTok{"SchoolingReturns"}\NormalTok{, }\AttributeTok{package=}\StringTok{"ivreg"}\NormalTok{)}
 
 \NormalTok{lm\_reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(wage) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+} \FunctionTok{poly}\NormalTok{(experience, }\DecValTok{2}\NormalTok{, }\AttributeTok{raw =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ ethnicity }\SpecialCharTok{+}\NormalTok{ smsa }\SpecialCharTok{+}\NormalTok{ south,}
   \AttributeTok{data =}\NormalTok{ SchoolingReturns)}
 
-\NormalTok{iv\_reg }\OtherTok{\textless{}{-}} \FunctionTok{ivreg}\NormalTok{(}\FunctionTok{log}\NormalTok{(wage) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+} \FunctionTok{poly}\NormalTok{(experience, }\DecValTok{2}\NormalTok{, }\AttributeTok{raw =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ ethnicity }\SpecialCharTok{+}\NormalTok{ smsa }\SpecialCharTok{+}\NormalTok{ south, }
+\NormalTok{iv\_reg }\OtherTok{\textless{}{-}} \FunctionTok{ivreg}\NormalTok{(}\FunctionTok{log}\NormalTok{(wage) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ education }\SpecialCharTok{+} \FunctionTok{poly}\NormalTok{(experience, }\DecValTok{2}\NormalTok{, }\AttributeTok{raw =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ ethnicity }\SpecialCharTok{+}\NormalTok{ smsa }\SpecialCharTok{+}\NormalTok{ south,}
   \SpecialCharTok{\textasciitilde{}}\NormalTok{ nearcollege }\SpecialCharTok{+} \FunctionTok{poly}\NormalTok{(age, }\DecValTok{2}\NormalTok{, }\AttributeTok{raw =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ ethnicity }\SpecialCharTok{+}\NormalTok{ smsa }\SpecialCharTok{+}\NormalTok{ south,}
   \AttributeTok{data =}\NormalTok{ SchoolingReturns)}
 
@@ -11729,35 +11659,34 @@ Silence this message forever:
 ]                     %% tabularray outer close
 {                     %% tabularray inner open
 colspec={Q[]Q[]Q[]},
-column{1}={halign=l,},
-column{2}={halign=c,},
-column{3}={halign=c,},
-hline{16}={1,2,3}{solid, 0.05em, black},
+column{2,3}={}{halign=c,},
+column{1}={}{halign=l,},
+hline{16}={1,2,3}{solid, black, 0.05em},
 }                     %% tabularray inner close
 \toprule
 & (1) & (2) \\ \midrule %% TinyTableHeader
-(Intercept)                      & \num{4.734}     & \num{4.066}   \\
-& (\num{0.068})   & (\num{0.608}) \\
-education                        & \num{0.074}     & \num{0.133}   \\
-& (\num{0.004})   & (\num{0.051}) \\
-poly(experience, 2, raw = TRUE)1 & \num{0.084}     & \num{0.056}   \\
-& (\num{0.007})   & (\num{0.026}) \\
-poly(experience, 2, raw = TRUE)2 & \num{-0.002}    & \num{-0.001}  \\
-& (\num{0.000})   & (\num{0.001}) \\
-ethnicityafam                    & \num{-0.190}    & \num{-0.103}  \\
-& (\num{0.018})   & (\num{0.077}) \\
-smsayes                          & \num{0.161}     & \num{0.108}   \\
-& (\num{0.016})   & (\num{0.050}) \\
-southyes                         & \num{-0.125}    & \num{-0.098}  \\
-& (\num{0.015})   & (\num{0.029}) \\
-Num.Obs.                         & \num{3010}      & \num{3010}    \\
-R2                               & \num{0.291}     & \num{0.176}   \\
-R2 Adj.                          & \num{0.289}     & \num{0.175}   \\
-AIC                              & \num{40329.6}   & \num{40778.6} \\
-BIC                              & \num{40377.7}   & \num{40826.7} \\
-Log.Lik.                         & \num{-1308.702} &                \\
-F                                & \num{204.932}   &                \\
-RMSE                             & \num{0.37}      & \num{0.40}    \\
+(Intercept) & \num{4.734} & \num{4.066} \\
+& (\num{0.068}) & (\num{0.608}) \\
+education & \num{0.074} & \num{0.133} \\
+& (\num{0.004}) & (\num{0.051}) \\
+poly(experience, 2, raw = TRUE)1 & \num{0.084} & \num{0.056} \\
+& (\num{0.007}) & (\num{0.026}) \\
+poly(experience, 2, raw = TRUE)2 & \num{-0.002} & \num{-0.001} \\
+& (\num{0.000}) & (\num{0.001}) \\
+ethnicityafam & \num{-0.190} & \num{-0.103} \\
+& (\num{0.018}) & (\num{0.077}) \\
+smsayes & \num{0.161} & \num{0.108} \\
+& (\num{0.016}) & (\num{0.050}) \\
+southyes & \num{-0.125} & \num{-0.098} \\
+& (\num{0.015}) & (\num{0.029}) \\
+Num.Obs. & \num{3010} & \num{3010} \\
+R2 & \num{0.291} & \num{0.176} \\
+R2 Adj. & \num{0.289} & \num{0.175} \\
+AIC & \num{40329.6} & \num{40778.6} \\
+BIC & \num{40377.7} & \num{40826.7} \\
+Log.Lik. & \num{-1308.702} &  \\
+F & \num{204.932} &  \\
+RMSE & \num{0.37} & \num{0.40} \\
 \bottomrule
 \end{tblr}
 \end{table}
@@ -11856,16 +11785,16 @@ the data. That's what we'll do here.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(mlda, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{agecell, }\AttributeTok{y=}\NormalTok{mva)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept=}\DecValTok{21}\NormalTok{) }\SpecialCharTok{+} 
-  \FunctionTok{xlab}\NormalTok{(}\StringTok{"age"}\NormalTok{) }\SpecialCharTok{+} 
-  \FunctionTok{ylab}\NormalTok{(}\StringTok{"moving vehicle accident deaths"}\NormalTok{) }\SpecialCharTok{+} 
+\FunctionTok{ggplot}\NormalTok{(mlda, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{agecell, }\AttributeTok{y=}\NormalTok{mva)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept=}\DecValTok{21}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"age"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"moving vehicle accident deaths"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{17-quasi_experiments_files/figure-pdf/unnamed-chunk-7-1.pdf}
+\includegraphics{16-natural_experiments_files/figure-pdf/unnamed-chunk-3-1.pdf}
 
 This figure at least suggests that the number of car accident deaths
 does appear to jump at age 21.
@@ -11923,14 +11852,14 @@ regression discontinuity design.
 \CommentTok{\# make plot}
 \FunctionTok{ggplot}\NormalTok{(mlda, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{agecell, }\AttributeTok{y=}\NormalTok{mva, }\AttributeTok{color=}\FunctionTok{as.factor}\NormalTok{(D))) }\SpecialCharTok{+}
   \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{preds)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{preds)) }\SpecialCharTok{+}
   \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept=}\DecValTok{21}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{color=}\StringTok{"treated"}\NormalTok{, }\AttributeTok{x=}\StringTok{"age"}\NormalTok{, }\AttributeTok{y=}\StringTok{"moving vehicle accident deaths"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{color=}\StringTok{"treated"}\NormalTok{, }\AttributeTok{x=}\StringTok{"age"}\NormalTok{, }\AttributeTok{y=}\StringTok{"moving vehicle accident deaths"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{theme\_bw}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{17-quasi_experiments_files/figure-pdf/unnamed-chunk-9-1.pdf}
+\includegraphics{16-natural_experiments_files/figure-pdf/unnamed-chunk-5-1.pdf}
 
 This shows the two lines that we effectively fit with the regression
 that included the binary variable for the treatment, the running
@@ -12057,7 +11986,22 @@ problem.
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyr)}
 \FunctionTok{library}\NormalTok{(plm)}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+
+Attaching package: 'plm'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:dplyr':
+
+    between, lag, lead
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(Fatalities, }\AttributeTok{package=}\StringTok{"AER"}\NormalTok{)}
 
 \NormalTok{Fatalities}\SpecialCharTok{$}\NormalTok{afatal\_per\_million }\OtherTok{\textless{}{-}} \DecValTok{1000000} \SpecialCharTok{*}\NormalTok{ (Fatalities}\SpecialCharTok{$}\NormalTok{afatal }\SpecialCharTok{/}\NormalTok{ Fatalities}\SpecialCharTok{$}\NormalTok{pop )}
@@ -12341,8 +12285,8 @@ variables whose effects do not change over time.
 \NormalTok{two\_period}\SpecialCharTok{$}\NormalTok{jail }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{*}\NormalTok{(two\_period}\SpecialCharTok{$}\NormalTok{jail}\SpecialCharTok{==}\StringTok{"yes"}\NormalTok{)}
 
 \CommentTok{\# part b: convert into wide format}
-\NormalTok{wide\_df }\OtherTok{\textless{}{-}} \FunctionTok{pivot\_wider}\NormalTok{(two\_period, }
-                       \AttributeTok{id\_cols=}\StringTok{"state"}\NormalTok{, }
+\NormalTok{wide\_df }\OtherTok{\textless{}{-}} \FunctionTok{pivot\_wider}\NormalTok{(two\_period,}
+                       \AttributeTok{id\_cols=}\StringTok{"state"}\NormalTok{,}
                        \AttributeTok{names\_from=}\StringTok{"year"}\NormalTok{,}
                        \AttributeTok{values\_from=}\FunctionTok{c}\NormalTok{(}\StringTok{"jail"}\NormalTok{, }\StringTok{"afatal\_per\_million"}\NormalTok{))}
 
@@ -12887,7 +12831,7 @@ Before we finish, let me mention a few caveats to these results:
 \end{enumerate}
 
 \section{Answers to Some Extra
-Questions}\label{answers-to-some-extra-questions-2}
+Questions}\label{answers-to-some-extra-questions}
 
 \textbf{Answer to Question 4}
 
@@ -12937,6 +12881,412 @@ therefore likely to be incorrect --- or at least would require extra
 assumptions and/or justifications. Interpreting them as an \(ATT\)
 (i.e., as the effect among those who participated in the treatment) is
 still perfectly reasonable though.
+
+\section{References}\label{references}
+
+\bookmarksetup{startatroot}
+
+\chapter{Causal Inference with Observational
+Data}\label{causal-inference-with-observational-data}
+
+\section{Unconfoundedness}\label{unconfoundedness}
+
+\[
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\textrm{P}}
+\let\L\relax
+\newcommand{\L}{\textrm{L}} %doesn't work in .qmd, place this command at start of qmd file to use it
+\newcommand{\F}{\textrm{F}}
+\newcommand{\var}{\textrm{var}}
+\newcommand{\cov}{\textrm{cov}}
+\newcommand{\corr}{\textrm{corr}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Corr}{\mathrm{Corr}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\se}{\mathrm{s.e.}}
+\newcommand{\T}{T}
+\newcommand{\indicator}[1]{\mathbb{1}\{#1\}}
+\newcommand\independent{\perp \!\!\! \perp}
+\newcommand{\N}{\mathcal{N}}
+\]
+
+SW 6.8, SW Ch. 9
+
+Unfortunately, we rarely have access to experimental data in
+applications or the ability to run experiments to evaluate causal
+effects programs/policies that we'd be interested in studying. For
+example, it's hard to imagine convincing a large number of countries to
+randomly assign their interest rate, minimum wage, or immigration
+policies though these are all policies that economists would be
+interested in thinking about the causal effect of.
+
+For the remainder of this chapter, we'll discuss common approaches to
+causal inference when the treatment is not randomly assigned. We'll
+start with what is probably the most common approach:
+\textbf{unconfoundedness}.
+
+\textbf{Unconfoundedness Assumption}: \begin{align*}
+  (Y(1),Y(0)) \independent D | X
+\end{align*} You can think of this as saying that, among individuals
+with the same covariates \(X\), they have the same distributions of
+potential outcomes regardless of whether or not they participate in the
+treatment. Note that the distribution of \(X\) is still allowed to be
+different between the treated and untreated groups. In other words,
+after you condition on covariates, there is nothing special (in terms of
+the distributions of potential outcomes) about the group that
+participates in the treatment relative to the group that doesn't
+participate in the treatment.
+
+\begin{itemize}
+\tightlist
+\item
+  This is potentially a strong assumption. In order to believe this
+  assumption, you need to believe that untreated individuals with the
+  same characteristics can deliver, on average, the outcome that
+  individuals in the treated group would have experienced if they had
+  not participated in the treatment. In math, you can write this as
+  \begin{align*}
+      \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
+    \end{align*}
+\end{itemize}
+
+If you are willing to believe this assumption, then you can recover the
+\(ATT\). There are a few different ways that you could implement this.
+Probably the most common (and convenient) way is to link this condition
+to a regression (just like we did in the previous section on
+experiments).
+
+To do this, let's continue to make the treatment effect homogeneity
+assumption as above. In addition, let's assume a linear model for
+untreated potential outcomes \begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*} and unconfoundedness implies that
+\(\E[U|X_1,X_2,X_3,D] = 0\) (the conditioning on \(D\) is the
+unconfoundedness part). Now, recalling the definition of the observed
+outcome, we can write \begin{align*}
+  Y_i &= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
+\end{align*} which suggests running the regression of observed \(Y\) on
+\(X_1,X_2,X_3,\) and \(D\) and interpreting the estimate of \(\alpha\)
+as the causal effect of participating in the treatment. In practice,
+this will be very similar to what we have done before --- so the process
+would not be hard, but convincing someone (or even yourself) that
+unconfoundedness holds will be the bigger issue here.
+
+As a final comment, the assumption of treatment effect homogeneity is
+not quite so innocuous here. It turns out that you can show that, in the
+presence of treatment effect heterogeneity, \(\alpha\) will be equal to
+a weighted average of individual treatment effects, but the weights can
+sometimes be ``strange''. There are methods that are robust to treatment
+effect heterogeneity (they are beyond the scope of the current class,
+but they are not ``way'' more difficult than what we are doing here).
+That said, in my experience, the regression estimators (under treatment
+effect homogeneity) tend to deliver similar estimates to alternative
+estimators that are robust to treatment effect heterogeneity at least in
+the setup considered in this section.
+
+\section{Panel Data Approaches}\label{panel-data-approaches}
+
+SW All of Ch. 10 and 13.4
+
+In the previous section, we invoked the assumption of unconfoundedness
+and were in the setup where \(X\) was fully observed. But suppose
+instead that you thought this alternative version of unconfoundedness
+held \begin{align*}
+  (Y(1),Y(0)) \independent D | (X,W)
+\end{align*} where \(X\) were observed random variables, but \(W\) were
+not observed. Following exactly the same argument as in the previous
+section, this would lead to a regression like \begin{align*}
+  Y_i = \alpha D_i + \beta_0 + \beta_1 X_i + \beta_2 W_i + U_i
+\end{align*} (I'm just including one \(X\) and one \(W\) for simplicity,
+but you can easily imagine the case where there are more.) If \(W\) were
+observed, then we could just run this regression, but since \(W\) is not
+observed, we run into the problem of omitted variable bias (i.e., if we
+just ignore \(W\), we won't be estimating the causal effect \(\alpha\))
+
+In this section, we'll consider the case where a researcher has access
+to a different type of data called \textbf{panel data}. Panel data is
+data that follows the same individual (or firm, etc.) over time. In this
+case, it is often helpful to index variables by time. For example,
+\(Y_{it}\) is the outcome for individual \(i\) in time period \(t\).
+\(X_{it}\) is the value of a regressor for individual \(i\) in time
+period \(t\) and \(D_{it}\) is the value of the treatment for individual
+\(i\) in time period \(t\). If some variable doesn't vary over time
+(e.g., a regressor like race), we won't use a \(t\) subscript.
+
+Panel data potentially gives us a way around the problem of not
+observing some variables that we would like to condition on in the
+model. This is particularly likely to be the case when \(W\) does not
+vary over time. Let's start with there are exactly two time periods of
+panel data. In that case, we can write \begin{align*}
+  Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
+\end{align*} where we consider the case where \(D\) and \(X\) both
+change over time. Then, defining \(\Delta Y_{it} = Y_{it} - Y_{it-1}\)
+(and using similar notation for other variables), notice that
+\begin{align*}
+  \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+\end{align*} which, importantly, no longer involves the unobserved
+\(W_i\) and suggests running the above regression and interpreting the
+estimated version of \(\alpha\) as an estimate of the causal effect of
+participating in the treatment.
+
+\begin{itemize}
+\item
+  \textbf{Time fixed effects} --- The previous regression did not
+  include an intercept. It is common in applied work to allow for the
+  intercept to vary over time (i.e., so that \(\beta_0 = \beta_{0,t}\))
+  which allows for ``aggregate shocks'' such as recessions or common
+  trends in outcomes over time. In practice, this amounts to just
+  including an intercept in the previous regression, for example,
+
+  \[
+      \Delta Y_{it} = \underbrace{\theta_t} + \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it} 
+    \]
+\end{itemize}
+
+Often, there may be many omitted, time invariant variables. In practice,
+these are usually just lumped into a single \textbf{individual fixed
+effect} --- even if there are many time invariant, unobserved variables,
+we can difference them all out at the same time \begin{align*}
+  Y_{it} &= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
+  &= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it} 
+\end{align*} and we can follow the same strategies as above.
+
+Another case that is common in practice is when there are more than two
+time periods. This case is similar to the previous one except there are
+multiple ways to eliminate the unobserved fixed effect. The two most
+common are the
+
+\begin{itemize}
+\item
+  \textbf{Within estimator}
+
+  To motivate this approach, notice that, if, for each individual, we
+  average their outcomes over time, the we get \begin{align*}
+      \bar{Y}_i = \alpha \bar{D}_i + \beta_1 \bar{X}_i + (\textrm{time fixed effects}) + \bar{U}_i
+    \end{align*} (where I have just written ``time fixed effects'' to
+  indicate that these are transformed version of original fixed but
+  still show up here.) Subtracting this equation from the expression for
+  \(Y_{it}\) gives \begin{align*}
+      Y_{it} - \bar{Y}_i = \alpha (D_{it} - \bar{D}_i) + \beta_1 (X_{it} - \bar{X}_i) + (\textrm{time fixed effects}) + U_{it} - \bar{U}_i
+    \end{align*}
+
+  This is a feasible regression to estimate (everything is observed
+  here). This is called a within estimator because the terms
+  \(\bar{Y}_i\), \(\bar{D}_i\), and \(\bar{X}_i\) are the
+  within-individual averages-over-time of the corresponding variable.
+\item
+  \textbf{First differences}
+
+  Another approach to eliminating the unobserved fixed effects is to
+  directly consider \(\Delta Y_{it}\):
+
+  \begin{align*}
+      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+    \end{align*}
+
+  This is the same expression as we had before for the two period case.
+  Only here you would include observations from all available time
+  periods on \(\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}\) in the
+  regression.
+\end{itemize}
+
+It's worth mentioning the cases where a fixed effects strategy can break
+down:
+
+\begin{itemize}
+\item
+  Unobserved variables vary over time
+
+  \[
+      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 \underbrace{W_{it}} + U_{it}
+    \] In this case,
+
+  \[
+      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \beta_2 \underbrace{\Delta W_{it}} + \Delta U_{it}
+    \]
+
+  which still involves the unobserved \(W_{it}\), and implies that the
+  fixed effects regression will contain omitted variable bias.
+\item
+  The effect of unobserved variables varies over time
+
+  \[
+      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \underbrace{\beta_{2,t}} W_i + U_{it}
+    \] In this case,
+
+  \[
+      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \underbrace{(\beta_{2,t} - \beta_{2,t-1})} W_i + \Delta U_{it}
+    \]
+
+  which still involves the unobserved \(W_i\) (even though it doesn't
+  vary over time) and, therefore, the fixed effects regressions we have
+  been considering will contain omitted variable bias.
+\end{itemize}
+
+Also, the assumption of treatment effect homogeneity can potentially
+matter a lot in this context. This will particularly be the case when
+(i) individuals can become treated at different points in time, and (ii)
+there are treatment effect dynamics (so that the effect of participating
+in the treatment can vary over time) --- both of these are realistic in
+many applications. This is a main research area of mine and one I am
+happy to talk way more about.
+
+\subsection{Difference in differences}\label{difference-in-differences}
+
+The panel data approaches that we have been talking about so far are
+closely related to a \textbf{natural-experiment} type of strategy called
+\textbf{difference in differences} (DID).
+
+One important difference relative to the previous approach is that DID
+is typically implemented when some units (these are often states or
+particular locations) implement a policy at some time period while
+others do not; and, in particular, we observe some periods before any
+units participate in the treatment.
+
+Let's think about the case with exactly two time periods: \(t\) and
+\(t-1\). In this case, we'll suppose that the outcomes that we observe
+are \begin{align*}
+  Y_{it} &= D_i Y_{it}(1) + (1-D_i) Y_{it}(0) \\
+  Y_{it-1} &= Y_{it-1}(0)
+\end{align*} In other words, in the second period, we observe treated
+potential outcomes for treated units and untreated potential outcomes
+for untreated units (this is just like the cross-sectional case above).
+But in the first period, we observe untreated potential outcomes for all
+units --- because no one is treated yet.
+
+DID is often motivated by an assumption called the parallel trends
+assumption:
+
+\textbf{Parallel Trends Assumption} \begin{align*}
+\E[\Delta Y_t(0) | D=1] = \E[\Delta Y_t(0) | D=0]
+\end{align*} This says that the \emph{path} of outcomes that individuals
+in the treated group would have experienced if they had not been treated
+is the same as the path of outcomes that individual in the untreated
+group actually experienced.
+
+As before, we continue to be interested in \begin{align*}
+  ATT = \E[Y_t(1) - Y_t(0) | D=1]
+\end{align*} Recall that the key identification challenge if for
+\(\E[Y_t(0)|D=1]\) here, and notice that \begin{align*}
+  \E[Y_t(0) | D=1] &= \E[\Delta Y_t(0) | D=1] + \E[Y_{t-1}(0) | D=1] \\
+  &= \E[\Delta Y_t(0) | D=0] + \E[Y_{t-1}(0)|D=1] \\
+  &= \E[\Delta Y_t | D=0] + \E[Y_{t-1}|D=1]
+\end{align*} where the first equality adds and subtracts
+\(\E[Y_{t-1}(0)|D=1]\), the second equality uses the parallel trends
+assumption, and the last equality holds because all the potential
+outcomes in the previous line are actually observed outcome. Plugging
+this expression into the one for \(ATT\) yields: \begin{align*}
+  ATT = \E[\Delta Y_t | D=1] - \E[\Delta Y_t | D=0]
+\end{align*} In other words, under parallel trends, the \(ATT\) can be
+recovered by comparing the path of outcomes that treated units
+experienced relative to the path of outcomes that untreated units
+experienced (the latter of which is the path of outcomes that treated
+units would have experienced if they had not participated in the
+treatment).
+
+As above, it is often convenient to estimate \(ATT\) using a regression.
+In fact, you can show that (in the case with two periods), \(\alpha\) in
+the following regression is equal to the \(ATT\): \begin{align*}
+  Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
+\end{align*} where \(\E[v_t | D] = 0\).
+
+\subsection{Computation}\label{computation-11}
+
+The lab in this chapter uses panel data to think about causal effects,
+so I won't provide an extended discussion here but rather just mention
+the syntax for a few panel data estimators. Let's suppose that you had a
+data frame that, for the first few rows, looked like (this is totally
+made up data)
+
+\begin{verbatim}
+  id year         Y       X1 X2
+1  1 2019  87.92934 495.4021  1
+2  1 2020 102.77429 495.6269  1
+3  1 2021 110.84441 495.4844  0
+4  2 2019  76.54302 492.8797  1
+5  2 2020 104.29125 496.1825  1
+6  2 2021 105.06056 492.0129  1
+\end{verbatim}
+
+This is what panel data typically looks like --- here, we are following
+a single individual (who is distinguished by their \texttt{id} variable)
+over three years (from 2019-2021), there is an outcome \texttt{Y} and
+potential regressors \texttt{X1} and \texttt{X2}.
+
+There are several packages in \texttt{R} for estimating the fixed
+effects models that we have been considering. I mainly use \texttt{plm}
+(for ``panel linear models''), so I'll show you that one and then
+mention one more.
+
+For \texttt{plm}, if you want to estimate a fixed effects model in first
+differences, you would use the \texttt{plm} command with the following
+sort of syntax
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plm)}
+\FunctionTok{plm}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(year), }
+    \AttributeTok{data=}\NormalTok{name\_of\_data,}
+    \AttributeTok{effect=}\StringTok{"individual"}\NormalTok{,}
+    \AttributeTok{model=}\StringTok{"fd"}\NormalTok{,}
+    \AttributeTok{index=}\StringTok{"id"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We include here \texttt{as.factor(year)} to include time fixed effects,
+\texttt{effect="individual"} means to include an individual fixed
+effect, \texttt{model="fd"} says to estimate the model in first
+differences, and \texttt{index="id"} means that the individual
+identifier is in the column ``id''.
+
+The code for estimating the model using a within transformation is very
+similar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plm}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(year), }
+    \AttributeTok{data=}\NormalTok{name\_of\_data,}
+    \AttributeTok{effect=}\StringTok{"individual"}\NormalTok{,}
+    \AttributeTok{model=}\StringTok{"within"}\NormalTok{,}
+    \AttributeTok{index=}\StringTok{"id"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The only difference is that \texttt{model="fd"} has been replaced with
+\texttt{model="within"}.
+
+Let me also just mention that the \texttt{estimatr} package can estimate
+a fixed effects model using a within transformation. The code for this
+case would look like
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(estimatr)}
+
+\FunctionTok{lm\_robust}\NormalTok{(Y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ X1 }\SpecialCharTok{+}\NormalTok{ X2 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(year), }
+          \AttributeTok{data=}\NormalTok{name\_of\_data,}
+          \AttributeTok{fixed\_effects=}\SpecialCharTok{\textasciitilde{}}\NormalTok{id)}
+\end{Highlighting}
+\end{Shaded}
+
+I think the advantage of using this approach is that it seems
+straightforward to get the heteroskedasticity robust standard errors (or
+cluster-robust standard errors) that are popular in economics (as we
+have done before for heteroskedasticity robust standard errors for a
+regression with just cross sectional data). But I am not sure how (or if
+it is possible) to use \texttt{estimatr} to estimate the fixed effects
+model in first differences.
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-cunningham-2021}
+Cunningham, Scott. 2021. \emph{Causal Inference: The Mixtape}. Yale
+University Press.
+
+\end{CSLReferences}
 
 
 
