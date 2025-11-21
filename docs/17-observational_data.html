@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Quasi-Experiments – Detailed Course Notes for ECON 4750</title>
+<title>Detailed Course Notes for ECON 4750 - 18&nbsp; Causal Inference with Observational Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,16 +64,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./16-unconfoundedness.html" rel="prev">
+<link href="./16-natural_experiments.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./17-quasi_experiments.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Quasi-Experiments</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./17-observational_data.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -299,14 +299,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-unconfoundedness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></span></a>
+  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-quasi_experiments.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Quasi-Experiments</span></span></a>
+  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -319,24 +319,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#panel-data-approaches" id="toc-panel-data-approaches" class="nav-link active" data-scroll-target="#panel-data-approaches"><span class="header-section-number">18.1</span> Panel Data Approaches</a>
+  <li><a href="#unconfoundedness" id="toc-unconfoundedness" class="nav-link active" data-scroll-target="#unconfoundedness"><span class="header-section-number">18.1</span> Unconfoundedness</a></li>
+  <li><a href="#panel-data-approaches" id="toc-panel-data-approaches" class="nav-link" data-scroll-target="#panel-data-approaches"><span class="header-section-number">18.2</span> Panel Data Approaches</a>
   <ul class="collapse">
-  <li><a href="#difference-in-differences" id="toc-difference-in-differences" class="nav-link" data-scroll-target="#difference-in-differences"><span class="header-section-number">18.1.1</span> Difference in differences</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">18.1.2</span> Computation</a></li>
+  <li><a href="#difference-in-differences" id="toc-difference-in-differences" class="nav-link" data-scroll-target="#difference-in-differences"><span class="header-section-number">18.2.1</span> Difference in differences</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">18.2.2</span> Computation</a></li>
   </ul></li>
-  <li><a href="#instrumental-variables" id="toc-instrumental-variables" class="nav-link" data-scroll-target="#instrumental-variables"><span class="header-section-number">18.2</span> Instrumental Variables</a>
-  <ul class="collapse">
-  <li><a href="#example-return-to-education" id="toc-example-return-to-education" class="nav-link" data-scroll-target="#example-return-to-education"><span class="header-section-number">18.2.1</span> Example: Return to Education</a></li>
-  </ul></li>
-  <li><a href="#regression-discontinuity" id="toc-regression-discontinuity" class="nav-link" data-scroll-target="#regression-discontinuity"><span class="header-section-number">18.3</span> Regression Discontinuity</a>
-  <ul class="collapse">
-  <li><a href="#example-causal-effect-of-alcohol-on-driving-deaths" id="toc-example-causal-effect-of-alcohol-on-driving-deaths" class="nav-link" data-scroll-target="#example-causal-effect-of-alcohol-on-driving-deaths"><span class="header-section-number">18.3.1</span> Example: Causal effect of Alcohol on Driving Deaths</a></li>
-  </ul></li>
-  <li><a href="#lab-7-drunk-driving-laws" id="toc-lab-7-drunk-driving-laws" class="nav-link" data-scroll-target="#lab-7-drunk-driving-laws"><span class="header-section-number">18.4</span> Lab 7: Drunk Driving Laws</a></li>
-  <li><a href="#lab-7-solutions" id="toc-lab-7-solutions" class="nav-link" data-scroll-target="#lab-7-solutions"><span class="header-section-number">18.5</span> Lab 7: Solutions</a></li>
-  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">18.6</span> Coding Questions</a></li>
-  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">18.7</span> Extra Questions</a></li>
-  <li><a href="#answers-to-some-extra-questions" id="toc-answers-to-some-extra-questions" class="nav-link" data-scroll-target="#answers-to-some-extra-questions"><span class="header-section-number">18.8</span> Answers to Some Extra Questions</a></li>
+  <li><a href="#lab-7-drunk-driving-laws" id="toc-lab-7-drunk-driving-laws" class="nav-link" data-scroll-target="#lab-7-drunk-driving-laws"><span class="header-section-number">18.3</span> Lab 7: Drunk Driving Laws</a></li>
+  <li><a href="#lab-7-solutions" id="toc-lab-7-solutions" class="nav-link" data-scroll-target="#lab-7-solutions"><span class="header-section-number">18.4</span> Lab 7: Solutions</a></li>
+  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">18.5</span> Coding Questions</a></li>
+  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">18.6</span> Extra Questions</a></li>
+  <li><a href="#answers-to-some-extra-questions" id="toc-answers-to-some-extra-questions" class="nav-link" data-scroll-target="#answers-to-some-extra-questions"><span class="header-section-number">18.7</span> Answers to Some Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -345,7 +338,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Quasi-Experiments</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></h1>
 </div>
 
 
@@ -362,6 +355,8 @@ window.Quarto = {
 </header>
 
 
+<section id="unconfoundedness" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="unconfoundedness"><span class="header-section-number">18.1</span> Unconfoundedness</h2>
 <p><span class="math display">\[
 \newcommand{\E}{\mathbb{E}}
 \renewcommand{\P}{\textrm{P}}
@@ -381,8 +376,29 @@ window.Quarto = {
 \newcommand\independent{\perp \!\!\! \perp}
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
-<section id="panel-data-approaches" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="panel-data-approaches"><span class="header-section-number">18.1</span> Panel Data Approaches</h2>
+<p>SW 6.8, SW Ch. 9</p>
+<p>Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we’d be interested in studying. For example, it’s hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of.</p>
+<p>For the remainder of this chapter, we’ll discuss common approaches to causal inference when the treatment is not randomly assigned. We’ll start with what is probably the most common approach: <strong>unconfoundedness</strong>.</p>
+<p><strong>Unconfoundedness Assumption</strong>: <span class="math display">\[\begin{align*}
+  (Y(1),Y(0)) \independent D | X
+\end{align*}\]</span> You can think of this as saying that, among individuals with the same covariates <span class="math inline">\(X\)</span>, they have the same distributions of potential outcomes regardless of whether or not they participate in the treatment. Note that the distribution of <span class="math inline">\(X\)</span> is still allowed to be different between the treated and untreated groups. In other words, after you condition on covariates, there is nothing special (in terms of the distributions of potential outcomes) about the group that participates in the treatment relative to the group that doesn’t participate in the treatment.</p>
+<ul>
+<li>This is potentially a strong assumption. In order to believe this assumption, you need to believe that untreated individuals with the same characteristics can deliver, on average, the outcome that individuals in the treated group would have experienced if they had not participated in the treatment. In math, you can write this as <span class="math display">\[\begin{align*}
+    \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
+  \end{align*}\]</span></li>
+</ul>
+<p>If you are willing to believe this assumption, then you can recover the <span class="math inline">\(ATT\)</span>. There are a few different ways that you could implement this. Probably the most common (and convenient) way is to link this condition to a regression (just like we did in the previous section on experiments).</p>
+<p>To do this, let’s continue to make the treatment effect homogeneity assumption as above. In addition, let’s assume a linear model for untreated potential outcomes <span class="math display">\[\begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+\end{align*}\]</span> and unconfoundedness implies that <span class="math inline">\(\E[U|X_1,X_2,X_3,D] = 0\)</span> (the conditioning on <span class="math inline">\(D\)</span> is the unconfoundedness part). Now, recalling the definition of the observed outcome, we can write <span class="math display">\[\begin{align*}
+  Y_i &amp;= D_i Y_i(1) + (1-D_i) Y_i(0) \\
+  &amp;= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
+  &amp;= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
+\end{align*}\]</span> which suggests running the regression of observed <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1,X_2,X_3,\)</span> and <span class="math inline">\(D\)</span> and interpreting the estimate of <span class="math inline">\(\alpha\)</span> as the causal effect of participating in the treatment. In practice, this will be very similar to what we have done before — so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.</p>
+<p>As a final comment, the assumption of treatment effect homogeneity is not quite so innocuous here. It turns out that you can show that, in the presence of treatment effect heterogeneity, <span class="math inline">\(\alpha\)</span> will be equal to a weighted average of individual treatment effects, but the weights can sometimes be “strange”. There are methods that are robust to treatment effect heterogeneity (they are beyond the scope of the current class, but they are not “way” more difficult than what we are doing here). That said, in my experience, the regression estimators (under treatment effect homogeneity) tend to deliver similar estimates to alternative estimators that are robust to treatment effect heterogeneity at least in the setup considered in this section.</p>
+</section>
+<section id="panel-data-approaches" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="panel-data-approaches"><span class="header-section-number">18.2</span> Panel Data Approaches</h2>
 <p>SW All of Ch. 10 and 13.4</p>
 <p>In the previous section, we invoked the assumption of unconfoundedness and were in the setup where <span class="math inline">\(X\)</span> was fully observed. But suppose instead that you thought this alternative version of unconfoundedness held <span class="math display">\[\begin{align*}
   (Y(1),Y(0)) \independent D | (X,W)
@@ -441,8 +457,8 @@ window.Quarto = {
 <p>which still involves the unobserved <span class="math inline">\(W_i\)</span> (even though it doesn’t vary over time) and, therefore, the fixed effects regressions we have been considering will contain omitted variable bias.</p></li>
 </ul>
 <p>Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context. This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) — both of these are realistic in many applications. This is a main research area of mine and one I am happy to talk way more about.</p>
-<section id="difference-in-differences" class="level3" data-number="18.1.1">
-<h3 data-number="18.1.1" class="anchored" data-anchor-id="difference-in-differences"><span class="header-section-number">18.1.1</span> Difference in differences</h3>
+<section id="difference-in-differences" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="difference-in-differences"><span class="header-section-number">18.2.1</span> Difference in differences</h3>
 <p>The panel data approaches that we have been talking about so far are closely related to a <strong>natural-experiment</strong> type of strategy called <strong>difference in differences</strong> (DID).</p>
 <p>One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.</p>
 <p>Let’s think about the case with exactly two time periods: <span class="math inline">\(t\)</span> and <span class="math inline">\(t-1\)</span>. In this case, we’ll suppose that the outcomes that we observe are <span class="math display">\[\begin{align*}
@@ -466,8 +482,8 @@ window.Quarto = {
   Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
 \end{align*}\]</span> where <span class="math inline">\(\E[v_t | D] = 0\)</span>.</p>
 </section>
-<section id="computation" class="level3" data-number="18.1.2">
-<h3 data-number="18.1.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">18.1.2</span> Computation</h3>
+<section id="computation" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">18.2.2</span> Computation</h3>
 <p>The lab in this chapter uses panel data to think about causal effects, so I won’t provide an extended discussion here but rather just mention the syntax for a few panel data estimators. Let’s suppose that you had a data frame that, for the first few rows, looked like (this is totally made up data)</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -485,7 +501,7 @@ window.Quarto = {
 <p>For <code>plm</code>, if you want to estimate a fixed effects model in first differences, you would use the <code>plm</code> command with the following sort of syntax</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year), </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>name_of_data,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect=</span><span class="st">"individual"</span>,</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">model=</span><span class="st">"fd"</span>,</span>
@@ -494,7 +510,7 @@ window.Quarto = {
 <p>We include here <code>as.factor(year)</code> to include time fixed effects, <code>effect="individual"</code> means to include an individual fixed effect, <code>model="fd"</code> says to estimate the model in first differences, and <code>index="id"</code> means that the individual identifier is in the column “id”.</p>
 <p>The code for estimating the model using a within transformation is very similar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year), </span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>name_of_data,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect=</span><span class="st">"individual"</span>,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">model=</span><span class="st">"within"</span>,</span>
@@ -505,339 +521,15 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_robust</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year), </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_robust</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span>name_of_data,</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">fixed_effects=</span><span class="sc">~</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I think the advantage of using this approach is that it seems straightforward to get the heteroskedasticity robust standard errors (or cluster-robust standard errors) that are popular in economics (as we have done before for heteroskedasticity robust standard errors for a regression with just cross sectional data). But I am not sure how (or if it is possible) to use <code>estimatr</code> to estimate the fixed effects model in first differences.</p>
 </section>
 </section>
-<section id="instrumental-variables" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="instrumental-variables"><span class="header-section-number">18.2</span> Instrumental Variables</h2>
-<p>SW all of chapter 12</p>
-<p>In the previous section, I used the word <strong>natural experiment</strong> but didn’t really define it. When an actual experiment is not actually available, a very common strategy used by researchers interested in causal effects is to consider natural experiments — these are not actual experiments, but more like the case where “something weird” happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes. This “something weird” is called an <strong>instrumental variable</strong>.</p>
-<p>Let me give you some examples:</p>
-<ul>
-<li><p>This is not as popular of a topic as it used to be, but many economists used to be interested in the causal effect of military service on earnings. This is challenging because individuals “self-select” into the military (i.e., individuals don’t just randomly choose to join the military, and, while there may be many dimensions of choosing to join the military, probably one dimension is what a person expects the effect to be on their future earnings).</p>
-<ul>
-<li>A famous example of an instrumental variable in this case is an individual’s Vietname draft lottery number. Here, the idea is that a randomly generated lottery number (by construction) doesn’t have any direct effect on earnings, but it does affect the chances that someone participates in the military. This is therefore a natural experiment and could serve the role of an instrumental variable.</li>
-</ul></li>
-<li><p>For studying the effect of education on on earnings, researchers have used the day of birth as an instrument for years of education. The idea is that compulsory school laws are set up so that individuals can leave school when they reach a certain age (e.g., 16). But this means that, among students that want to drop out as early as they can, students who have an “early” birthday (usually around October) will have spent less time in school than students who have a “late” birthday (usually around July) at any particular age. This is a kind of natural experiment — comparing earnings of students who drop out at 16 for those who have early birthdays relative to late birthdays.</p></li>
-</ul>
-<p>Let’s formalize these arguments. Using the same arguments as before, suppose we have a regression that we’d like to run</p>
-<p><span class="math display">\[
-  Y_i = \beta_0 + \alpha D_i + \underbrace{\beta_1 W_i + U_i}_{V_i}
-\]</span> and interpret our estimate of <span class="math inline">\(\alpha\)</span> as an estimate of the causal effect of participating in the treatment. And where, for simplicity, I am not including any <span class="math inline">\(X\)</span> covariates and where we do not observe <span class="math inline">\(W\)</span>. If <span class="math inline">\(D\)</span> is correlated with <span class="math inline">\(W\)</span>, then just ignoring <span class="math inline">\(W\)</span> and running a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> will result in omitted variable bias so that regression does not recover an estimate of <span class="math inline">\(\alpha\)</span>. To help with the discussion below, we’ll define <span class="math inline">\(V_i\)</span> to be the entire unobservable term, <span class="math inline">\(\beta_1 W_i + U_i\)</span>, in the above equation.</p>
-<p>An instrumental variable, which we’ll call <span class="math inline">\(Z\)</span>, needs to satisfy the following two conditions:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\Cov(Z,V) = 0\)</span> — This condition is called the <strong>exclusion restriction</strong>, and it means that the instrument is uncorrelated with the error term in the above equation. In practice, we’d mainly need to make sure that it is uncorrelated with whatever we think is in <span class="math inline">\(W\)</span>.</p></li>
-<li><p><span class="math inline">\(\Cov(Z,D) \neq 0\)</span> — This condition is called <strong>instrument relevance</strong>, and it means that the instrument needs to actually affect whether or not an individual participates in the treatment. We’ll see why this condition is important momentarily.</p></li>
-</ol>
-<p>Next, notice that</p>
-<p><span class="math display">\[
-  \begin{aligned}
-  \Cov(Z,Y) &amp;= \Cov(Z,\beta_0 + \alpha D + V) \\
-  &amp;= \alpha \Cov(Z,D)
-  \end{aligned}
-\]</span> which holds because <span class="math inline">\(\Cov(Z,\beta_0) = 0\)</span> (because <span class="math inline">\(\beta_0\)</span> is a constant) and <span class="math inline">\(\Cov(Z,V)=0\)</span> by the first condition of <span class="math inline">\(Z\)</span> being a valid instrument. This implies that</p>
-<p><span class="math display">\[
-  \alpha = \frac{\Cov(Z,Y)}{\Cov(Z,D)}
-\]</span> That is, if we have a valid instrument, the above formula gives us a path to recovering the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. [Now you can also see why we needed the second condition — otherwise, we could divide by 0 here.]</p>
-<p>The intuition for this is the following: changes in the instrument can cause changes in the outcome but only because they can change whether or not an individual participates in the treatment. These changes show up in the numerator. They are scaled by how much changes in the instrument result in changes in the treatment.</p>
-<p>If there are other covariates in the model, the formula for <span class="math inline">\(\alpha\)</span> will become more complicated. But you can use the <code>ivreg</code> function in the <code>ivreg</code> package to make these complications for you.</p>
-<section id="example-return-to-education" class="level3" data-number="18.2.1">
-<h3 data-number="18.2.1" class="anchored" data-anchor-id="example-return-to-education"><span class="header-section-number">18.2.1</span> Example: Return to Education</h3>
-<p>In this example, we’ll estimate the return to education using whether or not an individual lives close to a college as an instrument for attending college. The idea is that (at least after controlling for some other covariates), the distance that a person lives from a college should not directly affect their earnings but it could affect whether or not they attend college due to it being more or less convenient. I think that the papers that use this sort of an idea primarily have in mind that distance-to-college may affect whether or not a student attends a community college rather than a university.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ivreg)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"SchoolingReturns"</span>, <span class="at">package=</span><span class="st">"ivreg"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>lm_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">poly</span>(experience, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> SchoolingReturns)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>iv_reg <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(<span class="fu">log</span>(wage) <span class="sc">~</span> education <span class="sc">+</span> <span class="fu">poly</span>(experience, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> nearcollege <span class="sc">+</span> <span class="fu">poly</span>(age, <span class="dv">2</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> ethnicity <span class="sc">+</span> smsa <span class="sc">+</span> south,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> SchoolingReturns)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>reg_list <span class="ot">&lt;-</span> <span class="fu">list</span>(lm_reg, iv_reg)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(reg_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<!-- preamble start -->
-
-    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
-
-    <script>
-      // Create table-specific functions using external factory
-      const tableFns_7vlyf2l9lo2ipm5j6v5q = TinyTable.createTableFunctions("tinytable_7vlyf2l9lo2ipm5j6v5q");
-      // tinytable span after
-      window.addEventListener('load', function () {
-          var cellsToStyle = [
-            // tinytable style arrays after
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 } ], css_id: 'tinytable_css_9xo114m8qeljxanb4ueu',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 } ], css_id: 'tinytable_css_w9lcqhmu1nodavrwwvek',}, 
-          { positions: [ { i: '22', j: 2 }, { i: '22', j: 3 } ], css_id: 'tinytable_css_jw52zzayws0tri9kcbsu',}, 
-          { positions: [ { i: '22', j: 1 } ], css_id: 'tinytable_css_tihmu5673egnyhaw77lb',}, 
-          { positions: [ { i: '14', j: 2 }, { i: '14', j: 3 } ], css_id: 'tinytable_css_i6vgoy1t9lyof8jbg2lh',}, 
-          { positions: [ { i: '14', j: 1 } ], css_id: 'tinytable_css_dmii68ypflmrxky27i3j',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_azypzk58ilsf1nt5tiel',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_b70zri8tgl5kkvcg151f',}, 
-          ];
-
-          // Loop over the arrays to style the cells
-          cellsToStyle.forEach(function (group) {
-              group.positions.forEach(function (cell) {
-                  tableFns_7vlyf2l9lo2ipm5j6v5q.styleCell(cell.i, cell.j, group.css_id);
-              });
-          });
-      });
-    </script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
-    <style>
-    /* tinytable css entries after */
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_9xo114m8qeljxanb4ueu, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_9xo114m8qeljxanb4ueu { text-align: center }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_w9lcqhmu1nodavrwwvek, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_w9lcqhmu1nodavrwwvek { text-align: left }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_jw52zzayws0tri9kcbsu, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_jw52zzayws0tri9kcbsu {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_tihmu5673egnyhaw77lb, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_tihmu5673egnyhaw77lb {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_i6vgoy1t9lyof8jbg2lh, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_i6vgoy1t9lyof8jbg2lh {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_dmii68ypflmrxky27i3j, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_dmii68ypflmrxky27i3j {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_azypzk58ilsf1nt5tiel, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_azypzk58ilsf1nt5tiel {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_7vlyf2l9lo2ipm5j6v5q td.tinytable_css_b70zri8tgl5kkvcg151f, #tinytable_7vlyf2l9lo2ipm5j6v5q th.tinytable_css_b70zri8tgl5kkvcg151f {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    </style>
-    <div class="container">
-      <table class="tinytable" id="tinytable_7vlyf2l9lo2ipm5j6v5q" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-        
-        <thead>
-              <tr>
-                <th scope="col" data-row="0" data-col="1"> </th>
-                <th scope="col" data-row="0" data-col="2">(1)</th>
-                <th scope="col" data-row="0" data-col="3">(2)</th>
-              </tr>
-        </thead>
-        
-        <tbody>
-                <tr>
-                  <td data-row="1" data-col="1">(Intercept)</td>
-                  <td data-row="1" data-col="2">4.734</td>
-                  <td data-row="1" data-col="3">4.066</td>
-                </tr>
-                <tr>
-                  <td data-row="2" data-col="1"></td>
-                  <td data-row="2" data-col="2">(0.068)</td>
-                  <td data-row="2" data-col="3">(0.608)</td>
-                </tr>
-                <tr>
-                  <td data-row="3" data-col="1">education</td>
-                  <td data-row="3" data-col="2">0.074</td>
-                  <td data-row="3" data-col="3">0.133</td>
-                </tr>
-                <tr>
-                  <td data-row="4" data-col="1"></td>
-                  <td data-row="4" data-col="2">(0.004)</td>
-                  <td data-row="4" data-col="3">(0.051)</td>
-                </tr>
-                <tr>
-                  <td data-row="5" data-col="1">poly(experience, 2, raw = TRUE)1</td>
-                  <td data-row="5" data-col="2">0.084</td>
-                  <td data-row="5" data-col="3">0.056</td>
-                </tr>
-                <tr>
-                  <td data-row="6" data-col="1"></td>
-                  <td data-row="6" data-col="2">(0.007)</td>
-                  <td data-row="6" data-col="3">(0.026)</td>
-                </tr>
-                <tr>
-                  <td data-row="7" data-col="1">poly(experience, 2, raw = TRUE)2</td>
-                  <td data-row="7" data-col="2">-0.002</td>
-                  <td data-row="7" data-col="3">-0.001</td>
-                </tr>
-                <tr>
-                  <td data-row="8" data-col="1"></td>
-                  <td data-row="8" data-col="2">(0.000)</td>
-                  <td data-row="8" data-col="3">(0.001)</td>
-                </tr>
-                <tr>
-                  <td data-row="9" data-col="1">ethnicityafam</td>
-                  <td data-row="9" data-col="2">-0.190</td>
-                  <td data-row="9" data-col="3">-0.103</td>
-                </tr>
-                <tr>
-                  <td data-row="10" data-col="1"></td>
-                  <td data-row="10" data-col="2">(0.018)</td>
-                  <td data-row="10" data-col="3">(0.077)</td>
-                </tr>
-                <tr>
-                  <td data-row="11" data-col="1">smsayes</td>
-                  <td data-row="11" data-col="2">0.161</td>
-                  <td data-row="11" data-col="3">0.108</td>
-                </tr>
-                <tr>
-                  <td data-row="12" data-col="1"></td>
-                  <td data-row="12" data-col="2">(0.016)</td>
-                  <td data-row="12" data-col="3">(0.050)</td>
-                </tr>
-                <tr>
-                  <td data-row="13" data-col="1">southyes</td>
-                  <td data-row="13" data-col="2">-0.125</td>
-                  <td data-row="13" data-col="3">-0.098</td>
-                </tr>
-                <tr>
-                  <td data-row="14" data-col="1"></td>
-                  <td data-row="14" data-col="2">(0.015)</td>
-                  <td data-row="14" data-col="3">(0.029)</td>
-                </tr>
-                <tr>
-                  <td data-row="15" data-col="1">Num.Obs.</td>
-                  <td data-row="15" data-col="2">3010</td>
-                  <td data-row="15" data-col="3">3010</td>
-                </tr>
-                <tr>
-                  <td data-row="16" data-col="1">R2</td>
-                  <td data-row="16" data-col="2">0.291</td>
-                  <td data-row="16" data-col="3">0.176</td>
-                </tr>
-                <tr>
-                  <td data-row="17" data-col="1">R2 Adj.</td>
-                  <td data-row="17" data-col="2">0.289</td>
-                  <td data-row="17" data-col="3">0.175</td>
-                </tr>
-                <tr>
-                  <td data-row="18" data-col="1">AIC</td>
-                  <td data-row="18" data-col="2">40329.6</td>
-                  <td data-row="18" data-col="3">40778.6</td>
-                </tr>
-                <tr>
-                  <td data-row="19" data-col="1">BIC</td>
-                  <td data-row="19" data-col="2">40377.7</td>
-                  <td data-row="19" data-col="3">40826.7</td>
-                </tr>
-                <tr>
-                  <td data-row="20" data-col="1">Log.Lik.</td>
-                  <td data-row="20" data-col="2">-1308.702</td>
-                  <td data-row="20" data-col="3"></td>
-                </tr>
-                <tr>
-                  <td data-row="21" data-col="1">F</td>
-                  <td data-row="21" data-col="2">204.932</td>
-                  <td data-row="21" data-col="3"></td>
-                </tr>
-                <tr>
-                  <td data-row="22" data-col="1">RMSE</td>
-                  <td data-row="22" data-col="2">0.37</td>
-                  <td data-row="22" data-col="3">0.40</td>
-                </tr>
-        </tbody>
-      </table>
-    </div>
-<!-- hack to avoid NA insertion in last line -->
-</div>
-</div>
-<p>The main parameter of interest here is the coefficient on <code>education</code>. The IV estimates are noticeably larger than the OLS estimates (<code>0.133</code> relative to <code>0.074</code>). [This is actually quite surprising as you would think that OLS would tend to <em>over-estimate</em> the return to education. This is a very famous example, and there are actually quite a few “explanations” from labor economists about why this sort of result arises.]</p>
-</section>
-</section>
-<section id="regression-discontinuity" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="regression-discontinuity"><span class="header-section-number">18.3</span> Regression Discontinuity</h2>
-<p>SW 13.4</p>
-<p>The final type of natural experiment that we will talk about is called <strong>regression discontinuity</strong>. The sort of natural experiment is available when there is a <strong>running variable</strong> with a threshold (i.e., cutoff) where individuals above the threshold are treated while individuals below the threshold are not treated. These sorts of thresholds/cutoffs are fairly common.</p>
-<p>Here are some examples:</p>
-<ul>
-<li><p>Cutoffs that make students eligible for a scholarship (e.g., the Hope scholarship)</p></li>
-<li><p>Rules about maximum numbers of students allowed in a classroom in a particular school district</p></li>
-<li><p>Very close political elections</p></li>
-<li><p>Very close union elections</p></li>
-<li><p>Thresholds in tax laws</p></li>
-</ul>
-<p>Then, the idea is to compare outcomes among individuals that “barely” were treated relative to those that “barely” weren’t treated. By construction, this often has properties that are similar to an actual experiment as those that are just above the cutoff should have observed and unobserved characteristics that are the same as those just below the cutoff.</p>
-<p>Typically, regression discontinuity designs are implemented using a regression that includes a binary variable for participating in the treatment, the running variable itself, and the interaction between the running variable and the treatment, <em>using only observations that are “close” to the cutoff</em>. [What should be considered “close” to the cutoff is actually a hard choice and there are tons of papers suggesting various approaches to decide what “close” means — we’ll largely avoid this and just pick what we think is close.] The estimated coefficient on the treatment indicator variable is an estimate of the average effect of participating in the treatment among those individuals who are close to the cutoff.</p>
-<p>This will become clearer with an example.</p>
-<section id="example-causal-effect-of-alcohol-on-driving-deaths" class="level3" data-number="18.3.1">
-<h3 data-number="18.3.1" class="anchored" data-anchor-id="example-causal-effect-of-alcohol-on-driving-deaths"><span class="header-section-number">18.3.1</span> Example: Causal effect of Alcohol on Driving Deaths</h3>
-<p>In this section, we’ll be interested in the causal effect of young adult alcohol consumption on the number of deaths in car accidents.</p>
-<p>The idea here will be to compare the number of deaths in car accidents that involve someone who is 21 or just over to the number of deaths in car accidents that involve someone who is just under 21. The reason to make this comparison is that alcohol consumption markedly increases when individuals turn 21 (due to that being the legal drinking age in the U.S.). If alcohol consumption increases car accident deaths, then we should also be able to detect a jump in the number of car accident deaths involving those who are just over 21.</p>
-<p>The data that we have consists of age groups by age up to a particular month (<code>agecell</code>) and the number of car accident deaths involving that age group (<code>mva</code>).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"mlda"</span>, <span class="at">package=</span><span class="st">"masteringmetrics"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># drop some data with missing observations</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mlda <span class="ot">&lt;-</span> mlda[<span class="fu">complete.cases</span>(mlda),]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create treated variable</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>mlda<span class="sc">$</span>D <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(mlda<span class="sc">$</span>agecell <span class="sc">&gt;=</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In regression discontinuity designs, it is very common to show a plot of the data. That’s what we’ll do here.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mlda, <span class="fu">aes</span>(<span class="at">x=</span>agecell, <span class="at">y=</span>mva)) <span class="sc">+</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"age"</span>) <span class="sc">+</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"moving vehicle accident deaths"</span>) <span class="sc">+</span> </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="17-quasi_experiments_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This figure at least suggests that the number of car accident deaths does appear to jump at age 21.</p>
-<p>Now, let’s run the regression that we talked about earlier, involving a treatment dummy, age, and age interacted with the treatment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mva <span class="sc">~</span> D <span class="sc">+</span> agecell <span class="sc">+</span> agecell<span class="sc">*</span>D, <span class="at">data=</span>mlda)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = mva ~ D + agecell + agecell * D, data = mlda)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--2.4124 -0.7774 -0.2913  0.8495  3.2378 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  83.8492     9.3328   8.984 1.63e-11 ***
-D            28.9450    13.8638   2.088   0.0426 *  
-agecell      -2.5676     0.4661  -5.508 1.77e-06 ***
-D:agecell    -1.1624     0.6592  -1.763   0.0848 .  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 1.299 on 44 degrees of freedom
-Multiple R-squared:  0.7222,    Adjusted R-squared:  0.7032 
-F-statistic: 38.13 on 3 and 44 DF,  p-value: 2.671e-12</code></pre>
-</div>
-</div>
-<p>These results suggest that alcohol consumption increased car accident deaths (you can see this from the estimated coefficient on <code>D</code>). [The setup in this example is somewhat simplified; if you wanted to be careful about how much alcohol consumption increased car accident deaths, then we would probably need to scale up our estimate by how much alcohol consumption increases on average when people turn 21. Nevertheless, what we have presented above does suggest that alcohol consumption increases car accident deaths.]</p>
-<p>Finally, let me show one more plot that is common to report in a regression discontinuity design.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get predicted values for plotting</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mlda<span class="sc">$</span>preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(rd_reg)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make plot</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mlda, <span class="fu">aes</span>(<span class="at">x=</span>agecell, <span class="at">y=</span>mva, <span class="at">color=</span><span class="fu">as.factor</span>(D))) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>preds)) <span class="sc">+</span> </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color=</span><span class="st">"treated"</span>, <span class="at">x=</span><span class="st">"age"</span>, <span class="at">y=</span><span class="st">"moving vehicle accident deaths"</span>) <span class="sc">+</span> </span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="17-quasi_experiments_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This shows the two lines that we effectively fit with the regression that included the binary variable for the treatment, the running variable, and their interaction. The “jump” between the red line and the blue line at <code>age=21</code> is our estimated effect of the treatment.</p>
-</section>
-</section>
-<section id="lab-7-drunk-driving-laws" class="level2" data-number="18.4">
-<h2 data-number="18.4" class="anchored" data-anchor-id="lab-7-drunk-driving-laws"><span class="header-section-number">18.4</span> Lab 7: Drunk Driving Laws</h2>
+<section id="lab-7-drunk-driving-laws" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="lab-7-drunk-driving-laws"><span class="header-section-number">18.3</span> Lab 7: Drunk Driving Laws</h2>
 <p>For this lab, we will use the <code>Fatalities</code> data. We will study the causal effect of mandatory jail sentence policies for drunk driving on traffic fatalities. The <code>Fatalities</code> data consists of panel data of traffic fatality death rates, whether or not a state has a mandatory jail sentence policy or not as well as several other variables from 1982-1988. Economic theory suggests that raising the cost of some behavior (in this case, you can think of a mandatory jail sentence as raising the cost of drunk driving) will lead to less of that behavior. That being said, it’s both interesting to test this theory and also consider the magnitude of this effect. That’s what we’ll do in this problem.</p>
 <ol type="1">
 <li><p>This data comes in a somewhat messier format than some of the data that we have used previously. To start with, create a new column in the data called <code>afatal_per_million</code> that is the number of alcohol involved vehicle fatalities per millions people in a state in a particular year. The variable <code>afatal</code> contains the total number of alcohol involved vehicle fatalities, and the variable <code>pop</code> contains the total population in a state.</p></li>
@@ -857,27 +549,27 @@ F-statistic: 38.13 on 3 and 44 DF,  p-value: 2.671e-12</code></pre>
 <li><p>Comment on your results from parts 1-9. Which, if any, of these are you most inclined to interpret as a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related policies?</p></li>
 </ol>
 </section>
-<section id="lab-7-solutions" class="level2" data-number="18.5">
-<h2 data-number="18.5" class="anchored" data-anchor-id="lab-7-solutions"><span class="header-section-number">18.5</span> Lab 7: Solutions</h2>
+<section id="lab-7-solutions" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="lab-7-solutions"><span class="header-section-number">18.4</span> Lab 7: Solutions</h2>
 <ol type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Fatalities, <span class="at">package=</span><span class="st">"AER"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>Fatalities<span class="sc">$</span>afatal_per_million <span class="ot">&lt;-</span> <span class="dv">1000000</span> <span class="sc">*</span> (Fatalities<span class="sc">$</span>afatal <span class="sc">/</span> Fatalities<span class="sc">$</span>pop )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Fatalities, <span class="at">package=</span><span class="st">"AER"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Fatalities<span class="sc">$</span>afatal_per_million <span class="ot">&lt;-</span> <span class="dv">1000000</span> <span class="sc">*</span> (Fatalities<span class="sc">$</span>afatal <span class="sc">/</span> Fatalities<span class="sc">$</span>pop )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Fatalities88 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1988</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>reg88 <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail, <span class="at">data=</span>Fatalities88)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Fatalities88 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1988</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>reg88 <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail, <span class="at">data=</span>Fatalities88)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -905,8 +597,8 @@ F-statistic: 1.367 on 1 and 45 DF,  p-value: 0.2484</code></pre>
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>reg88_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>Fatalities88)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reg88_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>Fatalities88)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -941,11 +633,11 @@ F-statistic: 5.024 on 7 and 39 DF,  p-value: 0.0003999</code></pre>
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fd_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"fd"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fd_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">"individual"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"fd"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Oneway (individual) effect First-Difference Model
 
@@ -984,11 +676,11 @@ F-statistic: 2.77733 on 6 and 280 DF, p-value: 0.012223</code></pre>
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>within_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"within"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>within_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">"individual"</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Oneway (individual) effect Within Model
 
@@ -1023,11 +715,11 @@ F-statistic: 5.24882 on 7 and 280 DF, p-value: 1.2051e-05</code></pre>
 </div>
 <p>The estimated coefficient on <code>jail</code> has the same interpretation as in the previous problem. The estimated effect here is marginally statistically significant. 6.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>within_reg_covs <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles,</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"within"</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>Fatalities)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>within_reg_covs <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">effect=</span><span class="st">"individual"</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"within"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>Fatalities)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Oneway (individual) effect Within Model
 
@@ -1066,34 +758,34 @@ F-statistic: 4.80119 on 7 and 280 DF, p-value: 4.0281e-05</code></pre>
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># part a: convert data to two period panel data</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span> <span class="sc">|</span> year<span class="sc">==</span><span class="dv">1988</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and drop some missing</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(two_period, <span class="sc">!</span><span class="fu">is.na</span>(jail))</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> BMisc<span class="sc">::</span><span class="fu">makeBalancedPanel</span>(two_period, <span class="st">"state"</span>, <span class="st">"year"</span>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>two_period<span class="sc">$</span>jail <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(two_period<span class="sc">$</span>jail<span class="sc">==</span><span class="st">"yes"</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># part b: convert into wide format</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(two_period, </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">id_cols=</span><span class="st">"state"</span>, </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from=</span><span class="st">"year"</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from=</span><span class="fu">c</span>(<span class="st">"jail"</span>, <span class="st">"afatal_per_million"</span>))</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add back other covariates from 1982</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(wide_df, <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span>)[,<span class="fu">c</span>(<span class="st">"unemp"</span>, <span class="st">"beertax"</span>, <span class="st">"baptist"</span>, <span class="st">"dry"</span>, <span class="st">"youngdrivers"</span>, <span class="st">"miles"</span>,<span class="st">"state"</span>)], <span class="at">by=</span><span class="st">"state"</span>)</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co"># change in fatal accidents over time</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>wide_df<span class="sc">$</span>Dafatal_per_million <span class="ot">&lt;-</span> wide_df<span class="sc">$</span>afatal_per_million_1988 <span class="sc">-</span> wide_df<span class="sc">$</span>afatal_per_million_1982</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co"># part c: drop already treated states</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">subset</span>(wide_df, jail_1982<span class="sc">==</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># part a: convert data to two period panel data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span> <span class="sc">|</span> year<span class="sc">==</span><span class="dv">1988</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and drop some missing</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(two_period, <span class="sc">!</span><span class="fu">is.na</span>(jail))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> BMisc<span class="sc">::</span><span class="fu">makeBalancedPanel</span>(two_period, <span class="st">"state"</span>, <span class="st">"year"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>two_period<span class="sc">$</span>jail <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(two_period<span class="sc">$</span>jail<span class="sc">==</span><span class="st">"yes"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># part b: convert into wide format</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(two_period,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">id_cols=</span><span class="st">"state"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from=</span><span class="st">"year"</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from=</span><span class="fu">c</span>(<span class="st">"jail"</span>, <span class="st">"afatal_per_million"</span>))</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add back other covariates from 1982</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(wide_df, <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span>)[,<span class="fu">c</span>(<span class="st">"unemp"</span>, <span class="st">"beertax"</span>, <span class="st">"baptist"</span>, <span class="st">"dry"</span>, <span class="st">"youngdrivers"</span>, <span class="st">"miles"</span>,<span class="st">"state"</span>)], <span class="at">by=</span><span class="st">"state"</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># change in fatal accidents over time</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>wide_df<span class="sc">$</span>Dafatal_per_million <span class="ot">&lt;-</span> wide_df<span class="sc">$</span>afatal_per_million_1988 <span class="sc">-</span> wide_df<span class="sc">$</span>afatal_per_million_1982</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># part c: drop already treated states</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">subset</span>(wide_df, jail_1982<span class="sc">==</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="8" type="1">
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>did <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988, <span class="at">data=</span>wide_df)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>did <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988, <span class="at">data=</span>wide_df)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1114,8 +806,8 @@ Residual standard error: 24.37 on 36 degrees of freedom
 Multiple R-squared:  0.005259,  Adjusted R-squared:  -0.02237 
 F-statistic: 0.1903 on 1 and 36 DF,  p-value: 0.6653</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>did_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>did_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1149,8 +841,8 @@ F-statistic: 2.114 on 7 and 30 DF,  p-value: 0.07276</code></pre>
 <li></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lag_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982, <span class="at">data=</span>wide_df)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lag_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982, <span class="at">data=</span>wide_df)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1173,8 +865,8 @@ Residual standard error: 21.47 on 35 degrees of freedom
 Multiple R-squared:  0.3462,    Adjusted R-squared:  0.3088 
 F-statistic: 9.266 on 2 and 35 DF,  p-value: 0.0005896</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>lag_reg_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lag_reg_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1214,8 +906,8 @@ F-statistic: 4.329 on 8 and 29 DF,  p-value: 0.001596</code></pre>
 <li><p>Let me make one more comment about the sign of our results. Many of our point estimates are positive; as we discussed earlier, it is hard to rationalize harsher punishments <em>increasing</em> alcohol related traffic fatalities. I think the main explanation for these results is just that our estimates are pretty noisy and, therefore, more or less “by chance” we are getting estimates that have an unexpected sign. But there are some other possible explanations that are worth mentioning. For one, there are a number of other policies related to drunk driving that occurred in the 1980s (particularly, related to legal drinking age) but perhaps others. It is not clear how these would interact with our estimates, but they could certainly play some role. Besides that, it seems to me that we have a pretty good set of covariates that enter our models, but there could be important covariates that we are missing. For this reason, some expertise in how to model state-level traffic fatalities is actually a very important skill here (actually probably the key skill here!)</p></li>
 </ul>
 </section>
-<section id="coding-questions" class="level2" data-number="18.6">
-<h2 data-number="18.6" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">18.6</span> Coding Questions</h2>
+<section id="coding-questions" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">18.5</span> Coding Questions</h2>
 <ol type="1">
 <li><p>For this problem, we will use the data <code>rand_hie</code>. This is data from the RAND health insurance experiment in the 1980s. In the experiment, participants were randomly assigned to get Catastrophic (the least amount of coverage), insurance that came with a Deductible, insurance that came with Cost Sharing (i.e., co-insurance so that an individual pays part of their medical insurance), and Free (so that there is no cost of medical care).</p>
 <p>For this problem, we will be interested in whether or not changing the type of health insurance changed the amount of health care utilization and the health status of individuals.</p>
@@ -1252,8 +944,8 @@ F-statistic: 4.329 on 8 and 29 DF,  p-value: 0.001596</code></pre>
 </ol></li>
 </ol>
 </section>
-<section id="extra-questions" class="level2" data-number="18.7">
-<h2 data-number="18.7" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">18.7</span> Extra Questions</h2>
+<section id="extra-questions" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">18.6</span> Extra Questions</h2>
 <ol type="1">
 <li><p>What is the difference between treatment effect homogeneity and treatment effect heterogeneity?</p></li>
 <li><p>Why do most researchers give up on trying to estimate the individual-level effect of participating in a treatment?</p></li>
@@ -1302,8 +994,8 @@ W_i = \gamma_0 + \gamma_1 D_i + \gamma_2 X_i + V_i
 <li><p>Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.). You interpret the difference <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span> as an estimate of the <span class="math inline">\(ATT\)</span>, but your friend says that you should interpret it as an estimate of the <span class="math inline">\(ATE\)</span>. In fact, according to your friend, random treatment assignment implies that <span class="math inline">\(\E[Y(1)] = \E[Y(1)|D=1] = \E[Y|D=1]\)</span> and <span class="math inline">\(\E[Y(0)] = \E[Y(0)|D=0] = \E[Y|D=0]\)</span> which implies that <span class="math inline">\(ATE = \E[Y|D=1] - \E[Y|D=0]\)</span>. Who is right?</p></li>
 </ol>
 </section>
-<section id="answers-to-some-extra-questions" class="level2" data-number="18.8">
-<h2 data-number="18.8" class="anchored" data-anchor-id="answers-to-some-extra-questions"><span class="header-section-number">18.8</span> Answers to Some Extra Questions</h2>
+<section id="answers-to-some-extra-questions" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="answers-to-some-extra-questions"><span class="header-section-number">18.7</span> Answers to Some Extra Questions</h2>
 <p><strong>Answer to Question 4</strong></p>
 <p>The key condition is the parallel trends assumption that says that, in the absence of participating in the treatment, the <em>path</em> of outcomes that individuals in the treated group is the same, on average, as the path of outcomes that individuals in the untreated group actually experienced.</p>
 <p><strong>Answer to Question 9</strong></p>
@@ -1353,7 +1045,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1385,45 +1088,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1458,11 +1123,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1510,6 +1171,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1737,8 +1399,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./16-unconfoundedness.html" class="pagination-link" aria-label="Unconfoundedness">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Unconfoundedness</span></span>
+      <a href="./16-natural_experiments.html" class="pagination-link  aria-label=" &lt;span="" experiments&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
