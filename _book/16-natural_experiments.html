@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Natural Experiments – Detailed Course Notes for ECON 4750</title>
+<title>Detailed Course Notes for ECON 4750 - 17&nbsp; Natural Experiments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -91,10 +91,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -123,7 +123,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -162,13 +162,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-natural_experiments.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -346,13 +346,13 @@ window.Quarto = {
   <li><a href="#latent-types" id="toc-latent-types" class="nav-link" data-scroll-target="#latent-types"><span class="header-section-number">17.1.2</span> Latent Types</a></li>
   <li><a href="#four-iv-assumptions" id="toc-four-iv-assumptions" class="nav-link" data-scroll-target="#four-iv-assumptions"><span class="header-section-number">17.1.3</span> Four IV Assumptions</a></li>
   <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">17.1.4</span> Identification</a></li>
-  <li><a href="#interpretation-and-heterogeneity" id="toc-interpretation-and-heterogeneity" class="nav-link" data-scroll-target="#interpretation-and-heterogeneity"><span class="header-section-number">17.1.5</span> Interpretation and Heterogeneity</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">17.1.5</span> Estimation</a></li>
   </ul></li>
   <li><a href="#regression-discontinuity-designs" id="toc-regression-discontinuity-designs" class="nav-link" data-scroll-target="#regression-discontinuity-designs"><span class="header-section-number">17.2</span> Regression Discontinuity Designs</a>
   <ul class="collapse">
   <li><a href="#key-assumption-continuity" id="toc-key-assumption-continuity" class="nav-link" data-scroll-target="#key-assumption-continuity"><span class="header-section-number">17.2.1</span> Key Assumption: Continuity</a></li>
   <li><a href="#identification-1" id="toc-identification-1" class="nav-link" data-scroll-target="#identification-1"><span class="header-section-number">17.2.2</span> Identification</a></li>
-  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">17.2.3</span> Estimation</a></li>
+  <li><a href="#estimation-1" id="toc-estimation-1" class="nav-link" data-scroll-target="#estimation-1"><span class="header-section-number">17.2.3</span> Estimation</a></li>
   <li><a href="#example-with-simulated-data" id="toc-example-with-simulated-data" class="nav-link" data-scroll-target="#example-with-simulated-data"><span class="header-section-number">17.2.4</span> Example with Simulated Data</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">17.3</span> References</a></li>
@@ -425,10 +425,10 @@ window.Quarto = {
 <h3 data-number="17.1.2" class="anchored" data-anchor-id="latent-types"><span class="header-section-number">17.1.2</span> Latent Types</h3>
 <p>Based on the pair <span class="math inline">\((D_i(0), D_i(1))\)</span>, every individual falls into one of four latent types (“latent” just means unobserved, so here we mean that every unit is one of four types, but we do not observe which type they are):</p>
 <ol type="1">
-<li><p><strong>Always-takers</strong> have <span class="math inline">\(D_i(0) = 1\)</span> and <span class="math inline">\(D_i(1) = 1\)</span> — they serve regardless of draft status.</p></li>
-<li><p><strong>Never-takers</strong> have <span class="math inline">\(D_i(0) = 0\)</span> and <span class="math inline">\(D_i(1) = 0\)</span> — they never serve.</p></li>
-<li><p><strong>Compliers</strong> have <span class="math inline">\(D_i(0) = 0\)</span> and <span class="math inline">\(D_i(1) = 1\)</span> — they serve only if drafted.</p></li>
-<li><p><strong>Defiers</strong> have <span class="math inline">\(D_i(0) = 1\)</span> and <span class="math inline">\(D_i(1) = 0\)</span> — they do the opposite of what the draft tells them.</p></li>
+<li><p><strong>Always-takers</strong> have <span class="math inline">\(D_i(0) = 1\)</span> and <span class="math inline">\(D_i(1) = 1\)</span> — they serve regardless of draft status. Let <span class="math inline">\(A_i=1\)</span> for always-takers.</p></li>
+<li><p><strong>Never-takers</strong> have <span class="math inline">\(D_i(0) = 0\)</span> and <span class="math inline">\(D_i(1) = 0\)</span> — they never serve. Let <span class="math inline">\(N_i=1\)</span> for never-takers.</p></li>
+<li><p><strong>Compliers</strong> have <span class="math inline">\(D_i(0) = 0\)</span> and <span class="math inline">\(D_i(1) = 1\)</span> — they serve only if drafted. Let <span class="math inline">\(C_i=1\)</span> for compliers.</p></li>
+<li><p><strong>Defiers</strong> have <span class="math inline">\(D_i(0) = 1\)</span> and <span class="math inline">\(D_i(1) = 0\)</span> — they do the opposite of what the draft tells them. Let <span class="math inline">\(F_i=1\)</span> for defiers.</p></li>
 </ol>
 <p>There are a couple of things that are worth pointing out about these types. First, among these types, only compliers and defiers respond to the instrument. Always-takers and never-takers have treatment status that is unaffected by the instrument. Second, defiers are somewhat strange type — for example, it seems very strange that one would serve in the military when not drafted, but avoid service when drafted. To be clear, what I mean by “strange”, is that we would not expect there to be many (or any) defiers in the military service example. That it is strange/uncommon to be a defier will be important below.</p>
 </section>
@@ -448,23 +448,53 @@ window.Quarto = {
 </section>
 <section id="identification" class="level3" data-number="17.1.4">
 <h3 data-number="17.1.4" class="anchored" data-anchor-id="identification"><span class="header-section-number">17.1.4</span> Identification</h3>
-<p>The Wald estimator (equivalent to 2SLS in this simple binary case) is defined as:</p>
-<p><span class="math display">\[\text{IV estimate} = \frac{E[Y_i|Z_i=1] - E[Y_i|Z_i=0]}{E[D_i|Z_i=1] - E[D_i|Z_i=0]} = \frac{\text{Reduced Form}}{\text{First Stage}}\]</span></p>
-<p>We now rewrite both the numerator and denominator using potential outcomes notation. For the numerator, the independence assumption implies that <span class="math inline">\(E[Y_i|Z_i=1] = E[Y_i(D_i(1))|Z_i=1] = E[Y_i(D_i(1))]\)</span>.</p>
-<p>Similarly, <span class="math inline">\(E[Y_i|Z_i=0] = E[Y_i(D_i(0))]\)</span>. Therefore, the numerator becomes <span class="math inline">\(E[Y_i(D_i(1))] - E[Y_i(D_i(0))]\)</span>. The denominator is simply <span class="math inline">\(E[D_i(1)] - E[D_i(0)]\)</span>.</p>
-<p>To understand what these expectations represent, we decompose them by type.</p>
-<p>For the numerator, consider each group’s contribution. Never-takers have <span class="math inline">\(Y_i(D_i(1)) = Y_i(0)\)</span> and <span class="math inline">\(Y_i(D_i(0)) = Y_i(0)\)</span>, so they contribute zero to the difference.</p>
-<p>Always-takers have <span class="math inline">\(Y_i(D_i(1)) = Y_i(1)\)</span> and <span class="math inline">\(Y_i(D_i(0)) = Y_i(1)\)</span>, so they also contribute zero. Compliers have <span class="math inline">\(Y_i(D_i(1)) = Y_i(1)\)</span> and <span class="math inline">\(Y_i(D_i(0)) = Y_i(0)\)</span>, so they contribute their individual treatment effect <span class="math inline">\(Y_i(1) - Y_i(0)\)</span>. Defiers don’t exist by monotonicity.</p>
-<p>Let <span class="math inline">\(\pi_c\)</span> denote the proportion of compliers in the population. Then the numerator equals <span class="math inline">\(\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]\)</span>.</p>
-<p>For the denominator, never-takers contribute <span class="math inline">\(D_i(1) - D_i(0) = 0 - 0 = 0\)</span>, always-takers contribute <span class="math inline">\(D_i(1) - D_i(0) = 1 - 1 = 0\)</span>, and compliers contribute <span class="math inline">\(D_i(1) - D_i(0) = 1 - 0 = 1\)</span>. Therefore, the denominator equals <span class="math inline">\(\pi_c\)</span>.</p>
-<p>Combining these results, we have:</p>
-<p><span class="math display">\[\text{IV estimate} = \frac{\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]}{\pi_c} = E[Y_i(1) - Y_i(0) | \text{complier}]\]</span></p>
-<p>This is the Local Average Treatment Effect (LATE): the average treatment effect for compliers.</p>
+<p>Next, let’s discuss how we can learn about causal effects under the setup that we have been considering. That <span class="math inline">\(Z\)</span> is effectively randomly assigned suggests considering <span class="math display">\[\begin{align*}
+  \E[Y | Z=1] - \E[Y | Z=0]
+\end{align*}\]</span> which compares the mean outcome for those with <span class="math inline">\(Z=1\)</span> (e.g., drafted) to those with <span class="math inline">\(Z=0\)</span> (e.g., not drafted). This comparison is often referred to as the <strong>reduced form</strong> effect of the instrument on the outcome. Our next goal is to relate this equation to potential outcomes. In particular, notice that <span class="math display">\[\begin{align*}
+  \E[Y | Z=1] &amp;= \E[Y(D(1)) | Z=1] \\
+  &amp;= \E[Y(D(1))]
+\end{align*}\]</span> where the first equality holds because for those with <span class="math inline">\(Z=1\)</span>, the observed outcome is <span class="math inline">\(Y(D(1))\)</span>, and the second equality holds by the independence assumption. Using exactly the same sort of argument, it holds that <span class="math display">\[\begin{align*}
+  \E[Y | Z=0] &amp;= \E[Y(D(0))]
+\end{align*}\]</span> Thus, we have that <span class="math display">\[\begin{align*}
+  \E[Y | Z=1] - \E[Y | Z=0] &amp;= \E[Y(D(1)) - Y(D(0))]
+\end{align*}\]</span> This is the average causal effect of the instrument on the outcome. It could be of interest in some cases. For example, in the military service example, this is the average effect of being drafted on earnings. However, it is not what we originally set out to learn about: the causal effect of the treatment on the outcome. To proceed, let us use the law of iterated expectations to write: <span class="math display">\[\begin{align*}
+  \E[Y(D(1)) - Y(D(0))] &amp;= \E\big[\underbrace{Y(D(1)) - Y(D(0))}_{(A)} | A=1\big] \P(A=1) \\
+  &amp;+ \E\big[\underbrace{Y(D(1)) - Y(D(0))}_{(B)} | N=1\big] \P(N=1) \\
+  &amp;+ \E\big[Y(D(1)) - Y(D(0)) | C=1\big] \P(C=1) \\
+  &amp;+ \E\big[Y(D(1)) - Y(D(0)) | D=1\big] \underbrace{\P(F=1)}_{(C)}
+\end{align*}\]</span> We can simplify this expression significantly:</p>
+<ul>
+<li><p>For underlined term (A), always-takers have <span class="math inline">\(D(1)=D(0)=1\)</span>, so <span class="math inline">\(Y(D(1)) = Y(1)\)</span> and <span class="math inline">\(Y(D(0)) = Y(1)\)</span>, i.e., regardless of the value of the instrument that an always-taker experiences, their observed outcome is <span class="math inline">\(Y(1)\)</span>. Therefore, the underlined term equals zero.</p></li>
+<li><p>For underlined term (B), never-takers have <span class="math inline">\(D(1)=D(0)=0\)</span>, so <span class="math inline">\(Y(D(1)) = Y(0)\)</span> and <span class="math inline">\(Y(D(0)) = Y(0)\)</span>, and this term is also equal to zero using a similar argument as for always-takers.</p></li>
+<li><p>For underlined term (C), recall that monotonicity ruled out the existence of defiers, and, therefore, <span class="math inline">\(\P(F=1) = 0\)</span>.</p></li>
+</ul>
+<p>Putting this all together, we have that <span class="math display">\[\begin{align*}
+  \E[Y | Z=1] - \E[Y | Z=0] &amp;= \E[Y(1) - Y(0) | C=1] \P(C=1)
+\end{align*}\]</span> This is a helpful step as we have now expressed the reduced form effect in terms of potential outcomes of the treatment itself, which is a causal effect. The last thing that we would like to do is to try to get rid of the <span class="math inline">\(\P(C=1)\)</span> term as it is mainly just “scaling down” the causal effect term. To do this, we will consider <span class="math display">\[\begin{align*}
+  \E[D | Z=1] - \E[D | Z=0]
+\end{align*}\]</span> which compares the probability of being treated for those with <span class="math inline">\(Z=1\)</span> to those with <span class="math inline">\(Z=0\)</span>. This comparison is often referred to as the <strong>first stage</strong> effect of the instrument on the treatment. Using a similar argument as above, we can write <span class="math display">\[\begin{align*}
+  \E[D | Z=1] - \E[D | Z=0] &amp;= \E[D(1) - D(0)] \\
+  &amp;= \E\big[\underbrace{D(1) - D(0)}_{=0} | A=1\big] \P(A=1) \\
+  &amp;+ \E\big[\underbrace{D(1) - D(0)}_{=0} | N=1\big] \P(N=1) \\
+  &amp;+ \E\big[\underbrace{D(1) - D(0)}_{=1} | C=1\big] \P(C=1) \\
+  &amp;+ \E\big[D(1) - D(0) | D=1\big] \underbrace{\P(F=1)}_{0} \\
+  &amp;= \P(C=1)
+\end{align*}\]</span> This argument is extremely similar (and easier) than for the reduced form effect. For compliers, notice that <span class="math inline">\(D(1)=1\)</span> and <span class="math inline">\(D(0)=0\)</span>, so <span class="math inline">\(D(1) - D(0) = 1\)</span>. Finally, we can combine the reduced form and first stage results: <span class="math display">\[\begin{align*}
+  \frac{\E[Y | Z=1] - \E[Y | Z=0]}{\E[D | Z=1] - \E[D | Z=0]} &amp;= \frac{\E[Y(1) - Y(0) | C=1] \P(C=1)}{\P(C=1)} \\
+  &amp;= \E[Y(1) - Y(0) | C=1]
+\end{align*}\]</span> This is our main result. It says that taking the ratio of the reduced form effect to the first stage effect recovers the average treatment effect for the compliers. The average treatment effect for compliers is often referred to as the <strong>local average treatment effect</strong> (LATE) as it is the average treatment effect for a specific subpopulation (the compliers). The ratio of the reduced form to the first stage is often referred to as the <strong>Wald ratio</strong>.</p>
 </section>
-<section id="interpretation-and-heterogeneity" class="level3" data-number="17.1.5">
-<h3 data-number="17.1.5" class="anchored" data-anchor-id="interpretation-and-heterogeneity"><span class="header-section-number">17.1.5</span> Interpretation and Heterogeneity</h3>
-<p>The LATE theorem tells us that instrumental variables identifies the effect of military service for those who serve because of the draft - the compliers. Crucially, we do not learn about the treatment effect for volunteers (always-takers), who may be positively selected, or for those who would avoid service even if drafted (never-takers), who may have high outside options.</p>
-<p>This highlights the fundamental issue of treatment effect heterogeneity. If the effect of military service differs across these groups - and there are strong reasons to believe it would - then the IV estimate will not equal the average treatment effect (ATE) in the population. The IV estimate gives us a credible causal estimate, but only for a specific subpopulation. This trade-off between internal validity and external validity is central to interpreting instrumental variables estimates.</p>
+<section id="estimation" class="level3" data-number="17.1.5">
+<h3 data-number="17.1.5" class="anchored" data-anchor-id="estimation"><span class="header-section-number">17.1.5</span> Estimation</h3>
+<p>Estimating the LATE is fairly straightforward. We can just use the analogy principle. In particular, <span class="math display">\[\begin{align*}
+  \widehat{LATE} &amp;= \frac{\bar{Y}_{Z=1} - \bar{Y}_{Z=0}}{\bar{D}_{Z=1} - \bar{D}_{Z=0}}
+\end{align*}\]</span> where <span class="math inline">\(\bar{Y}_{Z=z}\)</span> is the sample mean of <span class="math inline">\(Y\)</span> among those with <span class="math inline">\(Z=z\)</span>, and <span class="math inline">\(\bar{D}_{Z=z}\)</span> is the sample mean of <span class="math inline">\(D\)</span> among those with <span class="math inline">\(Z=z\)</span>.</p>
+<p>Although this is straightforward, in practice, it will be more convenient to use a package to make the calculation for you, as it will also calculate standard errors. You can use code like the following, where <code>your_data</code> is your data frame, <code>Y</code> is the outcome variable, <code>D</code> is the treatment variable, and <code>Z</code> is the instrument variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>iv_model <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(Y <span class="sc">~</span> D <span class="sc">|</span> Z, <span class="at">data =</span> your_data)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iv_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="regression-discontinuity-designs" class="level2" data-number="17.2">
@@ -549,8 +579,8 @@ window.Quarto = {
 \end{align*}\]</span> where the second equality holds by writing the observed outcomes in terms of potential outcomes, and the third equality (which is the key step) holds by the continuity assumption. The result is that <span class="math inline">\(\tau^{RD} = \E[Y(1) - Y(0) | R = c]\)</span>, which is a local average average treatment effect for individuals at the cutoff.</p>
 <p>Intuitively, you can think of regression discontinuity as delivering a local experiment where individuals just above and just below the cutoff are effectively randomly assigned to treatment and control groups.</p>
 </section>
-<section id="estimation" class="level3" data-number="17.2.3">
-<h3 data-number="17.2.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">17.2.3</span> Estimation</h3>
+<section id="estimation-1" class="level3" data-number="17.2.3">
+<h3 data-number="17.2.3" class="anchored" data-anchor-id="estimation-1"><span class="header-section-number">17.2.3</span> Estimation</h3>
 <p>From the discussion above, it may be unclear how to estimate <span class="math inline">\(\tau^{RD}\)</span> in practice. In particular, it is not clear how to deal with the limits in the definition of <span class="math inline">\(\tau^{RD}\)</span>. In fact, I think RD is the first and only time this semester where we won’t directly use the analogy principle to estimate a parameter of interest (due to the limits). To deal with the limits, instead of using all of the data, we will only use data that is “close” to the cutoff. In particular, we will only use data where <span class="math inline">\(R_i\)</span> is in the interval <span class="math inline">\([c - h, c + h]\)</span> for some bandwidth parameter <span class="math inline">\(h &gt; 0\)</span>—this bandwidth parameter basically determines what we mean by close. Once we have decided on <span class="math inline">\(h\)</span>, if you are a little clever, you can estimate <span class="math inline">\(\tau^{RD}\)</span> from a regression. In particular, you can run the following regression using only data in that interval: <span class="math display">\[\begin{align*}
   Y_i = \beta_0 + \beta_1 (R_i-c) + \big(\beta_2 + \beta_3 (R_i-c)\big) D_i + U_i
 \end{align*}\]</span> This is a regression where we (1) “center” at c, and (2) we allow for the intercept and slope coefficients to be different on each side of the cutoff. In particular, <span class="math inline">\(\hat{\beta}_2\)</span> is our estimate of <span class="math inline">\(\tau^{RD}\)</span>.</p>
@@ -569,15 +599,15 @@ window.Quarto = {
 </div>
 <p>Now let’s estimate the treatment effect using a bandwidth of <span class="math inline">\(h = 0.5\)</span> (meaning we only use observations within 0.5 units of the cutoff on either side).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose bandwidth</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Restrict to observations within bandwidth</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rd_data_bw <span class="ot">&lt;-</span> rd_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(R <span class="sc">-</span> c) <span class="sc">&lt;=</span> h)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate RD regression</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> D <span class="sc">+</span> <span class="fu">I</span>(R <span class="sc">-</span> c) <span class="sc">+</span> D<span class="sc">:</span><span class="fu">I</span>(R <span class="sc">-</span> c), <span class="at">data =</span> rd_data_bw)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose bandwidth</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Restrict to observations within bandwidth</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rd_data_bw <span class="ot">&lt;-</span> rd_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">abs</span>(R <span class="sc">-</span> c) <span class="sc">&lt;=</span> h)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate RD regression</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>rd_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> D <span class="sc">+</span> <span class="fu">I</span>(R <span class="sc">-</span> c) <span class="sc">+</span> D<span class="sc">:</span><span class="fu">I</span>(R <span class="sc">-</span> c), <span class="at">data =</span> rd_data_bw)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -673,7 +703,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -705,45 +746,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -778,11 +781,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -830,6 +829,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1057,12 +1057,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./15-experiments.html" class="pagination-link" aria-label="Experiments">
+      <a href="./15-experiments.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./17-observational_data.html" class="pagination-link" aria-label="Causal Inference with Observational Data">
+      <a href="./17-observational_data.html" class="pagination-link" aria-label="<span class='chapter-number'>18</span>&nbsp; <span class='chapter-title'>Causal Inference with Observational Data</span>">
         <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

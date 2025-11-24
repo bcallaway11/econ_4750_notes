@@ -6,7 +6,7 @@ As discussed in the previous chapter, for a variety of reasons, it is often the 
 
 ## Instrumental Variables
 
- The most common and important natural experiment arises from having an **instrumental variable** (often abbreviated IV).  A instrumental variable often arises when "something weird" happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes.  This results in the treatment being effectively randomly assigned for some subgroup.  
+ The most common and important natural experiment arises from having an **instrumental variable** (often abbreviated IV).  A instrumental variable often arises when "something weird" happens that makes some individuals more likely to participate in the treatment without otherwise affecting their outcomes.  This results in the treatment being effectively randomly assigned for some subgroup.
 
 Let me give you some examples:
 
@@ -36,13 +36,13 @@ We will continue to use the notation $Y(1)$ and $Y(0)$ to denote the potential o
 
 Based on the pair $(D_i(0), D_i(1))$, every individual falls into one of four latent types ("latent" just means unobserved, so here we mean that every unit is one of four types, but we do not observe which type they are):
 
-1. **Always-takers** have $D_i(0) = 1$ and $D_i(1) = 1$ --- they serve regardless of draft status.
+1. **Always-takers** have $D_i(0) = 1$ and $D_i(1) = 1$ --- they serve regardless of draft status.  Let $A_i=1$ for always-takers.
 
-2. **Never-takers** have $D_i(0) = 0$ and $D_i(1) = 0$ --- they never serve.
+2. **Never-takers** have $D_i(0) = 0$ and $D_i(1) = 0$ --- they never serve.  Let $N_i=1$ for never-takers.
 
-3. **Compliers** have $D_i(0) = 0$ and $D_i(1) = 1$ --- they serve only if drafted.
+3. **Compliers** have $D_i(0) = 0$ and $D_i(1) = 1$ --- they serve only if drafted.  Let $C_i=1$ for compliers.
 
-4. **Defiers** have $D_i(0) = 1$ and $D_i(1) = 0$ --- they do the opposite of what the draft tells them.
+4. **Defiers** have $D_i(0) = 1$ and $D_i(1) = 0$ --- they do the opposite of what the draft tells them.  Let $F_i=1$ for defiers.
 
 There are a couple of things that are worth pointing out about these types.  First, among these types, only compliers and defiers respond to the instrument.  Always-takers and never-takers have treatment status that is unaffected by the instrument.  Second, defiers are somewhat strange type --- for example, it seems very strange that one would serve in the military when not drafted, but avoid service when drafted.  To be clear, what I mean by "strange", is that we would not expect there to be many (or any) defiers in the military service example.  That it is strange/uncommon to be a defier will be important below.
 
@@ -68,35 +68,78 @@ Finally, monotonicity rules out defiers.  As we discussed above, in many applica
 
 ### Identification
 
-The Wald estimator (equivalent to 2SLS in this simple binary case) is defined as:
+Next, let's discuss how we can learn about causal effects under the setup that we have been considering.  That $Z$ is effectively randomly assigned suggests considering
+\begin{align*}
+  \E[Y | Z=1] - \E[Y | Z=0]
+\end{align*}
+which compares the mean outcome for those with $Z=1$ (e.g., drafted) to those with $Z=0$ (e.g., not drafted).  This comparison is often referred to as the **reduced form** effect of the instrument on the outcome.  Our next goal is to relate this equation to potential outcomes.  In particular, notice that
+\begin{align*}
+  \E[Y | Z=1] &= \E[Y(D(1)) | Z=1] \\
+  &= \E[Y(D(1))]
+\end{align*}
+where the first equality holds because for those with $Z=1$, the observed outcome is $Y(D(1))$, and the second equality holds by the independence assumption.  Using exactly the same sort of argument, it holds that
+\begin{align*}
+  \E[Y | Z=0] &= \E[Y(D(0))]
+\end{align*}
+Thus, we have that
+\begin{align*}
+  \E[Y | Z=1] - \E[Y | Z=0] &= \E[Y(D(1)) - Y(D(0))]
+\end{align*}
+This is the average causal effect of the instrument on the outcome.  It could be of interest in some cases.  For example, in the military service example, this is the average effect of being drafted on earnings.  However, it is not what we originally set out to learn about: the causal effect of the treatment on the outcome.  To proceed, let us use the law of iterated expectations to write:
+\begin{align*}
+  \E[Y(D(1)) - Y(D(0))] &= \E\big[\underbrace{Y(D(1)) - Y(D(0))}_{(A)} | A=1\big] \P(A=1) \\
+  &+ \E\big[\underbrace{Y(D(1)) - Y(D(0))}_{(B)} | N=1\big] \P(N=1) \\
+  &+ \E\big[Y(D(1)) - Y(D(0)) | C=1\big] \P(C=1) \\
+  &+ \E\big[Y(D(1)) - Y(D(0)) | D=1\big] \underbrace{\P(F=1)}_{(C)}
+\end{align*}
+We can simplify this expression significantly:
 
-$$\text{IV estimate} = \frac{E[Y_i|Z_i=1] - E[Y_i|Z_i=0]}{E[D_i|Z_i=1] - E[D_i|Z_i=0]} = \frac{\text{Reduced Form}}{\text{First Stage}}$$
+* For underlined term (A), always-takers have $D(1)=D(0)=1$, so $Y(D(1)) = Y(1)$ and $Y(D(0)) = Y(1)$, i.e., regardless of the value of the instrument that an always-taker experiences, their observed outcome is $Y(1)$.  Therefore, the underlined term equals zero.
 
-We now rewrite both the numerator and denominator using potential outcomes notation. For the numerator, the independence assumption implies that $E[Y_i|Z_i=1] = E[Y_i(D_i(1))|Z_i=1] = E[Y_i(D_i(1))]$.
+* For underlined term (B), never-takers have $D(1)=D(0)=0$, so $Y(D(1)) = Y(0)$ and $Y(D(0)) = Y(0)$, and this term is also equal to zero using a similar argument as for always-takers.
 
-Similarly, $E[Y_i|Z_i=0] = E[Y_i(D_i(0))]$. Therefore, the numerator becomes $E[Y_i(D_i(1))] - E[Y_i(D_i(0))]$. The denominator is simply $E[D_i(1)] - E[D_i(0)]$.
+* For underlined term (C), recall that monotonicity ruled out the existence of defiers, and, therefore, $\P(F=1) = 0$.
 
-To understand what these expectations represent, we decompose them by type.
+Putting this all together, we have that
+\begin{align*}
+  \E[Y | Z=1] - \E[Y | Z=0] &= \E[Y(1) - Y(0) | C=1] \P(C=1)
+\end{align*}
+This is a helpful step as we have now expressed the reduced form effect in terms of potential outcomes of the treatment itself, which is a causal effect.  The last thing that we would like to do is to try to get rid of the $\P(C=1)$ term as it is mainly just "scaling down" the causal effect term.  To do this, we will consider
+\begin{align*}
+  \E[D | Z=1] - \E[D | Z=0]
+\end{align*}
+which compares the probability of being treated for those with $Z=1$ to those with $Z=0$.  This comparison is often referred to as the **first stage** effect of the instrument on the treatment.  Using a similar argument as above, we can write
+\begin{align*}
+  \E[D | Z=1] - \E[D | Z=0] &= \E[D(1) - D(0)] \\
+  &= \E\big[\underbrace{D(1) - D(0)}_{=0} | A=1\big] \P(A=1) \\
+  &+ \E\big[\underbrace{D(1) - D(0)}_{=0} | N=1\big] \P(N=1) \\
+  &+ \E\big[\underbrace{D(1) - D(0)}_{=1} | C=1\big] \P(C=1) \\
+  &+ \E\big[D(1) - D(0) | D=1\big] \underbrace{\P(F=1)}_{0} \\
+  &= \P(C=1)
+\end{align*}
+This argument is extremely similar (and easier) than for the reduced form effect.  For compliers, notice that $D(1)=1$ and $D(0)=0$, so $D(1) - D(0) = 1$.  Finally, we can combine the reduced form and first stage results:
+\begin{align*}
+  \frac{\E[Y | Z=1] - \E[Y | Z=0]}{\E[D | Z=1] - \E[D | Z=0]} &= \frac{\E[Y(1) - Y(0) | C=1] \P(C=1)}{\P(C=1)} \\
+  &= \E[Y(1) - Y(0) | C=1]
+\end{align*}
+This is our main result.  It says that taking the ratio of the reduced form effect to the first stage effect recovers the average treatment effect for the compliers.  The average treatment effect for compliers is often referred to as the **local average treatment effect** (LATE) as it is the average treatment effect for a specific subpopulation (the compliers).  The ratio of the reduced form to the first stage is often referred to as the **Wald ratio**.
 
-For the numerator, consider each group's contribution. Never-takers have $Y_i(D_i(1)) = Y_i(0)$ and $Y_i(D_i(0)) = Y_i(0)$, so they contribute zero to the difference.
+### Estimation
 
-Always-takers have $Y_i(D_i(1)) = Y_i(1)$ and $Y_i(D_i(0)) = Y_i(1)$, so they also contribute zero. Compliers have $Y_i(D_i(1)) = Y_i(1)$ and $Y_i(D_i(0)) = Y_i(0)$, so they contribute their individual treatment effect $Y_i(1) - Y_i(0)$. Defiers don't exist by monotonicity.
+Estimating the LATE is fairly straightforward.  We can just use the analogy principle.  In particular,
+\begin{align*}
+  \widehat{LATE} &= \frac{\bar{Y}_{Z=1} - \bar{Y}_{Z=0}}{\bar{D}_{Z=1} - \bar{D}_{Z=0}}
+\end{align*}
+where $\bar{Y}_{Z=z}$ is the sample mean of $Y$ among those with $Z=z$, and $\bar{D}_{Z=z}$ is the sample mean of $D$ among those with $Z=z$.
 
-Let $\pi_c$ denote the proportion of compliers in the population. Then the numerator equals $\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]$.
+Although this is straightforward, in practice, it will be more convenient to use a package to make the calculation for you, as it will also calculate standard errors.  You can use code like the following, where `your_data` is your data frame, `Y` is the outcome variable, `D` is the treatment variable, and `Z` is the instrument variable.
 
-For the denominator, never-takers contribute $D_i(1) - D_i(0) = 0 - 0 = 0$, always-takers contribute $D_i(1) - D_i(0) = 1 - 1 = 0$, and compliers contribute $D_i(1) - D_i(0) = 1 - 0 = 1$. Therefore, the denominator equals $\pi_c$.
-
-Combining these results, we have:
-
-$$\text{IV estimate} = \frac{\pi_c \cdot E[Y_i(1) - Y_i(0) | \text{complier}]}{\pi_c} = E[Y_i(1) - Y_i(0) | \text{complier}]$$
-
-This is the Local Average Treatment Effect (LATE): the average treatment effect for compliers.
-
-### Interpretation and Heterogeneity
-
-The LATE theorem tells us that instrumental variables identifies the effect of military service for those who serve because of the draft - the compliers. Crucially, we do not learn about the treatment effect for volunteers (always-takers), who may be positively selected, or for those who would avoid service even if drafted (never-takers), who may have high outside options.
-
-This highlights the fundamental issue of treatment effect heterogeneity. If the effect of military service differs across these groups - and there are strong reasons to believe it would - then the IV estimate will not equal the average treatment effect (ATE) in the population. The IV estimate gives us a credible causal estimate, but only for a specific subpopulation. This trade-off between internal validity and external validity is central to interpreting instrumental variables estimates.
+```{r}
+#| eval: false
+library(estimatr)
+iv_model <- iv_robust(Y ~ D | Z, data = your_data)
+summary(iv_model)
+```
 
 ## Regression Discontinuity Designs
 
@@ -135,7 +178,7 @@ In the context of our financial aid example where college completion is the outc
 You should probably think of continuity as being a mild assumption (with one main possible caveat that we will discuss below).  In our example, students with GPAs of 2.99 and 3.01 are likely very similar in terms of their underlying ability and motivation, so we would expect their college completion rates to be similar absent financial aid.
 
 
-```{r continuity_plot_continuous, echo=TRUE, fig.cap="Illustration of continuity: E[Y(0)|R=r] smooth at cutoff"}
+```{r continuity_plot_continuous, fig.cap="Illustration of continuity: E[Y(0)|R=r] smooth at cutoff"}
 #| echo: false
 #| warning: false
 #| message: false
@@ -156,7 +199,7 @@ ggplot(df_cont, aes(R, EY0)) +
   theme_bw()
 ```
 
-```{r continuity_plot_violation, echo=TRUE, fig.cap="Violation: jump in E[Y(0)|R=r] at cutoff (vertical segment removed)"}
+```{r continuity_plot_violation, fig.cap="Violation: jump in E[Y(0)|R=r] at cutoff (vertical segment removed)"}
 #| echo: false
 
 # Discontinuous version with a jump
@@ -281,7 +324,7 @@ From the discussion above, it may be unclear how to estimate $\tau^{RD}$ in prac
 \begin{align*}
   Y_i = \beta_0 + \beta_1 (R_i-c) + \big(\beta_2 + \beta_3 (R_i-c)\big) D_i + U_i
 \end{align*}
-This is a regression where we (1) "center" at c, and (2) we allow for the intercept and slope coefficients to be different on each side of the cutoff.  In particular, $\hat{\beta}_2$ is our estimate of $\tau^{RD}$.  
+This is a regression where we (1) "center" at c, and (2) we allow for the intercept and slope coefficients to be different on each side of the cutoff.  In particular, $\hat{\beta}_2$ is our estimate of $\tau^{RD}$.
 
 ### Example with Simulated Data
 
@@ -343,7 +386,7 @@ rd_reg <- lm(Y ~ D + I(R - c) + D:I(R - c), data = rd_data_bw)
 summary(rd_reg)
 ```
 
-The estimated treatment effect is `r round(coef(rd_reg)["D"], 3)`, which we can compare to the true treatment effect at the cutoff of $0.8 + 0.3 \times 0 = 0.8$. 
+The estimated treatment effect is `r round(coef(rd_reg)["D"], 3)`, which we can compare to the true treatment effect at the cutoff of $0.8 + 0.3 \times 0 = 0.8$.
 
 What we've done with this regression is, effectively, to have run separate regression for the treated and untreated groups within the bandwidth, allowing for linear trends in $R$.  The intercept shift at the cutoff (the coefficient on $D$) gives us our estimate of the treatment effect.
 
@@ -412,9 +455,6 @@ ggplot(rd_data, aes(x = R, y = Y)) +
 ```
 
 This visualization shows all the data but highlights the observations within the bandwidth (which appear more opaque) and shows the fitted regression lines. The shaded gray region indicates the bandwidth around the cutoff. This makes it clear that we're only using local information near the cutoff to estimate the treatment effect.
-
-
-
 
 
 ## References
