@@ -1,0 +1,43 @@
+Description of Fertility Dataset
+
+Source: Angrist, Joshua D., and William N. Evans. "Children and Their Parents' 
+Labor Supply: Evidence from Exogenous Variation in Family Size." American 
+Economic Review 88, no. 3 (1998): 450-477.
+
+The dataset contains cross-sectional data from the 1980 U.S. Census Public Use 
+Micro Sample (PUMS) on 254,654 married women aged 21-35 with two or more 
+children. The data were used to study the effect of fertility on women's labor 
+supply using the sex composition of the first two children as an instrumental 
+variable.
+
+Sample: Married women aged 21-35 with at least two children
+
+Number of observations: 254,654
+
+Variables:
+
+morekids -- Binary indicator equal to 1 if the woman had more than two 
+            children, 0 if exactly two children
+
+boy1st -- Binary indicator equal to 1 if the first child was a boy, 0 if girl
+
+boy2nd -- Binary indicator equal to 1 if the second child was a boy, 0 if girl
+
+samesex -- Binary indicator equal to 1 if the first two children are the same 
+           sex (both boys or both girls), 0 otherwise. This variable serves as 
+           the instrumental variable in the analysis.
+
+agem1 -- Age of the mother at the time of the census (in years)
+
+black -- Binary indicator equal to 1 if the mother is Black, 0 otherwise
+
+hispan -- Binary indicator equal to 1 if the mother is Hispanic, 0 otherwise
+
+othrace -- Binary indicator equal to 1 if the mother is neither White, Black, 
+           nor Hispanic, 0 otherwise
+
+weeksm1 -- Number of weeks the mother worked in the year prior to the census
+
+Note: The ethnicity variables (black, hispan, othrace) are mutually exclusive 
+but do not include a separate indicator for White women, who form the reference 
+category.
