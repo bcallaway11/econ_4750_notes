@@ -355,7 +355,15 @@ window.Quarto = {
   <li><a href="#estimation-1" id="toc-estimation-1" class="nav-link" data-scroll-target="#estimation-1"><span class="header-section-number">17.2.3</span> Estimation</a></li>
   <li><a href="#example-with-simulated-data" id="toc-example-with-simulated-data" class="nav-link" data-scroll-target="#example-with-simulated-data"><span class="header-section-number">17.2.4</span> Example with Simulated Data</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">17.3</span> References</a></li>
+  <li><a href="#additional-material-instrumental-variables-with-covariates" id="toc-additional-material-instrumental-variables-with-covariates" class="nav-link" data-scroll-target="#additional-material-instrumental-variables-with-covariates"><span class="header-section-number">17.3</span> Additional Material: Instrumental Variables with Covariates</a>
+  <ul class="collapse">
+  <li><a href="#estimation-2" id="toc-estimation-2" class="nav-link" data-scroll-target="#estimation-2"><span class="header-section-number">17.3.1</span> Estimation</a></li>
+  </ul></li>
+  <li><a href="#additional-material-two-stage-least-squares" id="toc-additional-material-two-stage-least-squares" class="nav-link" data-scroll-target="#additional-material-two-stage-least-squares"><span class="header-section-number">17.4</span> Additional Material: Two Stage Least Squares</a>
+  <ul class="collapse">
+  <li><a href="#estimation-3" id="toc-estimation-3" class="nav-link" data-scroll-target="#estimation-3"><span class="header-section-number">17.4.1</span> Estimation</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">17.5</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -656,8 +664,64 @@ F-statistic: 284.4 on 3 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>This visualization shows all the data but highlights the observations within the bandwidth (which appear more opaque) and shows the fitted regression lines. The shaded gray region indicates the bandwidth around the cutoff. This makes it clear that we’re only using local information near the cutoff to estimate the treatment effect.</p>
 </section>
 </section>
-<section id="references" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="references"><span class="header-section-number">17.3</span> References</h2>
+<section id="additional-material-instrumental-variables-with-covariates" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="additional-material-instrumental-variables-with-covariates"><span class="header-section-number">17.3</span> Additional Material: Instrumental Variables with Covariates</h2>
+<p>In some applications, the IV assumptions may be more plausible if they are made after conditioning on some covariates <span class="math inline">\(X\)</span>. We will keep Assumptions 1, 3, and 4 the same, but modify Assumption 2 to be:</p>
+<ol start="2" type="1">
+<li><strong>Conditional Independence</strong> requires that <span class="math inline">\(Z \independent (Y(0), Y(1), D(0), D(1)) | X\)</span>, meaning the instrument is as-good-as randomly assigned after conditioning on <span class="math inline">\(X\)</span>.</li>
+</ol>
+<p>In our discussion about military service, especially if we want to consider a more realistic version of this example, an important covariate to condition on is birth year as some years there were substantially more people drafted than in other years.</p>
+<p>To start with, notice that if we condition on <span class="math inline">\(X\)</span>, then we can use exactly the same logic as before to show that <span class="math display">\[\begin{align*}
+  \text{LATE}(x) &amp;:= \E[Y(1) - Y(0) | X=x, C=1] \\
+  &amp;= \frac{\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]}{\E[D | X=x, Z=1] - \E[D | X=x, Z=0]}
+\end{align*}\]</span> which is the local average treatment effect for compliers with covariate value <span class="math inline">\(X=x\)</span>. <!-- Note to self: I think this needs conditional relevance to hold, but I don't think it's actually needed for the main expression, just makes the exposition clearer, here--></p>
+<p>Similarly, using effectively the same argument as in the conditional case, notice that <span class="math display">\[\begin{align*}
+  \P(C=1 | X=x) &amp;= \E[D| X=x, Z=1] - \E[D | X=x, Z=0]
+\end{align*}\]</span> Another term that shows up below is <span class="math inline">\(\P(C=1)\)</span>. You might think that <span class="math inline">\(\P(C=1) = \E[D|Z=1] - \E[D|Z=0]\)</span> still holds, but this is not the case when we have covariates. Instead, we can use the law of iterated expectations as follows: <span class="math display">\[\begin{align*}
+  \P(C=1) &amp;= \E[\P(C=1 | X)] \\
+  &amp;= \E[\E[D| X, Z=1] - \E[D | X, Z=0]] \\
+\end{align*}\]</span> i.e., we can recover <span class="math inline">\(\P(C=1)\)</span> by averaging over the expression for <span class="math inline">\(\P(C=1 | X=x)\)</span> above.</p>
+<p>Now, let’s move to identifying <span class="math inline">\(\text{LATE}\)</span>. Notice that <span class="math display">\[\begin{align*}
+  \text{LATE} &amp;= \E[Y(1) - Y(0) | C=1] \\
+  &amp;= \sum_x \E[Y(1) - Y(0) | X=x, C=1] \P(X=x | C=1) \\
+  &amp;= \sum_x \frac{\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]}{\E[D | X=x, Z=1] - \E[D | X=x, Z=0]} \P(C=1 | X=x) \frac{\P(X=x)}{\P(C=1)} \\
+  &amp;= \dfrac{\sum_x \big(\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]\big) \P(X=x)}{\P(C=1)} \\
+  &amp;= \dfrac{\sum_x \big(\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]\big) \P(X=x)}{\sum_x \big(\E[D | X=x, Z=1] - \E[D | X=x, Z=0]\big) \P(X=x)} \\
+  &amp;= \dfrac{\E\big[\E[Y | X, Z=1] - \E[Y | X, Z=0]\big]}{\E\big[\E[D | X, Z=1] - \E[D | X, Z=0]\big]}
+\end{align*}\]</span> where the first equality holds by the law of iterated expectations, the second equality holds by substituting in the expression for <span class="math inline">\(\text{LATE}(x)\)</span> and using Bayes’ rule, the third equality holds by substituting in the expression for <span class="math inline">\(\P(C=1 | X=x)\)</span>, the fourth equality holds by substituting in the expression for <span class="math inline">\(\P(C=1)\)</span>, and the final equality holds by rewriting the sums as expectations.</p>
+<section id="estimation-2" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="estimation-2"><span class="header-section-number">17.3.1</span> Estimation</h3>
+<p>The expression for <span class="math inline">\(\text{LATE}\)</span> above suggests a fairly straightforward estimation strategy based on the analogy principle. In particular, we can estimate the conditional expectations using regression, then plug those estimates into the expression above. Here are the steps:</p>
+<p><strong>Step 1: Estimate the reduced form separately by instrument value.</strong> Run two regressions: - Regression 1: Regress <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> using only observations with <span class="math inline">\(Z=1\)</span>. Then, recover the predicted values from that regression for each unit, which we will denote by <span class="math inline">\(\hat{m}_1(X_i)\)</span>. - Regression 2: Regress <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> using only observations with <span class="math inline">\(Z=0\)</span>. Then, recover the predicted values from that regression for each unit, which we will denote by <span class="math inline">\(\hat{m}_0(X_i)\)</span>.</p>
+<p><strong>Step 2: Estimate the first stage separately by instrument value.</strong> Run two more regressions: - Regression 3: Regress <span class="math inline">\(D\)</span> on <span class="math inline">\(X\)</span> using only observations with <span class="math inline">\(Z=1\)</span>. Then, recover the predicted values from that regression for each unit, which we will denote by <span class="math inline">\(\hat{p}_1(X_i)\)</span>. - Regression 4: Regress <span class="math inline">\(D\)</span> on <span class="math inline">\(X\)</span> using only observations with <span class="math inline">\(Z=0\)</span>. Then, recover the predicted values from that regression for each unit, which we will denote by <span class="math inline">\(\hat{p}_0(X_i)\)</span>.</p>
+<p><strong>Step 3: Take differences and the ratio of averages.</strong> Then, we can combine all of the predicted values and average to form an estimator of LATE. In particular, : <span class="math display">\[\begin{align*}
+  \widehat{LATE} = \frac{\displaystyle \frac{1}{n}\sum_{i=1}^n \big(\hat{m}_1(X_i) - \hat{m}_0(X_i)\big)}{\displaystyle \frac{1}{n}\sum_{i=1}^n \big(\hat{p}_1(X_i) - \hat{p}_0(X_i)\big)}
+\end{align*}\]</span></p>
+<p>Because we estimate several regressions and average their predicted values to estimate <span class="math inline">\(\text{LATE}\)</span>, the approach discussed above is a <strong>regression adjustment</strong> estimator.</p>
+</section>
+</section>
+<section id="additional-material-two-stage-least-squares" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="additional-material-two-stage-least-squares"><span class="header-section-number">17.4</span> Additional Material: Two Stage Least Squares</h2>
+<p>Although I like the regression adjustment estimator discussed above in settings where covariates are important, it is much more common to use <strong>two stage least squares</strong>. This approach typically requires the addtional assumption of treatment effect homogeneity, <span class="math inline">\(Y_i(1) - Y_i(0) = \alpha\)</span> for all <span class="math inline">\(i\)</span>, as we have discussed before. To simplify the discussion, let us also make the linearity assumption that <span class="math inline">\(\E[Y(0)|X] = \beta_0 + \beta_1 X_1 + \beta_2 X_2\)</span>. Then, <span class="math display">\[\begin{align*}
+  Y_i &amp;= Y_i(0) + D_i \big(Y_i(1) - Y_i(0)\big) \\
+      &amp;= \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \alpha D_i + U_i
+\end{align*}\]</span> where <span class="math inline">\(U_i = Y_i(0) - \E[Y_i(0)|X_i]\)</span> is a mean-zero error term. The problem with estimating this regression directly is that <span class="math inline">\(D_i\)</span> is <strong>endogenous</strong>—that is, <span class="math inline">\(D_i\)</span> is correlated with the error term <span class="math inline">\(U_i\)</span> (e.g., people who choose to get treatment may be different in unobserved ways that also affect outcomes). However, it turns out that, under the IV assumptions that we have discussed, we can run the auxiliary regression <span class="math display">\[\begin{align*}
+  D_i = \delta_0 + \delta_1 X_{1i} + \delta_2 X_{2i} + \pi Z_i + V_i
+\end{align*}\]</span> Then, we can recover predicted values <span class="math inline">\(\hat{D}_i\)</span> from this regression, and use those predicted values in place of <span class="math inline">\(D_i\)</span> in the original regression: <span class="math display">\[\begin{align*}
+  Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \alpha \hat{D}_i + \epsilon_i
+\end{align*}\]</span> This approach is called <strong>two stage least squares</strong> (often abbreviated 2SLS) because it involves two regressions (or stages). Under the IV assumptions, the coefficient on <span class="math inline">\(\hat{D}_i\)</span> in the second regression is a consistent estimator of the treatment effect <span class="math inline">\(\alpha\)</span>. Roughly, the reason why this works is that the predicted values <span class="math inline">\(\hat{D}_i\)</span> are “purged” of the part of <span class="math inline">\(D_i\)</span> that is correlated with the error term <span class="math inline">\(U_i\)</span> because <span class="math inline">\(\hat{D}_i\)</span> only uses variation in <span class="math inline">\(D_i\)</span> that is explained by the instrument <span class="math inline">\(Z_i\)</span> (which is independent of <span class="math inline">\(U_i\)</span> under the IV assumptions).</p>
+<section id="estimation-3" class="level3" data-number="17.4.1">
+<h3 data-number="17.4.1" class="anchored" data-anchor-id="estimation-3"><span class="header-section-number">17.4.1</span> Estimation</h3>
+<p>There are many implementations of two stage least squares. In fact, the <code>iv_robust</code> function from the <code>estimatr</code> package that we discussed above uses two stage least squares under the hood when there are covariates. In particular, you can run the following code, where <code>your_data</code> is your data frame, <code>Y</code> is the outcome variable, <code>D</code> is the treatment variable, <code>Z</code> is the instrument variable, and <code>X1</code> and <code>X2</code> are covariates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>iv_model <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(Y <span class="sc">~</span> D <span class="sc">+</span> X1 <span class="sc">+</span> X2 <span class="sc">|</span> Z <span class="sc">+</span> X1 <span class="sc">+</span> X2, <span class="at">data =</span> your_data)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iv_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="references" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="references"><span class="header-section-number">17.5</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

@@ -319,14 +319,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unconfoundedness" id="toc-unconfoundedness" class="nav-link active" data-scroll-target="#unconfoundedness"><span class="header-section-number">18.1</span> Unconfoundedness</a></li>
+  <li><a href="#unconfoundedness" id="toc-unconfoundedness" class="nav-link active" data-scroll-target="#unconfoundedness"><span class="header-section-number">18.1</span> Unconfoundedness</a>
+  <ul class="collapse">
+  <li><a href="#estimation---regression-adjustment" id="toc-estimation---regression-adjustment" class="nav-link" data-scroll-target="#estimation---regression-adjustment"><span class="header-section-number">18.1.1</span> Estimation - Regression Adjustment</a></li>
+  <li><a href="#estimation---regression-under-treatment-effect-homogeneity" id="toc-estimation---regression-under-treatment-effect-homogeneity" class="nav-link" data-scroll-target="#estimation---regression-under-treatment-effect-homogeneity"><span class="header-section-number">18.1.2</span> Estimation - Regression under Treatment Effect Homogeneity</a></li>
+  </ul></li>
   <li><a href="#panel-data-approaches" id="toc-panel-data-approaches" class="nav-link" data-scroll-target="#panel-data-approaches"><span class="header-section-number">18.2</span> Panel Data Approaches</a>
   <ul class="collapse">
-  <li><a href="#difference-in-differences" id="toc-difference-in-differences" class="nav-link" data-scroll-target="#difference-in-differences"><span class="header-section-number">18.2.1</span> Difference in differences</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">18.2.2</span> Computation</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">18.2.1</span> Setup</a></li>
+  <li><a href="#using-panel-data-to-validate-assumptions" id="toc-using-panel-data-to-validate-assumptions" class="nav-link" data-scroll-target="#using-panel-data-to-validate-assumptions"><span class="header-section-number">18.2.2</span> Using Panel Data to Validate Assumptions</a></li>
+  <li><a href="#using-panel-data-to-make-adjustments" id="toc-using-panel-data-to-make-adjustments" class="nav-link" data-scroll-target="#using-panel-data-to-make-adjustments"><span class="header-section-number">18.2.3</span> Using Panel Data to Make Adjustments</a></li>
   </ul></li>
-  <li><a href="#lab-7-drunk-driving-laws" id="toc-lab-7-drunk-driving-laws" class="nav-link" data-scroll-target="#lab-7-drunk-driving-laws"><span class="header-section-number">18.3</span> Lab 7: Drunk Driving Laws</a></li>
-  <li><a href="#lab-7-solutions" id="toc-lab-7-solutions" class="nav-link" data-scroll-target="#lab-7-solutions"><span class="header-section-number">18.4</span> Lab 7: Solutions</a></li>
+  <li><a href="#lab-7-minimium-wage-and-employment" id="toc-lab-7-minimium-wage-and-employment" class="nav-link" data-scroll-target="#lab-7-minimium-wage-and-employment"><span class="header-section-number">18.3</span> Lab 7: Minimium Wage and Employment</a></li>
+  <li><a href="#lab-7-solution" id="toc-lab-7-solution" class="nav-link" data-scroll-target="#lab-7-solution"><span class="header-section-number">18.4</span> Lab 7: Solution</a></li>
   <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">18.5</span> Coding Questions</a></li>
   <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">18.6</span> Extra Questions</a></li>
   </ul>
@@ -354,6 +359,7 @@ window.Quarto = {
 </header>
 
 
+<p>Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we’d be interested in studying. For example, it’s hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of. It is also fairly uncommon to have access to the sort of natural experiments that we discussed in the previous chapter. Instead, we often have to make do with <strong>observational data</strong>—data where the treatment is not randomly assigned. In this chapter, we’ll discuss some common approaches to causal inference with observational data.</p>
 <section id="unconfoundedness" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="unconfoundedness"><span class="header-section-number">18.1</span> Unconfoundedness</h2>
 <p><span class="math display">\[
@@ -376,8 +382,7 @@ window.Quarto = {
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
 <p>SW 6.8, SW Ch. 9</p>
-<p>Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we’d be interested in studying. For example, it’s hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of.</p>
-<p>For the remainder of this chapter, we’ll discuss common approaches to causal inference when the treatment is not randomly assigned. We’ll start with what is probably the most common approach: <strong>unconfoundedness</strong>.</p>
+<p>The approach that we will start with is what is probably the most common approach: <strong>unconfoundedness</strong>.</p>
 <p><strong>Unconfoundedness Assumption</strong>: <span class="math display">\[\begin{align*}
   (Y(1),Y(0)) \independent D | X
 \end{align*}\]</span> You can think of this as saying that, among individuals with the same covariates <span class="math inline">\(X\)</span>, they have the same distributions of potential outcomes regardless of whether or not they participate in the treatment. Note that the distribution of <span class="math inline">\(X\)</span> is still allowed to be different between the treated and untreated groups. In other words, after you condition on covariates, there is nothing special (in terms of the distributions of potential outcomes) about the group that participates in the treatment relative to the group that doesn’t participate in the treatment.</p>
@@ -386,524 +391,570 @@ window.Quarto = {
     \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
   \end{align*}\]</span></li>
 </ul>
-<p>If you are willing to believe this assumption, then you can recover the <span class="math inline">\(ATT\)</span>. There are a few different ways that you could implement this. Probably the most common (and convenient) way is to link this condition to a regression (just like we did in the previous section on experiments).</p>
-<p>To do this, let’s continue to make the treatment effect homogeneity assumption as above. In addition, let’s assume a linear model for untreated potential outcomes <span class="math display">\[\begin{align*}
-  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
-\end{align*}\]</span> and unconfoundedness implies that <span class="math inline">\(\E[U|X_1,X_2,X_3,D] = 0\)</span> (the conditioning on <span class="math inline">\(D\)</span> is the unconfoundedness part). Now, recalling the definition of the observed outcome, we can write <span class="math display">\[\begin{align*}
+<p>If you are willing to believe this assumption, then you can recover the <span class="math inline">\(ATT\)</span>. In particular, notice that <span class="math display">\[\begin{align*}
+  ATT &amp;= \E[Y(1) - Y(0) \mid D=1] \\
+  &amp;= \E\Big[\E[Y(1) - Y(0) \mid X, D=1] \Bigm| D=1\Big] \\
+  &amp;= \E\Big[\E[Y(1) \mid X, D=1] - \E[Y(0) \mid X, D=1] \Bigm| D=1\Big] \\
+  &amp;= \E\Big[\E[Y(1) \mid X, D=1] - \E[Y(0) \mid X, D=0] \Bigm| D=1\Big] \\
+  &amp;= \E\Big[\E[Y \mid X, D=1] - \E[Y \mid X, D=0] \Bigm| D=1\Big]
+\end{align*}\]</span> where the first equality is just the law of iterated expectations, the second equality uses the linearity of expectation, the third equality uses unconfoundedness—this is the key step, and the last equality uses the definition of observed outcomes. This final expression only involves observed data, so we can estimate it from data.</p>
+<p>The previous expression is quite intuitive. It suggests: (1) finding treated and untreated units that have the same covariates <span class="math inline">\(X\)</span> and comparing their outcomes, (2) then averaging these differences over the distribution of <span class="math inline">\(X\)</span> for treated units.</p>
+<section id="estimation---regression-adjustment" class="level3" data-number="18.1.1">
+<h3 data-number="18.1.1" class="anchored" data-anchor-id="estimation---regression-adjustment"><span class="header-section-number">18.1.1</span> Estimation - Regression Adjustment</h3>
+<p>Next, let’s discuss how to estimate the <span class="math inline">\(ATT\)</span> given the previous expression. I wrote down what I think is the most intuitive expression for the <span class="math inline">\(ATT\)</span> under unconfoundedness above, but we can simplify it in a way that will make estimation easier. In particular, notice that <span class="math display">\[\begin{align*}
+  ATT &amp;= \E\Big[\E[Y \mid X, D=1] - \E[Y \mid X, D=0] \Bigm| D=1\Big] \\
+  &amp;= \E\Big[\E[Y \mid X, D=1] \mid D=1\Big] - \E\Big[\E[Y \mid X, D=0] \mid D=1\Big] \\
+  &amp;= \E[Y \mid D=1] - \E\Big[\E[Y \mid X, D=0] \mid D=1\Big]
+\end{align*}\]</span> so that the only complicated part to estimate is <span class="math inline">\(\E[Y \mid X, D=0]\)</span>. We will proceed by using the analogy principle—estimate <span class="math inline">\(\E[Y \mid X, D=0]\)</span>, then average the predicted values.</p>
+<p><strong>Step 1: Regression using Untreated Units</strong></p>
+<ul>
+<li>Estimate a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> using only untreated units (i.e., those with <span class="math inline">\(D=0\)</span>), and recover predicted values from this regression, which we will denote <span class="math inline">\(\hat{Y}_i^{(0)}\)</span> for each unit <span class="math inline">\(i\)</span>.</li>
+</ul>
+<p><strong>Step 2: Average Predicted Values for Treated Units</strong></p>
+<p>Our estimator for <span class="math inline">\(ATT\)</span> will be</p>
+<p><span class="math display">\[\begin{align*}
+  \widehat{ATT} &amp;= \bar{Y}_{D=1} - \frac{1}{n_1} \sum_{i=1}^n D_i \hat{Y}_i^{(0)}
+\end{align*}\]</span> where <span class="math inline">\(\bar{Y}_{D=1}\)</span> is the average outcome for treated units, <span class="math inline">\(n_1\)</span> is the number of treated units, and the sum is over all units but only includes predicted values for treated units (because of the <span class="math inline">\(D_i\)</span> term).</p>
+<p>Because we estimate a first-step regression and then average, the approach discussed above is called <strong>regression adjustment</strong>.</p>
+<p><strong>Code</strong></p>
+<p>My favorite package for implementing regression adjustment is the <code>DRDID</code> package. This is a package that is built for using panel data, but we can “trick” it into doing cross-sectional regression adjustment. The code below shows how to do this. Suppose that we have a data frame <code>df</code> with outcome variable <code>Y</code>, treatment variable <code>D</code>, and covariates <code>X1</code>, <code>X2</code>, and <code>X3</code>. The</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DRDID)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> df<span class="sc">$</span>Y</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> df<span class="sc">$</span>D</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, <span class="at">data =</span> df)  <span class="co"># create matrix of covariates</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ra_att <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> y, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> X)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ra_att</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>DRDID::reg_did_panel</code> expects outcomes for two periods: period 1 and period 0, but our trick is to just set the period 0 outcomes to zero for everyone (i.e., <code>y0 = 0</code>). The function will then estimate the regression adjustment estimator for us. Note that you can include any covariates you want in the regression by changing the formula in <code>model.matrix</code>.</p>
+</section>
+<section id="estimation---regression-under-treatment-effect-homogeneity" class="level3" data-number="18.1.2">
+<h3 data-number="18.1.2" class="anchored" data-anchor-id="estimation---regression-under-treatment-effect-homogeneity"><span class="header-section-number">18.1.2</span> Estimation - Regression under Treatment Effect Homogeneity</h3>
+<p>Although I prefer the regression adjustment approach above, it is more common to try to estimate the causal effect of <span class="math inline">\(D\)</span> using a single regression.</p>
+<p>We will make two additional assumptions here. First, we will make the <strong>treatment effect homogeneity assumption</strong> that we have discussed before: <span class="math inline">\(Y_i(1) - Y_i(0) = \alpha\)</span> for all <span class="math inline">\(i\)</span>. Second, we will assume a linear model for untreated potential outcomes: <span class="math display">\[\begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + U
+\end{align*}\]</span> where, for simplicity, I have assumed that there are only two covariates, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Next, notice that unconfoundedness implies that <span class="math inline">\(\E[U|X_1,X_2,D] = 0\)</span> (the conditioning on <span class="math inline">\(D\)</span> is the unconfoundedness part). Now, recalling the definition of the observed outcome, we can write <span class="math display">\[\begin{align*}
   Y_i &amp;= D_i Y_i(1) + (1-D_i) Y_i(0) \\
   &amp;= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
-  &amp;= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
-\end{align*}\]</span> which suggests running the regression of observed <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1,X_2,X_3,\)</span> and <span class="math inline">\(D\)</span> and interpreting the estimate of <span class="math inline">\(\alpha\)</span> as the causal effect of participating in the treatment. In practice, this will be very similar to what we have done before — so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.</p>
+  &amp;= \alpha D_i + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + U_i
+\end{align*}\]</span> which suggests running the regression of observed <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_1,X_2,\)</span> and <span class="math inline">\(D\)</span> and interpreting the estimate of <span class="math inline">\(\alpha\)</span> as the causal effect of participating in the treatment. In practice, this will be very similar to what we have done before — so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.</p>
 <p>As a final comment, the assumption of treatment effect homogeneity is not quite so innocuous here. It turns out that you can show that, in the presence of treatment effect heterogeneity, <span class="math inline">\(\alpha\)</span> will be equal to a weighted average of individual treatment effects, but the weights can sometimes be “strange”. There are methods that are robust to treatment effect heterogeneity (they are beyond the scope of the current class, but they are not “way” more difficult than what we are doing here). That said, in my experience, the regression estimators (under treatment effect homogeneity) tend to deliver similar estimates to alternative estimators that are robust to treatment effect heterogeneity at least in the setup considered in this section.</p>
+</section>
 </section>
 <section id="panel-data-approaches" class="level2" data-number="18.2">
 <h2 data-number="18.2" class="anchored" data-anchor-id="panel-data-approaches"><span class="header-section-number">18.2</span> Panel Data Approaches</h2>
 <p>SW All of Ch. 10 and 13.4</p>
-<p>In the previous section, we invoked the assumption of unconfoundedness and were in the setup where <span class="math inline">\(X\)</span> was fully observed. But suppose instead that you thought this alternative version of unconfoundedness held <span class="math display">\[\begin{align*}
-  (Y(1),Y(0)) \independent D | (X,W)
-\end{align*}\]</span> where <span class="math inline">\(X\)</span> were observed random variables, but <span class="math inline">\(W\)</span> were not observed. Following exactly the same argument as in the previous section, this would lead to a regression like <span class="math display">\[\begin{align*}
-  Y_i = \alpha D_i + \beta_0 + \beta_1 X_i + \beta_2 W_i + U_i
-\end{align*}\]</span> (I’m just including one <span class="math inline">\(X\)</span> and one <span class="math inline">\(W\)</span> for simplicity, but you can easily imagine the case where there are more.) If <span class="math inline">\(W\)</span> were observed, then we could just run this regression, but since <span class="math inline">\(W\)</span> is not observed, we run into the problem of omitted variable bias (i.e., if we just ignore <span class="math inline">\(W\)</span>, we won’t be estimating the causal effect <span class="math inline">\(\alpha\)</span>)</p>
 <p>In this section, we’ll consider the case where a researcher has access to a different type of data called <strong>panel data</strong>. Panel data is data that follows the same individual (or firm, etc.) over time. In this case, it is often helpful to index variables by time. For example, <span class="math inline">\(Y_{it}\)</span> is the outcome for individual <span class="math inline">\(i\)</span> in time period <span class="math inline">\(t\)</span>. <span class="math inline">\(X_{it}\)</span> is the value of a regressor for individual <span class="math inline">\(i\)</span> in time period <span class="math inline">\(t\)</span> and <span class="math inline">\(D_{it}\)</span> is the value of the treatment for individual <span class="math inline">\(i\)</span> in time period <span class="math inline">\(t\)</span>. If some variable doesn’t vary over time (e.g., a regressor like race), we won’t use a <span class="math inline">\(t\)</span> subscript.</p>
-<p>Panel data potentially gives us a way around the problem of not observing some variables that we would like to condition on in the model. This is particularly likely to be the case when <span class="math inline">\(W\)</span> does not vary over time. Let’s start with there are exactly two time periods of panel data. In that case, we can write <span class="math display">\[\begin{align*}
-  Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
-\end{align*}\]</span> where we consider the case where <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> both change over time. Then, defining <span class="math inline">\(\Delta Y_{it} = Y_{it} - Y_{it-1}\)</span> (and using similar notation for other variables), notice that <span class="math display">\[\begin{align*}
-  \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-\end{align*}\]</span> which, importantly, no longer involves the unobserved <span class="math inline">\(W_i\)</span> and suggests running the above regression and interpreting the estimated version of <span class="math inline">\(\alpha\)</span> as an estimate of the causal effect of participating in the treatment.</p>
-<ul>
-<li><p><strong>Time fixed effects</strong> — The previous regression did not include an intercept. It is common in applied work to allow for the intercept to vary over time (i.e., so that <span class="math inline">\(\beta_0 = \beta_{0,t}\)</span>) which allows for “aggregate shocks” such as recessions or common trends in outcomes over time. In practice, this amounts to just including an intercept in the previous regression, for example,</p>
-<p><span class="math display">\[
-    \Delta Y_{it} = \underbrace{\theta_t} + \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-  \]</span></p></li>
-</ul>
-<p>Often, there may be many omitted, time invariant variables. In practice, these are usually just lumped into a single <strong>individual fixed effect</strong> — even if there are many time invariant, unobserved variables, we can difference them all out at the same time <span class="math display">\[\begin{align*}
-  Y_{it} &amp;= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
-  &amp;= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it}
-\end{align*}\]</span> and we can follow the same strategies as above.</p>
-<p>Another case that is common in practice is when there are more than two time periods. This case is similar to the previous one except there are multiple ways to eliminate the unobserved fixed effect. The two most common are the</p>
-<ul>
-<li><p><strong>Within estimator</strong></p>
-<p>To motivate this approach, notice that, if, for each individual, we average their outcomes over time, the we get <span class="math display">\[\begin{align*}
-    \bar{Y}_i = \alpha \bar{D}_i + \beta_1 \bar{X}_i + (\textrm{time fixed effects}) + \bar{U}_i
-  \end{align*}\]</span> (where I have just written “time fixed effects” to indicate that these are transformed version of original fixed but still show up here.) Subtracting this equation from the expression for <span class="math inline">\(Y_{it}\)</span> gives <span class="math display">\[\begin{align*}
-    Y_{it} - \bar{Y}_i = \alpha (D_{it} - \bar{D}_i) + \beta_1 (X_{it} - \bar{X}_i) + (\textrm{time fixed effects}) + U_{it} - \bar{U}_i
-  \end{align*}\]</span></p>
-<p>This is a feasible regression to estimate (everything is observed here). This is called a within estimator because the terms <span class="math inline">\(\bar{Y}_i\)</span>, <span class="math inline">\(\bar{D}_i\)</span>, and <span class="math inline">\(\bar{X}_i\)</span> are the within-individual averages-over-time of the corresponding variable.</p></li>
-<li><p><strong>First differences</strong></p>
-<p>Another approach to eliminating the unobserved fixed effects is to directly consider <span class="math inline">\(\Delta Y_{it}\)</span>:</p>
-<p><span class="math display">\[\begin{align*}
-    \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-  \end{align*}\]</span></p>
-<p>This is the same expression as we had before for the two period case. Only here you would include observations from all available time periods on <span class="math inline">\(\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}\)</span> in the regression.</p></li>
-</ul>
-<p>It’s worth mentioning the cases where a fixed effects strategy can break down:</p>
-<ul>
-<li><p>Unobserved variables vary over time</p>
-<p><span class="math display">\[
-    Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 \underbrace{W_{it}} + U_{it}
-  \]</span> In this case,</p>
-<p><span class="math display">\[
-    \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \beta_2 \underbrace{\Delta W_{it}} + \Delta U_{it}
-  \]</span></p>
-<p>which still involves the unobserved <span class="math inline">\(W_{it}\)</span>, and implies that the fixed effects regression will contain omitted variable bias.</p></li>
-<li><p>The effect of unobserved variables varies over time</p>
-<p><span class="math display">\[
-    Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \underbrace{\beta_{2,t}} W_i + U_{it}
-  \]</span> In this case,</p>
-<p><span class="math display">\[
-    \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \underbrace{(\beta_{2,t} - \beta_{2,t-1})} W_i + \Delta U_{it}
-  \]</span></p>
-<p>which still involves the unobserved <span class="math inline">\(W_i\)</span> (even though it doesn’t vary over time) and, therefore, the fixed effects regressions we have been considering will contain omitted variable bias.</p></li>
-</ul>
-<p>Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context. This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) — both of these are realistic in many applications. This is a main research area of mine and one I am happy to talk way more about.</p>
-<section id="difference-in-differences" class="level3" data-number="18.2.1">
-<h3 data-number="18.2.1" class="anchored" data-anchor-id="difference-in-differences"><span class="header-section-number">18.2.1</span> Difference in differences</h3>
-<p>The panel data approaches that we have been talking about so far are closely related to a <strong>natural-experiment</strong> type of strategy called <strong>difference in differences</strong> (DID).</p>
-<p>One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.</p>
-<p>Let’s think about the case with exactly two time periods: <span class="math inline">\(t\)</span> and <span class="math inline">\(t-1\)</span>. In this case, we’ll suppose that the outcomes that we observe are <span class="math display">\[\begin{align*}
-  Y_{it} &amp;= D_i Y_{it}(1) + (1-D_i) Y_{it}(0) \\
-  Y_{it-1} &amp;= Y_{it-1}(0)
-\end{align*}\]</span> In other words, in the second period, we observe treated potential outcomes for treated units and untreated potential outcomes for untreated units (this is just like the cross-sectional case above). But in the first period, we observe untreated potential outcomes for all units — because no one is treated yet.</p>
-<p>DID is often motivated by an assumption called the parallel trends assumption:</p>
-<p><strong>Parallel Trends Assumption</strong> <span class="math display">\[\begin{align*}
-\E[\Delta Y_t(0) | D=1] = \E[\Delta Y_t(0) | D=0]
-\end{align*}\]</span> This says that the <em>path</em> of outcomes that individuals in the treated group would have experienced if they had not been treated is the same as the path of outcomes that individual in the untreated group actually experienced.</p>
-<p>As before, we continue to be interested in <span class="math display">\[\begin{align*}
-  ATT = \E[Y_t(1) - Y_t(0) | D=1]
-\end{align*}\]</span> Recall that the key identification challenge if for <span class="math inline">\(\E[Y_t(0)|D=1]\)</span> here, and notice that <span class="math display">\[\begin{align*}
-  \E[Y_t(0) | D=1] &amp;= \E[\Delta Y_t(0) | D=1] + \E[Y_{t-1}(0) | D=1] \\
-  &amp;= \E[\Delta Y_t(0) | D=0] + \E[Y_{t-1}(0)|D=1] \\
-  &amp;= \E[\Delta Y_t | D=0] + \E[Y_{t-1}|D=1]
-\end{align*}\]</span> where the first equality adds and subtracts <span class="math inline">\(\E[Y_{t-1}(0)|D=1]\)</span>, the second equality uses the parallel trends assumption, and the last equality holds because all the potential outcomes in the previous line are actually observed outcome. Plugging this expression into the one for <span class="math inline">\(ATT\)</span> yields: <span class="math display">\[\begin{align*}
-  ATT = \E[\Delta Y_t | D=1] - \E[\Delta Y_t | D=0]
-\end{align*}\]</span> In other words, under parallel trends, the <span class="math inline">\(ATT\)</span> can be recovered by comparing the path of outcomes that treated units experienced relative to the path of outcomes that untreated units experienced (the latter of which is the path of outcomes that treated units would have experienced if they had not participated in the treatment).</p>
-<p>As above, it is often convenient to estimate <span class="math inline">\(ATT\)</span> using a regression. In fact, you can show that (in the case with two periods), <span class="math inline">\(\alpha\)</span> in the following regression is equal to the <span class="math inline">\(ATT\)</span>: <span class="math display">\[\begin{align*}
-  Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
-\end{align*}\]</span> where <span class="math inline">\(\E[v_t | D] = 0\)</span>.</p>
+<section id="setup" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">18.2.1</span> Setup</h3>
+<p>For this section, we will consider a setting where a researcher observes exactly two periods of panel data, <span class="math inline">\(t=1\)</span> and <span class="math inline">\(t=2\)</span>. We will also suppose that, in the first period, no units are treated (i.e., <span class="math inline">\(D_{i1} = 0\)</span> for all <span class="math inline">\(i\)</span>) while in the second period, some units are treated (i.e., <span class="math inline">\(D_{i2}\)</span> can be either 0 or 1). In this setting, it will be more convenient to work with the “group” variable, <span class="math inline">\(G_i\)</span>, which indicates whether or not individual <span class="math inline">\(i\)</span> participates in the treatment in the second period. Slightly updating notation, we will be interested in <span class="math inline">\(ATT = \E[Y_{t=2}(1) - Y_{t=2}(0) | G=1]\)</span> which is the average treatment effect in period 2 for the treated group. The setup discussed here is sometimes referred to as a “pre-post” design because we have a “pre-treatment” period (period 1) and a “post-treatment” period (period 2).</p>
 </section>
-<section id="computation" class="level3" data-number="18.2.2">
-<h3 data-number="18.2.2" class="anchored" data-anchor-id="computation"><span class="header-section-number">18.2.2</span> Computation</h3>
-<p>The lab in this chapter uses panel data to think about causal effects, so I won’t provide an extended discussion here but rather just mention the syntax for a few panel data estimators. Let’s suppose that you had a data frame that, for the first few rows, looked like (this is totally made up data)</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  id year         Y       X1 X2
-1  1 2019  87.92934 495.4021  1
-2  1 2020 102.77429 495.6269  1
-3  1 2021 110.84441 495.4844  0
-4  2 2019  76.54302 492.8797  1
-5  2 2020 104.29125 496.1825  1
-6  2 2021 105.06056 492.0129  1</code></pre>
-</div>
-</div>
-<p>This is what panel data typically looks like — here, we are following a single individual (who is distinguished by their <code>id</code> variable) over three years (from 2019-2021), there is an outcome <code>Y</code> and potential regressors <code>X1</code> and <code>X2</code>.</p>
-<p>There are several packages in <code>R</code> for estimating the fixed effects models that we have been considering. I mainly use <code>plm</code> (for “panel linear models”), so I’ll show you that one and then mention one more.</p>
-<p>For <code>plm</code>, if you want to estimate a fixed effects model in first differences, you would use the <code>plm</code> command with the following sort of syntax</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>name_of_data,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">model=</span><span class="st">"fd"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">index=</span><span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We include here <code>as.factor(year)</code> to include time fixed effects, <code>effect="individual"</code> means to include an individual fixed effect, <code>model="fd"</code> says to estimate the model in first differences, and <code>index="id"</code> means that the individual identifier is in the column “id”.</p>
-<p>The code for estimating the model using a within transformation is very similar:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>name_of_data,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">model=</span><span class="st">"within"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">index=</span><span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The only difference is that <code>model="fd"</code> has been replaced with <code>model="within"</code>.</p>
-<p>Let me also just mention that the <code>estimatr</code> package can estimate a fixed effects model using a within transformation. The code for this case would look like</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(estimatr)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lm_robust</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">data=</span>name_of_data,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">fixed_effects=</span><span class="sc">~</span>id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>I think the advantage of using this approach is that it seems straightforward to get the heteroskedasticity robust standard errors (or cluster-robust standard errors) that are popular in economics (as we have done before for heteroskedasticity robust standard errors for a regression with just cross sectional data). But I am not sure how (or if it is possible) to use <code>estimatr</code> to estimate the fixed effects model in first differences.</p>
+<section id="using-panel-data-to-validate-assumptions" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="using-panel-data-to-validate-assumptions"><span class="header-section-number">18.2.2</span> Using Panel Data to Validate Assumptions</h3>
+<p>The first major use of panel data is to try check/validate identification assumptions. Recall that, one of the main challenges that we faced with unconfoundedness was that it is hard to convince yourself or others that unconfoundedness holds. Panel data can help with this as we can effectively check if unconfoundedness holds in the pre-treatment period.</p>
+<p>The main implication of unconfoundedness that we used above was that we could learn about untreated potential outcomes for the treated group by looking at untreated units with the same covariates. In the pre-treatment period, no one is treated, so we can actually check if this implication holds in the pre-treatment period. That is, <span class="math display">\[\begin{align*}
+  \E[Y_{t=1} | G=1] \stackrel{?}{=} \E\Big[ \E[Y_{t=1} | X, G=0] \Bigm| G=1 \Big]
+\end{align*}\]</span> If unconfoundedness holds in the first period, then these should be equal, and if they are unequal, that is evidence against unconfoundedness holding. If you squint at this, you can see that <span class="math inline">\(\E[Y_{t=1} | G=1] - \E\Big[ \E[Y_{t=1} | X, G=0] \Bigm| G=1 \Big]\)</span> is exactly the estimand that we would use for the <span class="math inline">\(ATT\)</span> if the treatment had been implemented in period 1. Thus, we can basically implement our estimator in the pre-treatment period and check to see if we get something close to zero (implying that unconfoundedness held in period 1) or not (implying that unconfoundedness is violated in period 1). In the first case, it seems reasonable to hope that unconfoundness might hold in period 2, while in the second case, it provides a strong piece of evidence against unconfoundedness holding in period 2. Because we implement the same estimator in the pre-treatment period as we would in the post-treatment period, this approach is sometimes called a <strong>placebo test</strong>.</p>
+<p>In my view, being able to implement this sort of placebo test is the most important feature of using panel data for causal inference. That said, I should mention that this does not guarantee that we will get reliable estimates in post-treatment periods. We really need unconfoundedness to hold in the post-treatment period, not necessarily in the pre-treatment period. Still, it seems like in most applications, this is about as good evidence as you could have about the plausibility of unconfoundedness.</p>
+</section>
+<section id="using-panel-data-to-make-adjustments" class="level3" data-number="18.2.3">
+<h3 data-number="18.2.3" class="anchored" data-anchor-id="using-panel-data-to-make-adjustments"><span class="header-section-number">18.2.3</span> Using Panel Data to Make Adjustments</h3>
+<p>Besides validating assumptions, the other main use case for panel data is to adjust for certain things that would typically be unobserved if we did not have panel data. We will consider two versions of this.</p>
+<section id="lagged-outcome-unconfoundedness" class="level4" data-number="18.2.3.1">
+<h4 data-number="18.2.3.1" class="anchored" data-anchor-id="lagged-outcome-unconfoundedness"><span class="header-section-number">18.2.3.1</span> Lagged Outcome Unconfoundedness</h4>
+<p>Probably the most straightforward thing that we can do with panel data that is unavailable with cross-sectional data is to assume unconfoundedness holds after conditioning on lagged outcomes. That is, <span class="math display">\[\begin{align*}
+  \big(Y_{t=2}(1), Y_{t=2}(0)\big) \independent G | \big(X, Y_{t=1}\big)
+\end{align*}\]</span> Using exactly the same arguments as for unconfoundedness above, it immediately follows that <span class="math display">\[\begin{align*}
+  ATT &amp;= \E\Big[ \E[Y_{t=2} | X, Y_{t=1}, G=1] - \E[Y_{t=2} | X, Y_{t=1}, G=0] \Bigm| G=1 \Big]
+\end{align*}\]</span> In other words, to recover the <span class="math inline">\(ATT\)</span>, we simply need to find treated and untreated units that have the same characteristics <span class="math inline">\(X\)</span> and the same pre-treatment outcome <span class="math inline">\(Y_{t=1}\)</span>, compare their outcomes in period 2, and then average all of these differences.</p>
+<p>Estimation is exactly the same as for unconfoundedness above; just make sure to include <span class="math inline">\(Y_{t=1}\)</span> as one of the covariates in the regression adjustment or regression approach.</p>
+</section>
+<section id="difference-in-differences" class="level4" data-number="18.2.3.2">
+<h4 data-number="18.2.3.2" class="anchored" data-anchor-id="difference-in-differences"><span class="header-section-number">18.2.3.2</span> Difference-in-Differences</h4>
+<p>While adding lagged outcomes to the unconfoundedness assumption seems very natural, difference-in-differences is an alternative approach to making adjustments that is more popular among economists.</p>
+<p>In the previous section, we invoked the assumption of unconfoundedness and were in the setup where <span class="math inline">\(X\)</span> was fully observed. But suppose instead that you thought this alternative version of unconfoundedness held <span class="math display">\[\begin{align*}
+  \big(Y(1),Y(0)\big) \independent D | \big(X,W\big)
+\end{align*}\]</span> where <span class="math inline">\(X\)</span> were observed random variables, but <span class="math inline">\(W\)</span> were not observed.</p>
+<p>Let us also maintain the assumption of a linear model for untreated potential outcomes: <span class="math display">\[\begin{align*}
+  Y_t(0) = \beta_0 + \beta_1 X + \beta_2 W + U
+\end{align*}\]</span> Unconfoundedness continues to imply that <span class="math inline">\(\E[U|D] = 0\)</span> (i.e., that the error terms are not systematically different between the groups). Previously, this expression led to a regression adjustment estimator of <span class="math inline">\(ATT\)</span>, but now that approach is infeasible because <span class="math inline">\(W\)</span> is not observed. However, notice that, with panel data, we can write this model for both time periods: <span class="math display">\[\begin{align*}
+  Y_{t=2}(0) = \beta_0 + \beta_1 X + \beta_2 W + U_{t=2} \\
+  Y_{t=1}(0) = \beta_0 + \beta_1 X + \beta_2 W + U_{t=1}
+\end{align*}\]</span> Subtracting the second equation from the first gives <span class="math display">\[\begin{align*}
+  \Delta Y(0) = \Delta U
+\end{align*}\]</span> which implies that <span class="math inline">\(\E[\Delta Y(0) | D] = 0\)</span> (i.e., untreated potential outcomes do not systematically change over time).</p>
+<p>Now, let us use this to recover the <span class="math inline">\(ATT\)</span>: <span class="math display">\[\begin{align*}
+  ATT &amp;= \E[Y_{t=2}(1) - Y_{t=2}(0) | D=1] \\
+      &amp;= \E[Y_{t=2} | D=1] - \Big(\E[Y_{t=2}(0) | D=1] - \E[Y_{t=1}(0) | D=1]\Big) - \E[Y_{t=1}(0) | D=1] \\
+      &amp;= \E[Y_{t=2} | D=1] - \Big(\underbrace{\E[\Delta Y(0) | D=1]}_{=0}\Big) - \E[Y_{t=1} | D=1] \\
+      &amp;= \E[Y_{t=2} | D=1] - \E[Y_{t=1} | D=1]
+\end{align*}\]</span> In other words, in the setup above, the <span class="math inline">\(ATT\)</span> is just equal to the average post-treatment outcome for the treated group relative to the average pre-treatment outcome for the treated group. This is called a <strong>before-after</strong> identification strategy, and it is actually quite intuitive: we are effectively comparing each treated unit’s outcome after treatment to its outcome before it participated in the treatment.</p>
+<p>In practice, it is common to slightly generalize this approach. In fact, I pulled a little bit of trick on you earlier. Probably a more appropriate linear model for untreated potential outcomes is: <span class="math display">\[\begin{align*}
+  Y_t(0) = \beta_{0,t} + \beta_{1,t} X + \beta_{2,t} W + U_t
+\end{align*}\]</span> where we allow the intercept and the effects of <span class="math inline">\(X\)</span> and <span class="math inline">\(W\)</span> on untreated potential outcomes to vary over time. In this case, we can follow exactly the same steps as above to get <span class="math display">\[\begin{align*}
+  Y_{t=2}(0) &amp;= \beta_{0,t=2} + \beta_{1,t=2} X + \beta_{2,t=2} W + U_{t=2} \\
+  Y_{t=1}(0) &amp;= \beta_{0,t=1} + \beta_{1,t=1} X + \beta_{2,t=1} W + U_{t=1}
+\end{align*}\]</span> Subtracting the second equation from the first gives <span class="math display">\[\begin{align*}
+  \Delta Y(0) = \Delta \beta_0 + \Delta \beta_1 X + \Delta \beta_2 W + \Delta U
+\end{align*}\]</span> This still presents a bit of a problem as <span class="math inline">\(W\)</span> is still unobserved. In particular, we need one more assumption—the effect of <span class="math inline">\(W\)</span> is constant over time, i.e., <span class="math inline">\(\beta_{2,t=2} = \beta_{2,t=1}\)</span> so that <span class="math inline">\(\Delta \beta_2 = 0\)</span>. In this case, we have that <span class="math display">\[\begin{align*}
+  \Delta Y(0) = \Delta \beta_0 + \Delta \beta_1 X + \Delta U
+\end{align*}\]</span> since <span class="math inline">\(\E[\Delta U | X, D] = 0\)</span> (by the version of unconfoundedness we have considered in this section), it follows that <span class="math display">\[\begin{align*}
+  \E[\Delta Y(0) | X, D=1] = \E[\Delta Y(0) | X, D=0]
+\end{align*}\]</span> This condition is called the <strong>parallel trends assumption</strong> because it says that, after conditioning on <span class="math inline">\(X\)</span>, the untreated potential outcomes for the treated and untreated groups would have followed parallel paths over time. Under this assumption, we can recover the <span class="math inline">\(ATT\)</span> as follows: <span class="math display">\[\begin{align*}
+  ATT &amp;= \E[Y_{t=2}(1) - Y_{t=2}(0) | D=1] \\
+      &amp;= \E[Y_{t=2}(1) - Y_{t=1}(0) | D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | D=1] \\
+      &amp;= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | X, D=1] \Bigm| D=1 \Big]
+      &amp;= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2} - Y_{t=1} | X, D=0] \Bigm| D=1 \Big] \\
+\end{align*}\]</span> which follows essentially the same argument as for unconfoundedness after we take differences in the second equation. This suggests the following estimation approach: regression adjustment but where the outcome variable is <span class="math inline">\(\Delta Y\)</span> rather than <span class="math inline">\(Y\)</span>. This approach is called <strong>difference-in-differences</strong> because it involves taking differences over time to eliminate unobserved, time invariant variables, and then taking differences between treated and untreated groups to recover the causal effect. It is very popular in empirical work in economics.</p>
 </section>
 </section>
-<section id="lab-7-drunk-driving-laws" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="lab-7-drunk-driving-laws"><span class="header-section-number">18.3</span> Lab 7: Drunk Driving Laws</h2>
-<p>For this lab, we will use the <code>Fatalities</code> data. We will study the causal effect of mandatory jail sentence policies for drunk driving on traffic fatalities. The <code>Fatalities</code> data consists of panel data of traffic fatality death rates, whether or not a state has a mandatory jail sentence policy or not as well as several other variables from 1982-1988. Economic theory suggests that raising the cost of some behavior (in this case, you can think of a mandatory jail sentence as raising the cost of drunk driving) will lead to less of that behavior. That being said, it’s both interesting to test this theory and also consider the magnitude of this effect. That’s what we’ll do in this problem.</p>
+</section>
+<section id="lab-7-minimium-wage-and-employment" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="lab-7-minimium-wage-and-employment"><span class="header-section-number">18.3</span> Lab 7: Minimium Wage and Employment</h2>
+<p>For this lab, we will use the <code>njmin</code> data from the <code>causaldata</code> package. This is data that comes from Card and Krueger (1994), which is one of the most well-known empirical papers in all of economics. It is about the causal effect of a minimum wage increase in New Jersey on employment in the fast food industry. It is one of the original difference-in-differences papers and is also, as far as I know, one of the first papers to explicitly use the pre-post research design that we discussed above.</p>
+<p>To start with, use the following code to load the data, drop rows with missing data, and drop columns that we won’t use in this lab.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/fastfood.RData"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># drop missing data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fastfood <span class="ot">&lt;-</span> <span class="fu">subset</span>(fastfood, balanced <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># drop unused columns</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fastfood <span class="ot">&lt;-</span> <span class="fu">select</span>(fastfood, id, state, location, chain_name, ownership, fte_pre, hrsopen_pre, wage_st_pre, fte_post, hrsopen_post, wage_st_post)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol type="1">
-<li><p>This data comes in a somewhat messier format than some of the data that we have used previously. To start with, create a new column in the data called <code>afatal_per_million</code> that is the number of alcohol involved vehicle fatalities per millions people in a state in a particular year. The variable <code>afatal</code> contains the total number of alcohol involved vehicle fatalities, and the variable <code>pop</code> contains the total population in a state.</p></li>
-<li><p>Using a subset of the data from 1988, run a regression of <code>afatal_per_million</code> on whether or not a state has a mandatory jail sentence policy <code>jail</code>. How do you interpret the results?</p></li>
-<li><p>Using the same subset from part 2, run a regression of <code>afatal_per_million</code> on <code>jail</code>, unemployment rate (<code>unemp</code>), the tax on a case of beer (<code>beertax</code>), the percentage of southern baptists in the state (<code>baptist</code>), the percentage of residents residing in dry counties (<code>dry</code>), the percentage of young drivers in the state, (<code>youngdrivers</code>), and the average miles driven per person in a state (<code>miles</code>). How do you interpret the estimated coefficient on <code>jail</code>? Would you consider this to be a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related fatalities?</p></li>
-<li><p>Now, using the full data, let’s estimate a fixed effects model with alcohol related fatalities per million as the outcome and mandatory jail policies as a regressor. Estimate the model using first differences and make sure to include time fixed effects. How do you interpret the results?</p></li>
-<li><p>Estimate the same model as in part 4, but using the within estimator instead of first differences. Compare these results to the ones from part 4.</p></li>
-<li><p>Using the same within estimator as in part 5, include the same set of covariates from part 3 and interpret the estimated effect of mandatory jail policies. How do these estimates compare to the earlier ones?</p></li>
-<li><p>Now, we’ll switch to using a difference in differences approach to estimating the effect of mandatory jail policies. First, we’ll manipulate the data some.</p>
-<ol type="a">
-<li><p>To keep things simple, let’s start by limiting the data to the years 1982 and 1988 and drop the in-between periods.</p></li>
-<li><p>Second, let’s calculate the change in alcohol related fatalities per million between 1982 and 1998 and keep the covariates that we have been using from 1982. One way to do this, is to use the <code>pivot_wider</code> function from the <code>tidyr</code>. In the case of panel data, “long format” data means that each row in the data corresponds to a paricular observation <em>and</em> a particular time period. Thus, with long format data, there are <span class="math inline">\(n \times T\)</span> total rows in the data. On the other hand, “wide format” data means that each row holds all the data (across all time periods) for a particular observation. Converting back and forth between long and wide formats is a common data manipulation task. <strong>Hint:</strong> This step is probably unfamiliar, so I’d recommend seeing if you can use <code>?tidyr::pivot_wider</code> to see if you can figure out how to complete this step, but, if not, you can copy this code from the solutions in the next section.</p></li>
-<li><p>Finally, drop all states that are already treated in 1982.</p></li>
-</ol></li>
-<li><p>Using the data that you constructed in part 7, implement the difference in differences regression of the change in alcohol related fatalities per million from 1982 to 1988 on the mandatory jail policy. How do you interpret these results and how do they compare to the previous ones? Now, additionally include the set of covariates that we have been using in this model. How do you interpret these results and how do they compare to the previous ones?</p></li>
-<li><p>An alternative to DID, is to include the lagged outcome as a covariate. Using the data constructed in part 7, run a regression of alcohol related fatalities per million in 1988 on the mandatory jail policy and alcohol related fatalities per million in 1982. How do you interpret these results and how do they compare to the previous ones? Now include the additional covariates that we have been using in this model. How do you interpret these results and how do they compare to the previous ones?</p></li>
-<li><p>Comment on your results from parts 1-9. Which, if any, of these are you most inclined to interpret as a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related policies?</p></li>
+<li><p>Use <code>modelsummary::datasummary_balance</code> to report summary statistics for all the variables in the data, separately by state (New Jersey vs.&nbsp;Pennsylvania). What do you notice?</p></li>
+<li><p>Let us start by assuming unconfoundedness conditional on the restaurant chain (<code>chain_name</code>). Estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using regression adjustment. Report your estimate and interpret it.</p></li>
+<li><p>Implement the placebo test for unconfoundedness in the pre-treatment period. What do you find, and what does it suggest about the plausibility of unconfoundedness in this application?</p></li>
+<li><p>Let us change the identification strategy to lagged outcome unconfoundedness (let’s continue to also include <code>chain_name</code> as a covariate). Estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using lagged outcome unconfoundedness.</p></li>
+<li><p>Finally, estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using difference-in-differences, continuing to include <code>chain_name</code> as a covariate. How do your results compare to the previous two estimates?</p></li>
 </ol>
 </section>
-<section id="lab-7-solutions" class="level2" data-number="18.4">
-<h2 data-number="18.4" class="anchored" data-anchor-id="lab-7-solutions"><span class="header-section-number">18.4</span> Lab 7: Solutions</h2>
+<section id="lab-7-solution" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="lab-7-solution"><span class="header-section-number">18.4</span> Lab 7: Solution</h2>
 <ol type="1">
-<li></li>
+<li>Summary statistics by state</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Fatalities, <span class="at">package=</span><span class="st">"AER"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Fatalities<span class="sc">$</span>afatal_per_million <span class="ot">&lt;-</span> <span class="dv">1000000</span> <span class="sc">*</span> (Fatalities<span class="sc">$</span>afatal <span class="sc">/</span> Fatalities<span class="sc">$</span>pop )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> state,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> fastfood,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fmt=</span><span class="dv">2</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_s4tkvuohb35vwzrq8etv(i, j, css_id) {
+          var table = document.getElementById("tinytable_s4tkvuohb35vwzrq8etv");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_s4tkvuohb35vwzrq8etv');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_s4tkvuohb35vwzrq8etv(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_s4tkvuohb35vwzrq8etv");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 0, j: 7 }, { i: 0, j: 5 }, { i: 0, j: 4 }, { i: 0, j: 6 },  ], css_id: 'tinytable_css_ur3iqjwi61h2qwf06ogm',}, 
+          { positions: [ { i: 20, j: 2 }, { i: 20, j: 4 }, { i: 20, j: 3 }, { i: 20, j: 6 }, { i: 20, j: 5 }, { i: 20, j: 7 },  ], css_id: 'tinytable_css_3mmsw7pelbrm3ris3cw1',}, 
+          { positions: [ { i: 8, j: 4 }, { i: 8, j: 3 }, { i: 8, j: 5 }, { i: 8, j: 2 }, { i: 8, j: 7 }, { i: 8, j: 6 },  ], css_id: 'tinytable_css_y0z7ukef5o4046h81mle',}, 
+          { positions: [ { i: 3, j: 2 }, { i: 7, j: 2 }, { i: 5, j: 2 }, { i: 6, j: 2 }, { i: 11, j: 2 }, { i: 13, j: 2 }, { i: 14, j: 2 }, { i: 15, j: 2 }, { i: 16, j: 2 }, { i: 17, j: 2 }, { i: 18, j: 2 }, { i: 19, j: 2 }, { i: 18, j: 4 }, { i: 6, j: 4 }, { i: 9, j: 2 }, { i: 10, j: 2 }, { i: 3, j: 3 }, { i: 12, j: 2 }, { i: 5, j: 3 }, { i: 6, j: 3 }, { i: 7, j: 3 }, { i: 6, j: 5 }, { i: 9, j: 3 }, { i: 10, j: 3 }, { i: 11, j: 3 }, { i: 12, j: 3 }, { i: 13, j: 3 }, { i: 14, j: 3 }, { i: 15, j: 3 }, { i: 16, j: 3 }, { i: 17, j: 3 }, { i: 18, j: 3 }, { i: 19, j: 3 }, { i: 18, j: 5 }, { i: 2, j: 2 }, { i: 18, j: 7 }, { i: 4, j: 2 }, { i: 3, j: 4 }, { i: 4, j: 4 }, { i: 5, j: 4 }, { i: 4, j: 6 }, { i: 7, j: 4 }, { i: 6, j: 6 }, { i: 9, j: 4 }, { i: 10, j: 4 }, { i: 11, j: 4 }, { i: 12, j: 4 }, { i: 13, j: 4 }, { i: 14, j: 4 }, { i: 15, j: 4 }, { i: 16, j: 4 }, { i: 17, j: 4 }, { i: 16, j: 6 }, { i: 19, j: 4 }, { i: 18, j: 6 }, { i: 2, j: 3 }, { i: 14, j: 5 }, { i: 4, j: 3 }, { i: 3, j: 5 }, { i: 4, j: 5 }, { i: 5, j: 5 }, { i: 4, j: 7 }, { i: 7, j: 5 }, { i: 6, j: 7 }, { i: 9, j: 5 }, { i: 10, j: 5 }, { i: 11, j: 5 }, { i: 12, j: 5 }, { i: 13, j: 5 }, { i: 19, j: 6 }, { i: 15, j: 5 }, { i: 16, j: 5 }, { i: 17, j: 5 }, { i: 16, j: 7 }, { i: 19, j: 5 }, { i: 12, j: 6 }, { i: 2, j: 4 }, { i: 14, j: 6 }, { i: 2, j: 6 }, { i: 3, j: 6 }, { i: 17, j: 6 }, { i: 5, j: 6 }, { i: 11, j: 7 }, { i: 7, j: 6 }, { i: 2, j: 5 }, { i: 9, j: 6 }, { i: 10, j: 6 }, { i: 11, j: 6 }, { i: 17, j: 7 }, { i: 13, j: 6 }, { i: 19, j: 7 }, { i: 15, j: 6 }, { i: 12, j: 7 }, { i: 9, j: 7 }, { i: 10, j: 7 }, { i: 2, j: 7 }, { i: 3, j: 7 }, { i: 13, j: 7 }, { i: 14, j: 7 }, { i: 7, j: 7 }, { i: 5, j: 7 }, { i: 15, j: 7 },  ], css_id: 'tinytable_css_5mjydey0opt52y0ff0ok',}, 
+          { positions: [ { i: 0, j: 2 }, { i: 0, j: 3 },  ], css_id: 'tinytable_css_twni102e9e19xa0l3ele',}, 
+          { positions: [ { i: 1, j: 2 }, { i: 1, j: 4 }, { i: 1, j: 6 }, { i: 1, j: 5 }, { i: 1, j: 3 }, { i: 1, j: 7 },  ], css_id: 'tinytable_css_j8wwrddmh05d6u8i6t9k',}, 
+          { positions: [ { i: 20, j: 0 }, { i: 20, j: 1 },  ], css_id: 'tinytable_css_5lio4vav1znnoz5effcb',}, 
+          { positions: [ { i: 8, j: 1 }, { i: 8, j: 0 },  ], css_id: 'tinytable_css_ub35qyb50kl4ebba45g9',}, 
+          { positions: [ { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 6, j: 0 }, { i: 7, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 10, j: 0 }, { i: 11, j: 0 }, { i: 12, j: 0 }, { i: 13, j: 0 }, { i: 14, j: 0 }, { i: 15, j: 0 }, { i: 16, j: 0 }, { i: 17, j: 0 }, { i: 18, j: 0 }, { i: 19, j: 0 }, { i: 12, j: 1 }, { i: 13, j: 1 }, { i: 9, j: 0 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 4, j: 1 }, { i: 5, j: 1 }, { i: 6, j: 1 }, { i: 7, j: 1 }, { i: 16, j: 1 }, { i: 9, j: 1 }, { i: 10, j: 1 }, { i: 11, j: 1 }, { i: 17, j: 1 }, { i: 14, j: 1 }, { i: 15, j: 1 }, { i: 18, j: 1 }, { i: 19, j: 1 },  ], css_id: 'tinytable_css_6pupgcjnk57s80hmskb6',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_h83t7ieamxczc5zrt4g4',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 1, j: 1 },  ], css_id: 'tinytable_css_57b3jbnxtelfwodn8585',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_s4tkvuohb35vwzrq8etv(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_ur3iqjwi61h2qwf06ogm, .table th.tinytable_css_ur3iqjwi61h2qwf06ogm { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
+      .table td.tinytable_css_3mmsw7pelbrm3ris3cw1, .table th.tinytable_css_3mmsw7pelbrm3ris3cw1 { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_y0z7ukef5o4046h81mle, .table th.tinytable_css_y0z7ukef5o4046h81mle { text-align: right; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_5mjydey0opt52y0ff0ok, .table th.tinytable_css_5mjydey0opt52y0ff0ok { text-align: right; }
+      .table td.tinytable_css_twni102e9e19xa0l3ele, .table th.tinytable_css_twni102e9e19xa0l3ele { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_j8wwrddmh05d6u8i6t9k, .table th.tinytable_css_j8wwrddmh05d6u8i6t9k { text-align: right; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_5lio4vav1znnoz5effcb, .table th.tinytable_css_5lio4vav1znnoz5effcb { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_ub35qyb50kl4ebba45g9, .table th.tinytable_css_ub35qyb50kl4ebba45g9 { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_6pupgcjnk57s80hmskb6, .table th.tinytable_css_6pupgcjnk57s80hmskb6 { text-align: left; }
+      .table td.tinytable_css_h83t7ieamxczc5zrt4g4, .table th.tinytable_css_h83t7ieamxczc5zrt4g4 { text-align: left; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
+      .table td.tinytable_css_57b3jbnxtelfwodn8585, .table th.tinytable_css_57b3jbnxtelfwodn8585 { text-align: left; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_s4tkvuohb35vwzrq8etv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+<tr>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="2">Pennsylvania (N=75)</th>
+<th scope="col" align="center" colspan="2">New Jersey (N=309)</th>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="1"> </th>
+</tr>
+        
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">  </th>
+                <th scope="col">Mean</th>
+                <th scope="col">Std. Dev.</th>
+                <th scope="col">Mean</th>
+                <th scope="col">Std. Dev.</th>
+                <th scope="col">Diff. in Means</th>
+                <th scope="col">Std. Error</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>id</td>
+                  <td></td>
+                  <td>3776.93</td>
+                  <td>1805.12</td>
+                  <td>2176.01</td>
+                  <td>1209.22</td>
+                  <td>-1600.92</td>
+                  <td>219.50</td>
+                </tr>
+                <tr>
+                  <td>fte_pre</td>
+                  <td></td>
+                  <td>23.38</td>
+                  <td>12.01</td>
+                  <td>20.43</td>
+                  <td>9.21</td>
+                  <td>-2.95</td>
+                  <td>1.48</td>
+                </tr>
+                <tr>
+                  <td>hrsopen_pre</td>
+                  <td></td>
+                  <td>14.51</td>
+                  <td>2.96</td>
+                  <td>14.40</td>
+                  <td>2.82</td>
+                  <td>-0.12</td>
+                  <td>0.38</td>
+                </tr>
+                <tr>
+                  <td>wage_st_pre</td>
+                  <td></td>
+                  <td>4.63</td>
+                  <td>0.36</td>
+                  <td>4.61</td>
+                  <td>0.34</td>
+                  <td>-0.02</td>
+                  <td>0.05</td>
+                </tr>
+                <tr>
+                  <td>fte_post</td>
+                  <td></td>
+                  <td>21.10</td>
+                  <td>8.38</td>
+                  <td>20.90</td>
+                  <td>9.38</td>
+                  <td>-0.20</td>
+                  <td>1.10</td>
+                </tr>
+                <tr>
+                  <td>hrsopen_post</td>
+                  <td></td>
+                  <td>14.64</td>
+                  <td>2.88</td>
+                  <td>14.39</td>
+                  <td>2.76</td>
+                  <td>-0.25</td>
+                  <td>0.37</td>
+                </tr>
+                <tr>
+                  <td>wage_st_post</td>
+                  <td></td>
+                  <td>4.62</td>
+                  <td>0.36</td>
+                  <td>5.08</td>
+                  <td>0.10</td>
+                  <td>0.46</td>
+                  <td>0.04</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>N</td>
+                  <td>Pct.</td>
+                  <td>N</td>
+                  <td>Pct.</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>location</td>
+                  <td>NJ_Central</td>
+                  <td>0</td>
+                  <td>0.0</td>
+                  <td>58</td>
+                  <td>18.8</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>NJ_North</td>
+                  <td>0</td>
+                  <td>0.0</td>
+                  <td>162</td>
+                  <td>52.4</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>NJ_South</td>
+                  <td>0</td>
+                  <td>0.0</td>
+                  <td>89</td>
+                  <td>28.8</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>PA_Easton</td>
+                  <td>41</td>
+                  <td>54.7</td>
+                  <td>0</td>
+                  <td>0.0</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>PA_PhillyNE</td>
+                  <td>34</td>
+                  <td>45.3</td>
+                  <td>0</td>
+                  <td>0.0</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>chain_name</td>
+                  <td>Burger King</td>
+                  <td>33</td>
+                  <td>44.0</td>
+                  <td>126</td>
+                  <td>40.8</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>KFC</td>
+                  <td>12</td>
+                  <td>16.0</td>
+                  <td>67</td>
+                  <td>21.7</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Roy Rogers</td>
+                  <td>17</td>
+                  <td>22.7</td>
+                  <td>77</td>
+                  <td>24.9</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Wendys</td>
+                  <td>13</td>
+                  <td>17.3</td>
+                  <td>39</td>
+                  <td>12.6</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>ownership</td>
+                  <td>Franchise</td>
+                  <td>49</td>
+                  <td>65.3</td>
+                  <td>201</td>
+                  <td>65.0</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Company</td>
+                  <td>26</td>
+                  <td>34.7</td>
+                  <td>108</td>
+                  <td>35.0</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
 </div>
 <ol start="2" type="1">
-<li></li>
+<li>Regression adjustment ATT estimate</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Fatalities88 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1988</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>reg88 <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail, <span class="at">data=</span>Fatalities88)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression adjustment</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DRDID)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fte_post <span class="ot">&lt;-</span> fastfood<span class="sc">$</span>fte_post</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span>chain_name, <span class="at">data =</span> fastfood)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(fastfood<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"New Jersey"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ra_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ra_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = afatal_per_million ~ jail, data = Fatalities88)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--36.123 -16.622  -1.469   8.642 112.260 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   59.496      4.273  13.923   &lt;2e-16 ***
-jailyes        9.155      7.829   1.169    0.248    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 24.55 on 45 degrees of freedom
-  (1 observation deleted due to missingness)
-Multiple R-squared:  0.02949,   Adjusted R-squared:  0.007921 
-F-statistic: 1.367 on 1 and 45 DF,  p-value: 0.2484</code></pre>
+<pre><code> Call:
+DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+------------------------------------------------------------------
+ Outcome-Regression DID estimator for the ATT:
+ 
+   ATT     Std. Error  t value    Pr(&gt;|t|)  [95% Conf. Interval] 
+  0.5969     0.8762     0.6812     0.4957    -1.1205     2.3143  
+------------------------------------------------------------------
+ Estimator based on panel data.
+ Outcome regression est. method: OLS.
+ Analytical standard error.
+------------------------------------------------------------------
+ See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
 </div>
-<p>The estimated coefficient on mandatory jail laws is 9.155. We should interpret this as just the difference between alcohol related fatalities per million in states that had mandatory jail laws in 1988 relative to states that did not have them. We cannot reject that there is no difference between states where the policy is in place relative to those that do not have the policy.</p>
 <ol start="3" type="1">
-<li></li>
+<li>Placebo test in pre-treatment period</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reg88_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>Fatalities88)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg88_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check identification strategy in pre-treatment periods</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fte_pre <span class="ot">&lt;-</span> fastfood<span class="sc">$</span>fte_pre</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ra_att_pre <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_pre, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ra_att_pre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = afatal_per_million ~ jail + unemp + beertax + baptist + 
-    dry + youngdrivers + miles, data = Fatalities88)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--39.065  -9.907  -1.690   9.673  82.100 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)  -29.373536  32.500240  -0.904   0.3717  
-jailyes        3.120574   6.849271   0.456   0.6512  
-unemp          4.815081   1.892369   2.544   0.0150 *
-beertax        2.311850   9.521684   0.243   0.8094  
-baptist        0.661694   0.527228   1.255   0.2169  
-dry           -0.026675   0.383956  -0.069   0.9450  
-youngdrivers  -0.092100 142.804244  -0.001   0.9995  
-miles          0.006802   0.002822   2.411   0.0207 *
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 19.41 on 39 degrees of freedom
-  (1 observation deleted due to missingness)
-Multiple R-squared:  0.4742,    Adjusted R-squared:  0.3798 
-F-statistic: 5.024 on 7 and 39 DF,  p-value: 0.0003999</code></pre>
+<pre><code> Call:
+DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
+------------------------------------------------------------------
+ Outcome-Regression DID estimator for the ATT:
+ 
+   ATT     Std. Error  t value    Pr(&gt;|t|)  [95% Conf. Interval] 
+  -1.899     1.1865    -1.6004     0.1095    -4.2246     0.4267  
+------------------------------------------------------------------
+ Estimator based on panel data.
+ Outcome regression est. method: OLS.
+ Analytical standard error.
+------------------------------------------------------------------
+ See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
 </div>
-<p>The estimated coefficient on jail is 3.12. It is somewhat smaller than the previous estimate, though neither is statistically significant. We should interpret this as the partial effect of the mandatory jail policy, that is, that we estimate that mandatory jail laws increase the number of alcohol related fatalities per million by 3.12 on average controlling for the unemployment rate, beer tax, the fraction of southern baptists in the state, the fraction of residents in dry counties, the fraction of young drivers, and the average miles driven in the state. We cannot reject that the partial effect of mandatory jail policies is equal to 0.</p>
 <ol start="4" type="1">
-<li></li>
+<li>Lagged outcome unconfoundedness ATT estimate</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fd_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"fd"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fd_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lagged outcome unconfoundedness</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>lou_covs <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> chain_name <span class="sc">+</span> fte_pre, <span class="at">data =</span> fastfood)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lou_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> lou_covs)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>lou_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Oneway (individual) effect First-Difference Model
-
-Call:
-plm(formula = afatal_per_million ~ jail + as.factor(year), data = Fatalities, 
-    effect = "individual", model = "fd", index = "state")
-
-Unbalanced Panel: n = 48, T = 6-7, N = 335
-Observations used in estimation: 287
-
-Residuals:
-     Min.   1st Qu.    Median   3rd Qu.      Max. 
--51.66677  -5.09887   0.23801   6.28688 119.08976 
-
-Coefficients: (1 dropped because of singularities)
-                    Estimate Std. Error t-value Pr(&gt;|t|)   
-(Intercept)         -2.15376    0.80673 -2.6697 0.008035 **
-jailyes              2.60763    5.28351  0.4935 0.622016   
-as.factor(year)1983 -5.28423    1.82330 -2.8982 0.004050 **
-as.factor(year)1984 -3.58247    2.29451 -1.5613 0.119577   
-as.factor(year)1985 -5.60800    2.43517 -2.3029 0.022017 * 
-as.factor(year)1986 -0.74192    2.28988 -0.3240 0.746180   
-as.factor(year)1987 -2.16244    1.80716 -1.1966 0.232476   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Total Sum of Squares:    54692
-Residual Sum of Squares: 51620
-R-Squared:      0.056171
-Adj. R-Squared: 0.035946
-F-statistic: 2.77733 on 6 and 280 DF, p-value: 0.012223</code></pre>
+<pre><code> Call:
+DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = lou_covs)
+------------------------------------------------------------------
+ Outcome-Regression DID estimator for the ATT:
+ 
+   ATT     Std. Error  t value    Pr(&gt;|t|)  [95% Conf. Interval] 
+  0.844      0.8903     0.948      0.3431    -0.9009     2.5889  
+------------------------------------------------------------------
+ Estimator based on panel data.
+ Outcome regression est. method: OLS.
+ Analytical standard error.
+------------------------------------------------------------------
+ See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
 </div>
-<p>We should interpret the estimated coefficient on <code>jail</code> as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after accounting for time invariant variables whose effects do not change over time. Again, we cannot reject that the effect is equal to 0.</p>
 <ol start="5" type="1">
-<li></li>
+<li>Difference-in-differences ATT estimate</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>within_reg <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> <span class="fu">as.factor</span>(year),</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"within"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>Fatalities)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># difference-in-differences</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>did_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>did_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Oneway (individual) effect Within Model
-
-Call:
-plm(formula = afatal_per_million ~ jail + as.factor(year), data = Fatalities, 
-    effect = "individual", model = "within", index = "state")
-
-Unbalanced Panel: n = 48, T = 6-7, N = 335
-
-Residuals:
-       Min.     1st Qu.      Median     3rd Qu.        Max. 
--95.1937300  -4.9678238   0.0088078   5.1611249  40.6263546 
-
-Coefficients:
-                    Estimate Std. Error t-value  Pr(&gt;|t|)    
-jailyes               8.3327     4.9666  1.6777 0.0945164 .  
-as.factor(year)1983  -7.9151     2.6936 -2.9384 0.0035734 ** 
-as.factor(year)1984  -8.4863     2.7115 -3.1298 0.0019341 ** 
-as.factor(year)1985 -12.7849     2.7331 -4.6778 4.518e-06 ***
-as.factor(year)1986 -10.0726     2.7331 -3.6854 0.0002741 ***
-as.factor(year)1987 -13.5276     2.7115 -4.9890 1.067e-06 ***
-as.factor(year)1988 -13.6296     2.7279 -4.9964 1.030e-06 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Total Sum of Squares:    53854
-Residual Sum of Squares: 47607
-R-Squared:      0.116
-Adj. R-Squared: -0.054487
-F-statistic: 5.24882 on 7 and 280 DF, p-value: 1.2051e-05</code></pre>
+<pre><code> Call:
+DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+------------------------------------------------------------------
+ Outcome-Regression DID estimator for the ATT:
+ 
+   ATT     Std. Error  t value    Pr(&gt;|t|)  [95% Conf. Interval] 
+  0.5969     0.8762     0.6812     0.4957    -1.1205     2.3143  
+------------------------------------------------------------------
+ Estimator based on panel data.
+ Outcome regression est. method: OLS.
+ Analytical standard error.
+------------------------------------------------------------------
+ See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
 </div>
-<p>The estimated coefficient on <code>jail</code> has the same interpretation as in the previous problem. The estimated effect here is marginally statistically significant. 6.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>within_reg_covs <span class="ot">&lt;-</span> <span class="fu">plm</span>(afatal_per_million <span class="sc">~</span> jail <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">effect=</span><span class="st">"individual"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">index=</span><span class="st">"state"</span>, <span class="at">model=</span><span class="st">"within"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data=</span>Fatalities)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(within_reg_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Oneway (individual) effect Within Model
-
-Call:
-plm(formula = afatal_per_million ~ jail + unemp + beertax + baptist + 
-    dry + youngdrivers + miles, data = Fatalities, effect = "individual", 
-    model = "within", index = "state")
-
-Unbalanced Panel: n = 48, T = 6-7, N = 335
-
-Residuals:
-     Min.   1st Qu.    Median   3rd Qu.      Max. 
--95.62306  -5.69773  -0.56903   4.79219  47.80871 
-
-Coefficients:
-                Estimate  Std. Error t-value  Pr(&gt;|t|)    
-jailyes       4.9731e+00  4.9613e+00  1.0024   0.31702    
-unemp        -1.1340e+00  5.6592e-01 -2.0038   0.04605 *  
-beertax      -2.7456e+01  1.5080e+01 -1.8207   0.06972 .  
-baptist       2.5083e+00  4.3324e+00  0.5790   0.56308    
-dry           4.3092e-01  1.0870e+00  0.3964   0.69208    
-youngdrivers  2.6357e+02  5.0169e+01  5.2537 2.957e-07 ***
-miles        -6.8899e-04  7.3182e-04 -0.9415   0.34727    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Total Sum of Squares:    53854
-Residual Sum of Squares: 48083
-R-Squared:      0.10717
-Adj. R-Squared: -0.065023
-F-statistic: 4.80119 on 7 and 280 DF, p-value: 4.0281e-05</code></pre>
-</div>
-</div>
-<p>We should interpret the estimated coefficient on <code>jail</code> as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after controlling for the unemployment rate, beer taxes, the fraction of the state that is southern baptist, the fraction of the state that lives in a dry county, the fraction of young drivers in a state, and the average number of miles driven per person in the stata, and accounting for time invariant variables whose effects do not change over time.</p>
-<ol start="7" type="1">
-<li></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># part a: convert data to two period panel data</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span> <span class="sc">|</span> year<span class="sc">==</span><span class="dv">1988</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and drop some missing</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> <span class="fu">subset</span>(two_period, <span class="sc">!</span><span class="fu">is.na</span>(jail))</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>two_period <span class="ot">&lt;-</span> BMisc<span class="sc">::</span><span class="fu">makeBalancedPanel</span>(two_period, <span class="st">"state"</span>, <span class="st">"year"</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>two_period<span class="sc">$</span>jail <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(two_period<span class="sc">$</span>jail<span class="sc">==</span><span class="st">"yes"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># part b: convert into wide format</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(two_period,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">id_cols=</span><span class="st">"state"</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from=</span><span class="st">"year"</span>,</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from=</span><span class="fu">c</span>(<span class="st">"jail"</span>, <span class="st">"afatal_per_million"</span>))</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add back other covariates from 1982</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">merge</span>(wide_df, <span class="fu">subset</span>(Fatalities, year<span class="sc">==</span><span class="dv">1982</span>)[,<span class="fu">c</span>(<span class="st">"unemp"</span>, <span class="st">"beertax"</span>, <span class="st">"baptist"</span>, <span class="st">"dry"</span>, <span class="st">"youngdrivers"</span>, <span class="st">"miles"</span>,<span class="st">"state"</span>)], <span class="at">by=</span><span class="st">"state"</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># change in fatal accidents over time</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>wide_df<span class="sc">$</span>Dafatal_per_million <span class="ot">&lt;-</span> wide_df<span class="sc">$</span>afatal_per_million_1988 <span class="sc">-</span> wide_df<span class="sc">$</span>afatal_per_million_1982</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># part c: drop already treated states</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>wide_df <span class="ot">&lt;-</span> <span class="fu">subset</span>(wide_df, jail_1982<span class="sc">==</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="8" type="1">
-<li></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>did <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988, <span class="at">data=</span>wide_df)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Dafatal_per_million ~ jail_1988, data = wide_df)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--55.652 -10.993   5.033  10.405  76.822 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)  -12.585      4.242  -2.966  0.00532 **
-jail_1988      5.102     11.695   0.436  0.66526   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 24.37 on 36 degrees of freedom
-Multiple R-squared:  0.005259,  Adjusted R-squared:  -0.02237 
-F-statistic: 0.1903 on 1 and 36 DF,  p-value: 0.6653</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>did_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(Dafatal_per_million <span class="sc">~</span> jail_1988 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Dafatal_per_million ~ jail_1988 + unemp + beertax + 
-    baptist + dry + youngdrivers + miles, data = wide_df)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--38.346 -12.383   1.456   9.092  60.585 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)    6.851636  50.643035   0.135   0.8933  
-jail_1988     -1.853041  10.834391  -0.171   0.8653  
-unemp          3.725007   1.919862   1.940   0.0618 .
-beertax        8.300778  10.052007   0.826   0.4154  
-baptist        0.527893   0.723263   0.730   0.4711  
-dry           -0.955636   0.546475  -1.749   0.0906 .
-youngdrivers  89.432017 234.379768   0.382   0.7055  
-miles         -0.010360   0.005823  -1.779   0.0854 .
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 21.9 on 30 degrees of freedom
-Multiple R-squared:  0.3303,    Adjusted R-squared:  0.174 
-F-statistic: 2.114 on 7 and 30 DF,  p-value: 0.07276</code></pre>
-</div>
-</div>
-<p>If we are willing to believe that, in the absence of the policy, that trends in alcohol related fatalities per million people would have followed the same trends over time for treated and untreated states, then we can interpret these as causal effects. These estimates are broadly similar to the previous ones though the second ones (that include additional covariates) are about the only ones where we ever get a negative estimate for the effect of mandatory jail policies. Like the previous estimates, neither of these estimates are statistically different from 0.</p>
-<ol start="9" type="1">
-<li></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lag_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982, <span class="at">data=</span>wide_df)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982, 
-    data = wide_df)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--29.120 -12.663  -0.684   6.873  92.390 
-
-Coefficients:
-                        Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)              19.0810    10.1089   1.888 0.067401 .  
-jail_1988                 3.4323    10.3171   0.333 0.741363    
-afatal_per_million_1982   0.5607     0.1303   4.303 0.000129 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 21.47 on 35 degrees of freedom
-Multiple R-squared:  0.3462,    Adjusted R-squared:  0.3088 
-F-statistic: 9.266 on 2 and 35 DF,  p-value: 0.0005896</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lag_reg_covs <span class="ot">&lt;-</span> <span class="fu">lm</span>(afatal_per_million_1988 <span class="sc">~</span> jail_1988 <span class="sc">+</span> afatal_per_million_1982 <span class="sc">+</span> unemp <span class="sc">+</span> beertax <span class="sc">+</span> baptist <span class="sc">+</span> dry <span class="sc">+</span> youngdrivers <span class="sc">+</span> miles, <span class="at">data=</span>wide_df)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lag_reg_covs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982 + 
-    unemp + beertax + baptist + dry + youngdrivers + miles, data = wide_df)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--27.840  -8.793  -1.364   5.146  71.409 
-
-Coefficients:
-                          Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)             -17.292595  46.318477  -0.373  0.71161   
-jail_1988                 0.817453   9.786782   0.084  0.93401   
-afatal_per_million_1982   0.505371   0.173718   2.909  0.00689 **
-unemp                     3.189918   1.736443   1.837  0.07647 . 
-beertax                   2.885796   9.236174   0.312  0.75694   
-baptist                   0.965785   0.668259   1.445  0.15911   
-dry                      -0.567567   0.509915  -1.113  0.27482   
-youngdrivers            120.615853 211.026841   0.572  0.57202   
-miles                    -0.002692   0.005888  -0.457  0.65087   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 19.7 on 29 degrees of freedom
-Multiple R-squared:  0.5443,    Adjusted R-squared:  0.4186 
-F-statistic: 4.329 on 8 and 29 DF,  p-value: 0.001596</code></pre>
-</div>
-</div>
-<p>These estimates directly control for alcohol related fatalities per million in the pre-treatment period 1982. These sorts of specifications are less common in economics, but, in my view, it seems like a reasonable approach here. That said, the results are more or less the same as earlier estimates.</p>
-<ol start="10" type="1">
-<li>We don’t have very strong evidence that mandatory jail policies reduced the number traffic fatalities. In my view, probably the best specifications for trying to understand the causal effects are the ones in part 7 (particularly, the ones that include covariates there), but I think that the the results in parts 4-9 are also informative. Broadly, these estimates are more or less similar — none of them are statistically significant and most are positive (which is an unexpected sign).</li>
-</ol>
-<p>Before we finish, let me mention a few caveats to these results:</p>
-<ul>
-<li><p>First, I would be very hesitant to interpret these results as definitively saying that mandatory jail policies have no effect on alcohol related traffic fatalities. The main reason to be clear about this is that our standard error are quite large. For example, in the second specification in part 7 (the one I like the most), a 95% confidence interval for our estimate is <span class="math inline">\([-23.1, 19.4]\)</span>. This is a wide confidence interval — the average number of alcohol related traffic fatalities per million across all states and time periods is only 66. So our estimates are basically still compatible with very large reductions in alcohol related traffic fatalities up to large increases in alcohol related traffic fatalities.</p></li>
-<li><p>Let me make one more comment about the sign of our results. Many of our point estimates are positive; as we discussed earlier, it is hard to rationalize harsher punishments <em>increasing</em> alcohol related traffic fatalities. I think the main explanation for these results is just that our estimates are pretty noisy and, therefore, more or less “by chance” we are getting estimates that have an unexpected sign. But there are some other possible explanations that are worth mentioning. For one, there are a number of other policies related to drunk driving that occurred in the 1980s (particularly, related to legal drinking age) but perhaps others. It is not clear how these would interact with our estimates, but they could certainly play some role. Besides that, it seems to me that we have a pretty good set of covariates that enter our models, but there could be important covariates that we are missing. For this reason, some expertise in how to model state-level traffic fatalities is actually a very important skill here (actually probably the key skill here!)</p></li>
-</ul>
 </section>
 <section id="coding-questions" class="level2" data-number="18.5">
 <h2 data-number="18.5" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">18.5</span> Coding Questions</h2>

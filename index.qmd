@@ -156,6 +156,14 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Description: `?Ecdat::Fair`
 
+-  `fastfood`
+
+    - Data about fast food restaurants in New Jersey and Pennsylvania from Card and Krueger (1994)
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
 - `Fatalities`
 
     - State-level panel data about drunk driving laws and traffic fatalities

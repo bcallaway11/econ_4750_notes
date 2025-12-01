@@ -1,0 +1,111 @@
+Description of fastfood dataset
+
+Source: Card, David, and Alan B. Krueger. "Minimum Wages and Employment: A Case 
+Study of the Fast-Food Industry in New Jersey and Pennsylvania." American 
+Economic Review 84, no. 4 (1994): 772-793.
+
+Original data available at: https://davidcard.berkeley.edu/data_sets.html
+
+This is a slightly cleaned and restructured version of the original data, converted from 
+long format (820 restaurant-period observations) to wide format (410 restaurant 
+observations) for easier analysis. The original data 
+are also available in R through the loedata package.
+
+The dataset contains survey data from 410 fast-food restaurants in New Jersey 
+and eastern Pennsylvania collected in two waves: February 1992 (before New 
+Jersey's minimum wage increase) and November-December 1992 (after the increase). 
+On April 1, 1992, New Jersey raised its minimum wage from $4.25 to $5.05 per 
+hour, while Pennsylvania's minimum wage remained at $4.25. The data were used 
+to estimate the causal effect of minimum wage increases on employment using a 
+difference-in-differences design.
+
+Sample: Fast-food restaurants (Burger King, KFC, Roy Rogers, Wendys) in New 
+Jersey and eastern Pennsylvania
+
+Number of observations: 410 restaurants (820 restaurant-period observations in 
+the original long format)
+
+Variables:
+
+Identifiers:
+id -- Unique restaurant identifier created for wide format
+sheet -- Original sheet number from Card and Krueger's survey (unique store ID)
+
+Treatment Variables:
+state -- Factor variable indicating state: "Pennsylvania" (control) or 
+         "New Jersey" (treatment). New Jersey experienced the minimum wage 
+         increase; Pennsylvania did not.
+location -- Factor variable indicating geographic region within state: 
+            "NJ_South", "NJ_Central", "NJ_North", "NJ_Shore" for New Jersey 
+            restaurants; "PA_PhillyNE" (northeast suburbs of Philadelphia) or 
+            "PA_Easton" for Pennsylvania restaurants
+
+Restaurant Characteristics:
+chain_name -- Factor variable indicating restaurant chain: "Burger King", "KFC", 
+              "Roy Rogers", or "Wendys"
+ownership -- Factor variable indicating ownership type: "Franchise" or "Company" 
+             owned
+
+Pre-Treatment Variables (February 1992):
+wage_st_pre -- Starting wage for new employees in dollars per hour
+wage_gap -- Amount by which the pre-treatment starting wage was below the new 
+            $5.05 minimum (computed as max(5.05 - wage_st_pre, 0)). Positive 
+            values indicate restaurants that were legally required to raise wages.
+fte_pre -- Full-time equivalent employment, computed as empft_pre + nmgrs_pre + 
+           0.5*emppt_pre
+empft_pre -- Number of full-time employees
+emppt_pre -- Number of part-time employees
+nmgrs_pre -- Number of managers and assistant managers
+pctaff_pre -- Percentage of employees affected by the new minimum wage (i.e., 
+              earning below $5.05)
+hrsopen_pre -- Number of hours restaurant was open per day
+inctime_pre -- Typical time (in months) until first raise for new employees
+firstinc_pre -- Typical amount of first raise in dollars per hour
+bonus_pre -- Binary indicator equal to 1 if restaurant offered cash bonus for 
+             recruiting new workers
+meals_pre -- Numeric code for meal benefits: 0=none, 1=free meals, 2=reduced 
+             price meals, 3=both free and reduced price
+open_pre -- Hour of opening (e.g., 6.5 = 6:30 AM)
+psoda_pre -- Price of medium soda including tax (dollars)
+pfry_pre -- Price of small fries including tax (dollars)
+pentree_pre -- Price of entree including tax (dollars)
+nregs_pre -- Number of cash registers in store
+nregs11_pre -- Number of registers open at 11:00 AM
+
+Post-Treatment Variables (November-December 1992):
+wage_st_post -- Starting wage for new employees in dollars per hour
+fte_post -- Full-time equivalent employment
+empft_post -- Number of full-time employees
+emppt_post -- Number of part-time employees
+nmgrs_post -- Number of managers and assistant managers
+hrsopen_post -- Number of hours restaurant was open per day
+inctime_post -- Typical time (in months) until first raise for new employees
+firstinc_post -- Typical amount of first raise in dollars per hour
+bonus_post -- Binary indicator for cash bonus for recruiting new workers
+pctaff_post -- Percentage of employees affected by the new minimum wage
+meals_post -- Numeric code for meal benefits
+open_post -- Hour of opening
+psoda_post -- Price of medium soda including tax (dollars)
+pfry_post -- Price of small fries including tax (dollars)
+pentree_post -- Price of entree including tax (dollars)
+nregs_post -- Number of cash registers in store
+nregs11_post -- Number of registers open at 11:00 AM
+
+Change Variables (Post minus Pre):
+dfte -- Change in full-time equivalent employment (fte_post - fte_pre). This is 
+        the primary outcome variable for difference-in-differences estimation.
+dwage -- Change in starting wage (wage_st_post - wage_st_pre)
+
+Data Quality Variables:
+balanced -- Binary indicator equal to 1 if the restaurant has complete employment 
+            data (empft, emppt, nmgrs) in both survey waves, 0 otherwise. Card 
+            and Krueger's main analyses use balanced=1.
+ncalls -- Number of call-backs required to complete the second survey
+status2 -- Status of second interview (see Card and Krueger documentation)
+date2 -- Date of second interview in MMDDYY format
+type2 -- Type of second interview: 1=phone, 2=personal
+
+Note: Some restaurants have missing data for key variables (wage_st_pre, 
+wage_st_post, employment measures), typically due to survey non-response or 
+restaurant closure. The balanced variable identifies restaurants with complete 
+employment data suitable for difference-in-differences analysis.

@@ -457,4 +457,92 @@ ggplot(rd_data, aes(x = R, y = Y)) +
 This visualization shows all the data but highlights the observations within the bandwidth (which appear more opaque) and shows the fitted regression lines. The shaded gray region indicates the bandwidth around the cutoff. This makes it clear that we're only using local information near the cutoff to estimate the treatment effect.
 
 
+## Additional Material: Instrumental Variables with Covariates
+
+In some applications, the IV assumptions may be more plausible if they are made after conditioning on some covariates $X$.  We will keep Assumptions 1, 3, and 4 the same, but modify Assumption 2 to be:
+
+2. **Conditional Independence** requires that $Z \independent (Y(0), Y(1), D(0), D(1)) | X$, meaning the instrument is as-good-as randomly assigned after conditioning on $X$.
+
+In our discussion about military service, especially if we want to consider a more realistic version of this example, an important covariate to condition on is birth year as some years there were substantially more people drafted than in other years.
+
+To start with, notice that if we condition on $X$, then we can use exactly the same logic as before to show that
+\begin{align*}
+  \text{LATE}(x) &:= \E[Y(1) - Y(0) | X=x, C=1] \\
+  &= \frac{\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]}{\E[D | X=x, Z=1] - \E[D | X=x, Z=0]}
+\end{align*}
+which is the local average treatment effect for compliers with covariate value $X=x$.
+<!-- Note to self: I think this needs conditional relevance to hold, but I don't think it's actually needed for the main expression, just makes the exposition clearer, here-->
+
+
+Similarly, using effectively the same argument as in the conditional case, notice that
+\begin{align*}
+  \P(C=1 | X=x) &= \E[D| X=x, Z=1] - \E[D | X=x, Z=0]
+\end{align*}
+Another term that shows up below is $\P(C=1)$.  You might think that $\P(C=1) = \E[D|Z=1] - \E[D|Z=0]$ still holds, but this is not the case when we have covariates.  Instead, we can use the law of iterated expectations as follows:
+\begin{align*}
+  \P(C=1) &= \E[\P(C=1 | X)] \\
+  &= \E[\E[D| X, Z=1] - \E[D | X, Z=0]] \\
+\end{align*}
+i.e., we can recover $\P(C=1)$ by averaging over the expression for $\P(C=1 | X=x)$ above.
+
+Now, let's move to identifying $\text{LATE}$.  Notice that
+\begin{align*}
+  \text{LATE} &= \E[Y(1) - Y(0) | C=1] \\
+  &= \sum_x \E[Y(1) - Y(0) | X=x, C=1] \P(X=x | C=1) \\
+  &= \sum_x \frac{\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]}{\E[D | X=x, Z=1] - \E[D | X=x, Z=0]} \P(C=1 | X=x) \frac{\P(X=x)}{\P(C=1)} \\
+  &= \dfrac{\sum_x \big(\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]\big) \P(X=x)}{\P(C=1)} \\
+  &= \dfrac{\sum_x \big(\E[Y | X=x, Z=1] - \E[Y | X=x, Z=0]\big) \P(X=x)}{\sum_x \big(\E[D | X=x, Z=1] - \E[D | X=x, Z=0]\big) \P(X=x)} \\
+  &= \dfrac{\E\big[\E[Y | X, Z=1] - \E[Y | X, Z=0]\big]}{\E\big[\E[D | X, Z=1] - \E[D | X, Z=0]\big]}
+\end{align*}
+where the first equality holds by the law of iterated expectations, the second equality holds by substituting in the expression for $\text{LATE}(x)$ and using Bayes' rule, the third equality holds by substituting in the expression for $\P(C=1 | X=x)$, the fourth equality holds by substituting in the expression for $\P(C=1)$, and the final equality holds by rewriting the sums as expectations.
+
+### Estimation
+
+The expression for $\text{LATE}$ above suggests a fairly straightforward estimation strategy based on the analogy principle.  In particular, we can estimate the conditional expectations using regression, then plug those estimates into the expression above.  Here are the steps:
+
+**Step 1: Estimate the reduced form separately by instrument value.** Run two regressions:
+- Regression 1: Regress $Y$ on $X$ using only observations with $Z=1$. Then, recover the predicted values from that regression for each unit, which we will denote by $\hat{m}_1(X_i)$.
+- Regression 2: Regress $Y$ on $X$ using only observations with $Z=0$. Then, recover the predicted values from that regression for each unit, which we will denote by $\hat{m}_0(X_i)$.
+
+**Step 2: Estimate the first stage separately by instrument value.** Run two more regressions:
+- Regression 3: Regress $D$ on $X$ using only observations with $Z=1$. Then, recover the predicted values from that regression for each unit, which we will denote by $\hat{p}_1(X_i)$.
+- Regression 4: Regress $D$ on $X$ using only observations with $Z=0$. Then, recover the predicted values from that regression for each unit, which we will denote by $\hat{p}_0(X_i)$.
+
+**Step 3: Take differences and the ratio of averages.** Then, we can combine all of the predicted values and average to form an estimator of LATE.  In particular, :
+\begin{align*}
+  \widehat{LATE} = \frac{\displaystyle \frac{1}{n}\sum_{i=1}^n \big(\hat{m}_1(X_i) - \hat{m}_0(X_i)\big)}{\displaystyle \frac{1}{n}\sum_{i=1}^n \big(\hat{p}_1(X_i) - \hat{p}_0(X_i)\big)}
+\end{align*}
+
+Because we estimate several regressions and average their predicted values to estimate $\text{LATE}$, the approach discussed above is a **regression adjustment** estimator.
+
+## Additional Material: Two Stage Least Squares
+
+Although I like the regression adjustment estimator discussed above in settings where covariates are important, it is much more common to use **two stage least squares**.  This approach typically requires the addtional assumption of treatment effect homogeneity, $Y_i(1) - Y_i(0) = \alpha$ for all $i$, as we have discussed before.  To simplify the discussion, let us also make the linearity assumption that $\E[Y(0)|X] = \beta_0 + \beta_1 X_1 + \beta_2 X_2$.  Then,
+\begin{align*}
+  Y_i &= Y_i(0) + D_i \big(Y_i(1) - Y_i(0)\big) \\
+      &= \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \alpha D_i + U_i
+\end{align*}
+where $U_i = Y_i(0) - \E[Y_i(0)|X_i]$ is a mean-zero error term.  The problem with estimating this regression directly is that $D_i$ is **endogenous**---that is, $D_i$ is correlated with the error term $U_i$ (e.g., people who choose to get treatment may be different in unobserved ways that also affect outcomes).  However, it turns out that, under the IV assumptions that we have discussed, we can run the auxiliary regression
+\begin{align*}
+  D_i = \delta_0 + \delta_1 X_{1i} + \delta_2 X_{2i} + \pi Z_i + V_i
+\end{align*}
+Then, we can recover predicted values $\hat{D}_i$ from this regression, and use those predicted values in place of $D_i$ in the original regression:
+\begin{align*}
+  Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \alpha \hat{D}_i + \epsilon_i
+\end{align*}
+This approach is called **two stage least squares** (often abbreviated 2SLS) because it involves two regressions (or stages).  Under the IV assumptions, the coefficient on $\hat{D}_i$ in the second regression is a consistent estimator of the treatment effect $\alpha$.  Roughly, the reason why this works is that the predicted values $\hat{D}_i$ are "purged" of the part of $D_i$ that is correlated with the error term $U_i$ because $\hat{D}_i$ only uses variation in $D_i$ that is explained by the instrument $Z_i$ (which is independent of $U_i$ under the IV assumptions).
+
+### Estimation
+
+There are many implementations of two stage least squares.  In fact, the `iv_robust` function from the `estimatr` package that we discussed above uses two stage least squares under the hood when there are covariates.   In particular, you can run the following code, where `your_data` is your data frame, `Y` is the outcome variable, `D` is the treatment variable, `Z` is the instrument variable, and `X1` and `X2` are covariates.
+
+```{r}
+#| eval: false
+library(estimatr)
+iv_model <- iv_robust(Y ~ D + X1 + X2 | Z + X1 + X2, data = your_data)
+summary(iv_model)
+```
+
+
+
 ## References

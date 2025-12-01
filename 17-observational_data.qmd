@@ -1,14 +1,14 @@
 # Causal Inference with Observational Data
 
+Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we'd be interested in studying.  For example, it's hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of.  It is also fairly uncommon to have access to the sort of natural experiments that we discussed in the previous chapter.  Instead, we often have to make do with **observational data**---data where the treatment is not randomly assigned.  In this chapter, we'll discuss some common approaches to causal inference with observational data.
+
 ## Unconfoundedness
 
 {{< include latex-commands.txt >}}
 
 SW 6.8, SW Ch. 9
 
-Unfortunately, we rarely have access to experimental data in applications or the ability to run experiments to evaluate causal effects programs/policies that we'd be interested in studying.  For example, it's hard to imagine convincing a large number of countries to randomly assign their interest rate, minimum wage, or immigration policies though these are all policies that economists would be interested in thinking about the causal effect of.
-
-For the remainder of this chapter, we'll discuss common approaches to causal inference when the treatment is not randomly assigned.  We'll start with what is probably the most common approach: **unconfoundedness**.
+The approach that we will start with is what is probably the most common approach: **unconfoundedness**.
 
 **Unconfoundedness Assumption**:
 \begin{align*}
@@ -21,19 +21,75 @@ You can think of this as saying that, among individuals with the same covariates
       \E[Y(0) | X, D=1] = \E[Y(0) | X, D=0]
     \end{align*}
 
-If you are willing to believe this assumption, then you can recover the $ATT$.  There are a few different ways that you could implement this.  Probably the most common (and convenient) way is to link this condition to a regression (just like we did in the previous section on experiments).
-
-To do this, let's continue to make the treatment effect homogeneity assumption as above.  In addition, let's assume a linear model for untreated potential outcomes
+If you are willing to believe this assumption, then you can recover the $ATT$.  In particular, notice that
 \begin{align*}
-  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U
+  ATT &= \E[Y(1) - Y(0) \mid D=1] \\
+  &= \E\Big[\E[Y(1) - Y(0) \mid X, D=1] \Bigm| D=1\Big] \\
+  &= \E\Big[\E[Y(1) \mid X, D=1] - \E[Y(0) \mid X, D=1] \Bigm| D=1\Big] \\
+  &= \E\Big[\E[Y(1) \mid X, D=1] - \E[Y(0) \mid X, D=0] \Bigm| D=1\Big] \\
+  &= \E\Big[\E[Y \mid X, D=1] - \E[Y \mid X, D=0] \Bigm| D=1\Big]
 \end{align*}
-and unconfoundedness implies that $\E[U|X_1,X_2,X_3,D] = 0$ (the conditioning on $D$ is the unconfoundedness part).  Now, recalling the definition of the observed outcome, we can write
+where the first equality is just the law of iterated expectations, the second equality uses the linearity of expectation, the third equality uses unconfoundedness---this is the key step, and the last equality uses the definition of observed outcomes.  This final expression only involves observed data, so we can estimate it from data.
+
+The previous expression is quite intuitive.  It suggests: (1) finding treated and untreated units that have the same covariates $X$ and comparing their outcomes, (2) then averaging these differences over the distribution of $X$ for treated units.
+
+### Estimation - Regression Adjustment
+
+Next, let's discuss how to estimate the $ATT$ given the previous expression.  I wrote down what I think is the most intuitive expression for the $ATT$ under unconfoundedness above, but we can simplify it in a way that will make estimation easier.  In particular, notice that
+\begin{align*}
+  ATT &= \E\Big[\E[Y \mid X, D=1] - \E[Y \mid X, D=0] \Bigm| D=1\Big] \\
+  &= \E\Big[\E[Y \mid X, D=1] \mid D=1\Big] - \E\Big[\E[Y \mid X, D=0] \mid D=1\Big] \\
+  &= \E[Y \mid D=1] - \E\Big[\E[Y \mid X, D=0] \mid D=1\Big]
+\end{align*}
+so that the only complicated part to estimate is $\E[Y \mid X, D=0]$. We will proceed by using the analogy principle---estimate $\E[Y \mid X, D=0]$, then average the predicted values.
+
+**Step 1: Regression using Untreated Units**
+
+* Estimate a regression of $Y$ on $X$ using only untreated units (i.e., those with $D=0$), and recover predicted values from this regression, which we will denote $\hat{Y}_i^{(0)}$ for each unit $i$.
+
+**Step 2: Average Predicted Values for Treated Units**
+
+Our estimator for $ATT$ will be
+
+\begin{align*}
+  \widehat{ATT} &= \bar{Y}_{D=1} - \frac{1}{n_1} \sum_{i=1}^n D_i \hat{Y}_i^{(0)}
+\end{align*}
+where $\bar{Y}_{D=1}$ is the average outcome for treated units, $n_1$ is the number of treated units, and the sum is over all units but only includes predicted values for treated units (because of the $D_i$ term).
+
+Because we estimate a first-step regression and then average, the approach discussed above is called **regression adjustment**.
+
+**Code**
+
+My favorite package for implementing regression adjustment is the `DRDID` package.  This is a package that is built for using panel data, but we can "trick" it into doing cross-sectional regression adjustment.  The code below shows how to do this.  Suppose that we have a data frame `df` with outcome variable `Y`, treatment variable `D`, and covariates `X1`, `X2`, and `X3`.  The
+
+```{r}
+#| eval: false
+library(DRDID)
+
+y <- df$Y
+D <- df$D
+X <- model.matrix(~ X1 + X2 + X3, data = df)  # create matrix of covariates
+ra_att <- DRDID::reg_did_panel(y1 = y, y0 = 0, D = D, covariates = X)
+ra_att
+```
+
+`DRDID::reg_did_panel` expects outcomes for two periods: period 1 and period 0, but our trick is to just set the period 0 outcomes to zero for everyone (i.e., `y0 = 0`).  The function will then estimate the regression adjustment estimator for us.  Note that you can include any covariates you want in the regression by changing the formula in `model.matrix`.
+
+### Estimation - Regression under Treatment Effect Homogeneity
+
+Although I prefer the regression adjustment approach above, it is more common to try to estimate the causal effect of $D$ using a single regression.
+
+We will make two additional assumptions here.  First, we will make the **treatment effect homogeneity assumption** that we have discussed before: $Y_i(1) - Y_i(0) = \alpha$ for all $i$.  Second, we will assume a linear model for untreated potential outcomes:
+\begin{align*}
+  Y(0) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + U
+\end{align*}
+where, for simplicity, I have assumed that there are only two covariates, $X_1$ and $X_2$.  Next, notice that unconfoundedness implies that $\E[U|X_1,X_2,D] = 0$ (the conditioning on $D$ is the unconfoundedness part).  Now, recalling the definition of the observed outcome, we can write
 \begin{align*}
   Y_i &= D_i Y_i(1) + (1-D_i) Y_i(0) \\
   &= D_i (Y_i(1) - Y_i(0)) + Y_i(0) \\
-  &= D_i \alpha + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + U_i
+  &= \alpha D_i + \beta_0 + \beta_1 X_1 + \beta_2 X_2 + U_i
 \end{align*}
-which suggests running the regression of observed $Y$ on $X_1,X_2,X_3,$ and $D$ and interpreting the estimate of $\alpha$ as the causal effect of participating in the treatment.  In practice, this will be very similar to what we have done before --- so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.
+which suggests running the regression of observed $Y$ on $X_1,X_2,$ and $D$ and interpreting the estimate of $\alpha$ as the causal effect of participating in the treatment.  In practice, this will be very similar to what we have done before --- so the process would not be hard, but convincing someone (or even yourself) that unconfoundedness holds will be the bigger issue here.
 
 As a final comment, the assumption of treatment effect homogeneity is not quite so innocuous here.  It turns out that you can show that, in the presence of treatment effect heterogeneity, $\alpha$ will be equal to a weighted average of individual treatment effects, but the weights can sometimes be "strange".  There are methods that are robust to treatment effect heterogeneity (they are beyond the scope of the current class, but they are not "way" more difficult than what we are doing here).  That said, in my experience, the regression estimators (under treatment effect homogeneity) tend to deliver similar estimates to alternative estimators that are robust to treatment effect heterogeneity at least in the setup considered in this section.
 
@@ -42,346 +98,187 @@ As a final comment, the assumption of treatment effect homogeneity is not quite 
 
 SW All of Ch. 10 and 13.4
 
-In the previous section, we invoked the assumption of unconfoundedness and were in the setup where $X$ was fully observed.  But suppose instead that you thought this alternative version of unconfoundedness held
-\begin{align*}
-  (Y(1),Y(0)) \independent D | (X,W)
-\end{align*}
-where $X$ were observed random variables, but $W$ were not observed.  Following exactly the same argument as in the previous section, this would lead to a regression like
-\begin{align*}
-  Y_i = \alpha D_i + \beta_0 + \beta_1 X_i + \beta_2 W_i + U_i
-\end{align*}
-(I'm just including one $X$ and one $W$ for simplicity, but you can easily imagine the case where there are more.)  If $W$ were observed, then we could just run this regression, but since $W$ is not observed, we run into the problem of omitted variable bias (i.e., if we just ignore $W$, we won't be estimating the causal effect $\alpha$)
-
 In this section, we'll consider the case where a researcher has access to a different type of data called **panel data**.  Panel data is data that follows the same individual (or firm, etc.) over time.  In this case, it is often helpful to index variables by time.  For example, $Y_{it}$ is the outcome for individual $i$ in time period $t$.  $X_{it}$ is the value of a regressor for individual $i$ in time period $t$ and $D_{it}$ is the value of the treatment for individual $i$ in time period $t$.  If some variable doesn't vary over time (e.g., a regressor like race), we won't use a $t$ subscript.
 
-Panel data potentially gives us a way around the problem of not observing some variables that we would like to condition on in the model.  This is particularly likely to be the case when $W$ does not vary over time.  Let's start with there are exactly two time periods of panel data.  In that case, we can write
+### Setup
+
+For this section, we will consider a setting where a researcher observes exactly two periods of panel data, $t=1$ and $t=2$.  We will also suppose that, in the first period, no units are treated (i.e., $D_{i1} = 0$ for all $i$) while in the second period, some units are treated (i.e., $D_{i2}$ can be either 0 or 1).  In this setting, it will be more convenient to work with the "group" variable, $G_i$, which indicates whether or not individual $i$ participates in the treatment in the second period.  Slightly updating notation, we will be interested in $ATT = \E[Y_{t=2}(1) - Y_{t=2}(0) | G=1]$ which is the average treatment effect in period 2 for the treated group.  The setup discussed here is sometimes referred to as a "pre-post" design because we have a "pre-treatment" period (period 1) and a "post-treatment" period (period 2).
+
+### Using Panel Data to Validate Assumptions
+
+The first major use of panel data is to try check/validate identification assumptions.  Recall that, one of the main challenges that we faced with unconfoundedness was that it is hard to convince yourself or others that unconfoundedness holds.  Panel data can help with this as we can effectively check if unconfoundedness holds in the pre-treatment period.
+
+The main implication of unconfoundedness that we used above was that we could learn about untreated potential outcomes for the treated group by looking at untreated units with the same covariates.  In the pre-treatment period, no one is treated, so we can actually check if this implication holds in the pre-treatment period.  That is,
 \begin{align*}
-  Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 W_i + U_{it}
+  \E[Y_{t=1} | G=1] \stackrel{?}{=} \E\Big[ \E[Y_{t=1} | X, G=0] \Bigm| G=1 \Big]
 \end{align*}
-where we consider the case where $D$ and $X$ both change over time.  Then, defining $\Delta Y_{it} = Y_{it} - Y_{it-1}$ (and using similar notation for other variables), notice that
+If unconfoundedness holds in the first period, then these should be equal, and if they are unequal, that is evidence against unconfoundedness holding.  If you squint at this, you can see that $\E[Y_{t=1} | G=1] - \E\Big[ \E[Y_{t=1} | X, G=0] \Bigm| G=1 \Big]$ is exactly the estimand that we would use for the $ATT$ if the treatment had been implemented in period 1.  Thus, we can basically implement our estimator in the pre-treatment period and check to see if we get something close to zero (implying that unconfoundedness held in period 1) or not (implying that unconfoundedness is violated in period 1).  In the first case, it seems reasonable to hope that unconfoundness might hold in period 2, while in the second case, it provides a strong piece of evidence against unconfoundedness holding in period 2.  Because we implement the same estimator in the pre-treatment period as we would in the post-treatment period, this approach is sometimes called a **placebo test**.
+
+In my view, being able to implement this sort of placebo test is the most important feature of using panel data for causal inference.  That said, I should mention that this does not guarantee that we will get reliable estimates in post-treatment periods.  We really need unconfoundedness to hold in the post-treatment period, not necessarily in the pre-treatment period.  Still, it seems like in most applications, this is about as good evidence as you could have about the plausibility of unconfoundedness.
+
+### Using Panel Data to Make Adjustments
+
+Besides validating assumptions, the other main use case for panel data is to adjust for certain things that would typically be unobserved if we did not have panel data.  We will consider two versions of this.
+
+#### Lagged Outcome Unconfoundedness
+
+Probably the most straightforward thing that we can do with panel data that is unavailable with cross-sectional data is to assume unconfoundedness holds after conditioning on lagged outcomes.  That is,
 \begin{align*}
-  \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
+  \big(Y_{t=2}(1), Y_{t=2}(0)\big) \independent G | \big(X, Y_{t=1}\big)
 \end{align*}
-which, importantly, no longer involves the unobserved $W_i$ and suggests running the above regression and interpreting the estimated version of $\alpha$ as an estimate of the causal effect of participating in the treatment.
-
-* **Time fixed effects** --- The previous regression did not include an intercept.  It is common in applied work to allow for the intercept to vary over time (i.e., so that $\beta_0 = \beta_{0,t}$) which allows for "aggregate shocks" such as recessions or common trends in outcomes over time.  In practice, this amounts to just including an intercept in the previous regression, for example,
-
-    $$
-      \Delta Y_{it} = \underbrace{\theta_t} + \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-    $$
-
-Often, there may be many omitted, time invariant variables.  In practice, these are usually just lumped into a single **individual fixed effect** --- even if there are many time invariant, unobserved variables, we can difference them all out at the same time
+Using exactly the same arguments as for unconfoundedness above, it immediately follows that
 \begin{align*}
-  Y_{it} &= \alpha D_{it} + \beta_{0,t} + \beta_1 X_{it} + \underbrace{\beta_2 W_{1i} + \beta_3 W_{2i} + \beta_4 W_{3i}} + U_{it} \\
-  &= \alpha D_{it} + \beta_{0,t} + \underbrace{\eta_i} + U_{it}
+  ATT &= \E\Big[ \E[Y_{t=2} | X, Y_{t=1}, G=1] - \E[Y_{t=2} | X, Y_{t=1}, G=0] \Bigm| G=1 \Big]
 \end{align*}
-and we can follow the same strategies as above.
+In other words, to recover the $ATT$, we simply need to find treated and untreated units that have the same characteristics $X$ and the same pre-treatment outcome $Y_{t=1}$, compare their outcomes in period 2, and then average all of these differences.
 
-Another case that is common in practice is when there are more than two time periods.  This case is similar to the previous one except there are multiple ways to eliminate the unobserved fixed effect.  The two most common are the
+Estimation is exactly the same as for unconfoundedness above; just make sure to include $Y_{t=1}$ as one of the covariates in the regression adjustment or regression approach.
 
-* **Within estimator**
+#### Difference-in-Differences
 
-    To motivate this approach, notice that, if, for each individual, we average their outcomes over time, the we get
-    \begin{align*}
-      \bar{Y}_i = \alpha \bar{D}_i + \beta_1 \bar{X}_i + (\textrm{time fixed effects}) + \bar{U}_i
-    \end{align*}
-    (where I have just written "time fixed effects" to indicate that these are transformed version of original fixed but still show up here.)  Subtracting this equation from the expression for $Y_{it}$ gives
-    \begin{align*}
-      Y_{it} - \bar{Y}_i = \alpha (D_{it} - \bar{D}_i) + \beta_1 (X_{it} - \bar{X}_i) + (\textrm{time fixed effects}) + U_{it} - \bar{U}_i
-    \end{align*}
+While adding lagged outcomes to the unconfoundedness assumption seems very natural, difference-in-differences is an alternative approach to making adjustments that is more popular among economists.
 
-    This is a feasible regression to estimate (everything is observed here).  This is called a within estimator because the terms $\bar{Y}_i$, $\bar{D}_i$, and $\bar{X}_i$ are the within-individual averages-over-time of the corresponding variable.
-
-* **First differences**
-
-    Another approach to eliminating the unobserved fixed effects is to directly consider $\Delta Y_{it}$:
-
-    \begin{align*}
-      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \Delta U_{it}
-    \end{align*}
-
-    This is the same expression as we had before for the two period case.  Only here you would include observations from all available time periods on $\Delta Y_{it}, \Delta D_{it}, \Delta X_{it}$ in the regression.
-
-It's worth mentioning the cases where a fixed effects strategy can break down:
-
-* Unobserved variables vary over time
-
-    $$
-      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \beta_2 \underbrace{W_{it}} + U_{it}
-    $$
-    In this case,
-
-    $$
-      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \beta_2 \underbrace{\Delta W_{it}} + \Delta U_{it}
-    $$
-
-    which still involves the unobserved $W_{it}$, and implies that the fixed effects regression will contain omitted variable bias.
-
-* The effect of unobserved variables varies over time
-
-    $$
-      Y_{it} = \alpha D_{it} + \beta_0 + \beta_1 X_{it} + \underbrace{\beta_{2,t}} W_i + U_{it}
-    $$
-    In this case,
-
-    $$
-      \Delta Y_{it} = \alpha \Delta D_{it} + \beta_1 \Delta X_{it} + \underbrace{(\beta_{2,t} - \beta_{2,t-1})} W_i + \Delta U_{it}
-    $$
-
-    which still involves the unobserved $W_i$ (even though it doesn't vary over time) and, therefore, the fixed effects regressions we have been considering will contain omitted variable bias.
-
-
-Also, the assumption of treatment effect homogeneity can potentially matter a lot in this context.  This will particularly be the case when (i) individuals can become treated at different points in time, and (ii) there are treatment effect dynamics (so that the effect of participating in the treatment can vary over time) --- both of these are realistic in many applications.  This is a main research area of mine and one I am happy to talk way more about.
-
-### Difference in differences
-
-The panel data approaches that we have been talking about so far are closely related to a **natural-experiment** type of strategy called **difference in differences** (DID).
-
-One important difference relative to the previous approach is that DID is typically implemented when some units (these are often states or particular locations) implement a policy at some time period while others do not; and, in particular, we observe some periods before any units participate in the treatment.
-
-Let's think about the case with exactly two time periods: $t$ and $t-1$.  In this case, we'll suppose that the outcomes that we observe are
+In the previous section, we invoked the assumption of unconfoundedness and were in the setup where $X$ was fully observed.  But suppose instead that you thought this alternative version of unconfoundedness held
 \begin{align*}
-  Y_{it} &= D_i Y_{it}(1) + (1-D_i) Y_{it}(0) \\
-  Y_{it-1} &= Y_{it-1}(0)
+  \big(Y(1),Y(0)\big) \independent D | \big(X,W\big)
 \end{align*}
-In other words, in the second period, we observe treated potential outcomes for treated units and untreated potential outcomes for untreated units (this is just like the cross-sectional case above).  But in the first period, we observe untreated potential outcomes for all units --- because no one is treated yet.
+where $X$ were observed random variables, but $W$ were not observed.
 
-DID is often motivated by an assumption called the parallel trends assumption:
-
-**Parallel Trends Assumption**
+Let us also maintain the assumption of a linear model for untreated potential outcomes:
 \begin{align*}
-\E[\Delta Y_t(0) | D=1] = \E[\Delta Y_t(0) | D=0]
+  Y_t(0) = \beta_0 + \beta_1 X + \beta_2 W + U
 \end{align*}
-This says that the *path* of outcomes that individuals in the treated group would have experienced if they had not been treated is the same as the path of outcomes that individual in the untreated group actually experienced.
-
-As before, we continue to be interested in
+Unconfoundedness continues to imply that $\E[U|D] = 0$ (i.e., that the error terms are not systematically different between the groups).  Previously, this expression led to a regression adjustment estimator of $ATT$, but now that approach is infeasible because $W$ is not observed.  However, notice that, with panel data, we can write this model for both time periods:
 \begin{align*}
-  ATT = \E[Y_t(1) - Y_t(0) | D=1]
+  Y_{t=2}(0) = \beta_0 + \beta_1 X + \beta_2 W + U_{t=2} \\
+  Y_{t=1}(0) = \beta_0 + \beta_1 X + \beta_2 W + U_{t=1}
 \end{align*}
-Recall that the key identification challenge if for $\E[Y_t(0)|D=1]$ here, and notice that
+Subtracting the second equation from the first gives
 \begin{align*}
-  \E[Y_t(0) | D=1] &= \E[\Delta Y_t(0) | D=1] + \E[Y_{t-1}(0) | D=1] \\
-  &= \E[\Delta Y_t(0) | D=0] + \E[Y_{t-1}(0)|D=1] \\
-  &= \E[\Delta Y_t | D=0] + \E[Y_{t-1}|D=1]
+  \Delta Y(0) = \Delta U
 \end{align*}
-where the first equality adds and subtracts $\E[Y_{t-1}(0)|D=1]$, the second equality uses the parallel trends assumption, and the last equality holds because all the potential outcomes in the previous line are actually observed outcome.  Plugging this expression into the one for $ATT$ yields:
+which implies that $\E[\Delta Y(0) | D] = 0$ (i.e., untreated potential outcomes do not systematically change over time).
+
+Now, let us use this to recover the $ATT$:
 \begin{align*}
-  ATT = \E[\Delta Y_t | D=1] - \E[\Delta Y_t | D=0]
+  ATT &= \E[Y_{t=2}(1) - Y_{t=2}(0) | D=1] \\
+      &= \E[Y_{t=2} | D=1] - \Big(\E[Y_{t=2}(0) | D=1] - \E[Y_{t=1}(0) | D=1]\Big) - \E[Y_{t=1}(0) | D=1] \\
+      &= \E[Y_{t=2} | D=1] - \Big(\underbrace{\E[\Delta Y(0) | D=1]}_{=0}\Big) - \E[Y_{t=1} | D=1] \\
+      &= \E[Y_{t=2} | D=1] - \E[Y_{t=1} | D=1]
 \end{align*}
-In other words, under parallel trends, the $ATT$ can be recovered by comparing the path of outcomes that treated units experienced relative to the path of outcomes that untreated units experienced (the latter of which is the path of outcomes that treated units would have experienced if they had not participated in the treatment).
+In other words, in the setup above, the $ATT$ is just equal to the average post-treatment outcome for the treated group relative to the average pre-treatment outcome for the treated group.  This is called a **before-after** identification strategy, and it is actually quite intuitive: we are effectively comparing each treated unit's outcome after treatment to its outcome before it participated in the treatment.
 
-As above, it is often convenient to estimate $ATT$ using a regression.  In fact, you can show that (in the case with two periods), $\alpha$ in the following regression is equal to the $ATT$:
+In practice, it is common to slightly generalize this approach.  In fact, I pulled a little bit of trick on you earlier.  Probably a more appropriate linear model for untreated potential outcomes is:
 \begin{align*}
-  Y_{it} = \alpha D_{it} + \theta_t + \eta_i + v_{it}
+  Y_t(0) = \beta_{0,t} + \beta_{1,t} X + \beta_{2,t} W + U_t
 \end{align*}
-where $\E[v_t | D] = 0$.
+where we allow the intercept and the effects of $X$ and $W$ on untreated potential outcomes to vary over time.  In this case, we can follow exactly the same steps as above to get
+\begin{align*}
+  Y_{t=2}(0) &= \beta_{0,t=2} + \beta_{1,t=2} X + \beta_{2,t=2} W + U_{t=2} \\
+  Y_{t=1}(0) &= \beta_{0,t=1} + \beta_{1,t=1} X + \beta_{2,t=1} W + U_{t=1}
+\end{align*}
+Subtracting the second equation from the first gives
+\begin{align*}
+  \Delta Y(0) = \Delta \beta_0 + \Delta \beta_1 X + \Delta \beta_2 W + \Delta U
+\end{align*}
+This still presents a bit of a problem as $W$ is still unobserved.  In particular, we need one more assumption---the effect of $W$ is constant over time, i.e., $\beta_{2,t=2} = \beta_{2,t=1}$ so that $\Delta \beta_2 = 0$.  In this case, we have that
+\begin{align*}
+  \Delta Y(0) = \Delta \beta_0 + \Delta \beta_1 X + \Delta U
+\end{align*}
+since $\E[\Delta U | X, D] = 0$ (by the version of unconfoundedness we have considered in this section), it follows that
+\begin{align*}
+  \E[\Delta Y(0) | X, D=1] = \E[\Delta Y(0) | X, D=0]
+\end{align*}
+This condition is called the **parallel trends assumption** because it says that, after conditioning on $X$, the untreated potential outcomes for the treated and untreated groups would have followed parallel paths over time.  Under this assumption, we can recover the $ATT$ as follows:
+\begin{align*}
+  ATT &= \E[Y_{t=2}(1) - Y_{t=2}(0) | D=1] \\
+      &= \E[Y_{t=2}(1) - Y_{t=1}(0) | D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | D=1] \\
+      &= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | X, D=1] \Bigm| D=1 \Big]
+      &= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2} - Y_{t=1} | X, D=0] \Bigm| D=1 \Big] \\
+\end{align*}
+which follows essentially the same argument as for unconfoundedness after we take differences in the second equation.  This suggests the following estimation approach: regression adjustment but where the outcome variable is $\Delta Y$ rather than $Y$.  This approach is called **difference-in-differences** because it involves taking differences over time to eliminate unobserved, time invariant variables, and then taking differences between treated and untreated groups to recover the causal effect.  It is very popular in empirical work in economics.
 
-### Computation
+## Lab 7: Minimium Wage and Employment
 
-The lab in this chapter uses panel data to think about causal effects, so I won't provide an extended discussion here but rather just mention the syntax for a few panel data estimators.  Let's suppose that you had a data frame that, for the first few rows, looked like (this is totally made up data)
+For this lab, we will use the `njmin` data from the `causaldata` package.  This is data that comes from Card and Krueger (1994), which is one of the most well-known empirical papers in all of economics.  It is about the causal effect of a minimum wage increase in New Jersey on employment in the fast food industry.  It is one of the original difference-in-differences papers and is also, as far as I know, one of the first papers to explicitly use the pre-post research design that we discussed above.
 
-```{r echo=FALSE}
-set.seed(1234)
-data.frame(id=c(1,1,1,2,2,2),
-           year=c(2019,2020,2021,2019,2020,2021),
-           Y=(rnorm(6)*10 + 100),
-           X1=(rnorm(6)*8 + 500),
-           X2=sample(c(0,1),size=6,replace=TRUE)
+To start with, use the following code to load the data, drop rows with missing data, and drop columns that we won't use in this lab.
+
+```{r}
+#| message: false
+#| warning: false
+load("data/fastfood.RData")
+library(dplyr)
+
+# drop missing data
+fastfood <- subset(fastfood, balanced == 1)
+# drop unused columns
+fastfood <- select(fastfood, id, state, location, chain_name, ownership, fte_pre, hrsopen_pre, wage_st_pre, fte_post, hrsopen_post, wage_st_post)
+```
+
+1. Use `modelsummary::datasummary_balance` to report summary statistics for all the variables in the data, separately by state (New Jersey vs. Pennsylvania).  What do you notice?
+
+2. Let us start by assuming unconfoundedness conditional on the restaurant chain (`chain_name`).  Estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using regression adjustment.  Report your estimate and interpret it.
+
+3. Implement the placebo test for unconfoundedness in the pre-treatment period.  What do you find, and what does it suggest about the plausibility of unconfoundedness in this application?
+
+4. Let us change the identification strategy to lagged outcome unconfoundedness (let's continue to also include `chain_name` as a covariate).  Estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using lagged outcome unconfoundedness.
+
+5. Finally, estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using difference-in-differences, continuing to include `chain_name` as a covariate.  How do your results compare to the previous two estimates?
+
+## Lab 7: Solution
+
+1. Summary statistics by state
+
+```{r}
+library(modelsummary)
+datasummary_balance(
+  ~ state,
+  data = fastfood,
+  fmt=2
 )
 ```
-This is what panel data typically looks like --- here, we are following a single individual (who is distinguished by their `id` variable) over three years (from 2019-2021), there is an outcome `Y` and potential regressors `X1` and `X2`.
 
-There are several packages in `R` for estimating the fixed effects models that we have been considering.  I mainly use `plm` (for "panel linear models"), so I'll show you that one and then mention one more.
-
-For `plm`, if you want to estimate a fixed effects model in first differences, you would use the `plm` command with the following sort of syntax
-
-```{r eval=FALSE}
-library(plm)
-plm(Y ~ X1 + X2 + as.factor(year),
-    data=name_of_data,
-    effect="individual",
-    model="fd",
-    index="id")
-```
-
-We include here `as.factor(year)` to include time fixed effects, `effect="individual"` means to include an individual fixed effect, `model="fd"` says to estimate the model in first differences, and `index="id"` means that the individual identifier is in the column "id".
-
-The code for estimating the model using a within transformation is very similar:
-
-```{r eval=FALSE}
-plm(Y ~ X1 + X2 + as.factor(year),
-    data=name_of_data,
-    effect="individual",
-    model="within",
-    index="id")
-```
-
-The only difference is that `model="fd"` has been replaced with `model="within"`.
-
-Let me also just mention that the `estimatr` package can estimate a fixed effects model using a within transformation.  The code for this case would look like
-
-```{r eval=FALSE}
-library(estimatr)
-
-lm_robust(Y ~ X1 + X2 + as.factor(year),
-          data=name_of_data,
-          fixed_effects=~id)
-```
-
-I think the advantage of using this approach is that it seems straightforward to get the heteroskedasticity robust standard errors (or cluster-robust standard errors) that are popular in economics (as we have done before for heteroskedasticity robust standard errors for a regression with just cross sectional data).  But I am not sure how (or if it is possible) to use `estimatr` to estimate the fixed effects model in first differences.
-
-
-
-## Lab 7: Drunk Driving Laws
-
-For this lab, we will use the `Fatalities` data.  We will study the causal effect of mandatory jail sentence policies for drunk driving on traffic fatalities.  The `Fatalities` data consists of panel data of traffic fatality death rates, whether or not a state has a mandatory jail sentence policy or not as well as several other variables from 1982-1988.  Economic theory suggests that raising the cost of some behavior (in this case, you can think of a mandatory jail sentence as raising the cost of drunk driving) will lead to less of that behavior.  That being said, it's both interesting to test this theory and also consider the magnitude of this effect.  That's what we'll do in this problem.
-
-
-
-1. This data comes in a somewhat messier format than some of the data that we have used previously.  To start with, create a new column in the data called `afatal_per_million` that is the number of alcohol involved vehicle fatalities per millions people in a state in a particular year.  The variable `afatal` contains the total number of alcohol involved vehicle fatalities, and the variable `pop` contains the total population in a state.
-
-2. Using a subset of the data from 1988, run a regression of `afatal_per_million` on whether or not a state has a mandatory jail sentence policy `jail`.  How do you interpret the results?
-
-3. Using the same subset from part 2, run a regression of `afatal_per_million` on `jail`, unemployment rate (`unemp`), the tax on a case of beer (`beertax`), the percentage of southern baptists in the state (`baptist`), the percentage of residents residing in dry counties (`dry`), the percentage of young drivers in the state, (`youngdrivers`), and the average miles driven per person in a state (`miles`).  How do you interpret the estimated coefficient on `jail`?  Would you consider this to be a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related fatalities?
-
-4. Now, using the full data, let's estimate a fixed effects model with alcohol related fatalities per million as the outcome and mandatory jail policies as a regressor.  Estimate the model using first differences and make sure to include time fixed effects.  How do you interpret the results?
-
-5. Estimate the same model as in part 4, but using the within estimator instead of first differences.  Compare these results to the ones from part 4.
-
-6. Using the same within estimator as in part 5, include the same set of covariates from part 3 and interpret the estimated effect of mandatory jail policies.  How do these estimates compare to the earlier ones?
-
-7. Now, we'll switch to using a difference in differences approach to estimating the effect of mandatory jail policies.  First, we'll manipulate the data some.
-
-    a) To keep things simple, let's start by limiting the data to the years 1982 and 1988 and drop the in-between periods.
-
-    b) Second, let's calculate the change in alcohol related fatalities per million between 1982 and 1998 and keep the covariates that we have been using from 1982.  One way to do this, is to use the `pivot_wider` function from the `tidyr`.  In the case of panel data, "long format" data means that each row in the data corresponds to a paricular observation *and* a particular time period.  Thus, with long format data, there are $n \times T$ total rows in the data.  On the other hand, "wide format" data means that each row holds all the data (across all time periods) for a particular observation.  Converting back and forth between long and wide formats is a common data manipulation task.  **Hint:** This step is probably unfamiliar, so I'd recommend seeing if you can use `?tidyr::pivot_wider` to see if you can figure out how to complete this step, but, if not, you can copy this code from the solutions in the next section.
-
-    c) Finally, drop all states that are already treated in 1982.
-
-8. Using the data that you constructed in part 7, implement the difference in differences regression of the change in alcohol related fatalities per million from 1982 to 1988 on the mandatory jail policy.  How do you interpret these results and how do they compare to the previous ones?  Now, additionally include the set of covariates that we have been using in this model.  How do you interpret these results and how do they compare to the previous ones?
-
-9. An alternative to DID, is to include the lagged outcome as a covariate.  Using the data constructed in part 7, run a regression of alcohol related fatalities per million in 1988 on the mandatory jail policy and alcohol related fatalities per million in 1982.  How do you interpret these results and how do they compare to the previous ones?  Now include the additional covariates that we have been using in this model.  How do you interpret these results and how do they compare to the previous ones?
-
-10. Comment on your results from parts 1-9.  Which, if any, of these are you most inclined to interpret as a reasonable estimate of the (average) causal effect of mandatory jail policies on alcohol related policies?
-
-## Lab 7: Solutions
-
-1.
+2. Regression adjustment ATT estimate
 
 ```{r}
-library(tidyr)
-library(plm)
+# regression adjustment
+library(DRDID)
 
-data(Fatalities, package="AER")
+fte_post <- fastfood$fte_post
+covs <- model.matrix(~chain_name, data = fastfood)
+D <- as.numeric(fastfood$state == "New Jersey")
 
-Fatalities$afatal_per_million <- 1000000 * (Fatalities$afatal / Fatalities$pop )
+ra_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+ra_att_post
 ```
 
-
-2.
+3. Placebo test in pre-treatment period
 
 ```{r}
-Fatalities88 <- subset(Fatalities, year==1988)
-
-reg88 <- lm(afatal_per_million ~ jail, data=Fatalities88)
-summary(reg88)
+# check identification strategy in pre-treatment periods
+fte_pre <- fastfood$fte_pre
+ra_att_pre <- DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
+ra_att_pre
 ```
-The estimated coefficient on mandatory jail laws is 9.155.  We should interpret this as just the difference between alcohol related fatalities per million in states that had mandatory jail laws in 1988 relative to states that did not have them.  We cannot reject that there is no difference between states where the policy is in place relative to those that do not have the policy.
 
-3.
+4. Lagged outcome unconfoundedness ATT estimate
 
 ```{r}
-reg88_covs <- lm(afatal_per_million ~ jail + unemp + beertax + baptist + dry + youngdrivers + miles, data=Fatalities88)
-summary(reg88_covs)
+# lagged outcome unconfoundedness
+lou_covs <- model.matrix(~ chain_name + fte_pre, data = fastfood)
+lou_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = lou_covs)
+lou_att_post
 ```
-The estimated coefficient on jail is 3.12.  It is somewhat smaller than the previous estimate, though neither is statistically significant.  We should interpret this as the partial effect of the mandatory jail policy, that is, that we estimate that mandatory jail laws increase the number of alcohol related fatalities per million by 3.12 on average controlling for the unemployment rate, beer tax, the fraction of southern baptists in the state, the fraction of residents in dry counties, the fraction of young drivers, and the average miles driven in the state.  We cannot reject that the partial effect of mandatory jail policies is equal to 0.
 
-4.
+5. Difference-in-differences ATT estimate
 
 ```{r}
-fd_reg <- plm(afatal_per_million ~ jail + as.factor(year),
-              effect="individual",
-              index="state", model="fd",
-              data=Fatalities)
-summary(fd_reg)
-```
-We should interpret the estimated coefficient on `jail` as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after accounting for time invariant variables whose effects do not change over time.  Again, we cannot reject that the effect is equal to 0.
-
-5.
-
-```{r}
-within_reg <- plm(afatal_per_million ~ jail + as.factor(year),
-              effect="individual",
-              index="state", model="within",
-              data=Fatalities)
-summary(within_reg)
-```
-The estimated coefficient on `jail` has the same interpretation as in the previous problem.  The estimated effect here is marginally statistically significant.
-6.
-
-```{r}
-within_reg_covs <- plm(afatal_per_million ~ jail + unemp + beertax + baptist + dry + youngdrivers + miles,
-                       effect="individual",
-                       index="state", model="within",
-                       data=Fatalities)
-summary(within_reg_covs)
+# difference-in-differences
+did_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+did_att_post
 ```
 
-We should interpret the estimated coefficient on `jail` as an estimate of how much alcohol related traffic fatalities per million change on average under mandatory jail policies after controlling for the unemployment rate, beer taxes, the fraction of the state that is southern baptist, the fraction of the state that lives in a dry county, the fraction of young drivers in a state, and the average number of miles driven per person in the stata, and accounting for time invariant variables whose effects do not change over time.
-
-7.
-
-```{r}
-# part a: convert data to two period panel data
-two_period <- subset(Fatalities, year==1982 | year==1988)
-# and drop some missing
-two_period <- subset(two_period, !is.na(jail))
-two_period <- BMisc::makeBalancedPanel(two_period, "state", "year")
-two_period$jail <- 1*(two_period$jail=="yes")
-
-# part b: convert into wide format
-wide_df <- pivot_wider(two_period,
-                       id_cols="state",
-                       names_from="year",
-                       values_from=c("jail", "afatal_per_million"))
-
-# add back other covariates from 1982
-wide_df <- merge(wide_df, subset(Fatalities, year==1982)[,c("unemp", "beertax", "baptist", "dry", "youngdrivers", "miles","state")], by="state")
-
-# change in fatal accidents over time
-wide_df$Dafatal_per_million <- wide_df$afatal_per_million_1988 - wide_df$afatal_per_million_1982
-
-# part c: drop already treated states
-wide_df <- subset(wide_df, jail_1982==0)
-```
-
-8.
-
-```{r}
-did <- lm(Dafatal_per_million ~ jail_1988, data=wide_df)
-summary(did)
-did_covs <- lm(Dafatal_per_million ~ jail_1988 + unemp + beertax + baptist + dry + youngdrivers + miles, data=wide_df)
-summary(did_covs)
-```
-If we are willing to believe that, in the absence of the policy, that trends in alcohol related fatalities per million people would have followed the same trends over time for treated and untreated states, then we can interpret these as causal effects.  These estimates are broadly similar to the previous ones though the second ones (that include additional covariates) are about the only ones where we ever get a negative estimate for the effect of mandatory jail policies.  Like the previous estimates, neither of these estimates are statistically different from 0.
-
-9.
-
-```{r}
-lag_reg <- lm(afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982, data=wide_df)
-summary(lag_reg)
-lag_reg_covs <- lm(afatal_per_million_1988 ~ jail_1988 + afatal_per_million_1982 + unemp + beertax + baptist + dry + youngdrivers + miles, data=wide_df)
-summary(lag_reg_covs)
-```
-These estimates directly control for alcohol related fatalities per million in the pre-treatment period 1982.  These sorts of specifications are less common in economics, but, in my view, it seems like a reasonable approach here.  That said, the results are more or less the same as earlier estimates.
-
-10.  We don't have very strong evidence that mandatory jail policies reduced the number traffic fatalities.  In my view, probably the best specifications for trying to understand the causal effects are the ones in part 7 (particularly, the ones that include covariates there), but I think that the the results in parts 4-9 are also informative.  Broadly, these estimates are more or less similar --- none of them are statistically significant and most are positive (which is an unexpected sign).
-
-Before we finish, let me mention a few caveats to these results:
-
-- First, I would be very hesitant to interpret these results as definitively saying that mandatory jail policies have no effect on alcohol related traffic fatalities.  The main reason to be clear about this is that our standard error are quite large.  For example, in the second specification in part 7 (the one I like the most), a 95% confidence interval for our estimate is $[-23.1, 19.4]$.  This is a wide confidence interval --- the average number of alcohol related traffic fatalities per million across all states and time periods is only 66.  So our estimates are basically still compatible with very large reductions in alcohol related traffic fatalities up to large increases in alcohol related traffic fatalities.
-
-- Let me make one more comment about the sign of our results.  Many of our point estimates are positive; as we discussed earlier, it is hard to rationalize harsher punishments *increasing* alcohol related traffic fatalities.  I think the main explanation for these results is just that our estimates are pretty noisy and, therefore, more or less "by chance" we are getting estimates that have an unexpected sign.  But there are some other possible explanations that are worth mentioning.  For one, there are a number of other policies related to drunk driving that occurred in the 1980s (particularly, related to legal drinking age) but perhaps others.  It is not clear how these would interact with our estimates, but they could certainly play some role.  Besides that, it seems to me that we have a pretty good set of covariates that enter our models, but there could be important covariates that we are missing.  For this reason, some expertise in how to model state-level traffic fatalities is actually a very important skill here (actually probably the key skill here!)
 
 ## Coding Questions
 
