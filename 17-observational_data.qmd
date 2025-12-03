@@ -68,7 +68,7 @@ library(DRDID)
 
 y <- df$Y
 D <- df$D
-X <- model.matrix(~ X1 + X2 + X3, data = df)  # create matrix of covariates
+X <- model.matrix(~ X1 + X2 + X3, data = df) # create matrix of covariates
 ra_att <- DRDID::reg_did_panel(y1 = y, y0 = 0, D = D, covariates = X)
 ra_att
 ```
@@ -189,11 +189,11 @@ since $\E[\Delta U | X, D] = 0$ (by the version of unconfoundedness we have cons
 \begin{align*}
   \E[\Delta Y(0) | X, D=1] = \E[\Delta Y(0) | X, D=0]
 \end{align*}
-This condition is called the **parallel trends assumption** because it says that, after conditioning on $X$, the untreated potential outcomes for the treated and untreated groups would have followed parallel paths over time.  Under this assumption, we can recover the $ATT$ as follows:
+This condition is called the **parallel trends assumption** because it says that, after conditioning on $X$, the untreated potential outcomes for the treated and untreated groups would have followed the same trend over time.  Under this assumption, we can recover the $ATT$ as follows:
 \begin{align*}
   ATT &= \E[Y_{t=2}(1) - Y_{t=2}(0) | D=1] \\
       &= \E[Y_{t=2}(1) - Y_{t=1}(0) | D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | D=1] \\
-      &= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | X, D=1] \Bigm| D=1 \Big]
+      &= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | X, D=1] \Bigm| D=1 \Big] \\
       &= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2} - Y_{t=1} | X, D=0] \Bigm| D=1 \Big] \\
 \end{align*}
 which follows essentially the same argument as for unconfoundedness after we take differences in the second equation.  This suggests the following estimation approach: regression adjustment but where the outcome variable is $\Delta Y$ rather than $Y$.  This approach is called **difference-in-differences** because it involves taking differences over time to eliminate unobserved, time invariant variables, and then taking differences between treated and untreated groups to recover the causal effect.  It is very popular in empirical work in economics.
@@ -218,13 +218,13 @@ fastfood <- select(fastfood, id, state, location, chain_name, ownership, fte_pre
 
 1. Use `modelsummary::datasummary_balance` to report summary statistics for all the variables in the data, separately by state (New Jersey vs. Pennsylvania).  What do you notice?
 
-2. Let us start by assuming unconfoundedness conditional on the restaurant chain (`chain_name`).  Estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using regression adjustment.  Report your estimate and interpret it.
+2. Let us start by assuming unconfoundedness conditional on the restaurant chain (`chain_name`).  Estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using (1) regression adjustment and (2) using a single regression.  Report your estimates and interpret them.
 
-3. Implement the placebo test for unconfoundedness in the pre-treatment period.  What do you find, and what does it suggest about the plausibility of unconfoundedness in this application?
+3. Implement the placebo test for unconfoundedness in the pre-treatment period using both regression adjustment and using a single regression.  What do you find, and what does it suggest about the plausibility of unconfoundedness in this application?
 
-4. Let us change the identification strategy to lagged outcome unconfoundedness (let's continue to also include `chain_name` as a covariate).  Estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using lagged outcome unconfoundedness.
+4. Let us change the identification strategy to lagged outcome unconfoundedness (let's continue to also include `chain_name` as a covariate).  Estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using lagged outcome unconfoundedness using (1) regression adjustment and (2) using a single regression.
 
-5. Finally, estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using difference-in-differences, continuing to include `chain_name` as a covariate.  How do your results compare to the previous two estimates?
+5. Finally, estimate the $ATT$ of the minimum wage on full-time equivalent employees in the post-treatment period using difference-in-differences, continuing to include `chain_name` as a covariate, using (1) regression adjustment and (2) using a single regression.  How do your results compare to the previous two estimates?
 
 ## Lab 7: Solution
 
@@ -233,9 +233,9 @@ fastfood <- select(fastfood, id, state, location, chain_name, ownership, fte_pre
 ```{r}
 library(modelsummary)
 datasummary_balance(
-  ~ state,
-  data = fastfood,
-  fmt=2
+    ~state,
+    data = fastfood,
+    fmt = 2
 )
 ```
 
@@ -249,34 +249,51 @@ fte_post <- fastfood$fte_post
 covs <- model.matrix(~chain_name, data = fastfood)
 D <- as.numeric(fastfood$state == "New Jersey")
 
-ra_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
-ra_att_post
+unc_att <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+unc_att
+
+# single regression
+unc_reg <- lm(fte_post ~ D + chain_name, data = fastfood)
+summary(unc_reg)
 ```
 
 3. Placebo test in pre-treatment period
 
 ```{r}
-# check identification strategy in pre-treatment periods
+# regression adjustment placebo
 fte_pre <- fastfood$fte_pre
-ra_att_pre <- DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
-ra_att_pre
+unc_placebo <- DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
+unc_placebo
+
+# single regression placebo
+unc_placebo_reg <- lm(fte_pre ~ D + chain_name, data = fastfood)
+summary(unc_placebo_reg)
 ```
 
 4. Lagged outcome unconfoundedness ATT estimate
 
 ```{r}
-# lagged outcome unconfoundedness
+# regression adjustment
 lou_covs <- model.matrix(~ chain_name + fte_pre, data = fastfood)
 lou_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = lou_covs)
 lou_att_post
+
+# single regression
+lou_reg <- lm(fte_post ~ D + chain_name + fte_pre, data = fastfood)
+summary(lou_reg)
 ```
 
 5. Difference-in-differences ATT estimate
 
 ```{r}
-# difference-in-differences
+# regression adjustment
 did_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
 did_att_post
+
+# single regression
+fastfood$delta_fte <- fastfood$fte_post - fastfood$fte_pre
+did_reg <- lm(delta_fte ~ D + chain_name, data = fastfood)
+summary(did_reg)
 ```
 
 
@@ -304,23 +321,13 @@ did_att_post
 
     e) Provide an overall interpration of your results from parts b-d.
 
-2. For this problem, we will study the causal effect of having more children on women's labor supply using the data `Fertility`.
+2. For this problem, we will study the causal effect of having more children on women's labor supply using the data `Fertility`.  <!-- Note: use the version of this data from AER package going forward. -->
 
     a) To start with, run a regression of the number of hours that a woman typically works per week (`work`) on whether or not she has more than two children (`morekids`).  Report your results.  Should you interpret the estimated coefficient on `morekids` as the causal effect of having more than two children?  Explain.
 
     b) One possible instrument in this setup is the sex composition of the first two children (i.e., whether they are both girls, both boys, or a boy and a girl).  The thinking here is that, at least in the United States, parents tend to have a preference for having both a girl and a boy and that, therefore, parents whose first two children have the same sex may be more likely to have a third child than they would have been if they have a girl and a boy.  Go through the lise of four assumptions that we discussed in the context of instrumental variables and provide some discussion about whether or not each of these assumptions are likely to hold in this context.
 
     c) Regardless of your answer to part (b), create a new variable called `samesex` that is equal to one for families whose first two children have the same sex.  Estimate the effect of `morekids` on `work` using `samesex` as an instrument for `morekids` and report the results.  Provide some discussion about your results.
-
-<!--
-2. For this problem, we will study the causal effect of having more children on women's labor supply using the data `Fertility`.
-
-    a) Let's start by running a regression of the number of hours that a woman typically works per week (`work`) on whether or not she has more than two children (`morekids`), her age and $age^2$, and race/ethnicity (`afam` and `hispanic`).  Report your results.  How do you feel about interpreting the estimated coefficient on `morekids` as the causal effect of having more than two children?  Explain.
-
-    b) One possible instrument in this setup is the sex composition of the first two children (i.e., whether they are both girls, both boys, or a boy and a girl).  The thinking here is that, at least in the United States, parents tend to have a preference for having both a girl and a boy and that, therefore, parents whose first two children have the same sex may be more likely to have a third child than they would have been if they have a girl and a boy.  Do you think that using a binary variable for whether or not the first two children have the same sex is a reasonable instrument of for `morekids` from part a?
-
-    c) Create a new variable called `samesex` that is equal to one for families whose first two children have the same sex.  Using the same specification as in part a, use `samesex` as an instrument for `morekids` and report the results.  Provide some discussion about your results.
--->
 
 3.  For this question, we will use the `AJR` data.  A deep question in development economics is: Why are some countries much richer than other countries?  One explanation for this is that richer countries have different institutions (e.g., property rights, democracy, etc.) that are conducive to growth.  Its hard to study these questions though because institutions do not arise randomly --- there could be reverse causality so that property rights, democracy, etc. are (perhaps partially) caused by being rich rather than the other way around.  Alternatively, other factors (say a country's geography) could cause both of these.  We'll consider one instrumental variables approach to thinking about this question in this problem.
 
@@ -331,7 +338,7 @@ did_att_post
     c) Estimate an IV regression of `GDP` on `Exprop` using `logMort` as an instrument for `Exprop`. How do you interpret the results?  How do these results compare to the ones from part a?
 
 
-4. For this question, we'll use the data `house` to study the causal effect of incumbency on the probability that a member of the House of Representatives gets re-elected.
+4. For this question, we'll use the data `house` to study the causal effect of incumbency on the probability that a member of the House of Representatives gets re-elected.  <!-- Note: better data from ivmte package -->
 
     a) One way to try to estimate the causal effect of incumbency is to just run a regression where the outcome is `democratic_vote_share` (this is the same outcome we'll use below) and where the model includes a binary variable for whether or not the democratic candidate is an incumbent.  What are some limitions of this strategy?
 
@@ -354,36 +361,47 @@ did_att_post
 
 2. Why do most researchers give up on trying to estimate the individual-level effect of participating in a treatment?
 
-3. Explain what unconfoundedness means.
+3. What are four conditions for a valid instrument?  Explain in words and math.
 
-4. What is the key condition underlying a difference-in-differences approach to learn about the causal effect of some treatment on some outcome?
+4. Explain what unconfoundedness means.
 
-5. What are two key conditions for a valid instrument?
+5. If we make the assumption of unconfoundedness, explain in words what sort of comparisons that we would like to make in order to estimate the average treatment effect on the treated.
 
-6. Suppose you are interested in the causal effect of participating in a union on a person's income.  Consider the following approaches.
+6. What is the key condition underlying a difference-in-differences approach to learn about the causal effect of some treatment on some outcome?  Explain both in words and in math.  In what circumstance would a researcher be likely to prefer this type of assumption over unconfoundedness?
 
-    a) Suppose you run the following regression
-
+7. Suppose you are interested in the causal effect of participating in a union on a person's income.  Consider the following approaches.
+    a) Consider the following assumption:
         \begin{align*}
-          Earnings_i = \beta_0 + \alpha Union_i + \beta_1 Education_i + U_i
+          \big(Earnings(1), Earnings(0)\big) \independent Union | Education
         \end{align*}
+        where $Earnings(1)$ is the potential earnings if the individual participates in a union, $Earnings(0)$ is the potential earnings if the individual does not participate in a union, $Union$ is a binary variable equal to one if the individual participates in a union and zero otherwise, and $Education$ is years of education.  Do you think this assumption is likely to hold?  Explain.
 
-        Would it be reasonable to interpret $\hat{\alpha}$ in this regression as an estimate of the causal effect of participating in a union on earnings?  Explain.
+    b) Regardless of your answer to part (a), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (a) using regression adjustment.
 
-    b) Suppose you have access to panel data and run the following fixed effects regression
-        \begin{align*}
-          Earnings_{it} = \beta_{0,t} + \alpha Union_{it} + \beta_1 Education_{it} + \eta_i + U_{it}
-        \end{align*}
+    c) Regardless of your answer to part (a), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (a) using a single regression.  What additional assumption do you need to make in order to use this approach?
 
-        where $\eta_i$ is an individual fixed effect.  Would it be reasonable to interpert $\hat{\alpha}$ in this regression as an estimate of the causal effect of participating in a union on earnings?  Explain.  Can you think of any other advantages or disadvantages of this approach?
+    d) Now suppose that you have access to two periods of panel data.  Suppose that we are looking at a population of adults, so we can assume that each person's education is constant over time.  Also, suppose that no one participated in a union in the first period (note: this is probably unrealistic, but we could just drop all observations that participated in a union in the first period).  How can you use this data to conduct a placebo test for the unconfoundedness assumption in part (a)?  Why is this useful?
 
-    c) Going back to the case with cross-sectional data, consider the regression
-        \begin{align*}
-          Earnings_i = \beta_0 + \alpha Union_i + U_i
-        \end{align*}
-        but using the variable $Z_i = 1$ if birthday is between Jan. 1 and Jun. 30 while $Z_i=0$ otherwise.  Would it be reasonable to interpert $\hat{\alpha}$ in this regression as an estimate of the causal effect of participating in a union on earnings?  Explain.  Can you think of any other advantages or disadvantages of this approach?
+    e) Consider the same setup at in part (d).  Explain the assumption of lagged outcome unconfoundedness in this context.  Do you think this assumption is likely to hold?  Explain.
 
-7. Suppose that you are interested in the effect of lower college costs on the probability of graduating from college.  You have access to student-level data from Georgia where students are eligible for the Hope Scholarship if they can keep their GPA above 3.0.
+    e) Regardless of your answer to part (d), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (d) using regression adjustment and then using a single regression.
+
+    f) Now, suppose that we are willing to make the parallel trends assumption.  Explain what this assumption means in this context.  Do you think this assumption is likely to hold?  Explain.
+
+    g) Regardless of your answer to part (f), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (f) using regression adjustment and then using a single regression.
+
+    h) Given the setup with two periods of panel data, is it possible to conduct a placebo test for lagged outcome unconfoundedness or difference-in-differences?  Does your answer change if you had access to three periods of panel data?  Explain.
+
+8. Suppose that you are interested in learning about the causal effect of attending college on earnings.
+
+    a) You read a newspaper article that says that the average earnings for college graduates is \$50,000 per year while the average earnings for non-college graduates is \$40,000 per year.  The article interprets this \$10,000 difference as the return to attending college.  What assumption would you need to believe in order for this interpretation to be valid?  Do you think this assumption is likely to hold?  Explain.
+
+    b) Regardless of your actual answer to part (a), suppose that you are not willing to believe the assumption that you mentioned there.  You remember that having access to an instrumental variable is useful for learning about causal effects, and your friend suggests generating an instrument $Z$ by randomly drawing a 1 or a 0 for each individual in your data.  Go through the four conditions that we discussed for a valid instrument and explain whether or not each of these conditions is likely to hold for this instrument.
+
+    c) You also notice that you have a variable in your data that indicates whether or not an individual grew up near a college (`near_college`).  Another friend suggests using this variable as an instrument for attending college.  Go through the four conditions that we discussed for a valid instrument and explain whether or not each of these conditions is likely to hold for this instrument.
+
+
+9. Suppose that you are interested in the effect of lower college costs on the probability of graduating from college.  You have access to student-level data from Georgia where students are eligible for the Hope Scholarship if they can keep their GPA above 3.0.
 
     a) What strategy can use to exploit this institional setting to learn about the causal effect of lower college costs on the probability of going to college?
 
@@ -393,7 +411,7 @@ did_att_post
 
     d) Another researcher reads the results from the approach you have implemented and complains that your results are only specific to students who have grades right around the 3.0 cutoff.  Is this a fair criticism?
 
-8. Suppose you are willing to believe versions of unconfoundedness, a linear model for untreated potential outcomes, and treatment effect homogeneity so that you could write
+10. Suppose you are willing to believe versions of unconfoundedness, a linear model for untreated potential outcomes, and treatment effect homogeneity so that you could write
 \begin{align*}
   Y_i = \beta_0 + \alpha D_i + \beta_1 X_i + \beta_2 W_i + U_i
 \end{align*}
@@ -411,15 +429,20 @@ with $\E[U|D,X,W] = 0$ so that you were willing to interpret $\alpha$ in this re
      \end{align*}
      with $\E[V|D,X]=0$.  Provide an expression for $\delta_1$ in terms of $\alpha$, $\gamma$'s and $\beta$'s.  Explain what this expression means.
 
-9. Suppose you have access to an experiment where some participants were randomly assigned to participate in a job training program and others were randomly assigned not to participate.  However, some individuals that were assigned to participate in the treatment decided not to actually participate.  Let's use the following notation: $D=1$ for individuals who actually participated and $D=0$ for individuals who did not participate.  $Z=1$ for individuals who were assigned to the treatment and $Z=0$ for individuals assigned not to participate (here, $D$ and $Z$ are not exactly the same because some individuals who were assigned to the treatment did not actually participate).
+11. Suppose you have access to an experiment where some participants were randomly assigned to participate in a job training program and others were randomly assigned not to participate.  However, some individuals that were assigned to participate in the treatment decided not to actually participate.  Let's use the following notation: $D=1$ for individuals who actually participated and $D=0$ for individuals who did not participate.  $Z=1$ for individuals who were assigned to the treatment and $Z=0$ for individuals assigned not to participate (here, $D$ and $Z$ are not exactly the same because some individuals who were assigned to the treatment did not actually participate).
 
-    You are considering several different approaches to dealing with this issue.  Discuss which of the following are good or bad ideas:
+    You are considering several different approaches to dealing with this issue.
 
-    a) Estimating $ATT$ by $\bar{Y}_{D=1} - \bar{Y}_{D=0}$.
+    a) Estimating $ATT$ by $\bar{Y}_{D=1} - \bar{Y}_{D=0}$.  What condition do you need to believe in order for this approach to deliver a valid estimate of the $ATT$?  Does this condition seem likely to hold in this context?  Explain.
 
-    b) Run the regression $Y_i = \beta_0 + \alpha D_i + U_i$ using $Z_i$ as an instrument.
+    b) Run the regression $Y_i = \beta_0 + \alpha D_i + U_i$ using $Z_i$ as an instrument.  Go through the conditions for a valid instrument and explain whether or not each of these conditions is likely to hold in this context.  Assuming that all four conditions hold, how do you interpret the estimated coefficient on $D$ in this regression?
 
-10. Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.).  You interpret the difference $\bar{Y}_{D=1} - \bar{Y}_{D=0}$ as an estimate of the $ATT$, but your friend says that you should interpret it as an estimate of the $ATE$.  In fact, according to your friend, random treatment assignment implies that $\E[Y(1)] = \E[Y(1)|D=1] = \E[Y|D=1]$ and $\E[Y(0)] = \E[Y(0)|D=0] = \E[Y|D=0]$ which implies that $ATE = \E[Y|D=1] - \E[Y|D=0]$.  Who is right?
+12. Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.).  You interpret the difference $\bar{Y}_{D=1} - \bar{Y}_{D=0}$ as an estimate of the $ATT$, but your friend says that you should interpret it as an estimate of the $ATE$.  In fact, according to your friend, random treatment assignment implies that
+\begin{align*}
+  & \E[Y(1)] = \E[Y(1)|D=1] = \E[Y|D=1] \\
+  \text{ and } & \E[Y(0)] = \E[Y(0)|D=0] = \E[Y|D=0]
+\end{align*}
+which implies that $ATE = \E[Y|D=1] - \E[Y|D=0]$.  Who is right?
 
 <!--
 ## Answers to Some Extra Questions

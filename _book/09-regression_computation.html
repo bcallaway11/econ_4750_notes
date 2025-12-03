@@ -444,7 +444,7 @@ window.Quarto = {
 <p>Next, let’s take the derivative with respect to <span class="math inline">\(b_1\)</span>: <span id="eq-foc-bet1"><span class="math display">\[
   -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i) X_i = 0
 \tag{10.2}\]</span></span> where the 2 comes from taking the derivative of the squared part, and the negative sign at the beginning and <span class="math inline">\(X_i\)</span> at the end come from taking the derivative of the inside with respect to <span class="math inline">\(b_1\)</span>.</p>
-<p>All we have to do now is to solve <a href="#eq-foc-bet0" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-foc-bet0</span></a> and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-foc-bet1</span></a> for <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is. Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.</p>
+<p>All we have to do now is to solve <a href="#eq-foc-bet0" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> for <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Before we do it, let me just mention that we are about to do some fairly challenging algebra, but that is all it is. Conceptually, it is just the same as solving a system of two equations with two unknowns that you probably did at some point in high school.</p>
 <p>Starting with the first equation,</p>
 <p><span class="math display">\[
   \begin{aligned}
@@ -454,7 +454,7 @@ window.Quarto = {
   &amp; \implies \boxed{\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X}}
   \end{aligned}
 \]</span> where the second line holds by dividing both sides by <span class="math inline">\(-2\)</span>, the third line holds by pushing the summation through the sums/differences and simplifying terms, and the last line holds by rearranging to solve for <span class="math inline">\(\hat{\beta}_0\)</span>.</p>
-<p>Now, let’s use the above result and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-foc-bet1</span></a> to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
+<p>Now, let’s use the above result and <a href="#eq-foc-bet1" class="quarto-xref">Equation&nbsp;<span>10.2</span></a> to solve for <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
 <p><span class="math display">\[
   \begin{aligned}
   &amp; \phantom{\implies} -\frac{2}{n} \sum_{i=1}^n (Y_i - \hat{\beta}_0 - \hat{\beta}_1) X_i &amp;= 0 \\

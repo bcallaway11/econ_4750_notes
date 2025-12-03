@@ -549,97 +549,139 @@ window.Quarto = {
 <div class="cell-output-display">
 <!-- preamble start -->
 
-    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
-
     <script>
-      // Create table-specific functions using external factory
-      const tableFns_4g9id5wf44ggb351ccu5 = TinyTable.createTableFunctions("tinytable_4g9id5wf44ggb351ccu5");
+
+      function styleCell_utvc5npgzk9c3lb9lnj8(i, j, css_id) {
+          var table = document.getElementById("tinytable_utvc5npgzk9c3lb9lnj8");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_utvc5npgzk9c3lb9lnj8');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_utvc5npgzk9c3lb9lnj8(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_utvc5npgzk9c3lb9lnj8");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 } ], css_id: 'tinytable_css_ew69rd8jq3l88jqc4k99',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 } ], css_id: 'tinytable_css_ayxp3ywgwdyvcultiixn',}, 
-          { positions: [ { i: '3', j: 2 }, { i: '3', j: 3 }, { i: '3', j: 4 }, { i: '3', j: 5 }, { i: '3', j: 6 }, { i: '3', j: 7 } ], css_id: 'tinytable_css_umaaz2g0pwbjo0yqt2lz',}, 
-          { positions: [ { i: '3', j: 1 } ], css_id: 'tinytable_css_mg96gvzd4x4cp5n21dpn',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_sjwma0ng1gsz6wh1m9rm',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_28bbt583gk9lveapgt87',}, 
-          { positions: [ { i: '-1', j: 3 }, { i: '-1', j: 5 } ], css_id: 'tinytable_css_cvr04683881q2f28lq7o',}, 
-          { positions: [ { i: '-1', j: 2 }, { i: '-1', j: 4 } ], css_id: 'tinytable_css_lhx8xvhkc90il627lue3',}, 
-          { positions: [ { i: '-1', j: 1 }, { i: '-1', j: 6 }, { i: '-1', j: 7 } ], css_id: 'tinytable_css_kgmi6wlcayjv8wlo9uxw',}, 
+          { positions: [ { i: 0, j: 6 }, { i: 0, j: 3 }, { i: 0, j: 4 }, { i: 0, j: 5 },  ], css_id: 'tinytable_css_q9wbgt6t0th9h277je0x',}, 
+          { positions: [ { i: 4, j: 1 }, { i: 4, j: 2 }, { i: 4, j: 3 }, { i: 4, j: 4 }, { i: 4, j: 5 }, { i: 4, j: 6 },  ], css_id: 'tinytable_css_5u3q3wdsve7nehsy9bfk',}, 
+          { positions: [ { i: 3, j: 1 }, { i: 3, j: 2 }, { i: 2, j: 1 }, { i: 2, j: 2 }, { i: 2, j: 3 }, { i: 3, j: 3 }, { i: 3, j: 4 }, { i: 3, j: 5 }, { i: 3, j: 6 }, { i: 2, j: 4 }, { i: 2, j: 5 }, { i: 2, j: 6 },  ], css_id: 'tinytable_css_9w894fgugmznm8seju3s',}, 
+          { positions: [ { i: 0, j: 2 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_l3frpqz9fzid6y6n8pwo',}, 
+          { positions: [ { i: 1, j: 1 }, { i: 1, j: 2 }, { i: 1, j: 3 }, { i: 1, j: 4 }, { i: 1, j: 5 }, { i: 1, j: 6 },  ], css_id: 'tinytable_css_5so6kqhd9s0xqxune3ch',}, 
+          { positions: [ { i: 4, j: 0 },  ], css_id: 'tinytable_css_4n2sfdod1mha8qtomwfh',}, 
+          { positions: [ { i: 2, j: 0 }, { i: 3, j: 0 },  ], css_id: 'tinytable_css_vv1o2usfwadxjjgd6jvj',}, 
+          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_ibyv7kitzjoay824zopk',}, 
+          { positions: [ { i: 1, j: 0 },  ], css_id: 'tinytable_css_evd2h38jcrikdltb69nj',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_4g9id5wf44ggb351ccu5.styleCell(cell.i, cell.j, group.css_id);
+                  styleCell_utvc5npgzk9c3lb9lnj8(cell.i, cell.j, group.css_id);
               });
           });
       });
     </script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
-    /* tinytable css entries after */
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_ew69rd8jq3l88jqc4k99, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_ew69rd8jq3l88jqc4k99 { text-align: right }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_ayxp3ywgwdyvcultiixn, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_ayxp3ywgwdyvcultiixn { text-align: left }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_umaaz2g0pwbjo0yqt2lz, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_umaaz2g0pwbjo0yqt2lz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: right }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_mg96gvzd4x4cp5n21dpn, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_mg96gvzd4x4cp5n21dpn {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_sjwma0ng1gsz6wh1m9rm, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_sjwma0ng1gsz6wh1m9rm {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: right }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_28bbt583gk9lveapgt87, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_28bbt583gk9lveapgt87 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_cvr04683881q2f28lq7o, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_cvr04683881q2f28lq7o {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 3%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_lhx8xvhkc90il627lue3, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_lhx8xvhkc90il627lue3 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 3%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_4g9id5wf44ggb351ccu5 td.tinytable_css_kgmi6wlcayjv8wlo9uxw, #tinytable_4g9id5wf44ggb351ccu5 th.tinytable_css_kgmi6wlcayjv8wlo9uxw {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: black; --line-color-right: black; --line-color-top: black; --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+      /* tinytable css entries after */
+      .table td.tinytable_css_q9wbgt6t0th9h277je0x, .table th.tinytable_css_q9wbgt6t0th9h277je0x { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
+      .table td.tinytable_css_5u3q3wdsve7nehsy9bfk, .table th.tinytable_css_5u3q3wdsve7nehsy9bfk { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_9w894fgugmznm8seju3s, .table th.tinytable_css_9w894fgugmznm8seju3s { text-align: right; }
+      .table td.tinytable_css_l3frpqz9fzid6y6n8pwo, .table th.tinytable_css_l3frpqz9fzid6y6n8pwo { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_5so6kqhd9s0xqxune3ch, .table th.tinytable_css_5so6kqhd9s0xqxune3ch { text-align: right; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_4n2sfdod1mha8qtomwfh, .table th.tinytable_css_4n2sfdod1mha8qtomwfh { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_vv1o2usfwadxjjgd6jvj, .table th.tinytable_css_vv1o2usfwadxjjgd6jvj { text-align: left; }
+      .table td.tinytable_css_ibyv7kitzjoay824zopk, .table th.tinytable_css_ibyv7kitzjoay824zopk { text-align: left; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
+      .table td.tinytable_css_evd2h38jcrikdltb69nj, .table th.tinytable_css_evd2h38jcrikdltb69nj { text-align: left; border-bottom: solid #d3d8dc 0.05em; }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_4g9id5wf44ggb351ccu5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-        
+      <table class="table table-borderless" id="tinytable_utvc5npgzk9c3lb9lnj8" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
 <tr>
-<th scope="col" align="center" colspan="1" data-row="-1" data-col="1"> </th>
-<th scope="col" align="center" colspan="2" data-row="-1" data-col="2">college (N=3871)</th>
-<th scope="col" align="center" colspan="2" data-row="-1" data-col="4">non-college (N=6129)</th>
-<th scope="col" align="center" colspan="1" data-row="-1" data-col="6"> </th>
-<th scope="col" align="center" colspan="1" data-row="-1" data-col="7"> </th>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="2">college (N=3871)</th>
+<th scope="col" align="center" colspan="2">non-college (N=6129)</th>
+<th scope="col" align="center" colspan="1"> </th>
+<th scope="col" align="center" colspan="1"> </th>
 </tr>
+        
               <tr>
-                <th scope="col" data-row="0" data-col="1"> </th>
-                <th scope="col" data-row="0" data-col="2">Mean</th>
-                <th scope="col" data-row="0" data-col="3">Std. Dev.</th>
-                <th scope="col" data-row="0" data-col="4">Mean</th>
-                <th scope="col" data-row="0" data-col="5">Std. Dev.</th>
-                <th scope="col" data-row="0" data-col="6">Diff. in Means</th>
-                <th scope="col" data-row="0" data-col="7">Std. Error</th>
+                <th scope="col"> </th>
+                <th scope="col">Mean</th>
+                <th scope="col">Std. Dev.</th>
+                <th scope="col">Mean</th>
+                <th scope="col">Std. Dev.</th>
+                <th scope="col">Diff. in Means</th>
+                <th scope="col">Std. Error</th>
               </tr>
         </thead>
         
         <tbody>
                 <tr>
-                  <td data-row="1" data-col="1">incwage</td>
-                  <td data-row="1" data-col="2">89.69</td>
-                  <td data-row="1" data-col="3">96.15</td>
-                  <td data-row="1" data-col="4">40.05</td>
-                  <td data-row="1" data-col="5">39.01</td>
-                  <td data-row="1" data-col="6">-49.65</td>
-                  <td data-row="1" data-col="7">1.62</td>
+                  <td>incwage</td>
+                  <td>89.69</td>
+                  <td>96.15</td>
+                  <td>40.05</td>
+                  <td>39.01</td>
+                  <td>-49.65</td>
+                  <td>1.62</td>
                 </tr>
                 <tr>
-                  <td data-row="2" data-col="1">female</td>
-                  <td data-row="2" data-col="2">0.51</td>
-                  <td data-row="2" data-col="3">0.50</td>
-                  <td data-row="2" data-col="4">0.46</td>
-                  <td data-row="2" data-col="5">0.50</td>
-                  <td data-row="2" data-col="6">-0.04</td>
-                  <td data-row="2" data-col="7">0.01</td>
+                  <td>female</td>
+                  <td>0.51</td>
+                  <td>0.50</td>
+                  <td>0.46</td>
+                  <td>0.50</td>
+                  <td>-0.04</td>
+                  <td>0.01</td>
                 </tr>
                 <tr>
-                  <td data-row="3" data-col="1">age</td>
-                  <td data-row="3" data-col="2">44.38</td>
-                  <td data-row="3" data-col="3">13.43</td>
-                  <td data-row="3" data-col="4">42.80</td>
-                  <td data-row="3" data-col="5">15.71</td>
-                  <td data-row="3" data-col="6">-1.58</td>
-                  <td data-row="3" data-col="7">0.29</td>
+                  <td>age</td>
+                  <td>44.38</td>
+                  <td>13.43</td>
+                  <td>42.80</td>
+                  <td>15.71</td>
+                  <td>-1.58</td>
+                  <td>0.29</td>
                 </tr>
         </tbody>
       </table>
@@ -715,7 +757,7 @@ window.Quarto = {
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># test out generate_sample function</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">generate_sample</span>(<span class="dv">10</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 0 1 0 0 1 1 1 1</code></pre>
+<pre><code> [1] 1 0 1 0 0 1 1 0 1 0</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
@@ -739,19 +781,19 @@ window.Quarto = {
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>bias <span class="ot">&lt;-</span> <span class="fu">mean</span>(mc_est) <span class="sc">-</span> p</span>
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>bias</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.0056</code></pre>
+<pre><code>[1] -0.0066</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute sampling variance</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">var</span>(mc_est)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02467331</code></pre>
+<pre><code>[1] 0.0261626</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute mean squared error</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> bias<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> var</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02470467</code></pre>
+<pre><code>[1] 0.02620616</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>H0 <span class="ot">&lt;-</span> p</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n)<span class="sc">*</span>(mc_est <span class="sc">-</span> H0) <span class="sc">/</span> <span class="fu">sqrt</span>(mc_var)</span>
@@ -759,7 +801,7 @@ window.Quarto = {
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">30</span>) <span class="sc">+</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 3 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 1 row containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -772,7 +814,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rej <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">*</span>(<span class="fu">abs</span>(t) <span class="sc">&gt;=</span> <span class="fl">1.96</span>))</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>rej</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1</code></pre>
+<pre><code>[1] 0.126</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -815,9 +857,9 @@ window.Quarto = {
 <span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 0.0023"
-[1] "var : 0.0046"
-[1] "mse : 0.0046"</code></pre>
+<pre><code>[1] "bias: -0.0035"
+[1] "var : 0.0049"
+[1] "mse : 0.005"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -827,7 +869,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.053"</code></pre>
+<pre><code>[1] "rej : 0.058"</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
@@ -836,9 +878,9 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: -7e-04"
-[1] "var : 0.005"
-[1] "mse : 0.005"</code></pre>
+<pre><code>[1] "bias: 1e-04"
+[1] "var : 0.0053"
+[1] "mse : 0.0053"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -848,7 +890,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.329"</code></pre>
+<pre><code>[1] "rej : 0.347"</code></pre>
 </div>
 </div>
 <ol start="6" type="1">
@@ -857,9 +899,9 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 4e-04"
-[1] "var : 0.0049"
-[1] "mse : 0.0049"</code></pre>
+<pre><code>[1] "bias: -0.0011"
+[1] "var : 0.0052"
+[1] "mse : 0.0052"</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -878,7 +920,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 9e-04"
+<pre><code>[1] "bias: 3e-04"
 [1] "var : 2e-04"
 [1] "mse : 2e-04"</code></pre>
 </div>
@@ -899,12 +941,12 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">10</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: 0.0044"
-[1] "var : 0.0042"
-[1] "mse : 0.0043"</code></pre>
+<pre><code>[1] "bias: -7e-04"
+[1] "var : 0.0046"
+[1] "mse : 0.0046"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 624 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 588 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -915,7 +957,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.624"</code></pre>
+<pre><code>[1] "rej : 0.588"</code></pre>
 </div>
 </div>
 <ol start="9" type="1">
@@ -924,12 +966,12 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">50</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: -8e-04"
-[1] "var : 0.001"
-[1] "mse : 0.001"</code></pre>
+<pre><code>[1] "bias: -0.0012"
+[1] "var : 8e-04"
+[1] "mse : 8e-04"</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 73 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 60 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -940,7 +982,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.078"</code></pre>
+<pre><code>[1] "rej : 0.062"</code></pre>
 </div>
 </div>
 <ol start="10" type="1">
@@ -949,7 +991,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mc_sim</span>(<span class="dv">1000</span>, <span class="fl">0.95</span>, <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "bias: -1e-04"
+<pre><code>[1] "bias: -6e-04"
 [1] "var : 0"
 [1] "mse : 0"</code></pre>
 </div>
@@ -961,7 +1003,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "rej : 0.064"</code></pre>
+<pre><code>[1] "rej : 0.057"</code></pre>
 </div>
 </div>
 </section>

@@ -423,7 +423,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> df<span class="sc">$</span>Y</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> df<span class="sc">$</span>D</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, <span class="at">data =</span> df)  <span class="co"># create matrix of covariates</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3, <span class="at">data =</span> df) <span class="co"># create matrix of covariates</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ra_att <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> y, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> X)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ra_att</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -501,10 +501,10 @@ window.Quarto = {
   \Delta Y(0) = \Delta \beta_0 + \Delta \beta_1 X + \Delta U
 \end{align*}\]</span> since <span class="math inline">\(\E[\Delta U | X, D] = 0\)</span> (by the version of unconfoundedness we have considered in this section), it follows that <span class="math display">\[\begin{align*}
   \E[\Delta Y(0) | X, D=1] = \E[\Delta Y(0) | X, D=0]
-\end{align*}\]</span> This condition is called the <strong>parallel trends assumption</strong> because it says that, after conditioning on <span class="math inline">\(X\)</span>, the untreated potential outcomes for the treated and untreated groups would have followed parallel paths over time. Under this assumption, we can recover the <span class="math inline">\(ATT\)</span> as follows: <span class="math display">\[\begin{align*}
+\end{align*}\]</span> This condition is called the <strong>parallel trends assumption</strong> because it says that, after conditioning on <span class="math inline">\(X\)</span>, the untreated potential outcomes for the treated and untreated groups would have followed the same trend over time. Under this assumption, we can recover the <span class="math inline">\(ATT\)</span> as follows: <span class="math display">\[\begin{align*}
   ATT &amp;= \E[Y_{t=2}(1) - Y_{t=2}(0) | D=1] \\
       &amp;= \E[Y_{t=2}(1) - Y_{t=1}(0) | D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | D=1] \\
-      &amp;= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | X, D=1] \Bigm| D=1 \Big]
+      &amp;= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2}(0) - Y_{t=1}(0) | X, D=1] \Bigm| D=1 \Big] \\
       &amp;= \E\Big[ \E[Y_{t=2} - Y_{t=1} | X, D=1] - \E[Y_{t=2} - Y_{t=1} | X, D=0] \Bigm| D=1 \Big] \\
 \end{align*}\]</span> which follows essentially the same argument as for unconfoundedness after we take differences in the second equation. This suggests the following estimation approach: regression adjustment but where the outcome variable is <span class="math inline">\(\Delta Y\)</span> rather than <span class="math inline">\(Y\)</span>. This approach is called <strong>difference-in-differences</strong> because it involves taking differences over time to eliminate unobserved, time invariant variables, and then taking differences between treated and untreated groups to recover the causal effect. It is very popular in empirical work in economics.</p>
 </section>
@@ -525,10 +525,10 @@ window.Quarto = {
 </div>
 <ol type="1">
 <li><p>Use <code>modelsummary::datasummary_balance</code> to report summary statistics for all the variables in the data, separately by state (New Jersey vs.&nbsp;Pennsylvania). What do you notice?</p></li>
-<li><p>Let us start by assuming unconfoundedness conditional on the restaurant chain (<code>chain_name</code>). Estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using regression adjustment. Report your estimate and interpret it.</p></li>
-<li><p>Implement the placebo test for unconfoundedness in the pre-treatment period. What do you find, and what does it suggest about the plausibility of unconfoundedness in this application?</p></li>
-<li><p>Let us change the identification strategy to lagged outcome unconfoundedness (let’s continue to also include <code>chain_name</code> as a covariate). Estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using lagged outcome unconfoundedness.</p></li>
-<li><p>Finally, estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using difference-in-differences, continuing to include <code>chain_name</code> as a covariate. How do your results compare to the previous two estimates?</p></li>
+<li><p>Let us start by assuming unconfoundedness conditional on the restaurant chain (<code>chain_name</code>). Estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using (1) regression adjustment and (2) using a single regression. Report your estimates and interpret them.</p></li>
+<li><p>Implement the placebo test for unconfoundedness in the pre-treatment period using both regression adjustment and using a single regression. What do you find, and what does it suggest about the plausibility of unconfoundedness in this application?</p></li>
+<li><p>Let us change the identification strategy to lagged outcome unconfoundedness (let’s continue to also include <code>chain_name</code> as a covariate). Estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using lagged outcome unconfoundedness using (1) regression adjustment and (2) using a single regression.</p></li>
+<li><p>Finally, estimate the <span class="math inline">\(ATT\)</span> of the minimum wage on full-time equivalent employees in the post-treatment period using difference-in-differences, continuing to include <code>chain_name</code> as a covariate, using (1) regression adjustment and (2) using a single regression. How do your results compare to the previous two estimates?</p></li>
 </ol>
 </section>
 <section id="lab-7-solution" class="level2" data-number="18.4">
@@ -539,17 +539,17 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_balance</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> state,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> fastfood,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fmt=</span><span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>state,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> fastfood,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fmt =</span> <span class="dv">2</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <!-- preamble start -->
 
     <script>
 
-      function styleCell_s4tkvuohb35vwzrq8etv(i, j, css_id) {
-          var table = document.getElementById("tinytable_s4tkvuohb35vwzrq8etv");
+      function styleCell_oeb7bltwj5be96sm6u5v(i, j, css_id) {
+          var table = document.getElementById("tinytable_oeb7bltwj5be96sm6u5v");
           var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -559,7 +559,7 @@ window.Quarto = {
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_s4tkvuohb35vwzrq8etv');
+        var table = document.getElementById('tinytable_oeb7bltwj5be96sm6u5v');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -567,8 +567,8 @@ window.Quarto = {
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_s4tkvuohb35vwzrq8etv(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_s4tkvuohb35vwzrq8etv");
+      function spanCell_oeb7bltwj5be96sm6u5v(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_oeb7bltwj5be96sm6u5v");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -598,23 +598,23 @@ window.Quarto = {
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 0, j: 7 }, { i: 0, j: 5 }, { i: 0, j: 4 }, { i: 0, j: 6 },  ], css_id: 'tinytable_css_ur3iqjwi61h2qwf06ogm',}, 
-          { positions: [ { i: 20, j: 2 }, { i: 20, j: 4 }, { i: 20, j: 3 }, { i: 20, j: 6 }, { i: 20, j: 5 }, { i: 20, j: 7 },  ], css_id: 'tinytable_css_3mmsw7pelbrm3ris3cw1',}, 
-          { positions: [ { i: 8, j: 4 }, { i: 8, j: 3 }, { i: 8, j: 5 }, { i: 8, j: 2 }, { i: 8, j: 7 }, { i: 8, j: 6 },  ], css_id: 'tinytable_css_y0z7ukef5o4046h81mle',}, 
-          { positions: [ { i: 3, j: 2 }, { i: 7, j: 2 }, { i: 5, j: 2 }, { i: 6, j: 2 }, { i: 11, j: 2 }, { i: 13, j: 2 }, { i: 14, j: 2 }, { i: 15, j: 2 }, { i: 16, j: 2 }, { i: 17, j: 2 }, { i: 18, j: 2 }, { i: 19, j: 2 }, { i: 18, j: 4 }, { i: 6, j: 4 }, { i: 9, j: 2 }, { i: 10, j: 2 }, { i: 3, j: 3 }, { i: 12, j: 2 }, { i: 5, j: 3 }, { i: 6, j: 3 }, { i: 7, j: 3 }, { i: 6, j: 5 }, { i: 9, j: 3 }, { i: 10, j: 3 }, { i: 11, j: 3 }, { i: 12, j: 3 }, { i: 13, j: 3 }, { i: 14, j: 3 }, { i: 15, j: 3 }, { i: 16, j: 3 }, { i: 17, j: 3 }, { i: 18, j: 3 }, { i: 19, j: 3 }, { i: 18, j: 5 }, { i: 2, j: 2 }, { i: 18, j: 7 }, { i: 4, j: 2 }, { i: 3, j: 4 }, { i: 4, j: 4 }, { i: 5, j: 4 }, { i: 4, j: 6 }, { i: 7, j: 4 }, { i: 6, j: 6 }, { i: 9, j: 4 }, { i: 10, j: 4 }, { i: 11, j: 4 }, { i: 12, j: 4 }, { i: 13, j: 4 }, { i: 14, j: 4 }, { i: 15, j: 4 }, { i: 16, j: 4 }, { i: 17, j: 4 }, { i: 16, j: 6 }, { i: 19, j: 4 }, { i: 18, j: 6 }, { i: 2, j: 3 }, { i: 14, j: 5 }, { i: 4, j: 3 }, { i: 3, j: 5 }, { i: 4, j: 5 }, { i: 5, j: 5 }, { i: 4, j: 7 }, { i: 7, j: 5 }, { i: 6, j: 7 }, { i: 9, j: 5 }, { i: 10, j: 5 }, { i: 11, j: 5 }, { i: 12, j: 5 }, { i: 13, j: 5 }, { i: 19, j: 6 }, { i: 15, j: 5 }, { i: 16, j: 5 }, { i: 17, j: 5 }, { i: 16, j: 7 }, { i: 19, j: 5 }, { i: 12, j: 6 }, { i: 2, j: 4 }, { i: 14, j: 6 }, { i: 2, j: 6 }, { i: 3, j: 6 }, { i: 17, j: 6 }, { i: 5, j: 6 }, { i: 11, j: 7 }, { i: 7, j: 6 }, { i: 2, j: 5 }, { i: 9, j: 6 }, { i: 10, j: 6 }, { i: 11, j: 6 }, { i: 17, j: 7 }, { i: 13, j: 6 }, { i: 19, j: 7 }, { i: 15, j: 6 }, { i: 12, j: 7 }, { i: 9, j: 7 }, { i: 10, j: 7 }, { i: 2, j: 7 }, { i: 3, j: 7 }, { i: 13, j: 7 }, { i: 14, j: 7 }, { i: 7, j: 7 }, { i: 5, j: 7 }, { i: 15, j: 7 },  ], css_id: 'tinytable_css_5mjydey0opt52y0ff0ok',}, 
-          { positions: [ { i: 0, j: 2 }, { i: 0, j: 3 },  ], css_id: 'tinytable_css_twni102e9e19xa0l3ele',}, 
-          { positions: [ { i: 1, j: 2 }, { i: 1, j: 4 }, { i: 1, j: 6 }, { i: 1, j: 5 }, { i: 1, j: 3 }, { i: 1, j: 7 },  ], css_id: 'tinytable_css_j8wwrddmh05d6u8i6t9k',}, 
-          { positions: [ { i: 20, j: 0 }, { i: 20, j: 1 },  ], css_id: 'tinytable_css_5lio4vav1znnoz5effcb',}, 
-          { positions: [ { i: 8, j: 1 }, { i: 8, j: 0 },  ], css_id: 'tinytable_css_ub35qyb50kl4ebba45g9',}, 
-          { positions: [ { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 6, j: 0 }, { i: 7, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 10, j: 0 }, { i: 11, j: 0 }, { i: 12, j: 0 }, { i: 13, j: 0 }, { i: 14, j: 0 }, { i: 15, j: 0 }, { i: 16, j: 0 }, { i: 17, j: 0 }, { i: 18, j: 0 }, { i: 19, j: 0 }, { i: 12, j: 1 }, { i: 13, j: 1 }, { i: 9, j: 0 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 4, j: 1 }, { i: 5, j: 1 }, { i: 6, j: 1 }, { i: 7, j: 1 }, { i: 16, j: 1 }, { i: 9, j: 1 }, { i: 10, j: 1 }, { i: 11, j: 1 }, { i: 17, j: 1 }, { i: 14, j: 1 }, { i: 15, j: 1 }, { i: 18, j: 1 }, { i: 19, j: 1 },  ], css_id: 'tinytable_css_6pupgcjnk57s80hmskb6',}, 
-          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_h83t7ieamxczc5zrt4g4',}, 
-          { positions: [ { i: 1, j: 0 }, { i: 1, j: 1 },  ], css_id: 'tinytable_css_57b3jbnxtelfwodn8585',}, 
+          { positions: [ { i: 0, j: 7 }, { i: 0, j: 5 }, { i: 0, j: 4 }, { i: 0, j: 6 },  ], css_id: 'tinytable_css_zrh1q962mhy04a4yq1nq',}, 
+          { positions: [ { i: 20, j: 2 }, { i: 20, j: 4 }, { i: 20, j: 3 }, { i: 20, j: 6 }, { i: 20, j: 5 }, { i: 20, j: 7 },  ], css_id: 'tinytable_css_cbm2zlvk7z3cuof9yz9h',}, 
+          { positions: [ { i: 8, j: 4 }, { i: 8, j: 3 }, { i: 8, j: 5 }, { i: 8, j: 2 }, { i: 8, j: 7 }, { i: 8, j: 6 },  ], css_id: 'tinytable_css_phnwjbvufq3bu90vflpw',}, 
+          { positions: [ { i: 3, j: 2 }, { i: 7, j: 2 }, { i: 5, j: 2 }, { i: 6, j: 2 }, { i: 11, j: 2 }, { i: 13, j: 2 }, { i: 14, j: 2 }, { i: 15, j: 2 }, { i: 16, j: 2 }, { i: 17, j: 2 }, { i: 18, j: 2 }, { i: 19, j: 2 }, { i: 18, j: 4 }, { i: 6, j: 4 }, { i: 9, j: 2 }, { i: 10, j: 2 }, { i: 3, j: 3 }, { i: 12, j: 2 }, { i: 5, j: 3 }, { i: 6, j: 3 }, { i: 7, j: 3 }, { i: 6, j: 5 }, { i: 9, j: 3 }, { i: 10, j: 3 }, { i: 11, j: 3 }, { i: 12, j: 3 }, { i: 13, j: 3 }, { i: 14, j: 3 }, { i: 15, j: 3 }, { i: 16, j: 3 }, { i: 17, j: 3 }, { i: 18, j: 3 }, { i: 19, j: 3 }, { i: 18, j: 5 }, { i: 2, j: 2 }, { i: 18, j: 7 }, { i: 4, j: 2 }, { i: 3, j: 4 }, { i: 4, j: 4 }, { i: 5, j: 4 }, { i: 4, j: 6 }, { i: 7, j: 4 }, { i: 6, j: 6 }, { i: 9, j: 4 }, { i: 10, j: 4 }, { i: 11, j: 4 }, { i: 12, j: 4 }, { i: 13, j: 4 }, { i: 14, j: 4 }, { i: 15, j: 4 }, { i: 16, j: 4 }, { i: 17, j: 4 }, { i: 16, j: 6 }, { i: 19, j: 4 }, { i: 18, j: 6 }, { i: 2, j: 3 }, { i: 14, j: 5 }, { i: 4, j: 3 }, { i: 3, j: 5 }, { i: 4, j: 5 }, { i: 5, j: 5 }, { i: 4, j: 7 }, { i: 7, j: 5 }, { i: 6, j: 7 }, { i: 9, j: 5 }, { i: 10, j: 5 }, { i: 11, j: 5 }, { i: 12, j: 5 }, { i: 13, j: 5 }, { i: 19, j: 6 }, { i: 15, j: 5 }, { i: 16, j: 5 }, { i: 17, j: 5 }, { i: 16, j: 7 }, { i: 19, j: 5 }, { i: 12, j: 6 }, { i: 2, j: 4 }, { i: 14, j: 6 }, { i: 2, j: 6 }, { i: 3, j: 6 }, { i: 17, j: 6 }, { i: 5, j: 6 }, { i: 11, j: 7 }, { i: 7, j: 6 }, { i: 2, j: 5 }, { i: 9, j: 6 }, { i: 10, j: 6 }, { i: 11, j: 6 }, { i: 17, j: 7 }, { i: 13, j: 6 }, { i: 19, j: 7 }, { i: 15, j: 6 }, { i: 12, j: 7 }, { i: 9, j: 7 }, { i: 10, j: 7 }, { i: 2, j: 7 }, { i: 3, j: 7 }, { i: 13, j: 7 }, { i: 14, j: 7 }, { i: 7, j: 7 }, { i: 5, j: 7 }, { i: 15, j: 7 },  ], css_id: 'tinytable_css_yt2nyf3wvc8rtihfk6bi',}, 
+          { positions: [ { i: 0, j: 2 }, { i: 0, j: 3 },  ], css_id: 'tinytable_css_j2fs1m5ry0t1plbt63mu',}, 
+          { positions: [ { i: 1, j: 2 }, { i: 1, j: 4 }, { i: 1, j: 6 }, { i: 1, j: 5 }, { i: 1, j: 3 }, { i: 1, j: 7 },  ], css_id: 'tinytable_css_83mt319xpkfuh6fudklu',}, 
+          { positions: [ { i: 20, j: 0 }, { i: 20, j: 1 },  ], css_id: 'tinytable_css_uhivcglyoectv29rylih',}, 
+          { positions: [ { i: 8, j: 1 }, { i: 8, j: 0 },  ], css_id: 'tinytable_css_plvdv38ge6ar4fi8sdh3',}, 
+          { positions: [ { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 6, j: 0 }, { i: 7, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 10, j: 0 }, { i: 11, j: 0 }, { i: 12, j: 0 }, { i: 13, j: 0 }, { i: 14, j: 0 }, { i: 15, j: 0 }, { i: 16, j: 0 }, { i: 17, j: 0 }, { i: 18, j: 0 }, { i: 19, j: 0 }, { i: 12, j: 1 }, { i: 13, j: 1 }, { i: 9, j: 0 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 4, j: 1 }, { i: 5, j: 1 }, { i: 6, j: 1 }, { i: 7, j: 1 }, { i: 16, j: 1 }, { i: 9, j: 1 }, { i: 10, j: 1 }, { i: 11, j: 1 }, { i: 17, j: 1 }, { i: 14, j: 1 }, { i: 15, j: 1 }, { i: 18, j: 1 }, { i: 19, j: 1 },  ], css_id: 'tinytable_css_vtx2p5fgbiu11hy62gm0',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_c68ym8g7b9d1qxonqoa0',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 1, j: 1 },  ], css_id: 'tinytable_css_3m8x6p8zzk8melf38bz0',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_s4tkvuohb35vwzrq8etv(cell.i, cell.j, group.css_id);
+                  styleCell_oeb7bltwj5be96sm6u5v(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -622,20 +622,20 @@ window.Quarto = {
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_ur3iqjwi61h2qwf06ogm, .table th.tinytable_css_ur3iqjwi61h2qwf06ogm { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
-      .table td.tinytable_css_3mmsw7pelbrm3ris3cw1, .table th.tinytable_css_3mmsw7pelbrm3ris3cw1 { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_y0z7ukef5o4046h81mle, .table th.tinytable_css_y0z7ukef5o4046h81mle { text-align: right; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_5mjydey0opt52y0ff0ok, .table th.tinytable_css_5mjydey0opt52y0ff0ok { text-align: right; }
-      .table td.tinytable_css_twni102e9e19xa0l3ele, .table th.tinytable_css_twni102e9e19xa0l3ele { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_j8wwrddmh05d6u8i6t9k, .table th.tinytable_css_j8wwrddmh05d6u8i6t9k { text-align: right; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_5lio4vav1znnoz5effcb, .table th.tinytable_css_5lio4vav1znnoz5effcb { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_ub35qyb50kl4ebba45g9, .table th.tinytable_css_ub35qyb50kl4ebba45g9 { text-align: left; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_6pupgcjnk57s80hmskb6, .table th.tinytable_css_6pupgcjnk57s80hmskb6 { text-align: left; }
-      .table td.tinytable_css_h83t7ieamxczc5zrt4g4, .table th.tinytable_css_h83t7ieamxczc5zrt4g4 { text-align: left; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
-      .table td.tinytable_css_57b3jbnxtelfwodn8585, .table th.tinytable_css_57b3jbnxtelfwodn8585 { text-align: left; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_zrh1q962mhy04a4yq1nq, .table th.tinytable_css_zrh1q962mhy04a4yq1nq { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
+      .table td.tinytable_css_cbm2zlvk7z3cuof9yz9h, .table th.tinytable_css_cbm2zlvk7z3cuof9yz9h { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_phnwjbvufq3bu90vflpw, .table th.tinytable_css_phnwjbvufq3bu90vflpw { text-align: right; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_yt2nyf3wvc8rtihfk6bi, .table th.tinytable_css_yt2nyf3wvc8rtihfk6bi { text-align: right; }
+      .table td.tinytable_css_j2fs1m5ry0t1plbt63mu, .table th.tinytable_css_j2fs1m5ry0t1plbt63mu { text-align: right; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_83mt319xpkfuh6fudklu, .table th.tinytable_css_83mt319xpkfuh6fudklu { text-align: right; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_uhivcglyoectv29rylih, .table th.tinytable_css_uhivcglyoectv29rylih { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_plvdv38ge6ar4fi8sdh3, .table th.tinytable_css_plvdv38ge6ar4fi8sdh3 { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_vtx2p5fgbiu11hy62gm0, .table th.tinytable_css_vtx2p5fgbiu11hy62gm0 { text-align: left; }
+      .table td.tinytable_css_c68ym8g7b9d1qxonqoa0, .table th.tinytable_css_c68ym8g7b9d1qxonqoa0 { text-align: left; text-align: center; border-top: solid #d3d8dc 0.1em; text-align: center; }
+      .table td.tinytable_css_3m8x6p8zzk8melf38bz0, .table th.tinytable_css_3m8x6p8zzk8melf38bz0 { text-align: left; border-bottom: solid #d3d8dc 0.05em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_s4tkvuohb35vwzrq8etv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_oeb7bltwj5be96sm6u5v" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
 <tr>
 <th scope="col" align="center" colspan="1"> </th>
@@ -866,8 +866,8 @@ window.Quarto = {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>covs <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span>chain_name, <span class="at">data =</span> fastfood)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(fastfood<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"New Jersey"</span>)</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ra_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ra_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>unc_att <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>unc_att</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Call:
 DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
@@ -883,15 +883,41 @@ DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
 ------------------------------------------------------------------
  See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single regression</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>unc_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(fte_post <span class="sc">~</span> D <span class="sc">+</span> chain_name, <span class="at">data =</span> fastfood)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(unc_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = fte_post ~ D + chain_name, data = fastfood)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.312  -4.563  -0.927   3.548  38.299 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           23.8764     1.0699  22.316  &lt; 2e-16 ***
+D                      0.4357     1.0670   0.408 0.683251    
+chain_nameKFC        -10.8346     1.1393  -9.510  &lt; 2e-16 ***
+chain_nameRoy Rogers  -3.6110     1.0758  -3.357 0.000869 ***
+chain_nameWendys      -1.3138     1.3212  -0.994 0.320672    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.266 on 379 degrees of freedom
+Multiple R-squared:  0.1984,    Adjusted R-squared:  0.1899 
+F-statistic: 23.45 on 4 and 379 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
 </div>
 <ol start="3" type="1">
 <li>Placebo test in pre-treatment period</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check identification strategy in pre-treatment periods</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fte_pre <span class="ot">&lt;-</span> fastfood<span class="sc">$</span>fte_pre</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ra_att_pre <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_pre, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ra_att_pre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression adjustment placebo</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fte_pre <span class="ot">&lt;-</span> fastfood<span class="sc">$</span>fte_pre</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>unc_placebo <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_pre, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>unc_placebo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Call:
 DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
@@ -907,15 +933,41 @@ DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
 ------------------------------------------------------------------
  See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single regression placebo</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>unc_placebo_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(fte_pre <span class="sc">~</span> D <span class="sc">+</span> chain_name, <span class="at">data =</span> fastfood)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(unc_placebo_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = fte_pre ~ D + chain_name, data = fastfood)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-17.302  -5.468  -1.616   3.238  62.913 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            25.642      1.145  22.394   &lt;2e-16 ***
+D                      -2.340      1.142  -2.049   0.0411 *  
+chain_nameKFC         -11.186      1.219  -9.174   &lt;2e-16 ***
+chain_nameRoy Rogers   -1.215      1.151  -1.055   0.2920    
+chain_nameWendys       -1.137      1.414  -0.804   0.4217    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.846 on 379 degrees of freedom
+Multiple R-squared:  0.2058,    Adjusted R-squared:  0.1974 
+F-statistic: 24.55 on 4 and 379 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
 </div>
 <ol start="4" type="1">
 <li>Lagged outcome unconfoundedness ATT estimate</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lagged outcome unconfoundedness</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>lou_covs <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> chain_name <span class="sc">+</span> fte_pre, <span class="at">data =</span> fastfood)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lou_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> lou_covs)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>lou_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression adjustment</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>lou_covs <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> chain_name <span class="sc">+</span> fte_pre, <span class="at">data =</span> fastfood)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>lou_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> lou_covs)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>lou_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Call:
 DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = lou_covs)
@@ -931,14 +983,41 @@ DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = lou_covs)
 ------------------------------------------------------------------
  See Sant'Anna and Zhao (2020) for details.</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single regression</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>lou_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(fte_post <span class="sc">~</span> D <span class="sc">+</span> chain_name <span class="sc">+</span> fte_pre, <span class="at">data =</span> fastfood)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lou_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = fte_post ~ D + chain_name + fte_pre, data = fastfood)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-19.2840  -4.3720  -0.9191   3.1944  31.3946 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)          12.95210    1.45332   8.912  &lt; 2e-16 ***
+D                     1.43260    0.95619   1.498  0.13491    
+chain_nameKFC        -6.06889    1.12243  -5.407 1.14e-07 ***
+chain_nameRoy Rogers -3.09339    0.96013  -3.222  0.00138 ** 
+chain_nameWendys     -0.82922    1.17844  -0.704  0.48208    
+fte_pre               0.42603    0.04277   9.960  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.366 on 378 degrees of freedom
+Multiple R-squared:  0.365, Adjusted R-squared:  0.3566 
+F-statistic: 43.46 on 5 and 378 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
 </div>
 <ol start="5" type="1">
 <li>Difference-in-differences ATT estimate</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># difference-in-differences</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>did_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>did_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regression adjustment</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>did_att_post <span class="ot">&lt;-</span> DRDID<span class="sc">::</span><span class="fu">reg_did_panel</span>(<span class="at">y1 =</span> fte_post, <span class="at">y0 =</span> <span class="dv">0</span>, <span class="at">D =</span> D, <span class="at">covariates =</span> covs)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>did_att_post</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Call:
 DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
@@ -953,6 +1032,33 @@ DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
  Analytical standard error.
 ------------------------------------------------------------------
  See Sant'Anna and Zhao (2020) for details.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single regression</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fastfood<span class="sc">$</span>delta_fte <span class="ot">&lt;-</span> fastfood<span class="sc">$</span>fte_post <span class="sc">-</span> fastfood<span class="sc">$</span>fte_pre</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>did_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(delta_fte <span class="sc">~</span> D <span class="sc">+</span> chain_name, <span class="at">data =</span> fastfood)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(did_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = delta_fte ~ D + chain_name, data = fastfood)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-39.734  -3.861   0.564   4.277  33.167 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)           -1.7659     1.1570  -1.526   0.1278  
+D                      2.7757     1.1539   2.405   0.0166 *
+chain_nameKFC          0.3518     1.2321   0.286   0.7754  
+chain_nameRoy Rogers  -2.3960     1.1634  -2.060   0.0401 *
+chain_nameWendys      -0.1764     1.4288  -0.123   0.9018  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.938 on 379 degrees of freedom
+Multiple R-squared:  0.02875,   Adjusted R-squared:  0.0185 
+F-statistic: 2.804 on 4 and 379 DF,  p-value: 0.02564</code></pre>
 </div>
 </div>
 </section>
@@ -971,30 +1077,19 @@ DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
 <li><p>Estimate the average treatment effect on the treated of a “Free” plan (<code>free</code>) relative to a “Catastrophic” plan on overall health index (<code>health_index</code>) Report and interpret your results.</p></li>
 <li><p>Provide an overall interpration of your results from parts b-d.</p></li>
 </ol></li>
-<li><p>For this problem, we will study the causal effect of having more children on women’s labor supply using the data <code>Fertility</code>.</p>
+<li><p>For this problem, we will study the causal effect of having more children on women’s labor supply using the data <code>Fertility</code>. <!-- Note: use the version of this data from AER package going forward. --></p>
 <ol type="a">
 <li><p>To start with, run a regression of the number of hours that a woman typically works per week (<code>work</code>) on whether or not she has more than two children (<code>morekids</code>). Report your results. Should you interpret the estimated coefficient on <code>morekids</code> as the causal effect of having more than two children? Explain.</p></li>
 <li><p>One possible instrument in this setup is the sex composition of the first two children (i.e., whether they are both girls, both boys, or a boy and a girl). The thinking here is that, at least in the United States, parents tend to have a preference for having both a girl and a boy and that, therefore, parents whose first two children have the same sex may be more likely to have a third child than they would have been if they have a girl and a boy. Go through the lise of four assumptions that we discussed in the context of instrumental variables and provide some discussion about whether or not each of these assumptions are likely to hold in this context.</p></li>
 <li><p>Regardless of your answer to part (b), create a new variable called <code>samesex</code> that is equal to one for families whose first two children have the same sex. Estimate the effect of <code>morekids</code> on <code>work</code> using <code>samesex</code> as an instrument for <code>morekids</code> and report the results. Provide some discussion about your results.</p></li>
 </ol></li>
-</ol>
-<!--
-2. For this problem, we will study the causal effect of having more children on women's labor supply using the data `Fertility`.
-
-    a) Let's start by running a regression of the number of hours that a woman typically works per week (`work`) on whether or not she has more than two children (`morekids`), her age and $age^2$, and race/ethnicity (`afam` and `hispanic`).  Report your results.  How do you feel about interpreting the estimated coefficient on `morekids` as the causal effect of having more than two children?  Explain.
-
-    b) One possible instrument in this setup is the sex composition of the first two children (i.e., whether they are both girls, both boys, or a boy and a girl).  The thinking here is that, at least in the United States, parents tend to have a preference for having both a girl and a boy and that, therefore, parents whose first two children have the same sex may be more likely to have a third child than they would have been if they have a girl and a boy.  Do you think that using a binary variable for whether or not the first two children have the same sex is a reasonable instrument of for `morekids` from part a?
-
-    c) Create a new variable called `samesex` that is equal to one for families whose first two children have the same sex.  Using the same specification as in part a, use `samesex` as an instrument for `morekids` and report the results.  Provide some discussion about your results.
--->
-<ol start="3" type="1">
 <li><p>For this question, we will use the <code>AJR</code> data. A deep question in development economics is: Why are some countries much richer than other countries? One explanation for this is that richer countries have different institutions (e.g., property rights, democracy, etc.) that are conducive to growth. Its hard to study these questions though because institutions do not arise randomly — there could be reverse causality so that property rights, democracy, etc. are (perhaps partially) caused by being rich rather than the other way around. Alternatively, other factors (say a country’s geography) could cause both of these. We’ll consider one instrumental variables approach to thinking about this question in this problem.</p>
 <ol type="a">
 <li><p>Run a regression of the log of per capita GDP (the log of per capita GDP is stored in the variable <code>GDP</code>) on a measure of the protection against expropriation risk (this is a measure of how “good” a country’s institutions are (a larger number indicates “better” institutions) and it is in the variable <code>Exprop</code>). How do you interpret these results? Do you think it would be reasonable to interpret the estimated coefficient on <code>Exprop</code> as the causal effect of institutions on GDP.</p></li>
 <li><p>One possible instrument for <code>Exprop</code> is settler mortality (we’ll use the log of this which is available in the variable <code>logMort</code>). Settler mortality is a measure of how dangerous it was for early settlers of a particular location. The idea is that places that have high settler mortality may have set up worse (sometimes called “extractive”) institutions than places that had lower settler mortality. But that settler mortality (from a long time ago) does not have any other direct effect on modern GDP. Provide some discussion about whether settler mortality is a valid instrument for institutions.</p></li>
 <li><p>Estimate an IV regression of <code>GDP</code> on <code>Exprop</code> using <code>logMort</code> as an instrument for <code>Exprop</code>. How do you interpret the results? How do these results compare to the ones from part a?</p></li>
 </ol></li>
-<li><p>For this question, we’ll use the data <code>house</code> to study the causal effect of incumbency on the probability that a member of the House of Representatives gets re-elected.</p>
+<li><p>For this question, we’ll use the data <code>house</code> to study the causal effect of incumbency on the probability that a member of the House of Representatives gets re-elected. <!-- Note: better data from ivmte package --></p>
 <ol type="a">
 <li><p>One way to try to estimate the causal effect of incumbency is to just run a regression where the outcome is <code>democratic_vote_share</code> (this is the same outcome we’ll use below) and where the model includes a binary variable for whether or not the democratic candidate is an incumbent. What are some limitions of this strategy?</p></li>
 <li><p>The <code>house</code> data contains data about the margin of victory (is positive if they won the election and negative if they lost) for Democratic candidates in the current election and data about the Democratic margin of victory in the past election. Explain how you could use this data in a regression discontinuity design to estimate the causal effect of incumbency.</p></li>
@@ -1013,23 +1108,29 @@ DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
 <ol type="1">
 <li><p>What is the difference between treatment effect homogeneity and treatment effect heterogeneity?</p></li>
 <li><p>Why do most researchers give up on trying to estimate the individual-level effect of participating in a treatment?</p></li>
+<li><p>What are four conditions for a valid instrument? Explain in words and math.</p></li>
 <li><p>Explain what unconfoundedness means.</p></li>
-<li><p>What is the key condition underlying a difference-in-differences approach to learn about the causal effect of some treatment on some outcome?</p></li>
-<li><p>What are two key conditions for a valid instrument?</p></li>
+<li><p>If we make the assumption of unconfoundedness, explain in words what sort of comparisons that we would like to make in order to estimate the average treatment effect on the treated.</p></li>
+<li><p>What is the key condition underlying a difference-in-differences approach to learn about the causal effect of some treatment on some outcome? Explain both in words and in math. In what circumstance would a researcher be likely to prefer this type of assumption over unconfoundedness?</p></li>
 <li><p>Suppose you are interested in the causal effect of participating in a union on a person’s income. Consider the following approaches.</p>
 <ol type="a">
-<li><p>Suppose you run the following regression</p>
-<p><span class="math display">\[\begin{align*}
-   Earnings_i = \beta_0 + \alpha Union_i + \beta_1 Education_i + U_i
-\end{align*}\]</span></p>
-<p>Would it be reasonable to interpret <span class="math inline">\(\hat{\alpha}\)</span> in this regression as an estimate of the causal effect of participating in a union on earnings? Explain.</p></li>
-<li><p>Suppose you have access to panel data and run the following fixed effects regression <span class="math display">\[\begin{align*}
-   Earnings_{it} = \beta_{0,t} + \alpha Union_{it} + \beta_1 Education_{it} + \eta_i + U_{it}
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(\eta_i\)</span> is an individual fixed effect. Would it be reasonable to interpert <span class="math inline">\(\hat{\alpha}\)</span> in this regression as an estimate of the causal effect of participating in a union on earnings? Explain. Can you think of any other advantages or disadvantages of this approach?</p></li>
-<li><p>Going back to the case with cross-sectional data, consider the regression <span class="math display">\[\begin{align*}
-   Earnings_i = \beta_0 + \alpha Union_i + U_i
-\end{align*}\]</span> but using the variable <span class="math inline">\(Z_i = 1\)</span> if birthday is between Jan.&nbsp;1 and Jun.&nbsp;30 while <span class="math inline">\(Z_i=0\)</span> otherwise. Would it be reasonable to interpert <span class="math inline">\(\hat{\alpha}\)</span> in this regression as an estimate of the causal effect of participating in a union on earnings? Explain. Can you think of any other advantages or disadvantages of this approach?</p></li>
+<li><p>Consider the following assumption: <span class="math display">\[\begin{align*}
+   \big(Earnings(1), Earnings(0)\big) \independent Union | Education
+\end{align*}\]</span> where <span class="math inline">\(Earnings(1)\)</span> is the potential earnings if the individual participates in a union, <span class="math inline">\(Earnings(0)\)</span> is the potential earnings if the individual does not participate in a union, <span class="math inline">\(Union\)</span> is a binary variable equal to one if the individual participates in a union and zero otherwise, and <span class="math inline">\(Education\)</span> is years of education. Do you think this assumption is likely to hold? Explain.</p></li>
+<li><p>Regardless of your answer to part (a), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (a) using regression adjustment.</p></li>
+<li><p>Regardless of your answer to part (a), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (a) using a single regression. What additional assumption do you need to make in order to use this approach?</p></li>
+<li><p>Now suppose that you have access to two periods of panel data. Suppose that we are looking at a population of adults, so we can assume that each person’s education is constant over time. Also, suppose that no one participated in a union in the first period (note: this is probably unrealistic, but we could just drop all observations that participated in a union in the first period). How can you use this data to conduct a placebo test for the unconfoundedness assumption in part (a)? Why is this useful?</p></li>
+<li><p>Consider the same setup at in part (d). Explain the assumption of lagged outcome unconfoundedness in this context. Do you think this assumption is likely to hold? Explain.</p></li>
+<li><p>Regardless of your answer to part (d), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (d) using regression adjustment and then using a single regression.</p></li>
+<li><p>Now, suppose that we are willing to make the parallel trends assumption. Explain what this assumption means in this context. Do you think this assumption is likely to hold? Explain.</p></li>
+<li><p>Regardless of your answer to part (f), explain how to estimate the ATT of participating in a union on earnings under the assumption in part (f) using regression adjustment and then using a single regression.</p></li>
+<li><p>Given the setup with two periods of panel data, is it possible to conduct a placebo test for lagged outcome unconfoundedness or difference-in-differences? Does your answer change if you had access to three periods of panel data? Explain.</p></li>
+</ol></li>
+<li><p>Suppose that you are interested in learning about the causal effect of attending college on earnings.</p>
+<ol type="a">
+<li><p>You read a newspaper article that says that the average earnings for college graduates is $50,000 per year while the average earnings for non-college graduates is $40,000 per year. The article interprets this $10,000 difference as the return to attending college. What assumption would you need to believe in order for this interpretation to be valid? Do you think this assumption is likely to hold? Explain.</p></li>
+<li><p>Regardless of your actual answer to part (a), suppose that you are not willing to believe the assumption that you mentioned there. You remember that having access to an instrumental variable is useful for learning about causal effects, and your friend suggests generating an instrument <span class="math inline">\(Z\)</span> by randomly drawing a 1 or a 0 for each individual in your data. Go through the four conditions that we discussed for a valid instrument and explain whether or not each of these conditions is likely to hold for this instrument.</p></li>
+<li><p>You also notice that you have a variable in your data that indicates whether or not an individual grew up near a college (<code>near_college</code>). Another friend suggests using this variable as an instrument for attending college. Go through the four conditions that we discussed for a valid instrument and explain whether or not each of these conditions is likely to hold for this instrument.</p></li>
 </ol></li>
 <li><p>Suppose that you are interested in the effect of lower college costs on the probability of graduating from college. You have access to student-level data from Georgia where students are eligible for the Hope Scholarship if they can keep their GPA above 3.0.</p>
 <ol type="a">
@@ -1044,18 +1145,21 @@ DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
 <ol type="a">
 <li><p>Since you do not observe <span class="math inline">\(W\)</span>, you are considering just running a regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(D\)</span> and <span class="math inline">\(X\)</span> and interpreting the estimated coefficient on <span class="math inline">\(D\)</span> as the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>. Does this seem like a good idea?</p></li>
 <li><p>In part (a), we can write a version of the model that you are thinking about estimating as <span class="math display">\[\begin{align*}
-   Y_i = \delta_0 + \delta_1 D_i + \delta_2 X_i + \epsilon_i
+  Y_i = \delta_0 + \delta_1 D_i + \delta_2 X_i + \epsilon_i
 \end{align*}\]</span> Suppose that <span class="math inline">\(\E[\epsilon | D, X] = 0\)</span> and suppose also that <span class="math display">\[\begin{align*}
 W_i = \gamma_0 + \gamma_1 D_i + \gamma_2 X_i + V_i
-  \end{align*}\]</span> with <span class="math inline">\(\E[V|D,X]=0\)</span>. Provide an expression for <span class="math inline">\(\delta_1\)</span> in terms of <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\gamma\)</span>’s and <span class="math inline">\(\beta\)</span>’s. Explain what this expression means.</p></li>
+\end{align*}\]</span> with <span class="math inline">\(\E[V|D,X]=0\)</span>. Provide an expression for <span class="math inline">\(\delta_1\)</span> in terms of <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\gamma\)</span>’s and <span class="math inline">\(\beta\)</span>’s. Explain what this expression means.</p></li>
 </ol></li>
 <li><p>Suppose you have access to an experiment where some participants were randomly assigned to participate in a job training program and others were randomly assigned not to participate. However, some individuals that were assigned to participate in the treatment decided not to actually participate. Let’s use the following notation: <span class="math inline">\(D=1\)</span> for individuals who actually participated and <span class="math inline">\(D=0\)</span> for individuals who did not participate. <span class="math inline">\(Z=1\)</span> for individuals who were assigned to the treatment and <span class="math inline">\(Z=0\)</span> for individuals assigned not to participate (here, <span class="math inline">\(D\)</span> and <span class="math inline">\(Z\)</span> are not exactly the same because some individuals who were assigned to the treatment did not actually participate).</p>
-<p>You are considering several different approaches to dealing with this issue. Discuss which of the following are good or bad ideas:</p>
+<p>You are considering several different approaches to dealing with this issue.</p>
 <ol type="a">
-<li><p>Estimating <span class="math inline">\(ATT\)</span> by <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span>.</p></li>
-<li><p>Run the regression <span class="math inline">\(Y_i = \beta_0 + \alpha D_i + U_i\)</span> using <span class="math inline">\(Z_i\)</span> as an instrument.</p></li>
+<li><p>Estimating <span class="math inline">\(ATT\)</span> by <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span>. What condition do you need to believe in order for this approach to deliver a valid estimate of the <span class="math inline">\(ATT\)</span>? Does this condition seem likely to hold in this context? Explain.</p></li>
+<li><p>Run the regression <span class="math inline">\(Y_i = \beta_0 + \alpha D_i + U_i\)</span> using <span class="math inline">\(Z_i\)</span> as an instrument. Go through the conditions for a valid instrument and explain whether or not each of these conditions is likely to hold in this context. Assuming that all four conditions hold, how do you interpret the estimated coefficient on <span class="math inline">\(D\)</span> in this regression?</p></li>
 </ol></li>
-<li><p>Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.). You interpret the difference <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span> as an estimate of the <span class="math inline">\(ATT\)</span>, but your friend says that you should interpret it as an estimate of the <span class="math inline">\(ATE\)</span>. In fact, according to your friend, random treatment assignment implies that <span class="math inline">\(\E[Y(1)] = \E[Y(1)|D=1] = \E[Y|D=1]\)</span> and <span class="math inline">\(\E[Y(0)] = \E[Y(0)|D=0] = \E[Y|D=0]\)</span> which implies that <span class="math inline">\(ATE = \E[Y|D=1] - \E[Y|D=0]\)</span>. Who is right?</p></li>
+<li><p>Suppose you and a friend have conducted an experiment (things went well so that everyone complied with the treatment that they were assigned to, etc.). You interpret the difference <span class="math inline">\(\bar{Y}_{D=1} - \bar{Y}_{D=0}\)</span> as an estimate of the <span class="math inline">\(ATT\)</span>, but your friend says that you should interpret it as an estimate of the <span class="math inline">\(ATE\)</span>. In fact, according to your friend, random treatment assignment implies that <span class="math display">\[\begin{align*}
+  &amp; \E[Y(1)] = \E[Y(1)|D=1] = \E[Y|D=1] \\
+  \text{ and } &amp; \E[Y(0)] = \E[Y(0)|D=0] = \E[Y|D=0]
+\end{align*}\]</span> which implies that <span class="math inline">\(ATE = \E[Y|D=1] - \E[Y|D=0]\)</span>. Who is right?</p></li>
 </ol>
 <!--
 ## Answers to Some Extra Questions

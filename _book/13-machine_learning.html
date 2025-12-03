@@ -555,9 +555,9 @@ window.Quarto = {
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  r.squared adj.r.squared     aic     bic       cv
-1     0.898         0.898 1104188 1104301 1365.911
-2     0.900         0.900 1103499 1103647 1372.700
-3     0.928         0.928 1089372 1090328 2127.505</code></pre>
+1     0.898         0.898 1104188 1104301 1366.056
+2     0.900         0.900 1103499 1103647 1371.034
+3     0.928         0.928 1089372 1090328 2110.132</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
@@ -589,7 +589,7 @@ window.Quarto = {
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     mod1    mod2    mod3   lasso   ridge
-1 856.014 785.171 616.996 671.448 794.276</code></pre>
+1 856.014 785.171 616.996 647.622 787.132</code></pre>
 </div>
 </div>
 </section>
