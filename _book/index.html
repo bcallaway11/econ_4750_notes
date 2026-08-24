@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,16 +31,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-introduction_to_R.html" rel="next">
+<link href="./02-data.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -79,13 +79,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -117,20 +117,26 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -139,14 +145,14 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -155,20 +161,20 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -177,20 +183,20 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -199,8 +205,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -209,14 +215,14 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -225,26 +231,26 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -265,8 +271,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#additional-references" id="toc-additional-references" class="nav-link" data-scroll-target="#additional-references"><span class="header-section-number">1.4</span> Additional References</a></li>
   <li><a href="#goals-for-the-course" id="toc-goals-for-the-course" class="nav-link" data-scroll-target="#goals-for-the-course"><span class="header-section-number">1.5</span> Goals for the Course</a></li>
   <li><a href="#studying-for-the-class" id="toc-studying-for-the-class" class="nav-link" data-scroll-target="#studying-for-the-class"><span class="header-section-number">1.6</span> Studying for the Class</a></li>
-  <li><a href="#data-used-in-the-course" id="toc-data-used-in-the-course" class="nav-link" data-scroll-target="#data-used-in-the-course"><span class="header-section-number">1.7</span> Data Used in the Course</a></li>
-  <li><a href="#first-week-of-class" id="toc-first-week-of-class" class="nav-link" data-scroll-target="#first-week-of-class"><span class="header-section-number">1.8</span> First Week of Class</a></li>
+  <li><a href="#first-week-of-class" id="toc-first-week-of-class" class="nav-link" data-scroll-target="#first-week-of-class"><span class="header-section-number">1.7</span> First Week of Class</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -314,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>A substitute for coming to class — I will take attendance anyway, but not attending class and relying on this material is not a good plan. Please do not do this.</p></li>
 <li><p>A full substitute for the textbook — In a number of places, the textbook contains substantially more details than I am able to provide here. In my experience, it is also useful to have different “voices” that you can refer to (e.g., you may find my explanation unclear but may find the textbook much clearer). The textbook also contains substantially more material than what I provide in these notes. If there are additional topics in the textbook that we do not cover that you would like to learn about, these should all be understandable for you by the end of this semester.</p></li>
-<li><p>Sufficient for making good grades on exams — I don’t suspect that it will be a good strategy to rely exclusively on the material provided here in order to do well on the exams. I think this material should be helpful and perhaps even a good starting point when it comes to studying, but it is not sufficient for making a good grade in the class.</p></li>
+<li><p>Sufficient for making good grades on exams — The material provided here should be helpful and perhaps even a good starting point when it comes to studying for exams, but it is not sufficient for making a good grade in the class. Any material that we cover in class is fair game for exams, even if it is not explicitly covered in these notes.</p></li>
 </ul>
 </section>
 <section id="why-did-i-write-this" class="level2" data-number="1.3">
@@ -333,18 +338,17 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Additional R References:</strong></p>
 <p>There are tons of free R resources available online. Here are some that seem particularly useful to me.</p>
 <ol type="1">
-<li><p>Manageable Introduction: <a href="https://sjspielman.github.io/datascience_for_biologists/tutorials/introduction_to_R.html">Introduction to R and RStudio</a>, by Stephanie Spielman</p></li>
-<li><p>Full length book: <a href="(https://rafalab.github.io/dsbook/)">Introduction to Data Science: Data Analysis and Prediction Algorithms with R</a>, by Rafael Irizarry (this is way more than you will need for this course, but I suggest checking out Chapters 1, 2, 3, and 5, and there’s plenty more that you might find interesting).</p></li>
-<li><p>Full length book: <a href="https://stat545.com/">STAT 545: Data Wrangling, exploration, and analysis with R</a>, by Jenny Bryan</p></li>
+<li><p>Full length book: <a href="https://rafalab.dfci.harvard.edu/dsbook-part-1/">Introduction to Data Science: Data Wrangling and Visualization with R</a>, by Rafael Irizarry (this is way more than you will need for this course, but I suggest checking out Chapters 1, 2, 3, and 6, and there’s plenty more that you might find interesting).</p></li>
+<li><p>Videos on LinkedIn Learning: <a href="https://www.linkedin.com/learning/r-for-data-science-analysis-and-visualization/">R for Data Science: Analysis and Visualization</a>, by Barton Poulson (this is a paid resource, but UGA provides free access to LinkedIn Learning for students, faculty, and staff).</p></li>
 </ol>
 </section>
 <section id="goals-for-the-course" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="goals-for-the-course"><span class="header-section-number">1.5</span> Goals for the Course</h2>
 <p>I have three high level goals — that by the end of the semester, students should be able to</p>
 <ol type="1">
-<li><p>Run regressions and be able to interpret them (this includes even complex regressions) and also be able to think through which regression you <em>ought</em> to run</p></li>
-<li><p>Use data in order to be able to predict outcomes of interest</p></li>
-<li><p>Be able to think clearly about when statistical results can be interpreted as causal effects.</p></li>
+<li><p>Run regressions and be able to interpret them (this includes even complex regressions) and also be able to think through which regression you <em>ought</em> to run.</p></li>
+<li><p>Use data in order to be able to predict outcomes of interest.</p></li>
+<li><p>Be able to think clearly about when statistical results can be interpreted as causal effects as well as learn some of the main tools that empirical researchers use to learn about causal effects from data.</p></li>
 </ol>
 <p>In order to make progress towards these three goals, we also will need to learn about two additional topics:</p>
 <ul>
@@ -357,165 +361,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="1.6" class="anchored" data-anchor-id="studying-for-the-class"><span class="header-section-number">1.6</span> Studying for the Class</h2>
 <p>Students ask me all the time “How should I study for your class?” My advice (and I think this applies to most classes, not just my class) is for you to start by studying the notes from class. The things that I have discussed in class are the things that I think are most important for you learn in this sort of class and are the material that will be covered on the exam. That said, it may sometimes be the case that you do not fully understand a lecture or the notes that you took from a lecture when you are studying (this certainly applied to me when I was a student). If there are places that you do not understand what the notes mean, then I think that is the time when you should find the relevant portion of the textbook (or supplementary notes provided here) in order to “supplement” what the notes say.</p>
 </section>
-<section id="data-used-in-the-course" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="data-used-in-the-course"><span class="header-section-number">1.7</span> Data Used in the Course</h2>
-<p>The following provides the full list of data that we will use this semester. Some of the links below are to data posted on my website; others point to data hosted externally (if you notice any broken links, please let me know).</p>
-<p>Note: some of the datasets below require installing an <code>R</code> package. For example, to access the <code>Airq</code> data, you need to install the <code>Ecdat</code> package first (i.e., by running <code>install.packages("Ecdat")</code>) and then run <code>data(Airq, package="Ecdat")</code>.</p>
-<ul>
-<li><p><code>acs</code></p>
-<ul>
-<li><p>Data from the 2019 American Community Survey about Education and Earnings</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Airq</code></p>
-<ul>
-<li><p>Data about air quality in California counties in 1972.</p></li>
-<li><p>Access: <code>data(Airq, package="Ecdat")</code></p></li>
-<li><p>Description: <code>?Ecdat::Airq</code></p></li>
-</ul></li>
-<li><p><code>AJR</code></p>
-<ul>
-<li><p>Data about GDP, institutions, and settler mortality</p></li>
-<li><p>Access: <code>data(AJR, package="hdm")</code></p></li>
-<li><p>Description: <code>?hdm::AJR</code></p></li>
-</ul></li>
-<li><p><code>banks</code></p>
-<ul>
-<li><p>Data about bank closures in Mississippi during the Great Depression</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Birthweight_Smoking</code></p>
-<ul>
-<li><p>Data about infant birthweights and mother’s smoking from PA 1989</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf">Mark Watson’s website</a></p></li>
-</ul></li>
-<li><p><code>Caschool</code></p>
-<ul>
-<li><p>School-level test score data from California in 1998-1999</p></li>
-<li><p>Access: <code>data(Caschool, package="Ecdat")</code></p></li>
-<li><p>Description: <code>?Ecdat::Caschool</code></p></li>
-</ul></li>
-<li><p><code>diamond_train</code></p>
-<ul>
-<li><p>Data about diamond prices. The full version of this data I got from Kaggle, and then I split it into training and testing data.</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: A description of each column in the data is available under the <code>Description</code> tab on <a href="https://www.kaggle.com/shivam2503/diamonds/">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>diamond_test</code></p>
-<ul>
-<li><p>Out of sample version of <code>diamond_train</code> data</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: A description of each column in the data is available under the <code>Description</code> tab on <a href="https://www.kaggle.com/shivam2503/diamonds/">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>Fair</code></p>
-<ul>
-<li><p>Individual-level data about affairs in the United States</p></li>
-<li><p>Access: <code>data(Fair, package="Ecdat")</code></p></li>
-<li><p>Description: <code>?Ecdat::Fair</code></p></li>
-</ul></li>
-<li><p><code>fastfood</code></p>
-<ul>
-<li><p>Data about fast food restaurants in New Jersey and Pennsylvania from Card and Krueger (1994)</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Fatalities</code></p>
-<ul>
-<li><p>State-level panel data about drunk driving laws and traffic fatalities</p></li>
-<li><p>Access: <code>data(Fatality, package="AER")</code></p></li>
-<li><p>Description: <code>?AER::Fatality</code></p></li>
-</ul></li>
-<li><p><code>Fertility</code></p>
-<ul>
-<li><p>Data from Angrist and Evans (1998) about fertility and female labor supply</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>fertilizer_2000</code></p>
-<ul>
-<li><p>Country-level data about fertilizer and crop yields from the year 2000. See description of <code>fertilizer_panel</code> below for more details</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>fertilizer_panel</code></p>
-<ul>
-<li><p>Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries. This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. “Fertilizing growth: Agricultural inputs and their effects in economic development.” Journal of Development Economics 127 (2017): 133-152. url: <a href="https://doi.org/10.1016/j.jdeveco.2017.02.007">https://doi.org/10.1016/j.jdeveco.2017.02.007</a>.</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>house</code></p>
-<ul>
-<li><p>U.S. House of Representatives elections data from 1946-1998</p></li>
-<li><p>Access: Course Website](http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/)</p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>intergenerational_mobility</code></p>
-<ul>
-<li><p>Intergenerational mobility data from PSID</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Lead_Mortality</code></p>
-<ul>
-<li><p>Infant mortality and lead pipes in 1900</p></li>
-<li><p>Access: Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf">Mark Watson’s website</a></p></li>
-</ul></li>
-<li><p><code>mlda</code></p>
-<ul>
-<li><p>Car accident deaths by age group</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>mroz</code></p>
-<ul>
-<li><p>Labor force particpation of married women</p></li>
-<li><p>Access: <code>data(mroz, package="wooldridge")</code></p></li>
-<li><p>Description: <code>?wooldridge::mroz</code></p></li>
-</ul></li>
-<li><p><code>mutual_funds</code></p>
-<ul>
-<li><p>Mutual fund performance data</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>rand_hie</code></p>
-<ul>
-<li><p>RAND health insurance experiment</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-<li><p><code>Star</code></p>
-<ul>
-<li><p>Data from Project STAR that randomly assigned some students to smaller class sizes</p></li>
-<li><p>Access: <code>data(Star, package="Ecdat")</code></p></li>
-<li><p>Description: <code>?Ecdat::Star</code></p></li>
-</ul></li>
-<li><p><code>titanic_training</code></p>
-<ul>
-<li><p>Passenger level data on surviving Titanic. This data is a slightly adapted version of the <code>titanic</code> data on <a href="https://www.kaggle.com/c/titanic">Kaggle</a></p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>titanic_testing</code></p>
-<ul>
-<li><p>Out of sample version of <code>titanic_training</code> data</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a></p></li>
-</ul></li>
-<li><p><code>us_data</code></p>
-<ul>
-<li><p>Data from the 2019 American Community Survey via IPUMS</p></li>
-<li><p>Access: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-<li><p>Description: <a href="http://bcallaway11.github.io/Courses/ECON_4750_Fall_2025/">Course Website</a></p></li>
-</ul></li>
-</ul>
-</section>
-<section id="first-week-of-class" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="first-week-of-class"><span class="header-section-number">1.8</span> First Week of Class</h2>
+<section id="first-week-of-class" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="first-week-of-class"><span class="header-section-number">1.7</span> First Week of Class</h2>
 <p>Related Reading: SW All of Chapter 1</p>
 <p>In the first few classes, we will talk at very high level about the objectives of Econometrics.</p>
 
@@ -559,18 +406,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -602,7 +438,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -637,7 +511,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -685,7 +563,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -915,8 +792,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-introduction_to_R.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Introduction to R</span>">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-data.html" class="pagination-link" aria-label="Data">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

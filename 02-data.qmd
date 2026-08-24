@@ -1,0 +1,214 @@
+# Data
+
+The following provides the full list of data that we will use this semester.  Some of the links below are to data posted on my website; others point to data hosted externally (if you notice any broken links, please let me know).
+
+Note: some of the datasets below require installing an `R` package.  For example, to access the `Airq` data, you need to install the `Ecdat` package first (i.e., by running `install.packages("Ecdat")`) and then run `data(Airq, package="Ecdat")`.
+
+
+- `acs`
+
+    - Data from the 2019 American Community Survey about Education and Earnings
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `Airq`
+
+    - Data about air quality in California counties in 1972.
+
+    - Access: `data(Airq, package="Ecdat")`
+
+    - Description: `?Ecdat::Airq`
+
+- `AJR`
+
+    - Data about GDP, institutions, and settler mortality
+
+    - Access: `data(AJR, package="hdm")`
+
+    - Description: `?hdm::AJR`
+
+- `banks`
+
+    - Data about bank closures in Mississippi during the Great Depression
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `Birthweight_Smoking`
+
+    - Data about infant birthweights and mother's smoking from PA 1989
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Mark Watson's website](https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf)
+
+- `Caschool`
+
+    - School-level test score data from California in 1998-1999
+
+    - Access: `data(Caschool, package="Ecdat")`
+
+    - Description: `?Ecdat::Caschool`
+
+- `diamond_train`
+
+    - Data about diamond prices.  The full version of this data I got from Kaggle, and then I split it into training and testing data.
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
+
+- `diamond_test`
+
+    - Out of sample version of `diamond_train` data
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
+
+- `Fair`
+
+    - Individual-level data about affairs in the United States
+
+    - Access: `data(Fair, package="Ecdat")`
+
+    - Description: `?Ecdat::Fair`
+
+-  `fastfood`
+
+    - Data about fast food restaurants in New Jersey and Pennsylvania from Card and Krueger (1994)
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `Fatalities`
+
+    - State-level panel data about drunk driving laws and traffic fatalities
+
+    - Access: `data(Fatality, package="AER")`
+
+    - Description: `?AER::Fatality`
+
+- `Fertility`
+
+    - Data from Angrist and Evans (1998) about fertility and female labor supply
+
+    - Access: `data(Fertility, package="AER")`
+
+    - Description: `?AER::Fertility`
+
+- `fertilizer_2000`
+
+    - Country-level data about fertilizer and crop yields from the year 2000.  See description of `fertilizer_panel` below for more details
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `fertilizer_panel`
+
+    - Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries.  This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. "Fertilizing growth: Agricultural inputs and their effects in economic development." Journal of Development Economics 127 (2017): 133-152. url: [https://doi.org/10.1016/j.jdeveco.2017.02.007](https://doi.org/10.1016/j.jdeveco.2017.02.007).
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `gapminder`
+
+    - Country-level panel data from 1952-2007 about life expectancy, GDP per capita, and population
+
+    - Access: `data(gapminder, package="gapminder")`
+
+    - Description: `?gapminder::gapminder`
+
+- `house`
+
+    - U.S. House of Representatives elections data from 1946-1998
+
+    - Access: Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `intergenerational_mobility`
+
+    - Intergenerational mobility data from PSID
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `Lead_Mortality`
+
+    - Infant mortality and lead pipes in 1900
+
+    - Access: Access: [Course Website](`r course_website_link`)
+
+    - Description: [Mark Watson's website](http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf)
+
+- `mlda`
+
+    - Car accident deaths by age group
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `mroz`
+
+    - Labor force particpation of married women
+
+    - Access: `data(mroz, package="wooldridge")`
+
+    - Description: `?wooldridge::mroz`
+
+- `mutual_funds`
+
+    - Mutual fund performance data
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `rand_hie`
+
+    - RAND health insurance experiment
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)
+
+- `Star`
+
+    - Data from Project STAR that randomly assigned some students to smaller class sizes
+
+    - Access: `data(Star, package="Ecdat")`
+
+    - Description: `?Ecdat::Star`
+
+- `titanic_training`
+
+    - Passenger level data on surviving Titanic.  This data is a slightly adapted version of the `titanic` data on [Kaggle](https://www.kaggle.com/c/titanic)
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
+
+- `titanic_testing`
+
+    - Out of sample version of `titanic_training` data
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
+
+- `us_data`
+
+    - Data from the 2019 American Community Survey via IPUMS
+
+    - Access: [Course Website](`r course_website_link`)
+
+    - Description: [Course Website](`r course_website_link`)

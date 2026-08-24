@@ -6,9 +6,6 @@ The data contains 6558 observations of Democratic vote shares in House of Repres
 
 The following variables are included:
 
-- Dmargin1 -- The Democratic "margin of victory" in the election 2 years ago (if it is positive,
-              it indicates that the Democratic candidate won the election; if it is negative,
-	      it indicates that the Democratic candidate won the election
-- Dmargin2 -- The Democratic "margin of victory" in the current election  (if it is positive,
-              it indicates that the Democratic candidate won the election; if it is negative,
-	      it indicates that the Democratic candidate won the election
+* dem_margin_previous -- The Democratic "margin of victory" in the election 2 years ago (if it is positive, it indicates that the Democratic candidate won the election; if it is negative, it indicates that the Democratic candidate won the election
+
+* dem_margin_current -- The Democratic "margin of victory" in the current election  (if it is positive, it indicates that the Democratic candidate won the election; if it is negative, it indicates that the Democratic candidate won the election

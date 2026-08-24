@@ -9,30 +9,31 @@ book:
   chapters:
     - part: "Start"
     - index.qmd
+    - 02-data.qmd
     - part: "Statistical Programming"
-    - 01-introduction_to_R.qmd
-    - 02-programming_in_R.qmd
+    - 03-introduction_to_R.qmd
+    - 04-programming_in_R.qmd
     - part: "Probability"
-    - 03-random_variables.qmd
-    - 04-expectations.qmd
+    - 05-random_variables.qmd
+    - 06-expectations.qmd
     - part: "Properties of Estimators"
-    - 05-finite_sample_properties.qmd
-    - 06-asymptotic_properties.qmd
-    - 07-inference.qmd
+    - 07-finite_sample_properties.qmd
+    - 08-asymptotic_properties.qmd
+    - 09-inference.qmd
     - part: "Regression"
-    - 08-interpreting_regressions.qmd
-    - 09-regression_computation.qmd
-    - 10-regression_inference.qmd
+    - 10-interpreting_regressions.qmd
+    - 11-regression_computation.qmd
+    - 12-regression_inference.qmd
     - part: "Advanced Topics"
-    - 11-binary_outcomes.qmd
+    - 13-binary_outcomes.qmd
     - part: "Prediction"
-    - 12-model_selection.qmd
-    - 13-machine_learning.qmd
+    - 14-model_selection.qmd
+    - 15-machine_learning.qmd
     - part: "Causal Inference"
-    - 14-causal_inference_concepts.qmd
-    - 15-experiments.qmd
-    - 16-natural_experiments.qmd
-    - 17-observational_data.qmd
+    - 16-causal_inference_concepts.qmd
+    - 17-experiments.qmd
+    - 18-natural_experiments.qmd
+    - 19-observational_data.qmd
 
 bibliography: refs.bib
 

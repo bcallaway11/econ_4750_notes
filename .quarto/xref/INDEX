@@ -58,5 +58,59 @@
   },
   "17-observational_data.qmd": {
     "17-observational_data.html": "ee379022"
+  },
+  "02-data.qmd": {
+    "02-data.html": "c32be767"
+  },
+  "03-introduction_to_R.qmd": {
+    "03-introduction_to_R.html": "3b7d428c"
+  },
+  "04-programming_in_R.qmd": {
+    "04-programming_in_R.html": "68190f59"
+  },
+  "05-random_variables.qmd": {
+    "05-random_variables.html": "669f0db5"
+  },
+  "06-expectations.qmd": {
+    "06-expectations.html": "6ecc68e4"
+  },
+  "07-finite_sample_properties.qmd": {
+    "07-finite_sample_properties.html": "a1aee4bf"
+  },
+  "08-asymptotic_properties.qmd": {
+    "08-asymptotic_properties.html": "327fef1b"
+  },
+  "09-inference.qmd": {
+    "09-inference.html": "bbb13edf"
+  },
+  "10-interpreting_regressions.qmd": {
+    "10-interpreting_regressions.html": "b51b17d1"
+  },
+  "11-regression_computation.qmd": {
+    "11-regression_computation.html": "c0738b3f"
+  },
+  "12-regression_inference.qmd": {
+    "12-regression_inference.html": "2ad066a3"
+  },
+  "13-binary_outcomes.qmd": {
+    "13-binary_outcomes.html": "0e3ac7e8"
+  },
+  "14-model_selection.qmd": {
+    "14-model_selection.html": "cf285641"
+  },
+  "15-machine_learning.qmd": {
+    "15-machine_learning.html": "49794288"
+  },
+  "16-causal_inference_concepts.qmd": {
+    "16-causal_inference_concepts.html": "9d21f7e1"
+  },
+  "17-experiments.qmd": {
+    "17-experiments.html": "3673bec7"
+  },
+  "18-natural_experiments.qmd": {
+    "18-natural_experiments.html": "e4156f4f"
+  },
+  "19-observational_data.qmd": {
+    "19-observational_data.html": "8c1f257a"
   }
 }
