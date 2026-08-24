@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 16&nbsp; Experiments</title>
+<title>17&nbsp; Experiments – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,17 +64,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./16-natural_experiments.html" rel="next">
-<link href="./14-causal_inference_concepts.html" rel="prev">
+<link href="./18-natural_experiments.html" rel="next">
+<link href="./16-causal_inference_concepts.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +142,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./15-experiments.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./17-experiments.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -180,20 +180,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -202,14 +208,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -218,20 +224,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,20 +246,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -262,8 +268,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -272,14 +278,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -288,26 +294,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -320,9 +326,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#estimating-att-with-a-regression" id="toc-estimating-att-with-a-regression" class="nav-link active" data-scroll-target="#estimating-att-with-a-regression"><span class="header-section-number">16.1</span> Estimating ATT with a Regression</a></li>
-  <li><a href="#internal-and-external-validity" id="toc-internal-and-external-validity" class="nav-link" data-scroll-target="#internal-and-external-validity"><span class="header-section-number">16.2</span> Internal and External Validity</a></li>
-  <li><a href="#example-project-star" id="toc-example-project-star" class="nav-link" data-scroll-target="#example-project-star"><span class="header-section-number">16.3</span> Example: Project STAR</a></li>
+  <li><a href="#estimating-att-with-a-regression" id="toc-estimating-att-with-a-regression" class="nav-link active" data-scroll-target="#estimating-att-with-a-regression"><span class="header-section-number">17.1</span> Estimating ATT with a Regression</a></li>
+  <li><a href="#internal-and-external-validity" id="toc-internal-and-external-validity" class="nav-link" data-scroll-target="#internal-and-external-validity"><span class="header-section-number">17.2</span> Internal and External Validity</a></li>
+  <li><a href="#example-project-star" id="toc-example-project-star" class="nav-link" data-scroll-target="#example-project-star"><span class="header-section-number">17.3</span> Example: Project STAR</a></li>
   </ul>
 </nav>
     </div>
@@ -331,7 +337,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></h1>
 </div>
 
 
@@ -379,8 +385,8 @@ window.Quarto = {
 <p>The natural way to estimate the ATT under random assignment is <span class="math display">\[\begin{align*}
   \widehat{ATT} = \bar{Y}_{D=1} - \bar{Y}_{D=0}
 \end{align*}\]</span> i.e., as we have done many times before, in order to estimate the parameter of interest, we just replace population averages with sample averages.</p>
-<section id="estimating-att-with-a-regression" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="estimating-att-with-a-regression"><span class="header-section-number">16.1</span> Estimating ATT with a Regression</h2>
+<section id="estimating-att-with-a-regression" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="estimating-att-with-a-regression"><span class="header-section-number">17.1</span> Estimating ATT with a Regression</h2>
 <p>It is also often convenient to introduce a regression based estimator of the ATT. This is primarily convenient as it will allow us to leverage all the things we already know about regressions, and, particularly, we it will immediately provide us with standard errors, t-statistics, etc.</p>
 <p>In order to do this, let’s introduce the following assumption:</p>
 <p><strong>Treatment Effect Homogeneity</strong>: <span class="math inline">\(Y_i(1) - Y_i(0) = \alpha\)</span> (and <span class="math inline">\(\alpha\)</span> does not vary across individuals).</p>
@@ -402,8 +408,8 @@ window.Quarto = {
   \alpha = \E[Y|D=1] - \E[Y|D=0]
 \end{align*}\]</span> but notice that this is exactly what the <span class="math inline">\(ATT\)</span> is equal to under random assignment. Thus, it is worth pointing out that, although we imposed the assumption of treatment effect homogeneity to arrive at the regression equation, our regression is “robust” to treatment effect heterogeneity.</p>
 </section>
-<section id="internal-and-external-validity" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="internal-and-external-validity"><span class="header-section-number">16.2</span> Internal and External Validity</h2>
+<section id="internal-and-external-validity" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="internal-and-external-validity"><span class="header-section-number">17.2</span> Internal and External Validity</h2>
 <p>SW 13.2</p>
 <p>Although experiments, when they are available, are considered the gold standard of causal inference, there are some ways they can go wrong.</p>
 <p>An experiment is said to be <strong>internally valid</strong> if inferences about causal effects are valid for the population being studied.</p>
@@ -443,8 +449,8 @@ window.Quarto = {
 <li><p>General equilibrium effects — Expanding policies may alter the “state of the world” in a way that an experiment wouldn’t (e.g., the effects of a local minimum wage change could be different from a country-wide minimum wage change)</p></li>
 </ul>
 </section>
-<section id="example-project-star" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="example-project-star"><span class="header-section-number">16.3</span> Example: Project STAR</h2>
+<section id="example-project-star" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="example-project-star"><span class="header-section-number">17.3</span> Example: Project STAR</h2>
 <p>Project STAR was a an experiment in Tennessee in 1980s on the effects of smaller class sizes on student performance where students and teachers were randomly assigned to be in a small class, a regular class, or a regular class with an aide. In this example, we’ll study the causal effect of being in a small class on reading test scores.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Star"</span>, <span class="at">package=</span><span class="st">"Ecdat"</span>)</span>
@@ -523,18 +529,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -566,7 +561,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -601,7 +634,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -649,7 +686,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -877,13 +913,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./14-causal_inference_concepts.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span>
+      <a href="./16-causal_inference_concepts.html" class="pagination-link" aria-label="Concepts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./16-natural_experiments.html" class="pagination-link" aria-label="<span class='chapter-number'>17</span>&nbsp; <span class='chapter-title'>Natural Experiments</span>">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./18-natural_experiments.html" class="pagination-link" aria-label="Natural Experiments">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

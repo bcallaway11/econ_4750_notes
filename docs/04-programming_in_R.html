@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 3&nbsp; Programming in R</title>
+<title>4&nbsp; Programming in R – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,17 +64,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03-random_variables.html" rel="next">
-<link href="./01-introduction_to_R.html" rel="prev">
+<link href="./05-random_variables.html" rel="next">
+<link href="./03-introduction_to_R.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +142,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-programming_in_R.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-programming_in_R.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -180,20 +180,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -202,14 +208,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -218,20 +224,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,20 +246,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -262,8 +268,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -272,14 +278,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -288,26 +294,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -320,42 +326,42 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link active" data-scroll-target="#functions-in-r"><span class="header-section-number">3.1</span> Functions in R</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">3.2</span> Data types</a>
+  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link active" data-scroll-target="#functions-in-r"><span class="header-section-number">4.1</span> Functions in R</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">4.2</span> Data types</a>
   <ul class="collapse">
-  <li><a href="#numeric-vectors" id="toc-numeric-vectors" class="nav-link" data-scroll-target="#numeric-vectors"><span class="header-section-number">3.2.1</span> Numeric Vectors</a></li>
-  <li><a href="#vector-arithmetic" id="toc-vector-arithmetic" class="nav-link" data-scroll-target="#vector-arithmetic"><span class="header-section-number">3.2.2</span> Vector arithmetic</a></li>
-  <li><a href="#more-helpful-functions-in-r" id="toc-more-helpful-functions-in-r" class="nav-link" data-scroll-target="#more-helpful-functions-in-r"><span class="header-section-number">3.2.3</span> More helpful functions in R</a></li>
-  <li><a href="#other-types-of-vectors" id="toc-other-types-of-vectors" class="nav-link" data-scroll-target="#other-types-of-vectors"><span class="header-section-number">3.2.4</span> Other types of vectors</a></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.2.5</span> Data Frames</a></li>
-  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">3.2.6</span> Lists</a></li>
-  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="header-section-number">3.2.7</span> Matrices</a></li>
-  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">3.2.8</span> Factors</a></li>
-  <li><a href="#understanding-an-object-in-r" id="toc-understanding-an-object-in-r" class="nav-link" data-scroll-target="#understanding-an-object-in-r"><span class="header-section-number">3.2.9</span> Understanding an object in R</a></li>
+  <li><a href="#numeric-vectors" id="toc-numeric-vectors" class="nav-link" data-scroll-target="#numeric-vectors"><span class="header-section-number">4.2.1</span> Numeric Vectors</a></li>
+  <li><a href="#vector-arithmetic" id="toc-vector-arithmetic" class="nav-link" data-scroll-target="#vector-arithmetic"><span class="header-section-number">4.2.2</span> Vector arithmetic</a></li>
+  <li><a href="#more-helpful-functions-in-r" id="toc-more-helpful-functions-in-r" class="nav-link" data-scroll-target="#more-helpful-functions-in-r"><span class="header-section-number">4.2.3</span> More helpful functions in R</a></li>
+  <li><a href="#other-types-of-vectors" id="toc-other-types-of-vectors" class="nav-link" data-scroll-target="#other-types-of-vectors"><span class="header-section-number">4.2.4</span> Other types of vectors</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">4.2.5</span> Data Frames</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">4.2.6</span> Lists</a></li>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="header-section-number">4.2.7</span> Matrices</a></li>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">4.2.8</span> Factors</a></li>
+  <li><a href="#understanding-an-object-in-r" id="toc-understanding-an-object-in-r" class="nav-link" data-scroll-target="#understanding-an-object-in-r"><span class="header-section-number">4.2.9</span> Understanding an object in R</a></li>
   </ul></li>
-  <li><a href="#logicals" id="toc-logicals" class="nav-link" data-scroll-target="#logicals"><span class="header-section-number">3.3</span> Logicals</a>
+  <li><a href="#logicals" id="toc-logicals" class="nav-link" data-scroll-target="#logicals"><span class="header-section-number">4.3</span> Logicals</a>
   <ul class="collapse">
-  <li><a href="#additional-logical-operators" id="toc-additional-logical-operators" class="nav-link" data-scroll-target="#additional-logical-operators"><span class="header-section-number">3.3.1</span> Additional Logical Operators</a></li>
+  <li><a href="#additional-logical-operators" id="toc-additional-logical-operators" class="nav-link" data-scroll-target="#additional-logical-operators"><span class="header-section-number">4.3.1</span> Additional Logical Operators</a></li>
   </ul></li>
-  <li><a href="#programming-basics" id="toc-programming-basics" class="nav-link" data-scroll-target="#programming-basics"><span class="header-section-number">3.4</span> Programming basics</a>
+  <li><a href="#programming-basics" id="toc-programming-basics" class="nav-link" data-scroll-target="#programming-basics"><span class="header-section-number">4.4</span> Programming basics</a>
   <ul class="collapse">
-  <li><a href="#writing-functions" id="toc-writing-functions" class="nav-link" data-scroll-target="#writing-functions"><span class="header-section-number">3.4.1</span> Writing functions</a></li>
-  <li><a href="#ifelse" id="toc-ifelse" class="nav-link" data-scroll-target="#ifelse"><span class="header-section-number">3.4.2</span> if/else</a></li>
-  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><span class="header-section-number">3.4.3</span> for loops</a></li>
-  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization"><span class="header-section-number">3.4.4</span> Vectorization</a></li>
+  <li><a href="#writing-functions" id="toc-writing-functions" class="nav-link" data-scroll-target="#writing-functions"><span class="header-section-number">4.4.1</span> Writing functions</a></li>
+  <li><a href="#ifelse" id="toc-ifelse" class="nav-link" data-scroll-target="#ifelse"><span class="header-section-number">4.4.2</span> if/else</a></li>
+  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><span class="header-section-number">4.4.3</span> for loops</a></li>
+  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization"><span class="header-section-number">4.4.4</span> Vectorization</a></li>
   </ul></li>
-  <li><a href="#reproducible-research" id="toc-reproducible-research" class="nav-link" data-scroll-target="#reproducible-research"><span class="header-section-number">3.5</span> Reproducible Research</a></li>
-  <li><a href="#advanced-topics" id="toc-advanced-topics" class="nav-link" data-scroll-target="#advanced-topics"><span class="header-section-number">3.6</span> Advanced Topics</a>
+  <li><a href="#reproducible-research" id="toc-reproducible-research" class="nav-link" data-scroll-target="#reproducible-research"><span class="header-section-number">4.5</span> Reproducible Research</a></li>
+  <li><a href="#advanced-topics" id="toc-advanced-topics" class="nav-link" data-scroll-target="#advanced-topics"><span class="header-section-number">4.6</span> Advanced Topics</a>
   <ul class="collapse">
-  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">3.6.1</span> Tidyverse</a></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">3.6.2</span> Data Visualization</a></li>
-  <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control"><span class="header-section-number">3.6.3</span> Version Control</a></li>
-  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects"><span class="header-section-number">3.6.4</span> RStudio Projects</a></li>
-  <li><a href="#technical-writing-tools" id="toc-technical-writing-tools" class="nav-link" data-scroll-target="#technical-writing-tools"><span class="header-section-number">3.6.5</span> Technical Writing Tools</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="header-section-number">4.6.1</span> Tidyverse</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><span class="header-section-number">4.6.2</span> Data Visualization</a></li>
+  <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control"><span class="header-section-number">4.6.3</span> Version Control</a></li>
+  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects"><span class="header-section-number">4.6.4</span> RStudio Projects</a></li>
+  <li><a href="#technical-writing-tools" id="toc-technical-writing-tools" class="nav-link" data-scroll-target="#technical-writing-tools"><span class="header-section-number">4.6.5</span> Technical Writing Tools</a></li>
   </ul></li>
-  <li><a href="#lab-1-introduction-to-r-programming" id="toc-lab-1-introduction-to-r-programming" class="nav-link" data-scroll-target="#lab-1-introduction-to-r-programming"><span class="header-section-number">3.7</span> Lab 1: Introduction to R Programming</a></li>
-  <li><a href="#lab-1-solutions" id="toc-lab-1-solutions" class="nav-link" data-scroll-target="#lab-1-solutions"><span class="header-section-number">3.8</span> Lab 1: Solutions</a></li>
-  <li><a href="#coding-exercises" id="toc-coding-exercises" class="nav-link" data-scroll-target="#coding-exercises"><span class="header-section-number">3.9</span> Coding Exercises</a></li>
+  <li><a href="#lab-1-introduction-to-r-programming" id="toc-lab-1-introduction-to-r-programming" class="nav-link" data-scroll-target="#lab-1-introduction-to-r-programming"><span class="header-section-number">4.7</span> Lab 1: Introduction to R Programming</a></li>
+  <li><a href="#lab-1-solutions" id="toc-lab-1-solutions" class="nav-link" data-scroll-target="#lab-1-solutions"><span class="header-section-number">4.8</span> Lab 1: Solutions</a></li>
+  <li><a href="#coding-exercises" id="toc-coding-exercises" class="nav-link" data-scroll-target="#coding-exercises"><span class="header-section-number">4.9</span> Coding Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -364,7 +370,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></h1>
 </div>
 
 
@@ -400,8 +406,8 @@ window.Quarto = {
 \newcommand\independent{\perp \!\!\! \perp}
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
-<section id="functions-in-r" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="functions-in-r"><span class="header-section-number">3.1</span> Functions in R</h2>
+<section id="functions-in-r" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="functions-in-r"><span class="header-section-number">4.1</span> Functions in R</h2>
 <p>Related Reading: IDS 2.2</p>
 <p>R has a large number of helpful, built-in functions. Let’s start with a pretty representative example: computing logarithms. This can be done using the R function <code>log</code>.</p>
 <div class="cell">
@@ -432,11 +438,11 @@ window.Quarto = {
 <p><span class="practice">Practice:</span> R has a function for computing absolute value (you’ll have to find the name of it on your own). Try computing the absolute value of <span class="math inline">\(5\)</span> and <span class="math inline">\(-5\)</span>. Try creating a variable called <code>negative_three</code> that is equal to <span class="math inline">\(-3\)</span>; then, try to compute the absolute value of <code>negative_three</code>.</p>
 </div>
 </section>
-<section id="data-types" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="data-types"><span class="header-section-number">3.2</span> Data types</h2>
+<section id="data-types" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="data-types"><span class="header-section-number">4.2</span> Data types</h2>
 <p>Related Reading: IDS 2.4</p>
-<section id="numeric-vectors" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="numeric-vectors"><span class="header-section-number">3.2.1</span> Numeric Vectors</h3>
+<section id="numeric-vectors" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="numeric-vectors"><span class="header-section-number">4.2.1</span> Numeric Vectors</h3>
 <p>The most basic data type in <code>R</code> is the vector. In fact, above when we created variables that were just a single number, they are actually stored as a numeric vector.</p>
 <p>To more explicitly create a vector, you can use the <code>c</code> function in <code>R</code>. For example, let’s create a vector called <code>five</code> that contains the numbers 1 through 5.</p>
 <div class="cell">
@@ -474,8 +480,8 @@ window.Quarto = {
 </div>
 <p>which means that there are five total elements in the vector <code>five</code>.</p>
 </section>
-<section id="vector-arithmetic" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="vector-arithmetic"><span class="header-section-number">3.2.2</span> Vector arithmetic</h3>
+<section id="vector-arithmetic" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="vector-arithmetic"><span class="header-section-number">4.2.2</span> Vector arithmetic</h3>
 <p>Related Reading: IDS 2.8</p>
 <p>The main operations on numeric vectors are <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> which correspond to addition, subtraction, multiplication, and division. Often, we would like to carry out these operations on vectors.</p>
 <p>There are two main cases. The first case is when you try to add a single number (i.e., a scalar) to all the elements in a vector. In this setup, the operation will happen element-wise which means the same number will be added to all numbers in the vector. This will be clear with some examples.</p>
@@ -546,8 +552,8 @@ object length</code></pre>
 <p>You’ll notice that this computes <em>something</em> but it also issues a warning. What happens here is that the result is equal to the first element of <code>five</code> plus the first element of <code>vec3</code>, the second of <code>five</code> plus the second element of <code>vec3</code>, the third element of <code>five</code> plus <em>the first element of <code>vec3</code></em>, the fourth element of <code>five</code> plus <em>the second element of <code>vec3</code></em>, and the fifth element of <code>five</code> plus <em>the first element of <code>vec3</code></em>. What’s happening here is that, since <code>vec3</code> contains fewere elements that <code>five</code>, the elements of <code>vec3</code> are getting <em>recycled</em>. In my experience, this warning often indicates a coding mistake. There are many cases where I want to add the same number to all elements in a vector, and many other cases where I want to add two vectors that have the same length, but I cannot think of any cases where I would want to add two vectors the way that is being carried out here.</p>
 <p>The same sort of things will happen with subtraction, multiplication, and division (feel free to try it out).</p>
 </section>
-<section id="more-helpful-functions-in-r" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="more-helpful-functions-in-r"><span class="header-section-number">3.2.3</span> More helpful functions in R</h3>
+<section id="more-helpful-functions-in-r" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="more-helpful-functions-in-r"><span class="header-section-number">4.2.3</span> More helpful functions in R</h3>
 <p>This is definitely an incomplete list, but I’ll point you here to some more functions in R that are often helpful along with quick examples of them.</p>
 <ul>
 <li><p><code>seq</code> function — creates a “sequence” of numbers</p>
@@ -600,8 +606,8 @@ object length</code></pre>
 </div>
 </div>
 </section>
-<section id="other-types-of-vectors" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="other-types-of-vectors"><span class="header-section-number">3.2.4</span> Other types of vectors</h3>
+<section id="other-types-of-vectors" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="other-types-of-vectors"><span class="header-section-number">4.2.4</span> Other types of vectors</h3>
 <p>There are other types of vectors in R too. Probably the main two other types of vectors are <strong>character vectors</strong> and <strong>logical vectors</strong>. We’ll talk about character vectors here and defer logical vectors until later. Character vectors are often referred to as <strong>strings</strong>.</p>
 <p>We can create a character vector as follows</p>
 <div class="cell">
@@ -631,14 +637,14 @@ object length</code></pre>
 <p>Notice that <code>paste</code> puts in a space between <code>string1</code> and <code>string2</code>. For practice, see if you can find an argument to the <code>paste</code> function that allows you to remove the space between the two strings.</p>
 </div>
 </section>
-<section id="data-frames" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.2.5</span> Data Frames</h3>
+<section id="data-frames" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">4.2.5</span> Data Frames</h3>
 <p>Another very important type of object in R is the <strong>data frame</strong>. I think it is helpful to think of a data frame as being very similar to an Excel spreadsheet — sort of like a matrix or a two-dimensional array. Each row typically corresponds to a particular observation, and each column typically provides the value of a particular variable for that observation.</p>
 <p>Just to give a simple example, suppose that we had firm-level data about the name of the firm, what industry a firm was in, what county they were located in, and their number of employees. I created a data frame like this (it is totally made up, BTW) and show it to you next</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>firm_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">name</th>
@@ -688,7 +694,7 @@ object length</code></pre>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">county=</span><span class="fu">c</span>(<span class="st">"Clarke"</span>, <span class="st">"Oconee"</span>, <span class="st">"Clarke"</span>, <span class="st">"Clarke"</span>, <span class="st">"Oconee"</span>),</span>
 <span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">employees=</span><span class="fu">c</span>(<span class="dv">531</span>, <span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">211</span>, <span class="dv">25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is also the same data that we loaded earlier in Section 2.3.</p>
+<p>This is also the same data that we loaded earlier in this chapter.</p>
 </div>
 <p>Often, we’ll like to access a particular column in a data frame. For example, you might want to calculate the average number of employees across all the firms in our data.</p>
 <p>Typically, the easiest way to do this, is to use the <strong>accessor</strong> symbol, which is <code>$</code> in R. This will make more sense with an example:</p>
@@ -746,8 +752,8 @@ object length</code></pre>
 <li><p><code>colnames</code> and <code>rownames</code> — returns the names of the columns or rows</p></li>
 </ul>
 </section>
-<section id="lists" class="level3" data-number="3.2.6">
-<h3 data-number="3.2.6" class="anchored" data-anchor-id="lists"><span class="header-section-number">3.2.6</span> Lists</h3>
+<section id="lists" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="lists"><span class="header-section-number">4.2.6</span> Lists</h3>
 <p>Vectors and data frames are the main two types of objects that we’ll use this semester, but let me give you a quick overview of a few other types of objects. Let’s start with <strong>lists</strong>. Lists are very generic in the sense that they can carry around complicated data. If you are familiar with any object oriented programming language like Java or C++, they have the flavor of an “object”, in the object-oriented sense.</p>
 <p>I’m not sure if we will see any examples this semester where you <em>have</em> to use a list. But here is an example. Suppose that we wanted to put the vector that we created earlier <code>five</code> and the data frame that we created earlier <code>firm_data</code> into the same object. We could do it as follows</p>
 <div class="cell">
@@ -773,8 +779,8 @@ object length</code></pre>
 </div>
 </div>
 </section>
-<section id="matrices" class="level3" data-number="3.2.7">
-<h3 data-number="3.2.7" class="anchored" data-anchor-id="matrices"><span class="header-section-number">3.2.7</span> Matrices</h3>
+<section id="matrices" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="matrices"><span class="header-section-number">4.2.7</span> Matrices</h3>
 <p>Matrices are very similar to data frames, but the data should all be of the same type. Matrices are very useful in some numerical calculations that are beyond the scope of this class. Here is an example of a matrix.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
@@ -799,8 +805,8 @@ object length</code></pre>
 </div>
 </div>
 </section>
-<section id="factors" class="level3" data-number="3.2.8">
-<h3 data-number="3.2.8" class="anchored" data-anchor-id="factors"><span class="header-section-number">3.2.8</span> Factors</h3>
+<section id="factors" class="level3" data-number="4.2.8">
+<h3 data-number="4.2.8" class="anchored" data-anchor-id="factors"><span class="header-section-number">4.2.8</span> Factors</h3>
 <p>Sometimes variables in economics are <strong>categorical</strong>. This sort of variable is somewhat between a numeric variable and a string. In <code>R</code>, categorical variables are called <strong>factors</strong>.</p>
 <p>A good example of a categorical variable is <code>firm_data$industry</code>. It tells you the “category” of the industry that a firm is in.</p>
 <p>Oftentimes, we may have to tell R that a variable is a “factor” rather than just a string. Let’s create a variable called <code>industry</code> that contains the industry from <code>firm_data</code> but as a factor.</p>
@@ -814,8 +820,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 <p>A useful package for working with factor variables is the <code>forcats</code> package.</p>
 </section>
-<section id="understanding-an-object-in-r" class="level3" data-number="3.2.9">
-<h3 data-number="3.2.9" class="anchored" data-anchor-id="understanding-an-object-in-r"><span class="header-section-number">3.2.9</span> Understanding an object in R</h3>
+<section id="understanding-an-object-in-r" class="level3" data-number="4.2.9">
+<h3 data-number="4.2.9" class="anchored" data-anchor-id="understanding-an-object-in-r"><span class="header-section-number">4.2.9</span> Understanding an object in R</h3>
 <p>Sometimes you may be in the case where there is a variable where you don’t know what exactly it contains. Some functions that are helpful in this case are</p>
 <ul>
 <li><p><code>class</code> — tells you, err, the class of an object (i.e., its “type”)</p></li>
@@ -853,8 +859,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 </section>
 </section>
-<section id="logicals" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="logicals"><span class="header-section-number">3.3</span> Logicals</h2>
+<section id="logicals" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="logicals"><span class="header-section-number">4.3</span> Logicals</h2>
 <p>Related Reading: IDS 2.9</p>
 <p>All programming languages have ways of tracking whether variables meet certain criteria. These are often called Booleans or Logicals. For us, this will particularly come up in the context of subsetting data (i.e., selecting data based on some condition) and in running particular portions of code based on some condition.</p>
 <p>Some main logical operators are <code>==</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&gt;</code> corresponding to whether or not two things are equal, less than or equal to, greater than or equal, strictly less than, and strictly greater than. These can be applied to vectors. And the comparisons result in either <code>TRUE</code> or <code>FALSE</code>. Here are some examples</p>
@@ -899,8 +905,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 <p>As practice, try creating a subset of <code>firm_data</code> based on firms having more than 100 employees.</p>
 </div>
-<section id="additional-logical-operators" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="additional-logical-operators"><span class="header-section-number">3.3.1</span> Additional Logical Operators</h3>
+<section id="additional-logical-operators" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="additional-logical-operators"><span class="header-section-number">4.3.1</span> Additional Logical Operators</h3>
 <p>Related Reading: IDS 2.9</p>
 <p>There are a number of additional logical operators that can be useful in practice. Here, we quickly cover several more.</p>
 <ul>
@@ -948,10 +954,10 @@ Levels: Food Services Manufacturing</code></pre>
 </ul>
 </section>
 </section>
-<section id="programming-basics" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="programming-basics"><span class="header-section-number">3.4</span> Programming basics</h2>
-<section id="writing-functions" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="writing-functions"><span class="header-section-number">3.4.1</span> Writing functions</h3>
+<section id="programming-basics" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="programming-basics"><span class="header-section-number">4.4</span> Programming basics</h2>
+<section id="writing-functions" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="writing-functions"><span class="header-section-number">4.4.1</span> Writing functions</h3>
 <p>Related Reading: IDS 3.2</p>
 <p>It is often helpful to write your own functions in R. If you ever find yourself repeating the same code over and over, this suggests that you should write this code as a function and repeatedly call the function.</p>
 <p>Suppose we are interesting in solving the quadratic equation <span class="math display">\[
@@ -1014,12 +1020,13 @@ Levels: Food Services Manufacturing</code></pre>
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># no default set for quadratic_solver so it will crash if a not provided</span></span>
 <span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quadratic_solver</span>(<span class="at">b=</span><span class="dv">4</span>,<span class="at">c=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in quadratic_solver(b = 4, c = 3): argument "a" is missing, with no default</code></pre>
+<pre><code>Error in `quadratic_solver()`:
+! argument "a" is missing, with no default</code></pre>
 </div>
 </div>
 </section>
-<section id="ifelse" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="ifelse"><span class="header-section-number">3.4.2</span> if/else</h3>
+<section id="ifelse" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="ifelse"><span class="header-section-number">4.4.2</span> if/else</h3>
 <p>Related Reading: IDS 3.1</p>
 <p>Often when writing code, you will want to do different things depending on some condition. Let’s write a function that takes in the number of employees that are in a firm and prints “large” if the firm has more than 100 employees and “small” otherwise.</p>
 <div class="cell">
@@ -1041,8 +1048,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 <p>All that happens with if/else is that we check whether <code>condition</code> evaluate to <code>TRUE</code> or <code>FALSE</code>. If it is <code>TRUE</code>, the code will do whatever is inside the first set of brackets; if it is <code>FALSE</code>, the code will do whatever is in the set of brackets following <code>else</code>.</p>
 </section>
-<section id="for-loops" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">3.4.3</span> for loops</h3>
+<section id="for-loops" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">4.4.3</span> for loops</h3>
 <p>Related Reading: IDS 3.4</p>
 <p>Often, we need to run the same code over and over again. A <code>for</code> loop is a main programming tool for this case (<code>for</code> loops show up in pretty much all programming languages).</p>
 <p>We’ll have more realistic examples later on in the semester, but we’ll do something trivial for now.</p>
@@ -1058,8 +1065,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 <p>The above code, starts with <span class="math inline">\(i=1\)</span>, calculates <span class="math inline">\(i*3\)</span> (which is 3), and then stores that result in the first element of the vector <code>out</code>, then <span class="math inline">\(i\)</span> increases to 2, the code calculates <span class="math inline">\(i*3\)</span> (which is now 6), and stores this result in the second element of <code>out</code>, and so on through <span class="math inline">\(i=10\)</span>.</p>
 </section>
-<section id="vectorization" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="vectorization"><span class="header-section-number">3.4.4</span> Vectorization</h3>
+<section id="vectorization" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="vectorization"><span class="header-section-number">4.4.4</span> Vectorization</h3>
 <p>Related Reading: IDS 3.5</p>
 <p>Vectorizing functions is a relatively advanced topic in R programming, but it is an important one, so I am including it here.</p>
 <p>Because we will often be working with data, we will often be performing the same operation on all of the observations in the data. For example, suppose that you wanted to take the logarithm of the number of employees for all the firms in <code>firm_data</code>. One way to do this is to use a <code>for</code> loop, but this code would be a bit of a mess. Instead, the function <code>log</code> is <strong>vectorized</strong> — this means that if we apply it to a vector, it will calculate the logarithm of each element in the vector. Besides this, vectorized functions are often faster than <code>for</code> loops.</p>
@@ -1072,7 +1079,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">large_or_small</span>(employees)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in if (employees &gt; 100) {: the condition has length &gt; 1</code></pre>
+<pre><code>Error in `if (employees &gt; 100) ...`:
+! the condition has length &gt; 1</code></pre>
 </div>
 </div>
 <p>This is not what we wanted to have happen. Instead of determining whether each firm was large or small, we get an error basically said that something may be going wrong here. What’s going on here is that the function <code>large_or_small</code> is not vectorized.</p>
@@ -1148,8 +1156,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 </section>
 </section>
-<section id="reproducible-research" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="reproducible-research"><span class="header-section-number">3.5</span> Reproducible Research</h2>
+<section id="reproducible-research" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="reproducible-research"><span class="header-section-number">4.5</span> Reproducible Research</h2>
 <p>Related Reading: IDS Ch. 20</p>
 <p>R has very useful tools for mix code and writing to produce reports (or, for our purpose, homeworks and project).</p>
 <p>As of this writing, the most common way to do this seems to be switching from Rmarkdown to Quarto. I am going to explain how to create a Quarto document below, but, if you are familiar with Rmarkdown, the workflow is going to be very similar.</p>
@@ -1183,14 +1191,14 @@ Levels: Food Services Manufacturing</code></pre>
 <p>A few last comments for you:</p>
 <ul>
 <li><p>These notes are written in Quarto, and I write homework solutions in Quarto too.</p></li>
-<li><p>If you are interested, you can view the source for this book at <a href="http://github.com/bcallaway11/econ_4750_notes">http://github.com/bcallaway11/econ_4750_notes</a>. The source code for this chapter is in the file <code>02-programming_in_R.qmd</code>.</p></li>
+<li><p>If you are interested, you can view the source for this book at <a href="http://github.com/bcallaway11/econ_4750_notes">http://github.com/bcallaway11/econ_4750_notes</a>. The source code for this chapter is in the file <code>04-programming_in_R.qmd</code>.</p></li>
 </ul>
 </section>
-<section id="advanced-topics" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="advanced-topics"><span class="header-section-number">3.6</span> Advanced Topics</h2>
+<section id="advanced-topics" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="advanced-topics"><span class="header-section-number">4.6</span> Advanced Topics</h2>
 <p>To conclude this section, I want to briefly point you towards some advanced material. We will probably brush up against some of this material this semester. That being said, R has some very advanced capabilities related to data science, data manipulation, and data visualization. If you have time/interest you might push further in all of these directions. By the end of the semester, we may not have mastered these topics, but they should at least be accessible to you.</p>
-<section id="tidyverse" class="level3" data-number="3.6.1">
-<h3 data-number="3.6.1" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">3.6.1</span> Tidyverse</h3>
+<section id="tidyverse" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">4.6.1</span> Tidyverse</h3>
 <p>Related Reading: IDS Chapter 4 — strongly recommend that you read this</p>
 <p>• R has very good data cleaning / manipulating tools</p>
 <ul>
@@ -1229,8 +1237,8 @@ Levels: Food Services Manufacturing</code></pre>
 </div>
 <p>• I won’t emphasize the tidyverse too much as I prefer (at least to some extent) writing code with a more traditional syntax. That said, tidyverse packages are really quite useful for data cleaning / wrangling. And, if you are interested, these are good (and marketable) skills to have.</p>
 </section>
-<section id="data-visualization" class="level3" data-number="3.6.2">
-<h3 data-number="3.6.2" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">3.6.2</span> Data Visualization</h3>
+<section id="data-visualization" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="data-visualization"><span class="header-section-number">4.6.2</span> Data Visualization</h3>
 <p>Related Reading: IDS Ch. 6-10 — <code>R</code> has very good data visualization tools. I strongly recommend that you read this.</p>
 <ul>
 <li><p>Another very strong point of <code>R</code></p></li>
@@ -1239,18 +1247,18 @@ Levels: Food Services Manufacturing</code></pre>
 </ul>
 <p>We will use <code>ggplot2</code> this semester, but I will save a longer discussion for later.</p>
 </section>
-<section id="version-control" class="level3" data-number="3.6.3">
-<h3 data-number="3.6.3" class="anchored" data-anchor-id="version-control"><span class="header-section-number">3.6.3</span> Version Control</h3>
+<section id="version-control" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="version-control"><span class="header-section-number">4.6.3</span> Version Control</h3>
 <p>Related Reading: IDS Ch. 19</p>
 <p>If you are interested, <a href="http://github.com">GitHub</a> is a very useful version control tool (i.e., keeps track of the version of your project, useful for merging projects, and sharing or co-authoring code) and <a href="http://dropbox.com">Dropbox</a> (also useful for sharing code). I use both of these extensively — in general, I use GitHub relatively more for bigger projects and more public projects and Dropbox more for smaller projects and early versions of projects.</p>
 </section>
-<section id="rstudio-projects" class="level3" data-number="3.6.4">
-<h3 data-number="3.6.4" class="anchored" data-anchor-id="rstudio-projects"><span class="header-section-number">3.6.4</span> RStudio Projects</h3>
+<section id="rstudio-projects" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="rstudio-projects"><span class="header-section-number">4.6.4</span> RStudio Projects</h3>
 <p>Related Reading: IDS 20.1</p>
 <p>You can create a new project by navigating to <code>File -&gt; New Project</code>. Projects in RStudio give a way to organize your, well… projects. For this course, you don’t necessarily need to use projects, but you could, for example, create separate projects for each of your homeworks. This would give you separate environments for each homework (so you don’t have to worry about accidentally using the same variable name across homeworks leading to any issues) and a separate set of tabs for scripts in each project. Your current project is listed in the very top right corner of the RStudio workspace.</p>
 </section>
-<section id="technical-writing-tools" class="level3" data-number="3.6.5">
-<h3 data-number="3.6.5" class="anchored" data-anchor-id="technical-writing-tools"><span class="header-section-number">3.6.5</span> Technical Writing Tools</h3>
+<section id="technical-writing-tools" class="level3" data-number="4.6.5">
+<h3 data-number="4.6.5" class="anchored" data-anchor-id="technical-writing-tools"><span class="header-section-number">4.6.5</span> Technical Writing Tools</h3>
 <p>This is starting to get beyond the scope of the course, but, especially for students in ECON 6750, I recommend that you look up LaTeX. This is a markup language mainly for technical, academic writing. The big payoff is on writing mathematical equations. The equations in the Course Notes are written in LaTeX. For example, the LaTeX code for the solution to the quadratic equation written above is</p>
 <pre><code>$$
   x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
@@ -1259,8 +1267,8 @@ $$</code></pre>
 <p>As I mentioned above, the course notes are written in <code>quarto</code>, but it is possible to write entire documents in LaTeX. For example, all of my academic papers are written in pure LaTeX. An easy way to get started is to use the website <a href="http://www.overleaf.com">Overleaf</a>. This is a website that allows you to write LaTeX documents in your web browser. Writing homework solutions fully in LaTex would be overkill for this course, but (especially if you are thinking about doing a Ph.D.&nbsp;in economics), it would be a good thing to poke around with as you have time.</p>
 </section>
 </section>
-<section id="lab-1-introduction-to-r-programming" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="lab-1-introduction-to-r-programming"><span class="header-section-number">3.7</span> Lab 1: Introduction to R Programming</h2>
+<section id="lab-1-introduction-to-r-programming" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="lab-1-introduction-to-r-programming"><span class="header-section-number">4.7</span> Lab 1: Introduction to R Programming</h2>
 <p>For this lab, we will do several practice problems related to programming in R.</p>
 <ol type="1">
 <li><p>Create two vectors as follows</p>
@@ -1286,8 +1294,8 @@ $$</code></pre>
 </ol></li>
 </ol>
 </section>
-<section id="lab-1-solutions" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="lab-1-solutions"><span class="header-section-number">3.8</span> Lab 1: Solutions</h2>
+<section id="lab-1-solutions" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="lab-1-solutions"><span class="header-section-number">4.8</span> Lab 1: Solutions</h2>
 <p>1.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="dv">2</span>)</span>
@@ -1483,8 +1491,8 @@ Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4</code></
 </div>
 </div>
 </section>
-<section id="coding-exercises" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="coding-exercises"><span class="header-section-number">3.9</span> Coding Exercises</h2>
+<section id="coding-exercises" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="coding-exercises"><span class="header-section-number">4.9</span> Coding Exercises</h2>
 <ol type="1">
 <li><p>The <code>stringr</code> package contains a number of functions for working with strings. For this problem create the following character vector in R</p>
 <div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"economics"</span>, <span class="st">"econometrics"</span>, <span class="st">"ECON 4750"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1561,18 +1569,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1604,7 +1601,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1639,7 +1674,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1687,7 +1726,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1915,13 +1953,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-introduction_to_R.html" class="pagination-link  aria-label=" &lt;span="" to="" r&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span>
+      <a href="./03-introduction_to_R.html" class="pagination-link" aria-label="Introduction to R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-random_variables.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Random Variables</span>">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-random_variables.html" class="pagination-link" aria-label="Random Variables">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

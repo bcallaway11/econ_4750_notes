@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 5&nbsp; Expectation, Variance, and More</title>
+<title>6&nbsp; Expectation, Variance, and More – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,17 +64,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05-finite_sample_properties.html" rel="next">
-<link href="./03-random_variables.html" rel="prev">
+<link href="./07-finite_sample_properties.html" rel="next">
+<link href="./05-random_variables.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +142,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-expectations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-expectations.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -180,20 +180,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -202,14 +208,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -218,20 +224,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,20 +246,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -262,8 +268,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -272,14 +278,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -288,26 +294,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -320,20 +326,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#expected-values" id="toc-expected-values" class="nav-link active" data-scroll-target="#expected-values"><span class="header-section-number">5.1</span> Expected Values</a></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">5.2</span> Variance</a></li>
-  <li><a href="#mean-and-variance-of-linear-functions" id="toc-mean-and-variance-of-linear-functions" class="nav-link" data-scroll-target="#mean-and-variance-of-linear-functions"><span class="header-section-number">5.3</span> Mean and Variance of Linear Functions</a></li>
-  <li><a href="#conditional-expectations" id="toc-conditional-expectations" class="nav-link" data-scroll-target="#conditional-expectations"><span class="header-section-number">5.4</span> Conditional Expectations</a></li>
-  <li><a href="#law-of-iterated-expectations" id="toc-law-of-iterated-expectations" class="nav-link" data-scroll-target="#law-of-iterated-expectations"><span class="header-section-number">5.5</span> Law of Iterated Expectations</a></li>
-  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">5.6</span> Covariance</a></li>
-  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">5.7</span> Correlation</a></li>
-  <li><a href="#properties-of-expectationsvariances-of-sums-of-rvs" id="toc-properties-of-expectationsvariances-of-sums-of-rvs" class="nav-link" data-scroll-target="#properties-of-expectationsvariances-of-sums-of-rvs"><span class="header-section-number">5.8</span> Properties of Expectations/Variances of Sums of RVs</a></li>
-  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">5.9</span> Normal Distribution</a></li>
-  <li><a href="#coding" id="toc-coding" class="nav-link" data-scroll-target="#coding"><span class="header-section-number">5.10</span> Coding</a></li>
-  <li><a href="#lab-2-basic-plots" id="toc-lab-2-basic-plots" class="nav-link" data-scroll-target="#lab-2-basic-plots"><span class="header-section-number">5.11</span> Lab 2: Basic Plots</a></li>
-  <li><a href="#in-case-youre-interested-chebyshevs-inequality" id="toc-in-case-youre-interested-chebyshevs-inequality" class="nav-link" data-scroll-target="#in-case-youre-interested-chebyshevs-inequality"><span class="header-section-number">5.12</span> In Case You’re Interested: Chebyshev’s Inequality</a></li>
-  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">5.13</span> Coding Questions</a></li>
-  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">5.14</span> Extra Questions</a></li>
+  <li><a href="#expected-values" id="toc-expected-values" class="nav-link active" data-scroll-target="#expected-values"><span class="header-section-number">6.1</span> Expected Values</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">6.2</span> Variance</a></li>
+  <li><a href="#mean-and-variance-of-linear-functions" id="toc-mean-and-variance-of-linear-functions" class="nav-link" data-scroll-target="#mean-and-variance-of-linear-functions"><span class="header-section-number">6.3</span> Mean and Variance of Linear Functions</a></li>
+  <li><a href="#conditional-expectations" id="toc-conditional-expectations" class="nav-link" data-scroll-target="#conditional-expectations"><span class="header-section-number">6.4</span> Conditional Expectations</a></li>
+  <li><a href="#law-of-iterated-expectations" id="toc-law-of-iterated-expectations" class="nav-link" data-scroll-target="#law-of-iterated-expectations"><span class="header-section-number">6.5</span> Law of Iterated Expectations</a></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">6.6</span> Covariance</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">6.7</span> Correlation</a></li>
+  <li><a href="#properties-of-expectationsvariances-of-sums-of-rvs" id="toc-properties-of-expectationsvariances-of-sums-of-rvs" class="nav-link" data-scroll-target="#properties-of-expectationsvariances-of-sums-of-rvs"><span class="header-section-number">6.8</span> Properties of Expectations/Variances of Sums of RVs</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">6.9</span> Normal Distribution</a></li>
+  <li><a href="#coding" id="toc-coding" class="nav-link" data-scroll-target="#coding"><span class="header-section-number">6.10</span> Coding</a></li>
+  <li><a href="#lab-2-basic-plots" id="toc-lab-2-basic-plots" class="nav-link" data-scroll-target="#lab-2-basic-plots"><span class="header-section-number">6.11</span> Lab 2: Basic Plots</a></li>
+  <li><a href="#in-case-youre-interested-chebyshevs-inequality" id="toc-in-case-youre-interested-chebyshevs-inequality" class="nav-link" data-scroll-target="#in-case-youre-interested-chebyshevs-inequality"><span class="header-section-number">6.12</span> In Case You’re Interested: Chebyshev’s Inequality</a></li>
+  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">6.13</span> Coding Questions</a></li>
+  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">6.14</span> Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -342,7 +348,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></h1>
 </div>
 
 
@@ -378,8 +384,8 @@ window.Quarto = {
 \newcommand\independent{\perp \!\!\! \perp}
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
-<section id="expected-values" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="expected-values"><span class="header-section-number">5.1</span> Expected Values</h2>
+<section id="expected-values" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="expected-values"><span class="header-section-number">6.1</span> Expected Values</h2>
 <p>SW 2.2</p>
 <p>The <strong>expected value</strong> of some random variable <span class="math inline">\(X\)</span> is its (population) mean and is written as <span class="math inline">\(\E[X]\)</span>. [I tend to write <span class="math inline">\(\E[X]\)</span> for the expected value, but you might also see notation like <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\mu_X\)</span> for the expected value.]</p>
 <p>The expected value of a random variable is a <em>feature</em> of its distribution. In other words, if you know the distribution of a random variable, then you also know its mean.</p>
@@ -411,8 +417,8 @@ window.Quarto = {
 <p><span class="side-comment">Side-Comment:</span> When we start to consider more realistic/interesting applications, we typically won’t know (or be able to easily figure out) <span class="math inline">\(\E[X]\)</span>. Instead, we’ll try to estimate it using available data. We’ll carefully distinguish between <strong>population quantities</strong> like <span class="math inline">\(\E[X]\)</span> and <strong>sample quantities</strong> like an estimate of <span class="math inline">\(\E[X]\)</span> soon.</p>
 </div>
 </section>
-<section id="variance" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="variance"><span class="header-section-number">5.2</span> Variance</h2>
+<section id="variance" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="variance"><span class="header-section-number">6.2</span> Variance</h2>
 <p>SW 2.2</p>
 <p>The next most important feature of the distribution of a random variable is its <strong>variance</strong>. The variance of a random variable <span class="math inline">\(X\)</span> is a measure of its “spread”, and we will denote it <span class="math inline">\(\Var(X)\)</span> [You might also sometimes see the notation <span class="math inline">\(\sigma^2\)</span> or <span class="math inline">\(\sigma_X^2\)</span> for the variance.] The variance is defined as</p>
 <p><span class="math display">\[
@@ -433,8 +439,8 @@ window.Quarto = {
 <p>The standard deviation is often easier to interpret than the variance because it has the same “units” as <span class="math inline">\(X\)</span>. Variance “units” are squared units of <span class="math inline">\(X\)</span>.</p>
 <p>That said, variances more often show up in formulas/derivations this semester.</p>
 </section>
-<section id="mean-and-variance-of-linear-functions" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="mean-and-variance-of-linear-functions"><span class="header-section-number">5.3</span> Mean and Variance of Linear Functions</h2>
+<section id="mean-and-variance-of-linear-functions" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="mean-and-variance-of-linear-functions"><span class="header-section-number">6.3</span> Mean and Variance of Linear Functions</h2>
 <p>SW 2.2</p>
 <p>For this part, suppose that <span class="math inline">\(Y=a + bX\)</span> where <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are random variables while <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are fixed constants.</p>
 <p><strong>Properties of Expectations</strong></p>
@@ -476,8 +482,8 @@ window.Quarto = {
 <p>Therefore, we have showed that the mean of the standardized random variable is 0 and its variance is 1. This is, in fact, the goal of standardizing a random variable — to transform it so that it has mean 0 and variance 1 and the particular transformation given in this example is one that delivers a new random variable with these properties.</p>
 </div>
 </section>
-<section id="conditional-expectations" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="conditional-expectations"><span class="header-section-number">5.4</span> Conditional Expectations</h2>
+<section id="conditional-expectations" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="conditional-expectations"><span class="header-section-number">6.4</span> Conditional Expectations</h2>
 <p>SW 2.3</p>
 <p>As we discussed earlier, in economics, we often want to learn about the relationship between several different variables. Previously, we had discussed joint pmfs/pdfs/cdfs, and these are useful to know about. However, they are often hard to work with in practice. For example, if you have two random variables, visualizing their joint distribution would involve interpreting a 3D plot which is often challenging in practice. If you had more than two random variables, then fully visualizing their joint distribution would not be possible. Therefore, we will typically look at summaries of the joint distribution. Probably the most useful one is the conditional expectation that we study in this section; in fact, we will spend much of the semester trying to estimate conditional expectations.</p>
 <p>For two random variables, <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>, the <strong>conditional expectation</strong> of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span> is the mean value of <span class="math inline">\(Y\)</span> conditional on <span class="math inline">\(X\)</span> taking the particular value <span class="math inline">\(x\)</span>. In math, this is written</p>
@@ -490,8 +496,8 @@ window.Quarto = {
   \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]
 \]</span> which is the expected value of <span class="math inline">\(Y\)</span> conditional on <span class="math inline">\(X_1\)</span> taking the particular value <span class="math inline">\(x_1\)</span>, <span class="math inline">\(X_2\)</span> taking the particular value <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(X_3\)</span> taking the particular value <span class="math inline">\(x_3\)</span>. Just like before, you can think of this as a function, in the sense that changing any of <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and/or <span class="math inline">\(x_3\)</span> gives a new conditional mean.</p>
 </section>
-<section id="law-of-iterated-expectations" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="law-of-iterated-expectations"><span class="header-section-number">5.5</span> Law of Iterated Expectations</h2>
+<section id="law-of-iterated-expectations" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="law-of-iterated-expectations"><span class="header-section-number">6.5</span> Law of Iterated Expectations</h2>
 <p>SW 2.3</p>
 <p>Another important property of conditional expectations is called the <strong>law of iterated expectations</strong>. It says that</p>
 <p><span class="math display">\[
@@ -509,8 +515,8 @@ window.Quarto = {
 \]</span></p>
 <p>The law of iterated expectations still applies in more complicated cases (e.g., <span class="math inline">\(X\)</span> takes more than two values, <span class="math inline">\(X\)</span> is continuous, or <span class="math inline">\(X_1\)</span>,<span class="math inline">\(X_2\)</span>,<span class="math inline">\(X_3\)</span>) but the intuition is still the same.</p>
 </section>
-<section id="covariance" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="covariance"><span class="header-section-number">5.6</span> Covariance</h2>
+<section id="covariance" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="covariance"><span class="header-section-number">6.6</span> Covariance</h2>
 <p>SW 2.3</p>
 <p>The <strong>covariance</strong> between two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a masure of the extent to which they “move together”. It is defined as</p>
 <p><span class="math display">\[
@@ -521,8 +527,8 @@ window.Quarto = {
 \]</span> Relative to the first expression, this one is probably less of a natural definition but often more useful in mathematical problems.</p>
 <p>One more thing to notice, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(\Cov(X,Y) = 0\)</span>.</p>
 </section>
-<section id="correlation" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="correlation"><span class="header-section-number">5.7</span> Correlation</h2>
+<section id="correlation" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="correlation"><span class="header-section-number">6.7</span> Correlation</h2>
 <p>SW 2.3</p>
 <p>It’s often hard to interpret covariances directly (the “units” are whatever the units of <span class="math inline">\(X\)</span> are times the units of <span class="math inline">\(Y\)</span>), so it is common to scale the covariance to get the <strong>correlation</strong> between two random variables:</p>
 <p><span class="math display">\[
@@ -530,8 +536,8 @@ window.Quarto = {
 \]</span> The correlation has the property that it is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>.</p>
 <p>If <span class="math inline">\(\Corr(X,Y) = 0\)</span>, then <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <strong>uncorrelated</strong>.</p>
 </section>
-<section id="properties-of-expectationsvariances-of-sums-of-rvs" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="properties-of-expectationsvariances-of-sums-of-rvs"><span class="header-section-number">5.8</span> Properties of Expectations/Variances of Sums of RVs</h2>
+<section id="properties-of-expectationsvariances-of-sums-of-rvs" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="properties-of-expectationsvariances-of-sums-of-rvs"><span class="header-section-number">6.8</span> Properties of Expectations/Variances of Sums of RVs</h2>
 <p>SW 2.3</p>
 <p>Here are some more properties of expectations and variances when there are multiple random variables. For two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
 <ol type="1">
@@ -547,8 +553,8 @@ window.Quarto = {
 </ol>
 <p>Notice that the last line does not involve any covariance terms, but this is only because of the caveat that the <span class="math inline">\(Y_i\)</span> are mutually independent. Otherwise, there would actually be <em>tons</em> of covariance terms that would need to be accounted for.</p>
 </section>
-<section id="normal-distribution" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">5.9</span> Normal Distribution</h2>
+<section id="normal-distribution" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">6.9</span> Normal Distribution</h2>
 <p>SW 2.4</p>
 <p>You probably learned about a lot of particular distributions of random variables in your Stats class. There are a number of important distributions:</p>
 <ul>
@@ -570,7 +576,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04-expectations_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="06-expectations_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -583,8 +589,8 @@ window.Quarto = {
   Z := \frac{X - \mu}{\sigma} \quad \textrm{then} \quad Z \sim N(0,1)
 \]</span> If you think back to your probability and statistics class, you may have done things like calculating a p-value by looking at a “Z-table” in the back of a textbook (I’m actually not sure if this is still commonly done because it is often easier to just do this on a computer, but, back in “my day” this was a very common exercise in statistics classes). Standardizing allows you to look at just one table for any normally distributed random variable that you could encounter rather than requiring you to have different Z table for each value of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>.</p>
 </section>
-<section id="coding" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="coding"><span class="header-section-number">5.10</span> Coding</h2>
+<section id="coding" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="coding"><span class="header-section-number">6.10</span> Coding</h2>
 <p>To conclude this section, we’ll use R to compute the features of the joint distribution of income and education that we have discussed above.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create vectors of income and educ</span></span>
@@ -631,8 +637,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="lab-2-basic-plots" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="lab-2-basic-plots"><span class="header-section-number">5.11</span> Lab 2: Basic Plots</h2>
+<section id="lab-2-basic-plots" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="lab-2-basic-plots"><span class="header-section-number">6.11</span> Lab 2: Basic Plots</h2>
 <p>Related Reading: IDS 9.4 (if you are interested, you can read IDS Chapters 6-10 for much more information about plotting in <code>R</code>)</p>
 <p>In this lab, I’ll introduce you to some basic plotting. Probably the most common type of plot that I use is a line plot. We’ll go for trying to make a line plot of average income as a function of education.</p>
 <p>To start with, I’ll introduce you to R’s <code>ggplot2</code> package. This is one of the most famous plot-producing packages (not just in R, but for any programming language). The syntax may be somewhat challenging to learn, but I think it is worth it to exert some effort here.</p>
@@ -662,7 +668,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04-expectations_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="06-expectations_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -732,16 +738,16 @@ window.Quarto = {
 <li><p>If you’re interested, here is a to a large number of different types of plots that are available using <code>ggplot</code>: <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
 </ul>
 </section>
-<section id="in-case-youre-interested-chebyshevs-inequality" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="in-case-youre-interested-chebyshevs-inequality"><span class="header-section-number">5.12</span> In Case You’re Interested: Chebyshev’s Inequality</h2>
+<section id="in-case-youre-interested-chebyshevs-inequality" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="in-case-youre-interested-chebyshevs-inequality"><span class="header-section-number">6.12</span> In Case You’re Interested: Chebyshev’s Inequality</h2>
 <p>As discussed above, the standard deviation is a measure of the spread of a random variable that is in units that are easy to understand. But what exactly does it tell us about the spread of a random variable? One way to think about the spread of a random variable is to think about the probability that a random variable will take a value within a certain range. For example, when we talked about the normal distribution, we said that there is a 95% chance that a draw of a normally distributed random variable will be within 1.96 standard deviations of the mean. This is a very specific statement about the spread of a random variable.</p>
 <p>But the claim that there is a 95% chance that a random variable will be within 1.96 standard deviations of its mean only holds for normally distributed random variables. <strong>Chebyshev’s Inequality</strong> provides a way to relate the standard deviation of a random variable to the probability that it will take a value within a certain range, for any random variable (i.e., the variable can follow essentially any distribution). Chebyshev’s Inequality says that, for any random variable <span class="math inline">\(X\)</span> and any <span class="math inline">\(k &gt; 0\)</span>, <span class="math display">\[\begin{align*}
   \P\Big(\big|X - \E[X]\big| \geq k \cdot \sd(X) \Big) \leq \frac{1}{k^2}
 \end{align*}\]</span> This holds for any <span class="math inline">\(k\)</span>, so let’s pick an interesting value and be a bit more specific. Suppose that <span class="math inline">\(k=2\)</span>. Then, Chebyshev’s Inequality says that the probability that a random variable will be more than 2 standard deviations away from its mean is less than or equal to <span class="math inline">\(1/4\)</span>. Let’s compare this to the case where we know that <span class="math inline">\(X\)</span> follows a normal distribution. In that case, there’s a 95% chance that <span class="math inline">\(X\)</span> will be within (essentially) 2 standard deviations of its mean; if we don’t know that <span class="math inline">\(X\)</span> follows a normal distribution, then we can’t make as strong a statement, but we can say that at least 75% of the time, <span class="math inline">\(X\)</span> will be within 2 standard deviations of its mean. You can try other values of <span class="math inline">\(k\)</span> too.</p>
 <p>I am not going to provide a proof of Chebyshev’s Inequality. However, it is not that complicated. It follows from another result called Markov’s Inequality, where the idea is basically that, if you know the mean of a random variable, it limits the probability that a random variable can take an extreme value. Chebyshev’s Inequality extends this idea to the case where you know the mean and standard deviation of a random variable.</p>
 </section>
-<section id="coding-questions" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">5.13</span> Coding Questions</h2>
+<section id="coding-questions" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">6.13</span> Coding Questions</h2>
 <ol type="1">
 <li><p>Run the following code to create the data that we will use in the problem</p>
 <div class="cell">
@@ -752,8 +758,8 @@ window.Quarto = {
 <li><p>For this question, we’ll use the data <code>fertilizer_2000</code>. A scatter plot is a useful way to visualize 2-dimensional data. Use the <code>ggplot2</code> package to make a scatter plot with crop yield (<code>avyield</code>) on the y-axis and fertilizer (<code>avfert</code>) on the x-axis. Label the y-axis “Crop Yield” and the x-axis “Fertilizer”. Do you notice any pattern from the scatter plot?</p></li>
 </ol>
 </section>
-<section id="extra-questions" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">5.14</span> Extra Questions</h2>
+<section id="extra-questions" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">6.14</span> Extra Questions</h2>
 <ol type="1">
 <li><p>Suppose that <span class="math inline">\(\E[X] = 10\)</span> and <span class="math inline">\(\var(X) = 2\)</span>. Also, suppose that <span class="math inline">\(Y=5 + 9 X\)</span>.</p>
 <ol type="a">
@@ -822,18 +828,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -865,7 +860,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -900,7 +933,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -948,7 +985,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1176,13 +1212,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-random_variables.html" class="pagination-link  aria-label=" &lt;span="" variables&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span>
+      <a href="./05-random_variables.html" class="pagination-link" aria-label="Random Variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-finite_sample_properties.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Finite Sample Properties</span>">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07-finite_sample_properties.html" class="pagination-link" aria-label="Finite Sample Properties">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

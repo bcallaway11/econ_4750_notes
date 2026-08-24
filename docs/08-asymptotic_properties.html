@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 15&nbsp; Concepts</title>
+<title>8&nbsp; Asymptotic Properties – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,17 +30,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./15-experiments.html" rel="next">
-<link href="./13-machine_learning.html" rel="prev">
+<link href="./09-inference.html" rel="next">
+<link href="./07-finite_sample_properties.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +108,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14-causal_inference_concepts.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-asymptotic_properties.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -180,20 +146,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -202,14 +174,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -218,20 +190,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,20 +212,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -262,8 +234,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -272,14 +244,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -288,26 +260,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -320,8 +292,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#potential-outcomes" id="toc-potential-outcomes" class="nav-link active" data-scroll-target="#potential-outcomes"><span class="header-section-number">15.1</span> Potential Outcomes</a></li>
-  <li><a href="#parameters-of-interest" id="toc-parameters-of-interest" class="nav-link" data-scroll-target="#parameters-of-interest"><span class="header-section-number">15.2</span> Parameters of Interest</a></li>
+  <li><a href="#large-sample-properties-of-estimators" id="toc-large-sample-properties-of-estimators" class="nav-link active" data-scroll-target="#large-sample-properties-of-estimators"><span class="header-section-number">8.1</span> Large Sample Properties of Estimators</a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">8.2</span> Consistency</a></li>
+  <li><a href="#asymptotic-normality" id="toc-asymptotic-normality" class="nav-link" data-scroll-target="#asymptotic-normality"><span class="header-section-number">8.3</span> Asymptotic Normality</a></li>
   </ul>
 </nav>
     </div>
@@ -330,7 +303,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></h1>
 </div>
 
 
@@ -366,77 +339,72 @@ window.Quarto = {
 \newcommand\independent{\perp \!\!\! \perp}
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
-<p>For the remainder of the semester, we will talk about methods for understanding the <strong>causal effect</strong> of one variable on another.</p>
-<p>Let’s start with an example. Suppose we were interested in understanding the causal effect of attending college on earnings. We know a lot about calculating averages, so let’s consider calculating average earnings of those who went to college and comparing that to the average earnings of those who didn’t go to college. Let’s use the data that we used all the way back in Chapter 2 to make this calculation.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"us_data.RData"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>col_earnings <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">subset</span>(us_data, educ <span class="sc">&gt;=</span> <span class="dv">16</span>)<span class="sc">$</span>incwage)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>non_col_earnings <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">subset</span>(us_data, educ <span class="sc">&lt;</span> <span class="dv">16</span>)<span class="sc">$</span>incwage)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">data.frame</span>(col_earnings, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                 non_col_earnings, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">diff=</span>(col_earnings<span class="sc">-</span>non_col_earnings)),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  col_earnings non_col_earnings     diff
-1     87306.33         40557.28 46749.05</code></pre>
-</div>
-</div>
-<p>This seems to be a huge difference. We are used to calling this difference a partial effect of going to college, but should we call it <em>the causal effect</em> or an average causal effect across individuals? Probably no. The main reason is that earnings of individuals who went to college may have been different from individuals that didn’t go to college even if no one went to college. Another way to say this is that there are a number of other things besides college that affect a person’s earnings (age, race, IQ, “ability”, “hardworking-ness”, luck, etc.). If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.</p>
-<p>Before we move on, let me give some more examples of causal questions that may be of interest to economists:</p>
-<ul>
-<li><p>Causal effects of economic policies</p>
-<ul>
-<li><p>What was the causal effect of a country raising its interest rate on GDP or employment?</p></li>
-<li><p>What was the causal effect of a change in the minimum wage on employment?</p></li>
-<li><p>What was the causal effect of changing voter ID laws on the number of ballots cast?</p></li>
-</ul></li>
-<li><p>Causal effects of individual/firm choices</p>
-<ul>
-<li><p>What was the causal effect of a price increase on quantity demanded?</p></li>
-<li><p>What was the causal effect of changing a product attribute on some outcome of interest (e.g., changing the font type on clicks on Google ads)?</p></li>
-<li><p>What was the causal effect of a new cholesterol medication on cholesterol levels?</p></li>
-<li><p>What was the causal effect of a job training program on wages?</p></li>
-</ul></li>
-</ul>
-<p>You could easily come up with many others too. A large fraction of the questions that researchers in economics try to address are ultimately about sorting out these sorts of causal effects.</p>
-<p>For terminology, we’ll refer to the variable that we are interested in understanding its causal effect (going to college in the earlier example) as the <strong>treatment</strong>. For simplicity, we will mostly focus on the case where the treatment is binary. We will use <span class="math inline">\(D_i\)</span> to denote the treatment, so that <span class="math inline">\(D_i=1\)</span> if individual <span class="math inline">\(i\)</span> participates in the treatment and <span class="math inline">\(D_i=0\)</span> if individual <span class="math inline">\(i\)</span> does not participate in the treatment.</p>
-<p>Example: SW 13.3</p>
-<section id="potential-outcomes" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="potential-outcomes"><span class="header-section-number">15.1</span> Potential Outcomes</h2>
-<p>SW 13.1</p>
-<p>A powerful tool for thinking about causal effects is <strong>counterfactual reasoning</strong>. For individuals that participate in the treatment, we observe what their outcome is given that they participated in the treatment. But we don’t observe what their outcome would have been if they had not participated in the treatment. For example, among those that went to college, we don’t observe what their earnings would have been if they had not gone to college. For those that don’t participate in the treatment, we face the opposite problem — we don’t observe what their outcome would have been if they had participated in the treatment.</p>
-<p>We’ll relate causal inference to the problem of trying to figure out what outcomes individuals that participated in the treatment would have experienced if they had <em>not</em> participated in the treatment (at least on average) and/or figuring out what outcomes individuals that did not participated in the treatment would have experienced if they <em>had</em> participated in the treatment.</p>
-<p>To do this, let’s introduce somewhat more formal notation/terminology.</p>
-<p><strong>Treated potential outcome</strong>: <span class="math inline">\(Y_i(1)\)</span>, the outcome an individual <em>would experience</em> if they participated in the treatment</p>
-<p><strong>Untreated potential outcome</strong>: <span class="math inline">\(Y_i(0)\)</span>, the outcome an individual <em>would experience</em> if they did not participate in the treatment</p>
-<p>For individuals that participate in the treatment, we observe <span class="math inline">\(Y_i(1)\)</span> (but not <span class="math inline">\(Y_i(0)\)</span>). For individuals that do not participate in the treatment, we observe <span class="math inline">\(Y_i(0)\)</span> (but not <span class="math inline">\(Y_i(1)\)</span>). Another way to write this is that the observed outcome, <span class="math inline">\(Y_i\)</span> is given by <span class="math display">\[\begin{align*}
-  Y_i = D_i Y_i(1) + (1-D_i) Y_i(0)
-\end{align*}\]</span></p>
-<p>We can think about the individual-level effect of participating in the treatment: <span class="math display">\[\begin{align*}
-  TE_i = Y_i(1) - Y_i(0)
-\end{align*}\]</span></p>
-<p>Considering the difference between treated and untreated potential outcomes is a very natural (and, I think, helpful) way to think about causality. The causal effect of the treatment is the difference between the outcome that an individual would experience if they participate in the treatment relative to what they would experience if they did not participate in the treatment.</p>
-<p>This notation also makes it clear that we are allowing for <strong>treatment effect heterogenity</strong> — the effect of participating in the treatment can vary across different individuals.</p>
-<p>That said, most researchers essentially give up on trying to figure out individual level treatment effects. It is not so much that these are not interesting, more it is just that these are very hard to figure out. Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person’s earnings. I went to college, so I know what my <span class="math inline">\(Y(1)\)</span> is, but I don’t know what my <span class="math inline">\(Y(0)\)</span> is — and, I’d even have a hard time coming with a good guess as to what it might be.</p>
+<section id="large-sample-properties-of-estimators" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="large-sample-properties-of-estimators"><span class="header-section-number">8.1</span> Large Sample Properties of Estimators</h2>
+<p>SW 2.6</p>
+<p>Statistics/Econometrics often relies on “large sample” (meaning: the number of observations, <span class="math inline">\(n\)</span>, is large) properties of estimators.</p>
+<p>Intuition: We generally expect that estimators that use a large number of observations will perform better than in the case with only a few observations.</p>
+<p>The second goal of this section will be to introduce an approach to conduct hypothesis testing. In particular, we may have some theory and want a way to test whether or not the data that we have “is consistent with” the theory or not. These arguments typically involve either making strong assumptions or having a large sample — we’ll mainly study the large sample case as I think this is more useful.</p>
 </section>
-<section id="parameters-of-interest" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="parameters-of-interest"><span class="header-section-number">15.2</span> Parameters of Interest</h2>
-<p>Instead of going for individual-level effects of participating in the treatment, most researchers instead go for more aggregated parameters. The two most common ones are the Average Treatment Effect (ATE) and Average Treatment Effect on the Treated (ATT).</p>
-<p><span class="math display">\[\begin{align*}
-  ATE = \E[Y(1) - Y(0)] \qquad \textrm{and} \qquad ATT = \E[Y(1)-Y(0) | D=1]
-\end{align*}\]</span> <span class="math inline">\(ATE\)</span> is the difference between treated potential outcomes and untreated potential outcomes, on average, and for the entire population. <span class="math inline">\(ATT\)</span> is the difference between treated and untreated potential outcomes, on average, conditional on being in the treated group.</p>
-<p>We will mostly focus on <span class="math inline">\(ATT\)</span>.</p>
-<p>It is worth considering the challenges for learning about <span class="math inline">\(ATT\)</span>. In particular, notice that we can write <span class="math display">\[\begin{align*}
-  ATT = \E[Y(1)|D=1] - \E[Y(0)|D=1]
-\end{align*}\]</span> and consider these term separately</p>
-<ul>
-<li><p><span class="math inline">\(\E[Y(1)|D=1]\)</span> is the average treated potential outcome among the treated group. But we observe treated potential outcomes for the treated group <span class="math inline">\(\implies \E[Y(1)|D=1] = \E[Y|D=1]\)</span>. In other words, if we want to estimate this component of the <span class="math inline">\(ATT\)</span>, we can just look right at the data and compute the average outcome experienced by individuals in the treated group.</p></li>
-<li><p><span class="math inline">\(\E[Y(0)|D=1]\)</span> is the average untreated potential outcome among the treated group. This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group. But, in order to learn about the <span class="math inline">\(ATT\)</span>, we will have to <em>somehow</em> deal with this term. I will provide a number of strategies below, but it is important to remember that this is a major challenge, and their may not be a good solution.</p></li>
-</ul>
-<div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span> I think it is also worth clearly pointing out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer. In economics jargon, this amounts to an <strong>identification problem</strong> — in other words, there may be competing theories of the world which the available data is not able to distinguish among. I probably do not emphasize this issue enough in our class, but it is something that you should remember — there may be a large number of causal questions that we’d be interested in answering, but where it is not possible to answer them (at least given the information that we have available).</p>
+<section id="consistency" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="consistency"><span class="header-section-number">8.2</span> Consistency</h2>
+<p>An estimator <span class="math inline">\(\hat{\theta}\)</span> of <span class="math inline">\(\theta\)</span> is said to be <strong>consistent</strong> if <span class="math inline">\(\hat{\theta}\)</span> gets close to <span class="math inline">\(\theta\)</span> for large values of <span class="math inline">\(n\)</span>.</p>
+<p>The main tool for studying consistency is the <strong>law of large numbers</strong>. The law of large numbers says that sample averages converge to population averages as the sample size gets large. In math, this is</p>
+<p><span class="math display">\[
+  \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \E[Y] \quad \textrm{as } n \rightarrow \infty
+\]</span> In my view, the law of large numbers is very intuitive. If you have a large sample and calculate a sample average, it should be close to the population average.</p>
+<div class="example">
+<p><span class="example">Example: </span>Let’s consider the same three estimators as before and whether or not they are consistent. First, the LLN implies that</p>
+<p><span class="math display">\[
+  \hat{\mu} = \frac{1}{n} \sum_{i=1}^n Y_i \rightarrow \E[Y]
+\]</span> This implies that <span class="math inline">\(\hat{\mu}\)</span> is consistent. Next,</p>
+<p><span class="math display">\[
+  \hat{\mu}_1 = Y_1
+\]</span> doesn’t change depending on the size of the sample (you just use the first observation), so this is not consistent. This is an example of an unbiased estimator that is not consistent. Next,</p>
+<p><span class="math display">\[
+  \hat{\mu}_\lambda = \lambda \bar{Y} \rightarrow \lambda \E[Y] \neq \E[Y]
+\]</span> which implies that (as long as <span class="math inline">\(\lambda\)</span> doesn’t change with <span class="math inline">\(n\)</span>), <span class="math inline">\(\hat{\mu}_{\lambda}\)</span> is not consistent. Let’s give one more example. Consider the estimator</p>
+<p><span class="math display">\[
+  \hat{\mu}_c := \bar{Y} + \frac{c}{n}
+\]</span> where <span class="math inline">\(c\)</span> is some constant (this is a strange estimate of <span class="math inline">\(\E[Y]\)</span> where we take <span class="math inline">\(\bar{Y}\)</span> and add a constant divided by the sample size). In this case,</p>
+<p><span class="math display">\[
+  \hat{\mu}_c \rightarrow \E[Y] + 0 = \E[Y]
+\]</span></p>
+<p>which implies that it is consistent. It is interesting to note that</p>
+<p><span class="math display">\[
+  \E[\hat{\mu}_c] = \E[Y] + \frac{c}{n}
+\]</span> which implies that it is biased. This is an example of a biased estimator that is consistent.</p>
 </div>
+</section>
+<section id="asymptotic-normality" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="asymptotic-normality"><span class="header-section-number">8.3</span> Asymptotic Normality</h2>
+<p>The next large sample property that we’ll talk about is <strong>asymptotic normality</strong>. This is a hard one to wrap your mind around, but I’ll try to explain as clearly as possible. We’ll start by talking about what it is, and then we’ll move to why it’s useful.</p>
+<p>Most of the estimators that we will talk about this semester have the following property</p>
+<p><span class="math display">\[
+  \sqrt{n}\left( \hat{\theta} - \theta \right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span> In words, what this says is that we can learn something about the sampling distribution of <span class="math inline">\(\hat{\theta}\)</span> as long as we have a large enough sample. More specifically, if <span class="math inline">\(\hat{\theta}\)</span> is asymptotically normal, it means that if we take <span class="math inline">\(\hat{\theta}\)</span> subtract the true value of the parameter <span class="math inline">\(\theta\)</span> (this is often referred to as “centering”) and multiply by <span class="math inline">\(\sqrt{n}\)</span>, then that object (as long as the sample size is large enough) will <em>seem like</em> a draw from a normal distribution with mean 0 and variance <span class="math inline">\(V\)</span>. Since we know lots about normal distributions, we’ll be able to exploit this in very useful ways in the next section.</p>
+<p>An equivalent, alternative expression that is sometimes useful is</p>
+<p><span class="math display">\[
+  \frac{\sqrt{n}\left( \hat{\theta} - \theta\right)}{\sqrt{V}} \rightarrow N(0,1) \quad \textrm{as } n \rightarrow \infty
+\]</span></p>
+<p>To establish asymptotic normality of a particular estimator, the main tool is the <strong>central limit theorem</strong>. The central limit theorem (sometimes abbreviated CLT) says that</p>
+<p><span class="math display">\[
+  \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Y_i - \E[Y]\right) \rightarrow N(0,V) \quad \textrm{as } n \rightarrow \infty
+\]</span> where <span class="math inline">\(V = \Var(Y)\)</span>.</p>
+<p>In words, the CLT says that if you take the difference between <span class="math inline">\(\bar{Y}\)</span> and <span class="math inline">\(\E[Y]\)</span> (which, by the LLN converges to 0 as <span class="math inline">\(n \rightarrow \infty\)</span>) and “scale it up” by <span class="math inline">\(\sqrt{n}\)</span> (which goes to <span class="math inline">\(\infty\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>), then <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y])\)</span> will act like a draw from a normal distribution with variance <span class="math inline">\(\Var(Y)\)</span>.</p>
+<p>There are a few things to point out:</p>
+<ul>
+<li><p>Just to start with, this is not nearly as “natural” a result as the LLN. The LLN basically makes perfect sense. For me, I know how to prove the CLT (though we are not going to do it in class), but I don’t think that I would have ever been able to come up with this on my own.</p></li>
+<li><p>Notice that the CLT does not rely on any distributional assumptions. We do not need to assume that <span class="math inline">\(Y\)</span> follows a normal distribution and it will apply when <span class="math inline">\(Y\)</span> follows any distribution (up to some relatively minor technical conditions that we will not worry about).</p></li>
+<li><p>It is also quite remarkable. We usually have the sense that as the sample size gets large that things will converge to something (e.g., LLN saying that sample averages converge to population averages) or that they will diverge (i.e., go off to positive or negative infinity themselves). The CLT provides an intermediate case — <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y])\)</span> is neither converging to a particular value or diverging to infinity. Instead, it is <em>converging in distribution</em> — meaning: it is settling down to something that looks like a draw from some distribution rather than converging to a particular number.</p></li>
+<li><p>In some sense, you can think of this “convergence in distribution” as a “tie” between the part <span class="math inline">\((\bar{Y}-\E[Y])\)</span> which, by itself, is converging to 0, and <span class="math inline">\(\sqrt{n}\)</span> which, by itself, is diverging to infinity. In particular, notice that <span class="math display">\[\begin{align*}
+\Var\Big( \sqrt{n} (\bar{Y} - \E[Y]) \Big) &amp;= n \times \Var(\bar{Y}) \\
+&amp;= n \times \frac{\Var(Y)}{n} \\
+&amp;= \Var(Y)
+\end{align*}\]</span> where this argument just holds by the properties of variance that we have used many times before. This means that the variance of <span class="math inline">\(\sqrt{n}(\bar{Y}-\E[Y])\)</span> does not go to 0 (which would suggest that the whole term converges to 0) nor does it go to <span class="math inline">\(\infty\)</span> (which would suggest that the term diverges). Moreover, if you multiplied <span class="math inline">\((\bar{Y}-E[Y])\)</span> instead by something somewhat smaller, say, <span class="math inline">\(n^{1/3}\)</span>, then the term <span class="math inline">\((\bar{Y}-\E[Y])\)</span> would “win” and the whole expression would converge to 0 (to see this, try calculating <span class="math inline">\(\Var\Big(n^{1/3}(\bar{Y} - \E[Y]\Big)\)</span>). On the other hand, if you multiplied by something somewhat larger, say, <span class="math inline">\(n\)</span>, then the <span class="math inline">\(n\)</span> part would “win” and the whole thing would diverge (to see this, try calculating <span class="math inline">\(\Var\Big(n(\bar{Y}-\E[Y])\Big)\)</span>). <span class="math inline">\(\sqrt{n}\)</span> turns out to be “just right” so that there is essentially a “tie” and this term neither converges to a particular number nor diverges.</p></li>
+<li><p>A very common question for students is: “how large does <span class="math inline">\(n\)</span> need to be for the central limit theorem to apply?” Unfortunately, there is a not a great answer to this (though some textbooks have sometimes given explicit numbers here). Here is a basic explanation for why it is hard to give a definite number. Suppose <span class="math inline">\(Y\)</span> follows a normal distribution, then it will not take many observations for the normal approximation to hold. On the other hand, if <span class="math inline">\(Y\)</span> were to come from a discrete distribution or just a generally complicated distribution, then it might take many more observations for the normal approximation to hold.</p></li>
+</ul>
+<p>All that to say, I know that the CLT is hard to understand, but the flip-side of that is that it really is a fascinating result. We’ll see how its useful next.</p>
 
 
 </section>
@@ -477,18 +445,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -520,7 +477,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -555,7 +550,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -603,7 +602,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -831,13 +829,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./13-machine_learning.html" class="pagination-link  aria-label=" &lt;span="" learning&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span>
+      <a href="./07-finite_sample_properties.html" class="pagination-link" aria-label="Finite Sample Properties">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./15-experiments.html" class="pagination-link" aria-label="<span class='chapter-number'>16</span>&nbsp; <span class='chapter-title'>Experiments</span>">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./09-inference.html" class="pagination-link" aria-label="Inference">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

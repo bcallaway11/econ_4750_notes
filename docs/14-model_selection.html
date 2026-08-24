@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 13&nbsp; Model Selection</title>
+<title>14&nbsp; Model Selection – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,17 +30,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./13-machine_learning.html" rel="next">
-<link href="./11-binary_outcomes.html" rel="prev">
+<link href="./15-machine_learning.html" rel="next">
+<link href="./13-binary_outcomes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -108,13 +108,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-model_selection.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14-model_selection.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -146,20 +146,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -168,14 +174,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -184,20 +190,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -206,20 +212,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -228,8 +234,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -238,14 +244,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -254,26 +260,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -286,18 +292,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#measures-of-regression-fit" id="toc-measures-of-regression-fit" class="nav-link active" data-scroll-target="#measures-of-regression-fit"><span class="header-section-number">13.1</span> Measures of Regression Fit</a>
+  <li><a href="#measures-of-regression-fit" id="toc-measures-of-regression-fit" class="nav-link active" data-scroll-target="#measures-of-regression-fit"><span class="header-section-number">14.1</span> Measures of Regression Fit</a>
   <ul class="collapse">
-  <li><a href="#tss-ess-ssr" id="toc-tss-ess-ssr" class="nav-link" data-scroll-target="#tss-ess-ssr"><span class="header-section-number">13.1.1</span> TSS, ESS, SSR</a></li>
-  <li><a href="#r2" id="toc-r2" class="nav-link" data-scroll-target="#r2"><span class="header-section-number">13.1.2</span> <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#tss-ess-ssr" id="toc-tss-ess-ssr" class="nav-link" data-scroll-target="#tss-ess-ssr"><span class="header-section-number">14.1.1</span> TSS, ESS, SSR</a></li>
+  <li><a href="#r2" id="toc-r2" class="nav-link" data-scroll-target="#r2"><span class="header-section-number">14.1.2</span> <span class="math inline">\(R^2\)</span></a></li>
   </ul></li>
-  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection"><span class="header-section-number">13.2</span> Model Selection</a></li>
-  <li><a href="#limitations-of-r2" id="toc-limitations-of-r2" class="nav-link" data-scroll-target="#limitations-of-r2"><span class="header-section-number">13.3</span> Limitations of <span class="math inline">\(R^2\)</span></a></li>
-  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2"><span class="header-section-number">13.4</span> Adjusted <span class="math inline">\(R^2\)</span></a></li>
-  <li><a href="#aic-bic" id="toc-aic-bic" class="nav-link" data-scroll-target="#aic-bic"><span class="header-section-number">13.5</span> AIC, BIC</a></li>
-  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="header-section-number">13.6</span> Cross-Validation</a></li>
-  <li><a href="#model-averaging" id="toc-model-averaging" class="nav-link" data-scroll-target="#model-averaging"><span class="header-section-number">13.7</span> Model Averaging</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">13.8</span> Computation</a></li>
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection"><span class="header-section-number">14.2</span> Model Selection</a></li>
+  <li><a href="#limitations-of-r2" id="toc-limitations-of-r2" class="nav-link" data-scroll-target="#limitations-of-r2"><span class="header-section-number">14.3</span> Limitations of <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2"><span class="header-section-number">14.4</span> Adjusted <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#aic-bic" id="toc-aic-bic" class="nav-link" data-scroll-target="#aic-bic"><span class="header-section-number">14.5</span> AIC, BIC</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation"><span class="header-section-number">14.6</span> Cross-Validation</a></li>
+  <li><a href="#model-averaging" id="toc-model-averaging" class="nav-link" data-scroll-target="#model-averaging"><span class="header-section-number">14.7</span> Model Averaging</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">14.8</span> Computation</a></li>
   </ul>
 </nav>
     </div>
@@ -306,7 +312,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></h1>
 </div>
 
 
@@ -344,8 +350,8 @@ window.Quarto = {
 \]</span></p>
 <p>In this part of the class, we’ll learn how to use regressions and “machine learning” in order to predict outcomes of interest using available, related data. One key issue when it comes to making predictions is that we typically have lots of possible models that we could use to make the predictions. Choosing which of these models works best, or <strong>model selection</strong>, is therefore often an important step when it comes to making good predictions.</p>
 <p>Another important issue with prediction is a focus on making out-of-sample predictions. We can usually make better within-sample predictions just by making the model more complicated, but this often leads to <strong>over-fitting</strong> — predictions that are “too specific” to our particular data.</p>
-<section id="measures-of-regression-fit" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="measures-of-regression-fit"><span class="header-section-number">13.1</span> Measures of Regression Fit</h2>
+<section id="measures-of-regression-fit" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="measures-of-regression-fit"><span class="header-section-number">14.1</span> Measures of Regression Fit</h2>
 <p>We’ll start this chapter by learning about measures of how well a regression fits the data. Consider the following figure</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stderr">
@@ -355,21 +361,21 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-model_selection_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+<p><img src="14-model_selection_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-model_selection_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+<p><img src="14-model_selection_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>These are exactly the same two regression lines. But we probably have the sense that the regression line in the second figure “fits better” than in the first figure, and, furthermore, that this is likely to result in better predictions of whatever the second outcome is relative to the first one. We’ll formalize this below.</p>
-<section id="tss-ess-ssr" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="tss-ess-ssr"><span class="header-section-number">13.1.1</span> TSS, ESS, SSR</h3>
+<section id="tss-ess-ssr" class="level3" data-number="14.1.1">
+<h3 data-number="14.1.1" class="anchored" data-anchor-id="tss-ess-ssr"><span class="header-section-number">14.1.1</span> TSS, ESS, SSR</h3>
 <p>SW 6.4</p>
 <p>Let’s start by defining some quantities. These will be useful for quantifying how well the model fits the data.</p>
 <ul>
@@ -396,8 +402,8 @@ window.Quarto = {
 <li><p>Another useful property is that <span class="math inline">\(TSS\)</span>, <span class="math inline">\(ESS\)</span>, and <span class="math inline">\(SSR\)</span> are all positive — this holds because they all involve sums of squared quantities.</p></li>
 </ul>
 </section>
-<section id="r2" class="level3" data-number="13.1.2">
-<h3 data-number="13.1.2" class="anchored" data-anchor-id="r2"><span class="header-section-number">13.1.2</span> <span class="math inline">\(R^2\)</span></h3>
+<section id="r2" class="level3" data-number="14.1.2">
+<h3 data-number="14.1.2" class="anchored" data-anchor-id="r2"><span class="header-section-number">14.1.2</span> <span class="math inline">\(R^2\)</span></h3>
 <p>SW 6.4</p>
 <p><span class="math inline">\(R^2\)</span> is probably the most common measure of regression fit. It is defined as</p>
 <p><span class="math display">\[
@@ -406,8 +412,8 @@ window.Quarto = {
 <p>so that <span class="math inline">\(R^2\)</span> is the fraction of the variation in <span class="math inline">\(Y\)</span> explained by the model. Notice that <span class="math inline">\(R^2\)</span> is always between 0 and 1 which holds by the two properties of <span class="math inline">\(TSS\)</span>, <span class="math inline">\(ESS\)</span>, and <span class="math inline">\(SSR\)</span> listed in the previous section.</p>
 </section>
 </section>
-<section id="model-selection" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="model-selection"><span class="header-section-number">13.2</span> Model Selection</h2>
+<section id="model-selection" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="model-selection"><span class="header-section-number">14.2</span> Model Selection</h2>
 <p>SW 7.5 (note: we cover substantially more details than the textbook about model selection)</p>
 <p>Often, when we want to use data to make predictions, there are multiple possible models that we could estimate to make the predictions. For example, suppose that we are interested in predicting house prices and we have access to data about the number of square feet, whether or not the house has a basement, the number of bedrooms, and the number of bathrooms. All of these are probably good variables to include in a model to predict house prices (though it is less clear if we should include quadratic terms, interaction terms, or other higher order terms). But suppose we also observe some variables that are probably irrelevant (e.g., whether the street number is odd or even) or not clear whether they matter or not (e.g., number of ceiling fans or paint color). It is not clear which variables we should include in the model. An alternative way to think about this is that there would be a large number of possible models that we could estimate here, and it is not immediately obvious which one will predict the best.</p>
 <p>From the previous example, it seems that in many realistic applications, there are a large number of possible models that we could estimate to make predictions. How should we choose which one to use?</p>
@@ -427,8 +433,8 @@ window.Quarto = {
 </div>
 <p>The previous example is about over-fitting with the idea that better in-sample predictions can actually lead to worse out-of-sample predictions.</p>
 </section>
-<section id="limitations-of-r2" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="limitations-of-r2"><span class="header-section-number">13.3</span> Limitations of <span class="math inline">\(R^2\)</span></h2>
+<section id="limitations-of-r2" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="limitations-of-r2"><span class="header-section-number">14.3</span> Limitations of <span class="math inline">\(R^2\)</span></h2>
 <p>SW 6.4</p>
 <p><span class="math inline">\(R^2\)</span> is a measure of in-sample fit. In fact, you can always increase <span class="math inline">\(R^2\)</span> by adding new variables into a model. To see this, notice that</p>
 <p><span class="math display">\[
@@ -449,8 +455,8 @@ window.Quarto = {
 <p>This discussion means that, if we estimate <span class="math inline">\(\hat{\delta}_2=0\)</span>, then <span class="math inline">\(SSR\)</span> wil be the same across the first and second model, and that if we estimate any other value for <span class="math inline">\(\hat{\delta}_2\)</span>, then <span class="math inline">\(SSR\)</span> for the second model will be lower than for the first model.</p>
 </div>
 </section>
-<section id="adjusted-r2" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="adjusted-r2"><span class="header-section-number">13.4</span> Adjusted <span class="math inline">\(R^2\)</span></h2>
+<section id="adjusted-r2" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="adjusted-r2"><span class="header-section-number">14.4</span> Adjusted <span class="math inline">\(R^2\)</span></h2>
 <p>SW 6.4</p>
 <p>Given the above discussion, we would like to have a way to choose a model that doesn’t necessarily always select the most complicated model.</p>
 <p>A main way to do this is to add a <strong>penalty</strong> to adding more regressors to the model. One version of this is called <strong>adjusted <span class="math inline">\(R^2\)</span></strong>, which we will write as <span class="math inline">\(\bar{R}^2\)</span>. It is defined as</p>
@@ -464,8 +470,8 @@ window.Quarto = {
 </ul>
 <p>Thus, there is a “benefit” and a “cost” to adding a new regressor. If you are choosing among several models based on <span class="math inline">\(\bar{R}^2\)</span>, you would choose the model that has the highest <span class="math inline">\(\bar{R}^2\)</span>. And the logic is this: if the regressor greatly decreases <span class="math inline">\(SSR\)</span>, then the “benefit” of adding that regressor will tend to outweigh the “cost”. On the other hand, if the regressor has little effect on <span class="math inline">\(SSR\)</span>, then the “benefit” of adding that regressor will tend to be smaller than the “cost”.</p>
 </section>
-<section id="aic-bic" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="aic-bic"><span class="header-section-number">13.5</span> AIC, BIC</h2>
+<section id="aic-bic" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="aic-bic"><span class="header-section-number">14.5</span> AIC, BIC</h2>
 <p>There are other approaches to model selection that follow a similar idea. Two of the most common ones are the Akaike Information Criteria (AIC) and the Bayesian Information Criteria (BIC). These tend to be somewhat better choices for model selection than <span class="math inline">\(\bar{R}^2\)</span>.</p>
 <p>These are given by</p>
 <ul>
@@ -474,8 +480,8 @@ window.Quarto = {
 </ul>
 <p>For both AIC and BIC, you would choose the model that minimizes these.</p>
 </section>
-<section id="cross-validation" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="cross-validation"><span class="header-section-number">13.6</span> Cross-Validation</h2>
+<section id="cross-validation" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="cross-validation"><span class="header-section-number">14.6</span> Cross-Validation</h2>
 <p>Another common way to choose a model is called <strong>cross-validation</strong>. The idea is to mimic the out-of-sample prediction problem using the data that we have access to.</p>
 <p>In particular, one simple version of this is to split your data into two parts: these are usually called the <strong>training sample</strong> and the <strong>testing sample</strong>. Then, estimate all models under consideration using the training sample. Given the estimated values of the parameters, then predict the outcomes for observations in the testing sample; and compare these predictions to the actual outcomes in the testing sample. Choose the model that minimizes the squared prediction error in the testing sample.</p>
 <p>Cross-validation is a somewhat more complicated version of the same idea. Basically, we will <em>repeatedly</em> split the data into a training sample and a testing sample, and get predictions for all observations in our data (instead of just for a held-out testing sample).</p>
@@ -504,8 +510,8 @@ CV = \frac{1}{n} \sum_{i=1}^n \tilde{U}_{i}^2
 <p>Cross-validation is a good way to choose a model, but it can sometimes be computationally challenging (because you are estimating lots of models) — particularly, if the models under consideration are very complicated or there a large number of observations.</p>
 <p>Above, we split the data into <span class="math inline">\(J\)</span> folds. This introduces some randomness into our model selection criteria. In particular, if you split the data in a different way from how I split the data, then we could choose different models. This is a somewhat undesirable feature of a model selection criteria. One way to get around this is to set <span class="math inline">\(J=n\)</span>. This makes it so that every observation has its own fold. This is called <strong>leave-one-out cross-validation</strong>. In this case, there is no randomness in the model selection criteria. The drawback is that it is more computational — in this case, you need to estimate the model <span class="math inline">\(n\)</span> times rather than <span class="math inline">\(J\)</span> times.</p>
 </section>
-<section id="model-averaging" class="level2" data-number="13.7">
-<h2 data-number="13.7" class="anchored" data-anchor-id="model-averaging"><span class="header-section-number">13.7</span> Model Averaging</h2>
+<section id="model-averaging" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="model-averaging"><span class="header-section-number">14.7</span> Model Averaging</h2>
 <p>In the case where you are considering a large number of possible models, it is pretty common that a number of models will, by any of the above model selection criteria, be expected to perform very similarly when making predictions.</p>
 <p>In this case, one strategy that usually does well in terms of making out-of-sample predictions is <em>model averaging</em>.</p>
 <p>Suppose you have <span class="math inline">\(M\)</span> different models, and that each model can produce a predicted value for <span class="math inline">\(Y_i\)</span> — let’s call the predicted value from model <span class="math inline">\(m\)</span>, <span class="math inline">\(\hat{Y}_i^m\)</span>. Model averaging would involve obtaining a new predicted value, call it <span class="math inline">\(\hat{Y}_i\)</span> by computing <span class="math display">\[\begin{align*}
@@ -515,8 +521,8 @@ CV = \frac{1}{n} \sum_{i=1}^n \tilde{U}_{i}^2
 <li>Usually, you would throw out models that you know predict poorly and only average together ones that perform reasonably well.</li>
 </ul>
 </section>
-<section id="computation" class="level2" data-number="13.8">
-<h2 data-number="13.8" class="anchored" data-anchor-id="computation"><span class="header-section-number">13.8</span> Computation</h2>
+<section id="computation" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="computation"><span class="header-section-number">14.8</span> Computation</h2>
 <p><span class="math inline">\(R^2\)</span> and <span class="math inline">\(\bar{R}^2\)</span> are both reported as output from <code>R</code>’s <code>lm</code> command.</p>
 <p>It is straightforward (and a useful exercise) to compute <span class="math inline">\(TSS, ESS,\)</span> and <span class="math inline">\(SSR\)</span> directly. It is also straightforward to calculate <span class="math inline">\(AIC\)</span> and <span class="math inline">\(BIC\)</span> — there are probably packages that will do this for you, but they are so easy that I suggest just calculating on your own.</p>
 <p>The same applies to cross validation. I suspect that there are packages available that will do this for you, but I think these are useful coding exercises and not all that difficult. Also, if you do this yourself, it removes any kinds of “black box” issues from downloading <code>R</code> code where it may not be clear exactly what it is doing.</p>
@@ -560,18 +566,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -603,7 +598,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -638,7 +671,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -686,7 +723,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -914,13 +950,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./11-binary_outcomes.html" class="pagination-link  aria-label=" &lt;span="" outcome="" models&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span>
+      <a href="./13-binary_outcomes.html" class="pagination-link" aria-label="Binary Outcome Models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./13-machine_learning.html" class="pagination-link" aria-label="<span class='chapter-number'>14</span>&nbsp; <span class='chapter-title'>Machine Learning</span>">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./15-machine_learning.html" class="pagination-link" aria-label="Machine Learning">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 6&nbsp; Finite Sample Properties</title>
+<title>7&nbsp; Finite Sample Properties – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,17 +30,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06-asymptotic_properties.html" rel="next">
-<link href="./04-expectations.html" rel="prev">
+<link href="./08-asymptotic_properties.html" rel="next">
+<link href="./06-expectations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -108,13 +108,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-finite_sample_properties.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-finite_sample_properties.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -146,20 +146,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -168,14 +174,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -184,20 +190,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -206,20 +212,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -228,8 +234,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -238,14 +244,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -254,26 +260,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -286,13 +292,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link active" data-scroll-target="#simple-random-sample"><span class="header-section-number">6.1</span> Simple Random Sample</a></li>
-  <li><a href="#estimating-ey" id="toc-estimating-ey" class="nav-link" data-scroll-target="#estimating-ey"><span class="header-section-number">6.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
-  <li><a href="#mean-of-bary" id="toc-mean-of-bary" class="nav-link" data-scroll-target="#mean-of-bary"><span class="header-section-number">6.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
-  <li><a href="#variance-of-bary" id="toc-variance-of-bary" class="nav-link" data-scroll-target="#variance-of-bary"><span class="header-section-number">6.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
-  <li><a href="#properties-of-estimators" id="toc-properties-of-estimators" class="nav-link" data-scroll-target="#properties-of-estimators"><span class="header-section-number">6.5</span> Properties of Estimators</a></li>
-  <li><a href="#relative-efficiency" id="toc-relative-efficiency" class="nav-link" data-scroll-target="#relative-efficiency"><span class="header-section-number">6.6</span> Relative Efficiency</a></li>
-  <li><a href="#mean-squared-error" id="toc-mean-squared-error" class="nav-link" data-scroll-target="#mean-squared-error"><span class="header-section-number">6.7</span> Mean Squared Error</a></li>
+  <li><a href="#simple-random-sample" id="toc-simple-random-sample" class="nav-link active" data-scroll-target="#simple-random-sample"><span class="header-section-number">7.1</span> Simple Random Sample</a></li>
+  <li><a href="#estimating-ey" id="toc-estimating-ey" class="nav-link" data-scroll-target="#estimating-ey"><span class="header-section-number">7.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></a></li>
+  <li><a href="#mean-of-bary" id="toc-mean-of-bary" class="nav-link" data-scroll-target="#mean-of-bary"><span class="header-section-number">7.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#variance-of-bary" id="toc-variance-of-bary" class="nav-link" data-scroll-target="#variance-of-bary"><span class="header-section-number">7.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></a></li>
+  <li><a href="#properties-of-estimators" id="toc-properties-of-estimators" class="nav-link" data-scroll-target="#properties-of-estimators"><span class="header-section-number">7.5</span> Properties of Estimators</a></li>
+  <li><a href="#relative-efficiency" id="toc-relative-efficiency" class="nav-link" data-scroll-target="#relative-efficiency"><span class="header-section-number">7.6</span> Relative Efficiency</a></li>
+  <li><a href="#mean-squared-error" id="toc-mean-squared-error" class="nav-link" data-scroll-target="#mean-squared-error"><span class="header-section-number">7.7</span> Mean Squared Error</a></li>
   </ul>
 </nav>
     </div>
@@ -301,7 +307,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></h1>
 </div>
 
 
@@ -342,15 +348,15 @@ window.Quarto = {
 <p>A fundamental challenge is that it is uncommon that we observe the entire population.</p>
 <p>Instead, we will take the approach that we have access to a <strong>sample</strong> of data from the original population. We’ll use the sample to try to <strong>estimate</strong> whatever population quantities we are interested in as well as develop the tools to <strong>conduct inference</strong>, paying particular interest to questions like: how precisely can we estimate particular population quantities of interest?</p>
 <p>The topics considered in this section fall broadly under the topic of <strong>statistics</strong> (a reasonable definition of statistics is that it is the set of tools to learn about population quantities using data). Some of this material may be familiar from courses that you have taken before, but this section provides a fairly advanced discussion of these issues with a particular eye towards (i) inference issues that are important econometrics and (ii) prediction problems. Many of the tools that we cover in this section will be used throughout the rest of the course.</p>
-<section id="simple-random-sample" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="simple-random-sample"><span class="header-section-number">6.1</span> Simple Random Sample</h2>
+<section id="simple-random-sample" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="simple-random-sample"><span class="header-section-number">7.1</span> Simple Random Sample</h2>
 <p>SW 2.5</p>
 <p>Let’s start by talking about how the data that we have access to is collected. There are several possibilities here, but let us start with the most straightforward case (which is also a very common case) called a <strong>simple random sample</strong>.</p>
 <p>In math: <span class="math inline">\(\{Y_i\}_{i=1}^n\)</span> is called a simple random sample if <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent random variables with a common probability distribution <span class="math inline">\(f_Y\)</span>. The two key conditions here are (i) independence and (ii) from a common distribution. For this reason, you may sometimes see a random sample called an iid sample which stands for independent and identically distributed.</p>
 <p>In words: We have access to <span class="math inline">\(n\)</span> observations that are drawn at random from some underlying population and each observation is equally likely to be drawn.</p>
 </section>
-<section id="estimating-ey" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="estimating-ey"><span class="header-section-number">6.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></h2>
+<section id="estimating-ey" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="estimating-ey"><span class="header-section-number">7.2</span> Estimating <span class="math inline">\(\E[Y]\)</span></h2>
 <p>SW 2.5, 3.1</p>
 <p>Let’s start with trying to estimate <span class="math inline">\(\E[Y]\)</span> as this is probably the simplest, non-trivial thing that we can estimate.</p>
 <p>A natural way to estimate population quantities is with their sample analogue. This is called the <strong>analogy principle</strong>. This is perhaps technical jargon, but it is the way you would immediately think to estimate <span class="math inline">\(\E[Y]\)</span>:</p>
@@ -359,8 +365,8 @@ window.Quarto = {
 \]</span> In this course, we will typically put a “hat” on estimated quantities. The expression <span class="math inline">\(\displaystyle \frac{1}{n}\sum_{i=1}^n Y_i\)</span> is just the average value of <span class="math inline">\(Y\)</span> in our sample. Since we will calculate a ton of averages like this one over the course of the rest of the semester, it’s also convenient to give it a shorthand notation, which is what <span class="math inline">\(\bar{Y}\)</span> means — it is just the sample average of <span class="math inline">\(Y\)</span>.</p>
 <p>One thing that is important to be clear about at this point is that, in general, <span class="math inline">\(\E[Y] \neq \bar{Y}\)</span>. <span class="math inline">\(\E[Y]\)</span> is a population quantity while <span class="math inline">\(\bar{Y}\)</span> is a sample quantity. We will hope (and provide some related conditions/discussions below) that <span class="math inline">\(\bar{Y}\)</span> would be close to <span class="math inline">\(\E[Y]\)</span>, but, in general, they will not be exactly the same.</p>
 </section>
-<section id="mean-of-bary" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="mean-of-bary"><span class="header-section-number">6.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h2>
+<section id="mean-of-bary" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="mean-of-bary"><span class="header-section-number">7.3</span> Mean of <span class="math inline">\(\bar{Y}\)</span></h2>
 <p>SW 2.5, 3.1</p>
 <p>Another important thing to notice about <span class="math inline">\(\bar{Y}\)</span> is that it is a random variable (as it is the average of random variables). This is in sharp contrast to <span class="math inline">\(\E[Y]\)</span> which is non-random.</p>
 <p>One related thought experiment is the following: if we could repeatedly collect new samples of size <span class="math inline">\(n\)</span> from the same population and each time were able to estimate <span class="math inline">\(\bar{Y}\)</span>, these estimates would be different from each other.</p>
@@ -381,8 +387,8 @@ window.Quarto = {
 </ul>
 <p>How should interpret the above result? It says that, <span class="math inline">\(\E[\bar{Y}] = \E[Y]\)</span>. This doesn’t mean that <span class="math inline">\(\bar{Y}\)</span> itself is equal to <span class="math inline">\(\E[Y]\)</span>. Rather, it means that, if we could repeatedly obtain (a huge number of times) new samples of size <span class="math inline">\(n\)</span> and compute <span class="math inline">\(\bar{Y}\)</span> each time, the average of <span class="math inline">\(\bar{Y}\)</span> across repeated samples would be equal to <span class="math inline">\(\E[Y]\)</span>.</p>
 </section>
-<section id="variance-of-bary" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="variance-of-bary"><span class="header-section-number">6.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h2>
+<section id="variance-of-bary" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="variance-of-bary"><span class="header-section-number">7.4</span> Variance of <span class="math inline">\(\bar{Y}\)</span></h2>
 <p>SW 2.5, 3.1</p>
 <p>Next, let’s calculate the variance of <span class="math inline">\(\bar{Y}\)</span>. As before, we are continuing with the thought experiment of being able to repeatedly draw new samples of size <span class="math inline">\(n\)</span>, and, therefore, we call this variance the <strong>sampling variance</strong>.</p>
 <p><span class="math display">\[
@@ -398,8 +404,8 @@ window.Quarto = {
 \]</span> Let’s go carefully through each step — these arguments rely heavily on the properties of variance that we talked about earlier. The first equality holds by the definition of <span class="math inline">\(\bar{Y}\)</span>. The second equality holds because <span class="math inline">\(1/n\)</span> is a constant and can come out of the variance after squaring it. The third equality holds because the variance of the sum of random variables is equal to the sum of the variances plus all the covariances between the random variables. In the fourth equality, all of the covariance terms go away — this holds because of random sampling which implies that the <span class="math inline">\(Y_i\)</span> are all independent which implies that their covariances are equal to 0. The fifth equality holds because all <span class="math inline">\(Y_i\)</span> are identically distributed so their variances are all the same and equal to <span class="math inline">\(\Var(Y)\)</span>. The sixth equality holds by adding up <span class="math inline">\(\Var(Y)\)</span> <span class="math inline">\(n\)</span> times. The last equality holds by canceling the <span class="math inline">\(n\)</span> in the numerator with one of the <span class="math inline">\(n\)</span>’s in the denominator.</p>
 <p>Interestingly, the variance of <span class="math inline">\(\bar{Y}\)</span> depends not just on <span class="math inline">\(\Var(Y)\)</span> but also on <span class="math inline">\(n\)</span> — the number of observations in the sample. Notice that <span class="math inline">\(n\)</span> is in the denominator, so the variance of <span class="math inline">\(\bar{Y}\)</span> will be lower for large values of <span class="math inline">\(n\)</span>. Here is an example that may be helpful for understanding this. Suppose that you are rolling a die. If <span class="math inline">\(n=1\)</span>, then clearly, the variance of <span class="math inline">\(\bar{Y}\)</span> is just equal to the variance of <span class="math inline">\(Y\)</span> — sometimes you roll extreme values like <span class="math inline">\(1\)</span> or <span class="math inline">\(6\)</span>. Now, when you increase <span class="math inline">\(n\)</span>, say, to 10, then these extreme values of <span class="math inline">\(\bar{Y}\)</span> are substantially less common. For <span class="math inline">\(\bar{Y}\)</span> to be equal to <span class="math inline">\(6\)</span> in this case, you’d need to roll 10 <span class="math inline">\(6\)</span>’s in a row. This illustrates that the sampling variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in <span class="math inline">\(n\)</span>. If this is not perfectly clear, we will look at some data soon, and I think that should confirm to you that the variance of <span class="math inline">\(\bar{Y}\)</span> is decreasing in the sample size.</p>
 </section>
-<section id="properties-of-estimators" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="properties-of-estimators"><span class="header-section-number">6.5</span> Properties of Estimators</h2>
+<section id="properties-of-estimators" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="properties-of-estimators"><span class="header-section-number">7.5</span> Properties of Estimators</h2>
 <p>SW 2.5, 3.1</p>
 <p>Suppose we are interested in some population parameter <span class="math inline">\(\theta\)</span> — we’ll write this pretty generically now, but it could be <span class="math inline">\(\E[Y]\)</span> or <span class="math inline">\(\E[Y|X]\)</span> or really any other population quantity that you’d like to estimate.</p>
 <p>Also, suppose that we have access to a random sample of size <span class="math inline">\(n\)</span> and we have some estimate of <span class="math inline">\(\theta\)</span> that we’ll call <span class="math inline">\(\hat{\theta}\)</span>.</p>
@@ -408,7 +414,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-finite_sample_properties_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-finite_sample_properties_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -424,21 +430,21 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-finite_sample_properties_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-finite_sample_properties_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>This is a helpful figure for thinking about the properties of estimators. In this case, <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are both unbiased (because their means are <span class="math inline">\(\theta\)</span>) while <span class="math inline">\(\hat{\theta}_3\)</span> is biased — it’s mean is greater than <span class="math inline">\(\theta\)</span>. On the other hand the sampling variance of <span class="math inline">\(\hat{\theta}_2\)</span> and <span class="math inline">\(\hat{\theta}_3\)</span> are about the same and both substantially smaller than for <span class="math inline">\(\hat{\theta}_1\)</span>. Clearly, <span class="math inline">\(\hat{\theta}_2\)</span> is the best estimator of <span class="math inline">\(\theta\)</span> out of the three. But which is the second best? It is not clear. <span class="math inline">\(\hat{\theta}_3\)</span> systematically over-estimates <span class="math inline">\(\theta\)</span>, but since the variance is relatively small, the misses are systematic but tend to be relatively small. On the other hand, <span class="math inline">\(\hat{\theta}_1\)</span> is, on average, equal to <span class="math inline">\(\theta\)</span>, but sometimes the estimate of <span class="math inline">\(\theta\)</span> could be quite poor due to the large sampling variance.</p>
 </section>
-<section id="relative-efficiency" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="relative-efficiency"><span class="header-section-number">6.6</span> Relative Efficiency</h2>
+<section id="relative-efficiency" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="relative-efficiency"><span class="header-section-number">7.6</span> Relative Efficiency</h2>
 <p>SW 3.1</p>
 <p>If <span class="math inline">\(\hat{\theta}_1\)</span> and <span class="math inline">\(\hat{\theta}_2\)</span> are two unbiased estimators of <span class="math inline">\(\theta\)</span>, then <span class="math inline">\(\hat{\theta}_1\)</span> is <strong>more efficient</strong> than <span class="math inline">\(\hat{\theta}_2\)</span> if <span class="math inline">\(\Var(\hat{\theta}_1) &lt; \Var(\hat{\theta}_2)\)</span>.</p>
 <p>Relative efficiency gives us a way to rank unbiased estimators.</p>
 </section>
-<section id="mean-squared-error" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="mean-squared-error"><span class="header-section-number">6.7</span> Mean Squared Error</h2>
+<section id="mean-squared-error" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="mean-squared-error"><span class="header-section-number">7.7</span> Mean Squared Error</h2>
 <p>More generally, two estimators can be compared by their <strong>mean squared error</strong> which is defined as</p>
 <p><span class="math display">\[
   \textrm{MSE}(\hat{\theta}) := \E\left[ (\hat{\theta} - \theta)^2\right]
@@ -534,18 +540,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -577,7 +572,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -612,7 +645,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -660,7 +697,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -888,13 +924,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04-expectations.html" class="pagination-link  aria-label=" &lt;span="" variance,="" and="" more&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span>
+      <a href="./06-expectations.html" class="pagination-link" aria-label="Expectation, Variance, and More">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06-asymptotic_properties.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Asymptotic Properties</span>">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08-asymptotic_properties.html" class="pagination-link" aria-label="Asymptotic Properties">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

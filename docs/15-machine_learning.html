@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Detailed Course Notes for ECON 4750 - 14&nbsp; Machine Learning</title>
+<title>15&nbsp; Machine Learning – Detailed Course Notes for ECON 4750</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,17 +64,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./14-causal_inference_concepts.html" rel="next">
-<link href="./12-model_selection.html" rel="prev">
+<link href="./16-causal_inference_concepts.html" rel="next">
+<link href="./14-model_selection.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -142,13 +142,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-machine_learning.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./15-machine_learning.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -180,20 +180,26 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Statistical Programming</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-introduction_to_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
+  <a href="./03-introduction_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-programming_in_R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
+  <a href="./04-programming_in_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -202,14 +208,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-random_variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  <a href="./05-random_variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-expectations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
+  <a href="./06-expectations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Expectation, Variance, and More</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -218,20 +224,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
+  <a href="./07-finite_sample_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Finite Sample Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
+  <a href="./08-asymptotic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Asymptotic Properties</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./09-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -240,20 +246,20 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
+  <a href="./10-interpreting_regressions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interpreting Regressions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-regression_computation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
+  <a href="./11-regression_computation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-regression_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -262,8 +268,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-binary_outcomes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
+  <a href="./13-binary_outcomes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Binary Outcome Models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -272,14 +278,14 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-model_selection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  <a href="./14-model_selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-machine_learning.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  <a href="./15-machine_learning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -288,26 +294,26 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
+  <a href="./16-causal_inference_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15-experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
+  <a href="./17-experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-natural_experiments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
+  <a href="./18-natural_experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Natural Experiments</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17-observational_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
+  <a href="./19-observational_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Causal Inference with Observational Data</span></span></a>
   </div>
 </li>
     </ul>
@@ -320,15 +326,15 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link active" data-scroll-target="#machine-learning"><span class="header-section-number">14.1</span> Machine Learning</a>
+  <li><a href="#machine-learning" id="toc-machine-learning" class="nav-link active" data-scroll-target="#machine-learning"><span class="header-section-number">15.1</span> Machine Learning</a>
   <ul class="collapse">
-  <li><a href="#lasso" id="toc-lasso" class="nav-link" data-scroll-target="#lasso"><span class="header-section-number">14.1.1</span> Lasso</a></li>
-  <li><a href="#ridge-regression" id="toc-ridge-regression" class="nav-link" data-scroll-target="#ridge-regression"><span class="header-section-number">14.1.2</span> Ridge Regression</a></li>
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">14.1.3</span> Computation</a></li>
+  <li><a href="#lasso" id="toc-lasso" class="nav-link" data-scroll-target="#lasso"><span class="header-section-number">15.1.1</span> Lasso</a></li>
+  <li><a href="#ridge-regression" id="toc-ridge-regression" class="nav-link" data-scroll-target="#ridge-regression"><span class="header-section-number">15.1.2</span> Ridge Regression</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">15.1.3</span> Computation</a></li>
   </ul></li>
-  <li><a href="#lab-6-predicting-diamond-prices" id="toc-lab-6-predicting-diamond-prices" class="nav-link" data-scroll-target="#lab-6-predicting-diamond-prices"><span class="header-section-number">14.2</span> Lab 6: Predicting Diamond Prices</a></li>
-  <li><a href="#lab-6-solutions" id="toc-lab-6-solutions" class="nav-link" data-scroll-target="#lab-6-solutions"><span class="header-section-number">14.3</span> Lab 6: Solutions</a></li>
-  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">14.4</span> Extra Questions</a></li>
+  <li><a href="#lab-6-predicting-diamond-prices" id="toc-lab-6-predicting-diamond-prices" class="nav-link" data-scroll-target="#lab-6-predicting-diamond-prices"><span class="header-section-number">15.2</span> Lab 6: Predicting Diamond Prices</a></li>
+  <li><a href="#lab-6-solutions" id="toc-lab-6-solutions" class="nav-link" data-scroll-target="#lab-6-solutions"><span class="header-section-number">15.3</span> Lab 6: Solutions</a></li>
+  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">15.4</span> Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -337,7 +343,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Machine Learning</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Machine Learning</span></h1>
 </div>
 
 
@@ -373,8 +379,8 @@ window.Quarto = {
 \newcommand\independent{\perp \!\!\! \perp}
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
-<section id="machine-learning" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="machine-learning"><span class="header-section-number">14.1</span> Machine Learning</h2>
+<section id="machine-learning" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="machine-learning"><span class="header-section-number">15.1</span> Machine Learning</h2>
 <p>SW 14.1, 14.2, 14.6</p>
 <p>Some extra resources on estimating Lasso and Ridge regressions in R:</p>
 <ul>
@@ -410,8 +416,8 @@ window.Quarto = {
 <div class="side-comment">
 <p><span class="side-comment">Side-Comment:</span> Generally, you should “standardize” the regressors before implementing Lasso or Ridge regression. The <code>glmnet</code> package does this for you by default.</p>
 </div>
-<section id="lasso" class="level3" data-number="14.1.1">
-<h3 data-number="14.1.1" class="anchored" data-anchor-id="lasso"><span class="header-section-number">14.1.1</span> Lasso</h3>
+<section id="lasso" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="lasso"><span class="header-section-number">15.1.1</span> Lasso</h3>
 <p>SW 14.3</p>
 <p>For Lasso, the penalty term is given by</p>
 <p><span class="math display">\[
@@ -419,8 +425,8 @@ window.Quarto = {
 \]</span> The absolute value on each of the <span class="math inline">\(b_j\)</span> terms means that the penalty function gets larger for larger values of any <span class="math inline">\(b_j\)</span>. Since we are trying to minimize the objective function, this means that there is a “cost” to choosing a larger value of <span class="math inline">\(b_j\)</span> relative to OLS. Thus, Lasso estimates tend to be “shrunk” towards 0.</p>
 <p><span class="math inline">\(\lambda\)</span> is called a <strong>tuning parameter</strong> — larger values of <span class="math inline">\(\lambda\)</span> imply that the penalty term is more important. Notice that, if you send <span class="math inline">\(\lambda \rightarrow \infty\)</span>, then the penalty term will be so large that you would set all the parameters to be equal to 0. On the other hand, if you set <span class="math inline">\(\lambda=0\)</span>, then you will get the OLS estimates (because there will be no penalty in this case). In general, it is hard to know what is the “right” value for <span class="math inline">\(\lambda\)</span>, and it is typically chosen using cross validation (this will be done automatically for you using the <code>glmnet</code> package).</p>
 </section>
-<section id="ridge-regression" class="level3" data-number="14.1.2">
-<h3 data-number="14.1.2" class="anchored" data-anchor-id="ridge-regression"><span class="header-section-number">14.1.2</span> Ridge Regression</h3>
+<section id="ridge-regression" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="ridge-regression"><span class="header-section-number">15.1.2</span> Ridge Regression</h3>
 <p>SW 14.4</p>
 <p>For Ridge, the penalty term is given by</p>
 <p><span class="math display">\[
@@ -434,8 +440,8 @@ window.Quarto = {
 <li><p>Lasso also performs “model selection” — that is, if you use the Lasso, many of the estimated parameters will be set equal to 0. This can sometimes be an advantage. Ridge (like OLS) will generally produce non-zero estimates of all parameters in the model.</p></li>
 </ul>
 </section>
-<section id="computation" class="level3" data-number="14.1.3">
-<h3 data-number="14.1.3" class="anchored" data-anchor-id="computation"><span class="header-section-number">14.1.3</span> Computation</h3>
+<section id="computation" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="computation"><span class="header-section-number">15.1.3</span> Computation</h3>
 <p>Computing Lasso and Ridge regressions is somewhat more complicated than most other things that we have computed this semester. The main <code>R</code> package for Lasso and Ridge regressions is the <code>glmnet</code> package. For some reason, the syntax of the package is somewhat different from, for example, the <code>lm</code> command. In my view, it is often easier to use the <code>glmnetUtils</code> package, which seems to be just a wrapper for <code>glmnet</code> but with functions that are analogous to <code>lm</code>.</p>
 <p>I’m just going to sketch here how you would use these functions to estimate a Lasso or Ridge regression. In the lab later on in this chapter, we’ll do a more concrete example. Suppose that you have access to a training dataset called <code>train</code> and a testing dataset called <code>test</code>, you can use the <code>glmnetUtils</code> package in the following way:</p>
 <div class="cell">
@@ -462,8 +468,8 @@ window.Quarto = {
 <p>would include all interactions between <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> as well as squared terms for each; if you wanted to include more interactions and cubic terms, you could specify <code>degree=3</code>.</p>
 </section>
 </section>
-<section id="lab-6-predicting-diamond-prices" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="lab-6-predicting-diamond-prices"><span class="header-section-number">14.2</span> Lab 6: Predicting Diamond Prices</h2>
+<section id="lab-6-predicting-diamond-prices" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="lab-6-predicting-diamond-prices"><span class="header-section-number">15.2</span> Lab 6: Predicting Diamond Prices</h2>
 <p>For this lab, we will try our hand at predicted diamond prices. We will use the data set <code>diamond_train</code> (which contains around 40,000 observations) and then see how well we can predict data from the <code>diamond_test</code> data.</p>
 <ol type="1">
 <li><p>Estimate a model for <span class="math inline">\(price\)</span> on <span class="math inline">\(carat\)</span>, <span class="math inline">\(cut\)</span>, and <span class="math inline">\(clarity\)</span>. Report <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\bar{R}^2\)</span>, <span class="math inline">\(AIC\)</span>, and <span class="math inline">\(BIC\)</span> for this model.</p></li>
@@ -475,8 +481,8 @@ window.Quarto = {
 <li><p>Use the Lasso and Ridge regression on <code>diamond_train</code> data. Evaluate the predictions from each of these models by computing (out-of-sample) mean squared prediction error. How well did these models predict relative to each other and relative the models from 1-3.</p></li>
 </ol>
 </section>
-<section id="lab-6-solutions" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="lab-6-solutions"><span class="header-section-number">14.3</span> Lab 6: Solutions</h2>
+<section id="lab-6-solutions" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="lab-6-solutions"><span class="header-section-number">15.3</span> Lab 6: Solutions</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/diamond_train.RData"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -555,9 +561,9 @@ window.Quarto = {
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind.data.frame</span>(res1, res2, res3),<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  r.squared adj.r.squared     aic     bic       cv
-1     0.898         0.898 1104188 1104301 1366.056
-2     0.900         0.900 1103499 1103647 1371.034
-3     0.928         0.928 1089372 1090328 2110.132</code></pre>
+1     0.898         0.898 1104188 1104301 1366.012
+2     0.900         0.900 1103499 1103647 1371.961
+3     0.928         0.928 1089372 1090328 2114.350</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lasso and ridge</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
@@ -588,13 +594,13 @@ window.Quarto = {
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>rmspe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mod1=</span>rmspe1, <span class="at">mod2=</span>rmspe2, <span class="at">mod3=</span>rmspe3, <span class="at">lasso=</span>rmspe_lasso, <span class="at">ridge=</span>rmspe_ridge)</span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rmspe,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     mod1    mod2    mod3   lasso   ridge
-1 856.014 785.171 616.996 647.622 787.132</code></pre>
+<pre><code>     mod1    mod2    mod3  lasso   ridge
+1 856.014 785.171 616.996 653.55 787.132</code></pre>
 </div>
 </div>
 </section>
-<section id="extra-questions" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">14.4</span> Extra Questions</h2>
+<section id="extra-questions" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">15.4</span> Extra Questions</h2>
 <ol type="1">
 <li><p>What are some drawbacks of using <span class="math inline">\(R^2\)</span> as a model selection tool?</p></li>
 <li><p>For AIC and BIC, we choose the model that minimizes these (rather than maximizes them). Why?</p></li>
@@ -656,18 +662,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -699,7 +694,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -734,7 +767,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -782,7 +819,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1010,13 +1046,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./12-model_selection.html" class="pagination-link  aria-label=" &lt;span="" selection&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Model Selection</span></span>
+      <a href="./14-model_selection.html" class="pagination-link" aria-label="Model Selection">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Model Selection</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./14-causal_inference_concepts.html" class="pagination-link" aria-label="<span class='chapter-number'>15</span>&nbsp; <span class='chapter-title'>Concepts</span>">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Concepts</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./16-causal_inference_concepts.html" class="pagination-link" aria-label="Concepts">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Concepts</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
