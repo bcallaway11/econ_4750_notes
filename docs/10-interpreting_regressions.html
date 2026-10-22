@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>10&nbsp; Interpreting Regressions – Detailed Course Notes for ECON 4750</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,8 +24,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +37,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,15 +70,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./11-regression_computation.html" rel="next">
 <link href="./09-inference.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2abb3e6a2a99a88c190f94d19fc6ebb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4395215b92feff2064c4251ce95947bd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -117,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -136,7 +141,7 @@ window.Quarto = {
 <link rel="stylesheet" href="4750_style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -329,7 +334,7 @@ window.Quarto = {
   <li><a href="#nonparametric-regression-curse-of-dimensionality" id="toc-nonparametric-regression-curse-of-dimensionality" class="nav-link active" data-scroll-target="#nonparametric-regression-curse-of-dimensionality"><span class="header-section-number">10.1</span> Nonparametric Regression / Curse of Dimensionality</a></li>
   <li><a href="#linear-regression-models" id="toc-linear-regression-models" class="nav-link" data-scroll-target="#linear-regression-models"><span class="header-section-number">10.2</span> Linear Regression Models</a></li>
   <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">10.3</span> Computation</a></li>
-  <li><a href="#partial-effects" id="toc-partial-effects" class="nav-link" data-scroll-target="#partial-effects"><span class="header-section-number">10.4</span> Partial Effects</a>
+  <li><a href="#marginal-contrasts" id="toc-marginal-contrasts" class="nav-link" data-scroll-target="#marginal-contrasts"><span class="header-section-number">10.4</span> Marginal Contrasts</a>
   <ul class="collapse">
   <li><a href="#computation-1" id="toc-computation-1" class="nav-link" data-scroll-target="#computation-1"><span class="header-section-number">10.4.1</span> Computation</a></li>
   </ul></li>
@@ -395,22 +400,26 @@ window.Quarto = {
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
 <p>In this chapter, our interest will shift to conditional expectations, such as <span class="math inline">\(\E[Y|X_1,X_2,X_3]\)</span> (I’ll write <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span> in a lot of examples in this chapter, but you can think of there being an arbitrary number of <span class="math inline">\(X\)</span>’s).</p>
-<p>I’ll refer to <span class="math inline">\(Y\)</span> as the <strong>outcome</strong>. You might also sometimes heae it called the <strong>dependent variable</strong>.</p>
+<p>I’ll refer to <span class="math inline">\(Y\)</span> as the <strong>outcome</strong>. You might also sometimes hear it called the <strong>dependent variable</strong>.</p>
 <p>I’ll refer to the <span class="math inline">\(X\)</span>’s as either <strong>covariates</strong> or <strong>regressors</strong> or <strong>characteristics</strong>. You might also hear them called <strong>independent variables</strong> sometimes.</p>
 <p>Before we start to get into the details, let us first discuss why we’re interested in conditional expectations. First, if we are interested in <em>making predictions</em>, it will often be the case that the “best” prediction that one can make is the conditional expectation. This should make sense to you — if you want to make a reasonable prediction about what the outcome will be for a new observation that has characteristics <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span>, a good way to do it would be to predict that their outcome would be the same as the mean outcome in the population among those that have the same characteristics; that is, <span class="math inline">\(\E[Y|X_1=x_1, X_2=x_2, X_3=x_3]\)</span>.</p>
-<p>Next, in economics, we are often interested in how much some outcome of interest changes when a particular covariate changes, holding other covariates constants. To give some examples, we might be interested in the average return of actively managed mutual funds relative to passively managed mutual funds conditional on investing in assets in the same class (e.g., large cap stocks or international bonds). As another example, we might be interested in the effect of an increase in the amount of fertilizer on average crop yield but while holding constant the temperature and precipitation.</p>
-<p>How much the outcome, <span class="math inline">\(Y\)</span>, changes on average when one of the covariates, <span class="math inline">\(X_1\)</span>, changes by 1 unit and holding other covariates constant is what we’ll call the <strong>partial effect</strong> of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span>. Suppose <span class="math inline">\(X_1\)</span> is binary, then it is given by</p>
+<p>Next, in economics, we are often interested in comparing average outcomes across groups of observations that differ in one characteristic but are similar in others. To give some examples, we might be interested in comparing the average return of actively managed mutual funds to that of passively managed mutual funds among funds that invest in the same asset class (e.g., large cap stocks or international bonds). As another example, we might be interested in comparing average crop yields across farms that used different amounts of fertilizer but that experienced the same temperature and precipitation.</p>
+<p>The difference in the average outcome, <span class="math inline">\(Y\)</span>, between observations whose value of one covariate, <span class="math inline">\(X_1\)</span>, differs by 1 unit but that have the same values of the other covariates is what we’ll call the <strong>marginal contrast</strong> for <span class="math inline">\(X_1\)</span>. Suppose <span class="math inline">\(X_1\)</span> is binary, then it is given by</p>
 <p><span class="math display">\[
-  PE(x_2,x_3) = \E[Y | X_1=1, X_2=x_2, X_3=x_3] - \E[Y | X_1=0,X_2=x_2,X_3=x_3]
-\]</span> Notice that the partial effect can depend on <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span>. For example, it could be that the effect of active management relative to passive management could be different across different asset classes.</p>
-<p>Slightly more generally, if <span class="math inline">\(X_1\)</span> is discrete, so that it can take on several different discrete values, then we define the partial effect as</p>
+  MC(x_2,x_3) = \E[Y | X_1=1, X_2=x_2, X_3=x_3] - \E[Y | X_1=0,X_2=x_2,X_3=x_3]
+\]</span> Notice that the marginal contrast can depend on <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span>. For example, the difference in average returns between actively and passively managed funds could be different across different asset classes.</p>
+<p>Slightly more generally, if <span class="math inline">\(X_1\)</span> is discrete, so that it can take on several different discrete values, then we define the marginal contrast as</p>
 <p><span class="math display">\[
-  PE(x_1,x_2,x_3) = \E[Y | X_1=x_1+1, X_2=x_2, X_3=x_3] - \E[Y | X_1=x_1,X_2=x_2,X_3=x_3]
-\]</span> which now can depend on <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span>. This is the average effect of going from <span class="math inline">\(X_1=x_1\)</span> to <span class="math inline">\(X_1=x_1+1\)</span> holding <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> constant.</p>
-<p>Finally, consider the case where we are interested in the partial effect of <span class="math inline">\(X_1\)</span> which is continuous (for example, the partial effect of fertilizer input on crop yield). In this case the partial effect is given by the <em>partial derivative</em> of <span class="math inline">\(\E[Y|X_1,X_2,X_3]\)</span> with respect to <span class="math inline">\(X_1\)</span>.</p>
+  MC(x_1,x_2,x_3) = \E[Y | X_1=x_1+1, X_2=x_2, X_3=x_3] - \E[Y | X_1=x_1,X_2=x_2,X_3=x_3]
+\]</span> which now can depend on <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, and <span class="math inline">\(x_3\)</span>. This is the difference in the average outcome between observations with <span class="math inline">\(X_1=x_1+1\)</span> and observations with <span class="math inline">\(X_1=x_1\)</span>, among those that have <span class="math inline">\(X_2=x_2\)</span> and <span class="math inline">\(X_3=x_3\)</span>.</p>
+<p>Finally, consider the case where <span class="math inline">\(X_1\)</span> is continuous (for example, the amount of fertilizer used). In this case the marginal contrast is given by the <em>partial derivative</em> of <span class="math inline">\(\E[Y|X_1,X_2,X_3]\)</span> with respect to <span class="math inline">\(X_1\)</span>.</p>
 <p><span class="math display">\[
-  PE(x_1,x_2,x_3) = \frac{\partial \, \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]}{\partial \, x_1}
-\]</span> This partial derivative is analogous to what we have been doing before — we are making a small change of <span class="math inline">\(X_1\)</span> while holding <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> constant at <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span>.</p>
+  MC(x_1,x_2,x_3) = \frac{\partial \, \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]}{\partial \, x_1}
+\]</span> This partial derivative is analogous to what we have been doing before — we are comparing the average outcome for values of <span class="math inline">\(X_1\)</span> that are very close to <span class="math inline">\(x_1\)</span>, among observations that have <span class="math inline">\(X_2=x_2\)</span> and <span class="math inline">\(X_3=x_3\)</span>.</p>
+<div class="side-comment">
+<p><span class="side-comment">Side-Comment:</span> The word “contrast” is deliberate. A marginal contrast compares the average outcome across two different <em>groups</em> of observations in the population — for example, farms that used more fertilizer versus farms that used less fertilizer but that had the same weather. It does not, by itself, tell us what would happen to a particular farm’s crop yield if that farm used more fertilizer. That is a <em>causal</em> question, and the farms that use more fertilizer could differ in other ways (soil quality, the farmer’s experience, etc.) that are also related to crop yields. We will come back to when a marginal contrast can be interpreted as a causal effect at the end of the semester.</p>
+<p>You will often see what I am calling a marginal contrast referred to as a “partial effect” (e.g., in Wooldridge’s textbooks), a “marginal effect” (e.g., in the output of many <code>R</code> packages), or “the effect of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span>” (e.g., in the Stock and Watson textbook). These all refer to the same thing. I use different terminology because the word “effect” makes it sound like <span class="math inline">\(X_1\)</span> <em>causes</em> <span class="math inline">\(Y\)</span> to change, which is not something we will be able to claim without additional assumptions.</p>
+</div>
 <div class="side-comment">
 <p><span class="side-comment">Side-Comment:</span> This is probably the part of the class where we will jump around in the book the most this semester.</p>
 <p>The pedagogical approach of the textbook is to introduce the notion of causality very early and to emphasize the requirements on linear regression models in order to deliver causality, while increasing the complexity of the models over several chapters.</p>
@@ -463,11 +472,11 @@ window.Quarto = {
 <p>Also later on in this chapter, we’ll talk about how <code>R</code> itself actually makes these computations.</p>
 <p>The main function in <code>R</code> for estimating linear regressions is the <code>lm</code> function (<code>lm</code> stands for linear model). The key things to specify for running a regression in <code>R</code> are a <code>formula</code> argument which tells <code>lm</code> which variables are the outcome and which variables are the regressors and a <code>data</code> argument which tells the <code>lm</code> command what data we are using to estimate the regression. Let’s give an example using the <code>mtcars</code> data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data=</span>mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>What this line of code does is to run a regression. The formula is <code>mpg ~ hp + wt</code>. In other words <code>mpg</code> (standing for miles per gallon) is the outcome, and we are running a regression on <code>hp</code> (horse power) and <code>wt</code> (weight). The <code>~</code> symbol is a “tilde”. In order to add regressors, we separate them with a <code>+</code>. The second argument <code>data=mtcars</code> says to use the <code>mtcars</code> data. All of the variables in the formula need to correspond to column names in the data. We saved the results of the regression in a variable called <code>reg</code>. It’s most common to report the results of the regression using the <code>summary</code> command.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -498,8 +507,8 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
   37.227 - 0.0318(120) - 3.878(2.5) = 23.716
 \]</span> Alternatively, there is a built-in function in <code>R</code> called <code>predict</code> that can be used to generate predicted values. We just need to specify the values that we would like to get predicted values for by passing in a data frame with the relevant columns though the <code>newdata</code> argument. For example,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">hp=</span><span class="dv">120</span>,<span class="at">wt=</span><span class="fl">2.5</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pred,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">hp =</span> <span class="dv">120</span>, <span class="at">wt =</span> <span class="fl">2.5</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pred, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    1 
 23.72 </code></pre>
@@ -509,28 +518,28 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <p>A popular alternative to <code>R</code>’s <code>lm</code> function is the <code>lm_robust</code> function from the <code>estimatr</code> package. This provides different standard errors from the default standard errors provided by <code>lm</code> that are, at least in most applications in economics, typically a better choice — we’ll have a further discussion on this topic when we talk about inference later on in this chapter.</p>
 </div>
 </section>
-<section id="partial-effects" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="partial-effects"><span class="header-section-number">10.4</span> Partial Effects</h2>
-<p>As we discussed in the beginning of this chapter, besides predicting outcomes, a second main goal for us is to think about partial effects of a regressor on the outcome. We’ll consider partial effects over the next few sections.</p>
+<section id="marginal-contrasts" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="marginal-contrasts"><span class="header-section-number">10.4</span> Marginal Contrasts</h2>
+<p>As we discussed in the beginning of this chapter, besides predicting outcomes, a second main goal for us is to think about marginal contrasts for a regressor. We’ll consider marginal contrasts over the next few sections.</p>
 <p>In the model, <span class="math display">\[\begin{align*}
   \E[Y | X_1, X_2, X_3]  &amp;= \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3
 \end{align*}\]</span></p>
 <p>If <span class="math inline">\(X_1\)</span> is continuous, then <span class="math display">\[\begin{align*}
   \beta_1 = \frac{\partial \E[Y|X_1,X_2,X_3]}{\partial X_1}
 \end{align*}\]</span></p>
-<p>Thus, <span class="math inline">\(\beta_1\)</span> is the partial effect of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span>. In other words, <span class="math inline">\(\beta_1\)</span> should be interpreted as how much <span class="math inline">\(Y\)</span> increases, on average, when <span class="math inline">\(X_1\)</span> increases by one unit holding <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> constant. <em>Make sure to get this interpretation right!</em></p>
+<p>Thus, <span class="math inline">\(\beta_1\)</span> is the marginal contrast for <span class="math inline">\(X_1\)</span>. In other words, <span class="math inline">\(\beta_1\)</span> should be interpreted as: comparing observations that have the same values of <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span>, those whose <span class="math inline">\(X_1\)</span> is one unit higher have, on average, a <span class="math inline">\(Y\)</span> that is <span class="math inline">\(\beta_1\)</span> higher. <em>Make sure to get this interpretation right!</em> Notice that this interpretation compares <em>different</em> observations; it does not say that increasing <span class="math inline">\(X_1\)</span> for a particular observation would increase its <span class="math inline">\(Y\)</span> by <span class="math inline">\(\beta_1\)</span>.</p>
 <div class="example">
 <p><span class="example">Example: </span>Continuing the same example as above about intergenerational income mobility and where <span class="math inline">\(Y\)</span> denotes child’s income, <span class="math inline">\(X_1\)</span> denotes parents’ income, <span class="math inline">\(X_2\)</span> denotes mother’s education, and</p>
 <p><span class="math display">\[
   \E[Y|X_1,X_2] = 20,000 + 0.5 X_1 + 1000 X_2
-\]</span> The partial effect of parents’ income on child’s income is 0.5. This means that, for every one dollar increase in parents’ income, child’s income is 0.5 dollars higher on average holding mother’s education constant.</p>
+\]</span> The marginal contrast for parents’ income is 0.5. This means that, comparing children whose mothers have the same level of education, children whose parents’ income is one dollar higher have, on average, 0.5 dollars higher income.</p>
 </div>
 <section id="computation-1" class="level3" data-number="10.4.1">
 <h3 data-number="10.4.1" class="anchored" data-anchor-id="computation-1"><span class="header-section-number">10.4.1</span> Computation</h3>
-<p>Let’s run the same regression as in the previous section, but think about partial effects in this case.</p>
+<p>Let’s run the same regression as in the previous section, but think about marginal contrasts in this case.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data=</span>mtcars)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -553,13 +562,13 @@ Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148
 F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 </div>
-<p>The partial effect of horsepower on miles per gallon is -0.032. In other words, we estimate that if horsepower increases by one then, on average, miles per gallon decreases by 0.032 holding weight constant.</p>
-<p>The t-statistic and p-value are computed for the null hypothesis that the corresponding coefficient is equal to 0. For example, for <code>hp</code> the t-statistic is equal to <code>-3.519</code> which is greater than 1.96 and indicates that the partial effect of <code>hp</code> is statistically significant at a 5% significance level. The corresponding p-value for <code>hp</code> is <code>0.0145</code> indicating that there is only about a 1.5% chance of getting a t-statistic this extreme if the partial effect of <code>hp</code> were actually 0 (i.e., under <span class="math inline">\(H_0 : \beta_1=0\)</span>).</p>
+<p>The estimated marginal contrast for horsepower is -0.032. In other words, we estimate that, comparing cars with the same weight, cars with one more horsepower get, on average, 0.032 fewer miles per gallon.</p>
+<p>The t-statistic and p-value are computed for the null hypothesis that the corresponding coefficient is equal to 0. For example, for <code>hp</code> the t-statistic is equal to <code>-3.519</code>, which is greater than 1.96 in absolute value and indicates that the marginal contrast for <code>hp</code> is statistically significant at a 5% significance level. The corresponding p-value for <code>hp</code> is <code>0.00145</code> indicating that there is only about a 0.15% chance of getting a t-statistic this extreme if the marginal contrast for <code>hp</code> were actually 0 (i.e., under <span class="math inline">\(H_0 : \beta_1=0\)</span>).</p>
 <div class="practice">
-<p><span class="practice">Practice: </span>What is the partial effect of <code>wt</code> in the previous example? Provide a careful interpretation. Is the partial effect of <code>wt</code> statistically significant? Explain. What is the p-value for <code>wt</code>? How do you interpret the p-value?</p>
+<p><span class="practice">Practice: </span>What is the marginal contrast for <code>wt</code> in the previous example? Provide a careful interpretation. Is the marginal contrast for <code>wt</code> statistically significant? Explain. What is the p-value for <code>wt</code>? How do you interpret the p-value?</p>
 </div>
 <div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span> One horsepower is a very small increase in horsepower, so it might be a good idea to multiply the coefficient by some larger number, say 50. In this case, we could say that we estimate that if horsepower increases by 50 then, on average, miles per gallon decreases by 1.59 (<span class="math inline">\(=50 \times 0.03177\)</span>) holding weight constant. From the above discussion, we know that this effect is statistically different from 0. That said, it is not clear to me if we should interpret this as a large partial effect; I do not know too much about cars, but a 50 horsepower increase seems rather large while a 1.59 decrease in miles per gallon seems relatively small (at least to me).</p>
+<p><span class="side-comment">Side-Comment:</span> One horsepower is a very small difference in horsepower, so it might be a good idea to multiply the coefficient by some larger number, say 50. In this case, we could say that we estimate that, comparing cars with the same weight, cars with 50 more horsepower get, on average, 1.59 (<span class="math inline">\(=50 \times 0.03177\)</span>) fewer miles per gallon. From the above discussion, we know that this difference is statistically different from 0. That said, it is not clear to me if we should interpret this as a large marginal contrast; I do not know too much about cars, but a 50 horsepower difference seems rather large while a 1.59 miles per gallon difference seems relatively small (at least to me).</p>
 </div>
 </section>
 </section>
@@ -572,25 +581,25 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 \]</span></p>
 <p>If <span class="math inline">\(X_1\)</span> is discrete (let’s say binary): <span class="math display">\[\begin{align*}
   \beta_1 = \E[Y|X_1=1,X_2,X_3] - \E[Y|X_1=0,X_2,X_3]
-\end{align*}\]</span> <span class="math inline">\(\beta_1\)</span> is still the partial effect of <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span> and should be interpreted as how much <span class="math inline">\(Y\)</span> increases, on average, when <span class="math inline">\(X_1\)</span> changes from 0 to 1, holding <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span> constant.</p>
+\end{align*}\]</span> <span class="math inline">\(\beta_1\)</span> is still the marginal contrast for <span class="math inline">\(X_1\)</span> and should be interpreted as the difference in the average <span class="math inline">\(Y\)</span> between observations with <span class="math inline">\(X_1=1\)</span> and observations with <span class="math inline">\(X_1=0\)</span> that have the same values of <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span>.</p>
 <p>If <span class="math inline">\(X_1\)</span> can take more than just the values 0 and 1, but is still discrete (an example is a person’s years of education), then</p>
 <p><span class="math display">\[
   \beta_1 = \E[Y | X_1=x_1+1, X_2, X_3] - \E[Y|X_1=x_1, X_2, X_3]
-\]</span> which holds for any possible value that <span class="math inline">\(X_1\)</span> could take, so that <span class="math inline">\(\beta_1\)</span> is the effect of a 1 unit increase in <span class="math inline">\(X_1\)</span> on <span class="math inline">\(Y\)</span>, on average, holding constant <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span>.</p>
+\]</span> which holds for any possible value that <span class="math inline">\(X_1\)</span> could take, so that <span class="math inline">\(\beta_1\)</span> is the difference in the average <span class="math inline">\(Y\)</span> between observations whose <span class="math inline">\(X_1\)</span> differs by 1 unit but that have the same values of <span class="math inline">\(X_2\)</span> and <span class="math inline">\(X_3\)</span>.</p>
 <div class="example">
 <p><span class="example">Example: </span>Suppose that you work for an airline and you are interested in predicting the number of passengers for a Saturday morning flight from Atlanta to Memphis. Let <span class="math inline">\(Y\)</span> denote the number of passengers, <span class="math inline">\(X_1\)</span> be equal to 1 for a morning flight and 0 otherwise, and let <span class="math inline">\(X_2\)</span> be equal to 1 for a weekday flight and 0 otherwise. Further suppose that <span class="math inline">\(\E[Y|X_1,X_2] = 80 + 20 X_1 - 15 X_2\)</span>.</p>
 <p>In this case, you would predict,</p>
 <p><span class="math display">\[
   80 + 20 (1) - 15 (0) = 100
 \]</span> passengers on the flight.</p>
-<p>In addition, the partial effect of being morning flight is equal to 20. This indicates that, on average, morning flights have 20 more passengers than non-morning flights holding whether or not the flight occurs on a weekday constant.</p>
+<p>In addition, the marginal contrast for being a morning flight is equal to 20. This indicates that, on average, morning flights have 20 more passengers than non-morning flights among flights that are on the same type of day (weekday or weekend).</p>
 </div>
 <section id="computation-2" class="level3" data-number="10.5.1">
 <h3 data-number="10.5.1" class="anchored" data-anchor-id="computation-2"><span class="header-section-number">10.5.1</span> Computation</h3>
-<p>In order to include a binary or discrete covariate in a regression in <code>R</code> is straightforward. The following regression uses the <code>mtcars</code> data and adds a binary regressor, <code>am</code>, indicating whether or not a car has an automatic transmission.</p>
+<p>In order to include a binary or discrete covariate in a regression in <code>R</code> is straightforward. The following regression uses the <code>mtcars</code> data and adds a binary regressor, <code>am</code>, indicating whether or not a car has a manual transmission (<code>am = 1</code> for manual, <code>0</code> for automatic).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt <span class="sc">+</span> am, <span class="at">data=</span>mtcars)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt <span class="sc">+</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -614,48 +623,48 @@ Multiple R-squared:  0.8399,    Adjusted R-squared:  0.8227
 F-statistic: 48.96 on 3 and 28 DF,  p-value: 2.908e-11</code></pre>
 </div>
 </div>
-<p>In this example, cars that had an automatic transmission got about 2 more miles per gallon than cars that had an automatic transmission on average, holding horsepower and weight constant (though the p-value is only 0.14).</p>
+<p>In this example, among cars with the same horsepower and weight, cars that had a manual transmission got about 2 more miles per gallon on average than cars that had an automatic transmission (though the p-value is 0.14, so this difference is not statistically significant at conventional significance levels).</p>
 </section>
 </section>
 <section id="nonlinear-regression-functions" class="level2" data-number="10.6">
 <h2 data-number="10.6" class="anchored" data-anchor-id="nonlinear-regression-functions"><span class="header-section-number">10.6</span> Nonlinear Regression Functions</h2>
 <p>SW 8.1, 8.2</p>
 <p>Also, please read all of SW Ch. 8</p>
-<p>So far, the the partial effects that we have been interested in have corresponded to a particular parameter in the regression, usually <span class="math inline">\(\beta_1\)</span>. I think this can sometimes be a source of confusion as, at least in my view, we are not typically interested in the parameters for their own sake, but rather are interested in partial effects. It just so happens that in some leading cases, they coincide.</p>
-<p>In addition, while the <span class="math inline">\(\beta\)</span>’s in the sort of models we have considered so far are easy to interpret, in some cases, it might be <em>restrictive</em> to think that the partial effects are the same across different values of the covariates.</p>
-<p>In this section, we’ll see the first of several cases where partial effects do not coincide with a particular parameter.</p>
+<p>So far, the marginal contrasts that we have been interested in have corresponded to a particular parameter in the regression, usually <span class="math inline">\(\beta_1\)</span>. I think this can sometimes be a source of confusion as, at least in my view, we are not typically interested in the parameters for their own sake, but rather are interested in marginal contrasts. It just so happens that in some leading cases, they coincide.</p>
+<p>In addition, while the <span class="math inline">\(\beta\)</span>’s in the sort of models we have considered so far are easy to interpret, in some cases, it might be <em>restrictive</em> to think that the marginal contrasts are the same across different values of the covariates.</p>
+<p>In this section, we’ll see the first of several cases where marginal contrasts do not coincide with a particular parameter.</p>
 <p>Suppose that</p>
 <p><span class="math display">\[
   \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_1^2 + \beta_3 X_2 + \beta_4 X_3
 \]</span></p>
 <p>Let’s start with making predictions using this model. If you know the values of <span class="math inline">\(\beta_0,\beta_1,\beta_2,\beta_3,\)</span> and <span class="math inline">\(\beta_4\)</span>, then to get a prediction, you would still just plug in the values of the regressors that you’d like to get a prediction for (including <span class="math inline">\(x_1^2\)</span>).</p>
-<p>Next, in this model, the partial effect of <span class="math inline">\(X_1\)</span> is given by</p>
+<p>Next, in this model, the marginal contrast for <span class="math inline">\(X_1\)</span> is given by</p>
 <p><span class="math display">\[
   \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + 2\beta_2 X_1
-\]</span> In other words, the partial effect of <span class="math inline">\(X_1\)</span> depends on the value that <span class="math inline">\(X_1\)</span> takes.</p>
-<p>In this case, it is sometimes useful to report the partial effect for some different values of <span class="math inline">\(X_1\)</span>. In other cases, it is useful to report the <strong>average partial effect</strong> (APE) which is the mean of the partial effects across the distribution of the covariates. In this case, the APE is given by</p>
+\]</span> In other words, the marginal contrast for <span class="math inline">\(X_1\)</span> depends on the value that <span class="math inline">\(X_1\)</span> takes.</p>
+<p>In this case, it is sometimes useful to report the marginal contrast at some different values of <span class="math inline">\(X_1\)</span>. In other cases, it is useful to report the <strong>average marginal contrast</strong> (AMC), which is the mean of the marginal contrasts across the distribution of the covariates. In this case, the AMC is given by</p>
 <p><span class="math display">\[
-  APE = \beta_1 + 2 \beta_2 \E[X_1]
-\]</span> and, once you have estimated the regression, you can compute an estimate of <span class="math inline">\(APE\)</span> by</p>
+  AMC = \beta_1 + 2 \beta_2 \E[X_1]
+\]</span> and, once you have estimated the regression, you can compute an estimate of <span class="math inline">\(AMC\)</span> by</p>
 <p><span class="math display">\[
-  \widehat{APE} = \hat{\beta}_1 + 2 \hat{\beta}_2 \bar{X}_1
+  \widehat{AMC} = \hat{\beta}_1 + 2 \hat{\beta}_2 \bar{X}_1
 \]</span></p>
 <div class="example">
 <p><span class="example">Example: </span>Let’s continue our example on intergenerational income mobility where <span class="math inline">\(Y\)</span> denotes child’s income, <span class="math inline">\(X_1\)</span> denotes parents’ income, and <span class="math inline">\(X_2\)</span> denotes mother’s education. Now, suppose that</p>
 <p><span class="math display">\[
   \E[Y|X_1,X_2] = 15,000 + 0.7 X_1 - 0.000002 X_1^2 + 800 X_2
-\]</span> Then, predicted child’s income when parents’ income is equal to $50,000 is given by</p>
+\]</span> Then, predicted child’s income when parents’ income is equal to $50,000 and mother’s education is 12 years is given by</p>
 <p><span class="math display">\[
   15,000 + 0.7 (50,000) - 0.000002 (50,000)^2 + 800 (12) = 54,600
-\]</span> In addition, the partial effect of parents’ income is given by</p>
+\]</span> In addition, the marginal contrast for parents’ income is given by</p>
 <p><span class="math display">\[
   0.7 - 0.000004 X_1
-\]</span> Let’s compute a few different partial effects for different values of parents’ income</p>
+\]</span> Let’s compute a few different marginal contrasts at different values of parents’ income</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: center;"><span class="math inline">\(X_1\)</span></th>
-<th style="text-align: center;">PE</th>
+<th style="text-align: center;">MC</th>
 </tr>
 </thead>
 <tbody>
@@ -673,15 +682,15 @@ F-statistic: 48.96 on 3 and 28 DF,  p-value: 2.908e-11</code></pre>
 </tr>
 </tbody>
 </table>
-<p>which indicates that the partial effect of parents’ income is decreasing — i.e., the effect of additional parents’ income is largest for children whose parents have the lowest income and gets smaller for those whose parents have high incomes.</p>
-<p>Finally, if you wanted to compute the <span class="math inline">\(APE\)</span>, you would just plug in <span class="math inline">\(\E[X_1]\)</span> (or <span class="math inline">\(\bar{X}_1\)</span>) into the expression for the partial effect.</p>
+<p>which indicates that the marginal contrast for parents’ income is decreasing — i.e., among families with low parents’ income, a given difference in parents’ income goes along with a larger difference in average child’s income than it does among families with high parents’ income.</p>
+<p>Finally, if you wanted to compute the <span class="math inline">\(AMC\)</span>, you would just plug in <span class="math inline">\(\E[X_1]\)</span> (or <span class="math inline">\(\bar{X}_1\)</span>) into the expression for the marginal contrast.</p>
 </div>
 <section id="computation-3" class="level3" data-number="10.6.1">
 <h3 data-number="10.6.1" class="anchored" data-anchor-id="computation-3"><span class="header-section-number">10.6.1</span> Computation</h3>
 <p>Including a quadratic (or other higher order term) in <code>R</code> is relatively straightforward. Let’s just do an example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> <span class="fu">I</span>(hp<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>mtcars)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> <span class="fu">I</span>(hp<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> mtcars)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -705,53 +714,53 @@ F-statistic: 44.95 on 2 and 29 DF,  p-value: 1.301e-09</code></pre>
 </div>
 </div>
 <p>The only thing that is new here is <code>I(hp^2)</code>. The <code>I</code> function stands for inhibit (you can read the documentation using <code>?I</code>). For us, this is not too important. You can understand it like this: there is no variable names <code>hp^2</code> in the data, but if we put the name of a variable that is in the data (here: <code>hp</code>) then we can apply a function to it (here: squaring it) before including it as a regressor.</p>
-<p>Interestingly, here it seems there are nonlinear effects of horsepower on miles per gallon. Let’s just quickly report the estimated partial effects for a few different values of horsepower.</p>
+<p>Interestingly, here it seems that the relationship between horsepower and miles per gallon is nonlinear. Let’s just quickly report the estimated marginal contrasts at a few different values of horsepower.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>hp_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">300</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>hp_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># there might be a native function in r</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to compute these partial effects; I just</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to compute these marginal contrasts; I just</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># don't know it.</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>pe <span class="ot">&lt;-</span> <span class="cf">function</span>(hp) {</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># partial effect is b1 + 2b2*hp</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  pes <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg3)[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">coef</span>(reg3)[<span class="dv">3</span>]<span class="sc">*</span>hp</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="cf">function</span>(hp) {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># marginal contrast is b1 + 2b2*hp</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  mcs <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg3)[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">coef</span>(reg3)[<span class="dv">3</span>] <span class="sc">*</span> hp</span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print using a data frame</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">hp=</span>hp, <span class="at">pe=</span><span class="fu">round</span>(pes,<span class="dv">3</span>))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">hp =</span> hp, <span class="at">mc =</span> <span class="fu">round</span>(mcs, <span class="dv">3</span>))</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">pe</span>(hp_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mc</span>(hp_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   hp     pe
+<pre><code>   hp     mc
 1 100 -0.129
 2 200 -0.045
 3 300  0.039</code></pre>
 </div>
 </div>
-<p>which suggests that the partial effect of horsepower on miles per gallon is large (though negative) at small values of horsepower and decreasing up to essentially no effect at larger values of horsepower.</p>
+<p>which suggests that the marginal contrast for horsepower is large in magnitude (and negative) at small values of horsepower and shrinks toward zero (becoming slightly positive) at larger values of horsepower. In other words, among low-horsepower cars, differences in horsepower go along with fairly large differences in average miles per gallon, while among high-horsepower cars, they go along with very small differences.</p>
 </section>
 </section>
 <section id="interpreting-interaction-terms" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="interpreting-interaction-terms"><span class="header-section-number">10.7</span> Interpreting Interaction Terms</h2>
 <p>SW 8.3</p>
-<p>Another way to allow for partial effects that vary across different values of the regressors is to include <strong>interaction terms</strong>.</p>
+<p>Another way to allow for marginal contrasts that vary across different values of the regressors is to include <strong>interaction terms</strong>.</p>
 <p>Consider the following regression model</p>
 <p><span class="math display">\[
   \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \beta_4 X_3
 \]</span></p>
-<p>The term <span class="math inline">\(X_1 X_2\)</span> is called the interaction term. In this model, the partial effect of <span class="math inline">\(X_1\)</span> is given by</p>
+<p>The term <span class="math inline">\(X_1 X_2\)</span> is called the interaction term. In this model, the marginal contrast for <span class="math inline">\(X_1\)</span> is given by</p>
 <p><span class="math display">\[
   \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + \beta_3 X_2
 \]</span></p>
-<p>In this model, the effect of <span class="math inline">\(X_1\)</span> varies with <span class="math inline">\(X_2\)</span>. As in the previous section, you could report the partial effect for different values of <span class="math inline">\(X_2\)</span> or consider <span class="math inline">\(APE = \beta_1 + \beta_3 \E[X_2]\)</span>.</p>
+<p>In this model, the marginal contrast for <span class="math inline">\(X_1\)</span> varies with <span class="math inline">\(X_2\)</span>. As in the previous section, you could report the marginal contrast at different values of <span class="math inline">\(X_2\)</span> or consider <span class="math inline">\(AMC = \beta_1 + \beta_3 \E[X_2]\)</span>.</p>
 <p>There are a couple of other things worth pointing out for interaction terms</p>
 <ul>
-<li><p>It is very common for one of the interaction terms, say, <span class="math inline">\(X_2\)</span> to be a binary variable. This gives a way to easily test if the effect of <span class="math inline">\(X_1\)</span> is the same across the two “groups” defined by <span class="math inline">\(X_2\)</span>. For example, suppose you wanted to check if the partial effect of education was the same for men and women. You could run a regression like</p>
+<li><p>It is very common for one of the interaction terms, say, <span class="math inline">\(X_2\)</span> to be a binary variable. This gives a way to easily test if the marginal contrast for <span class="math inline">\(X_1\)</span> is the same across the two “groups” defined by <span class="math inline">\(X_2\)</span>. For example, suppose you wanted to check if the marginal contrast for education was the same for men and women. You could run a regression like</p>
 <p><span class="math display">\[
     Wage = \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \cdot Female + U
   \]</span></p>
-<p>From the previous discussion, the partial effect of education is given by</p>
+<p>From the previous discussion, the marginal contrast for education is given by</p>
 <p><span class="math display">\[
     \beta_1 + \beta_3 Female
   \]</span></p>
-<p>Thus, the partial effect education for men is given by <span class="math inline">\(\beta_1\)</span>, and the partial effect of education for women is given by <span class="math inline">\(\beta_1 + \beta_3\)</span>. Thus, if you want to test if the partial effect of education differs for men and women, you can just test if <span class="math inline">\(\beta_3=0\)</span>. If <span class="math inline">\(\beta_3&gt;0\)</span>, it suggests a higher partial effect of education for women, and if <span class="math inline">\(\beta_3 &lt; 0\)</span>, it suggests a lower partial effect of education for women.</p></li>
+<p>Thus, the marginal contrast for education for men is given by <span class="math inline">\(\beta_1\)</span>, and the marginal contrast for education for women is given by <span class="math inline">\(\beta_1 + \beta_3\)</span>. Thus, if you want to test if the marginal contrast for education differs for men and women, you can just test if <span class="math inline">\(\beta_3=0\)</span>. If <span class="math inline">\(\beta_3&gt;0\)</span>, it suggests a higher marginal contrast for education for women, and if <span class="math inline">\(\beta_3 &lt; 0\)</span>, it suggests a lower marginal contrast for education for women.</p></li>
 <li><p>Another interesting case is when <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are both binary. In this case, a model that includes an interaction term is called a <strong>saturated model</strong>. It is called this because it is actually nonparametric. In particular, notice that in the model <span class="math inline">\(\E[Y|X_1,X_2] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2\)</span>,</p>
 <p><span class="math display">\[
   \begin{aligned}
@@ -769,7 +778,7 @@ F-statistic: 44.95 on 2 and 29 DF,  p-value: 1.301e-09</code></pre>
     \E[Y|X_1=0,X_2=0] &amp;= 90 \quad &amp; \textrm{non-morning, weekend} \\
     \E[Y|X_1=1,X_2=0] &amp;= 90 - 15 = 75 \quad &amp; \textrm{morning, weekend} \\
     \E[Y|X_1=0,X_2=1] &amp;= 90 - 5 = 85 \quad  &amp; \textrm{non-morning, weekday} \\
-    \E[Y|X_1=1,X_2=1] &amp;= 90 - 15 - 5 + 25 = 100 \quad &amp; \textrm{morning, weekend}
+    \E[Y|X_1=1,X_2=1] &amp;= 90 - 15 - 5 + 25 = 100 \quad &amp; \textrm{morning, weekday}
   \end{aligned}
   \]</span></p></li>
 </ul>
@@ -777,8 +786,8 @@ F-statistic: 44.95 on 2 and 29 DF,  p-value: 1.301e-09</code></pre>
 <h3 data-number="10.7.1" class="anchored" data-anchor-id="computation-4"><span class="header-section-number">10.7.1</span> Computation</h3>
 <p>Including interaction terms in regressions in <code>R</code> is straightforward. Using the <code>mtcars</code> data, we can do it as follows</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt <span class="sc">+</span> am <span class="sc">+</span> hp<span class="sc">*</span>am, <span class="at">data=</span>mtcars)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>reg4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt <span class="sc">+</span> am <span class="sc">+</span> hp <span class="sc">*</span> am, <span class="at">data =</span> mtcars)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -803,7 +812,7 @@ Multiple R-squared:  0.8433,    Adjusted R-squared:  0.8201
 F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 </div>
 </div>
-<p>The interaction term in the results is in the row that starts with <code>hp:am</code>. These estimates suggest that, while horsepower does seem to decrease miles per gallon controlling for weight and whether or not the car has an automatic transmission, the effect of horsepower does not seem to vary much by whether or not the car has an automatic transmission (at least not in a big enough way that we can detect it with the data that we have).</p>
+<p>The interaction term in the results is in the row that starts with <code>hp:am</code>. These estimates suggest that, while cars with more horsepower tend to get fewer miles per gallon on average among cars with the same weight and transmission type, the marginal contrast for horsepower does not seem to vary much between cars with manual and automatic transmissions (at least not in a big enough way that we can detect it with the data that we have).</p>
 </section>
 </section>
 <section id="elasticities" class="level2" data-number="10.8">
@@ -826,7 +835,7 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 \]</span> where the approximation is better when <span class="math inline">\(x_{new}\)</span> and <span class="math inline">\(x_{old}\)</span> are close to each other.</p>
 <p>Now, we’ll use these properties of logarithms in order to interpret several linear models</p>
 <ul>
-<li><p>For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as “on average” and “holding other regressors constant” (if there are other regressors in the model).</p></li>
+<li><p>For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as comparisons “on average” and “among observations with the same values of the other regressors” (if there are other regressors in the model).</p></li>
 <li><p><strong>Log-Log</strong> Model</p>
 <p><span class="math display">\[
   \log(Y) = \beta_0 + \beta_1 \log(X)
@@ -839,7 +848,7 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
   &amp;\approx \frac{ \% \Delta Y}{ \% \Delta X}
   \end{aligned}
   \]</span></p>
-<p>All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the average percentage change in the outcome when the regressor changes by 1%. The log-log model is sometimes called a <strong>constant elasticity</strong> model.</p></li>
+<p>All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1%. The log-log model is sometimes called a <strong>constant elasticity</strong> model.</p></li>
 <li><p><strong>Log-Level</strong> model</p>
 <p><span class="math display">\[
   \log(Y) = \beta_0 + \beta_1 X
@@ -852,7 +861,7 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
   \implies 100 \beta_1 &amp;\approx \frac{ \% \Delta Y}{ d \, X}
   \end{aligned}
   \]</span></p>
-<p>Thus, in a regression of the log of an outcome on the <em>level</em> of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the average percentage change in the outcome when the regressor changes by 1 unit.</p></li>
+<p>Thus, in a regression of the log of an outcome on the <em>level</em> of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1 unit.</p></li>
 <li><p><strong>Level-Log</strong> model</p>
 <p><span class="math display">\[
     Y = \beta_0 + \beta_1 \log(X)
@@ -865,60 +874,63 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
     \implies \frac{\beta_1}{100} &amp;\approx \frac{d \, Y}{\% \Delta X}
     \end{aligned}
   \]</span></p>
-<p>Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the average change in the outcome when the regressor changes by 1%.</p></li>
+<p>Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the difference in the average outcome between observations whose values of the regressor differ by 1%.</p></li>
 </ul>
 <div class="example">
 <p><span class="example">Example: </span>Let’s continue the same example on intergenerational income mobility where <span class="math inline">\(Y\)</span> denotes child’s income, <span class="math inline">\(X_1\)</span> denotes parents’ income and <span class="math inline">\(X_2\)</span> denotes mother’s education. We’ll consider how to interpret several different models.</p>
 <p><span class="math display">\[
   \log(Y) = 8.8 + 0.4 \log(X_1) + 0.008 X_2 + U
-\]</span> In this model, we estimate that, on average, when parents’ income increases by 1%, child’s income increases by 0.4% holding mother’s education constant.</p>
+\]</span> In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents’ income is 1% higher have, on average, about 0.4% higher income.</p>
 <p>Next, consider, <span class="math display">\[
   \log(Y) = 8.9 + 0.00004 X_1 + 0.007 X_2 + U
-\]</span> In this model, we estimate that, on average, when parents’ income increases by $1, child’s income increases by 0.004% (alternatively, when parents’ income increase by $1000, child’s income increases by 4%) holding mother’s education constant.</p>
+\]</span> In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents’ income is $1 higher have, on average, about 0.004% higher income (alternatively, children whose parents’ income is $1000 higher have about 4% higher income).</p>
 <p>Finally, consider</p>
 <p><span class="math display">\[
   Y = -1,680,000 + 160,000 \log(X_1) + 900 X_2 + U
-\]</span> In this case, we estimate that, on average, when parents’ income increases by 1%, child’s income increases by $1,600 holding mother’s education constant.</p>
+\]</span> In this case, we estimate that, comparing children whose mothers have the same level of education, children whose parents’ income is 1% higher have, on average, about $1,600 higher income.</p>
 </div>
+<p>In practice, economists most often take the logarithm of variables that are strictly positive (the log of zero or of a negative number is not defined) and that vary a lot in scale — things like income, wages, prices, sales, or GDP. The main motivation is that, for these sorts of variables, it is often more plausible that relationships with other variables are linear in terms of percentage differences than in terms of levels.</p>
+<p>For example, in the intergenerational income mobility example above, a $1,000 difference in parents’ income is a big difference when comparing families with incomes of $20,000 and $21,000, but a fairly small difference when comparing families with incomes of $100,000 and $101,000. It seems unlikely that these two $1,000 differences go along with the same difference in child’s income. It seems more plausible that, say, a 1% difference in parents’ income goes along with a similar percentage difference in child’s income regardless of the level of parents’ income — which is exactly what the log-log model imposes.</p>
 <section id="computation-5" class="level3" data-number="10.8.1">
 <h3 data-number="10.8.1" class="anchored" data-anchor-id="computation-5"><span class="header-section-number">10.8.1</span> Computation</h3>
-<p>Estimating models that include logarithms in <code>R</code> is straightforward.</p>
+<p>Estimating models that include logarithms in <code>R</code> is straightforward. In the <code>mtcars</code> data, a log-log specification is natural: horsepower ranges from 52 to 335, and a 10 horsepower difference is a large difference for cars with around 50 horsepower, but a relatively small difference for cars with around 300 horsepower, which suggests thinking about differences in horsepower in percentage terms.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>reg5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mpg) <span class="sc">~</span> <span class="fu">log</span>(hp) <span class="sc">+</span> wt, <span class="at">data=</span>mtcars) </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>reg6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mpg) <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data=</span>mtcars) </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>reg7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="fu">log</span>(hp) <span class="sc">+</span> wt, <span class="at">data=</span>mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>reg5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mpg) <span class="sc">~</span> <span class="fu">log</span>(hp) <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>reg6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(mpg) <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>reg7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="fu">log</span>(hp) <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s show the results all at once using the <code>modelsummary</code> function from the <code>modelsummary</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>model_list <span class="ot">&lt;-</span> <span class="fu">list</span>(reg5, reg6, reg7)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(model_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(model_list, <span class="at">fmt =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
+<!-- preamble start -->
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_g13zduwze4bs9drq372o = TinyTable.createTableFunctions("tinytable_g13zduwze4bs9drq372o");
+      const tableFns_01r2jp2hu4u0pd73kena = TinyTable.createTableFunctions("tinytable_01r2jp2hu4u0pd73kena");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '16', j: 2 }, { i: '16', j: 3 }, { i: '16', j: 4 } ], css_id: 'tinytable_css_5zpz9rgqljz2i0hxtam0',}, 
-          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 } ], css_id: 'tinytable_css_ekeysum65mzggkm8fra2',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 } ], css_id: 'tinytable_css_mbku2c1gxp61c67wggms',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_awp9xhqyb0flkgz6iaz8',}, 
-          { positions: [ { i: '16', j: 1 } ], css_id: 'tinytable_css_j4og8brj45loe3ou25j1',}, 
-          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_6jtz3it38ccsxxm1k9v7',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 } ], css_id: 'tinytable_css_urarym2nkdsjn7ngfb3l',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_rhz4udmcrv3c06jzbhb9',}, 
+          { positions: [ { i: '16', j: 2 }, { i: '16', j: 3 }, { i: '16', j: 4 } ], css_id: 'tinytable_css_q8a1wgths99nn106qc0l',}, 
+          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 } ], css_id: 'tinytable_css_z8uqkbfzyhnz59ppypbz',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 } ], css_id: 'tinytable_css_e17ni89sdlg1k6wbnntx',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_og90gtl0urhvarij3j61',}, 
+          { positions: [ { i: '16', j: 1 } ], css_id: 'tinytable_css_m8uc7r1mlabmf7x0q9qg',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_5mjqg5pvhl42znkyf4xf',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 } ], css_id: 'tinytable_css_jwo2tdruud8018yt8i2v',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_4uudpagjtms7bxahlfgd',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_g13zduwze4bs9drq372o.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_01r2jp2hu4u0pd73kena.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -927,17 +939,17 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_5zpz9rgqljz2i0hxtam0, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_5zpz9rgqljz2i0hxtam0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_ekeysum65mzggkm8fra2, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_ekeysum65mzggkm8fra2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_mbku2c1gxp61c67wggms, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_mbku2c1gxp61c67wggms { text-align: center }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_awp9xhqyb0flkgz6iaz8, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_awp9xhqyb0flkgz6iaz8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_j4og8brj45loe3ou25j1, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_j4og8brj45loe3ou25j1 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_6jtz3it38ccsxxm1k9v7, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_6jtz3it38ccsxxm1k9v7 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_urarym2nkdsjn7ngfb3l, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_urarym2nkdsjn7ngfb3l { text-align: left }
-    #tinytable_g13zduwze4bs9drq372o td.tinytable_css_rhz4udmcrv3c06jzbhb9, #tinytable_g13zduwze4bs9drq372o th.tinytable_css_rhz4udmcrv3c06jzbhb9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_q8a1wgths99nn106qc0l, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_q8a1wgths99nn106qc0l {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_z8uqkbfzyhnz59ppypbz, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_z8uqkbfzyhnz59ppypbz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_e17ni89sdlg1k6wbnntx, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_e17ni89sdlg1k6wbnntx { text-align: center }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_og90gtl0urhvarij3j61, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_og90gtl0urhvarij3j61 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_m8uc7r1mlabmf7x0q9qg, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_m8uc7r1mlabmf7x0q9qg {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_5mjqg5pvhl42znkyf4xf, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_5mjqg5pvhl42znkyf4xf {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_jwo2tdruud8018yt8i2v, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_jwo2tdruud8018yt8i2v { text-align: left }
+    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_4uudpagjtms7bxahlfgd, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_4uudpagjtms7bxahlfgd {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_g13zduwze4bs9drq372o" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_01r2jp2hu4u0pd73kena" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -951,50 +963,50 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
         <tbody>
                 <tr>
                   <td data-row="1" data-col="1">(Intercept)</td>
-                  <td data-row="1" data-col="2">4.832</td>
-                  <td data-row="1" data-col="3">3.829</td>
-                  <td data-row="1" data-col="4">59.571</td>
+                  <td data-row="1" data-col="2">4.8317</td>
+                  <td data-row="1" data-col="3">3.8291</td>
+                  <td data-row="1" data-col="4">59.5709</td>
                 </tr>
                 <tr>
                   <td data-row="2" data-col="1"></td>
-                  <td data-row="2" data-col="2">(0.222)</td>
-                  <td data-row="2" data-col="3">(0.069)</td>
-                  <td data-row="2" data-col="4">(4.977)</td>
+                  <td data-row="2" data-col="2">(0.2220)</td>
+                  <td data-row="2" data-col="3">(0.0687)</td>
+                  <td data-row="2" data-col="4">(4.9769)</td>
                 </tr>
                 <tr>
                   <td data-row="3" data-col="1">log(hp)</td>
-                  <td data-row="3" data-col="2">-0.266</td>
+                  <td data-row="3" data-col="2">-0.2657</td>
                   <td data-row="3" data-col="3"></td>
-                  <td data-row="3" data-col="4">-5.922</td>
+                  <td data-row="3" data-col="4">-5.9218</td>
                 </tr>
                 <tr>
                   <td data-row="4" data-col="1"></td>
-                  <td data-row="4" data-col="2">(0.056)</td>
+                  <td data-row="4" data-col="2">(0.0565)</td>
                   <td data-row="4" data-col="3"></td>
-                  <td data-row="4" data-col="4">(1.266)</td>
+                  <td data-row="4" data-col="4">(1.2658)</td>
                 </tr>
                 <tr>
                   <td data-row="5" data-col="1">wt</td>
-                  <td data-row="5" data-col="2">-0.179</td>
-                  <td data-row="5" data-col="3">-0.201</td>
-                  <td data-row="5" data-col="4">-3.286</td>
+                  <td data-row="5" data-col="2">-0.1794</td>
+                  <td data-row="5" data-col="3">-0.2005</td>
+                  <td data-row="5" data-col="4">-3.2856</td>
                 </tr>
                 <tr>
                   <td data-row="6" data-col="1"></td>
-                  <td data-row="6" data-col="2">(0.027)</td>
-                  <td data-row="6" data-col="3">(0.027)</td>
-                  <td data-row="6" data-col="4">(0.615)</td>
+                  <td data-row="6" data-col="2">(0.0274)</td>
+                  <td data-row="6" data-col="3">(0.0272)</td>
+                  <td data-row="6" data-col="4">(0.6148)</td>
                 </tr>
                 <tr>
                   <td data-row="7" data-col="1">hp</td>
                   <td data-row="7" data-col="2"></td>
-                  <td data-row="7" data-col="3">-0.002</td>
+                  <td data-row="7" data-col="3">-0.0015</td>
                   <td data-row="7" data-col="4"></td>
                 </tr>
                 <tr>
                   <td data-row="8" data-col="1"></td>
                   <td data-row="8" data-col="2"></td>
-                  <td data-row="8" data-col="3">(0.000)</td>
+                  <td data-row="8" data-col="3">(0.0004)</td>
                   <td data-row="8" data-col="4"></td>
                 </tr>
                 <tr>
@@ -1052,9 +1064,9 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 </div>
 </div>
 <ul>
-<li><p>In the first model, we estimate that, on average, a 1% increase in horsepower decreases miles per gallon by 0.266% holding weight constant.</p></li>
-<li><p>In the second model, we estimate that, on average, a 1 unit increase in horsepower decreases miles per gallon by 0.2% holding weight constant.</p></li>
-<li><p>In the third model, we estimate that, on average, a 1% increase in horsepower decreases miles per gallon by .059 holding weight constant.</p></li>
+<li><p>In the first model, we estimate that, comparing cars with the same weight, cars with 1% more horsepower get, on average, about 0.266% fewer miles per gallon.</p></li>
+<li><p>In the second model, we estimate that, comparing cars with the same weight, cars with one more horsepower get, on average, about 0.15% fewer miles per gallon.</p></li>
+<li><p>In the third model, we estimate that, comparing cars with the same weight, cars with 1% more horsepower get, on average, about 0.059 fewer miles per gallon.</p></li>
 </ul>
 </section>
 </section>
@@ -1064,10 +1076,11 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 <p>Suppose that we are interested in the following regression model</p>
 <p><span class="math display">\[
   \E[Y|X_1, X_2, Q] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q
-\]</span> and, in particular, we are interested in the the partial effect</p>
+\]</span> and, in particular, we are interested in the marginal contrast for <span class="math inline">\(X_1\)</span></p>
 <p><span class="math display">\[
   \frac{ \partial \, \E[Y|X_1,X_2,Q]}{\partial \, X_1} = \beta_1
 \]</span> But we are faced with the issue that we do not observe <span class="math inline">\(Q\)</span> (which implies that we cannot control for it in the regression)</p>
+<p>To make this concrete, suppose that <span class="math inline">\(Y\)</span> is a person’s earnings, <span class="math inline">\(X_1\)</span> is their years of education, <span class="math inline">\(X_2\)</span> is their years of work experience, and <span class="math inline">\(Q\)</span> is their “ability.” We might be particularly interested in comparing average earnings among people with different amounts of education but with the same experience and the same ability. The problem is that ability is not something that we observe in most data. If we could compare groups of people with the same ability, it would seem more plausible that differences in their average earnings are due to differences in education (rather than, for example, higher-ability people both getting more education and earning more). Later in the semester, we will have an in-depth discussion about causality, and there, deciding which variables to include in the model (some of which may not be observed) will be a key issue.</p>
 <p>Recall that we can equivalently write</p>
 <p><span id="eq-ovb-y"><span class="math display">\[
   Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q + U
@@ -1090,256 +1103,256 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 <p>That you are not generally able to recover <span class="math inline">\(\beta_1\)</span> in this case is called <strong>omitted variable bias</strong></p>
 <p>There are two cases where you will recover <span class="math inline">\(\delta_1 = \beta_1\)</span> though which occur when <span class="math inline">\(\beta_3 \gamma_1 = 0\)</span>:</p>
 <ul>
-<li><p><span class="math inline">\(\beta_3=0\)</span>. This would be the case where <span class="math inline">\(Q\)</span> has no effect on <span class="math inline">\(Y\)</span></p></li>
+<li><p><span class="math inline">\(\beta_3=0\)</span>. This would be the case where, among observations with the same values of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, the average of <span class="math inline">\(Y\)</span> does not vary with <span class="math inline">\(Q\)</span>.</p></li>
 <li><p><span class="math inline">\(\gamma_1=0\)</span>. This would be the case where <span class="math inline">\(X_1\)</span> and <span class="math inline">\(Q\)</span> are uncorrelated after controlling for <span class="math inline">\(X_2\)</span>.</p></li>
 </ul>
-<p>Interestingly, there may be some case where you can “sign” the bias; i.e., figure out if <span class="math inline">\(\beta_3 \gamma_1\)</span> is positive or negative. For example, you might have theoretical reasons to suspect that <span class="math inline">\(\gamma_1 &gt; 0\)</span> and <span class="math inline">\(\beta_3 &gt; 0\)</span>. In this case,</p>
+<p>Interestingly, there may be some cases where you can “sign” the bias; i.e., figure out if <span class="math inline">\(\beta_3 \gamma_1\)</span> is positive or negative. In the education example, it seems likely that, among people with the same experience, those with higher ability tend to have more education (<span class="math inline">\(\gamma_1 &gt; 0\)</span>), and that, among people with the same education and experience, those with higher ability tend to have higher earnings on average (<span class="math inline">\(\beta_3 &gt; 0\)</span>). In this case,</p>
 <p><span class="math display">\[
   \delta_1 = \beta_1 + \textrm{something positive}
-\]</span> which implies that <span class="math inline">\(\delta_1\)</span> (i.e., running a regression that ignores <span class="math inline">\(Q\)</span>) would cause us to tend to over-estimate <span class="math inline">\(\beta_1\)</span>.</p>
-<div class="side-comment">
-<p><span class="side-comment">Side-Comment:</span></p>
-<ul>
-<li><p>The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet. The same issues arise if we just say that we have some <em>regression of interest</em> but are unable to estimate it because some covariates are unobserved.</p></li>
-<li><p>The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the “causal effect”, but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.</p></li>
-</ul>
-</div>
+\]</span> which implies that running a regression that ignores ability would tend to over-estimate <span class="math inline">\(\beta_1\)</span>.</p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1347,185 +1360,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./09-inference.html" class="pagination-link" aria-label="Inference">
