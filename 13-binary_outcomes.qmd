@@ -151,7 +151,7 @@ which you can estimate by
 \begin{align*}
   \widehat{AMC} &= \frac{1}{n} \sum_{i=1}^n \phi(\hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3) \hat{\beta}_1
 \end{align*}
-which amounts to just computing the marginal contrast at each value of the covariates in your data and then averaging these marginal contrasts together.  This can be a bit cumbersome to do in practice, and it is often convenient to use the `R` package `mfx` to compute these sorts of average marginal contrasts for you (the `mfx` package calls these "marginal effects").
+which amounts to just computing the marginal contrast at each value of the covariates in your data and then averaging these marginal contrasts together.  This can be a bit cumbersome to do in practice, and it is often convenient to use the `R` package `marginaleffects` to compute these sorts of average marginal contrasts for you (using its `avg_slopes` function).
 
 *Discrete/Binary Case*: When $X_1$ is discrete (let's say binary, but extention to discrete is straightforward), the marginal contrast for $X_1$ is
 \begin{align*}
@@ -172,7 +172,7 @@ Notice that $\beta_1$ does not show up in the last term.  As above, the marginal
 
 In this lab, I'll demonstrate how to estimate and interpret binary outcome models using the `titanic_training` data.  The outcome for this data is `Survived` which is a binary variable indicating whether a particular passenger survived the Titanic wreck.  We'll estimate models that also include passenger class (`Pclass`), passenger's sex, and passenger's age.
 
-The main `R` function for estimating binary outcome models is the `glm` function (this stands for "generalized linear model").  The syntax is very similar to the syntax for the `lm` command, so much of what we do below will feel feel familiar.  We'll also use the `probitmfx` and `logitmfx` functions from the `mfx` package to compute average marginal contrasts (the `mfx` package calls these "marginal effects," which is the label you will see in its output).
+The main `R` function for estimating binary outcome models is the `glm` function (this stands for "generalized linear model").  The syntax is very similar to the syntax for the `lm` command, so much of what we do below will feel feel familiar.  We'll also use the `avg_slopes` function from the `marginaleffects` package to compute average marginal contrasts.
 
 **Linear Probability Model**
 
@@ -198,10 +198,10 @@ Before we move on, let's compute a couple of predicted probabilities.
 
 ```{r}
 # young, first class, female
-pred_df1 <- data.frame(Pclass=1, Sex="female", Age=25, Embarked="S")
+pred_df1 <- data.frame(Pclass=1, Sex="female", Age=25)
 
 # old, third class, male
-pred_df2 <- data.frame(Pclass=3, Sex="male", Age=55, Embarked="S")
+pred_df2 <- data.frame(Pclass=3, Sex="male", Age=55)
 pred_df <- rbind.data.frame(pred_df1, pred_df2)
 round(predict(lpm, newdata=pred_df), 3)
 ```
@@ -214,7 +214,7 @@ Let's estimate Probit and Logit models using the same specifications.  First, Pr
 
 ```{r}
 # probit
-probit <- glm(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
+probit <- glm(Survived ~ as.factor(Pclass) + Sex + Age, 
               family=binomial(link="probit"), 
               data=titanic_train)
 summary(probit)
@@ -223,7 +223,7 @@ summary(probit)
 Now, Logit:
 ```{r}
 # logit
-logit <- glm(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
+logit <- glm(Survived ~ as.factor(Pclass) + Sex + Age, 
               family=binomial(link="logit"), 
               data=titanic_train)
 summary(logit)
@@ -242,33 +242,34 @@ predict(logit, newdata=pred_df, type="response")
 ```
 Before we interpret the result, notice that we add the argument `type=response` (this indicates that we want to get a predicted probability).
 
-Here (for both models), we estimate that a 25 year old woman traveling first class has a 91% probability of survival (this is slightly smaller than the prediction from the linear probability model).  On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.3% (from probit) or 4.6% (from logit) probability of survival.  While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.
+Here, we estimate that a 25 year old woman traveling first class has about a 93% probability of survival (this is slightly smaller than the prediction from the linear probability model).  On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.5% (from probit) or 4.7% (from logit) probability of survival.  While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.
 
 **Average Marginal Contrasts**
 
 To conclude this section, let's calculate average marginal contrasts for each model.  First, for probit: 
 
-```{r message=FALSE}
-library(mfx)
-probit_amc <- probitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
-                        data=titanic_train, 
-                        atmean=FALSE)
+```{r message=FALSE, warning=FALSE}
+library(marginaleffects)
+# don't print the "S" (s-value) column, which we won't use
+options(marginaleffects_print_omit = "s.value")
+
+probit_amc <- avg_slopes(probit)
 probit_amc
 ```
 
 Now, for logit:
 ```{r}
-logit_amc <- logitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
-                        data=titanic_train, 
-                        atmean=FALSE)
+logit_amc <- avg_slopes(logit)
 logit_amc
 ```
+
+The `Contrast` column tells you what each row is.  For `Age`, which is continuous, it reports `dY/dX`, the average of the derivative of the probability of survival with respect to age.  For `Pclass` and `Sex`, which are discrete, it reports the average difference in predicted probabilities between categories (e.g., `male - female`).
 
 A couple of things to notice:
 
 - The average marginal contrasts are extremely similar across models.  For example, across all three models, the average marginal contrast for being `male` is about -0.49; that is, among passengers in the same class and of the same age, men were about 49 percentage points less likely to survive than women.  The other average marginal contrasts are quite similar across models as well.
 
-- Both `probitmfx` and `logitmfx` functions took in an argument for `atmean`.  We set it equal to `FALSE`.  If you set it equal to `TRUE`, you will compute the marginal contrast evaluated at the average values of the covariates, rather than the average of the marginal contrasts across observations.  You can check `?probitmfx` or `?logitmfx` for more details.
+- By default, `avg_slopes` computes the marginal contrast for each passenger in the data and then averages them.  A different approach is to compute the marginal contrast at the average values of the covariates, which you can do with `slopes(probit, newdata = "mean")`.  You can check `?avg_slopes` for more details.
 
 ## Coding Questions
 
