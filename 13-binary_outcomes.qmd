@@ -190,9 +190,9 @@ summary(lpm)
 
 ```
 
-Let's quickly interpret a couple of these parameters.  Recall that these can all be directly interpreted as partial effects on the probability of surviving the Titanic wreck.  For example, these estimates indicate that third class passengers were about 33% less likely to survive on average than first class passengers controlling for passenger's sex and age.
+Let's quickly interpret a couple of these parameters.  Recall that these can all be directly interpreted as partial effects on the probability of surviving the Titanic wreck.  For example, these estimates indicate that third class passengers were about 35 percentage points less likely to survive on average than first class passengers controlling for passenger's sex and age.
 
-The other thing that jumps out is passenger's sex.  These estimates indicate that men were, on average, 49% less likely to survive the Titanic wreck than women after controlling for passenger class, and age.
+The other thing that jumps out is passenger's sex.  These estimates indicate that men were, on average, 49 percentage points less likely to survive the Titanic wreck than women after controlling for passenger class, and age.
 
 Before we move on, let's compute a couple of predicted probabilities.  
 
@@ -266,7 +266,7 @@ logit_ape
 
 A couple of things to notice:
 
-- The average partial effects are extremely similar across models.  For example, across all three models, the average partial effect of being `male` is to reduce the probability of survival by 49% controlling for the other variables in the model.  The other average partial effects are quite similar across models as well.
+- The average partial effects are extremely similar across models.  For example, across all three models, the average partial effect of being `male` is to reduce the probability of survival by 49 percentage points controlling for the other variables in the model.  The other average partial effects are quite similar across models as well.
 
 - Both `probitmfx` and `logitmfx` functions took in an argument for `atmean`.  We set it equal to `FALSE`.  If you set it equal to `TRUE`, you will compute a different kind of partial effect.  You can check `?probitmfx` or `?logitmfx` for more details.
 
