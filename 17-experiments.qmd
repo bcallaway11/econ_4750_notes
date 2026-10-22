@@ -50,7 +50,7 @@ Recalling the definition of the observed outcome, notice that
 \end{align*}
 where the second equality just involves re-arranging terms, and the third equality holds under treatment effect homogeneity and using the expression for $Y_i(0)$ in the previous equation. 
 
-This suggests running a regression of the observed $Y_i$ on $D_i$ and interpreting the estimated version of $\alpha$ as an estimate of the causal effect of participating in the treatment (and you can pick up standard errors, etc. from the regression output) --- this is very convenient.
+This suggests running a regression of the observed $Y_i$ on $D_i$ and interpreting the estimated version of $\alpha$ as an estimate of the causal effect of participating in the treatment (and you can pick up standard errors, etc. from the regression output) --- this is very convenient.  In the language from earlier in the semester, $\alpha$ is the marginal contrast for $D$ --- the difference in average outcomes between the treated and untreated groups --- and it is random assignment that allows us to interpret this marginal contrast as a causal effect.
 
 The previous discussion invoked the extra condition of treatment effect homogeneity.  I want to point out some things related to this now.  In the above regression model, we can alternatively (and equivalently) write it as
 \begin{align*}
