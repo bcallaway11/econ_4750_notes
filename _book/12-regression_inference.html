@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Inference – Detailed Course Notes for ECON 4750</title>
+<title>12&nbsp; Properties of Regression Estimators – Detailed Course Notes for ECON 4750</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -150,7 +150,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-regression_inference.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-regression_inference.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Properties of Regression Estimators</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -264,7 +264,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12-regression_inference.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Properties of Regression Estimators</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -331,14 +331,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#inference" id="toc-inference" class="nav-link active" data-scroll-target="#inference"><span class="header-section-number">12.1</span> Inference</a>
+  <li><a href="#a-useful-expression-for-hatbeta_1" id="toc-a-useful-expression-for-hatbeta_1" class="nav-link active" data-scroll-target="#a-useful-expression-for-hatbeta_1"><span class="header-section-number">12.1</span> A Useful Expression for <span class="math inline">\(\hat{\beta}_1\)</span></a></li>
+  <li><a href="#mean-of-hatbeta_1" id="toc-mean-of-hatbeta_1" class="nav-link" data-scroll-target="#mean-of-hatbeta_1"><span class="header-section-number">12.2</span> Mean of <span class="math inline">\(\hat{\beta}_1\)</span></a></li>
+  <li><a href="#sampling-variance-of-hatbeta_1" id="toc-sampling-variance-of-hatbeta_1" class="nav-link" data-scroll-target="#sampling-variance-of-hatbeta_1"><span class="header-section-number">12.3</span> Sampling Variance of <span class="math inline">\(\hat{\beta}_1\)</span></a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">12.4</span> Consistency</a></li>
+  <li><a href="#asymptotic-normality" id="toc-asymptotic-normality" class="nav-link" data-scroll-target="#asymptotic-normality"><span class="header-section-number">12.5</span> Asymptotic Normality</a></li>
+  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference"><span class="header-section-number">12.6</span> Inference</a>
   <ul class="collapse">
-  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">12.1.1</span> Computation</a></li>
+  <li><a href="#computation" id="toc-computation" class="nav-link" data-scroll-target="#computation"><span class="header-section-number">12.6.1</span> Computation</a></li>
   </ul></li>
-  <li><a href="#lab-4-birthweight-and-smoking" id="toc-lab-4-birthweight-and-smoking" class="nav-link" data-scroll-target="#lab-4-birthweight-and-smoking"><span class="header-section-number">12.2</span> Lab 4: Birthweight and Smoking</a></li>
-  <li><a href="#lab-4-solutions" id="toc-lab-4-solutions" class="nav-link" data-scroll-target="#lab-4-solutions"><span class="header-section-number">12.3</span> Lab 4: Solutions</a></li>
-  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">12.4</span> Coding Questions</a></li>
-  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">12.5</span> Extra Questions</a></li>
+  <li><a href="#more-than-one-regressor" id="toc-more-than-one-regressor" class="nav-link" data-scroll-target="#more-than-one-regressor"><span class="header-section-number">12.7</span> More than One Regressor</a></li>
+  <li><a href="#lab-4-birthweight-and-smoking" id="toc-lab-4-birthweight-and-smoking" class="nav-link" data-scroll-target="#lab-4-birthweight-and-smoking"><span class="header-section-number">12.8</span> Lab 4: Birthweight and Smoking</a></li>
+  <li><a href="#lab-4-solutions" id="toc-lab-4-solutions" class="nav-link" data-scroll-target="#lab-4-solutions"><span class="header-section-number">12.9</span> Lab 4: Solutions</a></li>
+  <li><a href="#sec-beta1-variance" id="toc-sec-beta1-variance" class="nav-link" data-scroll-target="#sec-beta1-variance"><span class="header-section-number">12.10</span> In Case You’re Interested: Sampling Variance of <span class="math inline">\(\hat{\beta}_1\)</span></a></li>
+  <li><a href="#coding-questions" id="toc-coding-questions" class="nav-link" data-scroll-target="#coding-questions"><span class="header-section-number">12.11</span> Coding Questions</a></li>
+  <li><a href="#extra-questions" id="toc-extra-questions" class="nav-link" data-scroll-target="#extra-questions"><span class="header-section-number">12.12</span> Extra Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -347,7 +354,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Properties of Regression Estimators</span></h1>
 </div>
 
 
@@ -383,22 +390,16 @@ window.Quarto = {
 \newcommand\independent{\perp \!\!\! \perp}
 \newcommand{\N}{\mathcal{N}}
 \]</span></p>
-<section id="inference" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="inference"><span class="header-section-number">12.1</span> Inference</h2>
 <p>SW 4.5, 5.1, 5.2, 6.6</p>
-<p>We discussed in class the practical issues of inference in linear regression models.</p>
-<p>These results rely on arguments building on the Central Limit Theorem (this should not surprise you as it is similar to the case for the asymptotic distribution of <span class="math inline">\(\sqrt{n}(\bar{Y} - \E[Y]))\)</span> that we discussed earlier in the semester.</p>
-<p>In this section, I sketch these types of arguments for you. This material is advanced, but I suggest that you study this material.</p>
-<p>We are going to show that, in the simple linear regression model, <span class="math display">\[\begin{align*}
-  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V) \quad \textrm{as} \ n \rightarrow \infty
-\end{align*}\]</span> where <span class="math display">\[\begin{align*}
-  V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
-\end{align*}\]</span> and discuss how to use this result to conduct inference.</p>
-<p>Let’s start by showing why this result holds.</p>
-<p>To start with, recall that <span id="eq-b1"><span class="math display">\[
+<p>In this chapter, we’ll study the properties of <span class="math inline">\(\hat{\beta}_1\)</span> as an estimator of <span class="math inline">\(\beta_1\)</span>. This closely parallels our earlier discussion of the properties of <span class="math inline">\(\bar{Y}\)</span> as an estimator of <span class="math inline">\(\E[Y]\)</span>. Since <span class="math inline">\(\hat{\beta}_1\)</span> is computed from a random sample, it is itself a random variable, and we will be interested in the same properties as before: its mean (is it unbiased?), its sampling variance, whether it is consistent, and its asymptotic distribution (which is what we need in order to conduct inference).</p>
+<p>We will focus on the simple linear regression model <span class="math display">\[
+  Y = \beta_0 + \beta_1 X + U, \qquad \E[U|X] = 0
+\]</span> and assume that we have a random sample <span class="math inline">\(\{(Y_i, X_i)\}_{i=1}^n\)</span>. Recall that <span id="eq-b1"><span class="math display">\[
 \hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)}
-\tag{12.1}\]</span></span></p>
-<p>Before providing a main result, let’s start with noting the following:</p>
+\tag{12.1}\]</span></span> Some of the material in this chapter is advanced, but I suggest that you study it.</p>
+<section id="a-useful-expression-for-hatbeta_1" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="a-useful-expression-for-hatbeta_1"><span class="header-section-number">12.1</span> A Useful Expression for <span class="math inline">\(\hat{\beta}_1\)</span></h2>
+<p>Before studying the properties of <span class="math inline">\(\hat{\beta}_1\)</span>, it is helpful to rewrite it in a way that we will use repeatedly below.</p>
 <p><em>Helpful Intermediate Result 1</em> Notice that <span class="math display">\[\begin{align*}
   \frac{1}{n}\sum_{i=1}^n \Big( (X_i - \bar{X})\bar{Y}\Big) &amp;= \bar{Y} \frac{1}{n}\sum_{i=1}^n \Big( X_i-\bar{X} \Big) \\
   &amp;= \bar{Y} \left( \frac{1}{n}\sum_{i=1}^n X_i - \frac{1}{n}\sum_{i=1}^n \bar{X} \right) \\
@@ -414,7 +415,7 @@ window.Quarto = {
   \widehat{\cov}(X,Y) &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
   &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
   &amp;= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
-  &amp;= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
+  &amp;= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)} \\
 \end{align*}\]</span> where the first equality holds by the definition of sample covariance, the second equality holds by <a href="#eq-hr1" class="quarto-xref">Equation&nbsp;<span>12.2</span></a>, the third equality plugs in for <span class="math inline">\(Y_i\)</span>, and the last equality combines terms and passes the summation through the additions/subtractions.</p>
 <p>Now, let’s consider each of these in turn.</p>
 <p>For (A), <span class="math display">\[\begin{align*}
@@ -425,25 +426,75 @@ window.Quarto = {
   &amp;= \beta_1 \widehat{\var}(X)
 \end{align*}\]</span> where the first equality holds by <a href="#eq-hr2" class="quarto-xref">Equation&nbsp;<span>12.3</span></a> and the second equality holds by the definition of sample variance.</p>
 <p>For (C), well, we’ll just carry that one around for now.</p>
-<p>Plugging in the expressions for (A), (B), and (C) back into Equation <a href="#eq-b1" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> implies that <span class="math display">\[\begin{align*}
-  \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
-\end{align*}\]</span> Next, re-arranging terms and multiplying both sides by <span class="math inline">\(\sqrt{n}\)</span> implies that <span class="math display">\[\begin{align*}
+<p>Plugging in the expressions for (A), (B), and (C) back into Equation <a href="#eq-b1" class="quarto-xref">Equation&nbsp;<span>12.1</span></a> implies that <span id="eq-b1-decomp"><span class="math display">\[
+  \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}{\widehat{\var}(X)}
+\tag{12.4}\]</span></span> In words, <span class="math inline">\(\hat{\beta}_1\)</span> is equal to <span class="math inline">\(\beta_1\)</span> plus a second term that depends on the error terms. Each of the properties below comes from studying this second term.</p>
+</section>
+<section id="mean-of-hatbeta_1" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="mean-of-hatbeta_1"><span class="header-section-number">12.2</span> Mean of <span class="math inline">\(\hat{\beta}_1\)</span></h2>
+<p>It is convenient to first take expectations conditional on all of the <span class="math inline">\(X\)</span>’s in the sample, <span class="math inline">\(X_1, \ldots, X_n\)</span>. Conditioning on all of the <span class="math inline">\(X\)</span>’s may seem strange at first. It amounts to treating the <span class="math inline">\(X\)</span>’s in our sample as fixed and only thinking about the randomness that comes from the error terms. This is just a convenient technical step: it makes <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\widehat{\var}(X)\)</span> behave like constants, and, at the end, we use the law of iterated expectations to average over the <span class="math inline">\(X\)</span>’s, so that the final result does not depend on the particular <span class="math inline">\(X\)</span>’s in our sample. Starting from <a href="#eq-b1-decomp" class="quarto-xref">Equation&nbsp;<span>12.4</span></a>, <span class="math display">\[
+\begin{aligned}
+  \E[\hat{\beta}_1 | X_1,\ldots,X_n] &amp;= \beta_1 + \frac{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) \E[U_i | X_1, \ldots, X_n]}{\widehat{\var}(X)} \\
+  &amp;= \beta_1
+\end{aligned}
+\]</span> where the last equality holds because <span class="math inline">\(\E[U_i | X_1, \ldots, X_n] = \E[U_i | X_i] = 0\)</span> (the first equality holds by random sampling — other observations’ <span class="math inline">\(X\)</span>’s are independent of <span class="math inline">\(U_i\)</span> — and the second holds because <span class="math inline">\(\E[U|X]=0\)</span>). Then, by the law of iterated expectations, <span class="math display">\[
+  \E[\hat{\beta}_1] = \E\big[ \E[\hat{\beta}_1 | X_1,\ldots,X_n] \big] = \beta_1
+\]</span> so <span class="math inline">\(\hat{\beta}_1\)</span> is unbiased.</p>
+</section>
+<section id="sampling-variance-of-hatbeta_1" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="sampling-variance-of-hatbeta_1"><span class="header-section-number">12.3</span> Sampling Variance of <span class="math inline">\(\hat{\beta}_1\)</span></h2>
+<p>As for <span class="math inline">\(\bar{Y}\)</span>, it is important to know how much <span class="math inline">\(\hat{\beta}_1\)</span> varies across different samples. It is possible to show that, in large samples, <span id="eq-V"><span class="math display">\[
+  \var(\hat{\beta}_1) \approx \frac{V}{n} \qquad \textrm{where} \qquad V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
+\tag{12.5}\]</span></span> I provide a derivation of this result in <a href="#sec-beta1-variance" class="quarto-xref"><span>Section 12.10</span></a> at the end of this chapter. This expression tells us when <span class="math inline">\(\hat{\beta}_1\)</span> will be precisely estimated (i.e., have a small sampling variance):</p>
+<ul>
+<li><p><strong>Larger sample size</strong>: just as for <span class="math inline">\(\bar{Y}\)</span>, the sampling variance gets smaller as <span class="math inline">\(n\)</span> gets larger.</p></li>
+<li><p><strong>More variation in <span class="math inline">\(X\)</span></strong>: <span class="math inline">\(\var(X)\)</span> shows up (squared) in the denominator. Intuitively, if all of the observations have similar values of <span class="math inline">\(X\)</span>, it is hard to learn how the average of <span class="math inline">\(Y\)</span> differs across values of <span class="math inline">\(X\)</span>; if <span class="math inline">\(X\)</span> is very spread out, this is much easier.</p></li>
+<li><p><strong>Less variation in <span class="math inline">\(U\)</span></strong>: <span class="math inline">\(U^2\)</span> shows up in the numerator. If outcomes tend to be far from the regression line, it is harder to pin down where the regression line is.</p></li>
+</ul>
+</section>
+<section id="consistency" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="consistency"><span class="header-section-number">12.4</span> Consistency</h2>
+<p>Starting from <a href="#eq-b1-decomp" class="quarto-xref">Equation&nbsp;<span>12.4</span></a>, the numerator of the second term is an average, so by the law of large numbers, <span class="math display">\[
+  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X}) U_i \xrightarrow{p} \E[(X-\E[X])U]
+\]</span> (here and below, I am glossing over the difference between <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\E[X]\)</span>, which does not matter in large samples). By the law of iterated expectations, <span class="math display">\[
+  \E[(X-\E[X])U] = \E\big[(X-\E[X])\E[U|X]\big] = 0
+\]</span> Similarly, <span class="math display">\[
+  \widehat{\var}(X) \xrightarrow{p} \var(X)
+\]</span> which is positive as long as <span class="math inline">\(X\)</span> is not constant. Thus, the second term converges to 0, and <span class="math display">\[
+  \hat{\beta}_1 \xrightarrow{p} \beta_1
+\]</span> that is, <span class="math inline">\(\hat{\beta}_1\)</span> is consistent.</p>
+</section>
+<section id="asymptotic-normality" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="asymptotic-normality"><span class="header-section-number">12.5</span> Asymptotic Normality</h2>
+<p>Finally, to conduct inference, we need the asymptotic distribution of <span class="math inline">\(\hat{\beta}_1\)</span>. We are going to show that <span class="math display">\[
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V) \quad \textrm{as} \ n \rightarrow \infty
+\]</span> where <span class="math inline">\(V\)</span> is the same as in <a href="#eq-V" class="quarto-xref">Equation&nbsp;<span>12.5</span></a>.</p>
+<p>Re-arranging <a href="#eq-b1-decomp" class="quarto-xref">Equation&nbsp;<span>12.4</span></a> and multiplying both sides by <span class="math inline">\(\sqrt{n}\)</span> implies that <span class="math display">\[\begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) &amp;= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}\right) \\
   &amp; \approx \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \E[X]) U_i}{\var(X)}\right)
 \end{align*}\]</span> The last line (the approximately one) is kind of a weak argument, but basically you can replace <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\widehat{\var}(X)\)</span> and the effect of this replacement will converge to 0 in large samples (this is the reason for the approximately) — if you want a more complete explanation, sign up for my graduate econometrics class next semester.</p>
-<p>Is this helpful? It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to. In particular, maybe it is helpful to define <span class="math inline">\(Z_i = \frac{(X_i - \E[X]) U_i}{\var(X)}\)</span>. We know that we could apply a Central Limit Theorem to <span class="math inline">\(\sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)\)</span> if (i) <span class="math inline">\(Z_i\)</span> had mean 0, and (ii) it is iid. That it is iid holds immediately from the random sampling assumption. For mean 0, <span class="math display">\[\begin{align*}
+<p>Is this helpful? It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to. In particular, maybe it is helpful to define <span class="math display">\[
+  Z_i = \frac{(X_i - \E[X]) U_i}{\var(X)}
+\]</span> We know that we could apply a Central Limit Theorem to <span class="math display">\[
+  \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)
+\]</span> if (i) <span class="math inline">\(Z_i\)</span> had mean 0, and (ii) it is iid. That it is iid holds immediately from the random sampling assumption. For mean 0, <span class="math display">\[\begin{align*}
   \E[Z] &amp;= \E\left[ \frac{(X - \E[X]) U}{\var(X)}\right] \\
   &amp;= \frac{1}{\var(X)} \E[(X - \E[X]) U] \\
   &amp;= \frac{1}{\var(X)} \E[(X - \E[X]) \underbrace{\E[U|X]}_{=0}] \\
   &amp;= 0
-\end{align*}\]</span> where the only challenging line here is the third one holds from the Law of Iterated Expectations. This means that we can apply the central limit theorem, and in particular, <span class="math inline">\(\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)\)</span> where <span class="math inline">\(V=\var(Z) = \E[Z^2]\)</span> (where the 2nd equality here holds because <span class="math inline">\(Z\)</span> has mean 0). Now, just substituting back in for <span class="math inline">\(Z\)</span> implies that <span class="math display">\[\begin{align*}
+\end{align*}\]</span> where the only challenging line here is the third one holds from the Law of Iterated Expectations. This means that we can apply the central limit theorem, and in particular, <span class="math display">\[
+  \sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V) \qquad \textrm{where} \qquad V=\var(Z) = \E[Z^2]
+\]</span> (where the 2nd equality here holds because <span class="math inline">\(Z\)</span> has mean 0). Now, just substituting back in for <span class="math inline">\(Z\)</span> implies that <span class="math display">\[\begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
-\end{align*}\]</span> where <span id="eq-V"><span class="math display">\[
+\end{align*}\]</span> where <span class="math display">\[
 \begin{aligned}
   V &amp;= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
   &amp;= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right]
 \end{aligned}
-\tag{12.4}\]</span></span> which is what we were aiming for.</p>
+\]</span> which is what we were aiming for. Notice that this lines up with the sampling variance of <span class="math inline">\(\hat{\beta}_1\)</span> that we discussed above: in large samples, <span class="math inline">\(\hat{\beta}_1\)</span> is approximately normally distributed with mean <span class="math inline">\(\beta_1\)</span> and variance <span class="math inline">\(V/n\)</span>.</p>
+</section>
+<section id="inference" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="inference"><span class="header-section-number">12.6</span> Inference</h2>
 <p>Given this result, all our previous work on standard errors, t-statistics, p-values, and confidence intervals applies. First, let me mention the way that you would estimate <span class="math inline">\(V\)</span> (same as always, just replace the population quantities with corresponding sample quantities).</p>
 <p><span class="math display">\[
   \hat{V} = \frac{ \displaystyle \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2 \hat{U}_i^2}{\widehat{\Var}(X)^2}
@@ -452,21 +503,21 @@ window.Quarto = {
 <p>Now, standard errors are just the same as before (the only difference is that <span class="math inline">\(\hat{V}\)</span> itself has changed)</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \textrm{s.e.}(\hat{\beta}) &amp;= \frac{\sqrt{\hat{V}}}{\sqrt{n}}
+  \textrm{s.e.}(\hat{\beta}_1) &amp;= \frac{\sqrt{\hat{V}}}{\sqrt{n}}
 \end{aligned}
 \]</span></p>
-<p>By far the most common null hypothesis is <span class="math inline">\(H_0: \beta = 0\)</span>, which suggests the following t-statistic:</p>
+<p>By far the most common null hypothesis is <span class="math inline">\(H_0: \beta_1 = 0\)</span>, which suggests the following t-statistic:</p>
 <p><span class="math display">\[
-  t = \frac{\hat{\beta}}{\textrm{s.e.}(\hat{\beta})}
+  t = \frac{\hat{\beta}_1}{\textrm{s.e.}(\hat{\beta}_1)}
 \]</span> One can continue to calculate a p-value by</p>
 <p><span class="math display">\[
   \textrm{p-value} = 2 \Phi(-|t|)
 \]</span> and a 95% confidence interval is given by</p>
 <p><span class="math display">\[
-  CI = [\hat{\beta} - 1.96 \textrm{s.e.}(\hat{\beta}), \hat{\beta} + 1.96 \textrm{s.e.}(\hat{\beta})]
+  CI = [\hat{\beta}_1 - 1.96 \textrm{s.e.}(\hat{\beta}_1), \hat{\beta}_1 + 1.96 \textrm{s.e.}(\hat{\beta}_1)]
 \]</span></p>
-<section id="computation" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="computation"><span class="header-section-number">12.1.1</span> Computation</h3>
+<section id="computation" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="computation"><span class="header-section-number">12.6.1</span> Computation</h3>
 <p>Let’s check if what we derived is what we can compute using <code>R</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the same regression as in the previous section</span></span>
@@ -544,8 +595,12 @@ F-statistic:    27 on 1 and 30 DF,  p-value: 1.338e-05</code></pre>
 <p>The “HC0” standard errors are “heteroskedasticity consistent” standard errors, and you can see that they match what we calculated above.</p>
 </section>
 </section>
-<section id="lab-4-birthweight-and-smoking" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="lab-4-birthweight-and-smoking"><span class="header-section-number">12.2</span> Lab 4: Birthweight and Smoking</h2>
+<section id="more-than-one-regressor" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="more-than-one-regressor"><span class="header-section-number">12.7</span> More than One Regressor</h2>
+<p>Everything in this chapter has been for the simple linear regression model with a single regressor. With more regressors, the derivations are similar (though they require more notation), and the estimated coefficients have similar properties: under random sampling and <span class="math inline">\(\E[U|X_1,\ldots,X_k]=0\)</span>, each <span class="math inline">\(\hat{\beta}_j\)</span> is unbiased, consistent, and asymptotically normal. Its sampling variance is smaller when the sample size is larger, when there is more variation in <span class="math inline">\(X_j\)</span> that is not explained by the other regressors, and when there is less variation in <span class="math inline">\(U\)</span>. The standard errors, t-statistics, p-values, and confidence intervals reported by <code>lm</code> and <code>lm_robust</code> are based on this more general case.</p>
+</section>
+<section id="lab-4-birthweight-and-smoking" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="lab-4-birthweight-and-smoking"><span class="header-section-number">12.8</span> Lab 4: Birthweight and Smoking</h2>
 <p>For this lab, we’ll use the data <code>Birthweight_Smoking</code> and study the relationship between infant birthweight and mother’s smoking behavior.</p>
 <ol type="1">
 <li><p>Run a regression of <span class="math inline">\(birthweight\)</span> on <span class="math inline">\(smoker\)</span>. How do you interpret the results?</p></li>
@@ -557,8 +612,8 @@ F-statistic:    27 on 1 and 30 DF,  p-value: 1.338e-05</code></pre>
 <li><p>Now run a regression of <span class="math inline">\(\log(birthweight)\)</span> on <span class="math inline">\(smoker\)</span> and the other covariates from #3. How do you interpret the coefficient on <span class="math inline">\(smoker\)</span>?</p></li>
 </ol>
 </section>
-<section id="lab-4-solutions" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="lab-4-solutions"><span class="header-section-number">12.3</span> Lab 4: Solutions</h2>
+<section id="lab-4-solutions" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="lab-4-solutions"><span class="header-section-number">12.9</span> Lab 4: Solutions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
@@ -613,26 +668,26 @@ F-statistic: 88.28 on 1 and 2998 DF,  p-value: &lt; 2.2e-16</code></pre>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_qefhint2a6rtv86227jy = TinyTable.createTableFunctions("tinytable_qefhint2a6rtv86227jy");
+      const tableFns_pwg2arfcrhfpv7tcl98i = TinyTable.createTableFunctions("tinytable_pwg2arfcrhfpv7tcl98i");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '-1', j: 3 }, { i: '-1', j: 5 } ], css_id: 'tinytable_css_rw42xfw52g7mnwxw1ujk',}, 
-          { positions: [ { i: '11', j: 2 }, { i: '11', j: 3 }, { i: '11', j: 4 }, { i: '11', j: 5 }, { i: '11', j: 6 }, { i: '11', j: 7 } ], css_id: 'tinytable_css_wp2dg7u1xl6lrl8r176e',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 }, { i: '5', j: 7 }, { i: '6', j: 7 }, { i: '7', j: 7 }, { i: '8', j: 7 }, { i: '9', j: 7 }, { i: '10', j: 7 } ], css_id: 'tinytable_css_aunlpwwf8yh93d73h871',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_er3mop2bcuxpp6mt54ua',}, 
-          { positions: [ { i: '-1', j: 2 }, { i: '-1', j: 4 } ], css_id: 'tinytable_css_5lde00dnplvkscf26y96',}, 
-          { positions: [ { i: '11', j: 1 } ], css_id: 'tinytable_css_2cvvb1ymsrbl85hvppvj',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 } ], css_id: 'tinytable_css_45oottsegd1k07rejbvp',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_md915tmkhepocinhtq19',}, 
-          { positions: [ { i: '-1', j: 1 }, { i: '-1', j: 6 }, { i: '-1', j: 7 } ], css_id: 'tinytable_css_ryip26ubdkzqzfen5dze',}, 
+          { positions: [ { i: '-1', j: 3 }, { i: '-1', j: 5 } ], css_id: 'tinytable_css_c255y3kjoe7mdvl0ki4a',}, 
+          { positions: [ { i: '11', j: 2 }, { i: '11', j: 3 }, { i: '11', j: 4 }, { i: '11', j: 5 }, { i: '11', j: 6 }, { i: '11', j: 7 } ], css_id: 'tinytable_css_8rty7395h0bkkrgb7fg1',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 }, { i: '5', j: 7 }, { i: '6', j: 7 }, { i: '7', j: 7 }, { i: '8', j: 7 }, { i: '9', j: 7 }, { i: '10', j: 7 } ], css_id: 'tinytable_css_fho0nd50mv4iod01qhk7',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_cxj1kbc5n1u5g525bb68',}, 
+          { positions: [ { i: '-1', j: 2 }, { i: '-1', j: 4 } ], css_id: 'tinytable_css_ud0haz43rktgalfeet3n',}, 
+          { positions: [ { i: '11', j: 1 } ], css_id: 'tinytable_css_zsd7mfxjvylld3x1ri5q',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 } ], css_id: 'tinytable_css_s6earufhk69faqqv7qr5',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_bpvpqhoywwkao04d6und',}, 
+          { positions: [ { i: '-1', j: 1 }, { i: '-1', j: 6 }, { i: '-1', j: 7 } ], css_id: 'tinytable_css_md4cobeorq6dq7tm142n',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_qefhint2a6rtv86227jy.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_pwg2arfcrhfpv7tcl98i.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -641,18 +696,18 @@ F-statistic: 88.28 on 1 and 2998 DF,  p-value: &lt; 2.2e-16</code></pre>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_rw42xfw52g7mnwxw1ujk, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_rw42xfw52g7mnwxw1ujk {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.03em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 3%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_wp2dg7u1xl6lrl8r176e, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_wp2dg7u1xl6lrl8r176e {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: right }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_aunlpwwf8yh93d73h871, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_aunlpwwf8yh93d73h871 { text-align: right }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_er3mop2bcuxpp6mt54ua, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_er3mop2bcuxpp6mt54ua {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: right }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_5lde00dnplvkscf26y96, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_5lde00dnplvkscf26y96 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.03em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 3%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_2cvvb1ymsrbl85hvppvj, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_2cvvb1ymsrbl85hvppvj {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_45oottsegd1k07rejbvp, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_45oottsegd1k07rejbvp { text-align: left }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_md915tmkhepocinhtq19, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_md915tmkhepocinhtq19 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_qefhint2a6rtv86227jy td.tinytable_css_ryip26ubdkzqzfen5dze, #tinytable_qefhint2a6rtv86227jy th.tinytable_css_ryip26ubdkzqzfen5dze {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_c255y3kjoe7mdvl0ki4a, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_c255y3kjoe7mdvl0ki4a {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.03em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 3%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_8rty7395h0bkkrgb7fg1, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_8rty7395h0bkkrgb7fg1 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: right }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_fho0nd50mv4iod01qhk7, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_fho0nd50mv4iod01qhk7 { text-align: right }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_cxj1kbc5n1u5g525bb68, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_cxj1kbc5n1u5g525bb68 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: right }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_ud0haz43rktgalfeet3n, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_ud0haz43rktgalfeet3n {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: black; --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.03em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 3%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_zsd7mfxjvylld3x1ri5q, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_zsd7mfxjvylld3x1ri5q {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_s6earufhk69faqqv7qr5, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_s6earufhk69faqqv7qr5 { text-align: left }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_bpvpqhoywwkao04d6und, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_bpvpqhoywwkao04d6und {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_pwg2arfcrhfpv7tcl98i td.tinytable_css_md4cobeorq6dq7tm142n, #tinytable_pwg2arfcrhfpv7tcl98i th.tinytable_css_md4cobeorq6dq7tm142n {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_qefhint2a6rtv86227jy" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_pwg2arfcrhfpv7tcl98i" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
 <tr>
@@ -985,8 +1040,45 @@ F-statistic: 47.31 on 5 and 2994 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>The estimated coefficient on <span class="math inline">\(smoker\)</span> says that, comparing mothers with the same education, number of pre-natal visits, age, and alcohol consumption during pregnancy, babies whose mothers smoked during pregnancy weighed about 6.3% less on average.</p>
 </section>
-<section id="coding-questions" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">12.4</span> Coding Questions</h2>
+<section id="sec-beta1-variance" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="sec-beta1-variance"><span class="header-section-number">12.10</span> In Case You’re Interested: Sampling Variance of <span class="math inline">\(\hat{\beta}_1\)</span></h2>
+<p>This section derives the expression for the sampling variance of <span class="math inline">\(\hat{\beta}_1\)</span> from the main text. To do this, we will use the <strong>law of total variance</strong>, which says that, for any two random variables <span class="math inline">\(W\)</span> and <span class="math inline">\(Z\)</span>, <span class="math display">\[
+  \var(W) = \E\big[\var(W|Z)\big] + \var\big(\E[W|Z]\big)
+\]</span> In words, the variance of <span class="math inline">\(W\)</span> can be split into the average of the conditional variance of <span class="math inline">\(W\)</span> given <span class="math inline">\(Z\)</span> (how much <span class="math inline">\(W\)</span> varies for a fixed value of <span class="math inline">\(Z\)</span>), plus the variance of the conditional mean of <span class="math inline">\(W\)</span> given <span class="math inline">\(Z\)</span> (how much the average of <span class="math inline">\(W\)</span> varies across different values of <span class="math inline">\(Z\)</span>).</p>
+<p>Applying the law of total variance with <span class="math inline">\(W = \hat{\beta}_1\)</span> and <span class="math inline">\(Z = (X_1,\ldots,X_n)\)</span>, <span class="math display">\[
+\begin{aligned}
+  \var(\hat{\beta}_1) &amp;= \E\big[\var(\hat{\beta}_1 | X_1,\ldots,X_n)\big] + \var\big(\E[\hat{\beta}_1|X_1,\ldots,X_n]\big) \\
+  &amp;= \E\big[\var(\hat{\beta}_1 | X_1,\ldots,X_n)\big]
+\end{aligned}
+\]</span> where the second equality holds because we showed above that <span class="math inline">\(\E[\hat{\beta}_1|X_1,\ldots,X_n] = \beta_1\)</span>, which is a constant and therefore has variance equal to 0.</p>
+<p>Next, let’s compute the conditional variance. Starting from <a href="#eq-b1-decomp" class="quarto-xref">Equation&nbsp;<span>12.4</span></a>, <span class="math display">\[
+\begin{aligned}
+  \var(\hat{\beta}_1 | X_1,\ldots,X_n) &amp;= \var\left( \beta_1 + \frac{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X}) U_i}{\widehat{\var}(X)} \Bigg| X_1,\ldots,X_n \right) \\
+  &amp;= \frac{1}{n^2 \widehat{\var}(X)^2} \var\left( \sum_{i=1}^n (X_i - \bar{X}) U_i \Bigg| X_1,\ldots,X_n \right) \\
+  &amp;= \frac{1}{n^2 \widehat{\var}(X)^2} \sum_{i=1}^n (X_i - \bar{X})^2 \var(U_i | X_1,\ldots,X_n) \\
+  &amp;= \frac{1}{n^2 \widehat{\var}(X)^2} \sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i) \\
+  &amp;= \frac{1}{n} \cdot \frac{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i)}{\widehat{\var}(X)^2}
+\end{aligned}
+\]</span> where <span class="math inline">\(\sigma^2(X_i) := \var(U_i|X_i)\)</span>.</p>
+<ul>
+<li><p>The second equality holds because <span class="math inline">\(\beta_1\)</span> is a constant and, conditional on the <span class="math inline">\(X\)</span>’s, <span class="math inline">\(\widehat{\var}(X)\)</span> is a constant that can be pulled out (squared) from the variance.</p></li>
+<li><p>The third equality holds because, by random sampling, the <span class="math inline">\(U_i\)</span>’s are independent of each other conditional on the <span class="math inline">\(X\)</span>’s, so the variance of the sum is the sum of the variances, and each <span class="math inline">\((X_i - \bar{X})\)</span> is a constant conditional on the <span class="math inline">\(X\)</span>’s that can be pulled out (squared).</p></li>
+<li><p>The fourth equality holds because, by random sampling, <span class="math inline">\(U_i\)</span> only depends on its own <span class="math inline">\(X_i\)</span>.</p></li>
+</ul>
+<p>Putting this together, <span class="math display">\[
+  \var(\hat{\beta}_1) = \frac{1}{n} \E\left[ \frac{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i)}{\widehat{\var}(X)^2} \right]
+\]</span> This expectation is hard to simplify further in general, but, in large samples, <span class="math inline">\(\widehat{\var}(X) \approx \var(X)\)</span> and <span class="math display">\[
+\begin{aligned}
+  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i) &amp;\approx \E[(X-\E[X])^2 \sigma^2(X)] \\
+  &amp;= \E\big[(X-\E[X])^2 \E[U^2|X]\big] \\
+  &amp;= \E[(X-\E[X])^2 U^2]
+\end{aligned}
+\]</span> where the first equality uses that <span class="math inline">\(\sigma^2(X) = \E[U^2|X]\)</span> (because <span class="math inline">\(\E[U|X]=0\)</span>), and the second uses the law of iterated expectations. Thus, <span class="math display">\[
+  \var(\hat{\beta}_1) \approx \frac{1}{n} \cdot \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2} = \frac{V}{n}
+\]</span></p>
+</section>
+<section id="coding-questions" class="level2" data-number="12.11">
+<h2 data-number="12.11" class="anchored" data-anchor-id="coding-questions"><span class="header-section-number">12.11</span> Coding Questions</h2>
 <ol type="1">
 <li><p>For this problem, we will use the data <code>Caschool</code>. This data contains information about test scores for schools from California from the 1998-1999 academic year. For this problem, we will use the variables <code>testscr</code> (average test score in the school), <code>str</code> (student teacher ratio in the school), <code>avginc</code> (the average income in the school district), and <code>elpct</code> (the percent of English learners in the school).</p>
 <ol type="a">
@@ -1025,8 +1117,8 @@ F-statistic: 47.31 on 5 and 2994 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ol></li>
 </ol>
 </section>
-<section id="extra-questions" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">12.5</span> Extra Questions</h2>
+<section id="extra-questions" class="level2" data-number="12.12">
+<h2 data-number="12.12" class="anchored" data-anchor-id="extra-questions"><span class="header-section-number">12.12</span> Extra Questions</h2>
 <ol type="1">
 <li><p>Suppose you run the following regression <span class="math display">\[\begin{align*}
   Earnings = \beta_0 + \beta_1 Education + U
@@ -1044,7 +1136,7 @@ F-statistic: 47.31 on 5 and 2994 DF,  p-value: &lt; 2.2e-16</code></pre>
 \end{align*}\]</span> with <span class="math inline">\(\E[U|Education, Experience, Female] = 0\)</span>. How do you interpret <span class="math inline">\(\beta_1\)</span> here?</p></li>
 <li><p>A common extra condition (though somewhat old-fashioned) is to impose <em>homoskedasticity</em>. Homoskedasticity says that <span class="math inline">\(\E[U^2|X] = \sigma^2\)</span> (i.e., the variance of the error term does not change across different values of <span class="math inline">\(X\)</span>).</p>
 <ol type="a">
-<li><p>Under homoskedasticity, the expression for <span class="math inline">\(V\)</span> in <a href="#eq-V" class="quarto-xref">Equation&nbsp;<span>12.4</span></a> simplifies. Provide a new expression for <span class="math inline">\(V\)</span> under homoskedasticity. <strong>Hint:</strong> you will need to use the law of iterated expectations.</p></li>
+<li><p>Under homoskedasticity, the expression for <span class="math inline">\(V\)</span> in <a href="#eq-V" class="quarto-xref">Equation&nbsp;<span>12.5</span></a> simplifies. Provide a new expression for <span class="math inline">\(V\)</span> under homoskedasticity. <strong>Hint:</strong> you will need to use the law of iterated expectations.</p></li>
 <li><p>Using this expression for <span class="math inline">\(V\)</span>, explain how to calculate standard errors for an estimate of <span class="math inline">\(\beta_1\)</span> in a simple linear regression.</p></li>
 <li><p>Explain how to construct a t-statistic for testing <span class="math inline">\(H_0: \beta_1=0\)</span> under homoskedasticity.</p></li>
 <li><p>Explain how to contruct a p-value for <span class="math inline">\(\beta_1\)</span> under homoskedasticity.</p></li>
