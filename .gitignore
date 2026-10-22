@@ -1,3 +1,5 @@
 /.quarto/
 /CLAUDE.md
 /dev/
+
+**/*.quarto_ipynb
