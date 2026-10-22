@@ -477,7 +477,7 @@ window.Quarto = {
   &amp;= \E\left[ \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1 \right]
 \end{align*}\]</span> which you can estimate by <span class="math display">\[\begin{align*}
   \widehat{AMC} &amp;= \frac{1}{n} \sum_{i=1}^n \phi(\hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3) \hat{\beta}_1
-\end{align*}\]</span> which amounts to just computing the marginal contrast at each value of the covariates in your data and then averaging these marginal contrasts together. This can be a bit cumbersome to do in practice, and it is often convenient to use the <code>R</code> package <code>mfx</code> to compute these sorts of average marginal contrasts for you (the <code>mfx</code> package calls these “marginal effects”).</p>
+\end{align*}\]</span> which amounts to just computing the marginal contrast at each value of the covariates in your data and then averaging these marginal contrasts together. This can be a bit cumbersome to do in practice, and it is often convenient to use the <code>R</code> package <code>marginaleffects</code> to compute these sorts of average marginal contrasts for you (using its <code>avg_slopes</code> function).</p>
 <p><em>Discrete/Binary Case</em>: When <span class="math inline">\(X_1\)</span> is discrete (let’s say binary, but extention to discrete is straightforward), the marginal contrast for <span class="math inline">\(X_1\)</span> is <span class="math display">\[\begin{align*}
   &amp; \P(Y=1|X_1=1, X_2, X_3) - \P(Y=1|X_1=0, X_2, X_3) \\
   &amp;\hspace{100pt} = \Phi(\beta_0 + \beta_1 + \beta_2 X_2 + \beta_3 X_3) - \Phi(\beta_0 + \beta_2 X_2 + \beta_3 X_3)
@@ -492,7 +492,7 @@ window.Quarto = {
 <section id="lab-5-estimating-binary-outcome-models" class="level2" data-number="13.4">
 <h2 data-number="13.4" class="anchored" data-anchor-id="lab-5-estimating-binary-outcome-models"><span class="header-section-number">13.4</span> Lab 5: Estimating Binary Outcome Models</h2>
 <p>In this lab, I’ll demonstrate how to estimate and interpret binary outcome models using the <code>titanic_training</code> data. The outcome for this data is <code>Survived</code> which is a binary variable indicating whether a particular passenger survived the Titanic wreck. We’ll estimate models that also include passenger class (<code>Pclass</code>), passenger’s sex, and passenger’s age.</p>
-<p>The main <code>R</code> function for estimating binary outcome models is the <code>glm</code> function (this stands for “generalized linear model”). The syntax is very similar to the syntax for the <code>lm</code> command, so much of what we do below will feel feel familiar. We’ll also use the <code>probitmfx</code> and <code>logitmfx</code> functions from the <code>mfx</code> package to compute average marginal contrasts (the <code>mfx</code> package calls these “marginal effects,” which is the label you will see in its output).</p>
+<p>The main <code>R</code> function for estimating binary outcome models is the <code>glm</code> function (this stands for “generalized linear model”). The syntax is very similar to the syntax for the <code>lm</code> command, so much of what we do below will feel feel familiar. We’ll also use the <code>avg_slopes</code> function from the <code>marginaleffects</code> package to compute average marginal contrasts.</p>
 <p><strong>Linear Probability Model</strong></p>
 <p>We’ll start by estimating a linear probability model.</p>
 <div class="cell">
@@ -533,10 +533,10 @@ F-statistic: 74.14 on 4 and 495 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Before we move on, let’s compute a couple of predicted probabilities.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># young, first class, female</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pred_df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pclass=</span><span class="dv">1</span>, <span class="at">Sex=</span><span class="st">"female"</span>, <span class="at">Age=</span><span class="dv">25</span>, <span class="at">Embarked=</span><span class="st">"S"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pred_df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pclass=</span><span class="dv">1</span>, <span class="at">Sex=</span><span class="st">"female"</span>, <span class="at">Age=</span><span class="dv">25</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># old, third class, male</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pred_df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pclass=</span><span class="dv">3</span>, <span class="at">Sex=</span><span class="st">"male"</span>, <span class="at">Age=</span><span class="dv">55</span>, <span class="at">Embarked=</span><span class="st">"S"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pred_df2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pclass=</span><span class="dv">3</span>, <span class="at">Sex=</span><span class="st">"male"</span>, <span class="at">Age=</span><span class="dv">55</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>pred_df <span class="ot">&lt;-</span> <span class="fu">rbind.data.frame</span>(pred_df1, pred_df2)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">predict</span>(lpm, <span class="at">newdata=</span>pred_df), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -549,71 +549,65 @@ F-statistic: 74.14 on 4 and 495 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Let’s estimate Probit and Logit models using the same specifications. First, Probit:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probit</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age <span class="sc">+</span> <span class="fu">as.factor</span>(Embarked), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"probit"</span>), </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>titanic_train)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(probit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-glm(formula = Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
-    family = binomial(link = "probit"), data = titanic_train)
+glm(formula = Survived ~ as.factor(Pclass) + Sex + Age, family = binomial(link = "probit"), 
+    data = titanic_train)
 
 Coefficients:
-                       Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)            5.418219 146.954198   0.037  0.97059    
-as.factor(Pclass)2    -0.445235   0.197398  -2.256  0.02410 *  
-as.factor(Pclass)3    -1.145788   0.188508  -6.078 1.22e-09 ***
-Sexmale               -1.464201   0.136512 -10.726  &lt; 2e-16 ***
-Age                   -0.015764   0.005009  -3.147  0.00165 ** 
-as.factor(Embarked)C  -3.443295 146.954199  -0.023  0.98131    
-as.factor(Embarked)Q  -3.464431 146.954544  -0.024  0.98119    
-as.factor(Embarked)S  -3.662911 146.954180  -0.025  0.98011    
+                    Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)         1.868184   0.248677   7.512 5.80e-14 ***
+as.factor(Pclass)2 -0.525666   0.186535  -2.818  0.00483 ** 
+as.factor(Pclass)3 -1.209309   0.178457  -6.776 1.23e-11 ***
+Sexmale            -1.471356   0.135970 -10.821  &lt; 2e-16 ***
+Age                -0.016096   0.005009  -3.213  0.00131 ** 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 678.28  on 499  degrees of freedom
-Residual deviance: 468.38  on 492  degrees of freedom
-AIC: 484.38
+Residual deviance: 470.24  on 495  degrees of freedom
+AIC: 480.24
 
-Number of Fisher Scoring iterations: 12</code></pre>
+Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 </div>
 <p>Now, Logit:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logit</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age <span class="sc">+</span> <span class="fu">as.factor</span>(Embarked), </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">data=</span>titanic_train)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-glm(formula = Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked), 
-    family = binomial(link = "logit"), data = titanic_train)
+glm(formula = Survived ~ as.factor(Pclass) + Sex + Age, family = binomial(link = "logit"), 
+    data = titanic_train)
 
 Coefficients:
-                       Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)           14.646649 535.411272   0.027  0.97818    
-as.factor(Pclass)2    -0.793003   0.342058  -2.318  0.02043 *  
-as.factor(Pclass)3    -2.055828   0.335386  -6.130  8.8e-10 ***
-Sexmale               -2.461563   0.241113 -10.209  &lt; 2e-16 ***
-Age                   -0.028436   0.008764  -3.245  0.00118 ** 
-as.factor(Embarked)C -11.262004 535.411276  -0.021  0.98322    
-as.factor(Embarked)Q -11.229232 535.411568  -0.021  0.98327    
-as.factor(Embarked)S -11.593053 535.411259  -0.022  0.98273    
+                    Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)         3.240806   0.448093   7.232 4.74e-13 ***
+as.factor(Pclass)2 -0.918662   0.323604  -2.839  0.00453 ** 
+as.factor(Pclass)3 -2.155905   0.318529  -6.768 1.30e-11 ***
+Sexmale            -2.476302   0.240454 -10.298  &lt; 2e-16 ***
+Age                -0.029221   0.008776  -3.330  0.00087 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 678.28  on 499  degrees of freedom
-Residual deviance: 467.01  on 492  degrees of freedom
-AIC: 483.01
+Residual deviance: 468.58  on 495  degrees of freedom
+AIC: 478.58
 
-Number of Fisher Scoring iterations: 12</code></pre>
+Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 <p>It’s rather hard to interpret the parameters in both of these models (let’s defer this to the next section). But it is worth mentioning that all of the estimated coefficients have the same sign for the linear probability model, the probit model, and the logit model, and the same set of regressors have statistically significant coefficients across models (and the t-statistics/p-values are very similar across models).</p>
@@ -623,73 +617,57 @@ Number of Fisher Scoring iterations: 12</code></pre>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(probit, <span class="at">newdata=</span>pred_df, <span class="at">type=</span><span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         1          2 
-0.91327666 0.04256272 </code></pre>
+0.92864590 0.04477563 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for logit</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(logit, <span class="at">newdata=</span>pred_df, <span class="at">type=</span><span class="st">"response"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         1          2 
-0.91235117 0.04618584 </code></pre>
+0.92485907 0.04749064 </code></pre>
 </div>
 </div>
 <p>Before we interpret the result, notice that we add the argument <code>type=response</code> (this indicates that we want to get a predicted probability).</p>
-<p>Here (for both models), we estimate that a 25 year old woman traveling first class has a 91% probability of survival (this is slightly smaller than the prediction from the linear probability model). On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.3% (from probit) or 4.6% (from logit) probability of survival. While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.</p>
+<p>Here, we estimate that a 25 year old woman traveling first class has about a 93% probability of survival (this is slightly smaller than the prediction from the linear probability model). On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.5% (from probit) or 4.7% (from logit) probability of survival. While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.</p>
 <p><strong>Average Marginal Contrasts</strong></p>
 <p>To conclude this section, let’s calculate average marginal contrasts for each model. First, for probit:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>probit_amc <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>titanic_train, </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">atmean=</span><span class="cn">FALSE</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>probit_amc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># don't print the "S" (s-value) column, which we won't use</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">marginaleffects_print_omit =</span> <span class="st">"s.value"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>probit_amc <span class="ot">&lt;-</span> <span class="fu">avg_slopes</span>(probit)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>probit_amc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Call:
-probitmfx(formula = Survived ~ as.factor(Pclass) + Sex + Age, 
-    data = titanic_train, atmean = FALSE)
+<pre><code>
+   Term      Contrast Estimate Std. Error      z Pr(&gt;|z|)   2.5 %   97.5 %
+ Age    dY/dX         -0.00426    0.00129  -3.29  &lt; 0.001 -0.0068 -0.00173
+ Pclass 2 - 1         -0.15894    0.05504  -2.89  0.00388 -0.2668 -0.05106
+ Pclass 3 - 1         -0.34977    0.04956  -7.06  &lt; 0.001 -0.4469 -0.25263
+ Sex    male - female -0.48958    0.04128 -11.86  &lt; 0.001 -0.5705 -0.40867
 
-Marginal Effects:
-                        dF/dx  Std. Err.        z     P&gt;|z|    
-as.factor(Pclass)2 -0.1303971  0.0424994  -3.0682 0.0021534 ** 
-as.factor(Pclass)3 -0.3438262  0.0470404  -7.3092 2.688e-13 ***
-Sexmale            -0.4895845  0.0412840 -11.8590 &lt; 2.2e-16 ***
-Age                -0.0042614  0.0012934  -3.2948 0.0009851 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-dF/dx is for discrete change for the following variables:
-
-[1] "as.factor(Pclass)2" "as.factor(Pclass)3" "Sexmale"           </code></pre>
+Type: response</code></pre>
 </div>
 </div>
 <p>Now, for logit:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>logit_amc <span class="ot">&lt;-</span> <span class="fu">logitmfx</span>(Survived <span class="sc">~</span> <span class="fu">as.factor</span>(Pclass) <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data=</span>titanic_train, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">atmean=</span><span class="cn">FALSE</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>logit_amc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>logit_amc <span class="ot">&lt;-</span> <span class="fu">avg_slopes</span>(logit)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>logit_amc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Call:
-logitmfx(formula = Survived ~ as.factor(Pclass) + Sex + Age, 
-    data = titanic_train, atmean = FALSE)
+<pre><code>
+   Term      Contrast Estimate Std. Error      z Pr(&gt;|z|)    2.5 %  97.5 %
+ Age    dY/dX         -0.00441    0.00128  -3.45  &lt; 0.001 -0.00692 -0.0019
+ Pclass 2 - 1         -0.16361    0.05581  -2.93  0.00337 -0.27299 -0.0542
+ Pclass 3 - 1         -0.36038    0.05024  -7.17  &lt; 0.001 -0.45886 -0.2619
+ Sex    male - female -0.48599    0.04132 -11.76  &lt; 0.001 -0.56697 -0.4050
 
-Marginal Effects:
-                        dF/dx  Std. Err.        z     P&gt;|z|    
-as.factor(Pclass)2 -0.1304383  0.0420444  -3.1024  0.001920 ** 
-as.factor(Pclass)3 -0.3542499  0.0474154  -7.4712 7.947e-14 ***
-Sexmale            -0.4859890  0.0413167 -11.7625 &lt; 2.2e-16 ***
-Age                -0.0044098  0.0014205  -3.1045  0.001906 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-dF/dx is for discrete change for the following variables:
-
-[1] "as.factor(Pclass)2" "as.factor(Pclass)3" "Sexmale"           </code></pre>
+Type: response</code></pre>
 </div>
 </div>
+<p>The <code>Contrast</code> column tells you what each row is. For <code>Age</code>, which is continuous, it reports <code>dY/dX</code>, the average of the derivative of the probability of survival with respect to age. For <code>Pclass</code> and <code>Sex</code>, which are discrete, it reports the average difference in predicted probabilities between categories (e.g., <code>male - female</code>).</p>
 <p>A couple of things to notice:</p>
 <ul>
 <li><p>The average marginal contrasts are extremely similar across models. For example, across all three models, the average marginal contrast for being <code>male</code> is about -0.49; that is, among passengers in the same class and of the same age, men were about 49 percentage points less likely to survive than women. The other average marginal contrasts are quite similar across models as well.</p></li>
-<li><p>Both <code>probitmfx</code> and <code>logitmfx</code> functions took in an argument for <code>atmean</code>. We set it equal to <code>FALSE</code>. If you set it equal to <code>TRUE</code>, you will compute the marginal contrast evaluated at the average values of the covariates, rather than the average of the marginal contrasts across observations. You can check <code>?probitmfx</code> or <code>?logitmfx</code> for more details.</p></li>
+<li><p>By default, <code>avg_slopes</code> computes the marginal contrast for each passenger in the data and then averages them. A different approach is to compute the marginal contrast at the average values of the covariates, which you can do with <code>slopes(probit, newdata = "mean")</code>. You can check <code>?avg_slopes</code> for more details.</p></li>
 </ul>
 </section>
 <section id="coding-questions" class="level2" data-number="13.5">
