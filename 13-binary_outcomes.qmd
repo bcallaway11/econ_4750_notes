@@ -53,11 +53,11 @@ For this reason, the model in this section is called the **linear probabilty mod
 $$
   \beta_1 = \frac{\partial \, \P(Y=1|X_1,X_2,X_3)}{\partial \, X_1}
 $$
-as a partial effect.  That is, $\beta_1$ is how much the probability that $Y=1$ changes when $X_1$ increases by one unit, holding $X_2$ and $X_3$ constant.  This is good (and simple), but there are some drawbacks:
+as a marginal contrast.  That is, $\beta_1$ is the difference in the probability that $Y=1$ between observations whose $X_1$ differs by one unit but that have the same values of $X_2$ and $X_3$.  This is good (and simple), but there are some drawbacks:
 
 1. It's possible to get non-sensical predictions (predicted probabilities that are less than 0 or greater than 1) with a linear probability model.
 
-2. A related problem is that the linear probability model implies constant partial effects.  That is, the effect of a change in one regressor always changes the probability of $Y=1$ (holding other regressors constant) by the same amount.  It may not be obvious that this is a disadvantage, but it is.  
+2. A related problem is that the linear probability model implies constant marginal contrasts.  That is, a one-unit difference in a regressor always goes along with the same difference in the probability that $Y=1$ (among observations with the same values of the other regressors), regardless of the values of the regressors.  It may not be obvious that this is a disadvantage, but it is.  
 
 ::: {.example}
 
@@ -79,7 +79,7 @@ $$
 $$
 We have calculated that the predicted probability of being in the labor force, given these characteristics, is 1.1 --- this makes no sense!  Our maximum predicted probabilty should be 1.
 
-The problem of constant partial effect is closely related.  Here, labor force participation is increasing in age, but with a binary outcome (by construction) the effect has to die off --- for those who are already very likely to participate in the labor force (in this example, older men with a college education, the partial effect of age has to be low because they are already very likely to participate in the labor force).
+The problem of constant marginal contrasts is closely related.  Here, the probability of being in the labor force is higher for older individuals, but with a binary outcome (by construction) this pattern has to level off --- for those who are already very likely to participate in the labor force (in this example, older men with a college education), the marginal contrast for age has to be small because they are already very likely to participate in the labor force.
 
 :::
 
@@ -98,7 +98,7 @@ where $\Phi$ is the cdf of a standard normal random variable.  This is a nonline
 
 Using $\Phi$ (or any cdf) here has a useful property that no matter what value the "index" $\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3$ takes on, the cdf is always between 0 and 1.  This implies that we cannot get predicted probabilities outside of 0 and 1.
 
-Thus, this circumvents the problems with the linear probability model.  That said, there are some things we have to be careful about.  First, as usual, we are interested in partial effects rather than the parameters themselves.  But partial effects are more complicated here.  Notice that
+Thus, this circumvents the problems with the linear probability model.  That said, there are some things we have to be careful about.  First, as usual, we are interested in marginal contrasts rather than the parameters themselves.  But marginal contrasts are more complicated here.  Notice that
 
 $$
   \begin{aligned}
@@ -106,7 +106,7 @@ $$
   &= \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1
   \end{aligned}
 $$
-where $\phi$ is the pdf of a standard normal random variable.  And the second equality requires using the chain rule --- take the derivative of the "outside" (i.e., $\Phi$) and then the derivative of the "inside" with respect to $X_1$.  Notice that this partial effect is more complicated that in the case of the linear models that we have mainly considered --- it involves $\phi$, but more importantly it also depends on the values of all the covariates.  In other words, the partial effect of $X_1$ can vary across different values of $X_1$, $X_2$, and $X_3$.
+where $\phi$ is the pdf of a standard normal random variable.  And the second equality requires using the chain rule --- take the derivative of the "outside" (i.e., $\Phi$) and then the derivative of the "inside" with respect to $X_1$.  Notice that this marginal contrast is more complicated than in the case of the linear models that we have mainly considered --- it involves $\phi$, but more importantly it also depends on the values of all the covariates.  In other words, the marginal contrast for $X_1$ can vary across different values of $X_1$, $X_2$, and $X_3$.
 
 **Logit** is conceptually similar to probit, but instead of using $\Phi$, Logit uses the logistic function $\Lambda(z) = \frac{\exp(z)}{1+\exp(z)}$.  The logistic function has the same important properties as $\Phi$: (i) $\Lambda(z)$ is increasing in $z$, (ii) $\Lambda(z) \rightarrow 1$ as $z \rightarrow \infty$, and (iii) $\Lambda(z) \rightarrow 0$ as $z \rightarrow -\infty$.  Thus, in a logit model,
 
@@ -124,11 +124,11 @@ Because probit and logit models are nonlinear, estimation is more complicated th
 Instead, probit and logit models are typically esetimated through an approach called **maximum likelihood estimation**.  Basically, the computer will solve an optimization problem trying to choose the "most likely" values of the parameters given the data that you have.  It turns out that this particular optimization problem is actually quite easy for the computer to solve --- even though estimating the parameters is more complicated than for linear regression, it will still feel like `R` can estimate a probit or logit model pretty much instantly.
 
 
-## Average Partial Effects
+## Average Marginal Contrasts
 
 One of the complications with Probit and Logit is that it is not so simple to interpret the estimated parameters.  
 
-Remember we are generally interested in partial effects, not the parameters themselves.  It just so happens that in many of the linear models that we have considered so far the $\beta$'s correspond to the partial effect --- this means that it is sometimes easy to forget that they are not what we are typically most interested in.
+Remember we are generally interested in marginal contrasts, not the parameters themselves.  It just so happens that in many of the linear models that we have considered so far the $\beta$'s correspond to the marginal contrast --- this means that it is sometimes easy to forget that they are not what we are typically most interested in.
 
 This is helpful framing for thinking about how to interpret the results from a Probit or Logit model.  
 
@@ -138,33 +138,33 @@ Let's focus on the Probit model.  In that case,
 \end{align*}
 where $\Phi$ is the cdf of standard normal random variable.
 
-*Continuous Case*: When $X_1$ is continuous, the partial effect of $X_1$ is given by
+*Continuous Case*: When $X_1$ is continuous, the marginal contrast for $X_1$ is given by
 \begin{align*}
   \frac{\partial \P(Y=1|X_1,X_2,X_3)}{\partial X_1} = \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1
 \end{align*}
-where $\phi$ is the pdf of a standard normal random variable.  This is more complicated than the partial effect in the context of a linear model.  It depends on $\phi$ (which looks complicated, but you can just use `R`'s `dnorm` command to handle that part).  More importantly, the partial effect depends on the values of $X_1,X_2,$ and $X_3$.  [As discussed above, this is likely a good thing in the context of a binary outcome model].  Thus, in order to get a partial effect, we need to put in some values for these.  If you have particular values of the covariates that you are interested in, you can definitely do that, but my general suggestion is to report the *Average Partial Effect*:
+where $\phi$ is the pdf of a standard normal random variable.  This is more complicated than the marginal contrast in the context of a linear model.  It depends on $\phi$ (which looks complicated, but you can just use `R`'s `dnorm` command to handle that part).  More importantly, the marginal contrast depends on the values of $X_1,X_2,$ and $X_3$.  [As discussed above, this is likely a good thing in the context of a binary outcome model].  Thus, in order to get a marginal contrast, we need to put in some values for these.  If you have particular values of the covariates that you are interested in, you can definitely do that, but my general suggestion is to report the *Average Marginal Contrast*:
 \begin{align*}
-  APE &= \E\left[ \frac{\partial \P(Y=1|X_1,X_2,X_3)}{\partial X_1} \right] \\
+  AMC &= \E\left[ \frac{\partial \P(Y=1|X_1,X_2,X_3)}{\partial X_1} \right] \\
   &= \E\left[ \phi(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3) \beta_1 \right]
 \end{align*}
 which you can estimate by
 \begin{align*}
-  \widehat{APE} &= \frac{1}{n} \sum_{i=1}^n \phi(\hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3) \hat{\beta}_1
+  \widehat{AMC} &= \frac{1}{n} \sum_{i=1}^n \phi(\hat{\beta}_0 + \hat{\beta}_1 X_1 + \hat{\beta}_2 X_2 + \hat{\beta}_3 X_3) \hat{\beta}_1
 \end{align*}
-which amounts to just computing the partial effect at each value of the covariates in your data and then averaging these partial effects together.  This can be a bit cumbersome to do in practice, and it is often convenient to use the `R` package `mfx` to compute these sorts of average partial effects for you.
+which amounts to just computing the marginal contrast at each value of the covariates in your data and then averaging these marginal contrasts together.  This can be a bit cumbersome to do in practice, and it is often convenient to use the `R` package `mfx` to compute these sorts of average marginal contrasts for you (the `mfx` package calls these "marginal effects").
 
-*Discrete/Binary Case*: When $X_1$ is discrete (let's say binary, but extention to discrete is straightforward), the partial effect of $X_1$ is
+*Discrete/Binary Case*: When $X_1$ is discrete (let's say binary, but extention to discrete is straightforward), the marginal contrast for $X_1$ is
 \begin{align*}
   & \P(Y=1|X_1=1, X_2, X_3) - \P(Y=1|X_1=0, X_2, X_3) \\
   &\hspace{100pt} = \Phi(\beta_0 + \beta_1 + \beta_2 X_2 + \beta_3 X_3) - \Phi(\beta_0 + \beta_2 X_2 + \beta_3 X_3)
 \end{align*}
-Notice that $\beta_1$ does not show up in the last term.  As above, the partial effect depends on the values of $X_2$ and $X_3$ which suggests reporting an $APE$ as above (follows the same steps, just replacing the partial effect, as in the continuous case above)
+Notice that $\beta_1$ does not show up in the last term.  As above, the marginal contrast depends on the values of $X_2$ and $X_3$ which suggests reporting an $AMC$ as above (follows the same steps, just replacing the marginal contrast, as in the continuous case above)
 
 * Extensions to Logit are virtually identical, just replace $\Phi$ with $\Lambda$ and $\phi$ with $\lambda$.
 
 ::: {.side-comment}
 
-<span class="side-comment">Side-Comment:</span> The parameters from LPM, Probit, and Logit could be quite different (in fact, they are quite different by construction), but APE's are often very similar.
+<span class="side-comment">Side-Comment:</span> The parameters from LPM, Probit, and Logit could be quite different (in fact, they are quite different by construction), but AMCs are often very similar.
 
 :::
 
@@ -172,7 +172,7 @@ Notice that $\beta_1$ does not show up in the last term.  As above, the partial 
 
 In this lab, I'll demonstrate how to estimate and interpret binary outcome models using the `titanic_training` data.  The outcome for this data is `Survived` which is a binary variable indicating whether a particular passenger survived the Titanic wreck.  We'll estimate models that also include passenger class (`Pclass`), passenger's sex, and passenger's age.
 
-The main `R` function for estimating binary outcome models is the `glm` function (this stands for "generalized linear model").  The syntax is very similar to the syntax for the `lm` command, so much of what we do below will feel feel familiar.  We'll also use the `probitmfx` and `logitmfx` functions from the `mfx` package to compute partial effects.
+The main `R` function for estimating binary outcome models is the `glm` function (this stands for "generalized linear model").  The syntax is very similar to the syntax for the `lm` command, so much of what we do below will feel feel familiar.  We'll also use the `probitmfx` and `logitmfx` functions from the `mfx` package to compute average marginal contrasts (the `mfx` package calls these "marginal effects," which is the label you will see in its output).
 
 **Linear Probability Model**
 
@@ -190,9 +190,9 @@ summary(lpm)
 
 ```
 
-Let's quickly interpret a couple of these parameters.  Recall that these can all be directly interpreted as partial effects on the probability of surviving the Titanic wreck.  For example, these estimates indicate that third class passengers were about 35 percentage points less likely to survive on average than first class passengers controlling for passenger's sex and age.
+Let's quickly interpret a couple of these parameters.  Recall that these can all be directly interpreted as marginal contrasts for the probability of surviving the Titanic wreck.  For example, these estimates indicate that, among passengers of the same sex and age, third class passengers were about 35 percentage points less likely to survive on average than first class passengers.
 
-The other thing that jumps out is passenger's sex.  These estimates indicate that men were, on average, 49 percentage points less likely to survive the Titanic wreck than women after controlling for passenger class, and age.
+The other thing that jumps out is passenger's sex.  These estimates indicate that, among passengers in the same class and of the same age, men were, on average, 49 percentage points less likely to survive the Titanic wreck than women.
 
 Before we move on, let's compute a couple of predicted probabilities.  
 
@@ -229,7 +229,7 @@ logit <- glm(Survived ~ as.factor(Pclass) + Sex + Age + as.factor(Embarked),
 summary(logit)
 ```
 
-It's rather hard to interpret the parameters in both of these models (let's defer this to the next section).  But it is worth mentioning that all of the estimated coefficients have the same sign for the linear probability model, the probit model, and the logit model, and the same set of regressors have statistically significant effects across models (and the t-statistics/p-values are very similar across models).
+It's rather hard to interpret the parameters in both of these models (let's defer this to the next section).  But it is worth mentioning that all of the estimated coefficients have the same sign for the linear probability model, the probit model, and the logit model, and the same set of regressors have statistically significant coefficients across models (and the t-statistics/p-values are very similar across models).
 
 Now, let's calculate the same predicted probabilities as we did for the linear probability model above:
 
@@ -244,51 +244,51 @@ Before we interpret the result, notice that we add the argument `type=response` 
 
 Here (for both models), we estimate that a 25 year old woman traveling first class has a 91% probability of survival (this is slightly smaller than the prediction from the linear probability model).  On the other hand, we estimate that a 55 year old man traveling 3rd class has a 4.3% (from probit) or 4.6% (from logit) probability of survival.  While these probabilities are still quite low, unlike the estimates from the linear probability model, they are at least positive.
 
-**Average Partial Effects**
+**Average Marginal Contrasts**
 
-To conclude this section, let's calculate average partial effects for each model.  First, for probit: 
+To conclude this section, let's calculate average marginal contrasts for each model.  First, for probit: 
 
 ```{r message=FALSE}
 library(mfx)
-probit_ape <- probitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
+probit_amc <- probitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
                         data=titanic_train, 
                         atmean=FALSE)
-probit_ape
+probit_amc
 ```
 
 Now, for logit:
 ```{r}
-logit_ape <- logitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
+logit_amc <- logitmfx(Survived ~ as.factor(Pclass) + Sex + Age, 
                         data=titanic_train, 
                         atmean=FALSE)
-logit_ape
+logit_amc
 ```
 
 A couple of things to notice:
 
-- The average partial effects are extremely similar across models.  For example, across all three models, the average partial effect of being `male` is to reduce the probability of survival by 49 percentage points controlling for the other variables in the model.  The other average partial effects are quite similar across models as well.
+- The average marginal contrasts are extremely similar across models.  For example, across all three models, the average marginal contrast for being `male` is about -0.49; that is, among passengers in the same class and of the same age, men were about 49 percentage points less likely to survive than women.  The other average marginal contrasts are quite similar across models as well.
 
-- Both `probitmfx` and `logitmfx` functions took in an argument for `atmean`.  We set it equal to `FALSE`.  If you set it equal to `TRUE`, you will compute a different kind of partial effect.  You can check `?probitmfx` or `?logitmfx` for more details.
+- Both `probitmfx` and `logitmfx` functions took in an argument for `atmean`.  We set it equal to `FALSE`.  If you set it equal to `TRUE`, you will compute the marginal contrast evaluated at the average values of the covariates, rather than the average of the marginal contrasts across observations.  You can check `?probitmfx` or `?logitmfx` for more details.
 
 ## Coding Questions
 
 1. For this problem, we will use the data `mroz`.
 
-    a) Estimate a probit model where the outcome is whether or not the wife is in the labor force (`inlf`) using the the number of kids less than 6 (`kidslt6`) and the number of kids who are 6 or older living in the household (`kidsge6`).  Calculate the average partial effect of each variable.  What do you notice?
+    a) Estimate a probit model where the outcome is whether or not the wife is in the labor force (`inlf`) using the the number of kids less than 6 (`kidslt6`) and the number of kids who are 6 or older living in the household (`kidsge6`).  Calculate the average marginal contrast for each variable.  What do you notice?
     
-    b) Now, add the variables `age`, `educ`, and `city` to the model.  Calculate the average partial effects of `kidslt6` and `kidsge6`.  How do you interpret these?  How do they compare to the answers from part a?
+    b) Now, add the variables `age`, `educ`, and `city` to the model.  Calculate the average marginal contrasts for `kidslt6` and `kidsge6`.  How do you interpret these?  How do they compare to the answers from part a?
     
-    c) Estimate a linear probability model and logit model using the same specification as in part b.  For each one, how do the estimated coefficients compare to the ones from part b?  Compute average partial effects for each model.  How do these compare to the ones from part b?
+    c) Estimate a linear probability model and logit model using the same specification as in part b.  For each one, how do the estimated coefficients compare to the ones from part b?  Compute average marginal contrasts for each model.  How do these compare to the ones from part b?
     
 2. For this problem, we will use the `Fair` data.
 
     a) The variable `nbaffairs` contains the number of self-reported affairs that an individual has had in the previous year.  Create a variable `had_affair` that is equal to 1 if an individual had any affair in the past year and that is equal to 0 otherwise.  What fraction of individuals in the data have had an affair in the past year?
     
-    b) Estimate a logit model where the outcome is `had_affair` and the regressor is whether or not the person has a child (`child`).  Calculate the average partial effect of having a child on having an affair.  How do you interpret the results?
+    b) Estimate a logit model where the outcome is `had_affair` and the regressor is whether or not the person has a child (`child`).  Calculate the average marginal contrast for having a child.  How do you interpret the results?
     
-    c) Now add `sex`, `age`, `education`, and `occupation` to the model.  Calculate the average partial effect of each variable.  How do you interpret the results?  **Hint:** Make sure to treat the categorical variables in the model as categorical rather than as numeric.
+    c) Now add `sex`, `age`, `education`, and `occupation` to the model.  Calculate the average marginal contrast for each variable.  How do you interpret the results?  **Hint:** Make sure to treat the categorical variables in the model as categorical rather than as numeric.
     
-    d) In addition to the variables in part c, add the variables years married (`ym`) and `religious` to the mode.  Calculate the average partial effect of each variable.  How do you interpret the results?  **Hint:** Make sure to treat the categorical variables in the model as categorical rather than as numeric.
+    d) In addition to the variables in part c, add the variables years married (`ym`) and `religious` to the mode.  Calculate the average marginal contrast for each variable.  How do you interpret the results?  **Hint:** Make sure to treat the categorical variables in the model as categorical rather than as numeric.
 
 
 
