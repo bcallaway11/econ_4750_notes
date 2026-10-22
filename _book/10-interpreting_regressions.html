@@ -350,7 +350,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#computation-4" id="toc-computation-4" class="nav-link" data-scroll-target="#computation-4"><span class="header-section-number">10.7.1</span> Computation</a></li>
   </ul></li>
-  <li><a href="#elasticities" id="toc-elasticities" class="nav-link" data-scroll-target="#elasticities"><span class="header-section-number">10.8</span> Elasticities</a>
+  <li><a href="#logarithms-percentage-differences-and-elasticities" id="toc-logarithms-percentage-differences-and-elasticities" class="nav-link" data-scroll-target="#logarithms-percentage-differences-and-elasticities"><span class="header-section-number">10.8</span> Logarithms, Percentage Differences, and Elasticities</a>
   <ul class="collapse">
   <li><a href="#computation-5" id="toc-computation-5" class="nav-link" data-scroll-target="#computation-5"><span class="header-section-number">10.8.1</span> Computation</a></li>
   </ul></li>
@@ -815,27 +815,77 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 <p>The interaction term in the results is in the row that starts with <code>hp:am</code>. These estimates suggest that, while cars with more horsepower tend to get fewer miles per gallon on average among cars with the same weight and transmission type, the marginal contrast for horsepower does not seem to vary much between cars with manual and automatic transmissions (at least not in a big enough way that we can detect it with the data that we have).</p>
 </section>
 </section>
-<section id="elasticities" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="elasticities"><span class="header-section-number">10.8</span> Elasticities</h2>
+<section id="logarithms-percentage-differences-and-elasticities" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="logarithms-percentage-differences-and-elasticities"><span class="header-section-number">10.8</span> Logarithms, Percentage Differences, and Elasticities</h2>
 <p>SW 8.2</p>
-<p>Economists are often interested in <strong>elasticities</strong>, that is, the percentage change in <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> changes by 1%.</p>
+<p>Economists are often interested in percentage differences rather than differences in levels, and in <strong>elasticities</strong>, which relate a percentage difference in one variable to a percentage difference in another (e.g., the percentage difference in <span class="math inline">\(Y\)</span> associated with a 1% difference in <span class="math inline">\(X\)</span>).</p>
 <p>Recall that the definition of percentage change of moving from, say, <span class="math inline">\(x_{old}\)</span> to <span class="math inline">\(x_{new}\)</span> is given by</p>
 <p><span class="math display">\[
   \textrm{\% change} = \frac{x_{new} - x_{old}}{x_{old}} \times 100
 \]</span></p>
-<p>Elasticities are closely connected to natural logarithms; following the most common notation in economics, we’ll refer to the natural logarithm using the notation: <span class="math inline">\(\log\)</span>. Further, recall that the derivative of the <span class="math inline">\(\log\)</span> function is given by</p>
+<p>Percentage differences are closely connected to natural logarithms. Following the most common notation in economics, we’ll refer to the natural logarithm as <span class="math inline">\(\log\)</span>, rather than <span class="math inline">\(\ln\)</span>. First, let’s define</p>
 <p><span class="math display">\[
-  \frac{d \, \log(x)}{d \, x} = \frac{1}{x} \implies d\, \log(x) = \frac{d \, x}{x}
-\]</span> which further implies that</p>
+  \Delta \log(x) := \log(x_{new}) - \log(x_{old})
+\]</span> That is, <span class="math inline">\(\Delta \log(x)\)</span> is computed by taking the log of each of the two values and then subtracting. For example, if <span class="math inline">\(x_{old}=100\)</span> and <span class="math inline">\(x_{new}=110\)</span>, then <span class="math inline">\(\Delta \log(x) = \log(110) - \log(100) = 4.7005 - 4.6052 = 0.0953\)</span>. Notice that, by properties of logarithms, <span class="math inline">\(\Delta \log(x) = \log(x_{new}/x_{old})\)</span>, so it only depends on the <em>ratio</em> of the two values — for example, going from 20,000 to 22,000 gives exactly the same <span class="math inline">\(\Delta \log(x)\)</span> as going from 100 to 110.</p>
+<p>Next, recall that the derivative of the <span class="math inline">\(\log\)</span> function is</p>
 <p><span class="math display">\[
-  \Delta \log(x) := \log(x_{new}) - \log(x_{old}) \approx \frac{x_{new} - x_{old}}{x_{old}}
-\]</span> and, thus, that</p>
+  \frac{d \, \log(x)}{d \, x} = \frac{1}{x}
+\]</span> The derivative tells us the slope of <span class="math inline">\(\log(x)\)</span>, so, for <span class="math inline">\(x_{new}\)</span> close to <span class="math inline">\(x_{old}\)</span>, we can approximate the change in <span class="math inline">\(\log(x)\)</span> by the slope at <span class="math inline">\(x_{old}\)</span> times the change in <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[
+  \Delta \log(x) \approx \frac{1}{x_{old}} (x_{new} - x_{old}) = \frac{x_{new} - x_{old}}{x_{old}}
+\]</span> and, thus,</p>
 <p><span class="math display">\[
   100 \cdot \Delta \log(x) \approx \textrm{\% change}
-\]</span> where the approximation is better when <span class="math inline">\(x_{new}\)</span> and <span class="math inline">\(x_{old}\)</span> are close to each other.</p>
-<p>Now, we’ll use these properties of logarithms in order to interpret several linear models</p>
+\]</span></p>
+<p>How good is this approximation? The table below compares the actual percentage change to <span class="math inline">\(100 \cdot \Delta \log(x)\)</span> when <span class="math inline">\(x_{old}=100\)</span>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_{new}\)</span></th>
+<th style="text-align: center;">% change</th>
+<th style="text-align: center;"><span class="math inline">\(100 \cdot \Delta \log(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">101</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.995</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">105</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4.88</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">110</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">9.53</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">125</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">22.31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">150</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">40.55</td>
+</tr>
+</tbody>
+</table>
+<p>The approximation is very good for small percentage changes and gets worse as the change gets larger. For interpreting the regressions below, we will mostly be thinking about small differences (like 1%), where the approximation is very accurate.</p>
+<p>Earlier in the chapter, we interpreted <span class="math inline">\(\beta_1\)</span> by evaluating the regression at two different values of the regressor (e.g., <span class="math inline">\(x\)</span> and <span class="math inline">\(x+1\)</span>) and taking the difference, which gave us the difference in the average outcome between those two groups. We’ll do the same thing here. For simplicity, I am going to not include an error term or extra covariates, and I’ll write <span class="math inline">\(y\)</span> and <span class="math inline">\(y'\)</span> for the values of the outcome that the model gives at two values of the regressor, <span class="math inline">\(x\)</span> and <span class="math inline">\(x'\)</span> (as before, you should continue to interpret the results as comparisons “on average” and “among observations with the same values of the other regressors”). The only new issue is that, when a variable is in logs, the difference that we compute is a difference in logs, so we’ll use the approximation above to translate it into a percentage difference.</p>
 <ul>
-<li><p>For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as comparisons “on average” and “among observations with the same values of the other regressors” (if there are other regressors in the model).</p></li>
+<li><p><strong>Level-Level</strong> Model (warm-up)</p>
+<p><span class="math display">\[
+  Y = \beta_0 + \beta_1 X
+  \]</span></p>
+<p>In this case,</p>
+<p><span class="math display">\[
+  y' - y = (\beta_0 + \beta_1 x') - (\beta_0 + \beta_1 x) = \beta_1 (x' - x)
+  \]</span></p>
+<p>So, if <span class="math inline">\(x'\)</span> is one unit larger than <span class="math inline">\(x\)</span>, then <span class="math inline">\(y' - y = \beta_1\)</span> — this is exactly the interpretation from earlier in the chapter.</p></li>
 <li><p><strong>Log-Log</strong> Model</p>
 <p><span class="math display">\[
   \log(Y) = \beta_0 + \beta_1 \log(X)
@@ -843,44 +893,81 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 <p>In this case,</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \beta_1 &amp;= \frac{ d \, \log(Y) }{d \, \log(X)} \\
-  &amp;= \frac{ d \, \log(Y) \cdot 100 }{d \, \log(X) \cdot 100} \\
-  &amp;\approx \frac{ \% \Delta Y}{ \% \Delta X}
+  \log(y') - \log(y) &amp;= \beta_1 \big( \log(x') - \log(x) \big) \\
+  \implies 100 \cdot \Delta \log(y) &amp;= \beta_1 \cdot 100 \cdot \Delta \log(x) \\
+  \implies \% \Delta y &amp;\approx \beta_1 \cdot \% \Delta x
   \end{aligned}
   \]</span></p>
-<p>All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1%. The log-log model is sometimes called a <strong>constant elasticity</strong> model.</p></li>
-<li><p><strong>Log-Level</strong> model</p>
+<p>All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1%. In other words, <span class="math inline">\(\beta_1\)</span> is an elasticity. The log-log model is sometimes called a <strong>constant elasticity</strong> model.</p></li>
+<li><p><strong>Log-Level</strong> Model</p>
 <p><span class="math display">\[
   \log(Y) = \beta_0 + \beta_1 X
   \]</span></p>
 <p>In this case,</p>
 <p><span class="math display">\[
   \begin{aligned}
-  \beta_1 &amp;= \frac{ d \, \log(Y) }{d \, X} \\
-  \implies 100 \beta_1 &amp;= \frac{ d \, \log(Y) \cdot 100 }{d \, X} \\
-  \implies 100 \beta_1 &amp;\approx \frac{ \% \Delta Y}{ d \, X}
+  \log(y') - \log(y) &amp;= \beta_1 (x' - x) \\
+  \implies 100 \cdot \Delta \log(y) &amp;= 100 \beta_1 (x' - x) \\
+  \implies \% \Delta y &amp;\approx 100 \beta_1 (x' - x)
   \end{aligned}
   \]</span></p>
-<p>Thus, in a regression of the log of an outcome on the <em>level</em> of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1 unit.</p></li>
-<li><p><strong>Level-Log</strong> model</p>
+<p>Thus, in a regression of the log of an outcome on the <em>level</em> of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1 unit. This includes the common case where <span class="math inline">\(X\)</span> is binary (e.g., <span class="math inline">\(X=1\)</span> for smokers and <span class="math inline">\(X=0\)</span> for non-smokers): then <span class="math inline">\(100\beta_1\)</span> is the approximate percentage difference in the outcome between the <span class="math inline">\(X=1\)</span> group and the <span class="math inline">\(X=0\)</span> group.</p></li>
+<li><p><strong>Level-Log</strong> Model</p>
 <p><span class="math display">\[
-    Y = \beta_0 + \beta_1 \log(X)
+  Y = \beta_0 + \beta_1 \log(X)
   \]</span></p>
 <p>In this case,</p>
 <p><span class="math display">\[
-    \begin{aligned}
-    \beta_1 &amp;= \frac{d\, Y}{d \, \log(X)} \\
-    \implies \frac{\beta_1}{100} &amp;= \frac{d \, Y}{d \, \log(X) \cdot 100} \\
-    \implies \frac{\beta_1}{100} &amp;\approx \frac{d \, Y}{\% \Delta X}
-    \end{aligned}
+  \begin{aligned}
+  y' - y &amp;= \beta_1 \big( \log(x') - \log(x) \big) \\
+  &amp;= \frac{\beta_1}{100} \cdot 100 \cdot \Delta \log(x) \\
+  &amp;\approx \frac{\beta_1}{100} \cdot \% \Delta x
+  \end{aligned}
   \]</span></p>
 <p>Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the difference in the average outcome between observations whose values of the regressor differ by 1%.</p></li>
 </ul>
+<p>The table below summarizes these interpretations.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: center;">Comparing observations whose <span class="math inline">\(X\)</span> differs by…</th>
+<th style="text-align: center;">…their average <span class="math inline">\(Y\)</span> differs by about</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(Y = \beta_0 + \beta_1 X\)</span></td>
+<td style="text-align: center;">1 unit</td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span> units</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\log(Y) = \beta_0 + \beta_1 X\)</span></td>
+<td style="text-align: center;">1 unit</td>
+<td style="text-align: center;"><span class="math inline">\(100\beta_1\)</span>%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(Y = \beta_0 + \beta_1 \log(X)\)</span></td>
+<td style="text-align: center;">1%</td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1/100\)</span> units</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\log(Y) = \beta_0 + \beta_1 \log(X)\)</span></td>
+<td style="text-align: center;">1%</td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span>%</td>
+</tr>
+</tbody>
+</table>
 <div class="example">
 <p><span class="example">Example: </span>Let’s continue the same example on intergenerational income mobility where <span class="math inline">\(Y\)</span> denotes child’s income, <span class="math inline">\(X_1\)</span> denotes parents’ income and <span class="math inline">\(X_2\)</span> denotes mother’s education. We’ll consider how to interpret several different models.</p>
 <p><span class="math display">\[
   \log(Y) = 8.8 + 0.4 \log(X_1) + 0.008 X_2 + U
-\]</span> In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents’ income is 1% higher have, on average, about 0.4% higher income.</p>
+\]</span> In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents’ income is 1% higher have, on average, about 0.4% higher income. In the literature on intergenerational mobility, this coefficient is called the <strong>intergenerational income elasticity</strong>, and larger values indicate that children’s incomes are more closely tied to their parents’ incomes.</p>
 <p>Next, consider, <span class="math display">\[
   \log(Y) = 8.9 + 0.00004 X_1 + 0.007 X_2 + U
 \]</span> In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents’ income is $1 higher have, on average, about 0.004% higher income (alternatively, children whose parents’ income is $1000 higher have about 4% higher income).</p>
@@ -912,25 +999,25 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_01r2jp2hu4u0pd73kena = TinyTable.createTableFunctions("tinytable_01r2jp2hu4u0pd73kena");
+      const tableFns_dxkxiaxrhfbymkds20or = TinyTable.createTableFunctions("tinytable_dxkxiaxrhfbymkds20or");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '16', j: 2 }, { i: '16', j: 3 }, { i: '16', j: 4 } ], css_id: 'tinytable_css_q8a1wgths99nn106qc0l',}, 
-          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 } ], css_id: 'tinytable_css_z8uqkbfzyhnz59ppypbz',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 } ], css_id: 'tinytable_css_e17ni89sdlg1k6wbnntx',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_og90gtl0urhvarij3j61',}, 
-          { positions: [ { i: '16', j: 1 } ], css_id: 'tinytable_css_m8uc7r1mlabmf7x0q9qg',}, 
-          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_5mjqg5pvhl42znkyf4xf',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 } ], css_id: 'tinytable_css_jwo2tdruud8018yt8i2v',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_4uudpagjtms7bxahlfgd',}, 
+          { positions: [ { i: '16', j: 2 }, { i: '16', j: 3 }, { i: '16', j: 4 } ], css_id: 'tinytable_css_eo09q1e5iqmlsf7taulk',}, 
+          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 } ], css_id: 'tinytable_css_l4bbvli2d1b85crs7ibs',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 } ], css_id: 'tinytable_css_enr370n8dlx2w2ujluw4',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_uh1bsi6nf4f2o7gvhjv4',}, 
+          { positions: [ { i: '16', j: 1 } ], css_id: 'tinytable_css_zki31m24snvmdgwcyh9g',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_7kwe9zkxwol5uz4u7g6d',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 } ], css_id: 'tinytable_css_8mkz24ot16q1tjmcxe9w',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_0y02lm8zsmdkeu7grdfz',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_01r2jp2hu4u0pd73kena.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_dxkxiaxrhfbymkds20or.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -939,17 +1026,17 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_q8a1wgths99nn106qc0l, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_q8a1wgths99nn106qc0l {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_z8uqkbfzyhnz59ppypbz, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_z8uqkbfzyhnz59ppypbz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_e17ni89sdlg1k6wbnntx, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_e17ni89sdlg1k6wbnntx { text-align: center }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_og90gtl0urhvarij3j61, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_og90gtl0urhvarij3j61 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_m8uc7r1mlabmf7x0q9qg, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_m8uc7r1mlabmf7x0q9qg {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_5mjqg5pvhl42znkyf4xf, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_5mjqg5pvhl42znkyf4xf {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_jwo2tdruud8018yt8i2v, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_jwo2tdruud8018yt8i2v { text-align: left }
-    #tinytable_01r2jp2hu4u0pd73kena td.tinytable_css_4uudpagjtms7bxahlfgd, #tinytable_01r2jp2hu4u0pd73kena th.tinytable_css_4uudpagjtms7bxahlfgd {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_eo09q1e5iqmlsf7taulk, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_eo09q1e5iqmlsf7taulk {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_l4bbvli2d1b85crs7ibs, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_l4bbvli2d1b85crs7ibs {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_enr370n8dlx2w2ujluw4, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_enr370n8dlx2w2ujluw4 { text-align: center }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_uh1bsi6nf4f2o7gvhjv4, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_uh1bsi6nf4f2o7gvhjv4 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_zki31m24snvmdgwcyh9g, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_zki31m24snvmdgwcyh9g {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_7kwe9zkxwol5uz4u7g6d, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_7kwe9zkxwol5uz4u7g6d {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_8mkz24ot16q1tjmcxe9w, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_8mkz24ot16q1tjmcxe9w { text-align: left }
+    #tinytable_dxkxiaxrhfbymkds20or td.tinytable_css_0y02lm8zsmdkeu7grdfz, #tinytable_dxkxiaxrhfbymkds20or th.tinytable_css_0y02lm8zsmdkeu7grdfz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_01r2jp2hu4u0pd73kena" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_dxkxiaxrhfbymkds20or" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -1068,6 +1155,38 @@ F-statistic: 36.33 on 4 and 27 DF,  p-value: 1.68e-10</code></pre>
 <li><p>In the second model, we estimate that, comparing cars with the same weight, cars with one more horsepower get, on average, about 0.15% fewer miles per gallon.</p></li>
 <li><p>In the third model, we estimate that, comparing cars with the same weight, cars with 1% more horsepower get, on average, about 0.059 fewer miles per gallon.</p></li>
 </ul>
+<p>Finally, to see why taking logs can be useful here, the figure below plots miles per gallon against horsepower in levels (left) and in logs (right), along with a fitted quadratic curve in each case (as in the quadratic model earlier in the chapter).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stack levels and logs into one data frame so that</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># both can be plotted side-by-side</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> mtcars<span class="sc">$</span>hp, <span class="at">y =</span> mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel =</span> <span class="st">"Levels: mpg vs. hp"</span>),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">log</span>(mtcars<span class="sc">$</span>hp), <span class="at">y =</span> <span class="fu">log</span>(mtcars<span class="sc">$</span>mpg),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel =</span> <span class="st">"Logs: log(mpg) vs. log(hp)"</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>),</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>panel, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="10-interpreting_regressions_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In levels, the fitted curve bends sharply — miles per gallon falls quickly with horsepower among low-horsepower cars and then levels off. In logs, even though we allow for a curve, the fitted relationship is close to a straight line, which is what the log-log model assumes.</p>
+<div class="side-comment">
+<p><span class="side-comment">Side-Comment:</span> Be careful to distinguish between a <em>percentage</em> difference and a <em>percentage point</em> difference. For example, if the unemployment rate is 4% in one state and 5% in another, the difference is 1 percentage point, but the unemployment rate in the second state is 25% higher.</p>
+</div>
 </section>
 </section>
 <section id="omitted-variable-bias" class="level2" data-number="10.9">
