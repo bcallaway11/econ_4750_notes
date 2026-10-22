@@ -10,28 +10,36 @@ I'll refer to the $X$'s as either **covariates** or **regressors** or **characte
 
 Before we start to get into the details, let us first discuss why we're interested in conditional expectations.  First, if we are interested in *making predictions*, it will often be the case that the "best" prediction that one can make is the conditional expectation.  This should make sense to you --- if you want to make a reasonable prediction about what the outcome will be for a new observation that has characteristics $x_1$, $x_2$, and $x_3$, a good way to do it would be to predict that their outcome would be the same as the mean outcome in the population among those that have the same characteristics; that is, $\E[Y|X_1=x_1, X_2=x_2, X_3=x_3]$.
 
-Next, in economics, we are often interested in how much some outcome of interest changes when a particular covariate changes, holding other covariates constant.  To give some examples, we might be interested in the average return of actively managed mutual funds relative to passively managed mutual funds conditional on investing in assets in the same class (e.g., large cap stocks or international bonds).  As another example, we might be interested in the effect of an increase in the amount of fertilizer on average crop yield but while holding constant the temperature and precipitation.
+Next, in economics, we are often interested in comparing average outcomes across groups of observations that differ in one characteristic but are similar in others.  To give some examples, we might be interested in comparing the average return of actively managed mutual funds to that of passively managed mutual funds among funds that invest in the same asset class (e.g., large cap stocks or international bonds).  As another example, we might be interested in comparing average crop yields across farms that used different amounts of fertilizer but that experienced the same temperature and precipitation.
 
-How much the outcome, $Y$, changes on average when one of the covariates, $X_1$, changes by 1 unit and holding other covariates constant is what we'll call the **partial effect** of $X_1$ on $Y$.  Suppose $X_1$ is binary, then it is given by
-
-$$
-  PE(x_2,x_3) = \E[Y | X_1=1, X_2=x_2, X_3=x_3] - \E[Y | X_1=0,X_2=x_2,X_3=x_3]
-$$
-Notice that the partial effect can depend on $x_2$ and $x_3$.  For example, it could be that the effect of active management relative to passive management could be different across different asset classes.
-
-Slightly more generally, if $X_1$ is discrete, so that it can take on several different discrete values, then we define the partial effect as
+The difference in the average outcome, $Y$, between observations whose value of one covariate, $X_1$, differs by 1 unit but that have the same values of the other covariates is what we'll call the **marginal contrast** for $X_1$.  Suppose $X_1$ is binary, then it is given by
 
 $$
-  PE(x_1,x_2,x_3) = \E[Y | X_1=x_1+1, X_2=x_2, X_3=x_3] - \E[Y | X_1=x_1,X_2=x_2,X_3=x_3]
+  MC(x_2,x_3) = \E[Y | X_1=1, X_2=x_2, X_3=x_3] - \E[Y | X_1=0,X_2=x_2,X_3=x_3]
 $$
-which now can depend on $x_1$, $x_2$, and $x_3$.  This is the average effect of going from $X_1=x_1$ to $X_1=x_1+1$ holding $x_2$ and $x_3$ constant.
+Notice that the marginal contrast can depend on $x_2$ and $x_3$.  For example, the difference in average returns between actively and passively managed funds could be different across different asset classes.
 
-Finally, consider the case where we are interested in the partial effect of $X_1$ which is continuous (for example, the partial effect of fertilizer input on crop yield).  In this case the  partial effect is given by the *partial derivative* of $\E[Y|X_1,X_2,X_3]$ with respect to $X_1$.
+Slightly more generally, if $X_1$ is discrete, so that it can take on several different discrete values, then we define the marginal contrast as
 
 $$
-  PE(x_1,x_2,x_3) = \frac{\partial \, \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]}{\partial \, x_1}
+  MC(x_1,x_2,x_3) = \E[Y | X_1=x_1+1, X_2=x_2, X_3=x_3] - \E[Y | X_1=x_1,X_2=x_2,X_3=x_3]
 $$
-This partial derivative is analogous to what we have been doing before --- we are making a small change of $X_1$ while holding $X_2$ and $X_3$ constant at $x_2$ and $x_3$.
+which now can depend on $x_1$, $x_2$, and $x_3$.  This is the difference in the average outcome between observations with $X_1=x_1+1$ and observations with $X_1=x_1$, among those that have $X_2=x_2$ and $X_3=x_3$.
+
+Finally, consider the case where $X_1$ is continuous (for example, the amount of fertilizer used).  In this case the marginal contrast is given by the *partial derivative* of $\E[Y|X_1,X_2,X_3]$ with respect to $X_1$.
+
+$$
+  MC(x_1,x_2,x_3) = \frac{\partial \, \E[Y|X_1=x_1, X_2=x_2, X_3=x_3]}{\partial \, x_1}
+$$
+This partial derivative is analogous to what we have been doing before --- we are comparing the average outcome for values of $X_1$ that are very close to $x_1$, among observations that have $X_2=x_2$ and $X_3=x_3$.
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> The word "contrast" is deliberate.  A marginal contrast compares the average outcome across two different *groups* of observations in the population --- for example, farms that used more fertilizer versus farms that used less fertilizer but that had the same weather.  It does not, by itself, tell us what would happen to a particular farm's crop yield if that farm used more fertilizer.  That is a *causal* question, and the farms that use more fertilizer could differ in other ways (soil quality, the farmer's experience, etc.) that are also related to crop yields.  We will come back to when a marginal contrast can be interpreted as a causal effect at the end of the semester.
+
+You will often see what I am calling a marginal contrast referred to as a "partial effect" (e.g., in Wooldridge's textbooks), a "marginal effect" (e.g., in the output of many `R` packages), or "the effect of $X_1$ on $Y$" (e.g., in the Stock and Watson textbook).  These all refer to the same thing.  I use different terminology because the word "effect" makes it sound like $X_1$ *causes* $Y$ to change, which is not something we will be able to claim without additional assumptions.
+
+:::
 
 ::: {.side-comment}
 
@@ -156,9 +164,9 @@ A popular alternative to `R`'s `lm` function is the `lm_robust` function from th
 
 
 
-## Partial Effects
+## Marginal Contrasts
 
-As we discussed in the beginning of this chapter, besides predicting outcomes, a second main goal for us is to think about partial effects of a regressor on the outcome.  We'll consider partial effects over the next few sections.
+As we discussed in the beginning of this chapter, besides predicting outcomes, a second main goal for us is to think about marginal contrasts for a regressor.  We'll consider marginal contrasts over the next few sections.
 
 In the model,
 \begin{align*}
@@ -170,7 +178,7 @@ If $X_1$ is continuous, then
   \beta_1 = \frac{\partial \E[Y|X_1,X_2,X_3]}{\partial X_1}
 \end{align*}
 
-Thus, $\beta_1$ is the partial effect of $X_1$ on $Y$.    In other words, $\beta_1$ should be interpreted as how much $Y$ increases, on average, when $X_1$ increases by one unit holding $X_2$ and $X_3$ constant.  *Make sure to get this interpretation right!*
+Thus, $\beta_1$ is the marginal contrast for $X_1$.  In other words, $\beta_1$ should be interpreted as: comparing observations that have the same values of $X_2$ and $X_3$, those whose $X_1$ is one unit higher have, on average, a $Y$ that is $\beta_1$ higher.  *Make sure to get this interpretation right!*  Notice that this interpretation compares *different* observations; it does not say that increasing $X_1$ for a particular observation would increase its $Y$ by $\beta_1$.
 
 
 ::: {.example}
@@ -180,32 +188,32 @@ Thus, $\beta_1$ is the partial effect of $X_1$ on $Y$.    In other words, $\beta
 $$
   \E[Y|X_1,X_2] = 20,000 + 0.5 X_1 + 1000 X_2
 $$
-The partial effect of parents' income on child's income is 0.5.  This means that, for every one dollar increase in parents' income, child's income is 0.5 dollars higher on average holding mother's education constant.
+The marginal contrast for parents' income is 0.5.  This means that, comparing children whose mothers have the same level of education, children whose parents' income is one dollar higher have, on average, 0.5 dollars higher income.
 
 :::
 
 ### Computation
 
-Let's run the same regression as in the previous section, but think about partial effects in this case.
+Let's run the same regression as in the previous section, but think about marginal contrasts in this case.
 
 ```{r}
 reg1 <- lm(mpg ~ hp + wt, data = mtcars)
 summary(reg1)
 ```
 
-The partial effect of horsepower on miles per gallon is -0.032.  In other words, we estimate that if horsepower increases by one then, on average, miles per gallon decreases by 0.032 holding weight constant.
+The estimated marginal contrast for horsepower is -0.032.  In other words, we estimate that, comparing cars with the same weight, cars with one more horsepower get, on average, 0.032 fewer miles per gallon.
 
-The t-statistic and p-value are computed for the null hypothesis that the corresponding coefficient is equal to 0.  For example, for `hp` the t-statistic is equal to `-3.519`, which is greater than 1.96 in absolute value and indicates that the partial effect of `hp` is statistically significant at a 5% significance level.  The corresponding p-value for `hp` is `0.00145` indicating that there is only about a 0.15% chance of getting a t-statistic this extreme if the partial effect of `hp` were actually 0 (i.e., under $H_0 : \beta_1=0$).
+The t-statistic and p-value are computed for the null hypothesis that the corresponding coefficient is equal to 0.  For example, for `hp` the t-statistic is equal to `-3.519`, which is greater than 1.96 in absolute value and indicates that the marginal contrast for `hp` is statistically significant at a 5% significance level.  The corresponding p-value for `hp` is `0.00145` indicating that there is only about a 0.15% chance of getting a t-statistic this extreme if the marginal contrast for `hp` were actually 0 (i.e., under $H_0 : \beta_1=0$).
 
 ::: {.practice}
 
-<span class="practice">Practice: </span>What is the partial effect of `wt` in the previous example?  Provide a careful interpretation.  Is the partial effect of `wt` statistically significant?  Explain.  What is the p-value for `wt`?  How do you interpret the p-value?
+<span class="practice">Practice: </span>What is the marginal contrast for `wt` in the previous example?  Provide a careful interpretation.  Is the marginal contrast for `wt` statistically significant?  Explain.  What is the p-value for `wt`?  How do you interpret the p-value?
 
 :::
 
 ::: {.side-comment}
 
-<span class="side-comment">Side-Comment:</span> One horsepower is a very small increase in horsepower, so it might be a good idea to multiply the coefficient by some larger number, say 50.  In this case, we could say that we estimate that if horsepower increases by 50 then, on average, miles per gallon decreases by 1.59 ($=50 \times 0.03177$) holding weight constant.  From the above discussion, we know that this effect is statistically different from 0.  That said, it is not clear to me if we should interpret this as a large partial effect; I do not know too much about cars, but a 50 horsepower increase seems rather large while a 1.59 decrease in miles per gallon seems relatively small (at least to me).
+<span class="side-comment">Side-Comment:</span> One horsepower is a very small difference in horsepower, so it might be a good idea to multiply the coefficient by some larger number, say 50.  In this case, we could say that we estimate that, comparing cars with the same weight, cars with 50 more horsepower get, on average, 1.59 ($=50 \times 0.03177$) fewer miles per gallon.  From the above discussion, we know that this difference is statistically different from 0.  That said, it is not clear to me if we should interpret this as a large marginal contrast; I do not know too much about cars, but a 50 horsepower difference seems rather large while a 1.59 miles per gallon difference seems relatively small (at least to me).
 
 :::
 
@@ -223,14 +231,14 @@ If $X_1$ is discrete (let's say binary):
 \begin{align*}
   \beta_1 = \E[Y|X_1=1,X_2,X_3] - \E[Y|X_1=0,X_2,X_3]
 \end{align*}
-$\beta_1$ is still the partial effect of $X_1$ on $Y$ and should be interpreted as how much $Y$ increases, on average, when $X_1$ changes from 0 to 1, holding $X_2$ and $X_3$ constant.
+$\beta_1$ is still the marginal contrast for $X_1$ and should be interpreted as the difference in the average $Y$ between observations with $X_1=1$ and observations with $X_1=0$ that have the same values of $X_2$ and $X_3$.
 
 If $X_1$ can take more than just the values 0 and 1, but is still discrete (an example is a person's years of education), then
 
 $$
   \beta_1 = \E[Y | X_1=x_1+1, X_2, X_3] - \E[Y|X_1=x_1, X_2, X_3]
 $$
-which holds for any possible value that $X_1$ could take, so that $\beta_1$ is the effect of a 1 unit increase in $X_1$ on $Y$, on average, holding constant $X_2$ and $X_3$.
+which holds for any possible value that $X_1$ could take, so that $\beta_1$ is the difference in the average $Y$ between observations whose $X_1$ differs by 1 unit but that have the same values of $X_2$ and $X_3$.
 
 ::: {.example}
 
@@ -243,7 +251,7 @@ $$
 $$
 passengers on the flight.
 
-In addition, the partial effect of being morning flight is equal to 20.  This indicates that, on average, morning flights have 20 more passengers than non-morning flights holding whether or not the flight occurs on a weekday constant.
+In addition, the marginal contrast for being a morning flight is equal to 20.  This indicates that, on average, morning flights have 20 more passengers than non-morning flights among flights that are on the same type of day (weekday or weekend).
 
 :::
 
@@ -256,7 +264,7 @@ reg2 <- lm(mpg ~ hp + wt + am, data = mtcars)
 summary(reg2)
 ```
 
-In this example, cars that had a manual transmission got about 2 more miles per gallon than cars that had an automatic transmission on average, holding horsepower and weight constant (though the p-value is only 0.14).
+In this example, among cars with the same horsepower and weight, cars that had a manual transmission got about 2 more miles per gallon on average than cars that had an automatic transmission (though the p-value is 0.14, so this difference is not statistically significant at conventional significance levels).
 
 
 
@@ -266,11 +274,11 @@ SW 8.1, 8.2
 
 Also, please read all of SW Ch. 8
 
-So far, the the partial effects that we have been interested in have corresponded to a particular parameter in the regression, usually $\beta_1$.  I think this can sometimes be a source of confusion as, at least in my view, we are not typically interested in the parameters for their own sake, but rather are interested in partial effects.  It just so happens that in some leading cases, they coincide.
+So far, the marginal contrasts that we have been interested in have corresponded to a particular parameter in the regression, usually $\beta_1$.  I think this can sometimes be a source of confusion as, at least in my view, we are not typically interested in the parameters for their own sake, but rather are interested in marginal contrasts.  It just so happens that in some leading cases, they coincide.
 
-In addition, while the $\beta$'s in the sort of models we have considered so far are easy to interpret, in some cases, it might be *restrictive* to think that the partial effects are the same across different values of the covariates.
+In addition, while the $\beta$'s in the sort of models we have considered so far are easy to interpret, in some cases, it might be *restrictive* to think that the marginal contrasts are the same across different values of the covariates.
 
-In this section, we'll see the first of several cases where partial effects do not coincide with a particular parameter.
+In this section, we'll see the first of several cases where marginal contrasts do not coincide with a particular parameter.
 
 Suppose that
 
@@ -280,22 +288,22 @@ $$
 
 Let's start with making predictions using this model.  If you know the values of $\beta_0,\beta_1,\beta_2,\beta_3,$ and $\beta_4$, then to get a prediction, you would still just plug in the values of the regressors that you'd like to get a prediction for (including $x_1^2$).
 
-Next, in this model, the partial effect of $X_1$ is given by
+Next, in this model, the marginal contrast for $X_1$ is given by
 
 $$
   \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + 2\beta_2 X_1
 $$
-In other words, the partial effect of $X_1$ depends on the value that $X_1$ takes.
+In other words, the marginal contrast for $X_1$ depends on the value that $X_1$ takes.
 
-In this case, it is sometimes useful to report the partial effect for some different values of $X_1$.  In other cases, it is useful to report the **average partial effect** (APE) which is the mean of the partial effects across the distribution of the covariates. In this case, the APE is given by
-
-$$
-  APE = \beta_1 + 2 \beta_2 \E[X_1]
-$$
-and, once you have estimated the regression, you can compute an estimate of $APE$ by
+In this case, it is sometimes useful to report the marginal contrast at some different values of $X_1$.  In other cases, it is useful to report the **average marginal contrast** (AMC), which is the mean of the marginal contrasts across the distribution of the covariates.  In this case, the AMC is given by
 
 $$
-  \widehat{APE} = \hat{\beta}_1 + 2 \hat{\beta}_2 \bar{X}_1
+  AMC = \beta_1 + 2 \beta_2 \E[X_1]
+$$
+and, once you have estimated the regression, you can compute an estimate of $AMC$ by
+
+$$
+  \widehat{AMC} = \hat{\beta}_1 + 2 \hat{\beta}_2 \bar{X}_1
 $$
 
 ::: {.example}
@@ -305,27 +313,27 @@ $$
 $$
   \E[Y|X_1,X_2] = 15,000 + 0.7 X_1 - 0.000002 X_1^2 + 800 X_2
 $$
-Then, predicted child's income when parents' income is equal to \$50,000 is given by
+Then, predicted child's income when parents' income is equal to \$50,000 and mother's education is 12 years is given by
 
 $$
   15,000 + 0.7 (50,000) - 0.000002 (50,000)^2 + 800 (12) = 54,600
 $$
-In addition, the partial effect of parents' income is given by
+In addition, the marginal contrast for parents' income is given by
 
 $$
   0.7 - 0.000004 X_1
 $$
-Let's compute a few different partial effects for different values of parents' income
+Let's compute a few different marginal contrasts at different values of parents' income
 
-| $X_1$ | PE |
+| $X_1$ | MC |
 |:-------------:|:-------------:|
 | 20,000 | 0.62 |
 | 50,000 | 0.50 |
 | 100,000 | 0.30 |
 
-which indicates that the partial effect of parents' income is decreasing --- i.e., the effect of additional parents' income is largest for children whose parents have the lowest income and gets smaller for those whose parents have high incomes.
+which indicates that the marginal contrast for parents' income is decreasing --- i.e., among families with low parents' income, a given difference in parents' income goes along with a larger difference in average child's income than it does among families with high parents' income.
 
-Finally, if you wanted to compute the $APE$, you would just plug in $\E[X_1]$ (or $\bar{X}_1$) into the expression for the partial effect.
+Finally, if you wanted to compute the $AMC$, you would just plug in $\E[X_1]$ (or $\bar{X}_1$) into the expression for the marginal contrast.
 
 :::
 
@@ -339,28 +347,28 @@ summary(reg3)
 ```
 The only thing that is new here is `I(hp^2)`.  The `I` function stands for inhibit (you can read the documentation using `?I`).  For us, this is not too important.  You can understand it like this: there is no variable names `hp^2` in the data, but if we put the name of a variable that is in the data (here: `hp`) then we can apply a function to it (here: squaring it) before including it as a regressor.
 
-Interestingly, here it seems there are nonlinear effects of horsepower on miles per gallon.  Let's just quickly report the estimated partial effects for a few different values of horsepower.
+Interestingly, here it seems that the relationship between horsepower and miles per gallon is nonlinear.  Let's just quickly report the estimated marginal contrasts at a few different values of horsepower.
 
 ```{r}
 hp_vec <- c(100, 200, 300)
 # there might be a native function in r
-# to compute these partial effects; I just
+# to compute these marginal contrasts; I just
 # don't know it.
-pe <- function(hp) {
-  # partial effect is b1 + 2b2*hp
-  pes <- coef(reg3)[2] + 2 * coef(reg3)[3] * hp
+mc <- function(hp) {
+  # marginal contrast is b1 + 2b2*hp
+  mcs <- coef(reg3)[2] + 2 * coef(reg3)[3] * hp
   # print using a data frame
-  data.frame(hp = hp, pe = round(pes, 3))
+  data.frame(hp = hp, mc = round(mcs, 3))
 }
-pe(hp_vec)
+mc(hp_vec)
 ```
-which suggests that the partial effect of horsepower on miles per gallon is large (though negative) at small values of horsepower and decreasing up to essentially no effect at larger values of horsepower.
+which suggests that the marginal contrast for horsepower is large in magnitude (and negative) at small values of horsepower and shrinks toward zero (becoming slightly positive) at larger values of horsepower.  In other words, among low-horsepower cars, differences in horsepower go along with fairly large differences in average miles per gallon, while among high-horsepower cars, they go along with very small differences.
 
 ## Interpreting Interaction Terms
 
 SW 8.3
 
-Another way to allow for partial effects that vary across different values of the regressors is to include **interaction terms**.
+Another way to allow for marginal contrasts that vary across different values of the regressors is to include **interaction terms**.
 
 Consider the following regression model
 
@@ -368,29 +376,29 @@ $$
   \E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \beta_4 X_3
 $$
 
-The term $X_1 X_2$ is called the interaction term.  In this model, the partial effect of $X_1$ is given by
+The term $X_1 X_2$ is called the interaction term.  In this model, the marginal contrast for $X_1$ is given by
 
 $$
   \frac{\partial \, \E[Y|X_1,X_2,X_3]}{\partial \, X_1} = \beta_1 + \beta_3 X_2
 $$
 
-In this model, the effect of $X_1$ varies with $X_2$.  As in the previous section, you could report the partial effect for different values of $X_2$ or consider $APE = \beta_1 + \beta_3 \E[X_2]$.
+In this model, the marginal contrast for $X_1$ varies with $X_2$.  As in the previous section, you could report the marginal contrast at different values of $X_2$ or consider $AMC = \beta_1 + \beta_3 \E[X_2]$.
 
 There are a couple of other things worth pointing out for interaction terms
 
-- It is very common for one of the interaction terms, say, $X_2$ to be a binary variable.  This gives a way to easily test if the effect of $X_1$ is the same across the two "groups" defined by $X_2$.  For example, suppose you wanted to check if the partial effect of education was the same for men and women.  You could run a regression like
+- It is very common for one of the interaction terms, say, $X_2$ to be a binary variable.  This gives a way to easily test if the marginal contrast for $X_1$ is the same across the two "groups" defined by $X_2$.  For example, suppose you wanted to check if the marginal contrast for education was the same for men and women.  You could run a regression like
 
     $$
       Wage = \beta_0 + \beta_1 Education + \beta_2 Female + \beta_3 Education \cdot Female + U
     $$
 
-    From the previous discussion, the partial effect of education is given by
+    From the previous discussion, the marginal contrast for education is given by
 
     $$
       \beta_1 + \beta_3 Female
     $$
 
-    Thus, the partial effect education for men is given by $\beta_1$, and the partial effect of education for women is given by $\beta_1 + \beta_3$.  Thus, if you want to test if the partial effect of education differs for men and women, you can just test if $\beta_3=0$.  If $\beta_3>0$, it suggests a higher partial effect of education for women, and if $\beta_3 < 0$, it suggests a lower partial effect of education for women.
+    Thus, the marginal contrast for education for men is given by $\beta_1$, and the marginal contrast for education for women is given by $\beta_1 + \beta_3$.  Thus, if you want to test if the marginal contrast for education differs for men and women, you can just test if $\beta_3=0$.  If $\beta_3>0$, it suggests a higher marginal contrast for education for women, and if $\beta_3 < 0$, it suggests a lower marginal contrast for education for women.
 
 - Another interesting case is when $X_1$ and $X_2$ are both binary.  In this case, a model that includes an interaction term is called a **saturated model**.  It is called this because it is actually nonparametric.  In particular, notice that in the model $\E[Y|X_1,X_2] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2$,
 
@@ -427,7 +435,7 @@ reg4 <- lm(mpg ~ hp + wt + am + hp * am, data = mtcars)
 summary(reg4)
 ```
 
-The interaction term in the results is in the row that starts with `hp:am`.  These estimates suggest that, while horsepower does seem to decrease miles per gallon controlling for weight and whether or not the car has an automatic transmission, the effect of horsepower does not seem to vary much by whether or not the car has an automatic transmission (at least not in a big enough way that we can detect it with the data that we have).
+The interaction term in the results is in the row that starts with `hp:am`.  These estimates suggest that, while cars with more horsepower tend to get fewer miles per gallon on average among cars with the same weight and transmission type, the marginal contrast for horsepower does not seem to vary much between cars with manual and automatic transmissions (at least not in a big enough way that we can detect it with the data that we have).
 
 ## Elasticities
 
@@ -460,7 +468,7 @@ where the approximation is better when $x_{new}$ and $x_{old}$ are close to each
 
 Now, we'll use these properties of logarithms in order to interpret several linear models
 
-- For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as "on average" and "holding other regressors constant" (if there are other regressors in the model).
+- For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as comparisons "on average" and "among observations with the same values of the other regressors" (if there are other regressors in the model).
 
 - **Log-Log** Model
 
@@ -478,7 +486,7 @@ Now, we'll use these properties of logarithms in order to interpret several line
     \end{aligned}
     $$
 
-    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the average percentage change in the outcome when the regressor changes by 1%.  The log-log model is sometimes called a **constant elasticity** model.
+    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1%.  The log-log model is sometimes called a **constant elasticity** model.
 
 - **Log-Level** model
 
@@ -496,7 +504,7 @@ Now, we'll use these properties of logarithms in order to interpret several line
     \end{aligned}
     $$
 
-    Thus, in a regression of the log of an outcome on the *level* of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the average percentage change in the outcome when the regressor changes by 1 unit.
+    Thus, in a regression of the log of an outcome on the *level* of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1 unit.
 
 - **Level-Log** model
 
@@ -514,7 +522,7 @@ Now, we'll use these properties of logarithms in order to interpret several line
       \end{aligned}
     $$
 
-    Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the average change in the outcome when the regressor changes by 1%.
+    Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the difference in the average outcome between observations whose values of the regressor differ by 1%.
 
 ::: {.example}
 
@@ -523,26 +531,30 @@ Now, we'll use these properties of logarithms in order to interpret several line
 $$
   \log(Y) = 8.8 + 0.4 \log(X_1) + 0.008 X_2 + U
 $$
-In this model, we estimate that, on average, when parents' income increases by 1%, child's income increases by 0.4% holding mother's education constant.
+In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents' income is 1% higher have, on average, about 0.4% higher income.
 
 Next, consider,
 $$
   \log(Y) = 8.9 + 0.00004 X_1 + 0.007 X_2 + U
 $$
-In this model, we estimate that, on average, when parents' income increases by \$1, child's income increases by 0.004% (alternatively, when parents' income increase by \$1000, child's income increases by 4%) holding mother's education constant.
+In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents' income is \$1 higher have, on average, about 0.004% higher income (alternatively, children whose parents' income is \$1000 higher have about 4% higher income).
 
 Finally, consider
 
 $$
   Y = -1,680,000 + 160,000 \log(X_1) + 900 X_2 + U
 $$
-In this case, we estimate that, on average, when parents' income increases by 1%, child's income increases by \$1,600 holding mother's education constant.
+In this case, we estimate that, comparing children whose mothers have the same level of education, children whose parents' income is 1% higher have, on average, about \$1,600 higher income.
 
 :::
 
+In practice, economists most often take the logarithm of variables that are strictly positive (the log of zero or of a negative number is not defined) and that vary a lot in scale --- things like income, wages, prices, sales, or GDP.  The main motivation is that, for these sorts of variables, it is often more plausible that relationships with other variables are linear in terms of percentage differences than in terms of levels.
+
+For example, in the intergenerational income mobility example above, a \$1,000 difference in parents' income is a big difference when comparing families with incomes of \$20,000 and \$21,000, but a fairly small difference when comparing families with incomes of \$100,000 and \$101,000.  It seems unlikely that these two \$1,000 differences go along with the same difference in child's income.  It seems more plausible that, say, a 1% difference in parents' income goes along with a similar percentage difference in child's income regardless of the level of parents' income --- which is exactly what the log-log model imposes.
+
 ### Computation
 
-Estimating models that include logarithms in `R` is straightforward.
+Estimating models that include logarithms in `R` is straightforward.  In the `mtcars` data, a log-log specification is natural: horsepower ranges from 52 to 335, and a 10 horsepower difference is a large difference for cars with around 50 horsepower, but a relatively small difference for cars with around 300 horsepower, which suggests thinking about differences in horsepower in percentage terms.
 
 ```{r}
 reg5 <- lm(log(mpg) ~ log(hp) + wt, data = mtcars)
@@ -556,13 +568,13 @@ Let's show the results all at once using the `modelsummary` function from the `m
 library(modelsummary)
 
 model_list <- list(reg5, reg6, reg7)
-modelsummary(model_list)
+modelsummary(model_list, fmt = 4)
 ```
-- In the first model, we estimate that, on average, a 1% increase in horsepower decreases miles per gallon by 0.266% holding weight constant.
+- In the first model, we estimate that, comparing cars with the same weight, cars with 1% more horsepower get, on average, about 0.266% fewer miles per gallon.
 
-- In the second model, we estimate that, on average,  a 1 unit increase in horsepower decreases miles per gallon by 0.2% holding weight constant.
+- In the second model, we estimate that, comparing cars with the same weight, cars with one more horsepower get, on average, about 0.15% fewer miles per gallon.
 
-- In the third model, we estimate that, on average, a 1% increase in horsepower decreases miles per gallon by .059 holding weight constant.
+- In the third model, we estimate that, comparing cars with the same weight, cars with 1% more horsepower get, on average, about 0.059 fewer miles per gallon.
 
 
 
@@ -575,12 +587,14 @@ Suppose that we are interested in the following regression model
 $$
   \E[Y|X_1, X_2, Q] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 Q
 $$
-and, in particular, we are interested in the the partial effect
+and, in particular, we are interested in the marginal contrast for $X_1$
 
 $$
   \frac{ \partial \, \E[Y|X_1,X_2,Q]}{\partial \, X_1} = \beta_1
 $$
 But we are faced with the issue that we do not observe $Q$ (which implies that we cannot control for it in the regression)
+
+To make this concrete, suppose that $Y$ is a person's earnings, $X_1$ is their years of education, $X_2$ is their years of work experience, and $Q$ is their "ability."  We might be particularly interested in comparing average earnings among people with different amounts of education but with the same experience and the same ability.  The problem is that ability is not something that we observe in most data.  If we could compare groups of people with the same ability, it would seem more plausible that differences in their average earnings are due to differences in education (rather than, for example, higher-ability people both getting more education and earning more).  Later in the semester, we will have an in-depth discussion about causality, and there, deciding which variables to include in the model (some of which may not be observed) will be a key issue.
 
 Recall that we can equivalently write
 
@@ -615,23 +629,13 @@ That you are not generally able to recover $\beta_1$ in this case is called **om
 
 There are two cases where you will recover $\delta_1 = \beta_1$ though which occur when $\beta_3 \gamma_1 = 0$:
 
-- $\beta_3=0$.  This would be the case where $Q$ has no effect on $Y$
+- $\beta_3=0$.  This would be the case where, among observations with the same values of $X_1$ and $X_2$, the average of $Y$ does not vary with $Q$.
 
 - $\gamma_1=0$.  This would be the case where $X_1$ and $Q$ are uncorrelated after controlling for $X_2$.
 
-Interestingly, there may be some case where you can "sign" the bias; i.e., figure out if $\beta_3 \gamma_1$ is positive or negative.  For example, you might have theoretical reasons to suspect that $\gamma_1 > 0$ and $\beta_3 > 0$.  In this case,
+Interestingly, there may be some cases where you can "sign" the bias; i.e., figure out if $\beta_3 \gamma_1$ is positive or negative.  In the education example, it seems likely that, among people with the same experience, those with higher ability tend to have more education ($\gamma_1 > 0$), and that, among people with the same education and experience, those with higher ability tend to have higher earnings on average ($\beta_3 > 0$).  In this case,
 
 $$
   \delta_1 = \beta_1 + \textrm{something positive}
 $$
-which implies that $\delta_1$ (i.e., running a regression that ignores $Q$) would cause us to tend to over-estimate $\beta_1$.
-
-::: {.side-comment}
-
-<span class="side-comment">Side-Comment:</span>
-
-* The book talks about omitted variable bias in the context of causality (this is probably the leading case), but we have not talked about causality yet.  The same issues arise if we just say that we have some *regression of interest* but are unable to estimate it because some covariates are unobserved.
-
-* The relationship to causality (which is not so important for now), is that under certain conditions, we may have a particular partial effect that we would be willing to interpret as being the "causal effect", but if we are unable to control for some variables that would lead to this interpretation, then we get to the issues pointed out in the textbook.
-
-:::
+which implies that running a regression that ignores ability would tend to over-estimate $\beta_1$.
