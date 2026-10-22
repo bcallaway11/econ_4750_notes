@@ -437,11 +437,11 @@ summary(reg4)
 
 The interaction term in the results is in the row that starts with `hp:am`.  These estimates suggest that, while cars with more horsepower tend to get fewer miles per gallon on average among cars with the same weight and transmission type, the marginal contrast for horsepower does not seem to vary much between cars with manual and automatic transmissions (at least not in a big enough way that we can detect it with the data that we have).
 
-## Elasticities
+## Logarithms, Percentage Differences, and Elasticities
 
 SW 8.2
 
-Economists are often interested in **elasticities**, that is, the percentage change in $Y$ when $X$ changes by 1%.
+Economists are often interested in percentage differences rather than differences in levels, and in **elasticities**, which relate a percentage difference in one variable to a percentage difference in another (e.g., the percentage difference in $Y$ associated with a 1% difference in $X$).
 
 Recall that the definition of percentage change of moving from, say, $x_{old}$ to $x_{new}$ is given by
 
@@ -449,26 +449,56 @@ $$
   \textrm{\% change} = \frac{x_{new} - x_{old}}{x_{old}} \times 100
 $$
 
-Elasticities are closely connected to natural logarithms; following the most common notation in economics, we'll refer to the natural logarithm using the notation: $\log$.  Further, recall that the derivative of the $\log$ function is given by
+Percentage differences are closely connected to natural logarithms.  Following the most common notation in economics, we'll refer to the natural logarithm as $\log$, rather than $\ln$.  First, let's define
 
 $$
-  \frac{d \, \log(x)}{d \, x} = \frac{1}{x} \implies d\, \log(x) = \frac{d \, x}{x}
+  \Delta \log(x) := \log(x_{new}) - \log(x_{old})
 $$
-which further implies that
+That is, $\Delta \log(x)$ is computed by taking the log of each of the two values and then subtracting.  For example, if $x_{old}=100$ and $x_{new}=110$, then $\Delta \log(x) = \log(110) - \log(100) = 4.7005 - 4.6052 = 0.0953$.  Notice that, by properties of logarithms, $\Delta \log(x) = \log(x_{new}/x_{old})$, so it only depends on the *ratio* of the two values --- for example, going from 20,000 to 22,000 gives exactly the same $\Delta \log(x)$ as going from 100 to 110.
+
+Next, recall that the derivative of the $\log$ function is
 
 $$
-  \Delta \log(x) := \log(x_{new}) - \log(x_{old}) \approx \frac{x_{new} - x_{old}}{x_{old}}
+  \frac{d \, \log(x)}{d \, x} = \frac{1}{x}
 $$
-and, thus, that
+The derivative tells us the slope of $\log(x)$, so, for $x_{new}$ close to $x_{old}$, we can approximate the change in $\log(x)$ by the slope at $x_{old}$ times the change in $x$:
+
+$$
+  \Delta \log(x) \approx \frac{1}{x_{old}} (x_{new} - x_{old}) = \frac{x_{new} - x_{old}}{x_{old}}
+$$
+and, thus,
 
 $$
   100 \cdot \Delta \log(x) \approx \textrm{\% change}
 $$
-where the approximation is better when $x_{new}$ and $x_{old}$ are close to each other.
 
-Now, we'll use these properties of logarithms in order to interpret several linear models
+How good is this approximation?  The table below compares the actual percentage change to $100 \cdot \Delta \log(x)$ when $x_{old}=100$.
 
-- For simplicity, I am going to not include an error term or extra covariates, but you should continue to interpret parameter estimates as comparisons "on average" and "among observations with the same values of the other regressors" (if there are other regressors in the model).
+| $x_{new}$ | % change | $100 \cdot \Delta \log(x)$ |
+|:---:|:---:|:---:|
+| 101 | 1 | 0.995 |
+| 105 | 5 | 4.88 |
+| 110 | 10 | 9.53 |
+| 125 | 25 | 22.31 |
+| 150 | 50 | 40.55 |
+
+The approximation is very good for small percentage changes and gets worse as the change gets larger.  For interpreting the regressions below, we will mostly be thinking about small differences (like 1%), where the approximation is very accurate.
+
+Earlier in the chapter, we interpreted $\beta_1$ by evaluating the regression at two different values of the regressor (e.g., $x$ and $x+1$) and taking the difference, which gave us the difference in the average outcome between those two groups.  We'll do the same thing here.  For simplicity, I am going to not include an error term or extra covariates, and I'll write $y$ and $y'$ for the values of the outcome that the model gives at two values of the regressor, $x$ and $x'$ (as before, you should continue to interpret the results as comparisons "on average" and "among observations with the same values of the other regressors").  The only new issue is that, when a variable is in logs, the difference that we compute is a difference in logs, so we'll use the approximation above to translate it into a percentage difference.
+
+- **Level-Level** Model (warm-up)
+
+    $$
+    Y = \beta_0 + \beta_1 X
+    $$
+
+    In this case,
+
+    $$
+    y' - y = (\beta_0 + \beta_1 x') - (\beta_0 + \beta_1 x) = \beta_1 (x' - x)
+    $$
+
+    So, if $x'$ is one unit larger than $x$, then $y' - y = \beta_1$ --- this is exactly the interpretation from earlier in the chapter.
 
 - **Log-Log** Model
 
@@ -480,15 +510,15 @@ Now, we'll use these properties of logarithms in order to interpret several line
 
     $$
     \begin{aligned}
-    \beta_1 &= \frac{ d \, \log(Y) }{d \, \log(X)} \\
-    &= \frac{ d \, \log(Y) \cdot 100 }{d \, \log(X) \cdot 100} \\
-    &\approx \frac{ \% \Delta Y}{ \% \Delta X}
+    \log(y') - \log(y) &= \beta_1 \big( \log(x') - \log(x) \big) \\
+    \implies 100 \cdot \Delta \log(y) &= \beta_1 \cdot 100 \cdot \Delta \log(x) \\
+    \implies \% \Delta y &\approx \beta_1 \cdot \% \Delta x
     \end{aligned}
     $$
 
-    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1%.  The log-log model is sometimes called a **constant elasticity** model.
+    All that to say, in a regression of the log of an outcome on the log of a regressor, you should interpret the corresponding coefficient as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1%.  In other words, $\beta_1$ is an elasticity.  The log-log model is sometimes called a **constant elasticity** model.
 
-- **Log-Level** model
+- **Log-Level** Model
 
     $$
     \log(Y) = \beta_0 + \beta_1 X
@@ -498,31 +528,40 @@ Now, we'll use these properties of logarithms in order to interpret several line
 
     $$
     \begin{aligned}
-    \beta_1 &= \frac{ d \, \log(Y) }{d \, X} \\
-    \implies 100 \beta_1 &= \frac{ d \, \log(Y) \cdot 100 }{d \, X} \\
-    \implies 100 \beta_1 &\approx \frac{ \% \Delta Y}{ d \, X}
+    \log(y') - \log(y) &= \beta_1 (x' - x) \\
+    \implies 100 \cdot \Delta \log(y) &= 100 \beta_1 (x' - x) \\
+    \implies \% \Delta y &\approx 100 \beta_1 (x' - x)
     \end{aligned}
     $$
 
-    Thus, in a regression of the log of an outcome on the *level* of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1 unit.
+    Thus, in a regression of the log of an outcome on the *level* of a regressor, you should multiply the corresponding coefficient by 100 and interpret it as the approximate percentage difference in the outcome, on average, between observations whose values of the regressor differ by 1 unit.  This includes the common case where $X$ is binary (e.g., $X=1$ for smokers and $X=0$ for non-smokers): then $100\beta_1$ is the approximate percentage difference in the outcome between the $X=1$ group and the $X=0$ group.
 
-- **Level-Log** model
+- **Level-Log** Model
 
     $$
-      Y = \beta_0 + \beta_1 \log(X)
+    Y = \beta_0 + \beta_1 \log(X)
     $$
 
     In this case,
 
     $$
-      \begin{aligned}
-      \beta_1 &= \frac{d\, Y}{d \, \log(X)} \\
-      \implies \frac{\beta_1}{100} &= \frac{d \, Y}{d \, \log(X) \cdot 100} \\
-      \implies \frac{\beta_1}{100} &\approx \frac{d \, Y}{\% \Delta X}
-      \end{aligned}
+    \begin{aligned}
+    y' - y &= \beta_1 \big( \log(x') - \log(x) \big) \\
+    &= \frac{\beta_1}{100} \cdot 100 \cdot \Delta \log(x) \\
+    &\approx \frac{\beta_1}{100} \cdot \% \Delta x
+    \end{aligned}
     $$
 
     Thus, in a regression of the level of an outcome on the log of a regressor, you should divide the corresponding coefficient by 100 and interpret it as the difference in the average outcome between observations whose values of the regressor differ by 1%.
+
+The table below summarizes these interpretations.
+
+| Model | Comparing observations whose $X$ differs by... | ...their average $Y$ differs by about |
+|:---|:---:|:---:|
+| $Y = \beta_0 + \beta_1 X$ | 1 unit | $\beta_1$ units |
+| $\log(Y) = \beta_0 + \beta_1 X$ | 1 unit | $100\beta_1$% |
+| $Y = \beta_0 + \beta_1 \log(X)$ | 1% | $\beta_1/100$ units |
+| $\log(Y) = \beta_0 + \beta_1 \log(X)$ | 1% | $\beta_1$% |
 
 ::: {.example}
 
@@ -531,7 +570,7 @@ Now, we'll use these properties of logarithms in order to interpret several line
 $$
   \log(Y) = 8.8 + 0.4 \log(X_1) + 0.008 X_2 + U
 $$
-In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents' income is 1% higher have, on average, about 0.4% higher income.
+In this model, we estimate that, comparing children whose mothers have the same level of education, children whose parents' income is 1% higher have, on average, about 0.4% higher income.  In the literature on intergenerational mobility, this coefficient is called the **intergenerational income elasticity**, and larger values indicate that children's incomes are more closely tied to their parents' incomes.
 
 Next, consider,
 $$
@@ -576,7 +615,36 @@ modelsummary(model_list, fmt = 4)
 
 - In the third model, we estimate that, comparing cars with the same weight, cars with 1% more horsepower get, on average, about 0.059 fewer miles per gallon.
 
+Finally, to see why taking logs can be useful here, the figure below plots miles per gallon against horsepower in levels (left) and in logs (right), along with a fitted quadratic curve in each case (as in the quadratic model earlier in the chapter).
 
+```{r, fig.width=9, fig.height=4, message=FALSE}
+library(ggplot2)
+
+# stack levels and logs into one data frame so that
+# both can be plotted side-by-side
+plot_df <- rbind(
+  data.frame(x = mtcars$hp, y = mtcars$mpg,
+    panel = "Levels: mpg vs. hp"),
+  data.frame(x = log(mtcars$hp), y = log(mtcars$mpg),
+    panel = "Logs: log(mpg) vs. log(hp)")
+)
+
+ggplot(plot_df, aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2),
+    se = FALSE) +
+  facet_wrap(~panel, scales = "free") +
+  labs(x = NULL, y = NULL) +
+  theme_bw()
+```
+
+In levels, the fitted curve bends sharply --- miles per gallon falls quickly with horsepower among low-horsepower cars and then levels off.  In logs, even though we allow for a curve, the fitted relationship is close to a straight line, which is what the log-log model assumes.
+
+::: {.side-comment}
+
+<span class="side-comment">Side-Comment:</span> Be careful to distinguish between a *percentage* difference and a *percentage point* difference.  For example, if the unemployment rate is 4% in one state and 5% in another, the difference is 1 percentage point, but the unemployment rate in the second state is 25% higher.
+
+:::
 
 ## Omitted Variable Bias
 
