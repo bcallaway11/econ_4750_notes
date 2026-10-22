@@ -1,35 +1,24 @@
-# Inference
+# Properties of Regression Estimators
 
 {{< include latex-commands.txt >}}
 
-## Inference
-
 SW 4.5, 5.1, 5.2, 6.6
 
-We discussed in class the practical issues of inference in linear regression models.  
+In this chapter, we'll study the properties of $\hat{\beta}_1$ as an estimator of $\beta_1$.  This closely parallels our earlier discussion of the properties of $\bar{Y}$ as an estimator of $\E[Y]$.  Since $\hat{\beta}_1$ is computed from a random sample, it is itself a random variable, and we will be interested in the same properties as before: its mean (is it unbiased?), its sampling variance, whether it is consistent, and its asymptotic distribution (which is what we need in order to conduct inference).
 
-These results rely on arguments building on the Central Limit Theorem (this should not surprise you as it is similar to the case for the asymptotic distribution of $\sqrt{n}(\bar{Y} - \E[Y]))$ that we discussed earlier in the semester.  
-
-In this section, I sketch these types of arguments for you.  This material is advanced, but I suggest that you study this material.  
-
-We are going to show that, in the simple linear regression model, 
-\begin{align*}
-  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V) \quad \textrm{as} \ n \rightarrow \infty
-\end{align*}
-where 
-\begin{align*}
-  V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
-\end{align*}
-and discuss how to use this result to conduct inference.
-
-Let's start by showing why this result holds.
-
-To start with, recall that
+We will focus on the simple linear regression model
 $$
-\hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)} 
+  Y = \beta_0 + \beta_1 X + U, \qquad \E[U|X] = 0
+$$
+and assume that we have a random sample $\{(Y_i, X_i)\}_{i=1}^n$.  Recall that
+$$
+\hat{\beta}_1 = \frac{\widehat{\cov}(X,Y)}{\widehat{\var}(X)}
 $$ {#eq-b1}
+Some of the material in this chapter is advanced, but I suggest that you study it.
 
-Before providing a main result, let's start with noting the following:
+## A Useful Expression for $\hat{\beta}_1$
+
+Before studying the properties of $\hat{\beta}_1$, it is helpful to rewrite it in a way that we will use repeatedly below.
 
 *Helpful Intermediate Result 1*
 Notice that
@@ -51,14 +40,12 @@ $$
 $$ {#eq-hr2}
 We use both @eq-hr1 and @eq-hr2 below.
 
-\vspace{100pt}
-
 Next, consider the numerator in @eq-b1
 \begin{align*}
   \widehat{\cov}(X,Y) &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y}) \\
   &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})Y_i \\
   &= \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(\beta_0 + \beta_1 X_i + U_i) \\
-  &= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)}) \\
+  &= \underbrace{\beta_0 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})}_{(A)} + \underbrace{\beta_1 \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) X_i}_{(B)} + \underbrace{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}_{(C)} \\
 \end{align*}
 where the first equality holds by the definition of sample covariance, the second equality holds by @eq-hr1, the third equality plugs in for $Y_i$, and the last equality combines terms and passes the summation through the additions/subtractions.
 
@@ -81,17 +68,84 @@ where the first equality holds by @eq-hr2 and the second equality holds by the d
 For (C), well, we'll just carry that one around for now.
 
 Plugging in the expressions for (A), (B), and (C) back into Equation @eq-b1 implies that
-\begin{align*}
-  \hat{\beta}_1 = \beta_1 + \frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}
-\end{align*}
-Next, re-arranging terms and multiplying both sides by $\sqrt{n}$ implies that
+$$
+  \hat{\beta}_1 = \beta_1 + \frac{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) U_i}{\widehat{\var}(X)}
+$$ {#eq-b1-decomp}
+In words, $\hat{\beta}_1$ is equal to $\beta_1$ plus a second term that depends on the error terms.  Each of the properties below comes from studying this second term.
+
+## Mean of $\hat{\beta}_1$
+
+It is convenient to first take expectations conditional on all of the $X$'s in the sample, $X_1, \ldots, X_n$.  Conditioning on all of the $X$'s may seem strange at first.  It amounts to treating the $X$'s in our sample as fixed and only thinking about the randomness that comes from the error terms.  This is just a convenient technical step: it makes $\bar{X}$ and $\widehat{\var}(X)$ behave like constants, and, at the end, we use the law of iterated expectations to average over the $X$'s, so that the final result does not depend on the particular $X$'s in our sample.  Starting from @eq-b1-decomp,
+$$
+\begin{aligned}
+  \E[\hat{\beta}_1 | X_1,\ldots,X_n] &= \beta_1 + \frac{\frac{1}{n} \sum_{i=1}^n (X_i - \bar{X}) \E[U_i | X_1, \ldots, X_n]}{\widehat{\var}(X)} \\
+  &= \beta_1
+\end{aligned}
+$$
+where the last equality holds because $\E[U_i | X_1, \ldots, X_n] = \E[U_i | X_i] = 0$ (the first equality holds by random sampling --- other observations' $X$'s are independent of $U_i$ --- and the second holds because $\E[U|X]=0$).  Then, by the law of iterated expectations,
+$$
+  \E[\hat{\beta}_1] = \E\big[ \E[\hat{\beta}_1 | X_1,\ldots,X_n] \big] = \beta_1
+$$
+so $\hat{\beta}_1$ is unbiased.
+
+## Sampling Variance of $\hat{\beta}_1$
+
+As for $\bar{Y}$, it is important to know how much $\hat{\beta}_1$ varies across different samples.  It is possible to show that, in large samples,
+$$
+  \var(\hat{\beta}_1) \approx \frac{V}{n} \qquad \textrm{where} \qquad V = \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2}
+$$ {#eq-V}
+I provide a derivation of this result in @sec-beta1-variance at the end of this chapter.  This expression tells us when $\hat{\beta}_1$ will be precisely estimated (i.e., have a small sampling variance):
+
+- **Larger sample size**: just as for $\bar{Y}$, the sampling variance gets smaller as $n$ gets larger.
+
+- **More variation in $X$**: $\var(X)$ shows up (squared) in the denominator.  Intuitively, if all of the observations have similar values of $X$, it is hard to learn how the average of $Y$ differs across values of $X$; if $X$ is very spread out, this is much easier.
+
+- **Less variation in $U$**: $U^2$ shows up in the numerator.  If outcomes tend to be far from the regression line, it is harder to pin down where the regression line is.
+
+## Consistency
+
+Starting from @eq-b1-decomp, the numerator of the second term is an average, so by the law of large numbers,
+$$
+  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X}) U_i \xrightarrow{p} \E[(X-\E[X])U]
+$$
+(here and below, I am glossing over the difference between $\bar{X}$ and $\E[X]$, which does not matter in large samples).  By the law of iterated expectations,
+$$
+  \E[(X-\E[X])U] = \E\big[(X-\E[X])\E[U|X]\big] = 0
+$$
+Similarly,
+$$
+  \widehat{\var}(X) \xrightarrow{p} \var(X)
+$$
+which is positive as long as $X$ is not constant.  Thus, the second term converges to 0, and
+$$
+  \hat{\beta}_1 \xrightarrow{p} \beta_1
+$$
+that is, $\hat{\beta}_1$ is consistent.
+
+## Asymptotic Normality
+
+Finally, to conduct inference, we need the asymptotic distribution of $\hat{\beta}_1$.  We are going to show that
+$$
+  \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V) \quad \textrm{as} \ n \rightarrow \infty
+$$
+where $V$ is the same as in @eq-V.
+
+Re-arranging @eq-b1-decomp and multiplying both sides by $\sqrt{n}$ implies that
 \begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) &= \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \bar{X}) U_i}{\widehat{\var}(X)}\right) \\
   & \approx \sqrt{n} \left(\frac{1}{n} \sum_{i=1}^n \frac{(X_i - \E[X]) U_i}{\var(X)}\right)
 \end{align*}
 The last line (the approximately one) is kind of a weak argument, but basically you can replace $\bar{X}$ and $\widehat{\var}(X)$ and the effect of this replacement will converge to 0 in large samples (this is the reason for the approximately) --- if you want a more complete explanation, sign up for my graduate econometrics class next semester.
 
-Is this helpful?  It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to.  In particular, maybe it is helpful to define $Z_i = \frac{(X_i - \E[X]) U_i}{\var(X)}$.  We know that we could apply a Central Limit Theorem to $\sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)$ if (i) $Z_i$ had mean 0, and (ii) it is iid.  That it is iid holds immediately from the random sampling assumption.  For mean 0,
+Is this helpful?  It may not be obvious, but the right hand side of the above equation is actually something that we can apply the Central Limit Theorem to.  In particular, maybe it is helpful to define
+$$
+  Z_i = \frac{(X_i - \E[X]) U_i}{\var(X)}
+$$
+We know that we could apply a Central Limit Theorem to
+$$
+  \sqrt{n}\left( \frac{1}{n} \sum_{i=1}^n Z_i \right)
+$$
+if (i) $Z_i$ had mean 0, and (ii) it is iid.  That it is iid holds immediately from the random sampling assumption.  For mean 0,
 \begin{align*}
   \E[Z] &= \E\left[ \frac{(X - \E[X]) U}{\var(X)}\right] \\
   &= \frac{1}{\var(X)} \E[(X - \E[X]) U] \\
@@ -99,7 +153,10 @@ Is this helpful?  It may not be obvious, but the right hand side of the above eq
   &= 0
 \end{align*}
 where the only challenging line here is the third one holds from the Law of Iterated Expectations.  This means that we can apply the central limit theorem, and in particular,
-$\sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V)$ where $V=\var(Z) = \E[Z^2]$ (where the 2nd equality here holds because $Z$ has mean 0).  Now, just substituting back in for $Z$ implies that
+$$
+  \sqrt{n} \left( \frac{1}{n} \sum_{i=1}^n Z_i \right) \rightarrow N(0,V) \qquad \textrm{where} \qquad V=\var(Z) = \E[Z^2]
+$$
+(where the 2nd equality here holds because $Z$ has mean 0).  Now, just substituting back in for $Z$ implies that
 \begin{align*}
   \sqrt{n}(\hat{\beta}_1 - \beta_1) \rightarrow N(0,V)
 \end{align*}
@@ -109,8 +166,10 @@ $$
   V &= \E\left[ \left( \frac{(X - \E[X]) U}{\var(X)} \right)^2 \right] \nonumber \\
   &= \E\left[ \frac{(X - \E[X])^2 U^2}{\var(X)^2}\right] 
 \end{aligned}
-$$ {#eq-V}
-which is what we were aiming for.  
+$$
+which is what we were aiming for.  Notice that this lines up with the sampling variance of $\hat{\beta}_1$ that we discussed above: in large samples, $\hat{\beta}_1$ is approximately normally distributed with mean $\beta_1$ and variance $V/n$.
+
+## Inference
 
 Given this result, all our previous work on standard errors, t-statistics, p-values, and confidence intervals applies. First, let me mention the way that you would estimate $V$ (same as always, just replace the population quantities with corresponding sample quantities).
 
@@ -124,14 +183,14 @@ Now, standard errors are just the same as before (the only difference is that $\
 
 $$
 \begin{aligned}
-  \textrm{s.e.}(\hat{\beta}) &= \frac{\sqrt{\hat{V}}}{\sqrt{n}}
+  \textrm{s.e.}(\hat{\beta}_1) &= \frac{\sqrt{\hat{V}}}{\sqrt{n}}
 \end{aligned}
 $$
 
-By far the most common null hypothesis is $H_0: \beta = 0$, which suggests the following t-statistic:
+By far the most common null hypothesis is $H_0: \beta_1 = 0$, which suggests the following t-statistic:
 
 $$
-  t = \frac{\hat{\beta}}{\textrm{s.e.}(\hat{\beta})}
+  t = \frac{\hat{\beta}_1}{\textrm{s.e.}(\hat{\beta}_1)}
 $$
 One can continue to calculate a p-value by
 
@@ -141,7 +200,7 @@ $$
 and a 95% confidence interval is given by
 
 $$
-  CI = [\hat{\beta} - 1.96 \textrm{s.e.}(\hat{\beta}), \hat{\beta} + 1.96 \textrm{s.e.}(\hat{\beta})]
+  CI = [\hat{\beta}_1 - 1.96 \textrm{s.e.}(\hat{\beta}_1), \hat{\beta}_1 + 1.96 \textrm{s.e.}(\hat{\beta}_1)]
 $$
 
 ### Computation
@@ -192,6 +251,10 @@ reg9 <- lm_robust(mpg ~ hp, data=mtcars, se_type="HC0")
 summary(reg9)
 ```
 The "HC0" standard errors are "heteroskedasticity consistent" standard errors, and you can see that they match what we calculated above.
+
+## More than One Regressor
+
+Everything in this chapter has been for the simple linear regression model with a single regressor.  With more regressors, the derivations are similar (though they require more notation), and the estimated coefficients have similar properties: under random sampling and $\E[U|X_1,\ldots,X_k]=0$, each $\hat{\beta}_j$ is unbiased, consistent, and asymptotically normal.  Its sampling variance is smaller when the sample size is larger, when there is more variation in $X_j$ that is not explained by the other regressors, and when there is less variation in $U$.  The standard errors, t-statistics, p-values, and confidence intervals reported by `lm` and `lm_robust` are based on this more general case.
 
 ## Lab 4: Birthweight and Smoking
 
@@ -320,6 +383,58 @@ reg7 <- lm(I(log(birthweight)) ~ smoker + educ + nprevist + age + alcohol,
 summary(reg7)
 ```
 The estimated coefficient on $smoker$ says that, comparing mothers with the same education, number of pre-natal visits, age, and alcohol consumption during pregnancy, babies whose mothers smoked during pregnancy weighed about 6.3% less on average.
+
+## In Case You're Interested: Sampling Variance of $\hat{\beta}_1$ {#sec-beta1-variance}
+
+This section derives the expression for the sampling variance of $\hat{\beta}_1$ from the main text.  To do this, we will use the **law of total variance**, which says that, for any two random variables $W$ and $Z$,
+$$
+  \var(W) = \E\big[\var(W|Z)\big] + \var\big(\E[W|Z]\big)
+$$
+In words, the variance of $W$ can be split into the average of the conditional variance of $W$ given $Z$ (how much $W$ varies for a fixed value of $Z$), plus the variance of the conditional mean of $W$ given $Z$ (how much the average of $W$ varies across different values of $Z$).
+
+Applying the law of total variance with $W = \hat{\beta}_1$ and $Z = (X_1,\ldots,X_n)$,
+$$
+\begin{aligned}
+  \var(\hat{\beta}_1) &= \E\big[\var(\hat{\beta}_1 | X_1,\ldots,X_n)\big] + \var\big(\E[\hat{\beta}_1|X_1,\ldots,X_n]\big) \\
+  &= \E\big[\var(\hat{\beta}_1 | X_1,\ldots,X_n)\big]
+\end{aligned}
+$$
+where the second equality holds because we showed above that $\E[\hat{\beta}_1|X_1,\ldots,X_n] = \beta_1$, which is a constant and therefore has variance equal to 0.
+
+Next, let's compute the conditional variance.  Starting from @eq-b1-decomp,
+$$
+\begin{aligned}
+  \var(\hat{\beta}_1 | X_1,\ldots,X_n) &= \var\left( \beta_1 + \frac{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X}) U_i}{\widehat{\var}(X)} \Bigg| X_1,\ldots,X_n \right) \\
+  &= \frac{1}{n^2 \widehat{\var}(X)^2} \var\left( \sum_{i=1}^n (X_i - \bar{X}) U_i \Bigg| X_1,\ldots,X_n \right) \\
+  &= \frac{1}{n^2 \widehat{\var}(X)^2} \sum_{i=1}^n (X_i - \bar{X})^2 \var(U_i | X_1,\ldots,X_n) \\
+  &= \frac{1}{n^2 \widehat{\var}(X)^2} \sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i) \\
+  &= \frac{1}{n} \cdot \frac{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i)}{\widehat{\var}(X)^2}
+\end{aligned}
+$$
+where $\sigma^2(X_i) := \var(U_i|X_i)$.
+
+- The second equality holds because $\beta_1$ is a constant and, conditional on the $X$'s, $\widehat{\var}(X)$ is a constant that can be pulled out (squared) from the variance.
+
+- The third equality holds because, by random sampling, the $U_i$'s are independent of each other conditional on the $X$'s, so the variance of the sum is the sum of the variances, and each $(X_i - \bar{X})$ is a constant conditional on the $X$'s that can be pulled out (squared).
+
+- The fourth equality holds because, by random sampling, $U_i$ only depends on its own $X_i$.
+
+Putting this together,
+$$
+  \var(\hat{\beta}_1) = \frac{1}{n} \E\left[ \frac{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i)}{\widehat{\var}(X)^2} \right]
+$$
+This expectation is hard to simplify further in general, but, in large samples, $\widehat{\var}(X) \approx \var(X)$ and
+$$
+\begin{aligned}
+  \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2 \sigma^2(X_i) &\approx \E[(X-\E[X])^2 \sigma^2(X)] \\
+  &= \E\big[(X-\E[X])^2 \E[U^2|X]\big] \\
+  &= \E[(X-\E[X])^2 U^2]
+\end{aligned}
+$$
+where the first equality uses that $\sigma^2(X) = \E[U^2|X]$ (because $\E[U|X]=0$), and the second uses the law of iterated expectations.  Thus,
+$$
+  \var(\hat{\beta}_1) \approx \frac{1}{n} \cdot \frac{\E[(X-\E[X])^2 U^2]}{\var(X)^2} = \frac{V}{n}
+$$
 
 ## Coding Questions
 

@@ -121,9 +121,9 @@ where $U$ is called the **error term** and satisfies $\E[U|X_1,X_2,X_3] = 0$.  T
 Even if we know that $\E[Y|X_1,X_2,X_3] = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3$, in general, we do not know the values of the population parameters (the $\beta$'s).  This is analogous to the framework in the previous chapter where we were interested in
 the population parameter $\E[Y]$ and estimated it by $\bar{Y}$.
 
-In this section, we'll discuss how to estimate $(\beta_0,\beta_1,\beta_2,\beta_3)$ using `R`.  We'll refer to the estimated values of the parameters as $(\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3)$.  As in the previous section, it will not be the case that the estimated $\hat{\beta}$'s are exactly equal to the population $\beta$'s.  Later on in this chapter, we will establish properties like consistency (so that, as long as we have a large sample, the estimated $\hat{\beta}$'s should be "close" to the population $\beta$'s) and asymptotic normality (so that we can conduct inference).
+In this section, we'll discuss how to estimate $(\beta_0,\beta_1,\beta_2,\beta_3)$ using `R`.  We'll refer to the estimated values of the parameters as $(\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3)$.  As in the previous section, it will not be the case that the estimated $\hat{\beta}$'s are exactly equal to the population $\beta$'s.  In the chapter on properties of regression estimators, we will establish properties like consistency (so that, as long as we have a large sample, the estimated $\hat{\beta}$'s should be "close" to the population $\beta$'s) and asymptotic normality (so that we can conduct inference).
 
-Also later on in this chapter, we'll talk about how `R` itself actually makes these computations.
+In the next chapter, we'll talk about how `R` itself actually makes these computations.
 
 The main function in `R` for estimating linear regressions is the `lm` function (`lm` stands for linear model).  The key things to specify for running a regression in `R` are a `formula` argument which tells `lm` which variables are the outcome and which variables are the regressors and a `data` argument which tells the `lm` command what data we are using to estimate the regression.  Let's give an example using the `mtcars` data.
 
@@ -158,7 +158,7 @@ round(pred, 3)
 
 :::  {.side-comment}
 
-A popular alternative to `R`'s `lm` function is the `lm_robust` function from the `estimatr` package.  This provides different standard errors from the default standard errors provided by `lm` that are, at least in most applications in economics, typically a better choice --- we'll have a further discussion on this topic when we talk about inference later on in this chapter.
+A popular alternative to `R`'s `lm` function is the `lm_robust` function from the `estimatr` package.  This provides different standard errors from the default standard errors provided by `lm` that are, at least in most applications in economics, typically a better choice --- we'll have a further discussion on this topic when we talk about inference for regressions in a later chapter.
 
 :::
 
