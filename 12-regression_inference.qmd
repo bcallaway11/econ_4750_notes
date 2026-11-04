@@ -487,6 +487,16 @@ $$
     c) Given the results in part b, calculate an estimate of the average marginal contrast for having lead pipes.
     
     d) Given the results in part b, how much does the marginal contrast for having lead pipes differ for cities that have a pH of 6.5 relative to a pH of 7.5?
+
+6. For this question, we'll use the data `Caschool` to "manually" run a regression of test scores (`testscr`) on the student teacher ratio (`str`).  You should not use the `lm` function for this problem; instead, use the formulas from this chapter to do each calculation yourself.
+
+    a) Calculate $\hat{\beta}_0$ and $\hat{\beta}_1$.
+
+    b) Calculate the standard error of $\hat{\beta}_1$.  
+
+    c) Calculate the p-value for testing $H_0: \beta_1 = 0$.
+
+    d) Calculate a 95% confidence interval for $\beta_1$.
     
 
 ## Extra Questions

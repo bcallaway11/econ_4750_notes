@@ -14,7 +14,7 @@ non_col_earnings <- mean(subset(us_data, educ < 16)$incwage)
 
 round(data.frame(col_earnings, 
                  non_col_earnings, 
-                 diff=(col_earnings-non_col_earnings)),3)
+                 diff=(col_earnings-non_col_earnings)),0)
 ```
 This seems to be a huge difference.  Earlier in the semester, we would have called this difference a marginal contrast for going to college --- a comparison of average earnings between two groups of people.  But should we interpret it as *the causal effect* of going to college, or as an average causal effect across individuals?  Probably not.  The main reason is that earnings of individuals who went to college may have been different from individuals that didn't go to college even if no one went to college.  Another way to say this is that there are a number of other things besides college that affect a person's earnings (age, race, IQ, "ability", "hardworking-ness", luck, etc.).  If these are also correlated with whether or not a person goes to college (you would think that at least some of these are), then that would make it hard to interpret our simple difference-in-means as a causal effect.
 
@@ -48,9 +48,11 @@ Example: SW 13.3
 
 SW 13.1
 
-A powerful tool for thinking about causal effects is **counterfactual reasoning**.  For individuals that participate in the treatment, we observe what their outcome is given that they participated in the treatment.  But we don't observe what their outcome would have been if they had not participated in the treatment.  For example, among those that went to college, we don't observe what their earnings would have been if they had not gone to college.  For those that don't participate in the treatment, we face the opposite problem --- we don't observe what their outcome would have been if they had participated in the treatment.  
+A powerful tool for thinking about causal effects is the notion of **counterfactuals**.  For individuals that participate in the treatment, we observe what their outcome is given that they participated in the treatment.  But we don't observe what their outcome would have been if they had not participated in the treatment --- this is a counterfactual.  For example, among those that went to college, we don't observe what their earnings would have been if they had not gone to college.  
 
-We'll relate causal inference to the problem of trying to figure out what outcomes individuals that participated in the treatment would have experienced if they had *not* participated in the treatment (at least on average) and/or figuring out what outcomes individuals that did not participated in the treatment would have experienced if they *had* participated in the treatment.
+For those that don't participate in the treatment, we face the opposite problem --- we don't observe what their outcome would have been if they had participated in the treatment.  
+
+We'll relate causal inference to the problem of trying to figure out what outcomes individuals that participated in the treatment would have experienced if they had *not* participated in the treatment (at least on average) and/or figuring out what outcomes individuals that did not participate in the treatment would have experienced if they *had* participated in the treatment.
 
 To do this, let's introduce somewhat more formal notation/terminology.
 
@@ -70,9 +72,9 @@ We can think about the individual-level effect of participating in the treatment
 
 Considering the difference between treated and untreated potential outcomes is a very natural (and, I think, helpful) way to think about causality.  The causal effect of the treatment is the difference between the outcome that an individual would experience if they participate in the treatment relative to what they would experience if they did not participate in the treatment.
 
-This notation also makes it clear that we are allowing for **treatment effect heterogenity** --- the effect of participating in the treatment can vary across different individuals.
+This notation also makes it clear that we are allowing for **treatment effect heterogeneity** --- the effect of participating in the treatment can vary across different individuals.
 
-That said, most researchers essentially give up on trying to figure out individual level treatment effects.  It is not so much that these are not interesting, more it is just that these are very hard to figure out.  Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person's earnings.  I went to college, so I know what my $Y(1)$ is, but I don't know what my $Y(0)$ is --- and, I'd even have a hard time coming with a good guess as to what it might be. 
+That said, most researchers essentially give up on trying to figure out individual level treatment effects.  It is not so much that these are not interesting, more it is just that these are very hard to figure out.  Take, for example, going to college, and suppose we are interested in the causal effect of going to college on a person's earnings.  I went to college, so I know what my $Y(1)$ is, but I don't know what my $Y(0)$ is --- and, I'd even have a hard time coming up with a good guess as to what it might be. 
 
 
 ## Parameters of Interest
@@ -84,20 +86,46 @@ Instead of going for individual-level effects of participating in the treatment,
 \end{align*}
 $ATE$ is the difference between treated potential outcomes and untreated potential outcomes, on average, and for the entire population.  $ATT$ is the difference between treated and untreated potential outcomes, on average, conditional on being in the treated group.
 
-We will mostly focus on $ATT$.
+These two parameters can be different from each other.  In the college example, it could be that the people who choose to go to college tend to be the ones who benefit the most from it.  In that case, the average effect of college among those who went to college ($ATT$) would be larger than the average effect of college across everyone in the population ($ATE$).
+
+And which parameter to focus on depends on the context.  For example, if you were a policy maker interested in the effect of a universal college policy, you would probably be more interested in the $ATE$ than the $ATT$.  On the other hand, if you are studying the effect of a job training program, most likely you would be interested in the $ATT$.  It tells us how much the job training program helped the people who actually participated in it.  And, most likely, the effect of job training is 0 for most people (if I participated in a job training program, I would just go back to my job and have the same earnings as before), so the $ATE$ would likely be small even if the program helped participants a lot.
+
+We will mostly focus on $ATT$.  This is partially because I think answering "What was the causal effect on those that participated" is the most straightforward question to ask across applications.  Besides that, it is also easier to learn about than the $ATE$, as we only have to deal with missing untreated potential outcomes for the treated group, while, for the $ATE$, we would also have to deal with missing treated potential outcomes for the untreated group.
 
 It is worth considering the challenges for learning about $ATT$.  In particular, notice that we can write
 \begin{align*}
   ATT = \E[Y(1)|D=1] - \E[Y(0)|D=1]
 \end{align*}
-and consider these term separately
+and consider these terms separately.
 
 * $\E[Y(1)|D=1]$ is the average treated potential outcome among the treated group.  But we observe treated potential outcomes for the treated group $\implies \E[Y(1)|D=1] = \E[Y|D=1]$.  In other words, if we want to estimate this component of the $ATT$, we can just look right at the data and compute the average outcome experienced by individuals in the treated group.
 
-* $\E[Y(0)|D=1]$ is the average untreated potential outcome among the treated group.  This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group.  But, in order to learn about the $ATT$, we will have to *somehow* deal with this term.  I will provide a number of strategies below, but it is important to remember that this is a major challenge, and their may not be a good solution.
+* $\E[Y(0)|D=1]$ is the average untreated potential outcome among the treated group.  This is (potentially much) more challenging than the first term because we do not observe untreated potential outcomes among the treated group.  But, in order to learn about the $ATT$, we will have to *somehow* deal with this term.  I will provide a number of strategies in the next three chapters, but it is important to remember that this is a major challenge, and there may not be a good solution.
+
+Now we can be more precise about what goes wrong with the comparison that we made at the beginning of the chapter.  Notice that
+\begin{align*}
+  \E[Y|D=1] - \E[Y|D=0] &= \E[Y(1)|D=1] - \E[Y(0)|D=0] \\
+  &= \underbrace{\E[Y(1)|D=1] - \E[Y(0)|D=1]}_{ATT} \\
+  & \quad + \underbrace{\E[Y(0)|D=1] - \E[Y(0)|D=0]}_{\textrm{selection bias}}
+\end{align*}
+where the first equality holds because we observe treated potential outcomes for the treated group and untreated potential outcomes for the untreated group, and the second equality holds by adding and subtracting $\E[Y(0)|D=1]$.
+
+In other words, the difference in average outcomes between the treated and untreated groups is equal to the $ATT$ plus a second term that is called **selection bias**.  Selection bias is the difference in average untreated potential outcomes between the treated and untreated groups.  In the college example, if the people who went to college would have had higher earnings on average than the people who did not go to college *even if they had not gone to college*, then selection bias is positive and the difference in average earnings that we calculated earlier is larger than the $ATT$.
+
+## Identification
+
+Unfortunately, we cannot just calculate selection bias and subtract it off because it involves $\E[Y(0)|D=1]$, which is the term that we do not observe.  This is a different sort of challenge than we have faced up to this point in the course.  All of the previous examples I have given you (e.g., estimating $\E[Y]$ or regression coefficients), we were dealing with statistical problems, which we could deal with if we had enough data.  That is, for all of the previous examples, if had enough data, we could estimate the target parameters well.
+
+That we cannot directly relate $ATT$ to the data that we observe is a fundamentally different type of problem.
+
+It is an example of an **identification problem**.  
+
+We say that a parameter is **identified** if we could figure out its value if we had access to data from the entire population.  Without additional assumptions, the $ATT$ is not identified.  The reason is that we do not observe untreated potential outcomes for the treated.  So, even if we observed every person in the population, we *still* wouldn't have any information about their counterfactual outcomes.
+
+The strategies in the next three chapters all involve making additional assumptions (or using particular features of the setting) in order to identify a causal effect parameter.
 
 ::: {.side-comment}
 
-<span class="side-comment">Side-Comment:</span> I think it is also worth clearly pointing out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer.  In economics jargon, this amounts to an **identification problem** --- in other words, there may be competing theories of the world which the available data is not able to distinguish among.  I probably do not emphasize this issue enough in our class, but it is something that you should remember --- there may be a large number of causal questions that we'd be interested in answering, but where it is not possible to answer them (at least given the information that we have available).
+<span class="side-comment">Side-Comment:</span> I think it is also worth clearly pointing out that, while I am a big believer in the power/usefulness of using data to try to answer questions in economics, the above discussion suggests that there are a number of questions that we may just not be able to answer.  I probably do not emphasize this issue enough in our class, but it is something that you should remember --- there may be a large number of causal questions that we'd be interested in answering, but where it is not possible to answer them (at least given the information that we have available).
 
 :::
