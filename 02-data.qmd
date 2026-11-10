@@ -9,9 +9,9 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Data from the 2019 American Community Survey about Education and Earnings
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `Airq`
 
@@ -33,15 +33,15 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Data about bank closures in Mississippi during the Great Depression
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `Birthweight_Smoking`
 
     - Data about infant birthweights and mother's smoking from PA 1989
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
     - Description: [Mark Watson's website](https://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Birthweight_Smoking_Description.pdf)
 
@@ -57,7 +57,7 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Data about diamond prices.  The full version of this data I got from Kaggle, and then I split it into training and testing data.
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
     - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
 
@@ -65,7 +65,7 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Out of sample version of `diamond_train` data
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
     - Description: A description of each column in the data is available under the `Description` tab on [Kaggle](https://www.kaggle.com/shivam2503/diamonds/)
 
@@ -81,9 +81,9 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Data about fast food restaurants in New Jersey and Pennsylvania from Card and Krueger (1994)
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `Fatalities`
 
@@ -105,17 +105,17 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Country-level data about fertilizer and crop yields from the year 2000.  See description of `fertilizer_panel` below for more details
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `fertilizer_panel`
 
     - Country-level panel data from 1965-2000 (every 5 years) about fertilizer and crop yields for 68 developing countries.  This data is a smaller version of the data used in McArthur, John W., and Gordon C. McCord. "Fertilizing growth: Agricultural inputs and their effects in economic development." Journal of Development Economics 127 (2017): 133-152. url: [https://doi.org/10.1016/j.jdeveco.2017.02.007](https://doi.org/10.1016/j.jdeveco.2017.02.007).
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `gapminder`
 
@@ -129,23 +129,23 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - U.S. House of Representatives elections data from 1946-1998
 
-    - Access: Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `intergenerational_mobility`
 
     - Intergenerational mobility data from PSID
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `Lead_Mortality`
 
     - Infant mortality and lead pipes in 1900
 
-    - Access: Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
     - Description: [Mark Watson's website](http://www.princeton.edu/~mwatson/Stock-Watson_3u/Students/EE_Datasets/Lead_Mortality_Description.pdf)
 
@@ -153,9 +153,9 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Car accident deaths by age group
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `mroz`
 
@@ -169,17 +169,17 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Mutual fund performance data
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `rand_hie`
 
     - RAND health insurance experiment
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})
 
 - `Star`
 
@@ -193,7 +193,7 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Passenger level data on surviving Titanic.  This data is a slightly adapted version of the `titanic` data on [Kaggle](https://www.kaggle.com/c/titanic)
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
     - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
 
@@ -201,7 +201,7 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Out of sample version of `titanic_training` data
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
     - Description: [Kaggle](https://www.kaggle.com/c/titanic/data)
 
@@ -209,6 +209,6 @@ Note: some of the datasets below require installing an `R` package.  For example
 
     - Data from the 2019 American Community Survey via IPUMS
 
-    - Access: [Course Website](`r course_website_link`)
+    - Access: [Course Website]({{< var course_website >}})
 
-    - Description: [Course Website](`r course_website_link`)
+    - Description: [Course Website]({{< var course_website >}})

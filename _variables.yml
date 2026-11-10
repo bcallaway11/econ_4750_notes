@@ -1,0 +1,3 @@
+# Semester-specific values used across chapters via {{< var ... >}}.
+# Update course_website each semester.
+course_website: "https://bcallaway11.github.io/Courses/ECON_4750_Fall_2026/"
