@@ -60,20 +60,25 @@ Because we estimate a first-step regression and then average, the approach discu
 
 **Code**
 
-My favorite package for implementing regression adjustment is the `DRDID` package.  This is a package that is built for using panel data, but we can "trick" it into doing cross-sectional regression adjustment.  The code below shows how to do this.  Suppose that we have a data frame `df` with outcome variable `Y`, treatment variable `D`, and covariates `X1`, `X2`, and `X3`.  The
+To implement regression adjustment in R, we will use the `ugametrics` package, which I wrote for this class.  It is not on CRAN, so you will need to install it from GitHub (you only need to do this once):
 
 ```{r}
 #| eval: false
-library(DRDID)
+# install.packages("devtools") # if you don't already have devtools
+devtools::install_github("bcallaway11/ugametrics")
+```
 
-y <- df$Y
-D <- df$D
-X <- model.matrix(~ X1 + X2 + X3, data = df) # create matrix of covariates
-ra_att <- DRDID::reg_did_panel(y1 = y, y0 = 0, D = D, covariates = X)
+The main function is `reg_adj_att`.  Suppose that we have a data frame `df` with outcome variable `Y`, binary treatment variable `D`, and covariates `X1`, `X2`, and `X3`.  Then we can estimate the $ATT$ using regression adjustment with the following code:
+
+```{r}
+#| eval: false
+library(ugametrics)
+
+ra_att <- reg_adj_att(Y ~ D, xformula = ~ X1 + X2 + X3, data = df)
 ra_att
 ```
 
-`DRDID::reg_did_panel` expects outcomes for two periods: period 1 and period 0, but our trick is to just set the period 0 outcomes to zero for everyone (i.e., `y0 = 0`).  The function will then estimate the regression adjustment estimator for us.  Note that you can include any covariates you want in the regression by changing the formula in `model.matrix`.
+The first argument, `Y ~ D`, specifies the outcome and the treatment variable, and the `xformula` argument specifies which covariates to include in the first-step regression (Step 1 above).  The function runs the regression of $Y$ on $X$ using untreated units, averages the predicted values for treated units, and reports the estimate of the $ATT$ along with a standard error and confidence interval.  You can include any covariates you want by changing the formula in `xformula` (e.g., `~ X1 + X2 + I(X2^2)`).  If you leave out `xformula`, the function just computes the difference in average outcomes between treated and untreated units.  `summary(ra_att)` gives some additional details.
 
 ### Estimation - Regression under Treatment Effect Homogeneity
 
@@ -243,13 +248,11 @@ datasummary_balance(
 
 ```{r}
 # regression adjustment
-library(DRDID)
+library(ugametrics)
 
-fte_post <- fastfood$fte_post
-covs <- model.matrix(~chain_name, data = fastfood)
-D <- as.numeric(fastfood$state == "New Jersey")
+fastfood$D <- as.numeric(fastfood$state == "New Jersey")
 
-unc_att <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+unc_att <- reg_adj_att(fte_post ~ D, xformula = ~chain_name, data = fastfood)
 unc_att
 
 # single regression
@@ -261,8 +264,7 @@ summary(unc_reg)
 
 ```{r}
 # regression adjustment placebo
-fte_pre <- fastfood$fte_pre
-unc_placebo <- DRDID::reg_did_panel(y1 = fte_pre, y0 = 0, D = D, covariates = covs)
+unc_placebo <- reg_adj_att(fte_pre ~ D, xformula = ~chain_name, data = fastfood)
 unc_placebo
 
 # single regression placebo
@@ -274,8 +276,9 @@ summary(unc_placebo_reg)
 
 ```{r}
 # regression adjustment
-lou_covs <- model.matrix(~ chain_name + fte_pre, data = fastfood)
-lou_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = lou_covs)
+lou_att_post <- reg_adj_att(fte_post ~ D,
+                            xformula = ~ chain_name + fte_pre,
+                            data = fastfood)
 lou_att_post
 
 # single regression
@@ -286,12 +289,12 @@ summary(lou_reg)
 5. Difference-in-differences ATT estimate
 
 ```{r}
-# regression adjustment
-did_att_post <- DRDID::reg_did_panel(y1 = fte_post, y0 = 0, D = D, covariates = covs)
+# regression adjustment (outcome is the change in fte over time)
+fastfood$delta_fte <- fastfood$fte_post - fastfood$fte_pre
+did_att_post <- reg_adj_att(delta_fte ~ D, xformula = ~chain_name, data = fastfood)
 did_att_post
 
 # single regression
-fastfood$delta_fte <- fastfood$fte_post - fastfood$fte_pre
 did_reg <- lm(delta_fte ~ D + chain_name, data = fastfood)
 summary(did_reg)
 ```
