@@ -218,7 +218,9 @@ library(dplyr)
 # drop missing data
 fastfood <- subset(fastfood, balanced == 1)
 # drop unused columns
-fastfood <- select(fastfood, id, state, location, chain_name, ownership, fte_pre, hrsopen_pre, wage_st_pre, fte_post, hrsopen_post, wage_st_post)
+fastfood <- select(fastfood, id, state, location, chain_name, ownership,
+                   fte_pre, hrsopen_pre, wage_st_pre,
+                   fte_post, hrsopen_post, wage_st_post)
 ```
 
 1. Use `modelsummary::datasummary_balance` to report summary statistics for all the variables in the data, separately by state (New Jersey vs. Pennsylvania).  What do you notice?
